@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "KidCog",
+    "slug": "kidcog",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#F7F5F2"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.kidcog"
+    },
+    "android": {
+      "package": "com.example.kidcog",
+      "adaptiveIcon": {
+        "backgroundColor": "#F7F5F2"
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "extra": {
+      "apiBaseUrl": "http://localhost:4000"
+    }
+  }
+}

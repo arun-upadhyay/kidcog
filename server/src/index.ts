@@ -1,0 +1,115 @@
+import 'dotenv/config';
+import express, { type Request, type Response, type NextFunction } from 'express';
+import cors from 'cors';
+import { z } from 'zod';
+
+import { getQuestions, toPublicQuestion, DOMAINS } from './questions.js';
+import { scoreSubmission } from './scoring.js';
+import { summariseForParent } from './grader.js';
+import type { TestPayload } from './types.js';
+
+const app = express();
+app.use(cors());
+app.use(express.json({ limit: '256kb' }));
+
+// Crude in-memory rate limit. Replace with a real one before you go public.
+const hits = new Map<string, number[]>();
+app.use((req: Request, res: Response, next: NextFunction) => {
+  const ip = req.ip ?? 'unknown';
+  const now = Date.now();
+  const windowMs = 60_000;
+  const max = 30;
+  const entry = (hits.get(ip) ?? []).filter((t) => now - t < windowMs);
+  entry.push(now);
+  hits.set(ip, entry);
+  if (entry.length > max) {
+    res.status(429).json({ error: 'Too many requests, slow down.' });
+    return;
+  }
+  next();
+});
+
+app.get('/health', (_req: Request, res: Response) => {
+  res.json({
+    ok: true,
+    mockGrader: process.env.USE_MOCK_GRADER === '1',
+    model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
+  });
+});
+
+/** The test the app should present. Answer keys and rubrics stay on the server. */
+app.get('/api/test', (req: Request, res: Response) => {
+  const age = req.query.age !== undefined ? Number(req.query.age) : undefined;
+  if (age !== undefined && (Number.isNaN(age) || age < 4 || age > 18)) {
+    res.status(400).json({ error: 'age must be a number between 4 and 18' });
+    return;
+  }
+  const questions = getQuestions({ age }).map(toPublicQuestion);
+  const payload: TestPayload = {
+    domains: DOMAINS,
+    questionCount: questions.length,
+    questions,
+  };
+  res.json(payload);
+});
+
+const SubmissionSchema = z.object({
+  child: z
+    .object({
+      firstName: z.string().max(60).optional(),
+      age: z.number().int().min(4).max(18).optional(),
+    })
+    .optional(),
+  responses: z
+    .array(
+      z.object({
+        questionId: z.string().max(40),
+        answer: z.string().max(4000),
+        elapsedSeconds: z.number().nonnegative().optional(),
+      })
+    )
+    .min(1)
+    .max(100),
+});
+
+app.post('/api/submit', async (req: Request, res: Response) => {
+  const parsed = SubmissionSchema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: 'Invalid submission', details: parsed.error.flatten() });
+    return;
+  }
+
+  const { child, responses } = parsed.data;
+
+  try {
+    const report = await scoreSubmission(responses);
+
+    // The written summary is a nicety. If it fails, still return the scores.
+    try {
+      report.summary = await summariseForParent(report, child?.firstName);
+    } catch (err) {
+      report.summary = null;
+      report.summaryError = err instanceof Error ? err.message : String(err);
+    }
+
+    res.json(report);
+  } catch (err) {
+    console.error('Scoring failed:', err);
+    res.status(500).json({
+      error: 'Scoring failed',
+      detail: err instanceof Error ? err.message : String(err),
+    });
+  }
+});
+
+const port = Number(process.env.PORT || 4000);
+app.listen(port, () => {
+  console.log(`KidCog API listening on http://localhost:${port}`);
+  if (process.env.USE_MOCK_GRADER === '1') {
+    console.log('Mock grader is ON — open answers are scored by a crude local heuristic.');
+  } else if (!process.env.OPENAI_API_KEY) {
+    console.warn('No OPENAI_API_KEY set. Open-ended grading will fail.');
+  }
+});
+
+export default app;
