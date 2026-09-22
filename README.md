@@ -4,6 +4,7 @@ A working starter project in TypeScript: an Expo (React Native) app for iOS and 
 Node API that scores the answers. Multiple-choice items are scored deterministically on the server;
 written answers are graded against a rubric by an OpenAI model.
 
+
 ```
 kidcog/
   server/          Node + Express API (TypeScript, ESM)
