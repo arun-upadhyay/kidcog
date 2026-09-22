@@ -121,6 +121,26 @@ export function apiKeyProblem(): string | null {
   return null;
 }
 
+/**
+ * Whether to send an explicit `temperature`.
+ *
+ * Grading wants temperature 0 - two identical submissions should produce the
+ * same score, and a grader that drifts is a grader you cannot trust. But the
+ * gpt-6 family rejects any explicit temperature and allows only its default,
+ * so sending one fails the whole request.
+ *
+ * Default is therefore to omit it and accept the model's sampling. Set
+ * OPENAI_SUPPORTS_TEMPERATURE=1 when running a model that does accept it, and
+ * the preferred values below apply again.
+ *
+ * The cost of omitting it is real: grading becomes less repeatable. If exact
+ * reproducibility matters to you, that is a reason to pick a model that
+ * supports temperature rather than a reason to change this code.
+ */
+function sampling(preferred: number): { temperature?: number } {
+  return process.env.OPENAI_SUPPORTS_TEMPERATURE === '1' ? { temperature: preferred } : {};
+}
+
 let client: OpenAI | null = null;
 function getClient(): OpenAI {
   if (!client) {
@@ -144,7 +164,7 @@ export async function gradeOpenAnswers(items: GradeRequestItem[]): Promise<Grade
 
   const completion = await getClient().chat.completions.create({
     model,
-    temperature: 0,
+    ...sampling(0),
     messages: [
       { role: 'system', content: SYSTEM_PROMPT },
       { role: 'user', content: buildUserPrompt(items) },
@@ -296,7 +316,7 @@ export async function generateParentReport(
 
   const completion = await getClient().chat.completions.create({
     model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
-    temperature: 0.4,
+    ...sampling(0.4),
     messages: [
       { role: 'system', content: REPORT_SYSTEM_PROMPT },
       {

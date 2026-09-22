@@ -243,7 +243,10 @@ async function main(): Promise<void> {
 
   const generation = await client.chat.completions.create({
     model,
-    temperature: 0.8, // variety matters more than determinism when drafting
+    // Variety matters more than determinism when drafting. Omitted by default
+    // because the gpt-6 family rejects an explicit temperature; see sampling()
+    // in grader.ts.
+    ...(process.env.OPENAI_SUPPORTS_TEMPERATURE === '1' ? { temperature: 0.8 } : {}),
     messages: [
       { role: 'system', content: GENERATE_SYSTEM },
       {
@@ -309,7 +312,7 @@ async function main(): Promise<void> {
     console.log('Reviewing them for ambiguity and wrong answers…');
     const critique = await client.chat.completions.create({
       model,
-      temperature: 0,
+      ...(process.env.OPENAI_SUPPORTS_TEMPERATURE === '1' ? { temperature: 0 } : {}),
       messages: [
         { role: 'system', content: CRITIQUE_SYSTEM },
         { role: 'user', content: JSON.stringify(valid, null, 2) },
