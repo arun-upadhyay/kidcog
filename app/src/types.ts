@@ -22,9 +22,26 @@ export interface DomainMeta {
   blurb: string;
 }
 
+export type AgeProfileKey = 'early' | 'middle';
+
+/** Mirrors the server's AgeProfile. Drives how the app presents everything. */
+export interface AgeProfile {
+  key: AgeProfileKey;
+  label: string;
+  ageBand: [number, number];
+  readAloud: boolean;
+  openAnswerMode: 'voice' | 'text' | 'none';
+  maxQuestions: number;
+  showTimer: boolean;
+  showScoreToChild: boolean;
+  celebrateEachAnswer: boolean;
+  uiScale: number;
+}
+
 export interface McqOption {
   key: string;
   text: string;
+  symbol?: string;
 }
 
 export interface PublicQuestion {
@@ -34,12 +51,15 @@ export interface PublicQuestion {
   prompt: string;
   options: McqOption[] | null;
   timeLimitSeconds: number | null;
+  visual: string | null;
+  spoken: string | null;
 }
 
 export interface TestPayload {
   domains: Record<DomainKey, DomainMeta>;
   questionCount: number;
   questions: PublicQuestion[];
+  profile: AgeProfile;
 }
 
 export interface ChildProfile {

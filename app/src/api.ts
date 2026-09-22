@@ -81,6 +81,22 @@ export function fetchTest(age?: number): Promise<TestPayload> {
   return request<TestPayload>(`/api/test${qs}`);
 }
 
+/**
+ * Send a recording for transcription.
+ *
+ * The audio goes as base64 inside JSON rather than multipart. Multipart uploads
+ * from React Native are a well-known source of platform-specific breakage, and
+ * a few seconds of a child's speech is small enough that the ~33% base64
+ * overhead costs less than the debugging would.
+ */
+export function transcribeAudio(audioBase64: string, filename: string): Promise<{ text: string }> {
+  return request<{ text: string }>('/api/transcribe', {
+    method: 'POST',
+    body: JSON.stringify({ audioBase64, filename }),
+    timeoutMs: 60_000,
+  });
+}
+
 export function submitAnswers(payload: {
   child: ChildProfile | null;
   responses: ResponseInput[];

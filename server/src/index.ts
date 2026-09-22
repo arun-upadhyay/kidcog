@@ -4,13 +4,16 @@ import cors from 'cors';
 import { z } from 'zod';
 
 import { getQuestions, toPublicQuestion, DOMAINS } from './questions.js';
+import { profileForAge } from './ageProfiles.js';
+import { transcribeAnswer } from './transcribe.js';
 import { scoreSubmission } from './scoring.js';
 import { generateParentReport, apiKeyProblem } from './grader.js';
 import type { TestPayload } from './types.js';
 
 const app = express();
 app.use(cors());
-app.use(express.json({ limit: '256kb' }));
+// Raised from 256kb because spoken answers arrive as base64 audio.
+app.use(express.json({ limit: '12mb' }));
 
 // Crude in-memory rate limit. Replace with a real one before you go public.
 const hits = new Map<string, number[]>();
@@ -50,13 +53,42 @@ app.get('/api/test', (req: Request, res: Response) => {
     res.status(400).json({ error: 'age must be a number between 4 and 18' });
     return;
   }
-  const questions = getQuestions({ age }).map(toPublicQuestion);
+  const profile = profileForAge(age);
+  const questions = getQuestions({ age, limit: profile.maxQuestions }).map(toPublicQuestion);
   const payload: TestPayload = {
     domains: DOMAINS,
     questionCount: questions.length,
     questions,
+    profile,
   };
   res.json(payload);
+});
+
+const TranscribeSchema = z.object({
+  /** Base64 recording. Chosen over multipart because it is far less fragile
+   *  from React Native, at the cost of about a third more bytes. */
+  audioBase64: z.string().min(16).max(12_000_000),
+  filename: z.string().max(120).default('answer.m4a'),
+});
+
+app.post('/api/transcribe', async (req: Request, res: Response) => {
+  const parsed = TranscribeSchema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: 'Invalid audio payload', details: parsed.error.flatten() });
+    return;
+  }
+
+  try {
+    const audio = Buffer.from(parsed.data.audioBase64, 'base64');
+    const text = await transcribeAnswer(audio, parsed.data.filename);
+    res.json({ text });
+  } catch (err) {
+    const detail = err instanceof Error ? err.message : String(err);
+    console.error(`\n  x TRANSCRIPTION FAILED\n    ${detail}\n`);
+    // The app falls back to letting a grown-up type the answer, so this is a
+    // degraded path rather than a dead end.
+    res.status(502).json({ error: 'Could not transcribe the recording', detail });
+  }
 });
 
 const SubmissionSchema = z.object({
@@ -97,7 +129,7 @@ app.post('/api/submit', async (req: Request, res: Response) => {
     } catch (err) {
       report.parentReport = null;
       report.parentReportError = err instanceof Error ? err.message : String(err);
-      console.error(`\n  x REPORT GENERATION FAILED\n    ${report.parentReportError}\n`);
+      console.error(`\n  ✗ REPORT GENERATION FAILED\n    ${report.parentReportError}\n`);
     }
 
     res.json(report);
@@ -124,12 +156,12 @@ app.listen(port, () => {
     // Refuse to start quietly. Every submission would fail with a 401 and the
     // app would just say "couldn't be graded", which tells nobody anything.
     console.error('');
-    console.error('  !!  AI GRADING WILL FAIL ON EVERY REQUEST');
+    console.error('  ⚠  AI GRADING WILL FAIL ON EVERY REQUEST');
     console.error(`     ${problem}`);
     console.error('     Fix: put a real key in server/.env, or set USE_MOCK_GRADER=1.');
     console.error('');
   } else {
-    console.log(`AI grading enabled - model: ${process.env.OPENAI_MODEL || 'gpt-4o-mini'}`);
+    console.log(`AI grading enabled — model: ${process.env.OPENAI_MODEL || 'gpt-4o-mini'}`);
   }
 });
 

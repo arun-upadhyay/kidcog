@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable, Text, StyleSheet, ActivityIndicator, View } from 'react-native';
-import { colors, spacing } from '../theme';
+import { colors, spacing, scaled } from '../theme';
 
 export interface ButtonProps {
   title: string;
@@ -8,6 +8,8 @@ export interface ButtonProps {
   disabled?: boolean;
   loading?: boolean;
   variant?: 'primary' | 'secondary';
+  /** From the age profile: grows the target for smaller, less accurate fingers. */
+  uiScale?: number;
 }
 
 export default function Button({
@@ -16,6 +18,7 @@ export default function Button({
   disabled = false,
   loading = false,
   variant = 'primary',
+  uiScale = 1,
 }: ButtonProps) {
   const isPrimary = variant === 'primary';
   return (
@@ -26,6 +29,7 @@ export default function Button({
       disabled={disabled || loading}
       style={({ pressed }) => [
         styles.base,
+        { minHeight: scaled(52, uiScale), borderRadius: scaled(14, uiScale) },
         isPrimary ? styles.primary : styles.secondary,
         (disabled || loading) && styles.disabled,
         pressed && styles.pressed,
@@ -38,7 +42,13 @@ export default function Button({
             style={{ marginRight: 8 }}
           />
         )}
-        <Text style={[styles.text, isPrimary ? styles.textPrimary : styles.textSecondary]}>
+        <Text
+          style={[
+            styles.text,
+            { fontSize: scaled(16, uiScale) },
+            isPrimary ? styles.textPrimary : styles.textSecondary,
+          ]}
+        >
           {title}
         </Text>
       </View>
@@ -56,7 +66,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   inner: { flexDirection: 'row', alignItems: 'center' },
-  primary: { backgroundColor: colors.accent },
+  primary: { backgroundColor: colors.primary },
   secondary: { backgroundColor: 'transparent', borderWidth: 1.5, borderColor: colors.line },
   disabled: { opacity: 0.45 },
   pressed: { opacity: 0.85 },

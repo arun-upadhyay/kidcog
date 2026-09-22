@@ -19,9 +19,34 @@ export interface DomainMeta {
   blurb: string;
 }
 
+export type AgeProfileKey = 'early' | 'middle';
+
+/** Everything that differs between age bands. See ageProfiles.ts. */
+export interface AgeProfile {
+  key: AgeProfileKey;
+  label: string;
+  ageBand: [number, number];
+  /** Speak questions aloud, for children who cannot read yet. */
+  readAloud: boolean;
+  /** How open-ended answers are captured from the child. */
+  openAnswerMode: 'voice' | 'text' | 'none';
+  /** Cap on questions per session. Young children fade long before we run out. */
+  maxQuestions: number;
+  /** A visible countdown makes young children rush rather than think. */
+  showTimer: boolean;
+  /** Whether the child sees the score, or only a grown-up does. */
+  showScoreToChild: boolean;
+  /** Acknowledge every answer, rather than saving feedback for the end. */
+  celebrateEachAnswer: boolean;
+  /** Multiplier on touch targets and type size. */
+  uiScale: number;
+}
+
 export interface McqOption {
   key: string;
   text: string;
+  /** A large symbol shown instead of, or beside, the text for pre-readers. */
+  symbol?: string;
 }
 
 interface QuestionBase {
@@ -33,6 +58,17 @@ interface QuestionBase {
   weight: number;
   prompt: string;
   timeLimitSeconds?: number;
+  /**
+   * A large visual shown above the question — shapes, emoji, a counted row.
+   * For pre-readers this often carries the whole question and the prompt is
+   * only what gets spoken aloud.
+   */
+  visual?: string;
+  /**
+   * What the read-aloud voice says, when the written prompt would sound wrong
+   * spoken (symbols, "___", and so on). Falls back to `prompt`.
+   */
+  spoken?: string;
 }
 
 export interface McqQuestion extends QuestionBase {
@@ -58,12 +94,16 @@ export interface PublicQuestion {
   prompt: string;
   options: McqOption[] | null;
   timeLimitSeconds: number | null;
+  visual: string | null;
+  spoken: string | null;
 }
 
 export interface TestPayload {
   domains: Record<DomainKey, DomainMeta>;
   questionCount: number;
   questions: PublicQuestion[];
+  /** Drives how the app presents everything. See ageProfiles.ts. */
+  profile: AgeProfile;
 }
 
 export interface ResponseInput {

@@ -263,14 +263,204 @@ export const QUESTIONS = [
       '0 - Blank, off-topic, or unintelligible.',
     ],
   },
+  // =========================================================================
+  // EARLY YEARS (ages 4-7)
+  //
+  // Written for children who cannot read. The `visual` carries the question,
+  // `spoken` is what the read-aloud voice says, and `prompt` is the short text
+  // a grown-up can see. Options lead with a symbol so a child can answer by
+  // recognising a picture rather than reading a word.
+  //
+  // Open items are answered by speaking, so rubrics judge a spoken sentence
+  // from a small child: a correct idea in four words is a full-marks answer.
+  // =========================================================================
+
+  {
+    id: 'ey-vr-01',
+    domain: 'verbal_reasoning',
+    type: 'mcq',
+    ageBand: [4, 7],
+    weight: 1,
+    prompt: 'Which one is not something you can eat?',
+    spoken: 'Three of these are things you can eat. Which one is not?',
+    visual: '🍎   🍌   🍐   🚗',
+    options: [
+      { key: 'a', text: 'Apple', symbol: '🍎' },
+      { key: 'b', text: 'Banana', symbol: '🍌' },
+      { key: 'c', text: 'Pear', symbol: '🍐' },
+      { key: 'd', text: 'Car', symbol: '🚗' },
+    ],
+    answerKey: 'd',
+  },
+  {
+    id: 'ey-vr-02',
+    domain: 'verbal_reasoning',
+    type: 'open',
+    ageBand: [4, 7],
+    weight: 2,
+    prompt: 'Why do we wear a coat when it is cold?',
+    spoken: 'Here is a thinking question. Why do we wear a coat when it is cold outside?',
+    visual: '🧥  ❄️',
+    timeLimitSeconds: 120,
+    rubric: [
+      '3 - Links the coat to staying warm or keeping the cold out. Any wording counts: "so you stay warm", "it keeps the cold off you".',
+      '2 - Says it stops you being cold without saying the coat does the keeping-warm, or gives a related sensible reason such as not getting ill.',
+      '1 - Names the coat or the cold without connecting them, e.g. "because it is cold" or "my coat is red".',
+      '0 - Blank, off-topic, or unintelligible.',
+    ],
+  },
+  {
+    id: 'ey-qr-01',
+    domain: 'quantitative_reasoning',
+    type: 'mcq',
+    ageBand: [4, 7],
+    weight: 1,
+    prompt: 'How many stars are there?',
+    spoken: 'Count the stars. How many are there?',
+    visual: '⭐ ⭐ ⭐ ⭐',
+    options: [
+      { key: 'a', text: 'Three', symbol: '3' },
+      { key: 'b', text: 'Four', symbol: '4' },
+      { key: 'c', text: 'Five', symbol: '5' },
+    ],
+    answerKey: 'b',
+  },
+  {
+    id: 'ey-qr-02',
+    domain: 'quantitative_reasoning',
+    type: 'mcq',
+    ageBand: [4, 7],
+    weight: 1,
+    prompt: 'Which row has more?',
+    spoken: 'Look at the two rows of fish. Which row has more fish, the top row or the bottom row?',
+    visual: '🐟 🐟 🐟 🐟 🐟\n\n🐟 🐟 🐟',
+    options: [
+      { key: 'a', text: 'The top row', symbol: '⬆️' },
+      { key: 'b', text: 'The bottom row', symbol: '⬇️' },
+      { key: 'c', text: 'They are the same', symbol: '🟰' },
+    ],
+    answerKey: 'a',
+  },
+  {
+    id: 'ey-qr-03',
+    domain: 'quantitative_reasoning',
+    type: 'open',
+    ageBand: [5, 7],
+    weight: 2,
+    prompt: 'Three birds sit on a branch. One flies away. How many are left, and how do you know?',
+    spoken:
+      'Three birds are sitting on a branch. One of them flies away. How many birds are left? Tell me how you worked it out.',
+    visual: '🐦 🐦 🐦  →  🕊️',
+    timeLimitSeconds: 120,
+    rubric: [
+      '3 - Says two AND gives any reasoning: counted back, took one away, counted what was left. "Two, because one went" is full marks.',
+      '2 - Says two with no reasoning at all, or reasons correctly but says the wrong number.',
+      '1 - Counts or names numbers without reaching an answer.',
+      '0 - Blank, off-topic, or unintelligible.',
+    ],
+  },
+  {
+    id: 'ey-pr-01',
+    domain: 'pattern_reasoning',
+    type: 'mcq',
+    ageBand: [4, 7],
+    weight: 1,
+    prompt: 'What comes next?',
+    spoken: 'Look at the pattern. Red, blue, red, blue, red. What comes next?',
+    visual: '🔴 🔵 🔴 🔵 🔴 ❓',
+    options: [
+      { key: 'a', text: 'Blue', symbol: '🔵' },
+      { key: 'b', text: 'Red', symbol: '🔴' },
+      { key: 'c', text: 'Yellow', symbol: '🟡' },
+    ],
+    answerKey: 'a',
+  },
+  {
+    id: 'ey-pr-02',
+    domain: 'pattern_reasoning',
+    type: 'mcq',
+    ageBand: [5, 7],
+    weight: 2,
+    prompt: 'What comes next?',
+    spoken: 'Look at the shapes. Star, moon, star, moon, star. What comes next?',
+    visual: '⭐ 🌙 ⭐ 🌙 ⭐ ❓',
+    options: [
+      { key: 'a', text: 'Star', symbol: '⭐' },
+      { key: 'b', text: 'Moon', symbol: '🌙' },
+      { key: 'c', text: 'Sun', symbol: '☀️' },
+    ],
+    answerKey: 'b',
+  },
+  {
+    id: 'ey-pr-03',
+    domain: 'pattern_reasoning',
+    type: 'mcq',
+    ageBand: [5, 7],
+    weight: 2,
+    prompt: 'Which one is getting bigger in the right order?',
+    spoken: 'The circles are getting bigger. Which circle should come next, the small one or the big one?',
+    visual: '· ∙ ●  ❓',
+    options: [
+      { key: 'a', text: 'A bigger circle', symbol: '⬤' },
+      { key: 'b', text: 'A tiny circle', symbol: '·' },
+    ],
+    answerKey: 'a',
+  },
+  {
+    id: 'ey-wm-01',
+    domain: 'working_memory',
+    type: 'mcq',
+    ageBand: [4, 7],
+    weight: 1,
+    prompt: 'Which animal came first?',
+    spoken: 'Listen carefully. Cat. Dog. Bird. Which animal did I say first?',
+    visual: '🐱 → 🐶 → 🐦',
+    options: [
+      { key: 'a', text: 'Cat', symbol: '🐱' },
+      { key: 'b', text: 'Dog', symbol: '🐶' },
+      { key: 'c', text: 'Bird', symbol: '🐦' },
+    ],
+    answerKey: 'a',
+  },
+  {
+    id: 'ey-wm-02',
+    domain: 'working_memory',
+    type: 'mcq',
+    ageBand: [5, 7],
+    weight: 2,
+    prompt: 'Which one was in the middle?',
+    spoken: 'Listen carefully. Apple. Hat. Boat. Which one did I say in the middle?',
+    visual: '🍎 → 🎩 → ⛵',
+    options: [
+      { key: 'a', text: 'Apple', symbol: '🍎' },
+      { key: 'b', text: 'Hat', symbol: '🎩' },
+      { key: 'c', text: 'Boat', symbol: '⛵' },
+    ],
+    answerKey: 'b',
+  },
 ] satisfies Question[];
 
 /** Highest score a single open-ended item can earn from the grader. */
 export const OPEN_MAX_POINTS = 3;
 
-export function getQuestions({ age }: { age?: number } = {}): Question[] {
-  if (!age) return QUESTIONS;
-  return QUESTIONS.filter((q) => age >= q.ageBand[0] && age <= q.ageBand[1]);
+/**
+ * Questions for an age, capped by the profile.
+ *
+ * The cap is not cosmetic: an eight-question limit for a four-year-old is the
+ * difference between finishing and giving up halfway, and a session abandoned
+ * in the middle tells you nothing about the child.
+ */
+export function getQuestions({ age, limit }: { age?: number; limit?: number } = {}): Question[] {
+  const matching =
+    age === undefined
+      ? QUESTIONS
+      : QUESTIONS.filter((q) => age >= q.ageBand[0] && age <= q.ageBand[1]);
+
+  if (limit === undefined || matching.length <= limit) return matching;
+
+  // Trim from the end rather than sampling, so a session is reproducible and
+  // the domain mix stays in the order the bank was written in.
+  return matching.slice(0, limit);
 }
 
 export function questionById(id: string): Question | undefined {
@@ -289,5 +479,7 @@ export function toPublicQuestion(q: Question): PublicQuestion {
     prompt: q.prompt,
     options: q.type === 'mcq' ? q.options : null,
     timeLimitSeconds: q.timeLimitSeconds ?? null,
+    visual: q.visual ?? null,
+    spoken: q.spoken ?? null,
   };
 }
