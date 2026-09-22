@@ -5,7 +5,7 @@ import { z } from 'zod';
 
 import { getQuestions, toPublicQuestion, DOMAINS } from './questions.js';
 import { scoreSubmission } from './scoring.js';
-import { generateParentReport } from './grader.js';
+import { generateParentReport, apiKeyProblem } from './grader.js';
 import type { TestPayload } from './types.js';
 
 const app = express();
@@ -30,10 +30,16 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 app.get('/health', (_req: Request, res: Response) => {
+  const mock = process.env.USE_MOCK_GRADER === '1';
+  const keyProblem = mock ? null : apiKeyProblem();
   res.json({
     ok: true,
-    mockGrader: process.env.USE_MOCK_GRADER === '1',
+    mockGrader: mock,
     model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
+    // So `curl /health` answers "is AI actually going to work?" without
+    // having to submit a session to find out.
+    aiReady: mock || keyProblem === null,
+    keyProblem,
   });
 });
 
@@ -91,6 +97,7 @@ app.post('/api/submit', async (req: Request, res: Response) => {
     } catch (err) {
       report.parentReport = null;
       report.parentReportError = err instanceof Error ? err.message : String(err);
+      console.error(`\n  x REPORT GENERATION FAILED\n    ${report.parentReportError}\n`);
     }
 
     res.json(report);
@@ -108,8 +115,21 @@ app.listen(port, () => {
   console.log(`KidCog API listening on http://localhost:${port}`);
   if (process.env.USE_MOCK_GRADER === '1') {
     console.log('Mock grader is ON — open answers are scored by a crude local heuristic.');
-  } else if (!process.env.OPENAI_API_KEY) {
-    console.warn('No OPENAI_API_KEY set. Open-ended grading will fail.');
+    console.log('Set USE_MOCK_GRADER=0 in server/.env for real AI grading.');
+    return;
+  }
+
+  const problem = apiKeyProblem();
+  if (problem) {
+    // Refuse to start quietly. Every submission would fail with a 401 and the
+    // app would just say "couldn't be graded", which tells nobody anything.
+    console.error('');
+    console.error('  !!  AI GRADING WILL FAIL ON EVERY REQUEST');
+    console.error(`     ${problem}`);
+    console.error('     Fix: put a real key in server/.env, or set USE_MOCK_GRADER=1.');
+    console.error('');
+  } else {
+    console.log(`AI grading enabled - model: ${process.env.OPENAI_MODEL || 'gpt-4o-mini'}`);
   }
 });
 

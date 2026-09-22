@@ -99,11 +99,34 @@ function mockGrade(items: GradeRequestItem[]): Grade[] {
   });
 }
 
+/**
+ * Is the key missing, or still the placeholder from .env.example?
+ *
+ * This exists because the placeholder is worse than an empty value: it looks
+ * configured to anything glancing at the file, and OpenAI rejects it with a
+ * generic 401 that reads like a key problem rather than a "you forgot" problem.
+ * Better to name it before a single request goes out.
+ */
+export function apiKeyProblem(): string | null {
+  const key = process.env.OPENAI_API_KEY?.trim();
+  if (!key) {
+    return 'OPENAI_API_KEY is not set.';
+  }
+  if (key === 'sk-replace-me' || key.includes('replace-me') || key.includes('your-key')) {
+    return `OPENAI_API_KEY is still the placeholder from .env.example ("${key}").`;
+  }
+  if (!key.startsWith('sk-')) {
+    return 'OPENAI_API_KEY does not look like an OpenAI key (should start with "sk-").';
+  }
+  return null;
+}
+
 let client: OpenAI | null = null;
 function getClient(): OpenAI {
   if (!client) {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error('OPENAI_API_KEY is not set. Add it to server/.env, or set USE_MOCK_GRADER=1.');
+    const problem = apiKeyProblem();
+    if (problem) {
+      throw new Error(`${problem} Put a real key in server/.env, or set USE_MOCK_GRADER=1 to work offline.`);
     }
     client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
   }

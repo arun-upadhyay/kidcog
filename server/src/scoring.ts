@@ -116,6 +116,10 @@ export async function scoreSubmission(responses: ResponseInput[]): Promise<Repor
       }
     } catch (err) {
       graderFailed = err instanceof Error ? err.message : String(err);
+      // Be loud. A silent grading failure looks to the user like the model
+      // simply had nothing to say, which is the most misleading way to fail.
+      console.error(`\n  x GRADING FAILED - ${openItems.length} written answer(s) left ungraded`);
+      console.error(`    ${graderFailed}\n`);
       // Leave open items ungraded rather than guessing a score. The report
       // says so explicitly so nobody reads a partial result as a full one.
       for (const row of results) {
