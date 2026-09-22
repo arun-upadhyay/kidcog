@@ -4,7 +4,6 @@ A working starter project in TypeScript: an Expo (React Native) app for iOS and 
 Node API that scores the answers. Multiple-choice items are scored deterministically on the server;
 written answers are graded against a rubric by an OpenAI model.
 
-
 ```
 kidcog/
   server/          Node + Express API (TypeScript, ESM)
@@ -89,6 +88,18 @@ complete one.
 
 Points roll up per domain into a percentage and a plain-language band.
 
+### The written report
+
+Once the scores exist, a second call turns them into a report for the parent: what went well, where
+the child got stuck, what the pattern of answers suggests about how they approached the questions,
+and a few things to try at home. It is fed every question, the child's actual answer and the score,
+so it can be specific rather than generic — and the prompt forbids it from inventing an IQ number,
+a percentile, a rank, or a diagnosis, because a parent will believe a number you put in front of
+them.
+
+It is generated from the scores, never the other way round, and a failure there returns the scores
+with `parentReport: null` rather than failing the whole request.
+
 ## What this deliberately does not do
 
 It does not output an IQ score, a percentile, or an age equivalent, and the grading prompt forbids
@@ -152,6 +163,30 @@ no chance of reaching for the wrong one.
 Answer keys and rubrics never leave the server: `toPublicQuestion()` strips them before the app sees
 anything, and `PublicQuestion` is a separate type with no field to put them in. Keep it that way —
 anything in a mobile bundle can be extracted.
+
+## Drafting new questions
+
+```bash
+cd server
+npm run generate -- --domain pattern_reasoning --count 5 --age 8-12
+npm run generate -- --domain verbal_reasoning --count 3 --type open
+```
+
+Output lands in `server/drafts/`, **not** in the question bank, and that is deliberate.
+
+Models are good at producing items that look like good test questions and are quietly broken: two
+defensible answers, a sequence where a second rule also fits, an answer that needs knowledge rather
+than reasoning, or a "correct" option that is simply wrong. None of that is visible from the shape
+of the JSON, and every one of them marks a child wrong for thinking correctly.
+
+So the script validates each item with zod, checks that the answer key names a real option, then
+runs a second adversarial pass that tries to break each question and writes the critique as a
+comment above the draft with a verdict of ok, needs_work or broken. Then it stops and leaves them
+for you. Read them, work the answers out yourself, and move across only the ones you trust. The
+review pass catches a lot, but it is the same kind of system that wrote the questions, so treat it
+as a filter rather than a guarantee.
+
+`USE_MOCK_GRADER` does not apply here — this script always makes real OpenAI calls.
 
 ## One thing to watch as this grows
 

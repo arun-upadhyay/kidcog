@@ -18,7 +18,7 @@
 
 import OpenAI from 'openai';
 import { OPEN_MAX_POINTS } from './questions.js';
-import type { Grade, GradeRequestItem, Report } from './types.js';
+import type { Grade, GradeRequestItem, ParentReport, Report } from './types.js';
 
 const SYSTEM_PROMPT = `You are grading short written answers from a child aged 7-12 who is taking a cognitive reasoning practice test.
 
@@ -161,40 +161,152 @@ export async function gradeOpenAnswers(items: GradeRequestItem[]): Promise<Grade
   });
 }
 
-/**
- * A short parent-facing summary written from the finished report. Kept separate
- * from grading so a failure here never blocks the scores.
- */
-export async function summariseForParent(report: Report, childName?: string): Promise<string> {
-  if (process.env.USE_MOCK_GRADER === '1') {
-    return '[mock] A written summary appears here when the real grader is enabled.';
-  }
+// ---------------------------------------------------------------------------
+// The written report for the parent.
+// ---------------------------------------------------------------------------
 
-  const lines = report.domains
+const REPORT_SYSTEM_PROMPT = `You write reports for the parent of a child aged 7-12 who has just finished a practice reasoning activity. The parent is not an educator. Write as a thoughtful teacher would after sitting with their child for twenty minutes.
+
+You are given every question, what the child answered, and how it scored. Ground everything you write in that evidence.
+
+Hard rules — these are not style preferences:
+- Never give or imply an IQ number, a percentile, a mental age, a rank, a diagnosis, or any comparison to other children. You have no data that could support such a claim, and a parent will believe a number you invent.
+- Never speculate about a learning disability, a condition, or anything about the child's home or school life.
+- Write only about what this session shows. One short activity is thin evidence and your tone should reflect that.
+- Be specific. "Solved the bus timetable question by working out the gaps between departures" is worth more than "showed good numerical skills". Refer to what the child actually wrote or chose.
+- Do not invent anything the child did not do. If the evidence is thin in some area, say less rather than padding.
+- Lead with genuine strengths. Describe difficulties as things not yet clicked, never as deficits or failures.
+- A wrong answer often shows real thinking. Where a wrong answer reveals a sensible approach, say so.
+- Practice ideas must be things a parent can do at home this week with no special materials, and must connect to what you actually observed. No worksheets, no apps, no purchases.
+- Plain language. No jargon, no bullet-point fragments — write complete sentences inside each item.`;
+
+const REPORT_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['opening', 'strengths', 'stuckPoints', 'thinkingNotes', 'practiceIdeas', 'closing'],
+  properties: {
+    opening: {
+      type: 'string',
+      description: 'Two or three warm sentences opening the report, naming the child if a name was given.',
+    },
+    strengths: {
+      type: 'array',
+      description: '2-3 specific strengths, each one or two sentences, each tied to a particular question.',
+      items: { type: 'string' },
+    },
+    stuckPoints: {
+      type: 'array',
+      description: '1-3 places the child struggled, each one or two sentences, phrased as observations.',
+      items: { type: 'string' },
+    },
+    thinkingNotes: {
+      type: 'string',
+      description:
+        'Two to four sentences on what the pattern across answers suggests about how the child approached the questions. If there is no clear pattern, say that plainly instead of inventing one.',
+    },
+    practiceIdeas: {
+      type: 'array',
+      description: '2-4 concrete things to try at home, each one or two sentences.',
+      items: { type: 'string' },
+    },
+    closing: {
+      type: 'string',
+      description:
+        'Two or three sentences noting what a single practice session can and cannot show, and encouraging the parent.',
+    },
+  },
+} as const;
+
+/** The evidence the model reasons over: every item, the answer, and the score. */
+function buildEvidence(report: Report): string {
+  const items = report.responses.map((r) => {
+    const answer = r.answer.trim() || '(left blank)';
+    let outcome: string;
+    if (r.ungraded) {
+      outcome = 'not graded';
+    } else if (r.type === 'mcq') {
+      outcome = r.correct ? 'correct' : 'incorrect';
+    } else {
+      outcome = `scored ${r.band ?? 0} of 3`;
+    }
+    const time = r.elapsedSeconds !== null ? `, took ${r.elapsedSeconds}s` : '';
+    return [
+      `[${r.domain}] ${r.prompt}`,
+      `  child answered: ${answer}`,
+      `  outcome: ${outcome}${time}`,
+      r.note ? `  grader note: ${r.note}` : null,
+    ]
+      .filter(Boolean)
+      .join('\n');
+  });
+
+  const domains = report.domains
     .map((d) => `- ${d.label}: ${d.earned}/${d.possible} points (${d.percent}%)`)
     .join('\n');
 
+  return `Scores by area:\n${domains}\n\nOverall: ${report.overall.earned}/${report.overall.possible} (${report.overall.percent}%).\n\nEvery question, in the order taken:\n\n${items.join('\n\n')}`;
+}
+
+function mockReport(childName?: string): ParentReport {
+  const who = childName || 'Your child';
+  return {
+    opening: `[mock] ${who} worked through all the questions. Set USE_MOCK_GRADER=0 in server/.env to get a real report written from the actual answers.`,
+    strengths: ['[mock] Specific strengths, drawn from what the child actually answered, appear here.'],
+    stuckPoints: ['[mock] Places the child struggled appear here.'],
+    thinkingNotes: '[mock] Observations about how the child approached the questions appear here.',
+    practiceIdeas: ['[mock] Things to try at home appear here.'],
+    closing: '[mock] Closing note appears here.',
+  };
+}
+
+/**
+ * The written report, generated from the finished scores. Deliberately separate
+ * from grading: if this fails, the scores still stand on their own.
+ */
+export async function generateParentReport(
+  report: Report,
+  childName?: string
+): Promise<ParentReport> {
+  if (process.env.USE_MOCK_GRADER === '1') {
+    return mockReport(childName);
+  }
+
   const completion = await getClient().chat.completions.create({
     model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
-    temperature: 0.3,
+    temperature: 0.4,
     messages: [
-      {
-        role: 'system',
-        content: `You write short, warm, plain-language summaries of a child's practice reasoning test for their parent.
-
-Hard rules:
-- Never give or imply an IQ number, a percentile, a mental age, a diagnosis, or a comparison to other children. You have no data to support any of those.
-- Describe only what this test session showed: which kinds of questions went smoothly and which were harder.
-- Lead with a strength. Frame weaker areas as things to practise, never as deficits.
-- 3 to 5 sentences, no headings, no bullet points.
-- End by noting that this is a practice activity and a single session does not measure a child's ability.`,
-      },
+      { role: 'system', content: REPORT_SYSTEM_PROMPT },
       {
         role: 'user',
-        content: `Child's first name: ${childName || 'the child'}\n\nResults by area:\n${lines}\n\nOverall: ${report.overall.earned}/${report.overall.possible} (${report.overall.percent}%).`,
+        content: `Child's first name: ${childName || '(not given — write without a name)'}\n\n${buildEvidence(report)}`,
       },
     ],
+    response_format: {
+      type: 'json_schema',
+      json_schema: { name: 'parent_report', strict: true, schema: REPORT_SCHEMA },
+    },
   });
 
-  return completion.choices[0]?.message?.content?.trim() ?? '';
+  const raw = completion.choices[0]?.message?.content;
+  if (!raw) throw new Error('Report generation returned an empty response.');
+
+  let parsed: Partial<ParentReport>;
+  try {
+    parsed = JSON.parse(raw) as Partial<ParentReport>;
+  } catch {
+    throw new Error('Report generation returned malformed JSON.');
+  }
+
+  // Normalise defensively — a missing section should render as absent, not crash.
+  const asList = (v: unknown): string[] =>
+    Array.isArray(v) ? v.map((x) => String(x)).filter((s) => s.trim().length > 0) : [];
+
+  return {
+    opening: String(parsed.opening ?? '').trim(),
+    strengths: asList(parsed.strengths),
+    stuckPoints: asList(parsed.stuckPoints),
+    thinkingNotes: String(parsed.thinkingNotes ?? '').trim(),
+    practiceIdeas: asList(parsed.practiceIdeas),
+    closing: String(parsed.closing ?? '').trim(),
+  };
 }

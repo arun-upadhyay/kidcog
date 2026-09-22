@@ -5,7 +5,7 @@ import { z } from 'zod';
 
 import { getQuestions, toPublicQuestion, DOMAINS } from './questions.js';
 import { scoreSubmission } from './scoring.js';
-import { summariseForParent } from './grader.js';
+import { generateParentReport } from './grader.js';
 import type { TestPayload } from './types.js';
 
 const app = express();
@@ -84,12 +84,13 @@ app.post('/api/submit', async (req: Request, res: Response) => {
   try {
     const report = await scoreSubmission(responses);
 
-    // The written summary is a nicety. If it fails, still return the scores.
+    // The written report is generated from the scores, not the other way round.
+    // If it fails, the scores still stand, so never let it fail the request.
     try {
-      report.summary = await summariseForParent(report, child?.firstName);
+      report.parentReport = await generateParentReport(report, child?.firstName);
     } catch (err) {
-      report.summary = null;
-      report.summaryError = err instanceof Error ? err.message : String(err);
+      report.parentReport = null;
+      report.parentReportError = err instanceof Error ? err.message : String(err);
     }
 
     res.json(report);

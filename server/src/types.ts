@@ -122,6 +122,29 @@ export interface DomainReport {
   band: string;
 }
 
+/**
+ * The written report for the parent, produced by the model from the scored
+ * session. Structured rather than one blob of prose so the app can lay it out,
+ * and so a weak section is visibly weak instead of hiding inside a paragraph.
+ */
+export interface ParentReport {
+  /** Two or three warm sentences opening the report. */
+  opening: string;
+  /** What went well, each tied to something the child actually did. */
+  strengths: string[];
+  /** Where they struggled. Framed as observations, never as deficits. */
+  stuckPoints: string[];
+  /**
+   * What the pattern of answers suggests about how the child approached the
+   * questions — the part per-item grading cannot see.
+   */
+  thinkingNotes: string;
+  /** Concrete things a parent could do, usable without special materials. */
+  practiceIdeas: string[];
+  /** Closing caveat about what a single session can and cannot show. */
+  closing: string;
+}
+
 export interface Report {
   version: number;
   generatedAt: string;
@@ -132,7 +155,7 @@ export interface Report {
   responses: ScoredResponse[];
   graderFailed: string | null;
   disclaimer: string;
-  /** Added by the route once scoring succeeds. */
-  summary?: string | null;
-  summaryError?: string;
+  /** Added by the route once scoring succeeds. Null if generation failed. */
+  parentReport?: ParentReport | null;
+  parentReportError?: string;
 }

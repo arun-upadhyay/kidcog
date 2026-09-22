@@ -79,6 +79,15 @@ export interface DomainReport {
   band: string;
 }
 
+export interface ParentReport {
+  opening: string;
+  strengths: string[];
+  stuckPoints: string[];
+  thinkingNotes: string;
+  practiceIdeas: string[];
+  closing: string;
+}
+
 export interface Report {
   version: number;
   generatedAt: string;
@@ -89,6 +98,6 @@ export interface Report {
   responses: ScoredResponse[];
   graderFailed: string | null;
   disclaimer: string;
-  summary?: string | null;
-  summaryError?: string;
+  parentReport?: ParentReport | null;
+  parentReportError?: string;
 }

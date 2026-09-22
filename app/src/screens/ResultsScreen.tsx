@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable, type TextStyle } from 'react-native';
 import Button from '../components/Button';
 import { colors, spacing, type } from '../theme';
-import type { Report, ScoredResponse } from '../types';
+import type { ParentReport as ParentReportType, Report, ScoredResponse } from '../types';
 
 export interface ResultsScreenProps {
   report: Report;
@@ -14,6 +14,50 @@ function Bar({ percent }: { percent: number }) {
   return (
     <View style={styles.barTrack}>
       <View style={[styles.barFill, { width: `${Math.max(2, percent)}%` }]} />
+    </View>
+  );
+}
+
+/** One titled group of sentences inside the written report. */
+function ReportSection({ title, items }: { title: string; items: string[] }) {
+  if (items.length === 0) return null;
+  return (
+    <View style={{ marginTop: spacing(2.5) }}>
+      <Text style={styles.sectionTitle}>{title}</Text>
+      {items.map((text, i) => (
+        <View key={i} style={styles.sectionRow}>
+          <View style={styles.dot} />
+          <Text style={[type.body, { flex: 1 }]}>{text}</Text>
+        </View>
+      ))}
+    </View>
+  );
+}
+
+function ParentReportCard({ report }: { report: ParentReportType }) {
+  return (
+    <View style={styles.summaryCard}>
+      <Text style={type.label}>WHAT THIS SESSION SHOWED</Text>
+
+      {report.opening ? (
+        <Text style={[type.body, { marginTop: spacing(1.5) }]}>{report.opening}</Text>
+      ) : null}
+
+      <ReportSection title="What went well" items={report.strengths} />
+      <ReportSection title="Where things got harder" items={report.stuckPoints} />
+
+      {report.thinkingNotes ? (
+        <View style={{ marginTop: spacing(2.5) }}>
+          <Text style={styles.sectionTitle}>How they approached it</Text>
+          <Text style={[type.body, { marginTop: spacing(0.5) }]}>{report.thinkingNotes}</Text>
+        </View>
+      ) : null}
+
+      <ReportSection title="Things to try at home" items={report.practiceIdeas} />
+
+      {report.closing ? (
+        <Text style={[type.soft, styles.closing]}>{report.closing}</Text>
+      ) : null}
     </View>
   );
 }
@@ -43,10 +87,14 @@ export default function ResultsScreen({ report, childName, onRestart }: ResultsS
         </Text>
       </View>
 
-      {report.summary ? (
-        <View style={styles.summaryCard}>
-          <Text style={type.heading}>What this session showed</Text>
-          <Text style={[type.body, { marginTop: spacing(1) }]}>{report.summary}</Text>
+      {report.parentReport ? (
+        <ParentReportCard report={report.parentReport} />
+      ) : report.parentReportError ? (
+        <View style={styles.warnCard}>
+          <Text style={[type.body, { color: colors.warn }]}>
+            The written report couldn&apos;t be generated this time. The scores below are
+            unaffected.
+          </Text>
         </View>
       ) : null}
 
@@ -128,6 +176,32 @@ const styles = StyleSheet.create({
     borderColor: colors.line,
     borderRadius: 16,
     padding: spacing(2.5),
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: colors.accent,
+    marginBottom: spacing(1),
+  },
+  sectionRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing(1.5),
+    marginBottom: spacing(1.25),
+  },
+  dot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: colors.accent,
+    marginTop: 9,
+  },
+  closing: {
+    marginTop: spacing(2.5),
+    paddingTop: spacing(2),
+    borderTopWidth: 1,
+    borderTopColor: colors.line,
+    fontStyle: 'italic',
   },
   domainCard: {
     backgroundColor: colors.surface,
