@@ -28,8 +28,14 @@ export interface AgeProfile {
   ageBand: [number, number];
   /** Speak questions aloud, for children who cannot read yet. */
   readAloud: boolean;
-  /** How open-ended answers are captured from the child. */
-  openAnswerMode: 'voice' | 'text' | 'none';
+  /**
+   * How open-ended answers are captured.
+   *   voice - microphone only (children who cannot type)
+   *   text  - keyboard only
+   *   both  - keyboard with a microphone beside it
+   *   none  - no open-ended items for this band
+   */
+  openAnswerMode: 'voice' | 'text' | 'both' | 'none';
   /** Cap on questions per session. Young children fade long before we run out. */
   maxQuestions: number;
   /** A visible countdown makes young children rush rather than think. */

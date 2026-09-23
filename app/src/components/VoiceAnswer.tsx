@@ -1,159 +1,130 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, Pressable, ActivityIndicator, TextInput } from 'react-native';
-import {
-  useAudioRecorder,
-  RecordingPresets,
-  requestRecordingPermissionsAsync,
-  setAudioModeAsync,
-} from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 
 import { colors, spacing, type, scaled } from '../theme';
-import { transcribeAudio } from '../api';
-import { stopSpeaking } from '../speech';
+import { useVoiceCapture, MAX_RECORD_SECONDS } from '../useVoiceCapture';
 
 export interface VoiceAnswerProps {
-  /** The transcript so far, lifted into the parent screen's answer state. */
   value: string;
   onChange: (text: string) => void;
   uiScale: number;
+  /**
+   * `big` is the only way to answer — a large microphone for children who
+   * cannot type. `inline` sits beneath a text box as an alternative to typing.
+   */
+  variant?: 'big' | 'inline';
 }
 
-type Stage = 'idle' | 'recording' | 'working' | 'done' | 'failed';
-
-/** Longest we let a child ramble before stopping for them. */
-const MAX_SECONDS = 45;
-
 /**
- * A big talk button for children who cannot type.
+ * Speaking an answer.
  *
- * Two deliberate choices here.
- *
- * The transcript is always shown, and always editable. Speech recognition on
- * young voices is noticeably worse than on adults, and a wrong transcript that
- * is silently graded would produce a confidently wrong result with no way for
- * anyone to notice. Showing it makes the mistake visible; making it editable
- * means a parent can fix it rather than redo the question.
- *
- * And if recording or transcription fails for any reason — no microphone, no
- * permission, a network error — the component degrades to a plain text box
- * rather than blocking the child from continuing.
+ * One decision worth keeping whichever variant is used: the transcript always
+ * lands in an editable text field rather than being submitted straight to the
+ * grader. Speech recognition is imperfect, and worse on children's voices. A
+ * wrong transcript that got graded silently would produce a confidently wrong
+ * result with nothing to catch it — showing it makes the mistake visible, and
+ * making it editable means it can be fixed rather than the question redone.
  */
-export default function VoiceAnswer({ value, onChange, uiScale }: VoiceAnswerProps) {
-  const recorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
-  const [stage, setStage] = useState<Stage>(value ? 'done' : 'idle');
-  const [seconds, setSeconds] = useState(0);
-  const [problem, setProblem] = useState<string | null>(null);
-  const tick = useRef<ReturnType<typeof setInterval> | null>(null);
+export default function VoiceAnswer({
+  value,
+  onChange,
+  uiScale,
+  variant = 'big',
+}: VoiceAnswerProps) {
+  const { stage, seconds, problem, toggle } = useVoiceCapture((text) => {
+    // Append rather than replace: if they typed something first, or spoke
+    // twice, nothing they already had should vanish.
+    onChange(value.trim() ? `${value.trim()} ${text}` : text);
+    void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
+  });
 
-  useEffect(() => {
-    return () => {
-      if (tick.current) clearInterval(tick.current);
-    };
-  }, []);
-
-  // Stop for them if they keep going — a 4-year-old will not watch a timer.
-  useEffect(() => {
-    if (stage === 'recording' && seconds >= MAX_SECONDS) {
-      void stop();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [seconds, stage]);
-
-  async function start() {
-    setProblem(null);
-    stopSpeaking(); // don't record the question being read aloud
-    try {
-      const permission = await requestRecordingPermissionsAsync();
-      if (!permission.granted) {
-        setProblem('I need permission to use the microphone.');
-        setStage('failed');
-        return;
-      }
-      await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
-      await recorder.prepareToRecordAsync();
-      recorder.record();
-      setSeconds(0);
-      setStage('recording');
+  function press() {
+    if (stage !== 'recording') {
       void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => {});
-      tick.current = setInterval(() => setSeconds((s) => s + 1), 1000);
-    } catch (err) {
-      setProblem(err instanceof Error ? err.message : 'Could not start recording.');
-      setStage('failed');
     }
+    toggle();
   }
 
-  async function stop() {
-    if (tick.current) {
-      clearInterval(tick.current);
-      tick.current = null;
-    }
-    setStage('working');
-    try {
-      await recorder.stop();
-      const uri = recorder.uri;
-      if (!uri) throw new Error('No recording was captured.');
-
-      const base64 = await readAsBase64(uri);
-      const filename = uri.split('/').pop() || 'answer.m4a';
-      const { text } = await transcribeAudio(base64, filename);
-
-      if (!text.trim()) {
-        setProblem("I couldn't hear that. Try again, or a grown-up can type it.");
-        setStage('failed');
-        return;
-      }
-      onChange(text);
-      setStage('done');
-      void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
-    } catch (err) {
-      setProblem(err instanceof Error ? err.message : 'Could not understand the recording.');
-      setStage('failed');
-    }
+  // ---- inline: a mic button under an existing text box --------------------
+  if (variant === 'inline') {
+    return (
+      <View style={styles.inlineRow}>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={stage === 'recording' ? 'Stop recording' : 'Record your answer'}
+          onPress={press}
+          disabled={stage === 'working'}
+          style={({ pressed }) => [
+            styles.inlineButton,
+            stage === 'recording' && styles.inlineButtonLive,
+            pressed && { opacity: 0.85 },
+          ]}
+        >
+          {stage === 'working' ? (
+            <ActivityIndicator size="small" color={colors.primary} />
+          ) : (
+            <Text style={styles.inlineIcon}>{stage === 'recording' ? '⏹' : '🎤'}</Text>
+          )}
+          <Text style={styles.inlineLabel}>
+            {stage === 'recording'
+              ? `Listening… ${seconds}s — tap to stop`
+              : stage === 'working'
+                ? 'Writing it down…'
+                : 'Say it instead'}
+          </Text>
+        </Pressable>
+        {problem ? <Text style={styles.problem}>{problem}</Text> : null}
+      </View>
+    );
   }
 
-  const big = scaled(120, uiScale);
+  // ---- big: the only input, for pre-readers -------------------------------
+  const size = scaled(120, uiScale);
+  const busy = stage === 'working';
 
   return (
     <View style={{ marginTop: spacing(2) }}>
-      {stage === 'idle' || stage === 'recording' ? (
-        <View style={styles.center}>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={stage === 'recording' ? 'Stop talking' : 'Start talking'}
-            onPress={() => (stage === 'recording' ? void stop() : void start())}
-            style={({ pressed }) => [
-              styles.mic,
-              { width: big, height: big, borderRadius: big / 2 },
-              stage === 'recording' && styles.micLive,
-              pressed && { opacity: 0.85 },
-            ]}
-          >
+      <View style={styles.center}>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={stage === 'recording' ? 'Stop talking' : 'Start talking'}
+          onPress={press}
+          disabled={busy}
+          style={({ pressed }) => [
+            styles.mic,
+            { width: size, height: size, borderRadius: size / 2 },
+            stage === 'recording' && styles.micLive,
+            pressed && { opacity: 0.85 },
+          ]}
+        >
+          {busy ? (
+            <ActivityIndicator size="large" color={colors.primary} />
+          ) : (
             <Text style={{ fontSize: scaled(46, uiScale) }}>
               {stage === 'recording' ? '⏹' : '🎤'}
             </Text>
-          </Pressable>
-          <Text style={[styles.micLabel, { fontSize: scaled(19, uiScale) }]}>
-            {stage === 'recording' ? `Listening… tap when done` : 'Tap and tell me'}
-          </Text>
-          {stage === 'recording' && (
-            <Text style={type.soft}>
-              {seconds}s {seconds >= MAX_SECONDS - 10 ? '· nearly time to stop' : ''}
-            </Text>
           )}
-        </View>
-      ) : null}
+        </Pressable>
 
-      {stage === 'working' && (
-        <View style={styles.center}>
-          <ActivityIndicator size="large" color={colors.primary} />
-          <Text style={[styles.micLabel, { fontSize: scaled(18, uiScale) }]}>
-            Listening to what you said…
+        <Text style={[styles.micLabel, { fontSize: scaled(19, uiScale) }]}>
+          {stage === 'recording'
+            ? 'Listening… tap when you are done'
+            : busy
+              ? 'Listening to what you said…'
+              : value
+                ? 'Tap to say more'
+                : 'Tap and tell me'}
+        </Text>
+
+        {stage === 'recording' && (
+          <Text style={type.soft}>
+            {seconds}s{seconds >= MAX_RECORD_SECONDS - 10 ? ' · nearly time to stop' : ''}
           </Text>
-        </View>
-      )}
+        )}
+      </View>
 
-      {(stage === 'done' || stage === 'failed' || value) && (
+      {value || problem ? (
         <View style={styles.transcript}>
           <Text style={type.label}>WHAT I HEARD — A GROWN-UP CAN FIX THIS</Text>
           <TextInput
@@ -166,34 +137,10 @@ export default function VoiceAnswer({ value, onChange, uiScale }: VoiceAnswerPro
             maxLength={4000}
           />
           {problem ? <Text style={styles.problem}>{problem}</Text> : null}
-          <Pressable onPress={() => void start()} style={styles.again}>
-            <Text style={styles.againText}>🎤 Say it again</Text>
-          </Pressable>
         </View>
-      )}
+      ) : null}
     </View>
   );
-}
-
-/**
- * Read the recording as base64.
- *
- * On native the file lives on disk; on web the recorder hands back a blob URL.
- * fetch handles both, which avoids a platform branch and an extra dependency.
- */
-async function readAsBase64(uri: string): Promise<string> {
-  const response = await fetch(uri);
-  const blob = await response.blob();
-  return await new Promise<string>((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onerror = () => reject(new Error('Could not read the recording.'));
-    reader.onloadend = () => {
-      const result = String(reader.result ?? '');
-      const comma = result.indexOf(',');
-      resolve(comma >= 0 ? result.slice(comma + 1) : result);
-    };
-    reader.readAsDataURL(blob);
-  });
 }
 
 const styles = StyleSheet.create({
@@ -205,8 +152,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  micLive: { backgroundColor: colors.primary, borderColor: colors.ink },
+  micLive: { backgroundColor: colors.happySoft, borderColor: colors.primary },
   micLabel: { fontWeight: '700', color: colors.ink, textAlign: 'center' },
+
+  inlineRow: { marginTop: spacing(1.5), gap: spacing(1) },
+  inlineButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing(1.25),
+    alignSelf: 'flex-start',
+    paddingVertical: spacing(1.25),
+    paddingHorizontal: spacing(2),
+    borderRadius: 999,
+    borderWidth: 1.5,
+    borderColor: colors.primary,
+    backgroundColor: colors.primarySoft,
+    minHeight: 44,
+  },
+  inlineButtonLive: { backgroundColor: colors.happySoft },
+  inlineIcon: { fontSize: 18 },
+  inlineLabel: { fontSize: 15, fontWeight: '700', color: colors.ink },
+
   transcript: {
     marginTop: spacing(2),
     backgroundColor: colors.surface,
@@ -224,6 +190,4 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
   },
   problem: { color: colors.warn, fontSize: 15 },
-  again: { alignSelf: 'flex-start', paddingVertical: spacing(1) },
-  againText: { color: colors.primary, fontWeight: '700', fontSize: 16 },
 });

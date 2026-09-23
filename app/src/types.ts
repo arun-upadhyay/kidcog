@@ -30,7 +30,7 @@ export interface AgeProfile {
   label: string;
   ageBand: [number, number];
   readAloud: boolean;
-  openAnswerMode: 'voice' | 'text' | 'none';
+  openAnswerMode: 'voice' | 'text' | 'both' | 'none';
   maxQuestions: number;
   showTimer: boolean;
   showScoreToChild: boolean;

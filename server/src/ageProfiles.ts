@@ -42,7 +42,10 @@ export const PROFILES: Record<AgeProfileKey, AgeProfile> = {
     label: 'Middle years',
     ageBand: [8, 12],
     readAloud: false,
-    openAnswerMode: 'text',
+    // Typing is the default at this age, but speaking an answer is often
+    // faster and less of a barrier for a child who finds writing hard. The
+    // reasoning is what gets graded either way.
+    openAnswerMode: 'both',
     maxQuestions: 20,
     showTimer: true,
     showScoreToChild: true,

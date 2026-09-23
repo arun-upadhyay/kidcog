@@ -232,6 +232,7 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
             value={current}
             onChange={(t) => setAnswers((a) => ({ ...a, [question.id]: t }))}
             uiScale={s}
+            variant="big"
           />
         ) : (
           <View style={{ marginTop: spacing(3) }}>
@@ -239,12 +240,20 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
               style={styles.textarea}
               value={current}
               onChangeText={(t) => setAnswers((a) => ({ ...a, [question.id]: t }))}
-              placeholder="Type your answer here. Explain how you worked it out."
+              placeholder="Type your answer here, or tap the microphone below."
               placeholderTextColor={colors.inkSoft}
               multiline
               textAlignVertical="top"
               maxLength={4000}
             />
+            {profile.openAnswerMode === 'both' && (
+              <VoiceAnswer
+                value={current}
+                onChange={(t) => setAnswers((a) => ({ ...a, [question.id]: t }))}
+                uiScale={s}
+                variant="inline"
+              />
+            )}
             <Text style={[type.soft, { marginTop: spacing(1) }]}>
               Spelling doesn&apos;t matter — the thinking is what&apos;s being looked at.
             </Text>
