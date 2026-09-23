@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { getQuestions, toPublicQuestion, DOMAINS } from './questions.js';
 import { profileForAge } from './ageProfiles.js';
 import { transcribeAnswer } from './transcribe.js';
+import { synthesizeSpeech, SPEECH_MIME } from './speak.js';
 import { scoreSubmission } from './scoring.js';
 import { generateParentReport, apiKeyProblem } from './grader.js';
 import type { TestPayload } from './types.js';
@@ -62,6 +63,39 @@ app.get('/api/test', (req: Request, res: Response) => {
     profile,
   };
   res.json(payload);
+});
+
+/**
+ * Speech for a question, as plain audio at a URL.
+ *
+ * A GET returning audio bytes rather than base64 in JSON, because then the
+ * audio player can stream the URL directly on every platform — no blobs, no
+ * temporary files, no base64 round trip. The text is the app's own question
+ * text, never anything about the child.
+ */
+app.get('/api/speak', async (req: Request, res: Response) => {
+  const text = typeof req.query.text === 'string' ? req.query.text : '';
+  if (!text.trim()) {
+    res.status(400).json({ error: 'text is required' });
+    return;
+  }
+
+  try {
+    const { audio, cached } = await synthesizeSpeech(text);
+    res.setHeader('Content-Type', SPEECH_MIME);
+    res.setHeader('Content-Length', String(audio.byteLength));
+    // Let the client cache too: the same question is replayed whenever the
+    // child taps the speaker button.
+    res.setHeader('Cache-Control', 'public, max-age=86400');
+    res.setHeader('X-Speech-Cache', cached ? 'hit' : 'miss');
+    res.end(audio);
+  } catch (err) {
+    const detail = err instanceof Error ? err.message : String(err);
+    console.error(`\n  x SPEECH FAILED\n    ${detail}\n`);
+    // The app falls back to the device voice, so this degrades rather than
+    // leaving a pre-reader with no way to hear the question.
+    res.status(502).json({ error: 'Could not generate speech', detail });
+  }
 });
 
 const TranscribeSchema = z.object({

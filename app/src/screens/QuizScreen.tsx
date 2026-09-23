@@ -63,7 +63,7 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
     setTick(0);
     setPraise(null);
     if (question && profile.readAloud) {
-      speak(question.spoken ?? question.prompt);
+      void speak(question.spoken ?? question.prompt);
     }
     return () => stopSpeaking();
   }, [question?.id, profile.readAloud]);
@@ -181,7 +181,7 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
             <Pressable
               accessibilityRole="button"
               accessibilityLabel="Hear the question again"
-              onPress={() => speak(question.spoken ?? question.prompt)}
+              onPress={() => void speak(question.spoken ?? question.prompt)}
               style={({ pressed }) => [styles.replay, pressed && { opacity: 0.8 }]}
             >
               <Text style={{ fontSize: scaled(24, s) }}>🔊</Text>
