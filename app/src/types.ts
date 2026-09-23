@@ -19,11 +19,18 @@ export type TraitKey =
   | 'challenge_seeking'
   | 'curiosity'
   | 'original_methods'
-  | 'observant';
+  | 'observant'
+  | 'perfectionism'
+  | 'strong_ideas'
+  | 'questions_authority'
+  | 'motivation_focus'
+  | 'humor'
+  | 'sensitivity_others';
 
 export type Measurability = 'direct' | 'inferred' | 'behaviour';
 
 export interface TraitMetaPublic {
+  group?: 'intellectual' | 'social_emotional';
   key: TraitKey;
   label: string;
   blurb: string;
@@ -163,6 +170,7 @@ export interface ScoredResponse {
 }
 
 export interface TraitReport {
+  group?: 'intellectual' | 'social_emotional';
   key: TraitKey;
   label: string;
   blurb: string;

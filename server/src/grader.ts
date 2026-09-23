@@ -17,10 +17,12 @@
  */
 
 import OpenAI from 'openai';
-import { OPEN_MAX_POINTS, questionById } from './questions.js';
+import { OPEN_MAX_POINTS, generatedQuestionById as questionById } from './generatedQuestions.js';
 import type { Grade, GradeRequestItem, ParentReport, Report } from './types.js';
 
-const SYSTEM_PROMPT = `You are grading short written answers from a child aged 7-12 who is taking a cognitive reasoning practice test.
+const SYSTEM_PROMPT = `You are grading short written answers from a child aged 4-12 who is taking a cognitive reasoning practice test.
+
+For social/emotional scenarios, describe the response only; do not infer a diagnosis or stable personality trait. Do not reward distress, rigid perfectionism, obedience, defiance, or agreement with an adult.
 
 Grade ONLY against the rubric you are given for each item. Award the highest band the answer fully satisfies.
 
@@ -104,23 +106,6 @@ interface GraderResponse {
  * Development stand-in so you can run the whole pipeline without an API key or
  * spending tokens. It is deliberately crude — it is NOT a scoring strategy.
  */
-function mockGrade(items: GradeRequestItem[]): Grade[] {
-  return items.map((it) => {
-    const text = (it.answer ?? '').trim();
-    const words = text ? text.split(/\s+/).length : 0;
-    let points = 0;
-    if (words >= 25) points = 3;
-    else if (words >= 10) points = 2;
-    else if (words >= 1) points = 1;
-    return {
-      id: it.id,
-      points,
-      note: `[mock grader] Scored from answer length only (${words} words). Set USE_MOCK_GRADER=0 for real grading.`,
-      originalMethod: false,
-      showedCuriosity: words >= 25,
-    };
-  });
-}
 
 /**
  * Is the key missing, or still the placeholder from .env.example?
@@ -169,7 +154,7 @@ function getClient(): OpenAI {
   if (!client) {
     const problem = apiKeyProblem();
     if (problem) {
-      throw new Error(`${problem} Put a real key in server/.env, or set USE_MOCK_GRADER=1 to work offline.`);
+      throw new Error(`${problem} Put a real key in server/.env, AI generation and grading require a configured model.`);
     }
     client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
   }
@@ -179,9 +164,7 @@ function getClient(): OpenAI {
 export async function gradeOpenAnswers(items: GradeRequestItem[]): Promise<Grade[]> {
   if (items.length === 0) return [];
 
-  if (process.env.USE_MOCK_GRADER === '1') {
-    return mockGrade(items);
-  }
+
 
   const model = process.env.OPENAI_MODEL || 'gpt-4o-mini';
 
@@ -294,7 +277,7 @@ const REPORT_SCHEMA = {
 function buildEvidence(report: Report): string {
   const items = report.responses.map((r) => {
     const q = questionById(r.questionId);
-    const answer = q && q.type !== 'open' ? q.options.find(o => o.key === r.answer.trim().toLowerCase())?.text ?? (r.answer.trim() || '(left blank)') : r.answer.trim() || '(left blank)';
+    const answer = q?.type === 'mcq' ? q.options.find(o=>o.key===r.answer)?.text ?? (r.answer.trim() || '(left blank)') : r.answer.trim() || '(left blank)';
     let outcome: string;
     if (r.skipped) {
       outcome = 'skipped — no answer; not wrong and not scored';
@@ -311,8 +294,8 @@ function buildEvidence(report: Report): string {
     return [
       `[${r.trait}] ${r.prompt}`,
       `  child answered: ${answer}`,
-      q?.type === 'mcq' ? `  correct option: ${q.options.find(o => o.key === q.answerKey)?.text ?? q.answerKey}` : null,
-      q?.type === 'open' ? `  rubric: ${q.rubric.join('; ')}` : null,
+      q?.type === 'mcq' ? `  correct choice: ${q.options.find(o=>o.key===q.answerKey)?.text}` : null,
+      q ? `  rubric: ${q.rubric.join('; ')}` : null,
       `  outcome: ${outcome}${time}`,
       r.note ? `  grader note: ${r.note}` : null,
     ]
@@ -331,17 +314,6 @@ function buildEvidence(report: Report): string {
   return `Scores by trait:\n${traits}\n\nOverall on the scored questions: ${report.overall.earned}/${report.overall.possible} (${report.overall.percent}%).\n\nEvery question, in the order taken:\n\n${items.join('\n\n')}`;
 }
 
-function mockReport(childName?: string): ParentReport {
-  const who = childName || 'Your child';
-  return {
-    opening: `[mock] ${who} worked through all the questions. Set USE_MOCK_GRADER=0 in server/.env to get a real report written from the actual answers.`,
-    strengths: ['[mock] Specific strengths, drawn from what the child actually answered, appear here.'],
-    stuckPoints: ['[mock] Places the child struggled appear here.'],
-    thinkingNotes: '[mock] Observations about how the child approached the questions appear here.',
-    practiceIdeas: ['[mock] Things to try at home appear here.'],
-    closing: '[mock] Closing note appears here.',
-  };
-}
 
 /**
  * The written report, generated from the finished scores. Deliberately separate
@@ -352,9 +324,7 @@ export async function generateParentReport(
   childName?: string,
   childAge?: number
 ): Promise<ParentReport> {
-  if (process.env.USE_MOCK_GRADER === '1') {
-    return mockReport(childName);
-  }
+
 
   const completion = await getClient().chat.completions.create({
     model: process.env.OPENAI_MODEL || 'gpt-4o-mini',

@@ -3,7 +3,7 @@ import express, { type Request, type Response, type NextFunction } from 'express
 import cors from 'cors';
 import { z } from 'zod';
 
-import { selectQuestions, toPublicQuestion, bankProblems } from './questions.js';
+import { generateRound, publicQuestion, generatedQuestionById } from './generatedQuestions.js';
 import { TRAITS, TRAIT_ORDER, type TraitKey } from './traits.js';
 import { profileForAge } from './ageProfiles.js';
 import { transcribeAnswer } from './transcribe.js';
@@ -35,7 +35,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 app.get('/health', (_req: Request, res: Response) => {
-  const mock = process.env.USE_MOCK_GRADER === '1';
+  const mock = false;
   const keyProblem = mock ? null : apiKeyProblem();
   res.json({
     ok: true,
@@ -49,54 +49,31 @@ app.get('/health', (_req: Request, res: Response) => {
 });
 
 app.get('/api/categories', (_req: Request, res: Response) => {
-  res.json(TRAIT_ORDER.map((key) => TRAITS[key]));
+  res.json(TRAIT_ORDER.map((key) => ({ ...TRAITS[key], group: TRAITS[key].group ?? 'intellectual' })));
 });
 
 /** The test the app should present. Answer keys and rubrics stay on the server. */
-app.get('/api/test', (req: Request, res: Response) => {
-  const age = req.query.age !== undefined ? Number(req.query.age) : undefined;
-  if (age !== undefined && (Number.isNaN(age) || age < 4 || age > 18)) {
-    res.status(400).json({ error: 'age must be a number between 4 and 18' });
-    return;
+const pendingRounds = new Map<string, Promise<TestPayload>>();
+app.post('/api/test', async (req: Request, res: Response) => {
+  const input = z.object({ age: z.number().int().min(4).max(12), trait: z.enum(TRAIT_ORDER as [typeof TRAIT_ORDER[number], ...typeof TRAIT_ORDER[number][]]), count: z.union([z.literal(2), z.literal(5), z.literal(6)]), requestId: z.string().uuid(), exclude: z.array(z.string().max(40)).max(500).default([]) }).safeParse(req.body);
+  if (!input.success) { res.status(400).json({ error: 'Choose an age, category, and 2, 5, or 6 questions.' }); return; }
+  const { age, trait, count, requestId, exclude } = input.data;
+  const key = JSON.stringify([requestId, age, trait, count]);
+  try {
+    let work = pendingRounds.get(key);
+    if (!work) {
+      work = generateRound(age, trait, count, exclude).then(questions => ({
+        traits: TRAIT_ORDER.map(k => ({ ...TRAITS[k], group: TRAITS[k].group ?? 'intellectual' })),
+        questions: questions.map(publicQuestion), questionCount: questions.length,
+        followUpQuestions: {}, profile: profileForAge(age), poolExhausted: false, remainingUnseen: -1,
+      }));
+      pendingRounds.set(key, work);
+      void work.then(() => { const timer = setTimeout(() => pendingRounds.delete(key), 120_000); timer.unref(); }, () => pendingRounds.delete(key));
+    }
+    res.json(await work);
+  } catch (err) {
+    res.status(502).json({ error: 'AI could not generate this round. Please try again.', detail: err instanceof Error ? err.message : String(err) });
   }
-  // Ids the child has already been given. A reassessment must serve fresh
-  // material: a second run on the same items measures memory, not thinking.
-  const excludeRaw = typeof req.query.exclude === 'string' ? req.query.exclude : '';
-  const exclude = excludeRaw
-    .split(',')
-    .map((s) => s.trim())
-    .filter(Boolean)
-    .slice(0, 500);
-
-  const profile = profileForAge(age);
-  const trait = req.query.trait;
-  const limit = req.query.limit === undefined ? 5 : Number(req.query.limit);
-  if ((trait !== undefined && (typeof trait !== 'string' || !TRAIT_ORDER.includes(trait as TraitKey))) || ![2, 5, 6].includes(limit)) {
-    res.status(400).json({ error: 'Choose a valid category and a round length of 2, 5, or 6.' });
-    return;
-  }
-  const selection = selectQuestions({ age, limit, exclude, trait: trait as TraitKey | undefined });
-
-  const followUpQuestions: Record<string, PublicQuestion> = {};
-  for (const q of selection.followUps) {
-    followUpQuestions[q.id] = toPublicQuestion(q);
-  }
-
-  const payload: TestPayload = {
-    traits: TRAIT_ORDER.map((k) => ({
-      key: k,
-      label: TRAITS[k].label,
-      blurb: TRAITS[k].blurb,
-      measurable: TRAITS[k].measurable,
-    })),
-    questionCount: selection.questions.length,
-    questions: selection.questions.map(toPublicQuestion),
-    followUpQuestions,
-    profile,
-    poolExhausted: selection.poolExhausted,
-    remainingUnseen: selection.remainingUnseen,
-  };
-  res.json(payload);
 });
 
 /**
@@ -189,6 +166,10 @@ app.post('/api/submit', async (req: Request, res: Response) => {
 
   const { child, responses } = parsed.data;
 
+  if (new Set(responses.map(r => r.questionId)).size !== responses.length || responses.some(r => !generatedQuestionById(r.questionId))) {
+    res.status(410).json({ error: 'These questions have expired or belong to an older version. Start a new session to generate fresh questions.' });
+    return;
+  }
   try {
     const report = await scoreSubmission(responses);
 
@@ -216,20 +197,6 @@ const port = Number(process.env.PORT || 4000);
 app.listen(port, () => {
   console.log(`KidCog API listening on http://localhost:${port}`);
 
-  // A malformed question is worth a loud line here rather than a child
-  // discovering it. Non-fatal: one broken item should not stop the server.
-  const bad = bankProblems();
-  if (bad.length > 0) {
-    console.error('');
-    console.error(`  !!  ${bad.length} PROBLEM(S) IN THE QUESTION BANK`);
-    for (const p of bad) console.error(`     ${p}`);
-    console.error('');
-  }
-  if (process.env.USE_MOCK_GRADER === '1') {
-    console.log('Mock grader is ON — open answers are scored by a crude local heuristic.');
-    console.log('Set USE_MOCK_GRADER=0 in server/.env for real AI grading.');
-    return;
-  }
 
   const problem = apiKeyProblem();
   if (problem) {

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable, type TextStyle } from 'react-native';
+import { CATEGORY_GROUPS } from '../categoryGroups';
 import Button from '../components/Button';
 import { colors, spacing, type } from '../theme';
-import { speak, stopSpeaking, useSpeechState } from '../speech';
+import { speak, stopSpeaking, useSpeechState, lastSpeechError } from '../speech';
 import type { ParentReport as ParentReportType, Report, ScoredResponse, TraitReport } from '../types';
 
 export interface ResultsScreenProps {
@@ -71,15 +72,16 @@ function ParentReportCard({ report }: { report: ParentReportType }) {
           accessibilityLabel="Read this report aloud"
           disabled={speechBusy}
           accessibilityState={{ disabled: speechBusy, busy: speechBusy }}
-          onPress={() => void speak(reportAsSpeech(report), { voice: 'device' })}
+          onPress={() => void speak(reportAsSpeech(report), { voice: 'generated', allowDeviceFallback: false })}
           style={({ pressed }) => [styles.listen, (pressed || speechBusy) && { opacity: 0.5 }]}
         >
           <Text style={styles.listenText}>{speechState === 'loading' ? 'Loading…' : speechBusy ? 'Reading…' : '🔊 Listen'}</Text>
         </Pressable>
       </View>
 
-      <Text style={[type.soft, { marginTop: spacing(1), fontSize: 12 }]}>Listen uses your device’s voice for a quicker start.</Text>
+      <Text style={[type.soft, { marginTop: spacing(1), fontSize: 12 }]}>Listen uses an AI-generated voice. Audio plays only when you tap.</Text>
 
+      {!speechBusy && lastSpeechError ? <Text style={[type.soft, { color: colors.warn }]}>Audio couldn’t load. Tap Listen to try again.</Text> : null}
       {report.opening ? (
         <Text style={[type.body, { marginTop: spacing(1.5) }]}>{report.opening}</Text>
       ) : null}
@@ -134,7 +136,7 @@ function TraitCard({ trait }: { trait: TraitReport }) {
       <Text style={[type.soft, { marginTop: spacing(0.75), fontSize: 12, fontStyle: 'italic' }]}>
         {trait.evidence}
         {trait.measurable === 'behaviour'
-          ? ' Measured by which puzzle they chose, not by a question.'
+          ? ' Based on answers about challenge situations, not an observation of everyday behaviour.'
           : trait.measurable === 'inferred'
             ? ' Based on the ideas and explanations offered in this activity.'
             : ''}
@@ -188,17 +190,18 @@ export default function ResultsScreen({
         </View>
       ) : null}
 
-      <Text style={[type.heading, { marginTop: spacing(4) }]}>Intellectual Ability</Text>
+      <Text style={[type.heading, { marginTop: spacing(4) }]}>Category results</Text>
       <Text style={[type.soft, { marginTop: spacing(0.5) }]}>
-        All eight categories appear below. Results combine the rounds completed in this session.
+        All categories appear below. Results combine the rounds completed in this session.
         The 1–5 indicators describe evidence in these activities, not a ranking against other children
         or an official school rating. Unobserved categories have no score. Speed, enjoyment, and
         everyday behaviour need observations over time.
       </Text>
       <View style={{ gap: spacing(2), marginTop: spacing(2) }}>
-        {report.traits.map((t) => (
-          <TraitCard key={t.key} trait={t} />
-        ))}
+        {CATEGORY_GROUPS.map(group => <View key={group.key} style={{ gap: spacing(2) }}>
+          <Text style={type.heading}>{group.label}</Text>
+          {report.traits.filter(t => (t.group ?? 'intellectual') === group.key).map(t => <TraitCard key={t.key} trait={t} />)}
+        </View>)}
       </View>
 
       {report.graderFailed ? (
@@ -242,18 +245,10 @@ export default function ResultsScreen({
 
       <View style={styles.reassessCard}>
         <Text style={type.heading}>Explore another category</Text>
-        <Text style={[type.soft, { marginVertical: spacing(1) }]}>{report.traits.filter(t => t.questionCount > 0).length} of 8 categories have observations so far. Your completed answers stay in this session.</Text>
+        <Text style={[type.soft, { marginVertical: spacing(1) }]}>{report.traits.filter(t => t.questionCount > 0).length} of {report.traits.length} categories have observations so far. Your completed answers stay in this session.</Text>
         <Button title="Choose the next category" onPress={onChooseCategory} disabled={busy} />
         <Text style={[type.soft, { marginTop: spacing(1) }]}>
-          {remainingUnseen > 0
-            ? `A second round uses only questions ${
-                childName ?? 'your child'
-              } has not seen before — ${remainingUnseen} ${
-                remainingUnseen === 1 ? 'is' : 'are'
-              } left. Repeating the same questions would measure memory rather than thinking, so it is worth having more than one round before reading much into a single low row above.`
-            : `There are no unseen questions left at this age, so a second round would repeat what ${
-                childName ?? 'your child'
-              } has already answered. Resetting makes the whole set available again — treat anything after that as practice, not a fresh measurement.`}
+          AI generates a fresh round each time. Your completed rounds stay in this session’s report. Questions expire after two hours or a server restart; answers are not stored on the server.
         </Text>
         {error ? (
           <Text style={[type.body, { color: colors.warn, marginTop: spacing(1.5) }]}>{error}</Text>
@@ -265,12 +260,7 @@ export default function ResultsScreen({
             loading={busy}
             disabled={remainingUnseen === 0}
           />
-          <Button
-            title="Reset and allow repeats"
-            variant="secondary"
-            onPress={onResetQuestions}
-            disabled={busy}
-          />
+
         </View>
       </View>
 

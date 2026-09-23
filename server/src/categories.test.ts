@@ -1,65 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { selectQuestions, toPublicQuestion } from './questions.js';
-import { TRAIT_ORDER } from './traits.js';
-import { scoreSubmission } from './scoring.js';
-process.env.USE_MOCK_GRADER = '1';
-
-test('each category has age-appropriate questions, bounded rounds, and no exposed answers', () => {
-  for (const age of [4, 5, 7, 8, 12]) for (const trait of TRAIT_ORDER) for (const limit of [2, 5, 6]) {
-    const selection = selectQuestions({ age, trait, limit });
-    assert.ok(selection.questions.length > 0, `${age}/${trait}`);
-    assert.ok(selection.questions.length <= limit);
-    for (const q of selection.questions) {
-      assert.equal(q.trait, trait);
-      assert.ok(age >= q.ageBand[0] && age <= q.ageBand[1]);
-      const publicQuestion = toPublicQuestion(q);
-      assert.ok(!('answerKey' in publicQuestion));
-      assert.ok(!('rubric' in publicQuestion));
-      if (q.type === 'challenge') for (const id of Object.values(q.followUp)) {
-        assert.ok(selection.followUps.some(f => f.id === id));
-      }
-    }
-    const next = selectQuestions({ age, trait, limit, exclude: selection.questions.map(q => q.id) });
-    assert.ok(next.questions.every(q => !selection.questions.some(prev => prev.id === q.id)));
-  }
+import { validateGeneratedRound, publicQuestion, ageRules } from './generatedQuestions.js';
+import { TRAIT_ORDER, TRAITS } from './traits.js';
+const rubric=['3 - Relevant idea with a reason.','2 - Relevant idea partly explained.','1 - Related idea without a reason.','0 - No interpretable relevant idea.'];
+const item=(n:number)=>({type:n%2===0?'mcq':'open',prompt:`Look at these objects in puzzle ${n}. What would you pick?`,rubric,visual:null,options:n%2===0?[{key:'a',text:'A ball',symbol:'⚽',shape:null},{key:'b',text:'A block',symbol:null,shape:'square'}]:null,answerKey:n%2===0?'a':null});
+test('both category groups retain image order',()=>{assert.equal(TRAIT_ORDER.length,14);assert.equal(TRAIT_ORDER[7],'observant');assert.equal(TRAIT_ORDER[8],'perfectionism');assert.equal(TRAITS.perfectionism.group,'social_emotional');});
+test('rounds enforce exact count, interaction variety and matching choice keys',()=>{
+ for(const count of [2,5,6])assert.equal(validateGeneratedRound(JSON.stringify({questions:Array.from({length:count},(_,i)=>item(i))}),count,5).length,count);
+ assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[item(1),item(3)]}),2));
+ assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[item(0),item(0)]}),2));
+ assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[{...item(0),answerKey:'z'},item(1)]}),2));
+ assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[item(0)]}),5));
 });
-
-test('combined answers preserve both categories and all eight report rows', async () => {
-  const first = selectQuestions({ age: 5, trait: 'abstract_concepts', limit: 2 });
-  const second = selectQuestions({ age: 5, trait: 'cause_effect', limit: 2 });
-  const responses = [...first.questions, ...second.questions].map(q => ({ questionId: q.id, answer: q.type === 'mcq' ? q.answerKey : 'Because pushing it makes it move.' }));
-  const report = await scoreSubmission(responses);
-  assert.equal(report.traits.length, 8);
-  assert.equal(report.responses.length, responses.length);
-  for (const key of ['abstract_concepts', 'cause_effect']) assert.ok(report.traits.find(t => t.key === key)!.questionCount > 0);
-  assert.equal(report.traits.find(t => t.key === 'challenge_seeking')!.formScale, null);
+test('age limits reject long prompts and choices and missing picture variety',()=>{
+ assert.equal(ageRules(5).maxOptions,3);
+ assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[{...item(0),prompt:'word '.repeat(36)},item(1)]}),2,5));
+ assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[{...item(0),options:[{key:'a',text:'a '.repeat(7),symbol:'⚽',shape:null},{key:'b',text:'Block',symbol:'🧱',shape:null}]},item(1)]}),2,5));
+ assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[{...item(0),options:item(0).options!.map(o=>({...o,symbol:null,shape:null}))},item(1)]}),2,5));
 });
-
-test('dedicated curiosity and originality prompts count as their own scored evidence', async () => {
-  for (const trait of ['curiosity', 'original_methods'] as const) {
-    const selection = selectQuestions({ age: 5, trait, limit: 2 });
-    const report = await scoreSubmission(selection.questions.map(q => ({ questionId: q.id, answer: 'I would try a different way and watch what happens.' })));
-    const row = report.traits.find(t => t.key === trait)!;
-    assert.equal(row.questionCount, 2);
-    assert.ok(row.formScale);
-    assert.ok(report.overall.possible > 0);
-  }
-});
-
-test('skipped dedicated answers leave the category unscored', async () => {
-  const selection = selectQuestions({ age: 5, trait: 'curiosity', limit: 2 });
-  const report = await scoreSubmission(selection.questions.map(q => ({ questionId: q.id, answer: '' })));
-  assert.equal(report.traits.find(t => t.key === 'curiosity')!.formScale, null);
-  assert.equal(report.overall.possible, 0);
-});
-
-
-test('skipped multiple-choice and challenge responses are missing evidence, not low scores', async () => {
-  for (const trait of ['abstract_concepts', 'challenge_seeking'] as const) {
-    const selection = selectQuestions({ age: 5, trait, limit: 2 });
-    const report = await scoreSubmission(selection.questions.map(q => ({ questionId: q.id, answer: '' })));
-    assert.equal(report.traits.find(t => t.key === trait)!.formScale, null);
-    assert.equal(report.overall.possible, 0);
-  }
+test('picture choices stay visible while rubrics and keys stay private',()=>{
+ const q=publicQuestion({id:'test',trait:'observant',type:'mcq',format:'classification',ageBand:[5,5],weight:1,prompt:'Which one is round?',rubric,answerKey:'a',options:[{key:'a',text:'Ball',symbol:'⚽'},{key:'b',text:'Block',figure:{shapes:[{kind:'square',fill:'solid'}]}}]});
+ assert.equal(q.type,'mcq');assert.equal(q.options![0]!.symbol,'⚽');assert.ok(q.options![1]!.figure);assert.ok(!('rubric' in q));assert.ok(!('answerKey' in q));assert.match(q.speechText,/Ball, Block/);
 });

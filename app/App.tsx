@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -33,6 +33,7 @@ export default function App() {
   const [completedAnswers, setCompletedAnswers] = useState<ResponseInput[]>([]);
   const [roundCategory, setRoundCategory] = useState<TraitKey>('abstract_concepts');
   const [roundLength, setRoundLength] = useState(2);
+  const generationLock = useRef(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -49,6 +50,8 @@ export default function App() {
    * not necessarily landed by the time a reassessment starts.
    */
   const beginRound = useCallback(async (profile: ChildProfile, exclude: string[], trait: TraitKey, count: number) => {
+    if (generationLock.current) return;
+    generationLock.current = true;
     setBusy(true);
     setError(null);
     try {
@@ -70,6 +73,7 @@ export default function App() {
     } catch (err) {
       setError(messageOf(err));
     } finally {
+      generationLock.current = false;
       setBusy(false);
     }
   }, [completedAnswers.length]);

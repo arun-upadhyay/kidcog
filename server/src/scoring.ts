@@ -1,35 +1,13 @@
-/**
- * Turning raw answers into a report, organised by the eight Intellectual
- * Ability traits.
- *
- * Scoring scale
- * -------------
- * Every item is worth `weight * OPEN_MAX_POINTS` points.
- *   - An MCQ earns all of them or none: it is right or it is not.
- *   - An open item earns `weight * band`, where band is the 0-3 rubric score.
- *   - A challenge earns full marks for reaching for the harder task, and a
- *     third for taking the easy one. Choosing easy is real evidence about
- *     challenge-seeking in that moment, but one choice is thin, which is why it
- *     is not scored as zero.
- *
- * What this deliberately does not produce
- * ---------------------------------------
- * No IQ number, no percentile, no prediction about gifted identification. The
- * Harmony process weighs a parent rating alongside other criteria and explicitly
- * does not decide on any single one. A practice activity cannot tell you what a
- * committee will conclude, and implying otherwise would be the most damaging
- * thing this app could do.
- *
- * Traits with no evidence are reported as "not seen", never as zero.
- */
+/** AI grades generated answers against their private rubrics; aggregate only completed grades. */
 
-import { OPEN_MAX_POINTS, questionById } from './questions.js';
+import type { GeneratedQuestion } from './generatedQuestions.js';
+import { generatedQuestionById as questionById, OPEN_MAX_POINTS } from './generatedQuestions.js';
 import { TRAITS, TRAIT_ORDER, formScaleFor } from './traits.js';
 import { gradeOpenAnswers } from './grader.js';
 import type {
   Grade,
   GradeRequestItem,
-  Question,
+  OpenQuestion,
   Report,
   ResponseInput,
   ScoredResponse,
@@ -63,11 +41,11 @@ function evidenceNote(count: number, measurable: string): string {
 }
 
 export async function scoreSubmission(responses: ResponseInput[]): Promise<Report> {
-  const items: Array<{ q: Question; answer: string; elapsedSeconds: number | null }> = [];
+  const items: Array<{ q: GeneratedQuestion; answer: string; elapsedSeconds: number | null }> = [];
 
   for (const r of responses) {
     const q = questionById(r.questionId);
-    if (!q) continue; // ignore unknown ids rather than failing the whole run
+    if (!q) throw new Error('A generated question has expired. Start a new session.');
     items.push({ q, answer: r.answer, elapsedSeconds: r.elapsedSeconds ?? null });
   }
 
@@ -84,70 +62,40 @@ export async function scoreSubmission(responses: ResponseInput[]): Promise<Repor
       continue;
     }
     if (q.type === 'mcq') {
-      const chosen = (answer ?? '').trim().toLowerCase();
-      const correct = chosen === q.answerKey;
+      const chosen = answer.trim().toLowerCase();
+      const correct = chosen === q.answerKey.toLowerCase();
       results.push({
         questionId: q.id,
         trait: q.trait,
         type: 'mcq',
         prompt: q.prompt,
         answer,
-        correct,
         earned: correct ? possible : 0,
         possible,
         elapsedSeconds,
+        correct,
+        band: correct ? OPEN_MAX_POINTS : 0,
         note: correct
-          ? 'Correct.'
-          : `Answered ${chosen || '(blank)'}; the correct option was ${q.answerKey}.`,
+          ? 'That picture or choice matches the answer.'
+          : `The selected choice did not match. The answer was ${
+              q.options.find((option) => option.key === q.answerKey)?.text ?? q.answerKey
+            }.`,
       });
-    } else if (q.type === 'challenge') {
-      const chosen = (answer ?? '').trim().toLowerCase();
-      const choseHarder = chosen === q.hardKey.toLowerCase();
-      results.push({
-        questionId: q.id,
-        trait: q.trait,
-        type: 'challenge',
-        prompt: q.prompt,
-        answer,
-        choseHarder,
-        // Not right or wrong — a preference. Full marks for reaching for the
-        // harder task, a third for the easier one.
-        earned: choseHarder ? possible : Math.round(possible / 3),
-        possible,
-        elapsedSeconds,
-        note: choseHarder
-          ? 'Offered an easy or a hard puzzle, chose the hard one.'
-          : 'Offered an easy or a hard puzzle, chose the easy one.',
-      });
-    } else if ((answer ?? '').trim() === '') {
-      // Skipped, not wrong. Scoring a blank as zero would pull the trait row
-      // down to "Poor" on the parent's rating scale, which would say the child
-      // reasons badly when in fact nothing was asked of them — the microphone
-      // failed, or they moved on. Missing evidence is reported as missing.
-      results.push({
-        questionId: q.id,
-        trait: q.trait,
-        type: 'open',
-        prompt: q.prompt,
-        answer,
-        earned: 0,
-        possible: 0,
-        elapsedSeconds,
-        skipped: true,
-        note: 'Skipped — left out of the score rather than counted as wrong.',
-      });
-    } else {
+      continue;
+    }
+
+    {
       openItems.push({
         id: q.id,
         trait: q.trait,
-        prompt: q.prompt,
+        prompt: `${q.prompt} ${q.visual ?? ''}`,
         rubric: q.rubric,
         answer,
       });
       results.push({
         questionId: q.id,
         trait: q.trait,
-        type: 'open',
+        type: q.type,
         prompt: q.prompt,
         answer,
         earned: 0, // filled in below
@@ -167,10 +115,14 @@ export async function scoreSubmission(responses: ResponseInput[]): Promise<Repor
       grades = await gradeOpenAnswers(openItems);
       const byId = new Map(grades.map((g) => [g.id, g]));
       for (const row of results) {
-        if (row.type !== 'open') continue;
+        if (row.skipped || row.type !== 'open') continue;
         const g = byId.get(row.questionId);
         const q = questionById(row.questionId);
-        if (g && q) {
+        if (!g || g.incomplete) {
+          row.ungraded = true;
+          row.possible = 0;
+          row.note = 'AI did not grade this answer. It is excluded from scores.';
+        } else if (q && !row.skipped) {
           row.band = g.points;
           row.earned = g.points * q.weight;
           row.note = g.note;
@@ -181,7 +133,7 @@ export async function scoreSubmission(responses: ResponseInput[]): Promise<Repor
       console.error(`\n  x GRADING FAILED — ${openItems.length} written answer(s) left ungraded`);
       console.error(`    ${graderFailed}\n`);
       for (const row of results) {
-        if (row.type === 'open' && !row.skipped) {
+        if (!row.skipped && row.type === 'open') {
           row.note = 'Could not be graded automatically — needs a human read.';
           row.ungraded = true;
           row.possible = 0; // keep it out of the totals rather than counting it wrong
@@ -196,38 +148,6 @@ export async function scoreSubmission(responses: ResponseInput[]): Promise<Repor
   for (const key of TRAIT_ORDER) {
     const meta = TRAITS[key];
 
-    const hasDedicatedItems = results.some((r) => r.trait === key);
-    if (meta.measurable === 'inferred' && !hasDedicatedItems) {
-      // Originality and curiosity are not asked for directly — they are read
-      // out of how the child answered. Each flagged answer is one point of
-      // evidence, out of however many open answers there were to observe.
-      const flagged = grades.filter((g) =>
-        key === 'original_methods' ? g.originalMethod : g.showedCuriosity
-      ).length;
-      const observable = grades.length;
-      const percent = pct(flagged, observable);
-
-      traits.push({
-        key,
-        label: meta.label,
-        blurb: meta.blurb,
-        measurable: meta.measurable,
-        questionCount: flagged,
-        earned: flagged,
-        possible: observable,
-        percent,
-        band:
-          observable === 0
-            ? 'Not seen in this session'
-            : flagged === 0
-              ? 'Not shown in these answers'
-              : `Shown in ${flagged} of ${observable} answers`,
-        formScale: null,
-        evidence: evidenceNote(observable, meta.measurable),
-      });
-      continue;
-    }
-
     // A skipped or ungraded row carries no evidence about this trait, so it is
     // left out of both the score and the count of how much was seen. Counting
     // it would make a thin session look better evidenced than it was.
@@ -238,6 +158,7 @@ export async function scoreSubmission(responses: ResponseInput[]): Promise<Repor
 
     traits.push({
       key,
+      group: meta.group ?? 'intellectual',
       label: meta.label,
       blurb: meta.blurb,
       measurable: meta.measurable,
@@ -254,7 +175,7 @@ export async function scoreSubmission(responses: ResponseInput[]): Promise<Repor
   // Overall counts only the traits measured by questions. Folding the inferred
   // ones in would let "did not happen to say anything curious" drag down a
   // number that is supposed to describe performance on the questions.
-  const scored = traits.filter((t) => t.questionCount > 0 && (t.measurable !== 'inferred' || results.some(r => r.trait === t.key)));
+  const scored = traits.filter(t => t.questionCount > 0);
   const earned = scored.reduce((s, t) => s + t.earned, 0);
   const possible = scored.reduce((s, t) => s + t.possible, 0);
 

@@ -199,6 +199,7 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
           </View>
         ) : null}
 
+        <Text style={[type.label, { marginBottom: spacing(1) }]}>{question.type === 'mcq' ? (question.options?.some(o=>o.symbol || o.figure) ? '🖼️ TAP A PICTURE' : '👆 TAP YOUR ANSWER') : '🎤 TELL US YOUR IDEA'}</Text>
         <View style={styles.promptRow}>
           <Text style={[styles.prompt, { fontSize: scaled(22, s), lineHeight: scaled(32, s) }]}>
             {question.prompt}

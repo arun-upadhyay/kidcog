@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, Pressable, StyleSheet } from 'react-native';
+import { CATEGORY_GROUPS } from '../categoryGroups';
 import Button from '../components/Button';
 import { fetchCategories } from '../api';
 import { colors, spacing, type } from '../theme';
@@ -37,16 +38,18 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, bus
           <Text style={type.body}>{n} questions{n === 2 ? ' · quick start' : ''}</Text>
         </Pressable>)}
       </View>
-      <Text style={type.soft}>We’ll use up to this many available questions. Challenge choices add a follow-up puzzle. Two questions offer only a first glimpse.</Text>
+      <Text style={type.soft}>AI will create exactly this many fresh questions for the selected category and age. Rounds mix picture choices, tap-to-answer questions, and spoken ideas. AI also reviews them for your child’s age; this may take a moment. Two questions offer only a first glimpse.</Text>
       <View style={{ gap: spacing(1.5), marginVertical: spacing(3) }}>
-        {categories.map(category => {
+        {CATEGORY_GROUPS.map(group => <View key={group.key} style={{ gap: spacing(1.5) }}>
+        <Text style={[type.title, { marginTop: spacing(2) }]}>{group.label}</Text>
+        {categories.filter(c => (c.group ?? 'intellectual') === group.key).map(category => {
           const result = report?.traits.find(t => t.key === category.key);
           return <Pressable key={category.key} accessibilityRole="radio" accessibilityState={{ checked: selected === category.key, disabled: busy }} disabled={busy} onPress={() => setSelected(category.key)} style={[styles.card, selected === category.key && styles.selected]}>
             <Text style={type.heading}>{selected === category.key ? '● ' : '○ '}{category.label}</Text>
             <Text style={[type.soft, { marginTop: spacing(0.75) }]}>{category.blurb}</Text>
             <Text style={[type.label, { marginTop: spacing(1) }]}>{result && result.questionCount > 0 ? `${result.questionCount} observations so far` : 'Not yet observed'}</Text>
           </Pressable>;
-        })}
+        })}</View>)}
       </View>
       {loadError ? <><Text style={styles.error}>{loadError}</Text><Button title="Retry loading categories" onPress={() => setAttempt(v => v + 1)} /></> : null}
       {error ? <Text style={styles.error}>{error}</Text> : null}

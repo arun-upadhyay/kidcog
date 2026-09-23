@@ -17,7 +17,7 @@ export interface StartScreenProps {
  * age-band boundary visible, which is the thing that actually changes what the
  * child gets. Someone choosing 7 versus 8 should be able to see that it matters.
  */
-const AGES = [4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
+const AGES = [4, 5, 6, 7] as const;
 
 export default function StartScreen({ onStart, loading, error }: StartScreenProps) {
   const [firstName, setFirstName] = useState('');
@@ -95,7 +95,7 @@ export default function StartScreen({ onStart, loading, error }: StartScreenProp
           autoCapitalize="words"
           maxLength={60}
         />
-        <Text style={type.soft}>Only used to address the report. Nothing is stored on a server.</Text>
+        <Text style={type.soft}>Only used to address the report. Answers are not saved on the server. Generated questions are kept temporarily so they can be graded.</Text>
       </View>
 
       <View style={styles.consentRow}>

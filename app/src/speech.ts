@@ -67,7 +67,7 @@ export function speakUrl(text: string): string {
 }
 
 /** Tap-only playback. The synchronous lock rejects even same-frame double taps. */
-export async function speak(text: string, options: { voice?: 'device' | 'generated' } = {}): Promise<void> {
+export async function speak(text: string, options: { voice?: 'device' | 'generated'; allowDeviceFallback?: boolean } = {}): Promise<void> {
   const trimmed = text.trim();
   if (!trimmed || state !== 'idle') return;
   const mine = ++generation;
@@ -82,9 +82,13 @@ export async function speak(text: string, options: { voice?: 'device' | 'generat
     if (mine === generation) fallback(trimmed, mine);
     return;
   }
+  const recover = () => {
+    if (options.allowDeviceFallback === false) finish(mine);
+    else fallback(trimmed, mine);
+  };
   const controller = new AbortController();
   request = controller;
-  deadline = setTimeout(() => controller.abort(), 20_000);
+  deadline = setTimeout(() => controller.abort(), 60_000);
   try {
     await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true });
     if (mine !== generation) return;
@@ -107,13 +111,13 @@ export async function speak(text: string, options: { voice?: 'device' | 'generat
     player = next;
     // A failed or stalled player must not leave the button locked forever.
     deadline = setTimeout(() => {
-      if (mine === generation) fallback(trimmed, mine);
+      if (mine === generation) { lastSpeechError = 'Audio took too long to load.'; recover(); }
     }, 15_000);
     subscription = next.addListener('playbackStatusUpdate', status => {
       if (mine !== generation) return;
       if (status.error) {
         lastSpeechError = status.error;
-        fallback(trimmed, mine);
+        recover();
       } else if (status.didJustFinish) {
         finish(mine);
       } else if (status.playing && state === 'loading') {
@@ -126,7 +130,7 @@ export async function speak(text: string, options: { voice?: 'device' | 'generat
   } catch (err) {
     if (mine !== generation) return; // Cancelled navigation must never start a fallback.
     lastSpeechError = err instanceof Error ? err.message : String(err);
-    fallback(trimmed, mine);
+    recover();
   }
 }
 

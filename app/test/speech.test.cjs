@@ -106,3 +106,14 @@ test('fast device mode starts immediately with no network request and still bloc
   h.api.stopSpeaking();
   assert.equal(h.timers.size, 0);
 });
+
+
+test('AI-only report speech never falls back to the device after a network failure', async () => {
+ const h=setup();const pending=h.api.speak('Hi, Arya!', {voice:'generated',allowDeviceFallback:false});
+ await tick();h.respond(false);await pending;
+ assert.equal(h.calls.requests,1);assert.equal(h.calls.fallback,0);
+ assert.equal(h.api.useSpeechState(),'idle');assert.ok(h.api.lastSpeechError);
+ const retry=h.api.speak('Hi, Arya!', {voice:'generated',allowDeviceFallback:false});
+ await tick();h.respond();await retry;h.status({error:'decode failed'});
+ assert.equal(h.calls.fallback,0);assert.equal(h.api.useSpeechState(),'idle');
+});

@@ -33,12 +33,19 @@ export type TraitKey =
   | 'challenge_seeking'
   | 'curiosity'
   | 'original_methods'
-  | 'observant';
+  | 'observant'
+  | 'perfectionism'
+  | 'strong_ideas'
+  | 'questions_authority'
+  | 'motivation_focus'
+  | 'humor'
+  | 'sensitivity_others';
 
 export type Measurability = 'direct' | 'inferred' | 'behaviour';
 
 export interface TraitMeta {
   key: TraitKey;
+  group?: 'intellectual' | 'social_emotional';
   /** Wording kept close to the form, so a parent can match rows to rows. */
   label: string;
   /** What this looks like in a child, in plain language. */
@@ -47,6 +54,12 @@ export interface TraitMeta {
 }
 
 export const TRAITS: Record<TraitKey, TraitMeta> = {
+  perfectionism: { key: 'perfectionism', label: 'Perfectionism', blurb: 'Explores caring about work while handling mistakes and knowing when to finish.', measurable: 'direct', group: 'social_emotional' },
+  strong_ideas: { key: 'strong_ideas', label: 'Strong ideas, beliefs, and opinions', blurb: 'Explains an opinion and considers other viewpoints without needing to argue.', measurable: 'direct', group: 'social_emotional' },
+  questions_authority: { key: 'questions_authority', label: 'Questions authority', blurb: 'Asks thoughtful questions about rules and reasons, with respect and safety.', measurable: 'direct', group: 'social_emotional' },
+  motivation_focus: { key: 'motivation_focus', label: 'Motivation for and intense focus on tasks', blurb: 'Explores interest, effort, and strategies for staying with a chosen task.', measurable: 'direct', group: 'social_emotional' },
+  humor: { key: 'humor', label: 'Humor, original jokes, and puns', blurb: 'Plays with ideas and words in a kind, imaginative way.', measurable: 'direct', group: 'social_emotional' },
+  sensitivity_others: { key: 'sensitivity_others', label: 'Sensitive to the needs of others', blurb: 'Notices how someone may feel and suggests thoughtful ways to help.', measurable: 'direct', group: 'social_emotional' },
   abstract_concepts: {
     key: 'abstract_concepts',
     label: 'Comprehends abstract ideas and concepts',
@@ -113,6 +126,12 @@ export const TRAIT_ORDER: TraitKey[] = [
   'curiosity',
   'original_methods',
   'observant',
+  'perfectionism',
+  'strong_ideas',
+  'questions_authority',
+  'motivation_focus',
+  'humor',
+  'sensitivity_others',
 ];
 
 /** A 1–5 activity evidence indicator, not the school's norm-based rating. */
@@ -123,3 +142,8 @@ export function formScaleFor(percent: number): { value: number; label: string } 
   if (percent >= 20) return { value: 2, label: 'Some evidence' };
   return { value: 1, label: 'Limited evidence' };
 }
+
+export const CATEGORY_GROUPS = [
+  { key: 'intellectual' as const, label: 'Intellectual Ability' },
+  { key: 'social_emotional' as const, label: 'Social/Emotional/Behavioral' },
+];

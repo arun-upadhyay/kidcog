@@ -93,15 +93,14 @@ export function fetchCategories(): Promise<TraitMetaPublic[]> {
 }
 
 export async function fetchTest(age?: number, exclude: string[] = [], trait?: TraitKey, limit = 5): Promise<TestPayload> {
-  const params = new URLSearchParams();
-  if (age) params.set('age', String(age));
-  // Ids the child has already seen. A reassessment must serve fresh material:
-  // a second run on the same items measures memory, not thinking.
-  if (exclude.length > 0) params.set('exclude', exclude.join(','));
-  if (trait) params.set('trait', trait);
-  params.set('limit', String(limit));
-  const qs = params.toString();
-  const test = await request<TestPayload>(`/api/test${qs ? `?${qs}` : ''}`);
+  const requestId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const n = Math.floor(Math.random() * 16);
+    return (c === 'x' ? n : (n & 3) | 8).toString(16);
+  });
+  const test = await request<TestPayload>('/api/test', {
+    method: 'POST', timeoutMs: 90000,
+    body: JSON.stringify({ age: age ?? 5, trait, count: limit, exclude, requestId }),
+  });
   if (!test.profile || typeof test.profile.uiScale !== 'number' || !Array.isArray(test.questions)) {
     throw new Error('This server is incompatible. Start the backend from Documents/kidcog/server and try again.');
   }
