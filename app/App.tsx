@@ -9,19 +9,20 @@ import QuizScreen from './src/screens/QuizScreen';
 import CelebrationScreen from './src/screens/CelebrationScreen';
 import ResultsScreen from './src/screens/ResultsScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import HistoryScreen from './src/screens/HistoryScreen';
 import { AuthProvider, useAuth } from './src/auth/AuthContext';
-import { fetchTest, listChildren, saveChild, submitAnswers } from './src/api';
+import { deleteChildProfile, fetchTest, listChildren, saveChild, submitAnswers } from './src/api';
 import { forgetSeen, loadSeen, rememberSeen } from './src/seenQuestions';
 import { stopSpeaking } from './src/speech';
 import { colors } from './src/theme';
-import type { ChildProfile, Report, ResponseInput, SavedChildProfile, TestPayload, TraitKey } from './src/types';
+import type { ChildProfile, HistoricalAssessment, Report, ResponseInput, SavedChildProfile, TestPayload, TraitKey } from './src/types';
 
 /**
  * `celebrate` only exists for the young profile: the child sees a well done,
  * and the scores sit behind a grown-up gate. Older children go straight to
  * results, where seeing their own score is reasonable and useful.
  */
-type Stage = 'start' | 'categories' | 'quiz' | 'celebrate' | 'results';
+type Stage = 'start' | 'categories' | 'quiz' | 'celebrate' | 'results' | 'history' | 'historical_result';
 
 function messageOf(err: unknown): string {
   return err instanceof Error ? err.message : 'Something went wrong.';
@@ -41,6 +42,8 @@ function KidCogApp() {
   const [error, setError] = useState<string | null>(null);
   const [savedChildren, setSavedChildren] = useState<SavedChildProfile[]>([]);
   const [sessionId, setSessionId] = useState<string | null>(null);
+  const [historyChild, setHistoryChild] = useState<SavedChildProfile | null>(null);
+  const [historical, setHistorical] = useState<HistoricalAssessment | null>(null);
 
   useEffect(() => {
     if (!session) { setSavedChildren([]); return; }
@@ -176,6 +179,15 @@ function KidCogApp() {
   }, []);
 
   const logout = useCallback(async () => { restart(); await signOut(); }, [restart, signOut]);
+  const openHistory = useCallback((selected: SavedChildProfile) => { setHistoryChild(selected); setHistorical(null); setError(null); setStage('history'); }, []);
+  const deleteChild = useCallback(async (selected: SavedChildProfile) => {
+    setError(null);
+    try {
+      await deleteChildProfile(selected.id);
+      setSavedChildren(current => current.filter(item => item.id !== selected.id));
+      if (child?.id === selected.id) setChild(null);
+    } catch (err) { setError(messageOf(err)); throw err; }
+  }, [child?.id]);
 
   if (authLoading || !session) return <LoginScreen />;
 
@@ -184,7 +196,11 @@ function KidCogApp() {
       <StatusBar style="dark" />
       <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
         <View style={styles.root}>
-          {stage === 'start' && <StartScreen onStart={start} loading={busy} error={error} savedChildren={savedChildren} onSignOut={() => void logout()} />}
+          {stage === 'start' && <StartScreen onStart={start} loading={busy} error={error} savedChildren={savedChildren} onSignOut={() => void logout()} onViewHistory={openHistory} onDeleteChild={deleteChild} />}
+
+          {stage === 'history' && historyChild && <HistoryScreen child={historyChild} onBack={restart} onOpen={(item) => { setHistorical(item); setStage('historical_result'); }} />}
+
+          {stage === 'historical_result' && historical && <ResultsScreen report={historical.report} childName={historical.childName} completedAt={historical.completedAt} historical onBackToHistory={() => setStage('history')} onRestart={restart} onChooseCategory={() => {}} onReassess={() => {}} onResetQuestions={() => {}} remainingUnseen={0} busy={false} error={null} />}
 
           {stage === 'categories' && <CategoryScreen onSelect={chooseRound} onReport={() => setStage('results')} onBack={restart} report={report} busy={busy} error={error} />}
 

@@ -3,7 +3,7 @@ import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
 import type { ChildProfile, Report, ResponseInput, TestPayload } from './types';
-import type { SavedChildProfile } from './types';
+import type { AssessmentSessionSummary, HistoricalAssessment, SavedChildProfile } from './types';
 import { supabase } from './auth/supabase';
 
 /**
@@ -102,6 +102,22 @@ export function listChildren(): Promise<SavedChildProfile[]> {
 
 export function saveChild(nickname: string): Promise<SavedChildProfile> {
   return request<SavedChildProfile>('/api/children', { method: 'POST', body: JSON.stringify({ nickname }) });
+}
+
+export function deleteChildProfile(childId: string): Promise<void> {
+  return request(`/api/children/${encodeURIComponent(childId)}`, { method: 'DELETE' });
+}
+
+export function listAssessmentSessions(childId: string, offset = 0): Promise<{ sessions: AssessmentSessionSummary[]; hasMore: boolean }> {
+  return request(`/api/children/${encodeURIComponent(childId)}/sessions?limit=20&offset=${offset}`);
+}
+
+export function fetchHistoricalAssessment(sessionId: string): Promise<HistoricalAssessment> {
+  return request(`/api/sessions/${encodeURIComponent(sessionId)}/report`);
+}
+
+export function deleteAssessmentSession(sessionId: string): Promise<void> {
+  return request(`/api/sessions/${encodeURIComponent(sessionId)}`, { method: 'DELETE' });
 }
 
 export async function fetchTest(childProfileId: string, sessionId: string | null, age?: number, exclude: string[] = [], trait?: TraitKey, limit = 5): Promise<TestPayload> {

@@ -152,6 +152,25 @@ export interface SavedChildProfile {
   createdAt: string;
 }
 
+export interface AssessmentSessionSummary {
+  id: string;
+  startedAt: string;
+  completedAt: string;
+  age: number | null;
+  overall: { earned: number; possible: number; percent: number };
+  categories: string[];
+  questionCount: number;
+}
+
+export interface HistoricalAssessment {
+  id: string;
+  childId: string;
+  childName: string;
+  age: number | null;
+  completedAt: string;
+  report: Report;
+}
+
 export interface ResponseInput {
   questionId: string;
   answer: string;

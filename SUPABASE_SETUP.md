@@ -8,6 +8,10 @@ Create a Supabase project on the free plan. In its SQL Editor, run:
 
 `supabase/migrations/202609230001_parent_accounts_and_assessments.sql`
 
+Then run the history migration:
+
+`supabase/migrations/202609230002_assessment_history.sql`
+
 The migration enables row-level security. The generated-questions table has no client access policy because it contains answer keys and rubrics.
 
 ## 2. Configure the server

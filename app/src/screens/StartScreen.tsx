@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, ScrollView, Switch, Pressable } from 'react-native';
+import { Alert, Platform, View, Text, TextInput, StyleSheet, ScrollView, Switch, Pressable } from 'react-native';
 import Button from '../components/Button';
 import { colors, spacing, type } from '../theme';
 import type { ChildProfile, SavedChildProfile } from '../types';
@@ -10,6 +10,8 @@ export interface StartScreenProps {
   error: string | null;
   savedChildren: SavedChildProfile[];
   onSignOut: () => void;
+  onViewHistory: (child: SavedChildProfile) => void;
+  onDeleteChild: (child: SavedChildProfile) => Promise<void>;
 }
 
 /**
@@ -21,10 +23,11 @@ export interface StartScreenProps {
  */
 const AGES = [4, 5, 6, 7] as const;
 
-export default function StartScreen({ onStart, loading, error, savedChildren, onSignOut }: StartScreenProps) {
+export default function StartScreen({ onStart, loading, error, savedChildren, onSignOut, onViewHistory, onDeleteChild }: StartScreenProps) {
   const [firstName, setFirstName] = useState('');
   const [age, setAge] = useState<number | null>(5);
   const [consent, setConsent] = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const canStart = consent && !loading;
   const young = age !== null && age <= 7;
@@ -39,6 +42,26 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
 
   function chooseSaved(child: SavedChildProfile) {
     setFirstName(child.nickname);
+  }
+
+  async function removeChild(child: SavedChildProfile) {
+    setDeletingId(child.id);
+    try {
+      await onDeleteChild(child);
+      if (firstName.trim().toLowerCase() === child.nickname.trim().toLowerCase()) setFirstName('');
+    } finally { setDeletingId(null); }
+  }
+
+  function confirmDelete(child: SavedChildProfile) {
+    const message = `Delete ${child.nickname}'s profile? This permanently removes every saved assessment, question, answer, and result for this child.`;
+    if (Platform.OS === 'web') {
+      if (globalThis.confirm(message)) void removeChild(child);
+      return;
+    }
+    Alert.alert('Delete child profile?', message, [
+      { text: 'Cancel', style: 'cancel' },
+      { text: 'Delete profile', style: 'destructive', onPress: () => void removeChild(child) },
+    ]);
   }
 
   return (
@@ -93,7 +116,13 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
 
       <View style={styles.field}>
         <Text style={type.label}>THEIR FIRST NAME (OPTIONAL)</Text>
-        {savedChildren.length ? <View style={styles.chips}>{savedChildren.map(saved => <Pressable key={saved.id} onPress={() => chooseSaved(saved)} style={styles.savedChip}><Text>{saved.nickname}</Text></Pressable>)}</View> : null}
+        {savedChildren.length ? <View style={styles.savedList}>{savedChildren.map(saved => <View key={saved.id} style={styles.savedCard}>
+          <Pressable onPress={() => chooseSaved(saved)} style={styles.savedName}><Text style={styles.savedNameText}>{saved.nickname}</Text><Text style={type.soft}>Use this profile</Text></Pressable>
+          <View style={styles.savedActions}>
+            <Pressable onPress={() => onViewHistory(saved)} accessibilityRole="button" accessibilityLabel={`View ${saved.nickname}'s previous results`} accessibilityHint="Opens saved assessment reports" style={({ pressed }) => [styles.iconButton, styles.historyButton, pressed && styles.iconPressed]}><Text style={styles.actionIcon}>📚</Text></Pressable>
+            <Pressable disabled={deletingId !== null} onPress={() => confirmDelete(saved)} accessibilityRole="button" accessibilityLabel={`Delete ${saved.nickname}'s profile`} accessibilityHint="Permanently removes this profile and its assessments" style={({ pressed }) => [styles.iconButton, styles.deleteProfile, (pressed || deletingId !== null) && styles.iconPressed]}><Text style={styles.actionIcon}>{deletingId === saved.id ? '⏳' : '🗑️'}</Text></Pressable>
+          </View>
+        </View>)}</View> : null}
         <TextInput
           style={styles.input}
           value={firstName}
@@ -169,7 +198,14 @@ const styles = StyleSheet.create({
   chipOn: { backgroundColor: colors.happySoft, borderColor: colors.happy },
   chipText: { fontSize: 20, fontWeight: '700', color: colors.inkSoft },
   chipTextOn: { color: colors.ink },
-  savedChip: { backgroundColor: colors.coolSoft, borderRadius: 16, paddingHorizontal: spacing(2), paddingVertical: spacing(1) },
+  savedList: { gap: spacing(1), marginBottom: spacing(1) },
+  savedCard: { flexDirection: 'row', alignItems: 'center', backgroundColor: colors.coolSoft, borderRadius: 14, padding: spacing(1.5), gap: spacing(1) },
+  savedName: { flex: 1 }, savedNameText: { fontWeight: '700', color: colors.ink, fontSize: 16 },
+  savedActions: { flexDirection: 'row', alignItems: 'center', gap: spacing(1) },
+  iconButton: { width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
+  historyButton: { backgroundColor: colors.goSoft },
+  deleteProfile: { backgroundColor: '#FBE9E7' },
+  actionIcon: { fontSize: 27 }, iconPressed: { opacity: 0.55, transform: [{ scale: 0.96 }] },
   input: {
     backgroundColor: colors.surface,
     borderWidth: 1.5,

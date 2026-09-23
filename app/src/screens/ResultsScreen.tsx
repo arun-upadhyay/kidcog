@@ -19,6 +19,9 @@ export interface ResultsScreenProps {
   remainingUnseen: number;
   busy: boolean;
   error: string | null;
+  historical?: boolean;
+  completedAt?: string;
+  onBackToHistory?: () => void;
 }
 
 function Bar({ percent }: { percent: number }) {
@@ -162,15 +165,29 @@ export default function ResultsScreen({
   remainingUnseen,
   busy,
   error,
+  historical = false,
+  completedAt,
+  onBackToHistory,
 }: ResultsScreenProps) {
   const [showDetail, setShowDetail] = useState(false);
+  const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
+
+  function toggleGroup(key: string) {
+    setExpandedGroups(current => {
+      const next = new Set(current);
+      next.has(key) ? next.delete(key) : next.add(key);
+      return next;
+    });
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={type.label}>COMBINED SESSION RESULT</Text>
+      {historical && onBackToHistory ? <Pressable onPress={onBackToHistory} accessibilityRole="button"><Text style={styles.historyBack}>← Previous assessments</Text></Pressable> : null}
+      <Text style={type.label}>{historical ? 'SAVED ASSESSMENT RESULT' : 'COMBINED SESSION RESULT'}</Text>
       <Text style={[type.title, { marginTop: spacing(1) }]}>
         {childName ? `${childName}'s session` : 'Session summary'}
       </Text>
+      {completedAt ? <Text style={[type.soft, { marginTop: spacing(0.5) }]}>{new Date(completedAt).toLocaleString()}</Text> : null}
 
       <View style={styles.overall}>
         <Text style={styles.overallNumber}>{report.overall.possible > 0 ? `${report.overall.percent}%` : 'Not scored'}</Text>
@@ -197,11 +214,28 @@ export default function ResultsScreen({
         or an official school rating. Unobserved categories have no score. Speed, enjoyment, and
         everyday behaviour need observations over time.
       </Text>
-      <View style={{ gap: spacing(2), marginTop: spacing(2) }}>
-        {CATEGORY_GROUPS.map(group => <View key={group.key} style={{ gap: spacing(2) }}>
-          <Text style={type.heading}>{group.label}</Text>
-          {report.traits.filter(t => (t.group ?? 'intellectual') === group.key).map(t => <TraitCard key={t.key} trait={t} />)}
-        </View>)}
+      <View style={styles.groupList}>
+        {CATEGORY_GROUPS.map(group => {
+          const groupTraits = report.traits.filter(t => (t.group ?? 'intellectual') === group.key);
+          const observed = groupTraits.filter(t => t.questionCount > 0).length;
+          const expanded = expandedGroups.has(group.key);
+          return <View key={group.key} style={styles.groupCard}>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityState={{ expanded }}
+              accessibilityLabel={`${group.label}, ${observed} of ${groupTraits.length} observed`}
+              onPress={() => toggleGroup(group.key)}
+              style={({ pressed }) => [styles.groupHeader, pressed && { opacity: 0.75 }]}
+            >
+              <View style={{ flex: 1 }}>
+                <Text style={type.heading}>{group.label}</Text>
+                <Text style={[type.soft, { marginTop: spacing(0.25) }]}>{observed} of {groupTraits.length} observed</Text>
+              </View>
+              <Text style={styles.chevron}>{expanded ? '⌃' : '⌄'}</Text>
+            </Pressable>
+            {expanded ? <View style={styles.groupItems}>{groupTraits.map(t => <TraitCard key={t.key} trait={t} />)}</View> : null}
+          </View>;
+        })}
       </View>
 
       {report.graderFailed ? (
@@ -243,12 +277,12 @@ export default function ResultsScreen({
         </View>
       )}
 
-      <View style={styles.reassessCard}>
+      {!historical && <View style={styles.reassessCard}>
         <Text style={type.heading}>Explore another category</Text>
         <Text style={[type.soft, { marginVertical: spacing(1) }]}>{report.traits.filter(t => t.questionCount > 0).length} of {report.traits.length} categories have observations so far. Your completed answers stay in this session.</Text>
         <Button title="Choose the next category" onPress={onChooseCategory} disabled={busy} />
         <Text style={[type.soft, { marginTop: spacing(1) }]}>
-          AI generates a fresh round each time. Your completed rounds stay in this session’s report. Questions expire after two hours or a server restart; answers are not stored on the server.
+          AI generates a fresh round each time. Your completed rounds, answers, and report are saved privately to your parent account.
         </Text>
         {error ? (
           <Text style={[type.body, { color: colors.warn, marginTop: spacing(1.5) }]}>{error}</Text>
@@ -262,21 +296,25 @@ export default function ResultsScreen({
           />
 
         </View>
-      </View>
+      </View>}
 
       <View style={styles.disclaimer}>
         <Text style={[type.soft, { fontSize: 13 }]}>{report.disclaimer}</Text>
       </View>
 
-      <View style={{ marginTop: spacing(3) }}>
-        <Button title="Start a new session" variant="secondary" onPress={onRestart} disabled={busy} />
-      </View>
+      <View style={{ marginTop: spacing(3) }}><Button title={historical ? 'Back to previous assessments' : 'Start a new session'} variant="secondary" onPress={historical && onBackToHistory ? onBackToHistory : onRestart} disabled={busy} /></View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { padding: spacing(3), paddingBottom: spacing(6) },
+  historyBack: { color: colors.primary, fontWeight: '700', marginBottom: spacing(3) },
+  groupList: { gap: spacing(2), marginTop: spacing(2) },
+  groupCard: { backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.line, borderRadius: 16, overflow: 'hidden' },
+  groupHeader: { flexDirection: 'row', alignItems: 'center', padding: spacing(2.5), backgroundColor: colors.coolSoft },
+  groupItems: { gap: spacing(2), padding: spacing(2) },
+  chevron: { color: colors.accent, fontSize: 28, fontWeight: '700', marginLeft: spacing(2) },
   reassessCard: {
     marginTop: spacing(4),
     backgroundColor: colors.surface,

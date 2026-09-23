@@ -12,7 +12,7 @@ import { scoreSubmission } from './scoring.js';
 import { generateParentReport, apiKeyProblem } from './grader.js';
 import type { PublicQuestion, TestPayload } from './types.js';
 import { supabaseReady, userIdFromBearer } from './supabase.js';
-import { childBelongsTo, findOrCreateChild, getOrCreateSession, listChildren, loadGeneratedQuestions, saveGeneratedQuestions, saveReport } from './repository.js';
+import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, saveGeneratedQuestions, saveReport } from './repository.js';
 
 type AuthRequest = Request & { parentId?: string };
 async function requireParent(req: AuthRequest, res: Response, next: NextFunction) {
@@ -74,6 +74,46 @@ app.post('/api/children', requireParent, async (req: AuthRequest, res: Response)
   catch (err) { res.status(500).json({ error: 'Could not save child profile.', detail: err instanceof Error ? err.message : String(err) }); }
 });
 
+app.delete('/api/children/:childId', requireParent, async (req: AuthRequest, res: Response) => {
+  const parsed = z.string().uuid().safeParse(req.params.childId);
+  if (!parsed.success) { res.status(400).json({ error: 'Invalid child profile.' }); return; }
+  try {
+    const deleted = await deleteChildProfile(req.parentId!, parsed.data);
+    if (!deleted) { res.status(404).json({ error: 'Child profile was not found.' }); return; }
+    res.status(204).end();
+  } catch (err) { res.status(500).json({ error: 'Could not delete the child profile.', detail: err instanceof Error ? err.message : String(err) }); }
+});
+
+app.get('/api/children/:childId/sessions', requireParent, async (req: AuthRequest, res: Response) => {
+  const parsed = z.object({ childId: z.string().uuid(), limit: z.coerce.number().int().min(1).max(50).default(20), offset: z.coerce.number().int().min(0).default(0) }).safeParse({ ...req.params, ...req.query });
+  if (!parsed.success) { res.status(400).json({ error: 'Invalid history request.' }); return; }
+  try {
+    const result = await listCompletedSessions(req.parentId!, parsed.data.childId, parsed.data.limit, parsed.data.offset);
+    if (!result) { res.status(404).json({ error: 'Child profile was not found.' }); return; }
+    res.json(result);
+  } catch (err) { res.status(500).json({ error: 'Could not load assessment history.', detail: err instanceof Error ? err.message : String(err) }); }
+});
+
+app.get('/api/sessions/:sessionId/report', requireParent, async (req: AuthRequest, res: Response) => {
+  const parsed = z.string().uuid().safeParse(req.params.sessionId);
+  if (!parsed.success) { res.status(400).json({ error: 'Invalid assessment session.' }); return; }
+  try {
+    const result = await historicalAssessment(req.parentId!, parsed.data);
+    if (!result) { res.status(404).json({ error: 'This completed report is unavailable.' }); return; }
+    res.json(result);
+  } catch (err) { res.status(500).json({ error: 'Could not load the assessment report.', detail: err instanceof Error ? err.message : String(err) }); }
+});
+
+app.delete('/api/sessions/:sessionId', requireParent, async (req: AuthRequest, res: Response) => {
+  const parsed = z.string().uuid().safeParse(req.params.sessionId);
+  if (!parsed.success) { res.status(400).json({ error: 'Invalid assessment session.' }); return; }
+  try {
+    const deleted = await deleteAssessmentSession(req.parentId!, parsed.data);
+    if (!deleted) { res.status(404).json({ error: 'Assessment result was not found.' }); return; }
+    res.status(204).end();
+  } catch (err) { res.status(500).json({ error: 'Could not delete the assessment result.', detail: err instanceof Error ? err.message : String(err) }); }
+});
+
 /** The test the app should present. Answer keys and rubrics stay on the server. */
 const pendingRounds = new Map<string, Promise<TestPayload>>();
 app.post('/api/test', requireParent, async (req: AuthRequest, res: Response) => {
@@ -86,7 +126,7 @@ app.post('/api/test', requireParent, async (req: AuthRequest, res: Response) => 
     let work = pendingRounds.get(key);
     if (!work) {
       work = (async () => {
-        const sessionId = await getOrCreateSession(req.parentId!, childProfileId, requestedSessionId);
+        const sessionId = await getOrCreateSession(req.parentId!, childProfileId, age, requestedSessionId);
         const questions = await generateRound(age, trait, count, exclude);
         await saveGeneratedQuestions(req.parentId!, sessionId, questions);
         return { sessionId, traits: TRAIT_ORDER.map(k => ({ ...TRAITS[k], group: TRAITS[k].group ?? 'intellectual' })), questions: questions.map(publicQuestion), questionCount: questions.length, followUpQuestions: {}, profile: profileForAge(age), poolExhausted: false, remainingUnseen: -1 };
