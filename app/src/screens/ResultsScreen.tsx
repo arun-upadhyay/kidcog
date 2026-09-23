@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable, type TextStyle } from 'react-native';
 import Button from '../components/Button';
 import { colors, spacing, type } from '../theme';
+import { speak } from '../speech';
 import type { ParentReport as ParentReportType, Report, ScoredResponse } from '../types';
 
 export interface ResultsScreenProps {
@@ -34,10 +35,34 @@ function ReportSection({ title, items }: { title: string; items: string[] }) {
   );
 }
 
+/** The whole report as one passage, for reading aloud. */
+function reportAsSpeech(r: ParentReportType): string {
+  return [
+    r.opening,
+    r.strengths.length ? `What went well. ${r.strengths.join(' ')}` : '',
+    r.stuckPoints.length ? `Where things got harder. ${r.stuckPoints.join(' ')}` : '',
+    r.thinkingNotes ? `How they approached it. ${r.thinkingNotes}` : '',
+    r.practiceIdeas.length ? `Things to try at home. ${r.practiceIdeas.join(' ')}` : '',
+    r.closing,
+  ]
+    .filter((part) => part.trim().length > 0)
+    .join(' ');
+}
+
 function ParentReportCard({ report }: { report: ParentReportType }) {
   return (
     <View style={styles.summaryCard}>
-      <Text style={type.label}>WHAT THIS SESSION SHOWED</Text>
+      <View style={styles.cardHeader}>
+        <Text style={type.label}>WHAT THIS SESSION SHOWED</Text>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Read this report aloud"
+          onPress={() => void speak(reportAsSpeech(report))}
+          style={({ pressed }) => [styles.listen, pressed && { opacity: 0.8 }]}
+        >
+          <Text style={styles.listenText}>🔊 Listen</Text>
+        </Pressable>
+      </View>
 
       {report.opening ? (
         <Text style={[type.body, { marginTop: spacing(1.5) }]}>{report.opening}</Text>
@@ -177,6 +202,23 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: spacing(2.5),
   },
+  cardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing(1.5),
+  },
+  listen: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: spacing(0.75),
+    paddingHorizontal: spacing(1.5),
+    borderRadius: 999,
+    borderWidth: 1.5,
+    borderColor: colors.cool,
+    backgroundColor: colors.coolSoft,
+  },
+  listenText: { fontSize: 14, fontWeight: '700', color: colors.ink },
   sectionTitle: {
     fontSize: 16,
     fontWeight: '700',

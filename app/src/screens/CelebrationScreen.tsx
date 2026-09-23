@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import Button from '../components/Button';
 import { colors, spacing, type } from '../theme';
+import { speak, stopSpeaking } from '../speech';
 
 export interface CelebrationScreenProps {
   childName?: string | undefined;
@@ -27,6 +28,17 @@ export default function CelebrationScreen({
 }: CelebrationScreenProps) {
   const [gate, setGate] = useState<{ a: number; b: number } | null>(null);
   const [wrong, setWrong] = useState(false);
+
+  const wellDone = childName
+    ? `Great job, ${childName}! You finished all the puzzles. Well done.`
+    : 'Great job! You finished all the puzzles. Well done.';
+
+  // The child cannot read this screen any more than they could read the
+  // questions, so the well done is spoken too.
+  useEffect(() => {
+    void speak(wellDone);
+    return () => stopSpeaking();
+  }, [wellDone]);
 
   function openGate() {
     // Two-digit sum, deliberately beyond the target age band.
@@ -55,6 +67,15 @@ export default function CelebrationScreen({
       </Text>
       <Text style={styles.sub}>You finished all the puzzles.</Text>
       <Text style={styles.stars}>⭐ ⭐ ⭐</Text>
+
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel="Hear it again"
+        onPress={() => void speak(wellDone)}
+        style={({ pressed }) => [styles.replay, pressed && { opacity: 0.8 }]}
+      >
+        <Text style={{ fontSize: 26 }}>🔊</Text>
+      </Pressable>
 
       <View style={styles.gateArea}>
         {!gate ? (
@@ -114,7 +135,15 @@ const styles = StyleSheet.create({
   },
   sub: { fontSize: 19, color: colors.ink, textAlign: 'center', marginTop: spacing(1) },
   stars: { fontSize: 40, marginTop: spacing(2.5), letterSpacing: 6 },
-  gateArea: { marginTop: spacing(5), width: '100%', alignItems: 'center' },
+  replay: {
+    marginTop: spacing(3),
+    backgroundColor: colors.coolSoft,
+    borderRadius: 999,
+    padding: spacing(1.5),
+    borderWidth: 1.5,
+    borderColor: colors.cool,
+  },
+  gateArea: { marginTop: spacing(4), width: '100%', alignItems: 'center' },
   gateLink: { padding: spacing(1.5) },
   gateLinkText: { color: colors.inkSoft, fontSize: 15, textDecorationLine: 'underline' },
   gateCard: {

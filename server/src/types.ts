@@ -102,6 +102,12 @@ export interface PublicQuestion {
   timeLimitSeconds: number | null;
   visual: string | null;
   spoken: string | null;
+  /**
+   * Everything the child needs to hear, composed server-side: the question
+   * AND, for multiple choice, the options. A pre-reader who hears only the
+   * question is choosing between words they cannot read.
+   */
+  speechText: string;
 }
 
 export interface TestPayload {

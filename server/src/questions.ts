@@ -471,6 +471,32 @@ export function questionById(id: string): Question | undefined {
  * What the app is allowed to see. Never ship `answerKey` or `rubric` to the
  * client — anything in the app bundle can be read by a determined user.
  */
+/**
+ * Join option texts the way a person would say them: "a, b, or c".
+ */
+function listForSpeech(items: string[]): string {
+  if (items.length === 0) return '';
+  if (items.length === 1) return items[0] ?? '';
+  const last = items[items.length - 1] ?? '';
+  return `${items.slice(0, -1).join(', ')}, or ${last}`;
+}
+
+/**
+ * What the read-aloud voice should say for this question.
+ *
+ * For multiple choice this must include the options. A four-year-old who hears
+ * "which one is not something you can eat?" and then sees four words they
+ * cannot read has been given half a question.
+ */
+export function speechTextFor(q: Question): string {
+  const question = (q.spoken ?? q.prompt).trim();
+  if (q.type !== 'mcq') return question;
+
+  const choices = listForSpeech(q.options.map((o) => o.text.trim()).filter(Boolean));
+  if (!choices) return question;
+  return `${question} Your choices are: ${choices}.`;
+}
+
 export function toPublicQuestion(q: Question): PublicQuestion {
   return {
     id: q.id,
@@ -481,5 +507,6 @@ export function toPublicQuestion(q: Question): PublicQuestion {
     timeLimitSeconds: q.timeLimitSeconds ?? null,
     visual: q.visual ?? null,
     spoken: q.spoken ?? null,
+    speechText: speechTextFor(q),
   };
 }

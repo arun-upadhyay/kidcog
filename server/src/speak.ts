@@ -27,8 +27,12 @@ const DEFAULT_INSTRUCTIONS =
   'Leave a small pause after each idea so the child has time to take it in. ' +
   'Sound interested and encouraging, never stern, and never rushed.';
 
-/** Longest text we will synthesise. Questions are short; this bounds abuse. */
-const MAX_TEXT = 600;
+/**
+ * Longest text we will synthesise. Questions are short, but the parent report
+ * read aloud is several paragraphs, so this has to accommodate both. Still
+ * bounded, because every character is billed and waited on.
+ */
+const MAX_TEXT = 2500;
 
 /**
  * Generated audio, kept in memory.

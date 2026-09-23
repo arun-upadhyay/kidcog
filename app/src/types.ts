@@ -53,6 +53,8 @@ export interface PublicQuestion {
   timeLimitSeconds: number | null;
   visual: string | null;
   spoken: string | null;
+  /** Question plus options, composed server-side, for the read-aloud voice. */
+  speechText: string;
 }
 
 export interface TestPayload {
