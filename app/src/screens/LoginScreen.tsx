@@ -30,7 +30,7 @@ export default function LoginScreen() {
       setVerificationEmail(email.trim().toLowerCase());
       setError('Please verify your email before signing in.');
     } else if (/invalid login credentials/i.test(message)) {
-      setError('That email or password does not match. Please try again.');
+      setError('That email or password does not match. If you previously used Google, continue with Google. Otherwise, create an email account first.');
     } else {
       setError(message);
     }
@@ -154,6 +154,9 @@ export default function LoginScreen() {
                 disabled={!configured || busy !== null}
                 loading={busy === 'email'}
               />
+              {mode === 'signIn' ? (
+                <Text style={styles.signInHint}>Used Google before? Continue with Google below. A Google account does not automatically have a KidCog password.</Text>
+              ) : null}
 
               <View style={styles.divider}><View style={styles.rule} /><Text style={styles.or}>OR</Text><View style={styles.rule} /></View>
               <Button title={busy === 'google' ? 'Opening Google…' : 'Continue with Google'} variant="secondary" onPress={() => void startGoogle()} disabled={!configured || busy !== null} loading={busy === 'google'} />
@@ -182,6 +185,7 @@ const styles = StyleSheet.create({
   label: { ...type.label, marginBottom: spacing(1) },
   input: { minHeight: 54, borderWidth: 1.5, borderColor: colors.line, borderRadius: 14, backgroundColor: colors.surface, color: colors.ink, fontSize: 17, paddingHorizontal: spacing(2), marginBottom: spacing(2) },
   helper: { ...type.soft, marginTop: -spacing(1), marginBottom: spacing(2) },
+  signInHint: { ...type.soft, textAlign: 'center', marginTop: spacing(2) },
   error: { color: colors.danger, backgroundColor: '#FBE9E7', padding: spacing(2), borderRadius: 12, marginBottom: spacing(2) },
   notice: { color: colors.accent, backgroundColor: colors.accentSoft, padding: spacing(2), borderRadius: 12, marginBottom: spacing(2) },
   divider: { flexDirection: 'row', alignItems: 'center', marginVertical: spacing(3) },
