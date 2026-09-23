@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import Button from '../components/Button';
 import { colors, spacing, type } from '../theme';
-import { speak, stopSpeaking } from '../speech';
+import { speak, stopSpeaking, useSpeechState } from '../speech';
 
 export interface CelebrationScreenProps {
   childName?: string | undefined;
@@ -26,6 +26,8 @@ export default function CelebrationScreen({
   onUnlock,
   onRestart,
 }: CelebrationScreenProps) {
+  const speechState = useSpeechState();
+  const speechBusy = speechState !== 'idle';
   const [gate, setGate] = useState<{ a: number; b: number } | null>(null);
   const [wrong, setWrong] = useState(false);
 
@@ -33,12 +35,8 @@ export default function CelebrationScreen({
     ? `Great job, ${childName}! You finished all the puzzles. Well done.`
     : 'Great job! You finished all the puzzles. Well done.';
 
-  // The child cannot read this screen any more than they could read the
-  // questions, so the well done is spoken too.
-  useEffect(() => {
-    void speak(wellDone);
-    return () => stopSpeaking();
-  }, [wellDone]);
+  // Navigation cancels playback, but entering this screen stays silent.
+  useEffect(() => () => stopSpeaking(), []);
 
   function openGate() {
     // Two-digit sum, deliberately beyond the target age band.
@@ -70,11 +68,13 @@ export default function CelebrationScreen({
 
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel="Hear it again"
+        accessibilityLabel={speechBusy ? 'Audio busy' : 'Read the celebration aloud'}
+        disabled={speechBusy}
+        accessibilityState={{ disabled: speechBusy, busy: speechBusy }}
         onPress={() => void speak(wellDone)}
-        style={({ pressed }) => [styles.replay, pressed && { opacity: 0.8 }]}
+        style={({ pressed }) => [styles.replay, (pressed || speechBusy) && { opacity: 0.5 }]}
       >
-        <Text style={{ fontSize: 26 }}>🔊</Text>
+        <Text style={{ fontSize: 26 }}>{speechState === 'loading' ? '⏳' : speechBusy ? '🔉' : '🔊'}</Text>
       </Pressable>
 
       <View style={styles.gateArea}>

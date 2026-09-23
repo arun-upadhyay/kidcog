@@ -1,8 +1,8 @@
 /**
  * Draft new questions with the model.
  *
- *   npm run generate -- --domain pattern_reasoning --count 5 --age 8-12
- *   npm run generate -- --domain verbal_reasoning --count 3 --type open
+ *   npm run generate -- --trait generalization --count 5 --age 8-12
+ *   npm run generate -- --trait cause_effect --count 3 --type open
  *
  * Output goes to `drafts/questions-<timestamp>.ts`. It does NOT go into the
  * question bank, and that is deliberate.
@@ -31,16 +31,24 @@ import { join } from 'node:path';
 import OpenAI from 'openai';
 import { z } from 'zod';
 
-import { DOMAINS, QUESTIONS } from './questions.js';
-import type { DomainKey } from './types.js';
+import { QUESTIONS } from './questions.js';
+import { TRAITS, TRAIT_ORDER } from './traits.js';
+import type { TraitKey, Question } from './types.js';
 
 // --- Validation -------------------------------------------------------------
 
-const DOMAIN_KEYS = Object.keys(DOMAINS) as [DomainKey, ...DomainKey[]];
+const TRAIT_KEYS = TRAIT_ORDER as [TraitKey, ...TraitKey[]];
+
+/** Only traits a question can actually measure can be generated for. */
+const DIRECT_TRAITS = TRAIT_ORDER.filter((k) => TRAITS[k].measurable === 'direct') as [
+  TraitKey,
+  ...TraitKey[],
+];
 
 const McqSchema = z.object({
   id: z.string().min(2).max(40),
-  domain: z.enum(DOMAIN_KEYS),
+  trait: z.enum(TRAIT_KEYS),
+  format: z.string().min(3).max(40),
   type: z.literal('mcq'),
   ageBand: z.tuple([z.number().int().min(4).max(18), z.number().int().min(4).max(18)]),
   weight: z.number().int().min(1).max(3),
@@ -51,7 +59,8 @@ const McqSchema = z.object({
 
 const OpenSchema = z.object({
   id: z.string().min(2).max(40),
-  domain: z.enum(DOMAIN_KEYS),
+  trait: z.enum(TRAIT_KEYS),
+  format: z.string().min(3).max(40),
   type: z.literal('open'),
   ageBand: z.tuple([z.number().int().min(4).max(18), z.number().int().min(4).max(18)]),
   weight: z.number().int().min(1).max(3),
@@ -102,10 +111,11 @@ const DRAFT_SCHEMA_JSON = {
       items: {
         type: 'object',
         additionalProperties: false,
-        required: ['id', 'domain', 'type', 'ageBand', 'weight', 'prompt', 'options', 'answerKey', 'rubric', 'rationale'],
+        required: ['id', 'trait', 'format', 'type', 'ageBand', 'weight', 'prompt', 'options', 'answerKey', 'rubric', 'rationale'],
         properties: {
           id: { type: 'string' },
-          domain: { type: 'string', enum: DOMAIN_KEYS },
+          trait: { type: 'string', enum: DIRECT_TRAITS },
+          format: { type: 'string' },
           type: { type: 'string', enum: ['mcq', 'open'] },
           ageBand: { type: 'array', items: { type: 'integer' } },
           weight: { type: 'integer' },
@@ -172,7 +182,7 @@ const CRITIQUE_SCHEMA_JSON = {
 // --- CLI --------------------------------------------------------------------
 
 interface Args {
-  domain: DomainKey;
+  trait: TraitKey;
   count: number;
   ageBand: [number, number];
   type: 'mcq' | 'open' | 'mixed';
@@ -184,9 +194,13 @@ function parseArgs(argv: string[]): Args {
     return i >= 0 ? argv[i + 1] : undefined;
   };
 
-  const domain = (get('domain') ?? 'pattern_reasoning') as DomainKey;
-  if (!DOMAIN_KEYS.includes(domain)) {
-    throw new Error(`--domain must be one of: ${DOMAIN_KEYS.join(', ')}`);
+  const trait = (get('trait') ?? 'generalization') as TraitKey;
+  if (!DIRECT_TRAITS.includes(trait)) {
+    throw new Error(
+      `--trait must be one a question can measure: ${DIRECT_TRAITS.join(', ')}\n` +
+        'Curiosity and original methods are read out of open answers, and challenge-seeking\n' +
+        'is measured by an actual choice, so none of them can be generated as questions.'
+    );
   }
 
   const count = Number(get('count') ?? 5);
@@ -207,7 +221,7 @@ function parseArgs(argv: string[]): Args {
     throw new Error('--type must be mcq, open or mixed');
   }
 
-  return { domain, count, ageBand: [lo, hi], type };
+  return { trait, count, ageBand: [lo, hi], type };
 }
 
 function serialise(q: Draft, review: { verdict: string; problems: string[] } | undefined): string {
@@ -235,11 +249,11 @@ async function main(): Promise<void> {
   const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
   const model = process.env.OPENAI_MODEL || 'gpt-4o-mini';
 
-  const existingIds = QUESTIONS.map((q) => q.id);
-  const samples = QUESTIONS.filter((q) => q.domain === args.domain).slice(0, 3);
-  const prefix = args.domain.split('_').map((w) => w[0]).join('');
+  const existingIds = (QUESTIONS as Question[]).map((q) => q.id);
+  const samples = (QUESTIONS as Question[]).filter((q) => q.trait === args.trait).slice(0, 3);
+  const prefix = args.trait.split('_').map((w: string) => w[0]).join('');
 
-  console.log(`Drafting ${args.count} ${args.type} item(s) for ${DOMAINS[args.domain].label}, ages ${args.ageBand[0]}-${args.ageBand[1]}…`);
+  console.log(`Drafting ${args.count} ${args.type} item(s) for ${TRAITS[args.trait].label}, ages ${args.ageBand[0]}-${args.ageBand[1]}…`);
 
   const generation = await client.chat.completions.create({
     model,
@@ -252,11 +266,11 @@ async function main(): Promise<void> {
       {
         role: 'user',
         content: [
-          `Domain: ${args.domain} — ${DOMAINS[args.domain].blurb}`,
+          `Trait: ${TRAITS[args.trait].label} — ${TRAITS[args.trait].blurb}`,
           `Write ${args.count} question(s). Type: ${args.type === 'mixed' ? 'a mix of mcq and open' : args.type}.`,
           `Age band: [${args.ageBand[0]}, ${args.ageBand[1]}]. Use ids starting "${prefix}-gen-" and do not reuse: ${existingIds.join(', ')}`,
           '',
-          'Existing items in this domain, for tone and difficulty (do not duplicate them):',
+          'Existing items for this trait, for tone and difficulty (do not duplicate them):',
           samples.map((q) => `- ${q.prompt}`).join('\n') || '(none yet)',
           '',
           'For mcq items set rubric to null. For open items set options and answerKey to null, and give exactly four rubric bands.',
@@ -347,7 +361,7 @@ async function main(): Promise<void> {
   const body = [
     '/**',
     ` * DRAFT questions — generated ${new Date().toISOString()}`,
-    ` * Domain: ${args.domain} | ages ${args.ageBand[0]}-${args.ageBand[1]} | requested ${args.count}`,
+    ` * Trait: ${args.trait} | ages ${args.ageBand[0]}-${args.ageBand[1]} | requested ${args.count}`,
     ' *',
     ' * These are NOT in the question bank. Read every one, check the answer',
     ' * yourself, fix what the review flags, then paste the ones you trust into',

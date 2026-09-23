@@ -42,6 +42,7 @@ const MAX_TEXT = 2500;
  */
 const cache = new Map<string, Buffer>();
 const MAX_CACHED = 200;
+const inFlight = new Map<string, Promise<SpeechResult>>();
 
 let client: OpenAI | null = null;
 function getClient(): OpenAI {
@@ -78,6 +79,14 @@ export async function synthesizeSpeech(text: string): Promise<SpeechResult> {
   const hit = cache.get(key);
   if (hit) return { audio: hit, cached: true };
 
+  const pending = inFlight.get(key);
+  if (pending) return pending;
+  const work = generateSpeech();
+  inFlight.set(key, work);
+  try { return await work; }
+  finally { inFlight.delete(key); }
+
+  async function generateSpeech(): Promise<SpeechResult> {
   let response;
   try {
     response = await getClient().audio.speech.create({
@@ -101,6 +110,7 @@ export async function synthesizeSpeech(text: string): Promise<SpeechResult> {
   cache.set(key, audio);
 
   return { audio, cached: false };
+  }
 }
 
 export function speechCacheSize(): number {

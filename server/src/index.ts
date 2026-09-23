@@ -3,13 +3,14 @@ import express, { type Request, type Response, type NextFunction } from 'express
 import cors from 'cors';
 import { z } from 'zod';
 
-import { getQuestions, toPublicQuestion, DOMAINS } from './questions.js';
+import { selectQuestions, toPublicQuestion, bankProblems } from './questions.js';
+import { TRAITS, TRAIT_ORDER, type TraitKey } from './traits.js';
 import { profileForAge } from './ageProfiles.js';
 import { transcribeAnswer } from './transcribe.js';
 import { synthesizeSpeech, SPEECH_MIME } from './speak.js';
 import { scoreSubmission } from './scoring.js';
 import { generateParentReport, apiKeyProblem } from './grader.js';
-import type { TestPayload } from './types.js';
+import type { PublicQuestion, TestPayload } from './types.js';
 
 const app = express();
 app.use(cors());
@@ -47,6 +48,10 @@ app.get('/health', (_req: Request, res: Response) => {
   });
 });
 
+app.get('/api/categories', (_req: Request, res: Response) => {
+  res.json(TRAIT_ORDER.map((key) => TRAITS[key]));
+});
+
 /** The test the app should present. Answer keys and rubrics stay on the server. */
 app.get('/api/test', (req: Request, res: Response) => {
   const age = req.query.age !== undefined ? Number(req.query.age) : undefined;
@@ -54,13 +59,42 @@ app.get('/api/test', (req: Request, res: Response) => {
     res.status(400).json({ error: 'age must be a number between 4 and 18' });
     return;
   }
+  // Ids the child has already been given. A reassessment must serve fresh
+  // material: a second run on the same items measures memory, not thinking.
+  const excludeRaw = typeof req.query.exclude === 'string' ? req.query.exclude : '';
+  const exclude = excludeRaw
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .slice(0, 500);
+
   const profile = profileForAge(age);
-  const questions = getQuestions({ age, limit: profile.maxQuestions }).map(toPublicQuestion);
+  const trait = req.query.trait;
+  const limit = req.query.limit === undefined ? 5 : Number(req.query.limit);
+  if ((trait !== undefined && (typeof trait !== 'string' || !TRAIT_ORDER.includes(trait as TraitKey))) || ![2, 5, 6].includes(limit)) {
+    res.status(400).json({ error: 'Choose a valid category and a round length of 2, 5, or 6.' });
+    return;
+  }
+  const selection = selectQuestions({ age, limit, exclude, trait: trait as TraitKey | undefined });
+
+  const followUpQuestions: Record<string, PublicQuestion> = {};
+  for (const q of selection.followUps) {
+    followUpQuestions[q.id] = toPublicQuestion(q);
+  }
+
   const payload: TestPayload = {
-    domains: DOMAINS,
-    questionCount: questions.length,
-    questions,
+    traits: TRAIT_ORDER.map((k) => ({
+      key: k,
+      label: TRAITS[k].label,
+      blurb: TRAITS[k].blurb,
+      measurable: TRAITS[k].measurable,
+    })),
+    questionCount: selection.questions.length,
+    questions: selection.questions.map(toPublicQuestion),
+    followUpQuestions,
     profile,
+    poolExhausted: selection.poolExhausted,
+    remainingUnseen: selection.remainingUnseen,
   };
   res.json(payload);
 });
@@ -161,7 +195,7 @@ app.post('/api/submit', async (req: Request, res: Response) => {
     // The written report is generated from the scores, not the other way round.
     // If it fails, the scores still stand, so never let it fail the request.
     try {
-      report.parentReport = await generateParentReport(report, child?.firstName);
+      report.parentReport = await generateParentReport(report, child?.firstName, child?.age);
     } catch (err) {
       report.parentReport = null;
       report.parentReportError = err instanceof Error ? err.message : String(err);
@@ -181,6 +215,16 @@ app.post('/api/submit', async (req: Request, res: Response) => {
 const port = Number(process.env.PORT || 4000);
 app.listen(port, () => {
   console.log(`KidCog API listening on http://localhost:${port}`);
+
+  // A malformed question is worth a loud line here rather than a child
+  // discovering it. Non-fatal: one broken item should not stop the server.
+  const bad = bankProblems();
+  if (bad.length > 0) {
+    console.error('');
+    console.error(`  !!  ${bad.length} PROBLEM(S) IN THE QUESTION BANK`);
+    for (const p of bad) console.error(`     ${p}`);
+    console.error('');
+  }
   if (process.env.USE_MOCK_GRADER === '1') {
     console.log('Mock grader is ON — open answers are scored by a crude local heuristic.');
     console.log('Set USE_MOCK_GRADER=0 in server/.env for real AI grading.');

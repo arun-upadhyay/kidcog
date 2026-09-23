@@ -79,7 +79,7 @@ export default function StartScreen({ onStart, loading, error }: StartScreenProp
         </View>
         <Text style={type.soft}>
           {young
-            ? 'Questions are read aloud, answers are tapped or spoken, and the score is kept for you rather than shown to your child.'
+            ? 'Tap the speaker button to hear a question, answer by tapping or speaking, and the score is kept for you rather than shown to your child.'
             : 'Questions are read on screen and written answers are typed.'}
         </Text>
       </View>
@@ -113,7 +113,7 @@ export default function StartScreen({ onStart, loading, error }: StartScreenProp
       {error ? <Text style={styles.errorBanner}>{error}</Text> : null}
 
       <Button
-        title={loading ? 'Getting ready…' : "Let's play! 🎈"}
+        title={loading ? 'Getting ready…' : 'Choose categories →'}
         onPress={handleStart}
         disabled={!canStart}
         loading={loading}

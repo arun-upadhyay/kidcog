@@ -1,143 +1,142 @@
+import { useSyncExternalStore } from 'react';
 import { Platform } from 'react-native';
 import * as Speech from 'expo-speech';
 import { createAudioPlayer, setAudioModeAsync, type AudioPlayer } from 'expo-audio';
-
 import { API_BASE_URL } from './api';
 
-/**
- * Reading text aloud.
- *
- * For the 4-7 band this is not a convenience — it is how the child receives
- * the question at all, since most children that age cannot read a sentence
- * reliably. So the quality of the voice is a functional concern: a flat
- * robotic delivery is harder for a small child to follow.
- *
- * Audio comes from OpenAI via the server. The device's own synthesiser stays
- * as a fallback, because a child who cannot read must still be able to hear
- * the question when the network is down or generation fails.
- *
- * The fetch-before-play below is the important part. Handing a URL straight to
- * the player looks simpler, but the player loads it asynchronously and a failed
- * load is silent — no exception to catch, so the fallback never fires and the
- * child just gets nothing. Checking the response first means a failure is a
- * value we can act on rather than an absence we cannot see.
- */
+export type SpeechState = 'idle' | 'loading' | 'playing';
+let state: SpeechState = 'idle';
+const listeners = new Set<() => void>();
+function setState(next: SpeechState) {
+  state = next;
+  listeners.forEach(listener => listener());
+}
+const subscribe = (listener: () => void) => {
+  listeners.add(listener);
+  return () => { listeners.delete(listener); };
+};
+export function useSpeechState(): SpeechState {
+  return useSyncExternalStore(subscribe, () => state, () => 'idle');
+}
 
 let player: AudioPlayer | null = null;
+let subscription: { remove(): void } | null = null;
+let objectUrl: string | null = null;
+let request: AbortController | null = null;
+let deadline: ReturnType<typeof setTimeout> | null = null;
 let generation = 0;
-
-/** Surfaced so a caller can log or show why the good voice was unavailable. */
 export let lastSpeechError: string | null = null;
 
-let audioModeReady: Promise<void> | null = null;
-function ensureAudioMode(): Promise<void> {
-  if (!audioModeReady) {
-    // Play through the speaker even when the ringer switch is silenced —
-    // otherwise a muted phone means a child hears nothing and nobody knows why.
-    audioModeReady = setAudioModeAsync({ playsInSilentMode: true }).catch(() => {});
-  }
-  return audioModeReady;
+function clearDeadline() {
+  if (deadline) clearTimeout(deadline);
+  deadline = null;
 }
-
-function speakWithDevice(text: string): void {
+function releasePlayer() {
+  subscription?.remove();
+  subscription = null;
+  try { player?.remove(); } catch { /* Already released. */ }
+  player = null;
+  if (objectUrl) URL.revokeObjectURL(objectUrl);
+  objectUrl = null;
+}
+function finish(mine: number) {
+  if (mine !== generation) return;
+  clearDeadline();
+  releasePlayer();
+  request = null;
+  setState('idle');
+}
+function fallback(text: string, mine: number) {
+  if (mine !== generation) return;
+  clearDeadline();
+  releasePlayer();
+  request = null;
+  setState('playing');
+  // Recovery if a platform never reports an audio completion callback.
+  deadline = setTimeout(() => { if (mine === generation) stopSpeaking(); }, 300_000);
   try {
-    Speech.stop();
-    Speech.speak(text, { rate: 0.85, pitch: 1.05, language: 'en' });
-  } catch {
-    // A device with no installed voice must still leave the app usable.
-  }
+    Speech.speak(text, {
+      rate: 0.85, pitch: 1.05, language: 'en',
+      onDone: () => finish(mine), onStopped: () => finish(mine),
+      onError: () => finish(mine),
+    });
+  } catch { finish(mine); }
 }
-
-function releasePlayer(): void {
-  if (player) {
-    try {
-      player.remove();
-    } catch {
-      // already gone
-    }
-    player = null;
-  }
-}
-
 export function speakUrl(text: string): string {
   return `${API_BASE_URL}/api/speak?text=${encodeURIComponent(text)}`;
 }
 
-/**
- * Speak `text`. Resolves once playback has started, not once it has finished.
- * Calling it again cancels whatever was playing — two things talking over each
- * other is worse than either alone.
- */
-export async function speak(text: string): Promise<void> {
+/** Tap-only playback. The synchronous lock rejects even same-frame double taps. */
+export async function speak(text: string, options: { voice?: 'device' | 'generated' } = {}): Promise<void> {
   const trimmed = text.trim();
-  if (!trimmed) return;
-
-  // Guards against a slow request for an earlier question arriving after the
-  // child has already moved on.
+  if (!trimmed || state !== 'idle') return;
   const mine = ++generation;
-  stopSpeaking();
-  generation = mine;
-
-  await ensureAudioMode();
-  if (mine !== generation) return;
-
-  let source: string;
-  try {
-    const response = await fetch(speakUrl(trimmed));
-    if (mine !== generation) return;
-
-    if (!response.ok) {
-      // Read the server's explanation rather than reporting a bare status.
-      let detail = `HTTP ${response.status}`;
-      try {
-        const body = await response.json();
-        if (body?.detail) detail = String(body.detail);
-        else if (body?.error) detail = String(body.error);
-      } catch {
-        // non-JSON error body; the status will do
-      }
-      throw new Error(detail);
+  setState('loading');
+  lastSpeechError = null;
+  if (options.voice === 'device') {
+    // Web speech begins inside the click gesture, without fetching or decoding audio.
+    if (Platform.OS !== 'web') {
+      try { await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true }); }
+      catch { /* Still try the installed voice. */ }
     }
-
+    if (mine === generation) fallback(trimmed, mine);
+    return;
+  }
+  const controller = new AbortController();
+  request = controller;
+  deadline = setTimeout(() => controller.abort(), 20_000);
+  try {
+    await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true });
+    if (mine !== generation) return;
+    const response = await fetch(speakUrl(trimmed), { signal: controller.signal });
+    if (!response.ok) throw new Error(`Speech request failed (${response.status}).`);
+    let source: string;
     if (Platform.OS === 'web') {
-      // Play the bytes we already have rather than fetching them twice.
       const blob = await response.blob();
+      if (mine !== generation) return;
       source = URL.createObjectURL(blob);
+      objectUrl = source;
     } else {
-      // Native players stream a URL happily, and the server caches the audio,
-      // so the second request is cheap.
+      // The native player's stream uses the server's completed audio cache.
       source = speakUrl(trimmed);
     }
-  } catch (err) {
-    lastSpeechError = err instanceof Error ? err.message : String(err);
-    console.warn(`[speech] falling back to the device voice: ${lastSpeechError}`);
-    if (mine === generation) speakWithDevice(trimmed);
-    return;
-  }
-
-  if (mine !== generation) {
-    if (Platform.OS === 'web') URL.revokeObjectURL(source);
-    return;
-  }
-
-  try {
+    if (mine !== generation) return;
+    clearDeadline();
+    request = null;
     const next = createAudioPlayer({ uri: source });
     player = next;
+    // A failed or stalled player must not leave the button locked forever.
+    deadline = setTimeout(() => {
+      if (mine === generation) fallback(trimmed, mine);
+    }, 15_000);
+    subscription = next.addListener('playbackStatusUpdate', status => {
+      if (mine !== generation) return;
+      if (status.error) {
+        lastSpeechError = status.error;
+        fallback(trimmed, mine);
+      } else if (status.didJustFinish) {
+        finish(mine);
+      } else if (status.playing && state === 'loading') {
+        clearDeadline();
+        setState('playing');
+        deadline = setTimeout(() => { if (mine === generation) stopSpeaking(); }, 300_000);
+      }
+    });
     next.play();
-    lastSpeechError = null;
   } catch (err) {
+    if (mine !== generation) return; // Cancelled navigation must never start a fallback.
     lastSpeechError = err instanceof Error ? err.message : String(err);
-    console.warn(`[speech] playback failed, using the device voice: ${lastSpeechError}`);
-    speakWithDevice(trimmed);
+    fallback(trimmed, mine);
   }
 }
 
+/** Cancel pending audio and playback on navigation or when recording begins. */
 export function stopSpeaking(): void {
   generation++;
+  request?.abort();
+  request = null;
+  clearDeadline();
   releasePlayer();
-  try {
-    Speech.stop();
-  } catch {
-    // ignore
-  }
+  void Speech.stop().catch(() => {});
+  setState('idle');
 }

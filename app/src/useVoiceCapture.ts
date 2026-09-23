@@ -9,7 +9,7 @@ import {
 import { transcribeAudio } from './api';
 import { stopSpeaking } from './speech';
 
-export type VoiceStage = 'idle' | 'recording' | 'working' | 'failed';
+export type VoiceStage = 'idle' | 'starting' | 'recording' | 'working' | 'failed';
 
 /** Longest we let anyone ramble before stopping for them. */
 export const MAX_RECORD_SECONDS = 60;
@@ -26,6 +26,8 @@ export function useVoiceCapture(onTranscript: (text: string) => void) {
   const [stage, setStage] = useState<VoiceStage>('idle');
   const [seconds, setSeconds] = useState(0);
   const [problem, setProblem] = useState<string | null>(null);
+  const transition = useRef(false);
+  const recording = useRef(false);
   const tick = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const clearTick = useCallback(() => {
@@ -38,6 +40,9 @@ export function useVoiceCapture(onTranscript: (text: string) => void) {
   useEffect(() => clearTick, [clearTick]);
 
   const stop = useCallback(async () => {
+    if (transition.current || !recording.current) return;
+    transition.current = true;
+    recording.current = false;
     clearTick();
     setStage('working');
     try {
@@ -62,10 +67,15 @@ export function useVoiceCapture(onTranscript: (text: string) => void) {
     } catch (err) {
       setProblem(err instanceof Error ? err.message : 'Could not understand the recording.');
       setStage('failed');
+    } finally {
+      transition.current = false;
     }
   }, [recorder, onTranscript, clearTick]);
 
   const start = useCallback(async () => {
+    if (transition.current || recording.current) return;
+    transition.current = true;
+    setStage('starting');
     setProblem(null);
     stopSpeaking(); // never record the question being read aloud
     try {
@@ -78,12 +88,15 @@ export function useVoiceCapture(onTranscript: (text: string) => void) {
       await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
       await recorder.prepareToRecordAsync();
       recorder.record();
+      recording.current = true;
       setSeconds(0);
       setStage('recording');
       tick.current = setInterval(() => setSeconds((s) => s + 1), 1000);
     } catch (err) {
       setProblem(err instanceof Error ? err.message : 'Could not start recording.');
       setStage('failed');
+    } finally {
+      transition.current = false;
     }
   }, [recorder]);
 
@@ -96,7 +109,7 @@ export function useVoiceCapture(onTranscript: (text: string) => void) {
 
   const toggle = useCallback(() => {
     if (stage === 'recording') void stop();
-    else if (stage !== 'working') void start();
+    else if (stage !== 'working' && stage !== 'starting') void start();
   }, [stage, start, stop]);
 
   return { stage, seconds, problem, start, stop, toggle };

@@ -54,14 +54,14 @@ export default function VoiceAnswer({
           accessibilityRole="button"
           accessibilityLabel={stage === 'recording' ? 'Stop recording' : 'Record your answer'}
           onPress={press}
-          disabled={stage === 'working'}
+          disabled={stage === 'working' || stage === 'starting'}
           style={({ pressed }) => [
             styles.inlineButton,
             stage === 'recording' && styles.inlineButtonLive,
             pressed && { opacity: 0.85 },
           ]}
         >
-          {stage === 'working' ? (
+          {stage === 'working' || stage === 'starting' ? (
             <ActivityIndicator size="small" color={colors.primary} />
           ) : (
             <Text style={styles.inlineIcon}>{stage === 'recording' ? '⏹' : '🎤'}</Text>
@@ -69,7 +69,7 @@ export default function VoiceAnswer({
           <Text style={styles.inlineLabel}>
             {stage === 'recording'
               ? `Listening… ${seconds}s — tap to stop`
-              : stage === 'working'
+              : stage === 'starting' ? 'Starting microphone…' : stage === 'working'
                 ? 'Writing it down…'
                 : 'Say it instead'}
           </Text>
@@ -81,7 +81,7 @@ export default function VoiceAnswer({
 
   // ---- big: the only input, for pre-readers -------------------------------
   const size = scaled(120, uiScale);
-  const busy = stage === 'working';
+  const busy = stage === 'working' || stage === 'starting';
 
   return (
     <View style={{ marginTop: spacing(2) }}>
@@ -110,7 +110,7 @@ export default function VoiceAnswer({
         <Text style={[styles.micLabel, { fontSize: scaled(19, uiScale) }]}>
           {stage === 'recording'
             ? 'Listening… tap when you are done'
-            : busy
+            : stage === 'starting' ? 'Starting microphone…' : busy
               ? 'Listening to what you said…'
               : value
                 ? 'Tap to say more'

@@ -11,15 +11,72 @@
  * import the types from there instead of redeclaring them.
  */
 
-export type DomainKey =
-  | 'verbal_reasoning'
-  | 'quantitative_reasoning'
-  | 'pattern_reasoning'
-  | 'working_memory';
+export type TraitKey =
+  | 'abstract_concepts'
+  | 'beyond_experience'
+  | 'generalization'
+  | 'cause_effect'
+  | 'challenge_seeking'
+  | 'curiosity'
+  | 'original_methods'
+  | 'observant';
 
-export interface DomainMeta {
+export type Measurability = 'direct' | 'inferred' | 'behaviour';
+
+export interface TraitMetaPublic {
+  key: TraitKey;
   label: string;
   blurb: string;
+  measurable: Measurability;
+}
+
+export type ItemFormat =
+  | 'analogy'
+  | 'classification'
+  | 'sentence_completion'
+  | 'figure_matrix'
+  | 'figure_series'
+  | 'figure_classification'
+  | 'spot_the_difference'
+  | 'number_series'
+  | 'quantitative_relation'
+  | 'prediction'
+  | 'explanation'
+  | 'choice';
+
+// --- Figural questions: the spec the server sends and Figure.tsx draws. ---
+
+export type ShapeKind =
+  | 'circle'
+  | 'square'
+  | 'triangle'
+  | 'diamond'
+  | 'star'
+  | 'hexagon'
+  | 'heart'
+  | 'arrow';
+
+export type ShapeFill = 'solid' | 'outline' | 'half';
+
+export interface Shape {
+  kind: ShapeKind;
+  fill: ShapeFill;
+  /** Palette slot, not a hex value: the app owns the actual colours. */
+  tone?: 'ink' | 'primary' | 'cool' | 'go' | 'happy';
+  rotate?: number;
+  scale?: number;
+}
+
+export interface FigureCell {
+  shapes: Shape[];
+  /** The cell the child has to work out. Drawn as a question mark. */
+  missing?: boolean;
+}
+
+export interface FigureSpec {
+  kind: 'matrix' | 'series' | 'group';
+  columns: number;
+  cells: FigureCell[];
 }
 
 export type AgeProfileKey = 'early' | 'middle';
@@ -42,26 +99,37 @@ export interface McqOption {
   key: string;
   text: string;
   symbol?: string;
+  /** A drawn shape, for figural items. */
+  figure?: FigureCell;
 }
 
 export interface PublicQuestion {
   id: string;
-  domain: DomainKey;
-  type: 'mcq' | 'open';
+  trait: TraitKey;
+  type: 'mcq' | 'open' | 'challenge';
   prompt: string;
   options: McqOption[] | null;
   timeLimitSeconds: number | null;
   visual: string | null;
+  figure: FigureSpec | null;
+  format: ItemFormat;
   spoken: string | null;
+  /** Challenge items only: which question follows each choice. */
+  followUp: Record<string, string> | null;
   /** Question plus options, composed server-side, for the read-aloud voice. */
   speechText: string;
 }
 
 export interface TestPayload {
-  domains: Record<DomainKey, DomainMeta>;
+  traits: TraitMetaPublic[];
   questionCount: number;
   questions: PublicQuestion[];
+  /** Follow-ups behind challenge choices, keyed by id. */
+  followUpQuestions: Record<string, PublicQuestion>;
   profile: AgeProfile;
+  /** True when too few unseen questions remained to fill a session. */
+  poolExhausted: boolean;
+  remainingUnseen: number;
 }
 
 export interface ChildProfile {
@@ -77,8 +145,8 @@ export interface ResponseInput {
 
 export interface ScoredResponse {
   questionId: string;
-  domain: DomainKey;
-  type: 'mcq' | 'open';
+  trait: TraitKey;
+  type: 'mcq' | 'open' | 'challenge';
   prompt: string;
   answer: string;
   earned: number;
@@ -88,17 +156,26 @@ export interface ScoredResponse {
   correct?: boolean;
   band?: number;
   ungraded?: boolean;
+  /** Left blank: reported as missing evidence rather than scored as wrong. */
+  skipped?: boolean;
+  /** Challenge items: whether the child reached for the harder task. */
+  choseHarder?: boolean;
 }
 
-export interface DomainReport {
-  key: DomainKey;
+export interface TraitReport {
+  key: TraitKey;
   label: string;
   blurb: string;
+  measurable: Measurability;
   questionCount: number;
   earned: number;
   possible: number;
   percent: number;
   band: string;
+  /** Null when the session produced no evidence: reported as "not seen". */
+  formScale: { value: number; label: string } | null;
+  /** Plain sentence describing how thin or solid the evidence is. */
+  evidence: string;
 }
 
 export interface ParentReport {
@@ -114,10 +191,12 @@ export interface Report {
   version: number;
   generatedAt: string;
   overall: { earned: number; possible: number; percent: number };
-  domains: DomainReport[];
+  traits: TraitReport[];
   strongest: string | null;
   growthArea: string | null;
   responses: ScoredResponse[];
+  /** Ids served this session, remembered so the next round serves fresh ones. */
+  seenQuestionIds: string[];
   graderFailed: string | null;
   disclaimer: string;
   parentReport?: ParentReport | null;

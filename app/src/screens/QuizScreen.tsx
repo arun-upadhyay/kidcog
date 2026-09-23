@@ -13,8 +13,9 @@ import * as Haptics from 'expo-haptics';
 
 import Button from '../components/Button';
 import VoiceAnswer from '../components/VoiceAnswer';
+import Figure, { CellView } from '../components/Figure';
 import { colors, spacing, type, scaled, OPTION_COLORS, PRAISE } from '../theme';
-import { speak, stopSpeaking } from '../speech';
+import { speak, stopSpeaking, useSpeechState } from '../speech';
 import type { PublicQuestion, ResponseInput, TestPayload } from '../types';
 
 export interface QuizScreenProps {
@@ -45,9 +46,14 @@ function ProgressDots({ total, current, scale }: { total: number; current: numbe
 }
 
 export default function QuizScreen({ test, onFinish, submitting, error }: QuizScreenProps) {
+  const speechState = useSpeechState();
+  const speechBusy = speechState !== 'idle';
   const { profile } = test;
   const s = profile.uiScale;
 
+  // The running sequence. A challenge choice splices its follow-up in right
+  // after it, so picking "a tricky one" actually gets you the tricky one.
+  const [sequence, setSequence] = useState<PublicQuestion[]>(test.questions);
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [elapsed, setElapsed] = useState<Record<string, number>>({});
@@ -55,18 +61,15 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
   const startedAt = useRef<number>(Date.now());
   const [tick, setTick] = useState(0);
 
-  const question: PublicQuestion | undefined = test.questions[index];
+  const question: PublicQuestion | undefined = sequence[index];
 
-  // Read the question aloud on arrival. This is how a pre-reader receives it.
+  // Reset question state; speech starts only from the speaker button.
   useEffect(() => {
     startedAt.current = Date.now();
     setTick(0);
     setPraise(null);
-    if (question && profile.readAloud) {
-      void speak(question.speechText || question.prompt);
-    }
     return () => stopSpeaking();
-  }, [question?.id, profile.readAloud]);
+  }, [question?.id]);
 
   // Only run a clock when something actually displays it.
   useEffect(() => {
@@ -76,8 +79,8 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
   }, [question?.id, profile.showTimer]);
 
   const progress = useMemo(
-    () => (index + 1) / Math.max(1, test.questions.length),
-    [index, test.questions.length]
+    () => (index + 1) / Math.max(1, sequence.length),
+    [index, sequence.length]
   );
 
   if (!question) {
@@ -88,14 +91,33 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
     );
   }
 
-  const isLast = index === test.questions.length - 1;
+  const isLast = index === sequence.length - 1;
   const current = answers[question.id] ?? '';
   const limit = question.timeLimitSeconds;
   const remaining = profile.showTimer && limit !== null ? Math.max(0, limit - tick) : null;
   const answered = current.trim().length > 0;
 
   function choose(optionKey: string) {
-    setAnswers((a) => ({ ...a, [question!.id]: optionKey }));
+    const q = question!;
+    setAnswers((a) => ({ ...a, [q.id]: optionKey }));
+
+    // Honour a challenge choice. Offering a child the choice and then ignoring
+    // it would teach them their choice does not matter, which is both dishonest
+    // and the opposite of the disposition we are trying to observe.
+    if (q.type === 'challenge' && q.followUp) {
+      const nextId = q.followUp[optionKey];
+      const followUp = nextId ? test.followUpQuestions[nextId] : undefined;
+      if (followUp) {
+        setSequence((seq) => {
+          if (seq.some((s) => s.id === followUp.id)) return seq;
+          const at = seq.findIndex((s) => s.id === q.id);
+          const copy = [...seq];
+          copy.splice(at + 1, 0, followUp);
+          return copy;
+        });
+      }
+    }
+
     if (profile.celebrateEachAnswer) {
       // Acknowledge the act of answering, never whether it was right. A young
       // child told "wrong" mid-test stops trying; correctness is for the
@@ -113,7 +135,7 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
     stopSpeaking();
     record(question!);
     if (isLast) {
-      const responses: ResponseInput[] = test.questions.map((q) => ({
+      const responses: ResponseInput[] = sequence.map((q) => ({
         questionId: q.id,
         answer: answers[q.id] ?? '',
         elapsedSeconds:
@@ -142,18 +164,17 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
     >
       <View style={styles.header}>
         {young ? (
-          <ProgressDots total={test.questions.length} current={index} scale={s} />
+          <ProgressDots total={sequence.length} current={index} scale={s} />
         ) : (
           <View style={styles.progressTrack}>
             <View style={[styles.progressFill, { width: `${progress * 100}%` }]} />
           </View>
         )}
 
+        <Text style={[type.heading, { marginBottom: spacing(1) }]}>{test.traits.find((t) => t.key === question.trait)?.label ?? 'Thinking activity'}</Text>
         <View style={styles.headerRow}>
           <Text style={type.label}>
-            {young
-              ? `QUESTION ${index + 1} OF ${test.questions.length}`
-              : `${test.domains[question.domain]?.label.toUpperCase() ?? question.domain} · ${index + 1} OF ${test.questions.length}`}
+            {`QUESTION ${index + 1} OF ${sequence.length}`}
           </Text>
           {remaining !== null && (
             <Text style={[type.label, remaining <= 20 && { color: colors.warn }]}>
@@ -165,7 +186,12 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
       </View>
 
       <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
-        {question.visual ? (
+        {test.poolExhausted ? <Text style={[type.soft, { marginBottom: spacing(1.5) }]}>This round uses the {test.questionCount} available questions in this category for your age.</Text> : null}
+        {question.figure ? (
+          <View style={styles.visualCard}>
+            <Figure spec={question.figure} uiScale={s} />
+          </View>
+        ) : question.visual ? (
           <View style={styles.visualCard}>
             <Text style={[styles.visual, { fontSize: scaled(40, s), lineHeight: scaled(58, s) }]}>
               {question.visual}
@@ -180,16 +206,18 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
           {profile.readAloud && (
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel="Hear the question again"
+              accessibilityLabel={speechBusy ? (speechState === 'loading' ? 'Loading audio' : 'Reading question') : 'Read the question aloud'}
+              disabled={speechBusy}
+              accessibilityState={{ disabled: speechBusy, busy: speechBusy }}
               onPress={() => void speak(question.speechText || question.prompt)}
-              style={({ pressed }) => [styles.replay, pressed && { opacity: 0.8 }]}
+              style={({ pressed }) => [styles.replay, (pressed || speechBusy) && { opacity: 0.5 }]}
             >
-              <Text style={{ fontSize: scaled(24, s) }}>🔊</Text>
+              <Text style={{ fontSize: scaled(24, s) }}>{speechState === 'loading' ? '⏳' : speechBusy ? '🔉' : '🔊'}</Text>
             </Pressable>
           )}
         </View>
 
-        {question.type === 'mcq' && question.options ? (
+        {(question.type === 'mcq' || question.type === 'challenge') && question.options ? (
           <View style={{ gap: spacing(1.5), marginTop: spacing(3) }}>
             {question.options.map((opt, i) => {
               const selected = current === opt.key;
@@ -212,7 +240,9 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
                     pressed && { opacity: 0.85 },
                   ]}
                 >
-                  {opt.symbol ? (
+                  {opt.figure ? (
+                    <CellView cell={opt.figure} size={scaled(44, s)} />
+                  ) : opt.symbol ? (
                     <Text style={{ fontSize: scaled(34, s) }}>{opt.symbol}</Text>
                   ) : (
                     <View style={[styles.bullet, selected && { backgroundColor: tone.border }]}>

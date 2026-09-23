@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable, type TextStyle } from 'react-native';
 import Button from '../components/Button';
 import { colors, spacing, type } from '../theme';
-import { speak } from '../speech';
-import type { ParentReport as ParentReportType, Report, ScoredResponse } from '../types';
+import { speak, stopSpeaking, useSpeechState } from '../speech';
+import type { ParentReport as ParentReportType, Report, ScoredResponse, TraitReport } from '../types';
 
 export interface ResultsScreenProps {
   report: Report;
   childName?: string | undefined;
   onRestart: () => void;
+  onChooseCategory: () => void;
+  /** Another round for the same child, using only questions not yet seen. */
+  onReassess: () => void;
+  /** Clear this child's history so the whole bank is available again. */
+  onResetQuestions: () => void;
+  /** How many unseen questions are left for this child's age after this round. */
+  remainingUnseen: number;
+  busy: boolean;
+  error: string | null;
 }
 
 function Bar({ percent }: { percent: number }) {
@@ -39,10 +48,10 @@ function ReportSection({ title, items }: { title: string; items: string[] }) {
 function reportAsSpeech(r: ParentReportType): string {
   return [
     r.opening,
-    r.strengths.length ? `What went well. ${r.strengths.join(' ')}` : '',
-    r.stuckPoints.length ? `Where things got harder. ${r.stuckPoints.join(' ')}` : '',
-    r.thinkingNotes ? `How they approached it. ${r.thinkingNotes}` : '',
-    r.practiceIdeas.length ? `Things to try at home. ${r.practiceIdeas.join(' ')}` : '',
+    r.strengths.length ? `You figured it out. ${r.strengths.join(' ')}` : '',
+    r.stuckPoints.length ? `Let’s try this together. ${r.stuckPoints.join(' ')}` : '',
+    r.thinkingNotes ? `Your thinking. ${r.thinkingNotes}` : '',
+    r.practiceIdeas.length ? `Try a little game. ${r.practiceIdeas.join(' ')}` : '',
     r.closing,
   ]
     .filter((part) => part.trim().length > 0)
@@ -50,35 +59,42 @@ function reportAsSpeech(r: ParentReportType): string {
 }
 
 function ParentReportCard({ report }: { report: ParentReportType }) {
+  const speechState = useSpeechState();
+  const speechBusy = speechState !== 'idle';
+  useEffect(() => () => stopSpeaking(), []);
   return (
     <View style={styles.summaryCard}>
       <View style={styles.cardHeader}>
-        <Text style={type.label}>WHAT THIS SESSION SHOWED</Text>
+        <Text style={type.label}>A LITTLE CHEER FOR YOU</Text>
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Read this report aloud"
-          onPress={() => void speak(reportAsSpeech(report))}
-          style={({ pressed }) => [styles.listen, pressed && { opacity: 0.8 }]}
+          disabled={speechBusy}
+          accessibilityState={{ disabled: speechBusy, busy: speechBusy }}
+          onPress={() => void speak(reportAsSpeech(report), { voice: 'device' })}
+          style={({ pressed }) => [styles.listen, (pressed || speechBusy) && { opacity: 0.5 }]}
         >
-          <Text style={styles.listenText}>🔊 Listen</Text>
+          <Text style={styles.listenText}>{speechState === 'loading' ? 'Loading…' : speechBusy ? 'Reading…' : '🔊 Listen'}</Text>
         </Pressable>
       </View>
+
+      <Text style={[type.soft, { marginTop: spacing(1), fontSize: 12 }]}>Listen uses your device’s voice for a quicker start.</Text>
 
       {report.opening ? (
         <Text style={[type.body, { marginTop: spacing(1.5) }]}>{report.opening}</Text>
       ) : null}
 
-      <ReportSection title="What went well" items={report.strengths} />
-      <ReportSection title="Where things got harder" items={report.stuckPoints} />
+      <ReportSection title="🌟 You figured it out" items={report.strengths} />
+      <ReportSection title="🧩 Let’s try this together" items={report.stuckPoints} />
 
       {report.thinkingNotes ? (
         <View style={{ marginTop: spacing(2.5) }}>
-          <Text style={styles.sectionTitle}>How they approached it</Text>
+          <Text style={styles.sectionTitle}>💡 Your thinking</Text>
           <Text style={[type.body, { marginTop: spacing(0.5) }]}>{report.thinkingNotes}</Text>
         </View>
       ) : null}
 
-      <ReportSection title="Things to try at home" items={report.practiceIdeas} />
+      <ReportSection title="🎲 Try a little game" items={report.practiceIdeas} />
 
       {report.closing ? (
         <Text style={[type.soft, styles.closing]}>{report.closing}</Text>
@@ -87,28 +103,77 @@ function ParentReportCard({ report }: { report: ParentReportType }) {
   );
 }
 
+/**
+ * One row of the rating scale.
+ *
+ * A trait with no evidence shows "not seen", never a zero. A parent reading 0
+ * beside "demonstrates great curiosity" would take it as a judgement about
+ * their child rather than as missing data, and would carry that into the form.
+ */
+function TraitCard({ trait }: { trait: TraitReport }) {
+  const seen = trait.questionCount > 0;
+
+  return (
+    <View style={styles.domainCard}>
+      <View style={styles.domainHeader}>
+        <Text style={[styles.domainLabel, { flex: 1 }]}>{trait.label}</Text>
+        {trait.formScale ? (
+          <View style={styles.scalePill}>
+            <Text style={styles.scaleValue}>{trait.formScale.value}/5</Text>
+            <Text style={styles.scaleLabel}>{trait.formScale.label}</Text>
+          </View>
+        ) : (
+          <Text style={styles.notSeen}>{seen ? 'observed' : 'not yet observed'}</Text>
+        )}
+      </View>
+
+      {seen && trait.formScale ? <><Bar percent={trait.percent} /><Text style={[type.soft, { marginTop: spacing(1) }]}>{trait.earned} / {trait.possible} points · {trait.percent}% · {trait.questionCount} answered questions</Text></> : null}
+
+      <Text style={[type.soft, { marginTop: spacing(1) }]}>{trait.band}</Text>
+      <Text style={[type.soft, { marginTop: spacing(0.5), fontSize: 13 }]}>{trait.blurb}</Text>
+      <Text style={[type.soft, { marginTop: spacing(0.75), fontSize: 12, fontStyle: 'italic' }]}>
+        {trait.evidence}
+        {trait.measurable === 'behaviour'
+          ? ' Measured by which puzzle they chose, not by a question.'
+          : trait.measurable === 'inferred'
+            ? ' Based on the ideas and explanations offered in this activity.'
+            : ''}
+      </Text>
+    </View>
+  );
+}
+
 function chipStyle(r: ScoredResponse): TextStyle {
-  if (r.ungraded) return styles.chipWarn;
+  if (r.skipped || r.ungraded) return styles.chipWarn;
   if (r.possible > 0 && r.earned === r.possible) return styles.chipGood;
   if (r.earned === 0) return styles.chipLow;
   return styles.chipMid;
 }
 
-export default function ResultsScreen({ report, childName, onRestart }: ResultsScreenProps) {
+export default function ResultsScreen({
+  report,
+  childName,
+  onRestart,
+  onChooseCategory,
+  onReassess,
+  onResetQuestions,
+  remainingUnseen,
+  busy,
+  error,
+}: ResultsScreenProps) {
   const [showDetail, setShowDetail] = useState(false);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={type.label}>SESSION RESULT</Text>
+      <Text style={type.label}>COMBINED SESSION RESULT</Text>
       <Text style={[type.title, { marginTop: spacing(1) }]}>
         {childName ? `${childName}'s session` : 'Session summary'}
       </Text>
 
       <View style={styles.overall}>
-        <Text style={styles.overallNumber}>{report.overall.percent}%</Text>
+        <Text style={styles.overallNumber}>{report.overall.possible > 0 ? `${report.overall.percent}%` : 'Not scored'}</Text>
         <Text style={type.soft}>
-          {report.overall.earned} of {report.overall.possible} points across {report.domains.length}{' '}
-          areas
+          {report.overall.earned} of {report.overall.possible} points on the scored questions
         </Text>
       </View>
 
@@ -123,18 +188,16 @@ export default function ResultsScreen({ report, childName, onRestart }: ResultsS
         </View>
       ) : null}
 
-      <Text style={[type.heading, { marginTop: spacing(4) }]}>By area</Text>
+      <Text style={[type.heading, { marginTop: spacing(4) }]}>Intellectual Ability</Text>
+      <Text style={[type.soft, { marginTop: spacing(0.5) }]}>
+        All eight categories appear below. Results combine the rounds completed in this session.
+        The 1–5 indicators describe evidence in these activities, not a ranking against other children
+        or an official school rating. Unobserved categories have no score. Speed, enjoyment, and
+        everyday behaviour need observations over time.
+      </Text>
       <View style={{ gap: spacing(2), marginTop: spacing(2) }}>
-        {report.domains.map((d) => (
-          <View key={d.key} style={styles.domainCard}>
-            <View style={styles.domainHeader}>
-              <Text style={styles.domainLabel}>{d.label}</Text>
-              <Text style={styles.domainPct}>{d.percent}%</Text>
-            </View>
-            <Bar percent={d.percent} />
-            <Text style={[type.soft, { marginTop: spacing(1) }]}>{d.band}</Text>
-            <Text style={[type.soft, { marginTop: spacing(0.5), fontSize: 13 }]}>{d.blurb}</Text>
-          </View>
+        {report.traits.map((t) => (
+          <TraitCard key={t.key} trait={t} />
         ))}
       </View>
 
@@ -165,7 +228,11 @@ export default function ResultsScreen({ report, childName, onRestart }: ResultsS
                 Answer: {r.answer.trim() ? r.answer : '(left blank)'}
               </Text>
               <Text style={[styles.scoreChip, chipStyle(r)]}>
-                {r.ungraded ? 'not graded' : `${r.earned} / ${r.possible} points`}
+                {r.skipped
+                  ? 'skipped — not scored'
+                  : r.ungraded
+                    ? 'not graded'
+                    : `${r.earned} / ${r.possible} points`}
               </Text>
               {r.note ? <Text style={[type.soft, { marginTop: spacing(1) }]}>{r.note}</Text> : null}
             </View>
@@ -173,12 +240,46 @@ export default function ResultsScreen({ report, childName, onRestart }: ResultsS
         </View>
       )}
 
+      <View style={styles.reassessCard}>
+        <Text style={type.heading}>Explore another category</Text>
+        <Text style={[type.soft, { marginVertical: spacing(1) }]}>{report.traits.filter(t => t.questionCount > 0).length} of 8 categories have observations so far. Your completed answers stay in this session.</Text>
+        <Button title="Choose the next category" onPress={onChooseCategory} disabled={busy} />
+        <Text style={[type.soft, { marginTop: spacing(1) }]}>
+          {remainingUnseen > 0
+            ? `A second round uses only questions ${
+                childName ?? 'your child'
+              } has not seen before — ${remainingUnseen} ${
+                remainingUnseen === 1 ? 'is' : 'are'
+              } left. Repeating the same questions would measure memory rather than thinking, so it is worth having more than one round before reading much into a single low row above.`
+            : `There are no unseen questions left at this age, so a second round would repeat what ${
+                childName ?? 'your child'
+              } has already answered. Resetting makes the whole set available again — treat anything after that as practice, not a fresh measurement.`}
+        </Text>
+        {error ? (
+          <Text style={[type.body, { color: colors.warn, marginTop: spacing(1.5) }]}>{error}</Text>
+        ) : null}
+        <View style={{ gap: spacing(1.5), marginTop: spacing(2) }}>
+          <Button
+            title="Ask different questions"
+            onPress={onReassess}
+            loading={busy}
+            disabled={remainingUnseen === 0}
+          />
+          <Button
+            title="Reset and allow repeats"
+            variant="secondary"
+            onPress={onResetQuestions}
+            disabled={busy}
+          />
+        </View>
+      </View>
+
       <View style={styles.disclaimer}>
         <Text style={[type.soft, { fontSize: 13 }]}>{report.disclaimer}</Text>
       </View>
 
       <View style={{ marginTop: spacing(3) }}>
-        <Button title="Start a new session" variant="secondary" onPress={onRestart} />
+        <Button title="Start a new session" variant="secondary" onPress={onRestart} disabled={busy} />
       </View>
     </ScrollView>
   );
@@ -186,6 +287,14 @@ export default function ResultsScreen({ report, childName, onRestart }: ResultsS
 
 const styles = StyleSheet.create({
   container: { padding: spacing(3), paddingBottom: spacing(6) },
+  reassessCard: {
+    marginTop: spacing(4),
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.line,
+    borderRadius: 16,
+    padding: spacing(2.5),
+  },
   overall: {
     marginTop: spacing(3),
     backgroundColor: colors.accentSoft,
@@ -252,7 +361,33 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     padding: spacing(2),
   },
-  domainHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: spacing(1) },
+  domainHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    gap: spacing(1),
+    marginBottom: spacing(1),
+  },
+  scalePill: {
+    alignItems: 'center',
+    backgroundColor: colors.accentSoft,
+    borderRadius: 10,
+    paddingHorizontal: spacing(1.25),
+    paddingVertical: spacing(0.5),
+    minWidth: 62,
+  },
+  scaleValue: { fontSize: 20, fontWeight: '800', color: colors.accent, lineHeight: 24 },
+  scaleLabel: { fontSize: 10, fontWeight: '700', color: colors.accent },
+  notSeen: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: colors.inkSoft,
+    backgroundColor: colors.bg,
+    borderRadius: 999,
+    paddingHorizontal: spacing(1.25),
+    paddingVertical: spacing(0.75),
+    overflow: 'hidden',
+  },
   domainLabel: { fontSize: 16, fontWeight: '700', color: colors.ink },
   domainPct: { fontSize: 16, fontWeight: '700', color: colors.accent },
   barTrack: { height: 8, backgroundColor: colors.bg, borderRadius: 4, overflow: 'hidden' },

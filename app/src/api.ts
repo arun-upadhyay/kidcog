@@ -1,3 +1,4 @@
+import type { TraitKey, TraitMetaPublic } from './types';
 import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
@@ -66,7 +67,16 @@ async function request<T>(path: string, options: RequestOptions = {}): Promise<T
       if (err.name === 'AbortError') {
         throw new Error('The server took too long to respond.');
       }
-      if (err.message === 'Network request failed') {
+      // Each platform words "I could not open a connection" differently:
+      // React Native says "Network request failed", browsers say "Failed to
+      // fetch" or "Load failed". Matching only one of them meant the web build
+      // showed the raw browser string, which tells a parent nothing about what
+      // to do. Match the platform wordings, and fall back to the TypeError
+      // that fetch throws when the request never left the device.
+      const unreachable =
+        /Network request failed|Failed to fetch|Load failed|NetworkError/i.test(err.message) ||
+        err.name === 'TypeError';
+      if (unreachable) {
         throw new Error(
           `Could not reach the server at ${API_BASE_URL}. Is it running, and is the address right for this device?`
         );
@@ -78,9 +88,24 @@ async function request<T>(path: string, options: RequestOptions = {}): Promise<T
   }
 }
 
-export function fetchTest(age?: number): Promise<TestPayload> {
-  const qs = age ? `?age=${encodeURIComponent(age)}` : '';
-  return request<TestPayload>(`/api/test${qs}`);
+export function fetchCategories(): Promise<TraitMetaPublic[]> {
+  return request<TraitMetaPublic[]>('/api/categories');
+}
+
+export async function fetchTest(age?: number, exclude: string[] = [], trait?: TraitKey, limit = 5): Promise<TestPayload> {
+  const params = new URLSearchParams();
+  if (age) params.set('age', String(age));
+  // Ids the child has already seen. A reassessment must serve fresh material:
+  // a second run on the same items measures memory, not thinking.
+  if (exclude.length > 0) params.set('exclude', exclude.join(','));
+  if (trait) params.set('trait', trait);
+  params.set('limit', String(limit));
+  const qs = params.toString();
+  const test = await request<TestPayload>(`/api/test${qs ? `?${qs}` : ''}`);
+  if (!test.profile || typeof test.profile.uiScale !== 'number' || !Array.isArray(test.questions)) {
+    throw new Error('This server is incompatible. Start the backend from Documents/kidcog/server and try again.');
+  }
+  return test;
 }
 
 /**
