@@ -100,8 +100,8 @@ export function listChildren(): Promise<SavedChildProfile[]> {
   return request<SavedChildProfile[]>('/api/children');
 }
 
-export function saveChild(nickname: string): Promise<SavedChildProfile> {
-  return request<SavedChildProfile>('/api/children', { method: 'POST', body: JSON.stringify({ nickname }) });
+export function saveChild(nickname: string, age: number): Promise<SavedChildProfile> {
+  return request<SavedChildProfile>('/api/children', { method: 'POST', body: JSON.stringify({ nickname, age }) });
 }
 
 export function deleteChildProfile(childId: string): Promise<void> {

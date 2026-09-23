@@ -97,7 +97,7 @@ function KidCogApp() {
     setBusy(true); setError(null);
     try {
       const nickname = profile.firstName?.trim() || 'My child';
-      const saved = await saveChild(nickname);
+      const saved = await saveChild(nickname, profile.age ?? 5);
       const next = { ...profile, id: saved.id, firstName: saved.nickname };
       setSavedChildren(current => current.some(item => item.id === saved.id) ? current : [...current, saved]);
       setChild(next);

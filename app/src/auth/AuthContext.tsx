@@ -12,6 +12,9 @@ type AuthValue = {
   loading: boolean;
   configured: boolean;
   signIn: (provider: Extract<Provider, 'google' | 'apple'>) => Promise<void>;
+  signInWithEmail: (email: string, password: string) => Promise<void>;
+  signUpWithEmail: (email: string, password: string) => Promise<{ needsVerification: boolean }>;
+  resendVerification: (email: string) => Promise<void>;
   signOut: () => Promise<void>;
 };
 
@@ -29,6 +32,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
     const { data } = supabase.auth.onAuthStateChange((_event, next) => setSession(next));
     return () => data.subscription.unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    if (!supabaseConfigured || Platform.OS === 'web') return;
+
+    async function finishEmailVerification(url: string | null) {
+      if (!url) return;
+      const parsed = Linking.parse(url);
+      const code = typeof parsed.queryParams?.code === 'string' ? parsed.queryParams.code : null;
+      if (!code) return;
+      const { error } = await supabase.auth.exchangeCodeForSession(code);
+      if (error) console.warn('Could not finish email verification:', error.message);
+    }
+
+    void Linking.getInitialURL().then(finishEmailVerification);
+    const subscription = Linking.addEventListener('url', ({ url }) => {
+      void finishEmailVerification(url);
+    });
+    return () => subscription.remove();
   }, []);
 
   async function signIn(provider: Extract<Provider, 'google' | 'apple'>) {
@@ -49,8 +71,38 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (exchanged.error) throw exchanged.error;
   }
 
+  async function signInWithEmail(email: string, password: string) {
+    if (!supabaseConfigured) throw new Error('Add the Supabase public settings to app/.env first.');
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) throw error;
+  }
+
+  async function signUpWithEmail(email: string, password: string) {
+    if (!supabaseConfigured) throw new Error('Add the Supabase public settings to app/.env first.');
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { emailRedirectTo: Linking.createURL('auth/callback') },
+    });
+    if (error) throw error;
+    return { needsVerification: !data.session };
+  }
+
+  async function resendVerification(email: string) {
+    if (!supabaseConfigured) throw new Error('Add the Supabase public settings to app/.env first.');
+    const { error } = await supabase.auth.resend({
+      type: 'signup',
+      email,
+      options: { emailRedirectTo: Linking.createURL('auth/callback') },
+    });
+    if (error) throw error;
+  }
+
   const value = useMemo<AuthValue>(() => ({
     session, loading, configured: supabaseConfigured, signIn,
+    signInWithEmail,
+    signUpWithEmail,
+    resendVerification,
     signOut: async () => { const { error } = await supabase.auth.signOut(); if (error) throw error; },
   }), [session, loading]);
 

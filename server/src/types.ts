@@ -109,6 +109,8 @@ export interface McqQuestion extends QuestionBase {
   options: McqOption[];
   /** The `key` of the correct option. Never sent to the client. */
   answerKey: string;
+  /** Private rubric score for each option key. Never sent to the client. */
+  optionScores?: Record<string, number>;
 }
 
 export interface OpenQuestion extends QuestionBase {

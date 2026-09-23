@@ -63,23 +63,26 @@ export async function scoreSubmission(responses: ResponseInput[]): Promise<Repor
     }
     if (q.type === 'mcq') {
       const chosen = answer.trim().toLowerCase();
-      const correct = chosen === q.answerKey.toLowerCase();
+      const points = q.optionScores?.[chosen] ?? (chosen === q.answerKey.toLowerCase() ? OPEN_MAX_POINTS : 0);
+      const correct = points === OPEN_MAX_POINTS;
+      const rubricBand = q.rubric.find(item => item.startsWith(`${points} - `))?.replace(/^\d\s*-\s*/, '');
+      const displayedAnswer = q.options.find(option => option.key === chosen)?.text ?? answer;
       results.push({
         questionId: q.id,
         trait: q.trait,
         type: 'mcq',
         prompt: q.prompt,
-        answer,
-        earned: correct ? possible : 0,
+        answer: displayedAnswer,
+        earned: points * q.weight,
         possible,
         elapsedSeconds,
         correct,
-        band: correct ? OPEN_MAX_POINTS : 0,
+        band: points,
         note: correct
           ? 'That picture or choice matches the answer.'
-          : `The selected choice did not match. The answer was ${
-              q.options.find((option) => option.key === q.answerKey)?.text ?? q.answerKey
-            }.`,
+          : points > 0
+            ? `That choice shows part of the idea${rubricBand ? `: ${rubricBand}` : '.'}`
+            : `The selected choice did not match. The best answer was ${q.options.find((option) => option.key === q.answerKey)?.text ?? q.answerKey}.`,
       });
       continue;
     }

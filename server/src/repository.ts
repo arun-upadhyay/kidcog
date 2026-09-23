@@ -6,16 +6,23 @@ import { TRAITS, TRAIT_ORDER, type TraitKey } from './traits.js';
 function fail(error: { message: string } | null) { if (error) throw new Error(error.message); }
 
 export async function listChildren(parentId: string) {
-  const { data, error } = await supabaseAdmin.from('child_profiles').select('id,nickname,created_at').eq('parent_id', parentId).order('created_at');
-  fail(error); return (data ?? []).map(row => ({ id: row.id, nickname: row.nickname, createdAt: row.created_at }));
+  const { data, error } = await supabaseAdmin.from('child_profiles').select('id,nickname,age,created_at').eq('parent_id', parentId).order('created_at');
+  fail(error); return (data ?? []).map(row => ({ id: row.id, nickname: row.nickname, age: row.age, createdAt: row.created_at }));
 }
 
-export async function findOrCreateChild(parentId: string, nickname: string) {
-  const existing = await supabaseAdmin.from('child_profiles').select('id,nickname,created_at').eq('parent_id', parentId).ilike('nickname', nickname).limit(1).maybeSingle();
+export async function findOrCreateChild(parentId: string, nickname: string, age: number) {
+  const existing = await supabaseAdmin.from('child_profiles').select('id,nickname,age,created_at').eq('parent_id', parentId).ilike('nickname', nickname).limit(1).maybeSingle();
   fail(existing.error);
-  const row = existing.data ?? (await supabaseAdmin.from('child_profiles').insert({ parent_id: parentId, nickname }).select('id,nickname,created_at').single()).data;
+  let row = existing.data;
+  if (row) {
+    const updated = await supabaseAdmin.from('child_profiles').update({ age }).eq('id', row.id).eq('parent_id', parentId).select('id,nickname,age,created_at').single();
+    fail(updated.error); row = updated.data;
+  } else {
+    const inserted = await supabaseAdmin.from('child_profiles').insert({ parent_id: parentId, nickname, age }).select('id,nickname,age,created_at').single();
+    fail(inserted.error); row = inserted.data;
+  }
   if (!row) throw new Error('Could not save child profile.');
-  return { id: row.id, nickname: row.nickname, createdAt: row.created_at };
+  return { id: row.id, nickname: row.nickname, age: row.age, createdAt: row.created_at };
 }
 
 export async function childBelongsTo(parentId: string, childId: string) {

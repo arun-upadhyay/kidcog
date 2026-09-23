@@ -12,6 +12,10 @@ Then run the history migration:
 
 `supabase/migrations/202609230002_assessment_history.sql`
 
+Then run the saved-age migration:
+
+`supabase/migrations/202609230003_child_profile_age.sql`
+
 The migration enables row-level security. The generated-questions table has no client access policy because it contains answer keys and rubrics.
 
 ## 2. Configure the server
@@ -29,7 +33,16 @@ Never put the service-role key in the Expo app or commit it to source control.
 
 Copy `app/.env.example` to `app/.env`, then set the same project URL and the publishable/anon key. For a physical phone, set `EXPO_PUBLIC_API_URL` to the computer's LAN address rather than `localhost`.
 
-## 4. Enable Google
+## 4. Enable email sign-in
+
+In Supabase Authentication → Providers → Email:
+
+- Enable the Email provider.
+- Keep **Confirm email** turned on so new parent accounts must verify their address.
+
+In Authentication → URL Configuration, make sure the same web and native callback destinations listed below are allowed. Supabase sends the verification message; production apps should configure a custom SMTP provider and branded email template before launch.
+
+## 5. Enable Google
 
 In Supabase Authentication → Providers, enable Google and add the credentials supplied by Google. In Google Cloud, use Supabase's callback URL:
 
@@ -42,7 +55,7 @@ In Supabase Authentication → URL Configuration, add the app destinations to th
 
 Replace `com.example.kidcog` in `app/app.json` with your real iOS bundle identifier and Android package before creating production builds.
 
-## 5. Run locally
+## 6. Run locally
 
 From `server/`, run `npm run dev`. From `app/`, run `npx expo start`. Sign in, create or choose a nickname, select an age and category, and complete a round.
 

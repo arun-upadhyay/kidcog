@@ -149,6 +149,7 @@ export interface ChildProfile {
 export interface SavedChildProfile {
   id: string;
   nickname: string;
+  age: number | null;
   createdAt: string;
 }
 

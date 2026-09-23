@@ -68,9 +68,9 @@ app.get('/api/children', requireParent, async (req: AuthRequest, res: Response) 
 });
 
 app.post('/api/children', requireParent, async (req: AuthRequest, res: Response) => {
-  const parsed = z.object({ nickname: z.string().trim().min(1).max(60) }).safeParse(req.body);
+  const parsed = z.object({ nickname: z.string().trim().min(1).max(60), age: z.number().int().min(4).max(12) }).safeParse(req.body);
   if (!parsed.success) { res.status(400).json({ error: 'Enter a first name or nickname.' }); return; }
-  try { res.status(201).json(await findOrCreateChild(req.parentId!, parsed.data.nickname)); }
+  try { res.status(201).json(await findOrCreateChild(req.parentId!, parsed.data.nickname, parsed.data.age)); }
   catch (err) { res.status(500).json({ error: 'Could not save child profile.', detail: err instanceof Error ? err.message : String(err) }); }
 });
 

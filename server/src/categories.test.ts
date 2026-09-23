@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { validateGeneratedRound, publicQuestion, ageRules } from './generatedQuestions.js';
 import { TRAIT_ORDER, TRAITS } from './traits.js';
 const rubric=['3 - Relevant idea with a reason.','2 - Relevant idea partly explained.','1 - Related idea without a reason.','0 - No interpretable relevant idea.'];
-const item=(n:number)=>({type:n%2===0?'mcq':'open',prompt:`Look at these objects in puzzle ${n}. What would you pick?`,rubric,visual:null,options:n%2===0?[{key:'a',text:'A ball',symbol:'⚽',shape:null},{key:'b',text:'A block',symbol:null,shape:'square'}]:null,answerKey:n%2===0?'a':null});
+const item=(n:number)=>({type:n%2===0?'mcq':'open',prompt:`Look at these objects in puzzle ${n}. What would you pick?`,rubric,visual:null,options:n%2===0?[{key:'a',text:'A ball',symbol:'⚽',shape:null,points:3},{key:'b',text:'A block',symbol:null,shape:'square',points:1}]:null,answerKey:n%2===0?'a':null});
 test('both category groups retain image order',()=>{assert.equal(TRAIT_ORDER.length,14);assert.equal(TRAIT_ORDER[7],'observant');assert.equal(TRAIT_ORDER[8],'perfectionism');assert.equal(TRAITS.perfectionism.group,'social_emotional');});
 test('rounds enforce exact count, interaction variety and matching choice keys',()=>{
  for(const count of [2,5,6])assert.equal(validateGeneratedRound(JSON.stringify({questions:Array.from({length:count},(_,i)=>item(i))}),count,5).length,count);
@@ -19,6 +19,6 @@ test('age limits reject long prompts and choices and missing picture variety',()
  assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[{...item(0),options:item(0).options!.map(o=>({...o,symbol:null,shape:null}))},item(1)]}),2,5));
 });
 test('picture choices stay visible while rubrics and keys stay private',()=>{
- const q=publicQuestion({id:'test',trait:'observant',type:'mcq',format:'classification',ageBand:[5,5],weight:1,prompt:'Which one is round?',rubric,answerKey:'a',options:[{key:'a',text:'Ball',symbol:'⚽'},{key:'b',text:'Block',figure:{shapes:[{kind:'square',fill:'solid'}]}}]});
- assert.equal(q.type,'mcq');assert.equal(q.options![0]!.symbol,'⚽');assert.ok(q.options![1]!.figure);assert.ok(!('rubric' in q));assert.ok(!('answerKey' in q));assert.match(q.speechText,/Ball, Block/);
+ const q=publicQuestion({id:'test',trait:'observant',type:'mcq',format:'classification',ageBand:[5,5],weight:1,prompt:'Which one is round?',rubric,answerKey:'a',optionScores:{a:3,b:1},options:[{key:'a',text:'Ball',symbol:'⚽'},{key:'b',text:'Block',figure:{shapes:[{kind:'square',fill:'solid'}]}}]});
+ assert.equal(q.type,'mcq');assert.equal(q.options![0]!.symbol,'⚽');assert.ok(q.options![1]!.figure);assert.ok(!('rubric' in q));assert.ok(!('answerKey' in q));assert.ok(!('optionScores' in q));assert.match(q.speechText,/Ball, Block/);
 });

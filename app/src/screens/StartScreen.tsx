@@ -42,6 +42,7 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
 
   function chooseSaved(child: SavedChildProfile) {
     setFirstName(child.nickname);
+    if (child.age !== null) setAge(child.age);
   }
 
   async function removeChild(child: SavedChildProfile) {
@@ -117,7 +118,7 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
       <View style={styles.field}>
         <Text style={type.label}>THEIR FIRST NAME (OPTIONAL)</Text>
         {savedChildren.length ? <View style={styles.savedList}>{savedChildren.map(saved => <View key={saved.id} style={styles.savedCard}>
-          <Pressable onPress={() => chooseSaved(saved)} style={styles.savedName}><Text style={styles.savedNameText}>{saved.nickname}</Text><Text style={type.soft}>Use this profile</Text></Pressable>
+          <Pressable onPress={() => chooseSaved(saved)} style={styles.savedName}><Text style={styles.savedNameText}>{saved.nickname}</Text><Text style={type.soft}>{saved.age !== null ? `Age ${saved.age} · ` : ''}Use this profile</Text></Pressable>
           <View style={styles.savedActions}>
             <Pressable onPress={() => onViewHistory(saved)} accessibilityRole="button" accessibilityLabel={`View ${saved.nickname}'s previous results`} accessibilityHint="Opens saved assessment reports" style={({ pressed }) => [styles.iconButton, styles.historyButton, pressed && styles.iconPressed]}><Text style={styles.actionIcon}>📚</Text></Pressable>
             <Pressable disabled={deletingId !== null} onPress={() => confirmDelete(saved)} accessibilityRole="button" accessibilityLabel={`Delete ${saved.nickname}'s profile`} accessibilityHint="Permanently removes this profile and its assessments" style={({ pressed }) => [styles.iconButton, styles.deleteProfile, (pressed || deletingId !== null) && styles.iconPressed]}><Text style={styles.actionIcon}>{deletingId === saved.id ? '⏳' : '🗑️'}</Text></Pressable>

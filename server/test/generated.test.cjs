@@ -18,7 +18,7 @@ test('fresh AI questions retain private rubrics, grade using AI, and expire', as
   './traits.js':traits,
   openai:{default:class{chat={completions:{create:async()=>{
    calls++;
-   return {choices:[{message:{content:JSON.stringify({questions:[1,2].map(i=>({type:i===1?'mcq':'open',options:i===1?[{key:'a',text:'A ball',symbol:'⚽',shape:null},{key:'b',text:'A block',symbol:null,shape:'square'}]:null,answerKey:i===1?'a':null,visual:null,prompt:`What could you try in imaginary situation ${i}?`,rubric:['3 - Clear relevant idea and explanation.','2 - Relevant idea partly explained.','1 - Related idea without explanation.','0 - No interpretable relevant idea.']}))})}}]};
+   return {choices:[{message:{content:JSON.stringify({questions:[1,2].map(i=>({type:i===1?'mcq':'open',options:i===1?[{key:'a',text:'A ball',symbol:'⚽',shape:null,points:3},{key:'b',text:'A block',symbol:null,shape:'square',points:1}]:null,answerKey:i===1?'a':null,visual:null,prompt:`What could you try in imaginary situation ${i}?`,rubric:['3 - Clear relevant idea and explanation.','2 - Relevant idea partly explained.','1 - Related idea without explanation.','0 - No interpretable relevant idea.']}))})}}]};
   }}};}},
  },{Date:Clock});
  const round=await generator.generateRound(5,'sensitivity_others',2);
@@ -30,11 +30,11 @@ test('fresh AI questions retain private rubrics, grade using AI, and expire', as
  './generatedQuestions.js':generator,'./traits.js':traits,
  './grader.js':{gradeOpenAnswers:async items=>{graded=items;return items.map((it,i)=>({id:it.id,points:2,note:'A relevant suggestion.',...(i===1?{incomplete:true}:{})}));}},
  });
- const report=await scoring.scoreSubmission(round.map(q=>({questionId:q.id,answer:q.type==='mcq'?'a':'I would ask what they need.'})));
+ const report=await scoring.scoreSubmission(round.map(q=>({questionId:q.id,answer:q.type==='mcq'?'b':'I would ask what they need.'})));
  assert.equal(graded.length,1);assert.equal(graded[0].answer,'I would ask what they need.');assert.deepEqual([...graded[0].rubric],[...round[1].rubric]);
  assert.equal(report.traits.length,14);
- assert.equal(report.overall.earned,5);assert.equal(report.overall.possible,6);
- assert.equal(report.responses[0].correct,true);
+ assert.equal(report.overall.earned,3);assert.equal(report.overall.possible,6);
+ assert.equal(report.responses[0].correct,false);assert.equal(report.responses[0].band,1);
  assert.equal(report.responses[1].band,2);
  assert.equal(report.traits.find(t=>t.key==='sensitivity_others').group,'social_emotional');
  now+=2*60*60*1000+1;
