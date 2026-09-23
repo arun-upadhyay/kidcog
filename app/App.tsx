@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -8,11 +8,13 @@ import StartScreen from './src/screens/StartScreen';
 import QuizScreen from './src/screens/QuizScreen';
 import CelebrationScreen from './src/screens/CelebrationScreen';
 import ResultsScreen from './src/screens/ResultsScreen';
-import { fetchTest, submitAnswers } from './src/api';
+import LoginScreen from './src/screens/LoginScreen';
+import { AuthProvider, useAuth } from './src/auth/AuthContext';
+import { fetchTest, listChildren, saveChild, submitAnswers } from './src/api';
 import { forgetSeen, loadSeen, rememberSeen } from './src/seenQuestions';
 import { stopSpeaking } from './src/speech';
 import { colors } from './src/theme';
-import type { ChildProfile, Report, ResponseInput, TestPayload, TraitKey } from './src/types';
+import type { ChildProfile, Report, ResponseInput, SavedChildProfile, TestPayload, TraitKey } from './src/types';
 
 /**
  * `celebrate` only exists for the young profile: the child sees a well done,
@@ -25,7 +27,8 @@ function messageOf(err: unknown): string {
   return err instanceof Error ? err.message : 'Something went wrong.';
 }
 
-export default function App() {
+function KidCogApp() {
+  const { session, loading: authLoading, signOut } = useAuth();
   const [stage, setStage] = useState<Stage>('start');
   const [child, setChild] = useState<ChildProfile | null>(null);
   const [test, setTest] = useState<TestPayload | null>(null);
@@ -36,6 +39,13 @@ export default function App() {
   const generationLock = useRef(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [savedChildren, setSavedChildren] = useState<SavedChildProfile[]>([]);
+  const [sessionId, setSessionId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!session) { setSavedChildren([]); return; }
+    void listChildren().then(setSavedChildren).catch(err => setError(messageOf(err)));
+  }, [session]);
 
   /**
    * Ids this child has already been shown, across every past session on this
@@ -56,7 +66,8 @@ export default function App() {
     setError(null);
     try {
       if (completedAnswers.length >= 90) throw new Error('This session is full. View the combined results, then start a new session.');
-      const t = await fetchTest(profile.age, exclude, trait, count);
+      if (!profile.id) throw new Error('Choose or create a child nickname first.');
+      const t = await fetchTest(profile.id, sessionId, profile.age, exclude, trait, count);
       if (!t.questions.length) {
         throw new Error(
           exclude.length > 0
@@ -67,6 +78,7 @@ export default function App() {
       setChild(profile);
       setSeen(exclude);
       setTest(t);
+      setSessionId(t.sessionId);
       setRoundCategory(trait);
       setRoundLength(count);
       setStage('quiz');
@@ -76,12 +88,20 @@ export default function App() {
       generationLock.current = false;
       setBusy(false);
     }
-  }, [completedAnswers.length]);
+  }, [completedAnswers.length, sessionId]);
 
   const start = useCallback(async (profile: ChildProfile) => {
-    setChild(profile);
-    setError(null);
-    setStage('categories');
+    setBusy(true); setError(null);
+    try {
+      const nickname = profile.firstName?.trim() || 'My child';
+      const saved = await saveChild(nickname);
+      const next = { ...profile, id: saved.id, firstName: saved.nickname };
+      setSavedChildren(current => current.some(item => item.id === saved.id) ? current : [...current, saved]);
+      setChild(next);
+      setSessionId(null);
+      setStage('categories');
+    } catch (err) { setError(messageOf(err)); }
+    finally { setBusy(false); }
   }, []);
 
   const chooseRound = useCallback(async (trait: TraitKey, count: number) => {
@@ -108,7 +128,8 @@ export default function App() {
         const byId = new Map(completedAnswers.map(r => [r.questionId, r]));
         for (const response of responses) byId.set(response.questionId, response);
         const combined = [...byId.values()];
-        const r = await submitAnswers({ child, responses: combined });
+        if (!sessionId) throw new Error('This assessment session is missing. Start a new session.');
+        const r = await submitAnswers({ sessionId, child, responses: combined });
         setCompletedAnswers(combined);
         // Record before showing the report: if the parent closes the app on the
         // results screen, the next round should still serve fresh questions.
@@ -122,7 +143,7 @@ export default function App() {
         setBusy(false);
       }
     },
-    [child, test, completedAnswers]
+    [child, test, completedAnswers, sessionId]
   );
 
   /** Another round for the same child, drawing only on unseen questions. */
@@ -151,14 +172,19 @@ export default function App() {
     setCompletedAnswers([]);
     setError(null);
     setSeen([]);
+    setSessionId(null);
   }, []);
+
+  const logout = useCallback(async () => { restart(); await signOut(); }, [restart, signOut]);
+
+  if (authLoading || !session) return <LoginScreen />;
 
   return (
     <SafeAreaProvider>
       <StatusBar style="dark" />
       <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
         <View style={styles.root}>
-          {stage === 'start' && <StartScreen onStart={start} loading={busy} error={error} />}
+          {stage === 'start' && <StartScreen onStart={start} loading={busy} error={error} savedChildren={savedChildren} onSignOut={() => void logout()} />}
 
           {stage === 'categories' && <CategoryScreen onSelect={chooseRound} onReport={() => setStage('results')} onBack={restart} report={report} busy={busy} error={error} />}
 
@@ -191,6 +217,10 @@ export default function App() {
       </SafeAreaView>
     </SafeAreaProvider>
   );
+}
+
+export default function App() {
+  return <AuthProvider><KidCogApp /></AuthProvider>;
 }
 
 const styles = StyleSheet.create({

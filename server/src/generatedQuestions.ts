@@ -17,6 +17,9 @@ export function generatedQuestionById(id: string): GeneratedQuestion | undefined
   if (!value || value.expires <= Date.now()) { stored.delete(id); return undefined; }
   return value.question;
 }
+export function rememberGeneratedQuestion(question: GeneratedQuestion) {
+  stored.set(question.id, { question, expires: Date.now() + TTL });
+}
 const Shape = z.enum(['circle','square','triangle','diamond','star','hexagon','heart','arrow']);
 const Option = z.object({ key: z.enum(['a','b','c','d']), text: z.string().trim().min(1).max(100), symbol: z.string().trim().max(12).nullable(), shape: Shape.nullable() }).strict();
 const Item = z.object({

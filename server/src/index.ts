@@ -3,7 +3,7 @@ import express, { type Request, type Response, type NextFunction } from 'express
 import cors from 'cors';
 import { z } from 'zod';
 
-import { generateRound, publicQuestion, generatedQuestionById } from './generatedQuestions.js';
+import { generateRound, publicQuestion, generatedQuestionById, rememberGeneratedQuestion } from './generatedQuestions.js';
 import { TRAITS, TRAIT_ORDER, type TraitKey } from './traits.js';
 import { profileForAge } from './ageProfiles.js';
 import { transcribeAnswer } from './transcribe.js';
@@ -11,6 +11,16 @@ import { synthesizeSpeech, SPEECH_MIME } from './speak.js';
 import { scoreSubmission } from './scoring.js';
 import { generateParentReport, apiKeyProblem } from './grader.js';
 import type { PublicQuestion, TestPayload } from './types.js';
+import { supabaseReady, userIdFromBearer } from './supabase.js';
+import { childBelongsTo, findOrCreateChild, getOrCreateSession, listChildren, loadGeneratedQuestions, saveGeneratedQuestions, saveReport } from './repository.js';
+
+type AuthRequest = Request & { parentId?: string };
+async function requireParent(req: AuthRequest, res: Response, next: NextFunction) {
+  if (!supabaseReady()) { res.status(503).json({ error: 'Parent sign-in is not configured on the server.' }); return; }
+  const parentId = await userIdFromBearer(req.header('authorization'));
+  if (!parentId) { res.status(401).json({ error: 'Please sign in again.' }); return; }
+  req.parentId = parentId; next();
+}
 
 const app = express();
 app.use(cors());
@@ -48,25 +58,39 @@ app.get('/health', (_req: Request, res: Response) => {
   });
 });
 
-app.get('/api/categories', (_req: Request, res: Response) => {
+app.get('/api/categories', requireParent, (_req: Request, res: Response) => {
   res.json(TRAIT_ORDER.map((key) => ({ ...TRAITS[key], group: TRAITS[key].group ?? 'intellectual' })));
+});
+
+app.get('/api/children', requireParent, async (req: AuthRequest, res: Response) => {
+  try { res.json(await listChildren(req.parentId!)); }
+  catch (err) { res.status(500).json({ error: 'Could not load child profiles.', detail: err instanceof Error ? err.message : String(err) }); }
+});
+
+app.post('/api/children', requireParent, async (req: AuthRequest, res: Response) => {
+  const parsed = z.object({ nickname: z.string().trim().min(1).max(60) }).safeParse(req.body);
+  if (!parsed.success) { res.status(400).json({ error: 'Enter a first name or nickname.' }); return; }
+  try { res.status(201).json(await findOrCreateChild(req.parentId!, parsed.data.nickname)); }
+  catch (err) { res.status(500).json({ error: 'Could not save child profile.', detail: err instanceof Error ? err.message : String(err) }); }
 });
 
 /** The test the app should present. Answer keys and rubrics stay on the server. */
 const pendingRounds = new Map<string, Promise<TestPayload>>();
-app.post('/api/test', async (req: Request, res: Response) => {
-  const input = z.object({ age: z.number().int().min(4).max(12), trait: z.enum(TRAIT_ORDER as [typeof TRAIT_ORDER[number], ...typeof TRAIT_ORDER[number][]]), count: z.union([z.literal(2), z.literal(5), z.literal(6)]), requestId: z.string().uuid(), exclude: z.array(z.string().max(40)).max(500).default([]) }).safeParse(req.body);
+app.post('/api/test', requireParent, async (req: AuthRequest, res: Response) => {
+  const input = z.object({ childProfileId: z.string().uuid(), sessionId: z.string().uuid().nullable().optional(), age: z.number().int().min(4).max(12), trait: z.enum(TRAIT_ORDER as [typeof TRAIT_ORDER[number], ...typeof TRAIT_ORDER[number][]]), count: z.union([z.literal(2), z.literal(5), z.literal(6)]), requestId: z.string().uuid(), exclude: z.array(z.string().max(40)).max(500).default([]) }).safeParse(req.body);
   if (!input.success) { res.status(400).json({ error: 'Choose an age, category, and 2, 5, or 6 questions.' }); return; }
-  const { age, trait, count, requestId, exclude } = input.data;
-  const key = JSON.stringify([requestId, age, trait, count]);
+  const { childProfileId, sessionId: requestedSessionId, age, trait, count, requestId, exclude } = input.data;
+  const key = JSON.stringify([req.parentId, requestId, age, trait, count]);
   try {
+    if (!await childBelongsTo(req.parentId!, childProfileId)) { res.status(404).json({ error: 'Child profile was not found.' }); return; }
     let work = pendingRounds.get(key);
     if (!work) {
-      work = generateRound(age, trait, count, exclude).then(questions => ({
-        traits: TRAIT_ORDER.map(k => ({ ...TRAITS[k], group: TRAITS[k].group ?? 'intellectual' })),
-        questions: questions.map(publicQuestion), questionCount: questions.length,
-        followUpQuestions: {}, profile: profileForAge(age), poolExhausted: false, remainingUnseen: -1,
-      }));
+      work = (async () => {
+        const sessionId = await getOrCreateSession(req.parentId!, childProfileId, requestedSessionId);
+        const questions = await generateRound(age, trait, count, exclude);
+        await saveGeneratedQuestions(req.parentId!, sessionId, questions);
+        return { sessionId, traits: TRAIT_ORDER.map(k => ({ ...TRAITS[k], group: TRAITS[k].group ?? 'intellectual' })), questions: questions.map(publicQuestion), questionCount: questions.length, followUpQuestions: {}, profile: profileForAge(age), poolExhausted: false, remainingUnseen: -1 };
+      })();
       pendingRounds.set(key, work);
       void work.then(() => { const timer = setTimeout(() => pendingRounds.delete(key), 120_000); timer.unref(); }, () => pendingRounds.delete(key));
     }
@@ -118,7 +142,7 @@ const TranscribeSchema = z.object({
   mimeType: z.string().max(80).optional(),
 });
 
-app.post('/api/transcribe', async (req: Request, res: Response) => {
+app.post('/api/transcribe', requireParent, async (req: Request, res: Response) => {
   const parsed = TranscribeSchema.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: 'Invalid audio payload', details: parsed.error.flatten() });
@@ -139,6 +163,7 @@ app.post('/api/transcribe', async (req: Request, res: Response) => {
 });
 
 const SubmissionSchema = z.object({
+  sessionId: z.string().uuid(),
   child: z
     .object({
       firstName: z.string().max(60).optional(),
@@ -157,20 +182,20 @@ const SubmissionSchema = z.object({
     .max(100),
 });
 
-app.post('/api/submit', async (req: Request, res: Response) => {
+app.post('/api/submit', requireParent, async (req: AuthRequest, res: Response) => {
   const parsed = SubmissionSchema.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: 'Invalid submission', details: parsed.error.flatten() });
     return;
   }
 
-  const { child, responses } = parsed.data;
+  const { sessionId, child, responses } = parsed.data;
 
-  if (new Set(responses.map(r => r.questionId)).size !== responses.length || responses.some(r => !generatedQuestionById(r.questionId))) {
-    res.status(410).json({ error: 'These questions have expired or belong to an older version. Start a new session to generate fresh questions.' });
-    return;
-  }
   try {
+    if (new Set(responses.map(r => r.questionId)).size !== responses.length) { res.status(400).json({ error: 'A question was submitted more than once.' }); return; }
+    const ownedQuestions = await loadGeneratedQuestions(req.parentId!, sessionId, responses.map(r => r.questionId));
+    if (ownedQuestions.length !== responses.length) { res.status(410).json({ error: 'These questions do not belong to this parent session.' }); return; }
+    ownedQuestions.forEach(rememberGeneratedQuestion);
     const report = await scoreSubmission(responses);
 
     // The written report is generated from the scores, not the other way round.
@@ -182,6 +207,8 @@ app.post('/api/submit', async (req: Request, res: Response) => {
       report.parentReportError = err instanceof Error ? err.message : String(err);
       console.error(`\n  ✗ REPORT GENERATION FAILED\n    ${report.parentReportError}\n`);
     }
+
+    await saveReport(req.parentId!, sessionId, responses, report);
 
     res.json(report);
   } catch (err) {

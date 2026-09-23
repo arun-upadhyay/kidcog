@@ -171,6 +171,7 @@ export interface TraitMetaPublic {
 }
 
 export interface TestPayload {
+  sessionId: string;
   traits: TraitMetaPublic[];
   questionCount: number;
   questions: PublicQuestion[];

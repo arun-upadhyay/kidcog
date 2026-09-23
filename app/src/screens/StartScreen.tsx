@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView, Switch, Pressable } from 'react-native';
 import Button from '../components/Button';
 import { colors, spacing, type } from '../theme';
-import type { ChildProfile } from '../types';
+import type { ChildProfile, SavedChildProfile } from '../types';
 
 export interface StartScreenProps {
   onStart: (profile: ChildProfile) => void;
   loading: boolean;
   error: string | null;
+  savedChildren: SavedChildProfile[];
+  onSignOut: () => void;
 }
 
 /**
@@ -19,7 +21,7 @@ export interface StartScreenProps {
  */
 const AGES = [4, 5, 6, 7] as const;
 
-export default function StartScreen({ onStart, loading, error }: StartScreenProps) {
+export default function StartScreen({ onStart, loading, error, savedChildren, onSignOut }: StartScreenProps) {
   const [firstName, setFirstName] = useState('');
   const [age, setAge] = useState<number | null>(5);
   const [consent, setConsent] = useState(false);
@@ -35,11 +37,16 @@ export default function StartScreen({ onStart, loading, error }: StartScreenProp
     onStart(profile);
   }
 
+  function chooseSaved(child: SavedChildProfile) {
+    setFirstName(child.nickname);
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
       <Text style={styles.mascot}>🦉</Text>
       <Text style={styles.title}>KidCog</Text>
       <Text style={styles.tagline}>Thinking puzzles to do together</Text>
+      <Pressable onPress={onSignOut} accessibilityRole="button"><Text style={styles.signOut}>Sign out</Text></Pressable>
 
       <View style={styles.card}>
         <Text style={type.heading}>For the grown-up</Text>
@@ -86,6 +93,7 @@ export default function StartScreen({ onStart, loading, error }: StartScreenProp
 
       <View style={styles.field}>
         <Text style={type.label}>THEIR FIRST NAME (OPTIONAL)</Text>
+        {savedChildren.length ? <View style={styles.chips}>{savedChildren.map(saved => <Pressable key={saved.id} onPress={() => chooseSaved(saved)} style={styles.savedChip}><Text>{saved.nickname}</Text></Pressable>)}</View> : null}
         <TextInput
           style={styles.input}
           value={firstName}
@@ -95,7 +103,7 @@ export default function StartScreen({ onStart, loading, error }: StartScreenProp
           autoCapitalize="words"
           maxLength={60}
         />
-        <Text style={type.soft}>Only used to address the report. Answers are not saved on the server. Generated questions are kept temporarily so they can be graded.</Text>
+        <Text style={type.soft}>Use a first name or nickname only. It and this session&apos;s questions, answers, and results are saved privately to your parent account.</Text>
       </View>
 
       <View style={styles.consentRow}>
@@ -139,6 +147,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: spacing(0.5),
   },
+  signOut: { color: colors.primary, textAlign: 'center', marginTop: spacing(1), textDecorationLine: 'underline' },
   card: {
     backgroundColor: colors.coolSoft,
     borderRadius: 18,
@@ -160,6 +169,7 @@ const styles = StyleSheet.create({
   chipOn: { backgroundColor: colors.happySoft, borderColor: colors.happy },
   chipText: { fontSize: 20, fontWeight: '700', color: colors.inkSoft },
   chipTextOn: { color: colors.ink },
+  savedChip: { backgroundColor: colors.coolSoft, borderRadius: 16, paddingHorizontal: spacing(2), paddingVertical: spacing(1) },
   input: {
     backgroundColor: colors.surface,
     borderWidth: 1.5,

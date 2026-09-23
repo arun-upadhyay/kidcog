@@ -128,6 +128,7 @@ export interface PublicQuestion {
 }
 
 export interface TestPayload {
+  sessionId: string;
   traits: TraitMetaPublic[];
   questionCount: number;
   questions: PublicQuestion[];
@@ -140,8 +141,15 @@ export interface TestPayload {
 }
 
 export interface ChildProfile {
+  id?: string;
   firstName?: string;
   age?: number;
+}
+
+export interface SavedChildProfile {
+  id: string;
+  nickname: string;
+  createdAt: string;
 }
 
 export interface ResponseInput {

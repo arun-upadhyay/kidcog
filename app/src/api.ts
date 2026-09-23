@@ -3,6 +3,8 @@ import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
 import type { ChildProfile, Report, ResponseInput, TestPayload } from './types';
+import type { SavedChildProfile } from './types';
+import { supabase } from './auth/supabase';
 
 /**
  * Where the app finds your server.
@@ -37,10 +39,12 @@ async function request<T>(path: string, options: RequestOptions = {}): Promise<T
   const timer = setTimeout(() => controller.abort(), timeoutMs);
 
   try {
+    const { data } = await supabase.auth.getSession();
+    if (!data.session?.access_token) throw new Error('Please sign in again.');
     const res = await fetch(`${API_BASE_URL}${path}`, {
       ...rest,
       signal: controller.signal,
-      headers: { 'Content-Type': 'application/json', ...headers },
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${data.session.access_token}`, ...headers },
     });
 
     const text = await res.text();
@@ -92,14 +96,22 @@ export function fetchCategories(): Promise<TraitMetaPublic[]> {
   return request<TraitMetaPublic[]>('/api/categories');
 }
 
-export async function fetchTest(age?: number, exclude: string[] = [], trait?: TraitKey, limit = 5): Promise<TestPayload> {
+export function listChildren(): Promise<SavedChildProfile[]> {
+  return request<SavedChildProfile[]>('/api/children');
+}
+
+export function saveChild(nickname: string): Promise<SavedChildProfile> {
+  return request<SavedChildProfile>('/api/children', { method: 'POST', body: JSON.stringify({ nickname }) });
+}
+
+export async function fetchTest(childProfileId: string, sessionId: string | null, age?: number, exclude: string[] = [], trait?: TraitKey, limit = 5): Promise<TestPayload> {
   const requestId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
     const n = Math.floor(Math.random() * 16);
     return (c === 'x' ? n : (n & 3) | 8).toString(16);
   });
   const test = await request<TestPayload>('/api/test', {
     method: 'POST', timeoutMs: 90000,
-    body: JSON.stringify({ age: age ?? 5, trait, count: limit, exclude, requestId }),
+    body: JSON.stringify({ childProfileId, sessionId, age: age ?? 5, trait, count: limit, exclude, requestId }),
   });
   if (!test.profile || typeof test.profile.uiScale !== 'number' || !Array.isArray(test.questions)) {
     throw new Error('This server is incompatible. Start the backend from Documents/kidcog/server and try again.');
@@ -128,6 +140,7 @@ export function transcribeAudio(
 }
 
 export function submitAnswers(payload: {
+  sessionId: string;
   child: ChildProfile | null;
   responses: ResponseInput[];
 }): Promise<Report> {
