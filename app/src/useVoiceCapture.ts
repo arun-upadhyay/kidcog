@@ -45,9 +45,11 @@ export function useVoiceCapture(onTranscript: (text: string) => void) {
       const uri = recorder.uri;
       if (!uri) throw new Error('No recording was captured.');
 
-      const base64 = await readAsBase64(uri);
-      const filename = uri.split('/').pop() || 'answer.m4a';
-      const { text } = await transcribeAudio(base64, filename);
+      const { base64, mimeType } = await readRecording(uri);
+      // The format must come from the blob, not the URL. On web the recorder
+      // hands back a blob: URL with no file extension at all, and OpenAI
+      // rejects an upload whose format it cannot determine.
+      const { text } = await transcribeAudio(base64, filenameFor(mimeType), mimeType);
 
       if (!text.trim()) {
         setProblem("I couldn't make that out. Try again, or type it instead.");
@@ -101,15 +103,24 @@ export function useVoiceCapture(onTranscript: (text: string) => void) {
 }
 
 /**
- * Read the recording as base64.
+ * Read the recording, returning both its bytes and its actual media type.
  *
  * On native the file lives on disk; on web the recorder hands back a blob URL.
  * fetch handles both, which avoids a platform branch and an extra dependency.
+ *
+ * The media type matters: OpenAI needs a recognisable audio format, and on web
+ * the URL carries no extension to infer one from. The blob knows what it is, so
+ * ask it rather than guessing from a filename.
  */
-async function readAsBase64(uri: string): Promise<string> {
+async function readRecording(uri: string): Promise<{ base64: string; mimeType: string }> {
   const response = await fetch(uri);
   const blob = await response.blob();
-  return await new Promise<string>((resolve, reject) => {
+
+  // Strip any codec parameters: "audio/webm;codecs=opus" -> "audio/webm".
+  const declared = (blob.type || '').split(';')[0]?.trim() ?? '';
+  const mimeType = declared || inferFromUri(uri);
+
+  const base64 = await new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
     reader.onerror = () => reject(new Error('Could not read the recording.'));
     reader.onloadend = () => {
@@ -119,4 +130,36 @@ async function readAsBase64(uri: string): Promise<string> {
     };
     reader.readAsDataURL(blob);
   });
+
+  return { base64, mimeType };
+}
+
+/** Fall back to the file extension when the blob does not declare a type. */
+function inferFromUri(uri: string): string {
+  const ext = uri.split('?')[0]?.split('.').pop()?.toLowerCase() ?? '';
+  const table: Record<string, string> = {
+    m4a: 'audio/mp4',
+    mp4: 'audio/mp4',
+    caf: 'audio/x-caf',
+    mp3: 'audio/mpeg',
+    wav: 'audio/wav',
+    webm: 'audio/webm',
+    ogg: 'audio/ogg',
+  };
+  return table[ext] ?? 'audio/mp4';
+}
+
+/** A filename whose extension matches the media type, which is what OpenAI reads. */
+function filenameFor(mimeType: string): string {
+  const table: Record<string, string> = {
+    'audio/mp4': 'answer.m4a',
+    'audio/x-m4a': 'answer.m4a',
+    'audio/mpeg': 'answer.mp3',
+    'audio/wav': 'answer.wav',
+    'audio/x-wav': 'answer.wav',
+    'audio/webm': 'answer.webm',
+    'audio/ogg': 'answer.ogg',
+    'video/webm': 'answer.webm',
+  };
+  return table[mimeType] ?? 'answer.m4a';
 }

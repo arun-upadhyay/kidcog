@@ -38,9 +38,15 @@ function getClient(): OpenAI {
 
 /**
  * @param audio  the recording, already decoded from base64
- * @param filename  used only for its extension, which tells the API the format
+ * @param filename  extension should match the audio's real format
+ * @param declaredMimeType  what the recorder reported; preferred over the
+ *   filename, since on web the recording URL carries no extension at all
  */
-export async function transcribeAnswer(audio: Buffer, filename: string): Promise<string> {
+export async function transcribeAnswer(
+  audio: Buffer,
+  filename: string,
+  declaredMimeType?: string
+): Promise<string> {
   if (audio.byteLength === 0) {
     throw new Error('The recording was empty.');
   }
@@ -54,18 +60,30 @@ export async function transcribeAnswer(audio: Buffer, filename: string): Promise
 
   const model = process.env.OPENAI_TRANSCRIBE_MODEL || 'whisper-1';
 
-  const file = new File([new Uint8Array(audio)], filename, {
-    type: guessMimeType(filename),
-  });
+  // Prefer what the recorder declared; fall back to the extension. The client
+  // reads the type off the blob, which is the only reliable source on web.
+  const type = declaredMimeType?.trim() || guessMimeType(filename);
 
-  const result = await getClient().audio.transcriptions.create({
-    file,
-    model,
-    // Steering the model toward the domain improves recognition of a child
-    // answering a reasoning question rather than dictating prose.
-    prompt: 'A young child aged four to seven answering a simple reasoning question out loud.',
-    language: 'en',
-  });
+  const file = new File([new Uint8Array(audio)], filename, { type });
+
+  let result;
+  try {
+    result = await getClient().audio.transcriptions.create({
+      file,
+      model,
+      // Steering the model toward the domain improves recognition of a child
+      // answering a reasoning question rather than dictating prose.
+      prompt: 'A young child aged four to seven answering a simple reasoning question out loud.',
+      language: 'en',
+    });
+  } catch (err) {
+    // Say what we actually sent. "Invalid file format" is meaningless without
+    // knowing which format went out, and that is the usual cause here.
+    const reason = err instanceof Error ? err.message : String(err);
+    throw new Error(
+      `${reason} (sent ${filename}, type ${type}, ${Math.round(audio.byteLength / 1024)}KB, model ${model})`
+    );
+  }
 
   return (result.text ?? '').trim();
 }

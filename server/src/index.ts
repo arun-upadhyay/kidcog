@@ -69,6 +69,8 @@ const TranscribeSchema = z.object({
    *  from React Native, at the cost of about a third more bytes. */
   audioBase64: z.string().min(16).max(12_000_000),
   filename: z.string().max(120).default('answer.m4a'),
+  /** What the recorder said the audio is. More reliable than the filename. */
+  mimeType: z.string().max(80).optional(),
 });
 
 app.post('/api/transcribe', async (req: Request, res: Response) => {
@@ -80,7 +82,7 @@ app.post('/api/transcribe', async (req: Request, res: Response) => {
 
   try {
     const audio = Buffer.from(parsed.data.audioBase64, 'base64');
-    const text = await transcribeAnswer(audio, parsed.data.filename);
+    const text = await transcribeAnswer(audio, parsed.data.filename, parsed.data.mimeType);
     res.json({ text });
   } catch (err) {
     const detail = err instanceof Error ? err.message : String(err);

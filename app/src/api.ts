@@ -51,11 +51,13 @@ async function request<T>(path: string, options: RequestOptions = {}): Promise<T
     }
 
     if (!res.ok) {
-      const message =
-        typeof body === 'object' && body !== null && 'error' in body
-          ? String((body as { error: unknown }).error)
-          : `Request failed (${res.status}).`;
-      throw new Error(message);
+      // Include `detail` when the server sent one. Without it every failure
+      // reads as the same unhelpful sentence, which is how a wrong model name
+      // and a missing microphone end up looking identical.
+      const record = typeof body === 'object' && body !== null ? (body as Record<string, unknown>) : {};
+      const headline = 'error' in record ? String(record.error) : `Request failed (${res.status}).`;
+      const detail = 'detail' in record ? String(record.detail) : '';
+      throw new Error(detail ? `${headline} — ${detail}` : headline);
     }
 
     return body as T;
@@ -89,10 +91,14 @@ export function fetchTest(age?: number): Promise<TestPayload> {
  * a few seconds of a child's speech is small enough that the ~33% base64
  * overhead costs less than the debugging would.
  */
-export function transcribeAudio(audioBase64: string, filename: string): Promise<{ text: string }> {
+export function transcribeAudio(
+  audioBase64: string,
+  filename: string,
+  mimeType?: string
+): Promise<{ text: string }> {
   return request<{ text: string }>('/api/transcribe', {
     method: 'POST',
-    body: JSON.stringify({ audioBase64, filename }),
+    body: JSON.stringify({ audioBase64, filename, mimeType }),
     timeoutMs: 60_000,
   });
 }
