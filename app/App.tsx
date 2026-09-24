@@ -33,7 +33,9 @@ function KidCogApp() {
   const [child, setChild] = useState<ChildProfile | null>(null);
   const [test, setTest] = useState<TestPayload | null>(null);
   const [report, setReport] = useState<Report | null>(null);
-  const [completedAnswers, setCompletedAnswers] = useState<ResponseInput[]>([]);
+  // Categories tried during this visit, from each test's own result. Used only
+  // for the explored markers on the category screen; results are never merged.
+  const [explored, setExplored] = useState<Report['traits']>([]);
   const [roundCategory, setRoundCategory] = useState<TraitKey>('abstract_concepts');
   const [roundLength, setRoundLength] = useState(2);
   const generationLock = useRef(false);
@@ -49,16 +51,16 @@ function KidCogApp() {
     void listChildren().then(setSavedChildren).catch(err => setError(messageOf(err)));
   }, [session]);
 
-  /** Generate another round; questions from previous rounds may repeat. */
+  /** Start a test. Every test is its own session with its own result. */
   const beginRound = useCallback(async (profile: ChildProfile, trait: TraitKey, count: number) => {
     if (generationLock.current) return;
     generationLock.current = true;
     setBusy(true);
     setError(null);
     try {
-      if (completedAnswers.length >= 90) throw new Error('This session is full. View the combined results, then start a new session.');
       if (!profile.id) throw new Error('Choose or create a child nickname first.');
-      const t = await fetchTest(profile.id, sessionId, profile.age, trait, count);
+      // null: a fresh session, so this test's result never includes earlier tests.
+      const t = await fetchTest(profile.id, null, profile.age, trait, count);
       if (!t.questions.length) {
         throw new Error('No questions were generated. Please try again.');
       }
@@ -74,7 +76,7 @@ function KidCogApp() {
       generationLock.current = false;
       setBusy(false);
     }
-  }, [completedAnswers.length, sessionId]);
+  }, []);
 
   const start = useCallback(async (profile: ChildProfile) => {
     setBusy(true); setError(null);
@@ -108,15 +110,15 @@ function KidCogApp() {
       setBusy(true);
       setError(null);
       try {
-        // Latest answer wins when a parent explicitly allows a repeat. Never
-        // double-count the same question in the combined session.
-        const byId = new Map(completedAnswers.map(r => [r.questionId, r]));
-        for (const response of responses) byId.set(response.questionId, response);
-        const combined = [...byId.values()];
+        // Only this test's answers: the result describes the test just taken.
         if (!sessionId) throw new Error('This assessment session is missing. Start a new session.');
-        const r = await submitAnswers({ sessionId, child, responses: combined });
-        setCompletedAnswers(combined);
+        const r = await submitAnswers({ sessionId, child, responses });
         setReport(r);
+        setExplored(current => {
+          const byKey = new Map(current.map(t => [t.key, t]));
+          for (const t of r.traits) if (t.questionCount > 0) byKey.set(t.key, t);
+          return [...byKey.values()];
+        });
         setStage(test?.profile.showScoreToChild ? 'results' : 'celebrate');
       } catch (err) {
         setError(messageOf(err));
@@ -124,7 +126,7 @@ function KidCogApp() {
         setBusy(false);
       }
     },
-    [child, test, completedAnswers, sessionId]
+    [child, test, sessionId]
   );
 
   /** Another round for the same child, allowing repeated questions. */
@@ -140,7 +142,7 @@ function KidCogApp() {
     setTest(null);
     setReport(null);
     setChild(null);
-    setCompletedAnswers([]);
+    setExplored([]);
     setError(null);
     setSessionId(null);
   }, []);
@@ -184,7 +186,7 @@ function KidCogApp() {
 
           {stage === 'historical_result' && historical && <ResultsScreen report={historical.report} childName={historical.childName} completedAt={historical.completedAt} historical onBackToHistory={() => setStage('history')} onRestart={restart} onChooseCategory={() => {}} onReassess={() => {}} remainingUnseen={0} busy={false} error={null} />}
 
-          {stage === 'categories' && <CategoryScreen onSelect={chooseRound} onReport={() => setStage('results')} onBack={restart} report={report} busy={busy} error={error} />}
+          {stage === 'categories' && <CategoryScreen onSelect={chooseRound} onReport={() => setStage('results')} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
 
           {stage === 'quiz' && test && (
             <QuizScreen test={test} onFinish={finish} submitting={busy} error={error} />

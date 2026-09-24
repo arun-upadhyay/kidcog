@@ -46,11 +46,14 @@ const ROUND_OPTIONS = [
   { count: 6, icon: '🚀', title: 'Big', subtitle: '6 questions' },
 ] as const;
 
-export default function CategoryScreen({ onSelect, onReport, onBack, report, busy, error }: {
+export default function CategoryScreen({ onSelect, onReport, onBack, report, explored, busy, error }: {
   onSelect: (trait: TraitKey, count: number) => void;
   onReport: () => void;
   onBack: () => void;
+  /** The latest test's result, for the "View latest result" button. */
   report: Report | null;
+  /** Categories tried during this visit (from each test's own result). */
+  explored: Report['traits'];
   busy: boolean;
   error: string | null;
 }) {
@@ -110,7 +113,7 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, bus
       <View style={styles.groups}>
         {CATEGORY_GROUPS.map(group => {
           const groupCategories = categories.filter(c => (c.group ?? 'intellectual') === group.key);
-          const observed = groupCategories.filter(category => (report?.traits.find(t => t.key === category.key)?.questionCount ?? 0) > 0).length;
+          const observed = groupCategories.filter(category => (explored.find(t => t.key === category.key)?.questionCount ?? 0) > 0).length;
           const expanded = expandedGroups.has(group.key);
           const groupVisual = GROUP_VISUALS[group.key];
           return <View key={group.key} style={styles.group}>
@@ -126,7 +129,7 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, bus
             <View style={[styles.chevronBubble, { backgroundColor: groupVisual.border }]}><Text style={styles.chevron}>{expanded ? '−' : '+'}</Text></View>
           </Pressable>
           {expanded ? <View style={styles.groupItems}>{groupCategories.map(category => {
-          const result = report?.traits.find(t => t.key === category.key);
+          const result = explored.find(t => t.key === category.key);
           const visual = CATEGORY_VISUALS[category.key];
           const isSelected = selected === category.key;
           return <Pressable key={category.key} accessibilityRole="radio" accessibilityState={{ checked: selected === category.key, disabled: busy }} disabled={busy} onPress={() => setSelected(category.key)} style={[styles.card, selected === category.key && styles.selected]}>
@@ -153,7 +156,7 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, bus
       </View> : null}
       <View style={styles.actions}>
         <Button title={busy ? 'Making your adventure…' : 'Let’s start! ✨'} onPress={() => onSelect(selected, count)} loading={busy} disabled={busy || categories.length === 0} />
-        {report ? <Button title="View combined results" variant="secondary" onPress={onReport} disabled={busy} /> : <Button title="Back to child details" variant="secondary" onPress={onBack} disabled={busy} />}
+        {report ? <Button title="View latest result" variant="secondary" onPress={onReport} disabled={busy} /> : <Button title="Back to child details" variant="secondary" onPress={onBack} disabled={busy} />}
       </View>
     </ScrollView>
   );

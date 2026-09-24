@@ -153,6 +153,31 @@ function chipStyle(r: ScoredResponse): TextStyle {
   return styles.chipMid;
 }
 
+/**
+ * "6 of 6 points" alone read as 6 questions when there were 2, because each
+ * question is scored out of 3 to allow partial credit. Lead with questions, and
+ * explain the points in one short line underneath.
+ */
+function scoreSummary(report: Report): { headline: string; detail: string } {
+  const scored = report.responses.filter(r => r.possible > 0);
+  const n = scored.length;
+  if (n === 0) return { headline: 'No questions were answered', detail: '' };
+  const full = scored.filter(r => r.earned >= r.possible).length;
+  const partly = scored.filter(r => r.earned > 0 && r.earned < r.possible).length;
+  const notYet = n - full - partly;
+  const headline = full === n
+    ? (n === 1 ? 'The question was fully right' : n === 2 ? 'Both questions fully right' : `All ${n} questions fully right`)
+    : [`${full} of ${n} ${n === 1 ? 'question' : 'questions'} fully right`, partly ? `${partly} partly right` : null, notYet ? `${notYet} not yet right` : null]
+        .filter(Boolean).join(', ');
+  const each = scored.every(r => r.possible === scored[0]!.possible) ? scored[0]!.possible : null;
+  const points = `${report.overall.earned} of ${report.overall.possible} points`;
+  const detail = each
+    ? `Each answer can earn up to ${each} points, so partly right answers still count (${points}).`
+    : `Answers can earn part points, so partly right answers still count (${points}).`;
+  const skipped = report.responses.filter(r => r.skipped).length;
+  return { headline: skipped ? `${headline} · ${skipped} skipped` : headline, detail };
+}
+
 export default function ResultsScreen({
   report,
   childName,
@@ -180,17 +205,18 @@ export default function ResultsScreen({
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {historical && onBackToHistory ? <Pressable onPress={onBackToHistory} accessibilityRole="button"><Text style={styles.historyBack}>← Previous assessments</Text></Pressable> : null}
-      <Text style={type.label}>{historical ? 'SAVED ASSESSMENT RESULT' : 'COMBINED SESSION RESULT'}</Text>
+      <Text style={type.label}>{historical ? 'SAVED ASSESSMENT RESULT' : 'TEST RESULT'}</Text>
       <Text style={[type.title, { marginTop: spacing(1) }]}>
-        {childName ? `${childName}'s session` : 'Session summary'}
+        {childName ? `${childName}'s test` : 'Test summary'}
       </Text>
       {completedAt ? <Text style={[type.soft, { marginTop: spacing(0.5) }]}>{new Date(completedAt).toLocaleString()}</Text> : null}
 
       <View style={styles.overall}>
         <Text style={styles.overallNumber}>{report.overall.possible > 0 ? `${report.overall.percent}%` : 'Not scored'}</Text>
-        <Text style={type.soft}>
-          {report.overall.earned} of {report.overall.possible} points on the scored questions
-        </Text>
+        <Text style={[type.body, { fontWeight: '600', textAlign: 'center' }]}>{scoreSummary(report).headline}</Text>
+        {scoreSummary(report).detail ? (
+          <Text style={[type.soft, { fontSize: 13, textAlign: 'center', marginTop: spacing(0.5) }]}>{scoreSummary(report).detail}</Text>
+        ) : null}
       </View>
 
       {report.parentReport ? (
@@ -206,7 +232,7 @@ export default function ResultsScreen({
 
       <Text style={[type.heading, { marginTop: spacing(4) }]}>Category results</Text>
       <Text style={[type.soft, { marginTop: spacing(0.5) }]}>
-        All categories appear below. Results combine the rounds completed in this session.
+        All categories appear below. This result covers only the test just completed; earlier tests are in the child's history.
         The 1–5 indicators describe evidence in these activities, not a ranking against other children
         or an official school rating. Unobserved categories have no score. Speed, enjoyment, and
         everyday behaviour need observations over time.
