@@ -1,0 +1,2770 @@
+{
+  "info": {
+    "_postman_id": "6f1c2c0e-8a53-4c62-9d1e-0c4b1f7a2e10",
+    "name": "KidCog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Every KidCog API endpoint: all 24 categories, a complete session, voice, and error handling. Built from the server code by `postman/build-collection.cjs` — re-run it after changing categories or endpoints.\n\n**Setup (once):** import both files, select the **KidCog Local** environment, and fill in `supabaseUrl` and `supabaseAnonKey` (the values of `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY` in `app/.env`), `email` and `password`. Set Settings → Request timeout to 0.\n\n**Run:** start the server (`npm run dev` in `server/`), then right-click the collection → Run. Each request reports OK, or FAILED with the server's exact reason. Generated questions appear in the Postman Console.\n\n**What a full run leaves behind:** nothing. It creates one session for the category rounds and one for the full flow, and Cleanup deletes both. If you have no child profile it creates \"Postman test\"; set `allowDeleteTestChild` to `yes` to have Cleanup remove it too.\n\n**Pacing:** the server allows 30 requests a minute, so the collection spaces requests about 2 seconds apart. Avoid using the app while a run is going: it shares the same limit.\n\n**Settings (collection variables):** `count` is questions per round (2, 5 or 6; 2 is quickest and cheapest). `flowTrait` is the category used for the full session flow.\n\n**Google-only account?** It has no password. Leave `email` blank, open the web app → DevTools → Network → any `children` request → Authorization header, copy everything after `Bearer ` into `token`.\n\n**Cost:** each round is 3–5 OpenAI calls. A full run is 25 rounds plus grading, one speech and one transcription. Folder 7 costs nothing."
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000"
+    },
+    {
+      "key": "count",
+      "value": "2"
+    },
+    {
+      "key": "flowTrait",
+      "value": "sensitivity_others"
+    },
+    {
+      "key": "allowDeleteTestChild",
+      "value": "no"
+    }
+  ],
+  "item": [
+    {
+      "name": "0. Setup — run these first",
+      "item": [
+        {
+          "name": "Health check",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "pm.test(`Server up — AI ready: ${j.aiReady}, model: ${j.model}`, () => pm.expect(j.aiReady).to.eql(true));",
+                  "if (j.keyProblem) console.log('Key problem: ' + j.keyProblem);",
+                  "for (const v of ['roundSessionId', 'flowSessionId', 'flowQuestions', 'speechBase64']) pm.collectionVariables.unset(v);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Sign in (email + password) → saves token",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "apikey",
+                "value": "{{supabaseAnonKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{supabaseUrl}}/auth/v1/token?grant_type=password",
+              "host": [
+                "{{supabaseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "v1",
+                "token"
+              ],
+              "query": [
+                {
+                  "key": "grant_type",
+                  "value": "password"
+                }
+              ]
+            },
+            "description": "Signs in with Supabase and stores the access token. Google-only accounts have no password: paste a token into the `token` environment variable and skip this request (it skips itself when email is blank)."
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.environment.get('email')) { console.log('Skipped: no email set — using the token already in the environment.'); pm.execution.skipRequest(); }"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (j.access_token) { pm.environment.set('token', j.access_token); pm.test('Signed in — token saved (valid about an hour)', () => true); }",
+                  "else pm.test('Sign-in failed: ' + (j.error_description || j.msg || j.error || pm.response.code), () => { throw new Error('no token'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "List children → picks the first child",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/children",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "children"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (!Array.isArray(j)) { pm.test('Could not list children: ' + (j.error || pm.response.code), () => { throw new Error(j.error); }); return; }",
+                  "if (j.length === 0) { pm.test('No child profiles yet — the next request creates one', () => true); return; }",
+                  "pm.environment.set('childId', j[0].id);",
+                  "pm.environment.set('age', String(j[0].age));",
+                  "pm.test(`Using ${j[0].nickname}, age ${j[0].age} (${j.length} profile(s))`, () => true);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Create test child (only when you have none)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nickname\": \"Postman test\",\n  \"age\": 5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/children",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "children"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// A full run reaches this request every time. Without this guard each",
+                  "// run would add another profile to your real database.",
+                  "if (pm.environment.get('childId')) { console.log('Skipped: a child profile is already selected.'); pm.execution.skipRequest(); }"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 201 && j.id) {",
+                  "  pm.environment.set('childId', j.id); pm.environment.set('age', String(j.age));",
+                  "  pm.collectionVariables.set('createdChildId', j.id);",
+                  "  pm.test('Created test child ' + j.id, () => true);",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "List categories",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/categories",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "pm.test(`${Array.isArray(j) ? j.length : 0} categories returned (collection built for 24)`, () => pm.expect(j).to.be.an('array').with.lengthOf(24));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1. Intellectual Ability",
+      "item": [
+        {
+          "name": "abstract_concepts — Comprehends abstract ideas and concepts",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"abstract_concepts\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "beyond_experience — Considers problems outside their own experience",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"beyond_experience\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "generalization — Makes quick and valid generalizations",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"generalization\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "cause_effect — Sees cause and effect",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"cause_effect\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "challenge_seeking — Chooses and enjoys challenging tasks",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"challenge_seeking\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "curiosity — Demonstrates great curiosity; asks how, why, what if",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"curiosity\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "original_methods — Chooses original methods",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"original_methods\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "observant — Is keenly observant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"observant\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2. Social/Emotional/Behavioral",
+      "item": [
+        {
+          "name": "perfectionism — Perfectionism",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"perfectionism\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "strong_ideas — Strong ideas, beliefs, and opinions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"strong_ideas\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "questions_authority — Questions authority",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"questions_authority\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "motivation_focus — Motivation for and intense focus on tasks",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"motivation_focus\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "humor — Subtle sense of humor, original jokes, and puns",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"humor\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "sensitivity_others — Sensitive to the needs of others",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"sensitivity_others\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3. Academic Skills: Verbal/Linguistic",
+      "item": [
+        {
+          "name": "extensive_vocabulary — Uses an extensive vocabulary precisely and appropriately",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"extensive_vocabulary\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "advanced_reading — Is an avid reader of books beyond grade level",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"advanced_reading\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "self_motivated_writing — Is motivated to write even when writing is not assigned",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"self_motivated_writing\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "viewpoint_mood_intention — Recognizes points of view, moods, and intentions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"viewpoint_mood_intention\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "advanced_spelling — Spells words accurately that are advanced for age",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"advanced_spelling\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4. Academic Skills: Logical/Mathematical",
+      "item": [
+        {
+          "name": "how_things_work — Asks many questions about how things work",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"how_things_work\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "mental_math — Grasps advanced mathematical concepts for age",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"mental_math\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "strategy_games — Plays chess, checkers, or other strategy games",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"strategy_games\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "categories_hierarchies — Enjoys putting things in categories or hierarchies",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"categories_hierarchies\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "intuitive_problem_solving — Sometimes solves problems intuitively",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"intuitive_problem_solving\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Reuse the session the first category created, so a full run adds one",
+                  "// session to your account instead of one per category. Cleanup deletes it.",
+                  "const body = JSON.parse(pm.request.body.raw.replace(/{{age}}/g, \"0\").replace(/{{count}}/g, \"0\"));",
+                  "body.sessionId = pm.collectionVariables.get('roundSessionId') || null;",
+                  "pm.request.body.update(JSON.stringify(body, null, 2).replace('\"age\": 0', '\"age\": {{age}}').replace('\"count\": 0', '\"count\": {{count}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  if (j.sessionId && !pm.collectionVariables.get('roundSessionId')) pm.collectionVariables.set('roundSessionId', j.sessionId);",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "5. Full session flow — generate, answer, history, report",
+      "item": [
+        {
+          "name": "Generate a round (flowTrait)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"sessionId\": null,\n  \"age\": {{age}},\n  \"trait\": \"{{flowTrait}}\",\n  \"count\": {{count}},\n  \"requestId\": \"{{$guid}}\",\n  \"exclude\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.questions)) {",
+                  "  pm.collectionVariables.set('flowSessionId', j.sessionId);",
+                  "  pm.collectionVariables.set('flowQuestions', JSON.stringify(j.questions.map(q => ({ id: q.id, type: q.type, options: q.options }))));",
+                  "  const want = Number(pm.variables.get('count'));",
+                  "  const secs = Math.round(pm.response.responseTime / 1000);",
+                  "  const types = j.questions.map(q => q.type).join(', ');",
+                  "  pm.test(`OK in ${secs}s — ${j.questions.length} questions: ${types}`, () => pm.expect(j.questions.length).to.eql(want));",
+                  "  pm.test('Only spoken (open) and multiple-choice (mcq) questions', () => {",
+                  "    for (const q of j.questions) {",
+                  "      pm.expect(['open', 'mcq']).to.include(q.type);",
+                  "      if (q.type === 'mcq') pm.expect(q.options, 'mcq needs options').to.be.an('array').with.length.within(2, 4);",
+                  "      else pm.expect(q.options, 'open has no options').to.eql(null);",
+                  "    }",
+                  "  });",
+                  "  pm.test('No answer keys or rubrics sent to the app', () => {",
+                  "    for (const q of j.questions) { pm.expect(q).to.not.have.property('answerKey'); pm.expect(q).to.not.have.property('rubric'); }",
+                  "  });",
+                  "  j.questions.forEach((q, i) => console.log(`${pm.info.requestName} Q${i + 1} [${q.type}] ${q.prompt}`));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Submit answers → scored report",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/submit",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "submit"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sessionId\": \"{{flowSessionId}}\",\n  \"responses\": \"filled in by the pre-request script from the round above\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.collectionVariables.get('flowSessionId')) {",
+                  "  console.log('Skipped: the round above did not generate.');",
+                  "  pm.execution.skipRequest();",
+                  "}",
+                  "// Answers the questions that were actually generated: the first choice",
+                  "// for multiple choice, a short sensible sentence for spoken questions.",
+                  "const qs = JSON.parse(pm.collectionVariables.get('flowQuestions') || '[]');",
+                  "pm.request.body.update(JSON.stringify({",
+                  "  sessionId: pm.collectionVariables.get('flowSessionId'),",
+                  "  child: { firstName: 'Test', age: Number(pm.environment.get('age')) },",
+                  "  responses: qs.map(q => ({ questionId: q.id, answer: q.type === 'mcq' ? q.options[0].key : 'I would ask what is wrong and try to help, because that makes people feel better.', elapsedSeconds: 12 })),",
+                  "}, null, 2));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && j.overall) {",
+                  "  const qs = JSON.parse(pm.collectionVariables.get('flowQuestions') || '[]');",
+                  "  pm.test(`Scored: ${j.overall.earned} of ${j.overall.possible} points (${j.overall.percent}%)`, () => pm.expect(j.responses).to.have.lengthOf(qs.length));",
+                  "  pm.test(j.parentReport ? 'Written parent report generated' : 'Parent report failed (scores still saved): ' + (j.parentReportError || 'unknown'), () => pm.expect(j.parentReport).to.be.an('object'));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Assessment history for the child",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/children/{{childId}}/sessions?limit=20&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "children",
+                "{{childId}}",
+                "sessions"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && Array.isArray(j.sessions)) {",
+                  "  const id = pm.collectionVariables.get('flowSessionId');",
+                  "  pm.test(`${j.sessions.length} completed session(s) listed`, () => true);",
+                  "  if (id) pm.test('The session just completed is in the history', () => pm.expect(j.sessions.map(s => s.id)).to.include(id));",
+                  "} else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Report for the completed session",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/sessions/{{flowSessionId}}/report",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sessions",
+                "{{flowSessionId}}",
+                "report"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.collectionVariables.get('flowSessionId')) {",
+                  "  console.log('Skipped: no completed session to read.');",
+                  "  pm.execution.skipRequest();",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200) pm.test('Report loaded', () => pm.expect(j).to.be.an('object')); else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "6. Voice — speech and transcription",
+      "item": [
+        {
+          "name": "Speak a sentence (no sign-in needed)",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/speak?text=The%20cat%20sat%20on%20the%20mat.",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "speak"
+              ],
+              "query": [
+                {
+                  "key": "text",
+                  "value": "The%20cat%20sat%20on%20the%20mat."
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const type = pm.response.headers.get('Content-Type') || '';",
+                  "if (pm.response.code === 200 && type.startsWith('audio/')) {",
+                  "  pm.test(`Audio returned: ${type}, ${pm.response.responseSize} bytes`, () => pm.expect(pm.response.responseSize).to.be.above(100));",
+                  "  // Kept so the next request can transcribe real speech.",
+                  "  pm.collectionVariables.set('speechBase64', pm.response.stream.toString('base64'));",
+                  "} else { let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; } pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Transcribe that audio back to text",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/transcribe",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "transcribe"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"audioBase64\": \"{{speechBase64}}\",\n  \"filename\": \"speech.mp3\",\n  \"mimeType\": \"audio/mpeg\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.collectionVariables.get('speechBase64')) {",
+                  "  console.log('Skipped: no audio from the speak request.');",
+                  "  pm.execution.skipRequest();",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "if (pm.response.code === 200 && typeof j.text === 'string') pm.test(`Heard: \"${j.text}\"`, () => pm.expect(j.text.toLowerCase()).to.include('cat'));",
+                  "else { pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "7. Error handling — should be rejected (no AI cost)",
+      "item": [
+        {
+          "name": "No sign-in → 401",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/children",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "children"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "pm.test('Rejected with 401: ' + (j.error || ''), () => { pm.expect(pm.response.code).to.eql(401); pm.expect(j.error).to.include(\"sign in\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Round with 3 questions → 400 (only 2, 5 or 6)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"age\": {{age}},\n  \"trait\": \"humor\",\n  \"count\": 3,\n  \"requestId\": \"{{$guid}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "pm.test('Rejected with 400: ' + (j.error || ''), () => { pm.expect(pm.response.code).to.eql(400); pm.expect(j.error).to.include(\"2, 5, or 6\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Unknown category → 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"{{childId}}\",\n  \"age\": {{age}},\n  \"trait\": \"not_a_category\",\n  \"count\": 2,\n  \"requestId\": \"{{$guid}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "pm.test('Rejected with 400: ' + (j.error || ''), () => { pm.expect(pm.response.code).to.eql(400); pm.expect(j.error).to.include(\"category\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Child that is not yours → 404",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"childProfileId\": \"00000000-0000-4000-8000-000000000000\",\n  \"age\": 5,\n  \"trait\": \"humor\",\n  \"count\": 2,\n  \"requestId\": \"{{$guid}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "test"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "pm.test('Rejected with 404: ' + (j.error || ''), () => { pm.expect(pm.response.code).to.eql(404); pm.expect(j.error).to.include(\"not found\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Age 13 → 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nickname\": \"Too old\",\n  \"age\": 13\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/children",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "children"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "pm.test('Rejected with 400: ' + (j.error || ''), () => { pm.expect(pm.response.code).to.eql(400); pm.expect(j.error).to.include(\"nickname\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Speak with no text → 400",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/speak?text=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "speak"
+              ],
+              "query": [
+                {
+                  "key": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "pm.test('Rejected with 400: ' + (j.error || ''), () => { pm.expect(pm.response.code).to.eql(400); pm.expect(j.error).to.include(\"text is required\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Report for a bad session id → 400",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/sessions/not-a-uuid/report",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sessions",
+                "not-a-uuid",
+                "report"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; }",
+                  "pm.test('Rejected with 400: ' + (j.error || ''), () => { pm.expect(pm.response.code).to.eql(400); pm.expect(j.error).to.include(\"Invalid assessment session\"); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "8. Cleanup — removes only what this run created",
+      "item": [
+        {
+          "name": "Delete the category-round session",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/sessions/{{roundSessionId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sessions",
+                "{{roundSessionId}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.collectionVariables.get('roundSessionId')) {",
+                  "  console.log('Skipped: no category session was created.');",
+                  "  pm.execution.skipRequest();",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 204) { pm.test('Deleted', () => true); pm.collectionVariables.unset('roundSessionId'); } else { let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; } pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Delete the full-flow session",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/sessions/{{flowSessionId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sessions",
+                "{{flowSessionId}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.collectionVariables.get('flowSessionId')) {",
+                  "  console.log('Skipped: no flow session was created.');",
+                  "  pm.execution.skipRequest();",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 204) { pm.test('Deleted', () => true); pm.collectionVariables.unset('flowSessionId'); } else { let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; } pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Delete the test child (only if this collection created it AND allowDeleteTestChild = yes)",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/children/{{createdChildId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "children",
+                "{{createdChildId}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Deleting a child also deletes its history, so this never runs by accident:",
+                  "// it needs a child this collection created and an explicit opt-in.",
+                  "if (!pm.collectionVariables.get('createdChildId') || pm.variables.get('allowDeleteTestChild') !== 'yes') {",
+                  "  console.log('Skipped: set allowDeleteTestChild to yes to remove the test child this collection created.');",
+                  "  pm.execution.skipRequest();",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 204) { pm.test('Deleted test child', () => true); pm.collectionVariables.unset('createdChildId'); pm.environment.unset('childId'); } else { let j; try { j = pm.response.json(); } catch (e) { j = { error: pm.response.text().slice(0, 200) }; } pm.test(`FAILED — HTTP ${pm.response.code}: ${j.error || ''}${j.detail ? ' — ' + j.detail : ''}`, () => { throw new Error(j.detail || j.error || 'failed'); }); }"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "const gap = 2100, last = Number(pm.collectionVariables.get('lastRequestAt') || 0);",
+          "const wait = Math.max(0, last + gap - Date.now());",
+          "pm.collectionVariables.set('lastRequestAt', String(Date.now() + wait));",
+          "if (wait > 0) setTimeout(() => {}, wait);"
+        ]
+      }
+    }
+  ]
+}

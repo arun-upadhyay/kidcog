@@ -126,7 +126,9 @@ export async function fetchTest(childProfileId: string, sessionId: string | null
     return (c === 'x' ? n : (n & 3) | 8).toString(16);
   });
   const test = await request<TestPayload>('/api/test', {
-    method: 'POST', timeoutMs: 90000,
+    // Writing, reviewing and (if needed) repairing a round are sequential model
+    // calls. The server bounds itself to fit inside this.
+    method: 'POST', timeoutMs: 240000,
     body: JSON.stringify({ childProfileId, sessionId, age: age ?? 5, trait, count: limit, exclude, requestId }),
   });
   if (!test.profile || typeof test.profile.uiScale !== 'number' || !Array.isArray(test.questions)) {
