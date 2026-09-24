@@ -15,6 +15,7 @@ type AuthValue = {
   signInWithEmail: (email: string, password: string) => Promise<void>;
   signUpWithEmail: (email: string, password: string) => Promise<{ needsVerification: boolean }>;
   resendVerification: (email: string) => Promise<void>;
+  updatePassword: (password: string) => Promise<void>;
   signOut: () => Promise<void>;
 };
 
@@ -98,11 +99,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (error) throw error;
   }
 
+  async function updatePassword(password: string) {
+    if (!supabaseConfigured) throw new Error('Add the Supabase public settings to app/.env first.');
+    const { error } = await supabase.auth.updateUser({ password });
+    if (error) throw error;
+  }
+
   const value = useMemo<AuthValue>(() => ({
     session, loading, configured: supabaseConfigured, signIn,
     signInWithEmail,
     signUpWithEmail,
     resendVerification,
+    updatePassword,
     signOut: async () => { const { error } = await supabase.auth.signOut(); if (error) throw error; },
   }), [session, loading]);
 

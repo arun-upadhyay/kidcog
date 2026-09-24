@@ -29,7 +29,7 @@ function messageOf(err: unknown): string {
 }
 
 function KidCogApp() {
-  const { session, loading: authLoading, signOut } = useAuth();
+  const { session, loading: authLoading, signOut, updatePassword } = useAuth();
   const [stage, setStage] = useState<Stage>('start');
   const [child, setChild] = useState<ChildProfile | null>(null);
   const [test, setTest] = useState<TestPayload | null>(null);
@@ -196,7 +196,22 @@ function KidCogApp() {
       <StatusBar style="dark" />
       <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
         <View style={styles.root}>
-          {stage === 'start' && <StartScreen onStart={start} loading={busy} error={error} savedChildren={savedChildren} onSignOut={() => void logout()} onViewHistory={openHistory} onDeleteChild={deleteChild} />}
+          {stage === 'start' && <StartScreen
+            onStart={start}
+            loading={busy}
+            error={error}
+            savedChildren={savedChildren}
+            accountEmail={session.user.email ?? 'Signed-in parent'}
+            accountProviders={Array.isArray(session.user.app_metadata.providers)
+              ? session.user.app_metadata.providers.filter((provider: unknown): provider is string => typeof provider === 'string')
+              : [session.user.app_metadata.provider].filter((provider: unknown): provider is string => typeof provider === 'string')}
+            accountVerified={Boolean(session.user.email_confirmed_at)}
+            accountCreatedAt={session.user.created_at}
+            onChangePassword={updatePassword}
+            onSignOut={() => void logout()}
+            onViewHistory={openHistory}
+            onDeleteChild={deleteChild}
+          />}
 
           {stage === 'history' && historyChild && <HistoryScreen child={historyChild} onBack={restart} onOpen={(item) => { setHistorical(item); setStage('historical_result'); }} />}
 
