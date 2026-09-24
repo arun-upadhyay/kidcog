@@ -144,7 +144,13 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, bus
         </View>;})}
       </View>
       {loadError ? <><Text style={styles.error}>{loadError}</Text><Button title="Retry loading categories" onPress={() => setAttempt(v => v + 1)} /></> : null}
-      {error ? <Text style={styles.error}>{error}</Text> : null}
+      {error ? <View style={styles.retryCard} accessibilityLiveRegion="polite">
+        <View style={styles.retryHeading}>
+          <View style={styles.retryIconBubble}><Text style={styles.retryIcon}>🌦️</Text></View>
+          <View style={styles.retryCopy}><Text style={styles.retryTitle}>That adventure didn’t load</Text><Text style={styles.retryText}>{error}</Text></View>
+        </View>
+        <Button title={busy ? 'Trying again…' : 'Try again ↻'} variant="secondary" onPress={() => onSelect(selected, count)} disabled={busy || categories.length === 0} loading={busy} />
+      </View> : null}
       <View style={styles.actions}>
         <Button title={busy ? 'Making your adventure…' : 'Let’s start! ✨'} onPress={() => onSelect(selected, count)} loading={busy} disabled={busy || categories.length === 0} />
         {report ? <Button title="View combined results" variant="secondary" onPress={onReport} disabled={busy} /> : <Button title="Back to child details" variant="secondary" onPress={onBack} disabled={busy} />}
@@ -202,5 +208,12 @@ const styles = StyleSheet.create({
   categoryTitle: { fontSize: 17, lineHeight: 22, fontWeight: '700', color: colors.ink },
   chevronBubble: { width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center', marginLeft: spacing(1) },
   chevron: { color: '#FFFFFF', fontSize: 22, lineHeight: 25, fontWeight: '900' },
+  retryCard: { backgroundColor: '#FFF0EE', borderWidth: 2, borderColor: '#F2A28E', borderRadius: 20, padding: spacing(1.5), marginBottom: spacing(1.5), gap: spacing(1.5) },
+  retryHeading: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1.25) },
+  retryIconBubble: { width: 44, height: 44, borderRadius: 22, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' },
+  retryIcon: { fontSize: 24 },
+  retryCopy: { flex: 1 },
+  retryTitle: { fontSize: 16, lineHeight: 21, fontWeight: '900', color: '#9C402F' },
+  retryText: { fontSize: 12, lineHeight: 18, color: '#855A51', marginTop: 2 },
   actions: { gap: spacing(1.5) },
 });
