@@ -11,10 +11,8 @@ export interface ResultsScreenProps {
   childName?: string | undefined;
   onRestart: () => void;
   onChooseCategory: () => void;
-  /** Another round for the same child, using only questions not yet seen. */
+  /** Generate another round for the same child; earlier questions may repeat. */
   onReassess: () => void;
-  /** Clear this child's history so the whole bank is available again. */
-  onResetQuestions: () => void;
   /** How many unseen questions are left for this child's age after this round. */
   remainingUnseen: number;
   busy: boolean;
@@ -161,7 +159,6 @@ export default function ResultsScreen({
   onRestart,
   onChooseCategory,
   onReassess,
-  onResetQuestions,
   remainingUnseen,
   busy,
   error,

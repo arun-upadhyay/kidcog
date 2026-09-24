@@ -73,6 +73,8 @@ test('every category sends its exact blueprint through generation and review', a
    assert.equal(JSON.stringify(payload.assessmentBlueprint),JSON.stringify(blueprints.ASSESSMENT_BLUEPRINTS[key]),`${key} sent the wrong blueprint to AI`);
    assert.equal(payload.age,7);
    assert.equal(payload.count,2);
+   assert.ok(!('previousPrompts' in payload), 'Previous questions must not constrain generation');
+   assert.ok(!('exclude' in payload), 'Question exclusions must not be sent to AI');
    assert.ok(payload.ageRequirements.guidance.length>20);
   }
   const publicRound=round.map(generator.publicQuestion);

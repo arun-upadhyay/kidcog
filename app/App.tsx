@@ -12,7 +12,6 @@ import LoginScreen from './src/screens/LoginScreen';
 import HistoryScreen from './src/screens/HistoryScreen';
 import { AuthProvider, useAuth } from './src/auth/AuthContext';
 import { deleteChildProfile, fetchTest, listChildren, saveChild, submitAnswers } from './src/api';
-import { forgetSeen, loadSeen, rememberSeen } from './src/seenQuestions';
 import { stopSpeaking } from './src/speech';
 import { colors } from './src/theme';
 import type { ChildProfile, HistoricalAssessment, Report, ResponseInput, SavedChildProfile, TestPayload, TraitKey } from './src/types';
@@ -50,19 +49,8 @@ function KidCogApp() {
     void listChildren().then(setSavedChildren).catch(err => setError(messageOf(err)));
   }, [session]);
 
-  /**
-   * Ids this child has already been shown, across every past session on this
-   * device. Held here so a reassessment can ask the server for fresh material:
-   * running the same items twice measures recall, not reasoning.
-   */
-  const [seen, setSeen] = useState<string[]>([]);
-
-  /**
-   * Fetch a round and move into the quiz. `exclude` is passed explicitly rather
-   * than read from state because the state update from the previous round has
-   * not necessarily landed by the time a reassessment starts.
-   */
-  const beginRound = useCallback(async (profile: ChildProfile, exclude: string[], trait: TraitKey, count: number) => {
+  /** Generate another round; questions from previous rounds may repeat. */
+  const beginRound = useCallback(async (profile: ChildProfile, trait: TraitKey, count: number) => {
     if (generationLock.current) return;
     generationLock.current = true;
     setBusy(true);
@@ -70,16 +58,11 @@ function KidCogApp() {
     try {
       if (completedAnswers.length >= 90) throw new Error('This session is full. View the combined results, then start a new session.');
       if (!profile.id) throw new Error('Choose or create a child nickname first.');
-      const t = await fetchTest(profile.id, sessionId, profile.age, exclude, trait, count);
+      const t = await fetchTest(profile.id, sessionId, profile.age, trait, count);
       if (!t.questions.length) {
-        throw new Error(
-          exclude.length > 0
-            ? 'No unseen questions remain in this category for this age. Choose another category, or reset question history from the results screen.'
-            : 'There are no questions in this category for that age yet. Choose another category.'
-        );
+        throw new Error('No questions were generated. Please try again.');
       }
       setChild(profile);
-      setSeen(exclude);
       setTest(t);
       setSessionId(t.sessionId);
       setRoundCategory(trait);
@@ -110,8 +93,7 @@ function KidCogApp() {
   const chooseRound = useCallback(async (trait: TraitKey, count: number) => {
     if (!child) return;
     try {
-      const already = await loadSeen(child.firstName);
-      await beginRound(child, already, trait, count);
+      await beginRound(child, trait, count);
     } catch (err) { setError(messageOf(err)); }
   }, [child, beginRound]);
 
@@ -134,10 +116,6 @@ function KidCogApp() {
         if (!sessionId) throw new Error('This assessment session is missing. Start a new session.');
         const r = await submitAnswers({ sessionId, child, responses: combined });
         setCompletedAnswers(combined);
-        // Record before showing the report: if the parent closes the app on the
-        // results screen, the next round should still serve fresh questions.
-        await rememberSeen(r.seenQuestionIds, child?.firstName);
-        setSeen((prev) => Array.from(new Set([...prev, ...r.seenQuestionIds])));
         setReport(r);
         setStage(test?.profile.showScoreToChild ? 'results' : 'celebrate');
       } catch (err) {
@@ -149,21 +127,11 @@ function KidCogApp() {
     [child, test, completedAnswers, sessionId]
   );
 
-  /** Another round for the same child, drawing only on unseen questions. */
+  /** Another round for the same child, allowing repeated questions. */
   const reassess = useCallback(async () => {
     if (!child) return;
     stopSpeaking();
-    const already = await loadSeen(child.firstName);
-    await beginRound(child, already, roundCategory, roundLength);
-  }, [beginRound, child, roundCategory, roundLength]);
-
-  /** Clear the history so the whole bank is available again. */
-  const resetQuestions = useCallback(async () => {
-    if (!child) return;
-    stopSpeaking();
-    await forgetSeen(child.firstName);
-    setSeen([]);
-    await beginRound(child, [], roundCategory, roundLength);
+    await beginRound(child, roundCategory, roundLength);
   }, [beginRound, child, roundCategory, roundLength]);
 
   const restart = useCallback(() => {
@@ -174,7 +142,6 @@ function KidCogApp() {
     setChild(null);
     setCompletedAnswers([]);
     setError(null);
-    setSeen([]);
     setSessionId(null);
   }, []);
 
@@ -215,7 +182,7 @@ function KidCogApp() {
 
           {stage === 'history' && historyChild && <HistoryScreen child={historyChild} onBack={restart} onOpen={(item) => { setHistorical(item); setStage('historical_result'); }} />}
 
-          {stage === 'historical_result' && historical && <ResultsScreen report={historical.report} childName={historical.childName} completedAt={historical.completedAt} historical onBackToHistory={() => setStage('history')} onRestart={restart} onChooseCategory={() => {}} onReassess={() => {}} onResetQuestions={() => {}} remainingUnseen={0} busy={false} error={null} />}
+          {stage === 'historical_result' && historical && <ResultsScreen report={historical.report} childName={historical.childName} completedAt={historical.completedAt} historical onBackToHistory={() => setStage('history')} onRestart={restart} onChooseCategory={() => {}} onReassess={() => {}} remainingUnseen={0} busy={false} error={null} />}
 
           {stage === 'categories' && <CategoryScreen onSelect={chooseRound} onReport={() => setStage('results')} onBack={restart} report={report} busy={busy} error={error} />}
 
@@ -238,7 +205,6 @@ function KidCogApp() {
               onRestart={restart}
               onChooseCategory={chooseCategory}
               onReassess={reassess}
-              onResetQuestions={resetQuestions}
               remainingUnseen={test?.remainingUnseen ?? 0}
               busy={busy}
               error={error}

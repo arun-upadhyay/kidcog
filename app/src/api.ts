@@ -120,7 +120,7 @@ export function deleteAssessmentSession(sessionId: string): Promise<void> {
   return request(`/api/sessions/${encodeURIComponent(sessionId)}`, { method: 'DELETE' });
 }
 
-export async function fetchTest(childProfileId: string, sessionId: string | null, age?: number, exclude: string[] = [], trait?: TraitKey, limit = 5): Promise<TestPayload> {
+export async function fetchTest(childProfileId: string, sessionId: string | null, age?: number, trait?: TraitKey, limit = 5): Promise<TestPayload> {
   const requestId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
     const n = Math.floor(Math.random() * 16);
     return (c === 'x' ? n : (n & 3) | 8).toString(16);
@@ -129,7 +129,7 @@ export async function fetchTest(childProfileId: string, sessionId: string | null
     // Writing, reviewing and (if needed) repairing a round are sequential model
     // calls. The server bounds itself to fit inside this.
     method: 'POST', timeoutMs: 240000,
-    body: JSON.stringify({ childProfileId, sessionId, age: age ?? 5, trait, count: limit, exclude, requestId }),
+    body: JSON.stringify({ childProfileId, sessionId, age: age ?? 5, trait, count: limit, requestId }),
   });
   if (!test.profile || typeof test.profile.uiScale !== 'number' || !Array.isArray(test.questions)) {
     throw new Error('This server is incompatible. Start the backend from Documents/kidcog/server and try again.');

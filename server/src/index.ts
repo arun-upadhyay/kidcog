@@ -117,9 +117,9 @@ app.delete('/api/sessions/:sessionId', requireParent, async (req: AuthRequest, r
 /** The test the app should present. Answer keys and rubrics stay on the server. */
 const pendingRounds = new Map<string, Promise<TestPayload>>();
 app.post('/api/test', requireParent, async (req: AuthRequest, res: Response) => {
-  const input = z.object({ childProfileId: z.string().uuid(), sessionId: z.string().uuid().nullable().optional(), age: z.number().int().min(4).max(12), trait: z.enum(TRAIT_ORDER as [typeof TRAIT_ORDER[number], ...typeof TRAIT_ORDER[number][]]), count: z.union([z.literal(2), z.literal(5), z.literal(6)]), requestId: z.string().uuid(), exclude: z.array(z.string().max(40)).max(500).default([]) }).safeParse(req.body);
+  const input = z.object({ childProfileId: z.string().uuid(), sessionId: z.string().uuid().nullable().optional(), age: z.number().int().min(4).max(12), trait: z.enum(TRAIT_ORDER as [typeof TRAIT_ORDER[number], ...typeof TRAIT_ORDER[number][]]), count: z.union([z.literal(2), z.literal(5), z.literal(6)]), requestId: z.string().uuid() }).safeParse(req.body);
   if (!input.success) { res.status(400).json({ error: 'Choose an age, category, and 2, 5, or 6 questions.' }); return; }
-  const { childProfileId, sessionId: requestedSessionId, age, trait, count, requestId, exclude } = input.data;
+  const { childProfileId, sessionId: requestedSessionId, age, trait, count, requestId } = input.data;
   const key = JSON.stringify([req.parentId, requestId, age, trait, count]);
   try {
     if (!await childBelongsTo(req.parentId!, childProfileId)) { res.status(404).json({ error: 'Child profile was not found.' }); return; }
@@ -127,7 +127,7 @@ app.post('/api/test', requireParent, async (req: AuthRequest, res: Response) => 
     if (!work) {
       work = (async () => {
         const sessionId = await getOrCreateSession(req.parentId!, childProfileId, age, requestedSessionId);
-        const questions = await generateRound(age, trait, count, exclude);
+        const questions = await generateRound(age, trait, count);
         await saveGeneratedQuestions(req.parentId!, sessionId, questions);
         return { sessionId, traits: TRAIT_ORDER.map(k => ({ ...TRAITS[k], group: TRAITS[k].group ?? 'intellectual' })), questions: questions.map(publicQuestion), questionCount: questions.length, followUpQuestions: {}, profile: profileForAge(age), poolExhausted: false, remainingUnseen: -1 };
       })();
