@@ -4,7 +4,14 @@ import { validateGeneratedRound, publicQuestion, ageRules } from './generatedQue
 import { TRAIT_ORDER, TRAITS } from './traits.js';
 const rubric=['3 - Relevant idea with a reason.','2 - Relevant idea partly explained.','1 - Related idea without a reason.','0 - No interpretable relevant idea.'];
 const item=(n:number)=>({type:n%2===0?'mcq':'open',prompt:`Look at these objects in puzzle ${n}. What would you pick?`,rubric,visual:null,options:n%2===0?[{key:'a',text:'A ball',symbol:'⚽',shape:null,points:3},{key:'b',text:'A block',symbol:null,shape:'square',points:1}]:null,answerKey:n%2===0?'a':null});
-test('both category groups retain image order',()=>{assert.equal(TRAIT_ORDER.length,14);assert.equal(TRAIT_ORDER[7],'observant');assert.equal(TRAIT_ORDER[8],'perfectionism');assert.equal(TRAITS.perfectionism.group,'social_emotional');});
+test('all category groups retain image order',()=>{
+ assert.equal(TRAIT_ORDER.length,24);
+ assert.deepEqual(TRAIT_ORDER.slice(8,14),['perfectionism','strong_ideas','questions_authority','motivation_focus','humor','sensitivity_others']);
+ assert.deepEqual(TRAIT_ORDER.slice(14,19),['extensive_vocabulary','advanced_reading','self_motivated_writing','viewpoint_mood_intention','advanced_spelling']);
+ assert.deepEqual(TRAIT_ORDER.slice(19),['how_things_work','mental_math','strategy_games','categories_hierarchies','intuitive_problem_solving']);
+ assert.equal(TRAITS.extensive_vocabulary.group,'verbal_linguistic');
+ assert.equal(TRAITS.mental_math.group,'logical_mathematical');
+});
 test('rounds enforce exact count, interaction variety and matching choice keys',()=>{
  for(const count of [2,5,6])assert.equal(validateGeneratedRound(JSON.stringify({questions:Array.from({length:count},(_,i)=>item(i))}),count,5).length,count);
  assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[item(1),item(3)]}),2));

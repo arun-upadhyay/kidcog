@@ -32,7 +32,7 @@ test('fresh AI questions retain private rubrics, grade using AI, and expire', as
  });
  const report=await scoring.scoreSubmission(round.map(q=>({questionId:q.id,answer:q.type==='mcq'?'b':'I would ask what they need.'})));
  assert.equal(graded.length,1);assert.equal(graded[0].answer,'I would ask what they need.');assert.deepEqual([...graded[0].rubric],[...round[1].rubric]);
- assert.equal(report.traits.length,14);
+ assert.equal(report.traits.length,24);
  assert.equal(report.overall.earned,3);assert.equal(report.overall.possible,6);
  assert.equal(report.responses[0].correct,false);assert.equal(report.responses[0].band,1);
  assert.equal(report.responses[1].band,2);

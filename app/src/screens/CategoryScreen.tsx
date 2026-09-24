@@ -21,6 +21,16 @@ const CATEGORY_VISUALS: Record<TraitKey, { icon: string; background: string; bor
   motivation_focus: { icon: '🎯', background: '#FFE8E3', border: '#DF735B' },
   humor: { icon: '😄', background: '#FFF1C9', border: '#E0AA2F' },
   sensitivity_others: { icon: '💛', background: '#FDE6E8', border: '#D87882' },
+  extensive_vocabulary: { icon: '💬', background: '#E8F0FF', border: '#668FD1' },
+  advanced_reading: { icon: '📚', background: '#FFF0D9', border: '#D99A3B' },
+  self_motivated_writing: { icon: '✍️', background: '#FCE7F1', border: '#C96F9B' },
+  viewpoint_mood_intention: { icon: '🎭', background: '#EEE8FF', border: '#9278D0' },
+  advanced_spelling: { icon: '🔤', background: '#E4F2F5', border: '#579BA9' },
+  how_things_work: { icon: '⚙️', background: '#E5F3FF', border: '#65A7D8' },
+  mental_math: { icon: '🔢', background: '#FFF3CE', border: '#DDAE35' },
+  strategy_games: { icon: '♟️', background: '#E2F5EC', border: '#55A77E' },
+  categories_hierarchies: { icon: '🗂️', background: '#FFE8E1', border: '#E87A5A' },
+  intuitive_problem_solving: { icon: '💡', background: '#FEF3DC', border: '#E0AA2F' },
 };
 
 export default function CategoryScreen({ onSelect, onReport, onBack, report, busy, error }: {
@@ -56,7 +66,7 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, bus
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={type.label}>FOR THE GROWN-UP</Text>
-      <Text style={[type.title, { marginVertical: spacing(1) }]}>Choose what to explore</Text>
+      <Text style={styles.pageTitle}>Choose what to explore</Text>
       <Text style={type.soft}>Pick one category for a short round. You can add another category afterwards and see all results together.</Text>
       <Text style={[type.heading, { marginTop: spacing(3) }]}>Questions per round</Text>
       <View style={styles.lengths}>
@@ -78,7 +88,7 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, bus
             onPress={() => toggleGroup(group.key)}
             style={({ pressed }) => [styles.groupHeader, pressed && { opacity: 0.75 }]}
           >
-            <View style={{ flex: 1 }}><Text style={type.title}>{group.label}</Text><Text style={type.soft}>{observed} of {groupCategories.length} observed</Text></View>
+            <View style={styles.groupHeaderCopy}><Text style={styles.groupTitle}>{group.label}</Text><Text style={styles.groupCount}>{observed} of {groupCategories.length} observed</Text></View>
             <Text style={styles.chevron}>{expanded ? '⌃' : '⌄'}</Text>
           </Pressable>
           {expanded ? <View style={styles.groupItems}>{groupCategories.map(category => {
@@ -91,7 +101,7 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, bus
               {isSelected ? <View style={styles.selectedBadge}><Text style={styles.selectedCheck}>✓</Text></View> : null}
             </View>
             <View style={styles.cardContent}>
-              <Text style={type.heading}>{category.label}</Text>
+              <Text style={styles.categoryTitle}>{category.label}</Text>
               <Text style={[type.soft, { marginTop: spacing(0.75) }]}>{category.blurb}</Text>
               <View style={[styles.observationPill, result && result.questionCount > 0 ? styles.observedPill : null]}><Text style={[type.label, result && result.questionCount > 0 ? styles.observedText : null]}>{result && result.questionCount > 0 ? `${result.questionCount} observations so far` : 'Not yet observed'}</Text></View>
             </View>
@@ -110,6 +120,7 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, bus
 }
 const styles = StyleSheet.create({
   container: { padding: spacing(3), paddingBottom: spacing(6), width: '100%', maxWidth: 850, alignSelf: 'center' },
+  pageTitle: { fontSize: 23, lineHeight: 29, fontWeight: '800', color: colors.ink, marginVertical: spacing(1) },
   card: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1.75), padding: spacing(2), borderRadius: 18, borderWidth: 2, borderColor: colors.line, backgroundColor: colors.surface, shadowColor: '#4A3728', shadowOpacity: 0.06, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 2 },
   selected: { borderColor: colors.primary, backgroundColor: colors.happySoft, shadowOpacity: 0.13 },
   categoryIcon: { width: 56, height: 56, borderRadius: 28, borderWidth: 2, alignItems: 'center', justifyContent: 'center', position: 'relative' },
@@ -124,7 +135,11 @@ const styles = StyleSheet.create({
   error: { color: colors.danger, marginBottom: spacing(2) },
   groups: { gap: spacing(2), marginVertical: spacing(3) },
   group: { borderWidth: 1, borderColor: colors.line, borderRadius: 18, overflow: 'hidden', backgroundColor: colors.surface },
-  groupHeader: { flexDirection: 'row', alignItems: 'center', padding: spacing(2.5), backgroundColor: colors.coolSoft },
+  groupHeader: { flexDirection: 'row', alignItems: 'center', paddingVertical: spacing(1.75), paddingHorizontal: spacing(2), backgroundColor: colors.coolSoft },
+  groupHeaderCopy: { flex: 1, minWidth: 0 },
+  groupTitle: { fontSize: 17, lineHeight: 21, fontWeight: '800', color: colors.ink },
+  groupCount: { fontSize: 12, lineHeight: 17, color: colors.inkSoft, marginTop: 2 },
   groupItems: { gap: spacing(1.5), padding: spacing(2) },
-  chevron: { color: colors.accent, fontSize: 28, fontWeight: '700', marginLeft: spacing(2) },
+  categoryTitle: { fontSize: 17, lineHeight: 22, fontWeight: '700', color: colors.ink },
+  chevron: { color: colors.accent, fontSize: 22, fontWeight: '700', marginLeft: spacing(1.5) },
 });

@@ -25,12 +25,22 @@ export type TraitKey =
   | 'questions_authority'
   | 'motivation_focus'
   | 'humor'
-  | 'sensitivity_others';
+  | 'sensitivity_others'
+  | 'extensive_vocabulary'
+  | 'advanced_reading'
+  | 'self_motivated_writing'
+  | 'viewpoint_mood_intention'
+  | 'advanced_spelling'
+  | 'how_things_work'
+  | 'mental_math'
+  | 'strategy_games'
+  | 'categories_hierarchies'
+  | 'intuitive_problem_solving';
 
 export type Measurability = 'direct' | 'inferred' | 'behaviour';
 
 export interface TraitMetaPublic {
-  group?: 'intellectual' | 'social_emotional';
+  group?: 'intellectual' | 'social_emotional' | 'verbal_linguistic' | 'logical_mathematical';
   key: TraitKey;
   label: string;
   blurb: string;
@@ -198,7 +208,7 @@ export interface ScoredResponse {
 }
 
 export interface TraitReport {
-  group?: 'intellectual' | 'social_emotional';
+  group?: 'intellectual' | 'social_emotional' | 'verbal_linguistic' | 'logical_mathematical';
   key: TraitKey;
   label: string;
   blurb: string;

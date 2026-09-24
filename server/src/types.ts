@@ -165,7 +165,7 @@ export interface PublicQuestion {
 }
 
 export interface TraitMetaPublic {
-  group?: 'intellectual' | 'social_emotional';
+  group?: 'intellectual' | 'social_emotional' | 'verbal_linguistic' | 'logical_mathematical';
   key: TraitKey;
   label: string;
   blurb: string;
@@ -249,7 +249,7 @@ export interface ScoredResponse {
 }
 
 export interface TraitReport {
-  group?: 'intellectual' | 'social_emotional';
+  group?: 'intellectual' | 'social_emotional' | 'verbal_linguistic' | 'logical_mathematical';
   key: TraitKey;
   label: string;
   blurb: string;

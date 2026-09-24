@@ -39,13 +39,23 @@ export type TraitKey =
   | 'questions_authority'
   | 'motivation_focus'
   | 'humor'
-  | 'sensitivity_others';
+  | 'sensitivity_others'
+  | 'extensive_vocabulary'
+  | 'advanced_reading'
+  | 'self_motivated_writing'
+  | 'viewpoint_mood_intention'
+  | 'advanced_spelling'
+  | 'how_things_work'
+  | 'mental_math'
+  | 'strategy_games'
+  | 'categories_hierarchies'
+  | 'intuitive_problem_solving';
 
 export type Measurability = 'direct' | 'inferred' | 'behaviour';
 
 export interface TraitMeta {
   key: TraitKey;
-  group?: 'intellectual' | 'social_emotional';
+  group?: 'intellectual' | 'social_emotional' | 'verbal_linguistic' | 'logical_mathematical';
   /** Wording kept close to the form, so a parent can match rows to rows. */
   label: string;
   /** What this looks like in a child, in plain language. */
@@ -58,8 +68,18 @@ export const TRAITS: Record<TraitKey, TraitMeta> = {
   strong_ideas: { key: 'strong_ideas', label: 'Strong ideas, beliefs, and opinions', blurb: 'Explains an opinion and considers other viewpoints without needing to argue.', measurable: 'direct', group: 'social_emotional' },
   questions_authority: { key: 'questions_authority', label: 'Questions authority', blurb: 'Asks thoughtful questions about rules and reasons, with respect and safety.', measurable: 'direct', group: 'social_emotional' },
   motivation_focus: { key: 'motivation_focus', label: 'Motivation for and intense focus on tasks', blurb: 'Explores interest, effort, and strategies for staying with a chosen task.', measurable: 'direct', group: 'social_emotional' },
-  humor: { key: 'humor', label: 'Humor, original jokes, and puns', blurb: 'Plays with ideas and words in a kind, imaginative way.', measurable: 'direct', group: 'social_emotional' },
+  humor: { key: 'humor', label: 'Subtle sense of humor, original jokes, and puns', blurb: 'Plays with ideas and words in a kind, imaginative way.', measurable: 'direct', group: 'social_emotional' },
   sensitivity_others: { key: 'sensitivity_others', label: 'Sensitive to the needs of others', blurb: 'Notices how someone may feel and suggests thoughtful ways to help.', measurable: 'direct', group: 'social_emotional' },
+  extensive_vocabulary: { key: 'extensive_vocabulary', label: 'Uses an extensive vocabulary precisely and appropriately', blurb: 'Chooses words that clearly and accurately express an age-appropriate idea.', measurable: 'inferred', group: 'verbal_linguistic' },
+  advanced_reading: { key: 'advanced_reading', label: 'Is an avid reader of books beyond grade level', blurb: 'Explores understanding and enjoyment of stories without treating one activity as proof of reading habits.', measurable: 'inferred', group: 'verbal_linguistic' },
+  self_motivated_writing: { key: 'self_motivated_writing', label: 'Is motivated to write even when writing is not assigned', blurb: 'Creates stories, poems, journals, or other original ideas by choice; young children may tell their idea aloud.', measurable: 'inferred', group: 'verbal_linguistic' },
+  viewpoint_mood_intention: { key: 'viewpoint_mood_intention', label: 'Recognizes points of view, moods, and intentions', blurb: 'Notices what a speaker or character may think, feel, or mean using clues in a short scenario.', measurable: 'direct', group: 'verbal_linguistic' },
+  advanced_spelling: { key: 'advanced_spelling', label: 'Spells words accurately that are advanced for age', blurb: 'Explores age-appropriate sound and word patterns; pre-readers receive picture and listening activities.', measurable: 'direct', group: 'verbal_linguistic' },
+  how_things_work: { key: 'how_things_work', label: 'Asks many questions about how things work', blurb: 'Explores causes, mechanisms, and useful questions about familiar objects and events.', measurable: 'inferred', group: 'logical_mathematical' },
+  mental_math: { key: 'mental_math', label: 'Grasps advanced mathematical concepts for age', blurb: 'Works with age-appropriate quantities and relationships without rewarding speed alone.', measurable: 'direct', group: 'logical_mathematical' },
+  strategy_games: { key: 'strategy_games', label: 'Plays chess, checkers, or other strategy games', blurb: 'Plans ahead and compares possible moves in simple, age-appropriate game situations.', measurable: 'direct', group: 'logical_mathematical' },
+  categories_hierarchies: { key: 'categories_hierarchies', label: 'Enjoys putting things in categories or hierarchies', blurb: 'Groups familiar things by shared features and explains how smaller groups fit inside larger ones.', measurable: 'direct', group: 'logical_mathematical' },
+  intuitive_problem_solving: { key: 'intuitive_problem_solving', label: 'Sometimes solves problems intuitively', blurb: 'Finds a workable answer even when explaining every step is difficult; the activity records the answer without penalizing that difficulty.', measurable: 'inferred', group: 'logical_mathematical' },
   abstract_concepts: {
     key: 'abstract_concepts',
     label: 'Comprehends abstract ideas and concepts',
@@ -132,6 +152,16 @@ export const TRAIT_ORDER: TraitKey[] = [
   'motivation_focus',
   'humor',
   'sensitivity_others',
+  'extensive_vocabulary',
+  'advanced_reading',
+  'self_motivated_writing',
+  'viewpoint_mood_intention',
+  'advanced_spelling',
+  'how_things_work',
+  'mental_math',
+  'strategy_games',
+  'categories_hierarchies',
+  'intuitive_problem_solving',
 ];
 
 /** A 1–5 activity evidence indicator, not the school's norm-based rating. */
@@ -146,4 +176,6 @@ export function formScaleFor(percent: number): { value: number; label: string } 
 export const CATEGORY_GROUPS = [
   { key: 'intellectual' as const, label: 'Intellectual Ability' },
   { key: 'social_emotional' as const, label: 'Social/Emotional/Behavioral' },
+  { key: 'verbal_linguistic' as const, label: 'Academic Skills: Verbal/Linguistic' },
+  { key: 'logical_mathematical' as const, label: 'Academic Skills: Logical/Mathematical' },
 ];
