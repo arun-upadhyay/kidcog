@@ -173,3 +173,37 @@ test('repair stops after two attempts, and never starts once time is short', asy
  await assert.rejects(slow.generateRound(5,'sensitivity_others',2),/Duplicate choices/);
  assert.equal(calls,2); // 200s already spent: a repair could not finish before the app gives up
 });
+
+// ---- 6-question rounds: the causes found in logs/generation.log ----
+test('six questions: task patterns may repeat, and the review may not drop questions', async () => {
+ // Every category has 3 task patterns; the prompts used to demand a different
+ // one per question, which is impossible for 6 and failed every 6-question round.
+ const prompts=[]; let schema;
+ const {mcq,open,round}=fixtures();
+ const six=round(...[1,2,3].flatMap(n=>[mcq({prompt:`Which of these is thing number ${n} here?`,skillFacet:`choice facet ${n}`}),{...open,prompt:`What would you do with thing number ${n}?`,skillFacet:`spoken facet ${n}`}]));
+ const g=loadGenerator(async req=>{prompts.push(req.messages[0].content); schema=req.response_format.json_schema.schema; return {choices:[{message:{content:six}}]};});
+ assert.equal((await g.generateRound(5,'curiosity',6)).length,6);
+ const [write,review]=prompts;
+ assert.doesNotMatch(write,/meaningfully different task pattern from the supplied blueprint/);
+ assert.match(write,/a pattern may be reused as long as each reuse tests a different skillFacet/);
+ assert.match(review,/Never delete a question/);
+ // The count is enforced in the format OpenAI must follow (the review once returned 5 of 6).
+ assert.equal(schema.properties.questions.minItems,6);
+ assert.equal(schema.properties.questions.maxItems,6);
+});
+
+test('a repeat is the same sub-skill AND similar wording; the error names both questions', () => {
+ const {mcq,open,round}=fixtures();
+ const g=loadGenerator(async()=>{throw new Error('no model call expected');});
+ // Real repeat: same label, nearly the same question -> rejected, with both named.
+ const repeat=round(mcq({skillFacet:'asking why',prompt:'Which of these animals can swim in the water?'}),
+                    {...open,skillFacet:'Asking  why!',prompt:'Which of these animals can swim in the deep water?'});
+ assert.throws(()=>g.validateGeneratedRound(repeat,2,5),/repeat the same skill and activity: questions 1 and 2 \("asking why"\)/);
+ // Shared label but genuinely different questions -> accepted. This is what
+ // failed extensive_vocabulary rounds: the model copied the task-pattern name
+ // "choose the most precise familiar word" as the label for different questions.
+ const label='choose the most precise familiar word';
+ const different=round(mcq({skillFacet:label,prompt:'Which word tells how big the elephant is?'}),
+                       {...open,skillFacet:label,prompt:'Tell me a word for how you feel on your birthday.'});
+ assert.equal(g.validateGeneratedRound(different,2,5).length,2);
+});
