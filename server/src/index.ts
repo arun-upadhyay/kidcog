@@ -12,6 +12,7 @@ import { scoreSubmission } from './scoring.js';
 import { generateParentReport, apiKeyProblem } from './grader.js';
 import type { PublicQuestion, TestPayload } from './types.js';
 import { supabaseReady, userIdFromBearer } from './supabase.js';
+import { isAccountDeleted, scheduleAccountDeletion, startPurgeSchedule, PURGE_AFTER_DAYS } from './accountDeletion.js';
 import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, saveGeneratedQuestions, saveReport } from './repository.js';
 
 type AuthRequest = Request & { parentId?: string };
@@ -19,6 +20,8 @@ async function requireParent(req: AuthRequest, res: Response, next: NextFunction
   if (!supabaseReady()) { res.status(503).json({ error: 'Parent sign-in is not configured on the server.' }); return; }
   const parentId = await userIdFromBearer(req.header('authorization'));
   if (!parentId) { res.status(401).json({ error: 'Please sign in again.' }); return; }
+  // A deleted account keeps no access, even with a token issued before it was deleted.
+  if (await isAccountDeleted(parentId)) { res.status(403).json({ error: 'This account has been deleted.', code: 'account_deleted' }); return; }
   req.parentId = parentId; next();
 }
 
@@ -64,6 +67,23 @@ app.get('/health', (_req: Request, res: Response) => {
 
 app.get('/api/categories', requireParent, (_req: Request, res: Response) => {
   res.json(TRAIT_ORDER.map((key) => ({ ...TRAITS[key], group: TRAITS[key].group ?? 'intellectual' })));
+});
+
+/**
+ * Delete the signed-in parent's account. Sign-in is blocked and the data hidden
+ * immediately; everything is permanently erased after PURGE_AFTER_DAYS.
+ * The body must say {"confirm":"DELETE"} so a stray request cannot do this.
+ */
+app.delete('/api/account', requireParent, async (req: AuthRequest, res: Response) => {
+  const parsed = z.object({ confirm: z.literal('DELETE') }).safeParse(req.body);
+  if (!parsed.success) { res.status(400).json({ error: 'Type DELETE to confirm.' }); return; }
+  const token = req.header('authorization')?.match(/^Bearer\s+(.+)$/i)?.[1] ?? '';
+  try {
+    const { purgeAfter } = await scheduleAccountDeletion(req.parentId!, token);
+    res.json({ deleted: true, purgeAfter, graceDays: PURGE_AFTER_DAYS });
+  } catch (err) {
+    res.status(500).json({ error: 'Could not delete the account.', detail: err instanceof Error ? err.message : String(err) });
+  }
 });
 
 app.get('/api/children', requireParent, async (req: AuthRequest, res: Response) => {
@@ -267,6 +287,7 @@ app.post('/api/submit', requireParent, async (req: AuthRequest, res: Response) =
 const port = Number(process.env.PORT || 4000);
 app.listen(port, () => {
   console.log(`KidCog API listening on http://localhost:${port}`);
+  startPurgeSchedule();
 
 
   const problem = apiKeyProblem();

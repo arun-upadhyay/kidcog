@@ -16,6 +16,12 @@ Then run the saved-age migration:
 
 `supabase/migrations/202609230003_child_profile_age.sql`
 
+Then run the account-deletion migration:
+
+`supabase/migrations/202609250001_parent_account_deletion.sql`
+
+Without it the app still works, but "Delete account" fails with "Account deletion is not set up on the server yet" and the server prints a warning.
+
 The migration enables row-level security. The generated-questions table has no client access policy because it contains answer keys and rubrics.
 
 ## 2. Configure the server
@@ -60,3 +66,19 @@ Replace `com.example.kidcog` in `app/app.json` with your real iOS bundle identif
 From `server/`, run `npm run dev`. From `app/`, run `npx expo start`. Sign in, create or choose a nickname, select an age and category, and complete a round.
 
 The `/api/speak` route remains public because native audio players fetch the stream URL directly. It is rate-limited, accepts only question text, and does not expose account data. All profile, session, answer, transcription, question-generation, and grading routes require a valid parent access token.
+
+## 7. Parent account deletion
+
+Parents can delete their account from the ☰ menu (they type DELETE to confirm). The server then:
+
+1. marks the account deleted in `parent_accounts` and hides all its data from the app,
+2. blocks sign-in (password and Google) in Supabase Auth and signs out every device,
+3. permanently erases the account after 30 days. The API checks every six hours and deletes the auth user; every table cascades from it, so child profiles, sessions, questions, answers and results go too.
+
+To undo a deletion within the 30 days (for example, a parent writes in and says it was a mistake), run this from `server/` and then restart the API:
+
+```
+npm run restore-account -- parent@example.com
+```
+
+The 30-day erase only runs while the API server is running. On Render's paid plan the server stays up; on a plan that sleeps, erasure is delayed until the server next starts.

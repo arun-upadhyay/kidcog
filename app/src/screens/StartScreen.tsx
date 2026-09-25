@@ -15,6 +15,8 @@ export interface StartScreenProps {
   accountCreatedAt: string;
   onChangePassword: (password: string) => Promise<void>;
   onSignOut: () => void;
+  /** Delete the parent account; resolves with when the data will be erased. */
+  onDeleteAccount: () => Promise<{ purgeAfter: string; graceDays: number }>;
   onViewHistory: (child: SavedChildProfile) => void;
   onDeleteChild: (child: SavedChildProfile) => Promise<void>;
 }
@@ -30,7 +32,7 @@ const AGES = [4, 5, 6, 7] as const;
 const AGE_ICONS: Record<(typeof AGES)[number], string> = { 4: '🐣', 5: '⭐', 6: '🚀', 7: '🦄' };
 const PROFILE_COLORS = ['#E5F3FF', '#FFF0D9', '#E5F5EA', '#F2EAFE'] as const;
 
-export default function StartScreen({ onStart, loading, error, savedChildren, accountEmail, accountProviders, accountVerified, accountCreatedAt, onChangePassword, onSignOut, onViewHistory, onDeleteChild }: StartScreenProps) {
+export default function StartScreen({ onStart, loading, error, savedChildren, accountEmail, accountProviders, accountVerified, accountCreatedAt, onChangePassword, onSignOut, onDeleteAccount, onViewHistory, onDeleteChild }: StartScreenProps) {
   const [firstName, setFirstName] = useState('');
   const [age, setAge] = useState<number | null>(5);
   const [consent, setConsent] = useState(false);
@@ -42,6 +44,9 @@ export default function StartScreen({ onStart, loading, error, savedChildren, ac
   const [accountBusy, setAccountBusy] = useState(false);
   const [accountMessage, setAccountMessage] = useState<string | null>(null);
   const [accountError, setAccountError] = useState<string | null>(null);
+  const [deletingAccount, setDeletingAccount] = useState(false);
+  const [deleteConfirm, setDeleteConfirm] = useState('');
+  const [accountDeleted, setAccountDeleted] = useState<string | null>(null);
 
   const canStart = consent && !loading;
   const young = age !== null && age <= 7;
@@ -86,6 +91,21 @@ export default function StartScreen({ onStart, loading, error, savedChildren, ac
     setConfirmPassword('');
     setAccountError(null);
     setAccountMessage(null);
+    setDeletingAccount(false);
+    setDeleteConfirm('');
+  }
+
+  async function confirmDeleteAccount() {
+    setAccountError(null);
+    if (deleteConfirm.trim() !== 'DELETE') { setAccountError('Type DELETE in capitals to confirm.'); return; }
+    setAccountBusy(true);
+    try {
+      const { purgeAfter } = await onDeleteAccount();
+      const when = new Date(purgeAfter).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' });
+      setAccountDeleted(`Your account has been deleted. Everything will be permanently erased on ${when}. Signing you out…`);
+    } catch (err) {
+      setAccountError(err instanceof Error ? err.message : 'Could not delete the account.');
+    } finally { setAccountBusy(false); }
   }
 
   async function savePassword() {
@@ -151,7 +171,46 @@ export default function StartScreen({ onStart, loading, error, savedChildren, ac
             </View>
 
             {accountMessage ? <Text style={styles.accountSuccess}>{accountMessage}</Text> : null}
-            {changingPassword ? (
+            {accountDeleted ? (
+              <Text style={styles.accountSuccess} accessibilityLiveRegion="polite">{accountDeleted}</Text>
+            ) : deletingAccount ? (
+              <View style={styles.passwordPanel}>
+                <Text style={[styles.passwordTitle, { color: colors.danger }]}>Delete your account?</Text>
+                <Text style={type.soft}>
+                  This deletes your parent account and every child profile, test, answer and result saved in it.
+                  You will be signed out on all your devices straight away.
+                </Text>
+                <View style={styles.deleteNote}>
+                  <Text style={styles.deleteNoteText}>
+                    Your data is kept for 30 days in case this was a mistake, then permanently erased. To restore
+                    the account within those 30 days, contact the KidCog team.
+                  </Text>
+                </View>
+                <Text style={styles.deleteLabel}>Type DELETE to confirm</Text>
+                <TextInput
+                  value={deleteConfirm}
+                  onChangeText={setDeleteConfirm}
+                  placeholder="DELETE"
+                  placeholderTextColor={colors.inkSoft}
+                  autoCapitalize="characters"
+                  autoCorrect={false}
+                  accessibilityLabel="Type DELETE to confirm"
+                  onSubmitEditing={() => void confirmDeleteAccount()}
+                  style={styles.accountInput}
+                />
+                {accountError ? <Text style={styles.accountError}>{accountError}</Text> : null}
+                <Pressable
+                  onPress={() => void confirmDeleteAccount()}
+                  disabled={accountBusy || deleteConfirm.trim() !== 'DELETE'}
+                  accessibilityRole="button"
+                  accessibilityState={{ disabled: accountBusy || deleteConfirm.trim() !== 'DELETE', busy: accountBusy }}
+                  style={({ pressed }) => [styles.deleteButton, (accountBusy || deleteConfirm.trim() !== 'DELETE') && styles.deleteButtonDisabled, pressed && styles.menuActionPressed]}
+                >
+                  <Text style={styles.deleteButtonText}>{accountBusy ? 'Deleting…' : 'Delete my account'}</Text>
+                </Pressable>
+                <Pressable onPress={() => { setDeletingAccount(false); setDeleteConfirm(''); setAccountError(null); }} style={styles.cancelButton} accessibilityRole="button"><Text style={styles.cancelText}>Keep my account</Text></Pressable>
+              </View>
+            ) : changingPassword ? (
               <View style={styles.passwordPanel}>
                 <Text style={styles.passwordTitle}>Set a new password</Text>
                 <Text style={type.soft}>Use at least 8 characters. This password belongs to the parent account.</Text>
@@ -170,6 +229,9 @@ export default function StartScreen({ onStart, loading, error, savedChildren, ac
                 ) : null}
                 <Pressable onPress={() => { closeMenu(); onSignOut(); }} accessibilityRole="button" style={({ pressed }) => [styles.menuAction, styles.signOutAction, pressed && styles.menuActionPressed]}>
                   <Text style={styles.menuActionIcon}>👋</Text><Text style={styles.signOutText}>Sign out</Text>
+                </Pressable>
+                <Pressable onPress={() => { setDeletingAccount(true); setAccountMessage(null); setAccountError(null); }} accessibilityRole="button" accessibilityLabel="Delete account" style={({ pressed }) => [styles.deleteAccountLink, pressed && styles.menuActionPressed]}>
+                  <Text style={styles.deleteAccountLinkText}>Delete account</Text>
                 </Pressable>
               </>
             )}
@@ -326,6 +388,14 @@ const styles = StyleSheet.create({
   signOutAction: { marginTop: spacing(0.5), backgroundColor: '#FBE9E7' },
   signOutText: { color: colors.danger, fontSize: 16, fontWeight: '800' },
   passwordPanel: { gap: spacing(1.25) },
+  deleteNote: { backgroundColor: '#FFF0EE', borderWidth: 1.5, borderColor: '#F2A28E', borderRadius: 12, padding: spacing(1.25) },
+  deleteNoteText: { fontSize: 13, lineHeight: 19, color: '#855A51' },
+  deleteLabel: { fontSize: 12, fontWeight: '800', letterSpacing: 0.6, color: colors.inkSoft, marginTop: spacing(0.5) },
+  deleteButton: { minHeight: 52, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.danger },
+  deleteButtonDisabled: { opacity: 0.4 },
+  deleteButtonText: { color: '#FFFFFF', fontSize: 16, fontWeight: '800' },
+  deleteAccountLink: { minHeight: 44, alignItems: 'center', justifyContent: 'center', marginTop: spacing(0.5), borderRadius: 12 },
+  deleteAccountLinkText: { color: colors.danger, fontSize: 14, fontWeight: '700', textDecorationLine: 'underline' },
   passwordTitle: { ...type.heading },
   accountInput: { minHeight: 52, borderWidth: 1.5, borderColor: colors.line, borderRadius: 13, backgroundColor: colors.surface, color: colors.ink, fontSize: 16, paddingHorizontal: spacing(1.5) },
   accountError: { color: colors.danger, backgroundColor: '#FBE9E7', padding: spacing(1.5), borderRadius: 10 },

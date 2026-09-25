@@ -29,6 +29,9 @@ export default function LoginScreen() {
     if (/email not confirmed/i.test(message)) {
       setVerificationEmail(email.trim().toLowerCase());
       setError('Please verify your email before signing in.');
+    } else if (/user is banned|banned/i.test(message)) {
+      // Deleted accounts are blocked from signing in during the 30-day grace period.
+      setError('This account was deleted. It will be permanently erased 30 days after deletion. To restore it before then, contact the KidCog team.');
     } else if (/invalid login credentials/i.test(message)) {
       setError('That email or password does not match. If you previously used Google, continue with Google. Otherwise, create an email account first.');
     } else {

@@ -11,7 +11,8 @@ import ResultsScreen from './src/screens/ResultsScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import HistoryScreen from './src/screens/HistoryScreen';
 import { AuthProvider, useAuth } from './src/auth/AuthContext';
-import { deleteChildProfile, fetchTest, listChildren, saveChild, submitAnswers } from './src/api';
+import { deleteAccount, deleteChildProfile, fetchTest, listChildren, saveChild, submitAnswers } from './src/api';
+import { supabase } from './src/auth/supabase';
 import { stopSpeaking } from './src/speech';
 import { colors } from './src/theme';
 import type { ChildProfile, HistoricalAssessment, Report, ResponseInput, SavedChildProfile, TestPayload, TraitKey } from './src/types';
@@ -155,6 +156,15 @@ function KidCogApp() {
   }, []);
 
   const logout = useCallback(async () => { restart(); await signOut(); }, [restart, signOut]);
+  /** Delete the parent account, then leave this device signed out. */
+  const removeAccount = useCallback(async () => {
+    const result = await deleteAccount();
+    stopSpeaking();
+    // The server has already ended every session, so only clear this device.
+    // (A normal sign-out would call the server again and fail.)
+    setTimeout(() => { restart(); void supabase.auth.signOut({ scope: 'local' }).catch(() => {}); }, 2500);
+    return result;
+  }, [restart]);
   const openHistory = useCallback((selected: SavedChildProfile) => { setHistoryChild(selected); setHistorical(null); setError(null); setStage('history'); }, []);
   const deleteChild = useCallback(async (selected: SavedChildProfile) => {
     setError(null);
@@ -185,6 +195,7 @@ function KidCogApp() {
             accountCreatedAt={session.user.created_at}
             onChangePassword={updatePassword}
             onSignOut={() => void logout()}
+            onDeleteAccount={removeAccount}
             onViewHistory={openHistory}
             onDeleteChild={deleteChild}
           />}

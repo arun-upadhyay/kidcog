@@ -73,6 +73,12 @@ async function request<T>(path: string, options: RequestOptions = {}): Promise<T
     }
 
     if (!res.ok) {
+      // The account was deleted (on this or another device): drop the local
+      // session so the app returns to the sign-in screen instead of failing
+      // on every request.
+      if (res.status === 403 && typeof body === 'object' && body !== null && (body as { code?: unknown }).code === 'account_deleted') {
+        void supabase.auth.signOut({ scope: 'local' }).catch(() => {});
+      }
       // Include `detail` when the server sent one. Without it every failure
       // reads as the same unhelpful sentence, which is how a wrong model name
       // and a missing microphone end up looking identical.
@@ -189,4 +195,12 @@ export function submitAnswers(payload: {
     // Grading is a model call, so allow generous time.
     timeoutMs: 90_000,
   });
+}
+
+/**
+ * Delete the parent's account. Sign-in is blocked straight away and everything
+ * is permanently erased after the grace period the server returns.
+ */
+export function deleteAccount(): Promise<{ deleted: boolean; purgeAfter: string; graceDays: number }> {
+  return request('/api/account', { method: 'DELETE', body: JSON.stringify({ confirm: 'DELETE' }) });
 }
