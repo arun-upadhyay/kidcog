@@ -7,24 +7,41 @@ import type { AssessmentSessionSummary, HistoricalAssessment, SavedChildProfile 
 import { supabase } from './auth/supabase';
 
 /**
- * Where the app finds your server.
- *
- * `localhost` means "this device". On an iOS simulator that is your Mac, so it
- * works. On an Android emulator localhost is the emulator itself, so Android
- * needs 10.0.2.2 instead. On a PHYSICAL phone neither works — set
- * EXPO_PUBLIC_API_URL to your computer's LAN address, e.g.
- *
- *   EXPO_PUBLIC_API_URL=http://192.168.1.24:4000 npx expo start
+ * Where the app finds your server: EXPO_PUBLIC_API_URL, else app.json's
+ * extra.apiBaseUrl. A localhost address is rewritten for phones below.
  */
-function resolveBaseUrl(): string {
+function configuredBaseUrl(): string {
   const fromEnv = process.env.EXPO_PUBLIC_API_URL;
   if (fromEnv) return fromEnv.replace(/\/$/, '');
 
   const fromConfig = Constants.expoConfig?.extra?.apiBaseUrl as string | undefined;
-  if (fromConfig && Platform.OS === 'android') {
-    return fromConfig.replace('localhost', '10.0.2.2').replace(/\/$/, '');
-  }
   return (fromConfig ?? 'http://localhost:4000').replace(/\/$/, '');
+}
+
+/**
+ * On a phone, "localhost" is the phone itself, so a localhost address can
+ * never reach the server on your computer. During development Expo already
+ * knows your computer's network address (it is how the phone loaded the app
+ * in the first place: hostUri, e.g. "192.168.1.24:8081"), so swap it in.
+ * This works for Expo Go on a real phone, the iOS simulator and the Android
+ * emulator alike. Web and production builds (a real https URL) are untouched.
+ */
+function resolveBaseUrl(): string {
+  const url = configuredBaseUrl();
+  if (Platform.OS === 'web') return url;
+
+  const pointsAtLocalhost = /^https?:\/\/(localhost|127\.0\.0\.1)(:|\/|$)/i.test(url);
+  if (!pointsAtLocalhost) return url;
+
+  const devHost = Constants.expoConfig?.hostUri?.split(':')[0];
+  // Only a LAN address. In `expo start --tunnel` mode hostUri is a public
+  // tunnel name that forwards Metro only, not port 4000.
+  const isLanHost = !!devHost && (/^\d{1,3}(\.\d{1,3}){3}$/.test(devHost) || devHost.endsWith('.local'));
+  if (isLanHost && devHost !== '127.0.0.1') {
+    return url.replace(/(localhost|127\.0\.0\.1)/i, devHost!);
+  }
+  // No dev host known: fall back to the old emulator rule.
+  return Platform.OS === 'android' ? url.replace(/(localhost|127\.0\.0\.1)/i, '10.0.2.2') : url;
 }
 
 export const API_BASE_URL = resolveBaseUrl();
@@ -78,7 +95,11 @@ async function request<T>(path: string, options: RequestOptions = {}): Promise<T
       // to do. Match the platform wordings, and fall back to the TypeError
       // that fetch throws when the request never left the device.
       const unreachable =
-        /Network request failed|Failed to fetch|Load failed|NetworkError/i.test(err.message) ||
+        // Expo's native fetch on iOS says "UnexpectedException: Could not
+        // connect to the server." and times out as "The request timed out."
+        /Network request failed|Failed to fetch|Load failed|NetworkError|Could not connect|UnexpectedException|timed out|offline/i.test(
+          err.message
+        ) ||
         err.name === 'TypeError';
       if (unreachable) {
         throw new Error(
