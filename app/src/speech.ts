@@ -60,8 +60,17 @@ function clearDeadline() {
 function releasePlayer() {
   subscription?.remove();
   subscription = null;
-  try { player?.remove(); } catch { /* Already released. */ }
+  const current = player;
   player = null;
+  if (current) {
+    // Pause and mute BEFORE releasing. On iPhone and Android, remove() only
+    // frees the native player; it does not reliably silence audio that is
+    // already playing, so moving to the next question could leave the old
+    // question talking over the new one. (On web, remove() pauses by itself.)
+    try { current.pause(); } catch { /* Not started yet. */ }
+    try { current.volume = 0; } catch { /* Already released. */ }
+    try { current.remove(); } catch { /* Already released. */ }
+  }
   // Cached audio URLs are kept for replays; they are released only on eviction.
 }
 function finish(mine: number) {
