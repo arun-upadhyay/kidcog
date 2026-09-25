@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- Background: KidCog purple, full bleed (the favicon version rounds it) -->
+  <rect width="1024" height="1024" fill="#6B4BB0"/>
+  <!-- soft glow behind the owl -->
+  <circle cx="512" cy="560" r="400" fill="#7E62C2"/>
+
+  <!-- ear tufts -->
+  <path d="M268 360 L300 150 L430 300 Z" fill="#FFF3DC"/>
+  <path d="M756 360 L724 150 L594 300 Z" fill="#FFF3DC"/>
+
+  <!-- body -->
+  <ellipse cx="512" cy="590" rx="318" ry="330" fill="#FFF3DC"/>
+
+  <!-- belly feathers -->
+  <path d="M430 760 q41 40 82 0 q41 40 82 0" fill="none" stroke="#F2B441" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M470 830 q42 38 84 0" fill="none" stroke="#F2B441" stroke-width="22" stroke-linecap="round"/>
+
+  <!-- eyes -->
+  <circle cx="392" cy="520" r="128" fill="#FFFFFF" stroke="#6B4BB0" stroke-width="26"/>
+  <circle cx="632" cy="520" r="128" fill="#FFFFFF" stroke="#6B4BB0" stroke-width="26"/>
+  <circle cx="404" cy="530" r="62" fill="#2A2118"/>
+  <circle cx="620" cy="530" r="62" fill="#2A2118"/>
+  <circle cx="426" cy="506" r="20" fill="#FFFFFF"/>
+  <circle cx="642" cy="506" r="20" fill="#FFFFFF"/>
+
+  <!-- beak -->
+  <path d="M470 640 L554 640 L512 712 Z" fill="#E8724F" stroke="#E8724F" stroke-width="18" stroke-linejoin="round"/>
+</svg>
