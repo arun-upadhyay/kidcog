@@ -21,7 +21,33 @@ export function useSpeechState(): SpeechState {
 
 let player: AudioPlayer | null = null;
 let subscription: { remove(): void } | null = null;
-let objectUrl: string | null = null;
+/**
+ * Replaying a question used to download its audio again on every tap (twice on
+ * phones: once to check it, once to play it). The server already avoids paying
+ * OpenAI twice for the same text; these avoid the repeat downloads too.
+ *
+ * Web: the audio itself, kept as an in-memory object URL per text, so a replay
+ * starts instantly with no network. Bounded, oldest dropped first.
+ * Phones: which texts the server has already confirmed, so a replay skips the
+ * check and downloads once.
+ */
+const audioCache = new Map<string, string>();
+const MAX_CACHED_AUDIO = 30;
+const confirmed = new Set<string>();
+function cacheAudio(text: string, url: string) {
+  audioCache.set(text, url);
+  while (audioCache.size > MAX_CACHED_AUDIO) {
+    const [oldest, oldUrl] = audioCache.entries().next().value as [string, string];
+    audioCache.delete(oldest);
+    URL.revokeObjectURL(oldUrl);
+  }
+}
+/** Forget a text's audio after a playback failure, so the next tap fetches it fresh. */
+function forgetAudio(text: string) {
+  const url = audioCache.get(text);
+  if (url) { audioCache.delete(text); URL.revokeObjectURL(url); }
+  confirmed.delete(text);
+}
 let request: AbortController | null = null;
 let deadline: ReturnType<typeof setTimeout> | null = null;
 let generation = 0;
@@ -36,8 +62,7 @@ function releasePlayer() {
   subscription = null;
   try { player?.remove(); } catch { /* Already released. */ }
   player = null;
-  if (objectUrl) URL.revokeObjectURL(objectUrl);
-  objectUrl = null;
+  // Cached audio URLs are kept for replays; they are released only on eviction.
 }
 function finish(mine: number) {
   if (mine !== generation) return;
@@ -92,17 +117,25 @@ export async function speak(text: string, options: { voice?: 'device' | 'generat
   try {
     await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true });
     if (mine !== generation) return;
-    const response = await fetch(speakUrl(trimmed), { signal: controller.signal });
-    if (!response.ok) throw new Error(`Speech request failed (${response.status}).`);
     let source: string;
-    if (Platform.OS === 'web') {
-      const blob = await response.blob();
-      if (mine !== generation) return;
-      source = URL.createObjectURL(blob);
-      objectUrl = source;
+    const cached = Platform.OS === 'web' ? audioCache.get(trimmed) : undefined;
+    if (cached) {
+      source = cached; // replay: no network at all
+    } else if (Platform.OS !== 'web' && confirmed.has(trimmed)) {
+      source = speakUrl(trimmed); // replay: the player downloads once, no separate check
     } else {
-      // The native player's stream uses the server's completed audio cache.
-      source = speakUrl(trimmed);
+      const response = await fetch(speakUrl(trimmed), { signal: controller.signal });
+      if (!response.ok) throw new Error(`Speech request failed (${response.status}).`);
+      if (Platform.OS === 'web') {
+        const blob = await response.blob();
+        if (mine !== generation) return;
+        source = URL.createObjectURL(blob);
+        cacheAudio(trimmed, source);
+      } else {
+        // The native player's stream uses the server's completed audio cache.
+        source = speakUrl(trimmed);
+        confirmed.add(trimmed);
+      }
     }
     if (mine !== generation) return;
     clearDeadline();
@@ -111,12 +144,13 @@ export async function speak(text: string, options: { voice?: 'device' | 'generat
     player = next;
     // A failed or stalled player must not leave the button locked forever.
     deadline = setTimeout(() => {
-      if (mine === generation) { lastSpeechError = 'Audio took too long to load.'; recover(); }
+      if (mine === generation) { lastSpeechError = 'Audio took too long to load.'; forgetAudio(trimmed); recover(); }
     }, 15_000);
     subscription = next.addListener('playbackStatusUpdate', status => {
       if (mine !== generation) return;
       if (status.error) {
         lastSpeechError = status.error;
+        forgetAudio(trimmed);
         recover();
       } else if (status.didJustFinish) {
         finish(mine);
