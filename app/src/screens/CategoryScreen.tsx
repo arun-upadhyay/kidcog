@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, Pressable, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, Pressable, StyleSheet, ActivityIndicator } from 'react-native';
 import { CATEGORY_GROUPS } from '../categoryGroups';
 import { CATEGORY_VISUALS, GROUP_VISUALS } from '../categoryVisuals';
 import Button from '../components/Button';
@@ -27,6 +27,16 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, exp
   const [categories, setCategories] = useState<TraitMetaPublic[]>([]);
   const [selected, setSelected] = useState<TraitKey>('abstract_concepts');
   const [count, setCount] = useState(2);
+  // The card whose own Start button was pressed, so only that button spins.
+  const [startedFrom, setStartedFrom] = useState<TraitKey | null>(null);
+
+  /** Start a category straight from its card (same path as "Let’s start!"). */
+  function startNow(key: TraitKey) {
+    if (busy) return;
+    setSelected(key);
+    setStartedFrom(key);
+    onSelect(key, count);
+  }
   const [loadError, setLoadError] = useState<string | null>(null);
   const [attempt, setAttempt] = useState(0);
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set(['intellectual']));
@@ -74,7 +84,7 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, exp
       </View>
 
       <View style={styles.categoryHeadingRow}>
-        <View><Text style={styles.sectionTitle}>Pick an adventure</Text><Text style={styles.sectionHint}>Tap a colorful card to see its activities.</Text></View>
+        <View><Text style={styles.sectionTitle}>Pick an adventure</Text><Text style={styles.sectionHint}>Open a card, then tap Start on any activity.</Text></View>
         <Text style={styles.categoryHeadingEmoji}>🎒</Text>
       </View>
       <View style={styles.groups}>
@@ -99,17 +109,41 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, exp
           const result = explored.find(t => t.key === category.key);
           const visual = CATEGORY_VISUALS[category.key];
           const isSelected = selected === category.key;
-          return <Pressable key={category.key} accessibilityRole="radio" accessibilityState={{ checked: selected === category.key, disabled: busy }} disabled={busy} onPress={() => setSelected(category.key)} style={[styles.card, selected === category.key && styles.selected]}>
-            <View style={[styles.categoryIcon, { backgroundColor: visual.background, borderColor: visual.border }]}>
-              <Text style={styles.categoryEmoji}>{visual.icon}</Text>
-              {isSelected ? <View style={styles.selectedBadge}><Text style={styles.selectedCheck}>✓</Text></View> : null}
-            </View>
-            <View style={styles.cardContent}>
-              <Text style={styles.categoryTitle}>{category.label}</Text>
-              <Text style={[type.soft, { marginTop: spacing(0.75) }]}>{category.blurb}</Text>
-              <View style={[styles.observationPill, result && result.questionCount > 0 ? styles.observedPill : null]}><Text style={[type.label, result && result.questionCount > 0 ? styles.observedText : null]}>{result && result.questionCount > 0 ? `${result.questionCount} observations so far` : 'Not yet observed'}</Text></View>
-            </View>
-          </Pressable>;
+          const seen = !!result && result.questionCount > 0;
+          const pending = busy && startedFrom === category.key;
+          // The card is a container, not one big button: the select area and the
+          // Start button are siblings, so neither swallows the other's tap.
+          return <View key={category.key} style={[styles.card, isSelected && styles.selected]}>
+            <Pressable accessibilityRole="radio" accessibilityState={{ checked: isSelected, disabled: busy }} disabled={busy} onPress={() => setSelected(category.key)} style={styles.cardSelect}>
+              <View style={[styles.categoryIcon, { backgroundColor: visual.background, borderColor: visual.border }]}>
+                <Text style={styles.categoryEmoji}>{visual.icon}</Text>
+                {isSelected ? <View style={styles.selectedBadge}><Text style={styles.selectedCheck}>✓</Text></View> : null}
+              </View>
+              <View style={styles.cardContent}>
+                <Text style={styles.categoryTitle}>{category.label}</Text>
+                <Text style={[type.soft, { marginTop: spacing(0.75) }]}>{category.blurb}</Text>
+                <View style={[styles.observationPill, seen ? styles.observedPill : null]}><Text style={[type.label, seen ? styles.observedText : null]}>{seen ? `${result!.questionCount} observations so far` : 'Not yet observed'}</Text></View>
+              </View>
+            </Pressable>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={`${seen ? 'Play again' : 'Start'}: ${category.label}, ${count} questions`}
+              accessibilityState={{ disabled: busy || categories.length === 0, busy: pending }}
+              disabled={busy || categories.length === 0}
+              onPress={() => startNow(category.key)}
+              style={({ pressed }) => [
+                styles.startButton,
+                { borderColor: visual.border, backgroundColor: visual.background },
+                busy && !pending && styles.startDisabled,
+                pressed && styles.pressed,
+              ]}
+            >
+              {pending ? <ActivityIndicator color={colors.ink} style={{ marginRight: spacing(1) }} /> : null}
+              <Text style={styles.startText}>
+                {pending ? 'Making the questions…' : `${seen ? 'Play again' : 'Start this one'} · ${count} questions ▶`}
+              </Text>
+            </Pressable>
+          </View>;
           })}</View> : null}
         </View>;})}
       </View>
@@ -119,10 +153,10 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, exp
           <View style={styles.retryIconBubble}><Text style={styles.retryIcon}>🌦️</Text></View>
           <View style={styles.retryCopy}><Text style={styles.retryTitle}>That adventure didn’t load</Text><Text style={styles.retryText}>{error}</Text></View>
         </View>
-        <Button title={busy ? 'Trying again…' : 'Try again ↻'} variant="secondary" onPress={() => onSelect(selected, count)} disabled={busy || categories.length === 0} loading={busy} />
+        <Button title={busy ? 'Trying again…' : 'Try again ↻'} variant="secondary" onPress={() => { setStartedFrom(null); onSelect(selected, count); }} disabled={busy || categories.length === 0} loading={busy} />
       </View> : null}
       <View style={styles.actions}>
-        <Button title={busy ? 'Making your adventure…' : 'Let’s start! ✨'} onPress={() => onSelect(selected, count)} loading={busy} disabled={busy || categories.length === 0} />
+        <Button title={busy && !startedFrom ? 'Making your adventure…' : 'Let’s start! ✨'} onPress={() => { setStartedFrom(null); onSelect(selected, count); }} loading={busy && !startedFrom} disabled={busy || categories.length === 0} />
         {report ? <Button title="View latest result" variant="secondary" onPress={onReport} disabled={busy} /> : <Button title="Back to child details" variant="secondary" onPress={onBack} disabled={busy} />}
       </View>
     </ScrollView>
@@ -141,7 +175,12 @@ const styles = StyleSheet.create({
   roundPanel: { backgroundColor: colors.surface, borderRadius: 22, padding: spacing(2), marginTop: spacing(2), borderWidth: 1.5, borderColor: '#EEDFCB' },
   sectionTitle: { fontSize: 18, lineHeight: 23, fontWeight: '900', color: '#513A27' },
   sectionHint: { fontSize: 13, lineHeight: 18, color: colors.inkSoft, marginTop: 2 },
-  card: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1.75), padding: spacing(2), borderRadius: 18, borderWidth: 2, borderColor: colors.line, backgroundColor: colors.surface, shadowColor: '#4A3728', shadowOpacity: 0.06, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 2 },
+  card: { padding: spacing(2), borderRadius: 18, borderWidth: 2, borderColor: colors.line, backgroundColor: colors.surface, shadowColor: '#4A3728', shadowOpacity: 0.06, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 2 },
+  cardSelect: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1.75) },
+  // Indented to line up with the title (icon 56 + gap 14).
+  startButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', minHeight: 44, marginTop: spacing(1.5), marginLeft: 70, borderRadius: 14, borderWidth: 2, paddingHorizontal: spacing(1.5), paddingVertical: spacing(1) },
+  startDisabled: { opacity: 0.45 },
+  startText: { fontSize: 14, fontWeight: '800', color: colors.ink },
   selected: { borderColor: colors.primary, backgroundColor: colors.happySoft, shadowOpacity: 0.13 },
   categoryIcon: { width: 56, height: 56, borderRadius: 28, borderWidth: 2, alignItems: 'center', justifyContent: 'center', position: 'relative' },
   categoryEmoji: { fontSize: 28 },

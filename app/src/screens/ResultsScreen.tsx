@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable, type TextStyle } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable, ActivityIndicator, type TextStyle } from 'react-native';
 import { CATEGORY_GROUPS } from '../categoryGroups';
 import { CATEGORY_VISUALS, GROUP_VISUALS } from '../categoryVisuals';
 import Button from '../components/Button';
 import { colors, spacing, type } from '../theme';
 import { speak, stopSpeaking, useSpeechState, lastSpeechError } from '../speech';
-import type { ParentReport as ParentReportType, Report, ScoredResponse, TraitReport } from '../types';
+import type { ParentReport as ParentReportType, Report, ScoredResponse, TraitKey, TraitReport } from '../types';
 
 export interface ResultsScreenProps {
   report: Report;
@@ -21,6 +21,14 @@ export interface ResultsScreenProps {
   historical?: boolean;
   completedAt?: string;
   onBackToHistory?: () => void;
+  /**
+   * Start a new round in one category straight from its result card, without
+   * going back through the category screen. Absent for saved results from the
+   * history, which are read-only.
+   */
+  onTryCategory?: (trait: TraitKey, count: number) => void;
+  /** Length of the round just finished; the default for a round started here. */
+  roundLength?: number;
 }
 
 function Bar({ percent, color }: { percent: number; color: string }) {
@@ -117,7 +125,18 @@ function ParentReportCard({ report }: { report: ParentReportType }) {
  * beside "demonstrates great curiosity" would take it as a judgement about
  * their child rather than as missing data, and would carry that into the form.
  */
-function TraitCard({ trait }: { trait: TraitReport }) {
+interface TryAction {
+  onPress: () => void;
+  /** This card's round is being generated. */
+  pending: boolean;
+  /** Any round is being generated, so every start button waits. */
+  busy: boolean;
+  /** Why this card's round failed to start, if it did. */
+  error: string | null;
+  count: number;
+}
+
+function TraitCard({ trait, tryAction }: { trait: TraitReport; tryAction?: TryAction }) {
   const seen = trait.questionCount > 0;
   const visual = CATEGORY_VISUALS[trait.key] ?? { icon: '⭐', background: colors.happySoft, border: colors.happy };
 
@@ -158,10 +177,42 @@ function TraitCard({ trait }: { trait: TraitReport }) {
               ? ' Based on the ideas and explanations offered in this activity.'
               : ''}
         </Text>
+
+        {tryAction ? (
+          <View style={{ marginTop: spacing(1.5) }}>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={`${seen ? 'Try again' : 'Start'}: ${trait.label}, ${tryAction.count} questions`}
+              accessibilityState={{ disabled: tryAction.busy, busy: tryAction.pending }}
+              disabled={tryAction.busy}
+              onPress={tryAction.onPress}
+              style={({ pressed }) => [
+                styles.tryButton,
+                { borderColor: visual.border, backgroundColor: visual.background },
+                tryAction.busy && !tryAction.pending && styles.tryDisabled,
+                pressed && styles.pressed,
+              ]}
+            >
+              {tryAction.pending ? <ActivityIndicator color={colors.ink} style={{ marginRight: spacing(1) }} /> : null}
+              <Text style={styles.tryText}>
+                {tryAction.pending
+                  ? 'Making the questions…'
+                  : `${seen ? 'Try again' : 'Start this one'} · ${tryAction.count} questions ▶`}
+              </Text>
+            </Pressable>
+            {tryAction.error ? <Text style={styles.tryError}>{tryAction.error}</Text> : null}
+          </View>
+        ) : null}
       </View>
     </View>
   );
 }
+
+const ROUND_OPTIONS = [
+  { count: 2, icon: '⚡', title: 'Quick' },
+  { count: 5, icon: '⭐', title: 'More' },
+  { count: 6, icon: '🚀', title: 'Big' },
+] as const;
 
 function chipStyle(r: ScoredResponse): TextStyle {
   if (r.skipped || r.ungraded) return styles.chipWarn;
@@ -207,8 +258,20 @@ export default function ResultsScreen({
   historical = false,
   completedAt,
   onBackToHistory,
+  onTryCategory,
+  roundLength = 2,
 }: ResultsScreenProps) {
   const [showDetail, setShowDetail] = useState(false);
+  const canTry = !historical && !!onTryCategory;
+  const [tryLength, setTryLength] = useState<number>(ROUND_OPTIONS.some(o => o.count === roundLength) ? roundLength : 2);
+  // Which card's Start was pressed, so only that card spins and shows an error.
+  const [pendingTrait, setPendingTrait] = useState<TraitKey | null>(null);
+
+  function startCategory(key: TraitKey) {
+    if (!onTryCategory || busy) return;
+    setPendingTrait(key);
+    onTryCategory(key, tryLength);
+  }
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
 
   function toggleGroup(key: string) {
@@ -262,7 +325,9 @@ export default function ResultsScreen({
       <View style={styles.headingRow}>
         <View style={{ flex: 1 }}>
           <Text style={styles.sectionTitle}>Category results</Text>
-          <Text style={styles.sectionHint}>Tap a colorful card to see each category.</Text>
+          <Text style={styles.sectionHint}>
+            {canTry ? 'Tap a colorful card, then start any category right away.' : 'Tap a colorful card to see each category.'}
+          </Text>
         </View>
         <Text style={styles.headingEmoji}>📊</Text>
       </View>
@@ -275,6 +340,29 @@ export default function ResultsScreen({
         everyday behaviour need observations over time.
         </Text>
       </View>
+      {canTry ? (
+        <View style={styles.lengthRow}>
+          <Text style={styles.lengthLabel}>Questions per round</Text>
+          <View style={styles.lengthChips}>
+            {ROUND_OPTIONS.map(option => {
+              const on = tryLength === option.count;
+              return (
+                <Pressable
+                  key={option.count}
+                  accessibilityRole="radio"
+                  accessibilityLabel={`${option.title}, ${option.count} questions`}
+                  accessibilityState={{ checked: on, disabled: busy }}
+                  disabled={busy}
+                  onPress={() => setTryLength(option.count)}
+                  style={({ pressed }) => [styles.lengthChip, on && styles.lengthChipOn, pressed && styles.pressed]}
+                >
+                  <Text style={[styles.lengthChipText, on && styles.lengthChipTextOn]}>{option.icon} {option.count}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        </View>
+      ) : null}
       <View style={styles.groupList}>
         {CATEGORY_GROUPS.map(group => {
           const groupTraits = report.traits.filter(t => (t.group ?? 'intellectual') === group.key);
@@ -296,7 +384,19 @@ export default function ResultsScreen({
               </View>
               <View style={[styles.chevronBubble, { backgroundColor: visual.border }]}><Text style={styles.chevron}>{expanded ? '−' : '+'}</Text></View>
             </Pressable>
-            {expanded ? <View style={styles.groupItems}>{groupTraits.map(t => <TraitCard key={t.key} trait={t} />)}</View> : null}
+            {expanded ? <View style={styles.groupItems}>{groupTraits.map(t => (
+              <TraitCard
+                key={t.key}
+                trait={t}
+                tryAction={canTry ? {
+                  onPress: () => startCategory(t.key),
+                  pending: busy && pendingTrait === t.key,
+                  busy,
+                  error: !busy && pendingTrait === t.key ? error : null,
+                  count: tryLength,
+                } : undefined}
+              />
+            ))}</View> : null}
           </View>;
         })}
       </View>
@@ -359,15 +459,15 @@ export default function ResultsScreen({
         <Text style={[type.soft, { marginTop: spacing(1) }]}>
           AI generates a fresh round each time. Your completed rounds, answers, and report are saved privately to your parent account.
         </Text>
-        {error ? (
+        {error && !pendingTrait ? (
           <Text style={[type.body, { color: colors.warn, marginTop: spacing(1.5) }]}>{error}</Text>
         ) : null}
         <View style={{ gap: spacing(1.5), marginTop: spacing(2) }}>
           <Button
             title="Ask different questions"
-            onPress={onReassess}
-            loading={busy}
-            disabled={remainingUnseen === 0}
+            onPress={() => { setPendingTrait(null); onReassess(); }}
+            loading={busy && !pendingTrait}
+            disabled={remainingUnseen === 0 || (busy && !!pendingTrait)}
           />
 
         </View>
@@ -474,6 +574,17 @@ const styles = StyleSheet.create({
   chipLow: { backgroundColor: '#FBE9E7', color: colors.danger },
   chipWarn: { backgroundColor: '#F3EEE7', color: colors.inkSoft },
 
+  lengthRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1), marginTop: spacing(1.5), backgroundColor: colors.surface, borderWidth: 1.5, borderColor: '#EEDFCB', borderRadius: 18, paddingVertical: spacing(1), paddingHorizontal: spacing(1.5), flexWrap: 'wrap' },
+  lengthLabel: { fontSize: 14, fontWeight: '800', color: '#513A27' },
+  lengthChips: { flexDirection: 'row', gap: spacing(0.75) },
+  lengthChip: { minWidth: 56, minHeight: 40, paddingHorizontal: spacing(1.25), borderRadius: 999, borderWidth: 2, borderColor: colors.line, backgroundColor: '#FFF9F0', alignItems: 'center', justifyContent: 'center' },
+  lengthChipOn: { borderColor: colors.primary, backgroundColor: colors.primarySoft },
+  lengthChipText: { fontSize: 14, fontWeight: '800', color: '#6D5A49' },
+  lengthChipTextOn: { color: colors.primary },
+  tryButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', minHeight: 44, borderRadius: 14, borderWidth: 2, paddingHorizontal: spacing(1.5), paddingVertical: spacing(1) },
+  tryDisabled: { opacity: 0.45 },
+  tryText: { fontSize: 14, fontWeight: '800', color: colors.ink },
+  tryError: { marginTop: spacing(1), fontSize: 13, lineHeight: 19, color: colors.danger },
   reassessCard: { marginTop: spacing(2.5), backgroundColor: colors.surface, borderWidth: 1.5, borderColor: '#EEDFCB', borderRadius: 22, padding: spacing(2) },
   disclaimer: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1), marginTop: spacing(2.5), backgroundColor: '#F3EEE7', borderRadius: 14, padding: spacing(1.5) },
   disclaimerText: { flex: 1, fontSize: 12, lineHeight: 18, color: '#6B6259' },

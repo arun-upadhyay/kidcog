@@ -99,6 +99,13 @@ function KidCogApp() {
     } catch (err) { setError(messageOf(err)); }
   }, [child, beginRound]);
 
+  /** Start a category straight from its card on the results screen. */
+  const tryCategory = useCallback(async (trait: TraitKey, count: number) => {
+    if (!child) return;
+    stopSpeaking();
+    await beginRound(child, trait, count);
+  }, [beginRound, child]);
+
   const chooseCategory = useCallback(() => {
     stopSpeaking();
     setError(null);
@@ -207,6 +214,8 @@ function KidCogApp() {
               onRestart={restart}
               onChooseCategory={chooseCategory}
               onReassess={reassess}
+              onTryCategory={(trait, count) => void tryCategory(trait, count)}
+              roundLength={roundLength}
               remainingUnseen={test?.remainingUnseen ?? 0}
               busy={busy}
               error={error}
