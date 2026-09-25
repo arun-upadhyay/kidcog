@@ -13,8 +13,11 @@ const ROUND_OPTIONS = [
   { count: 6, icon: '🚀', title: 'Big', subtitle: '6 questions' },
 ] as const;
 
-export default function CategoryScreen({ onSelect, onReport, onBack, report, explored, busy, error }: {
+export default function CategoryScreen({ onSelect, onReport, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
   onSelect: (trait: TraitKey, count: number) => void;
+  /** Last category and round length used, so coming back keeps the parent's choice. */
+  initialCategory?: TraitKey;
+  initialCount?: number;
   onReport: () => void;
   onBack: () => void;
   /** The latest test's result, for the "View latest result" button. */
@@ -25,8 +28,8 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, exp
   error: string | null;
 }) {
   const [categories, setCategories] = useState<TraitMetaPublic[]>([]);
-  const [selected, setSelected] = useState<TraitKey>('abstract_concepts');
-  const [count, setCount] = useState(2);
+  const [selected, setSelected] = useState<TraitKey>(initialCategory);
+  const [count, setCount] = useState(initialCount);
   // The card whose own Start button was pressed, so only that button spins.
   const [startedFrom, setStartedFrom] = useState<TraitKey | null>(null);
 

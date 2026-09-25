@@ -8,6 +8,8 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
+  Alert,
+  BackHandler,
 } from 'react-native';
 import * as Haptics from 'expo-haptics';
 
@@ -21,6 +23,8 @@ import type { PublicQuestion, ResponseInput, TestPayload } from '../types';
 export interface QuizScreenProps {
   test: TestPayload;
   onFinish: (responses: ResponseInput[]) => void;
+  /** Leave without finishing, back to the category screen. Nothing is submitted. */
+  onExit: () => void;
   submitting: boolean;
   error: string | null;
 }
@@ -45,7 +49,7 @@ function ProgressDots({ total, current, scale }: { total: number; current: numbe
   );
 }
 
-export default function QuizScreen({ test, onFinish, submitting, error }: QuizScreenProps) {
+export default function QuizScreen({ test, onFinish, onExit, submitting, error }: QuizScreenProps) {
   const speechState = useSpeechState();
   const speechBusy = speechState !== 'idle';
   const { profile } = test;
@@ -77,6 +81,34 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
     const t = setInterval(() => setTick((v) => v + 1), 1000);
     return () => clearInterval(t);
   }, [question?.id, profile.showTimer]);
+
+  /**
+   * Leave the activity. Straight away if nothing has been answered; otherwise
+   * ask first, so a stray tap by a child does not throw away their answers.
+   */
+  const answeredCount = Object.values(answers).filter((a) => a.trim().length > 0).length;
+  const leaveRef = useRef<() => void>(() => {});
+  leaveRef.current = () => {
+    if (submitting) return;
+    const leave = () => { stopSpeaking(); onExit(); };
+    if (answeredCount === 0) { leave(); return; }
+    const message = `${answeredCount} ${answeredCount === 1 ? 'answer' : 'answers'} so far will not be saved. You can pick another activity.`;
+    if (Platform.OS === 'web') {
+      if (globalThis.confirm(`Leave this activity?\n\n${message}`)) leave();
+      return;
+    }
+    Alert.alert('Leave this activity?', message, [
+      { text: 'Keep playing', style: 'cancel' },
+      { text: 'Leave', style: 'destructive', onPress: leave },
+    ]);
+  };
+
+  // Android's hardware back button leaves the activity the same way, instead
+  // of closing the whole app.
+  useEffect(() => {
+    const sub = BackHandler.addEventListener('hardwareBackPress', () => { leaveRef.current(); return true; });
+    return () => sub.remove();
+  }, []);
 
   const progress = useMemo(
     () => (index + 1) / Math.max(1, sequence.length),
@@ -163,6 +195,18 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <View style={styles.header}>
+        <View style={styles.topBar}>
+          <Pressable
+            onPress={() => leaveRef.current()}
+            disabled={submitting}
+            accessibilityRole="button"
+            accessibilityLabel="Leave this activity and choose another"
+            hitSlop={8}
+            style={({ pressed }) => [styles.leaveButton, (pressed || submitting) && { opacity: 0.6 }]}
+          >
+            <Text style={styles.leaveText}>✕ Leave</Text>
+          </Pressable>
+        </View>
         {young ? (
           <ProgressDots total={sequence.length} current={index} scale={s} />
         ) : (
@@ -333,6 +377,9 @@ export default function QuizScreen({ test, onFinish, submitting, error }: QuizSc
 const styles = StyleSheet.create({
   empty: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: spacing(3) },
   header: { paddingTop: spacing(2), paddingHorizontal: spacing(3), gap: spacing(1.5) },
+  topBar: { flexDirection: 'row', justifyContent: 'flex-start' },
+  leaveButton: { flexDirection: 'row', alignItems: 'center', minHeight: 40, paddingHorizontal: spacing(1.5), borderRadius: 999, borderWidth: 1.5, borderColor: colors.line, backgroundColor: colors.surface },
+  leaveText: { fontSize: 14, fontWeight: '800', color: colors.inkSoft },
   dots: { flexDirection: 'row', gap: spacing(1), justifyContent: 'center', flexWrap: 'wrap' },
   progressTrack: { height: 6, backgroundColor: colors.line, borderRadius: 3, overflow: 'hidden' },
   progressFill: { height: 6, backgroundColor: colors.go },

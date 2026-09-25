@@ -39,6 +39,20 @@ export function useVoiceCapture(onTranscript: (text: string) => void) {
 
   useEffect(() => clearTick, [clearTick]);
 
+  // Leaving the question (or the whole activity) mid-recording: stop the
+  // microphone and throw the recording away rather than transcribing it.
+  const mounted = useRef(true);
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+      if (recording.current) {
+        recording.current = false;
+        recorder.stop().catch(() => {});
+      }
+    };
+  }, [recorder]);
+
   const stop = useCallback(async () => {
     if (transition.current || !recording.current) return;
     transition.current = true;
@@ -47,6 +61,7 @@ export function useVoiceCapture(onTranscript: (text: string) => void) {
     setStage('working');
     try {
       await recorder.stop();
+      if (!mounted.current) return;
       const uri = recorder.uri;
       if (!uri) throw new Error('No recording was captured.');
 
@@ -55,6 +70,7 @@ export function useVoiceCapture(onTranscript: (text: string) => void) {
       // hands back a blob: URL with no file extension at all, and OpenAI
       // rejects an upload whose format it cannot determine.
       const { text } = await transcribeAudio(base64, filenameFor(mimeType), mimeType);
+      if (!mounted.current) return;
 
       if (!text.trim()) {
         setProblem("I couldn't make that out. Try again, or type it instead.");

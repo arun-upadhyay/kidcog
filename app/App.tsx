@@ -107,6 +107,15 @@ function KidCogApp() {
     await beginRound(child, trait, count);
   }, [beginRound, child]);
 
+  /** Leave a round part-way: nothing is submitted, back to choosing a category. */
+  const leaveQuiz = useCallback(() => {
+    stopSpeaking();
+    setError(null);
+    setTest(null);
+    setSessionId(null);
+    setStage('categories');
+  }, []);
+
   const chooseCategory = useCallback(() => {
     stopSpeaking();
     setError(null);
@@ -204,10 +213,10 @@ function KidCogApp() {
 
           {stage === 'historical_result' && historical && <ResultsScreen report={historical.report} childName={historical.childName} completedAt={historical.completedAt} historical onBackToHistory={() => setStage('history')} onRestart={restart} onChooseCategory={() => {}} onReassess={() => {}} remainingUnseen={0} busy={false} error={null} />}
 
-          {stage === 'categories' && <CategoryScreen onSelect={chooseRound} onReport={() => setStage('results')} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
+          {stage === 'categories' && <CategoryScreen initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onReport={() => setStage('results')} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
 
           {stage === 'quiz' && test && (
-            <QuizScreen test={test} onFinish={finish} submitting={busy} error={error} />
+            <QuizScreen test={test} onFinish={finish} onExit={leaveQuiz} submitting={busy} error={error} />
           )}
 
           {stage === 'celebrate' && (
