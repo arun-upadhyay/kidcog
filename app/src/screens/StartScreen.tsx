@@ -130,6 +130,10 @@ export default function StartScreen({ onStart, loading, error, savedChildren, ac
       <Modal visible={menuOpen} transparent animationType="fade" onRequestClose={closeMenu}>
         <View style={styles.modalRoot}>
           <Pressable style={styles.backdrop} onPress={closeMenu} accessibilityLabel="Close account menu" />
+          {/* Same width as the page column, so on a wide screen the menu opens
+              under the ☰ button instead of at the window's far-left edge.
+              box-none: taps outside the panel still reach the backdrop. */}
+          <View style={styles.menuColumn} pointerEvents="box-none">
           <View style={styles.accountMenu} accessibilityViewIsModal>
             <View style={styles.accountHeader}>
               <View style={styles.avatar}><Text style={styles.avatarText}>🦉</Text></View>
@@ -169,6 +173,7 @@ export default function StartScreen({ onStart, loading, error, savedChildren, ac
                 </Pressable>
               </>
             )}
+          </View>
           </View>
         </View>
       </Modal>
@@ -295,7 +300,10 @@ const styles = StyleSheet.create({
   menuIcon: { fontSize: 27, color: '#6B4BB0', fontWeight: '800', marginTop: -2 },
   modalRoot: { flex: 1, backgroundColor: 'rgba(42,33,24,0.25)' },
   backdrop: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 },
-  accountMenu: { position: 'absolute', top: Platform.OS === 'web' ? spacing(3) : spacing(7), left: spacing(2), width: '88%', maxWidth: 400, maxHeight: '92%', backgroundColor: colors.surface, borderRadius: 22, padding: spacing(2.5), borderWidth: 1.5, borderColor: colors.line, shadowColor: '#2A2118', shadowOpacity: 0.18, shadowRadius: 20, shadowOffset: { width: 0, height: 8 }, elevation: 10 },
+  // In normal flow (not absolute): an absolute column with top/bottom 0 collapsed
+  // to zero height on web, which squashed the panel into a thin strip.
+  menuColumn: { flex: 1, width: '100%', maxWidth: 850, alignSelf: 'center' },
+  accountMenu: { position: 'absolute', top: Platform.OS === 'web' ? spacing(3) : spacing(7), left: spacing(2.5), width: '88%', maxWidth: 400, maxHeight: '92%', backgroundColor: colors.surface, borderRadius: 22, padding: spacing(2.5), borderWidth: 1.5, borderColor: colors.line, shadowColor: '#2A2118', shadowOpacity: 0.18, shadowRadius: 20, shadowOffset: { width: 0, height: 8 }, elevation: 10 },
   accountHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), paddingBottom: spacing(2), borderBottomWidth: 1, borderBottomColor: colors.line },
   avatar: { width: 48, height: 48, borderRadius: 24, backgroundColor: colors.happySoft, alignItems: 'center', justifyContent: 'center' },
   avatarText: { fontSize: 28 },

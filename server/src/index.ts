@@ -23,6 +23,10 @@ async function requireParent(req: AuthRequest, res: Response, next: NextFunction
 }
 
 const app = express();
+// On a host like Render every request arrives through its proxy. Without this,
+// req.ip is the proxy's address, so the rate limiter below would treat all
+// parents as one client and share a single 30-a-minute allowance between them.
+app.set('trust proxy', 1);
 app.use(cors());
 // Raised from 256kb because spoken answers arrive as base64 audio.
 app.use(express.json({ limit: '12mb' }));
