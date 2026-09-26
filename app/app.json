@@ -16,7 +16,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.example.kidcog"
+      "bundleIdentifier": "com.example.kidcog",
+      "usesAppleSignIn": true
     },
     "android": {
       "package": "com.example.kidcog",
@@ -38,7 +39,8 @@
     },
     "plugins": [
       "expo-secure-store",
-      "expo-web-browser"
+      "expo-web-browser",
+      "expo-apple-authentication"
     ]
   }
 }

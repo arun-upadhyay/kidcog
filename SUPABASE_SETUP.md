@@ -20,6 +20,10 @@ Then run the account-deletion migration:
 
 `supabase/migrations/202609250001_parent_account_deletion.sql`
 
+Then run the Sign in with Apple migration:
+
+`supabase/migrations/202609260001_apple_sign_in_tokens.sql`
+
 Without it the app still works, but "Delete account" fails with "Account deletion is not set up on the server yet" and the server prints a warning.
 
 The migration enables row-level security. The generated-questions table has no client access policy because it contains answer keys and rubrics.
@@ -82,3 +86,24 @@ npm run restore-account -- parent@example.com
 ```
 
 The 30-day erase only runs while the API server is running. On Render's paid plan the server stays up; on a plan that sleeps, erasure is delayed until the server next starts.
+
+## 8. Sign in with Apple
+
+Apple requires it on iPhone because the app offers Google sign-in (App Review guideline 4.8). On iPhone the app shows Apple's own button and sign-in sheet. On Android and web it is hidden until you finish step 4.
+
+1. **Bundle ID.** Replace `com.example.kidcog` in `app/app.json` with your own (for example `com.yourname.kidcog`). It cannot be changed after the app is published.
+2. **Apple Developer → Certificates, IDs & Profiles → Identifiers:** open the App ID for that bundle ID and tick **Sign in with Apple**. (`app.json` already has `"usesAppleSignIn": true`, so EAS builds include the capability.)
+3. **Supabase → Authentication → Sign In / Providers → Apple:** enable it and put your bundle ID in **Client IDs**. That is all the iPhone (native) sign-in needs.
+4. **Optional, for Android and web:** create a **Services ID** in Apple Developer with the return URL `https://<your-project>.supabase.co/auth/v1/callback`, add it to the Supabase Apple provider with a secret key, then set `EXPO_PUBLIC_APPLE_SIGNIN_WEB=1` in `app/.env` and restart with `./dev.sh --clear`. Apple makes you generate a new secret key every 6 months for this web flow.
+5. **Token revocation on account deletion.** Apple asks apps to revoke Sign in with Apple when a parent deletes their account. In Apple Developer → **Keys**, create a key with Sign in with Apple enabled and download the `.p8` file (you can only download it once). Then set these in `server/.env` (and in your host's environment settings when you deploy):
+
+```
+APPLE_TEAM_ID=ABCDE12345
+APPLE_KEY_ID=XYZ9876543
+APPLE_CLIENT_ID=com.yourname.kidcog
+APPLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nMIGT...\n-----END PRIVATE KEY-----"
+```
+
+Without these, Apple sign-in still works; the server just prints a warning and cannot revoke the Apple link when an account is deleted.
+
+Sign in with Apple only works in a real iPhone build (EAS build or TestFlight), not in Expo Go.

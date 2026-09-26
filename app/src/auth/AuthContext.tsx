@@ -2,8 +2,11 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from '
 import { Platform } from 'react-native';
 import * as Linking from 'expo-linking';
 import * as WebBrowser from 'expo-web-browser';
+import * as AppleAuthentication from 'expo-apple-authentication';
+import * as Crypto from 'expo-crypto';
 import type { Provider, Session } from '@supabase/supabase-js';
 import { supabase, supabaseConfigured } from './supabase';
+import { saveAppleAuthorizationCode } from '../api';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -12,6 +15,8 @@ type AuthValue = {
   loading: boolean;
   configured: boolean;
   signIn: (provider: Extract<Provider, 'google' | 'apple'>) => Promise<void>;
+  /** Native Apple sheet on iPhone; browser sign-in elsewhere. Resolves quietly if the parent cancels. */
+  signInWithApple: () => Promise<void>;
   signInWithEmail: (email: string, password: string) => Promise<void>;
   signUpWithEmail: (email: string, password: string) => Promise<{ needsVerification: boolean }>;
   resendVerification: (email: string) => Promise<void>;
@@ -72,6 +77,47 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (exchanged.error) throw exchanged.error;
   }
 
+  /**
+   * Sign in with Apple. On iPhone this uses Apple's own sign-in sheet (Apple
+   * and Supabase both recommend the native flow there); on Android and web it
+   * falls back to the browser flow used for Google.
+   *
+   * Only the email scope is requested: the app never shows a parent's name, so
+   * there is no reason to collect it.
+   */
+  async function signInWithApple() {
+    if (!supabaseConfigured) throw new Error('Add the Supabase public settings to app/.env first.');
+    const native = Platform.OS === 'ios' && await AppleAuthentication.isAvailableAsync().catch(() => false);
+    if (!native) { await signIn('apple'); return; }
+
+    // Apple receives the SHA-256 of the nonce, Supabase the raw value, so a
+    // stolen identity token cannot be replayed.
+    const rawNonce = Crypto.randomUUID();
+    const hashedNonce = await Crypto.digestStringAsync(Crypto.CryptoDigestAlgorithm.SHA256, rawNonce);
+    let credential: AppleAuthentication.AppleAuthenticationCredential;
+    try {
+      credential = await AppleAuthentication.signInAsync({
+        requestedScopes: [AppleAuthentication.AppleAuthenticationScope.EMAIL],
+        nonce: hashedNonce,
+      });
+    } catch (err) {
+      // The parent closed Apple's sheet: not an error worth showing.
+      if ((err as { code?: string }).code === 'ERR_REQUEST_CANCELED') return;
+      throw err;
+    }
+    if (!credential.identityToken) throw new Error('Apple did not return a sign-in token. Please try again.');
+    const { error } = await supabase.auth.signInWithIdToken({ provider: 'apple', token: credential.identityToken, nonce: rawNonce });
+    if (error) throw error;
+
+    // Lets the server revoke the Apple link if the account is ever deleted.
+    // Never block sign-in on it.
+    if (credential.authorizationCode) {
+      void saveAppleAuthorizationCode(credential.authorizationCode).catch(err => {
+        console.warn('Could not store the Apple sign-in token:', err instanceof Error ? err.message : err);
+      });
+    }
+  }
+
   async function signInWithEmail(email: string, password: string) {
     if (!supabaseConfigured) throw new Error('Add the Supabase public settings to app/.env first.');
     const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -106,7 +152,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   const value = useMemo<AuthValue>(() => ({
-    session, loading, configured: supabaseConfigured, signIn,
+    session, loading, configured: supabaseConfigured, signIn, signInWithApple,
     signInWithEmail,
     signUpWithEmail,
     resendVerification,

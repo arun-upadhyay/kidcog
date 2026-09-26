@@ -13,6 +13,7 @@
  * Undo within the grace period: `npm run restore-account -- parent@example.com`.
  */
 import { supabaseAdmin, supabaseReady } from './supabase.js';
+import { revokeAppleTokens } from './appleSignIn.js';
 
 export const PURGE_AFTER_DAYS = 30;
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -69,6 +70,10 @@ export async function scheduleAccountDeletion(parentId: string, accessToken: str
     ban_duration: `${(PURGE_AFTER_DAYS + 1) * 24}h`,
   });
   if (ban.error) console.error(`  ✗ Could not block sign-in for deleted account ${parentId}: ${ban.error.message}`);
+
+  // Apple asks apps using Sign in with Apple to revoke the user's tokens when
+  // they delete their account. Best effort: never block the deletion on it.
+  await revokeAppleTokens(parentId).catch(err => console.error(`  ✗ Apple token revocation failed for ${parentId}:`, err));
 
   // End every session on every device. The API check above already refuses
   // them; this stops token refreshes too.

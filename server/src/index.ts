@@ -13,6 +13,7 @@ import { generateParentReport, apiKeyProblem } from './grader.js';
 import type { PublicQuestion, TestPayload } from './types.js';
 import { supabaseReady, userIdFromBearer } from './supabase.js';
 import { isAccountDeleted, scheduleAccountDeletion, startPurgeSchedule, PURGE_AFTER_DAYS } from './accountDeletion.js';
+import { storeAppleAuthorizationCode } from './appleSignIn.js';
 import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, saveGeneratedQuestions, saveReport } from './repository.js';
 
 type AuthRequest = Request & { parentId?: string };
@@ -83,6 +84,23 @@ app.delete('/api/account', requireParent, async (req: AuthRequest, res: Response
     res.json({ deleted: true, purgeAfter, graceDays: PURGE_AFTER_DAYS });
   } catch (err) {
     res.status(500).json({ error: 'Could not delete the account.', detail: err instanceof Error ? err.message : String(err) });
+  }
+});
+
+/**
+ * After a native Sign in with Apple, the app sends Apple's one-time
+ * authorization code so the server can keep a refresh token to revoke if the
+ * parent later deletes their account.
+ */
+app.post('/api/apple/authorization-code', requireParent, async (req: AuthRequest, res: Response) => {
+  const parsed = z.object({ code: z.string().min(10).max(2000) }).safeParse(req.body);
+  if (!parsed.success) { res.status(400).json({ error: 'Missing authorization code.' }); return; }
+  try {
+    const stored = await storeAppleAuthorizationCode(req.parentId!, parsed.data.code);
+    res.status(stored ? 200 : 202).json({ stored });
+  } catch (err) {
+    console.error('  ✗ Could not store Apple token:', err instanceof Error ? err.message : err);
+    res.status(502).json({ error: 'Could not store the Apple sign-in token.', detail: err instanceof Error ? err.message : String(err) });
   }
 });
 

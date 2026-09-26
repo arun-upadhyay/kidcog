@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   KeyboardAvoidingView,
@@ -10,16 +10,26 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import * as AppleAuthentication from 'expo-apple-authentication';
 import Button from '../components/Button';
 import { useAuth } from '../auth/AuthContext';
 import { colors, spacing, type } from '../theme';
 
 export default function LoginScreen() {
-  const { loading, configured, signIn, signInWithEmail, signUpWithEmail, resendVerification } = useAuth();
+  const { loading, configured, signIn, signInWithApple, signInWithEmail, signUpWithEmail, resendVerification } = useAuth();
   const [mode, setMode] = useState<'signIn' | 'create'>('signIn');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [busy, setBusy] = useState<'google' | 'email' | 'resend' | null>(null);
+  const [busy, setBusy] = useState<'google' | 'apple' | 'email' | 'resend' | null>(null);
+  // Apple's own button on iPhone. On Android and web, Apple sign-in needs an
+  // Apple "Services ID" set up in Supabase first, so it is shown only once
+  // EXPO_PUBLIC_APPLE_SIGNIN_WEB=1 says that has been done.
+  const [appleNative, setAppleNative] = useState(false);
+  useEffect(() => {
+    if (Platform.OS !== 'ios') return;
+    AppleAuthentication.isAvailableAsync().then(setAppleNative).catch(() => setAppleNative(false));
+  }, []);
+  const showApple = Platform.OS === 'ios' ? appleNative : process.env.EXPO_PUBLIC_APPLE_SIGNIN_WEB === '1';
   const [error, setError] = useState<string | null>(null);
   const [verificationEmail, setVerificationEmail] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -37,6 +47,13 @@ export default function LoginScreen() {
     } else {
       setError(message);
     }
+  }
+
+  async function startApple() {
+    setBusy('apple'); setError(null); setNotice(null);
+    try { await signInWithApple(); }
+    catch (err) { showError(err); }
+    finally { setBusy(null); }
   }
 
   async function startGoogle() {
@@ -158,10 +175,35 @@ export default function LoginScreen() {
                 loading={busy === 'email'}
               />
               {mode === 'signIn' ? (
-                <Text style={styles.signInHint}>Used Google before? Continue with Google below. A Google account does not automatically have a KidCog password.</Text>
+                <Text style={styles.signInHint}>{showApple ? 'Used Apple or Google before? Continue with them below. They' : 'Used Google before? Continue with Google below. It'} {showApple ? 'do' : 'does'} not automatically have a KidCog password.</Text>
               ) : null}
 
               <View style={styles.divider}><View style={styles.rule} /><Text style={styles.or}>OR</Text><View style={styles.rule} /></View>
+              {showApple ? (
+                Platform.OS === 'ios' ? (
+                  // Apple's own button, as its design guidelines require on iOS.
+                  <View style={[styles.appleWrap, (!configured || busy !== null) && styles.appleBusy]} pointerEvents={!configured || busy !== null ? 'none' : 'auto'}>
+                    <AppleAuthentication.AppleAuthenticationButton
+                      buttonType={AppleAuthentication.AppleAuthenticationButtonType.CONTINUE}
+                      buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
+                      cornerRadius={14}
+                      style={styles.appleButton}
+                      onPress={() => void startApple()}
+                    />
+                  </View>
+                ) : (
+                  <Pressable
+                    onPress={() => void startApple()}
+                    disabled={!configured || busy !== null}
+                    accessibilityRole="button"
+                    accessibilityLabel="Continue with Apple"
+                    style={({ pressed }) => [styles.appleWeb, (!configured || busy !== null) && styles.appleBusy, pressed && { opacity: 0.85 }]}
+                  >
+                    {busy === 'apple' ? <ActivityIndicator color="#FFFFFF" style={{ marginRight: spacing(1) }} /> : null}
+                    <Text style={styles.appleWebText}>{busy === 'apple' ? 'Opening Apple…' : 'Continue with Apple'}</Text>
+                  </Pressable>
+                )
+              ) : null}
               <Button title={busy === 'google' ? 'Opening Google…' : 'Continue with Google'} variant="secondary" onPress={() => void startGoogle()} disabled={!configured || busy !== null} loading={busy === 'google'} />
             </>
           )}
@@ -194,6 +236,12 @@ const styles = StyleSheet.create({
   divider: { flexDirection: 'row', alignItems: 'center', marginVertical: spacing(3) },
   rule: { flex: 1, height: 1, backgroundColor: colors.line },
   or: { ...type.label, marginHorizontal: spacing(2) },
+  // Same height as the other buttons, so Apple is at least as prominent as Google (App Review 4.8).
+  appleWrap: { marginBottom: spacing(1.5) },
+  appleButton: { width: '100%', height: 52 },
+  appleBusy: { opacity: 0.5 },
+  appleWeb: { minHeight: 52, borderRadius: 14, backgroundColor: '#000000', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: spacing(1.5) },
+  appleWebText: { color: '#FFFFFF', fontSize: 16, fontWeight: '600' },
   verifyCard: { backgroundColor: colors.surface, borderColor: colors.line, borderWidth: 1.5, borderRadius: 20, padding: spacing(3) },
   verifyIcon: { fontSize: 42, textAlign: 'center', marginBottom: spacing(1) },
   cardTitle: { ...type.heading, textAlign: 'center', marginBottom: spacing(1) },

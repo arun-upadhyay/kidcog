@@ -204,3 +204,12 @@ export function submitAnswers(payload: {
 export function deleteAccount(): Promise<{ deleted: boolean; purgeAfter: string; graceDays: number }> {
   return request('/api/account', { method: 'DELETE', body: JSON.stringify({ confirm: 'DELETE' }) });
 }
+
+/**
+ * After a native Sign in with Apple: hand Apple's one-time authorization code
+ * to the server, which keeps a refresh token so it can revoke the Apple link
+ * if the parent later deletes their account.
+ */
+export function saveAppleAuthorizationCode(code: string): Promise<{ stored: boolean }> {
+  return request('/api/apple/authorization-code', { method: 'POST', body: JSON.stringify({ code }) });
+}
