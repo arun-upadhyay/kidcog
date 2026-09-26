@@ -11,7 +11,7 @@
  *   APPLE_TEAM_ID      your 10-character Team ID
  *   APPLE_KEY_ID       the Key ID of a key with "Sign in with Apple" enabled
  *   APPLE_PRIVATE_KEY  the contents of that key's .p8 file (newlines as \n)
- *   APPLE_CLIENT_ID    the iOS bundle identifier, e.g. com.yourname.kidcog
+ *   APPLE_CLIENT_ID    the iOS bundle identifier: com.ritvikglobal.kidcog
  * Without them, Apple sign-in still works; tokens just are not stored/revoked,
  * and the server prints a warning.
  */

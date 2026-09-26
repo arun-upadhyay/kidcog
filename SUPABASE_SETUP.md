@@ -63,7 +63,7 @@ In Supabase Authentication → URL Configuration, add the app destinations to th
 - Native development/builds: `kidcog://auth/callback`
 - Web development: the exact local or deployed web URL that Expo opens
 
-Replace `com.example.kidcog` in `app/app.json` with your real iOS bundle identifier and Android package before creating production builds.
+The app ID is `com.ritvikglobal.kidcog` (iOS bundle identifier and Android package, set in `app/app.json`). It cannot be changed after the app is published.
 
 ## 6. Run locally
 
@@ -91,7 +91,7 @@ The 30-day erase only runs while the API server is running. On Render's paid pla
 
 Apple requires it on iPhone because the app offers Google sign-in (App Review guideline 4.8). On iPhone the app shows Apple's own button and sign-in sheet. On Android and web it is hidden until you finish step 4.
 
-1. **Bundle ID.** Replace `com.example.kidcog` in `app/app.json` with your own (for example `com.yourname.kidcog`). It cannot be changed after the app is published.
+1. **Bundle ID.** The app uses `com.ritvikglobal.kidcog` (set in `app/app.json`). Register exactly this ID with Apple, and put it in Supabase's Apple **Client IDs**.
 2. **Apple Developer → Certificates, IDs & Profiles → Identifiers:** open the App ID for that bundle ID and tick **Sign in with Apple**. (`app.json` already has `"usesAppleSignIn": true`, so EAS builds include the capability.)
 3. **Supabase → Authentication → Sign In / Providers → Apple:** enable it and put your bundle ID in **Client IDs**. That is all the iPhone (native) sign-in needs.
 4. **Optional, for Android and web:** create a **Services ID** in Apple Developer with the return URL `https://<your-project>.supabase.co/auth/v1/callback`, add it to the Supabase Apple provider with a secret key, then set `EXPO_PUBLIC_APPLE_SIGNIN_WEB=1` in `app/.env` and restart with `./dev.sh --clear`. Apple makes you generate a new secret key every 6 months for this web flow.
@@ -100,10 +100,41 @@ Apple requires it on iPhone because the app offers Google sign-in (App Review gu
 ```
 APPLE_TEAM_ID=ABCDE12345
 APPLE_KEY_ID=XYZ9876543
-APPLE_CLIENT_ID=com.yourname.kidcog
+APPLE_CLIENT_ID=com.ritvikglobal.kidcog
 APPLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nMIGT...\n-----END PRIVATE KEY-----"
 ```
 
 Without these, Apple sign-in still works; the server just prints a warning and cannot revoke the Apple link when an account is deleted.
 
 Sign in with Apple only works in a real iPhone build (EAS build or TestFlight), not in Expo Go.
+
+## 9. Store builds (EAS)
+
+Store files are built by EAS Build, using `app/eas.json`. Two profiles:
+
+- `preview`: a test build you install directly (an .apk on Android, an internal build on iPhone).
+- `production`: the build you upload to the App Store and Google Play. Its version number goes up automatically.
+
+**1. Put the server online with https.** Store builds talk to `https://api.ritvikglobal.com` (set in `app/eas.json`). Deploy the `server/` folder to a host (for example Render), add the custom domain `api.ritvikglobal.com` there, and in Hostinger's DNS add the CNAME record the host gives you for `api`. Copy the variables from `server/.env` into the host's environment settings. Check `https://api.ritvikglobal.com/health` loads before building. If you use a different address, change it in both profiles in `eas.json`. A build without an https address refuses to contact the server and tells the parent why.
+
+**2. Give EAS the Supabase settings.** `app/.env` is git-ignored, so EAS never sees it. Store the two public values in EAS instead (run from `app/`):
+
+```
+npx eas-cli@latest login
+npx eas-cli@latest init
+npx eas-cli@latest env:create --environment production --name EXPO_PUBLIC_SUPABASE_URL --value https://YOUR-PROJECT.supabase.co --visibility plaintext
+npx eas-cli@latest env:create --environment production --name EXPO_PUBLIC_SUPABASE_ANON_KEY --value YOUR-ANON-KEY --visibility sensitive
+```
+
+Repeat the two `env:create` lines with `--environment preview` for test builds. `eas init` links the app to your Expo account and adds its project ID to `app.json`.
+
+**3. Build.**
+
+```
+npx eas-cli@latest build --platform android --profile preview       # test .apk
+npx eas-cli@latest build --platform all --profile production        # store builds
+npx eas-cli@latest submit --platform ios                            # upload to App Store Connect / TestFlight
+```
+
+EAS walks you through signing (Apple certificates, Android keystore) on the first build and stores them for you. Keep the Android upload key safe: Google Play needs the same key for every update.
+

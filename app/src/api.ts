@@ -46,12 +46,30 @@ function resolveBaseUrl(): string {
 
 export const API_BASE_URL = resolveBaseUrl();
 
+/**
+ * A store or website build must talk to a real https server. Without this, a
+ * build made without EXPO_PUBLIC_API_URL would silently point at localhost
+ * (app.json's development default) and every request would fail with a
+ * confusing network error, which is exactly what an App Store reviewer would
+ * see. Development (Expo Go, `expo start`) is unaffected, and so is a web build
+ * served from this computer for local testing.
+ */
+export const API_CONFIG_PROBLEM: string | null = (() => {
+  if (__DEV__) return null;
+  if (/^https:\/\//i.test(API_BASE_URL)) return null;
+  const local = /^http:\/\/(localhost|127\.0\.0\.1)(:|\/|$)/i.test(API_BASE_URL);
+  if (Platform.OS === 'web' && local) return null;
+  return `This build has no secure server address (it points at ${API_BASE_URL}). Set EXPO_PUBLIC_API_URL to your https server in eas.json and build again.`;
+})();
+if (API_CONFIG_PROBLEM) console.error(API_CONFIG_PROBLEM);
+
 interface RequestOptions extends RequestInit {
   timeoutMs?: number;
 }
 
 async function request<T>(path: string, options: RequestOptions = {}): Promise<T> {
   const { timeoutMs = 60_000, headers, ...rest } = options;
+  if (API_CONFIG_PROBLEM) throw new Error(API_CONFIG_PROBLEM);
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
 

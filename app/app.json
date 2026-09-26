@@ -16,15 +16,19 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.example.kidcog",
+      "bundleIdentifier": "com.ritvikglobal.kidcog",
       "usesAppleSignIn": true
     },
     "android": {
-      "package": "com.example.kidcog",
+      "package": "com.ritvikglobal.kidcog",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#6B4BB0"
-      }
+      },
+      "blockedPermissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -40,7 +44,16 @@
     "plugins": [
       "expo-secure-store",
       "expo-web-browser",
-      "expo-apple-authentication"
+      "expo-apple-authentication",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "KidCog uses the microphone only when you tap the microphone button, so your child can say their answer out loud. The recording is turned into text to score the answer.",
+          "recordAudioAndroid": true,
+          "enableBackgroundPlayback": false,
+          "enableBackgroundRecording": false
+        }
+      ]
     ]
   }
 }

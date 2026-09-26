@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Alert, Platform, StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
@@ -10,6 +10,7 @@ import CelebrationScreen from './src/screens/CelebrationScreen';
 import ResultsScreen from './src/screens/ResultsScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import HistoryScreen from './src/screens/HistoryScreen';
+import AppMenu from './src/components/AppMenu';
 import { AuthProvider, useAuth } from './src/auth/AuthContext';
 import { deleteAccount, deleteChildProfile, fetchTest, listChildren, saveChild, submitAnswers } from './src/api';
 import { supabase } from './src/auth/supabase';
@@ -165,6 +166,25 @@ function KidCogApp() {
   }, []);
 
   const logout = useCallback(async () => { restart(); await signOut(); }, [restart, signOut]);
+
+  /**
+   * Home from the ☰ menu. During a round this would throw away the child's
+   * answers, so ask first (the same question the quiz's own Leave button asks).
+   */
+  const goHome = useCallback(() => {
+    if (busy) return; // a round is being generated or submitted
+    const leave = () => { stopSpeaking(); restart(); };
+    if (stage !== 'quiz') { leave(); return; }
+    const message = 'Answers so far will not be saved.';
+    if (Platform.OS === 'web') {
+      if (globalThis.confirm(`Leave this activity?\n\n${message}`)) leave();
+      return;
+    }
+    Alert.alert('Leave this activity?', message, [
+      { text: 'Keep playing', style: 'cancel' },
+      { text: 'Leave', style: 'destructive', onPress: leave },
+    ]);
+  }, [busy, stage, restart]);
   /** Delete the parent account, then leave this device signed out. */
   const removeAccount = useCallback(async () => {
     const result = await deleteAccount();
@@ -190,21 +210,25 @@ function KidCogApp() {
     <SafeAreaProvider>
       <StatusBar style="dark" />
       <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
+        {/* Outside every screen's scroll view, so it is always visible. */}
+        <AppMenu
+          accountEmail={session.user.email ?? 'Signed-in parent'}
+          accountProviders={Array.isArray(session.user.app_metadata.providers)
+            ? session.user.app_metadata.providers.filter((provider: unknown): provider is string => typeof provider === 'string')
+            : [session.user.app_metadata.provider].filter((provider: unknown): provider is string => typeof provider === 'string')}
+          accountVerified={Boolean(session.user.email_confirmed_at)}
+          accountCreatedAt={session.user.created_at}
+          onChangePassword={updatePassword}
+          onSignOut={() => void logout()}
+          onDeleteAccount={removeAccount}
+          onHome={stage === 'start' ? undefined : goHome}
+        />
         <View style={styles.root}>
           {stage === 'start' && <StartScreen
             onStart={start}
             loading={busy}
             error={error}
             savedChildren={savedChildren}
-            accountEmail={session.user.email ?? 'Signed-in parent'}
-            accountProviders={Array.isArray(session.user.app_metadata.providers)
-              ? session.user.app_metadata.providers.filter((provider: unknown): provider is string => typeof provider === 'string')
-              : [session.user.app_metadata.provider].filter((provider: unknown): provider is string => typeof provider === 'string')}
-            accountVerified={Boolean(session.user.email_confirmed_at)}
-            accountCreatedAt={session.user.created_at}
-            onChangePassword={updatePassword}
-            onSignOut={() => void logout()}
-            onDeleteAccount={removeAccount}
             onViewHistory={openHistory}
             onDeleteChild={deleteChild}
           />}
