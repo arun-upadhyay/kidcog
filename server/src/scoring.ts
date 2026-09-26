@@ -4,6 +4,7 @@ import type { GeneratedQuestion } from './generatedQuestions.js';
 import { generatedQuestionById as questionById, OPEN_MAX_POINTS } from './generatedQuestions.js';
 import { TRAITS, TRAIT_ORDER, formScaleFor } from './traits.js';
 import { gradeOpenAnswers } from './grader.js';
+import { scoreGame } from './games.js';
 import type {
   Grade,
   GradeRequestItem,
@@ -59,6 +60,16 @@ export async function scoreSubmission(responses: ResponseInput[]): Promise<Repor
       results.push({ questionId: q.id, trait: q.trait, type: q.type, prompt: q.prompt,
         answer, earned: 0, possible: 0, elapsedSeconds, skipped: true,
         note: 'Skipped — no evidence to score.' });
+      continue;
+    }
+    if (q.type === 'game') {
+      // Games are checked by code against the answer they were made with.
+      const scored = scoreGame(q.game, answer);
+      results.push({
+        questionId: q.id, trait: q.trait, type: 'game', prompt: q.prompt, answer: scored.shown,
+        earned: scored.points * q.weight, possible, elapsedSeconds,
+        correct: scored.points === OPEN_MAX_POINTS, band: scored.points, note: scored.note,
+      });
       continue;
     }
     if (q.type === 'mcq') {

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Modal, View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
+import { Modal, View, Text, TextInput, StyleSheet, Pressable, Switch } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Button from './Button';
 import AboutSheet from './AboutSheet';
+import { setSoundEffects, useSoundEffects } from '../games/sounds';
 import { colors, spacing, type, column, GUTTER } from '../theme';
 
 /**
@@ -30,6 +31,7 @@ export interface AppMenuProps {
 export default function AppMenu({ accountEmail, accountProviders, accountVerified, accountCreatedAt, onChangePassword, onSignOut, onDeleteAccount, onHome }: AppMenuProps) {
   const insets = useSafeAreaInsets();
   const [aboutOpen, setAboutOpen] = useState(false);
+  const soundOn = useSoundEffects();
   const [menuOpen, setMenuOpen] = useState(false);
   const [changingPassword, setChangingPassword] = useState(false);
   const [newPassword, setNewPassword] = useState('');
@@ -190,6 +192,10 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
                     <Text style={styles.menuActionIcon}>🏠</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>Home</Text><Text style={type.soft}>Back to choosing a child</Text></View><Text style={styles.chevron}>›</Text>
                   </Pressable>
                 ) : null}
+                <View style={styles.menuAction}>
+                  <Text style={styles.menuActionIcon}>{soundOn ? '🔊' : '🔇'}</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>Sound effects</Text><Text style={type.soft}>Chimes and pops in the games</Text></View>
+                  <Switch value={soundOn} onValueChange={setSoundEffects} trackColor={{ true: colors.go, false: colors.line }} accessibilityLabel="Sound effects" />
+                </View>
                 <Pressable onPress={() => { closeMenu(); setAboutOpen(true); }} accessibilityRole="button" accessibilityLabel="About KidCog" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
                   <Text style={styles.menuActionIcon}>ⓘ</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>About KidCog</Text><Text style={type.soft}>How it works and privacy</Text></View><Text style={styles.chevron}>›</Text>
                 </Pressable>

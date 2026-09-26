@@ -8,6 +8,8 @@ import { colors, spacing, type, column, GUTTER } from '../theme';
 import type { ChildProfile, SavedChildProfile } from '../types';
 import { avatarEmoji, defaultAvatarKey, avatarName, firstFreeAvatar } from '../avatars';
 import { AvatarBrowser, AvatarQuickPick } from '../components/AvatarPicker';
+import { AVATARS } from '../avatars';
+import { loadProgress, type ChildProgress } from '../progress';
 
 export interface StartScreenProps {
   onStart: (profile: ChildProfile) => void;
@@ -48,6 +50,14 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
   const [pictureFor, setPictureFor] = useState<SavedChildProfile | null>(null);
   const [savingPicture, setSavingPicture] = useState<string | null>(null);
   const [pictureError, setPictureError] = useState<string | null>(null);
+  // Stars and stickers per child (kept on this device), and whose sticker book is open.
+  const [progressById, setProgressById] = useState<Record<string, ChildProgress>>({});
+  const [bookFor, setBookFor] = useState<SavedChildProfile | null>(null);
+  useEffect(() => {
+    let live = true;
+    void Promise.all(savedChildren.map(async c => [c.id, await loadProgress(c.id)] as const)).then(pairs => { if (live) setProgressById(Object.fromEntries(pairs)); });
+    return () => { live = false; };
+  }, [savedChildren]);
 
   useEffect(() => {
     AsyncStorage.getItem(ABOUT_SEEN_KEY).then(seen => { if (!seen) setAboutOpen(true); }).catch(() => {});
@@ -147,6 +157,7 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
                   <Text style={styles.tileAvatar}>{avatarEmoji(saved.avatar, index)}</Text>
                   <Text style={styles.tileName} numberOfLines={1}>{saved.nickname}</Text>
                   {saved.age !== null ? <Text style={styles.tileAge}>Age {saved.age}</Text> : null}
+                  {(progressById[saved.id]?.stars ?? 0) > 0 ? <Text style={styles.tileStars}>⭐ {progressById[saved.id]!.stars}</Text> : null}
                   {on ? <View style={styles.tileCheck}><Text style={styles.tileCheckText}>✓</Text></View> : null}
                 </Pressable>
                 <Pressable
@@ -254,6 +265,15 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
               <Text style={styles.sheetIcon}>📚</Text><Text style={styles.sheetActionText}>Past results</Text><Text style={styles.sheetChevron}>›</Text>
             </Pressable>
             <Pressable
+              onPress={() => { const child = actionsFor; setActionsFor(null); if (child) setBookFor(child); }}
+              accessibilityRole="button"
+              accessibilityLabel={actionsFor ? `${actionsFor.nickname}'s sticker book` : 'Sticker book'}
+              style={({ pressed }) => [styles.sheetAction, pressed && styles.sheetActionPressed]}
+            >
+              <Text style={styles.sheetIcon}>📒</Text><Text style={styles.sheetActionText}>Sticker book</Text>
+              <Text style={styles.sheetCount}>{actionsFor ? (progressById[actionsFor.id]?.stickers.length ?? 0) : 0}</Text><Text style={styles.sheetChevron}>›</Text>
+            </Pressable>
+            <Pressable
               onPress={() => { const child = actionsFor; setActionsFor(null); setPictureError(null); if (child) setPictureFor(child); }}
               accessibilityRole="button"
               accessibilityLabel={actionsFor ? `Change ${actionsFor.nickname}'s picture` : 'Change picture'}
@@ -273,6 +293,29 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
             <Pressable onPress={() => setActionsFor(null)} accessibilityRole="button" style={styles.sheetCancel}>
               <Text style={styles.sheetCancelText}>Cancel</Text>
             </Pressable>
+      </Sheet>
+
+      <Sheet visible={bookFor !== null} onClose={() => setBookFor(null)} closeLabel="Close sticker book">
+        <Text style={styles.sheetTitle}>{bookFor ? `${bookFor.nickname}’s stickers` : 'Stickers'}</Text>
+        {bookFor ? (
+          <Text style={styles.bookSub}>
+            {(progressById[bookFor.id]?.stickers.length ?? 0)} of {AVATARS.length} collected · ⭐ {progressById[bookFor.id]?.stars ?? 0} stars
+          </Text>
+        ) : null}
+        <ScrollView style={{ maxHeight: 380 }} contentContainerStyle={styles.bookGrid}>
+          {AVATARS.map(a => {
+            const owned = bookFor ? progressById[bookFor.id]?.stickers.includes(a.key) : false;
+            return (
+              <View key={a.key} style={[styles.bookSlot, owned && styles.bookSlotOwned]} accessibilityLabel={owned ? a.name : 'Not collected yet'}>
+                <Text style={[styles.bookEmoji, !owned && styles.bookEmojiLocked]}>{owned ? a.emoji : '?'}</Text>
+              </View>
+            );
+          })}
+        </ScrollView>
+        <Text style={styles.bookHint}>Finish a round to win a new sticker!</Text>
+        <Pressable onPress={() => setBookFor(null)} accessibilityRole="button" style={styles.sheetCancel}>
+          <Text style={styles.sheetCancelText}>Close</Text>
+        </Pressable>
       </Sheet>
 
       <Sheet visible={pictureFor !== null} onClose={() => { if (!savingPicture) setPictureFor(null); }} closeLabel="Close pictures">
@@ -310,6 +353,15 @@ const styles = StyleSheet.create({
   tileOn: { borderColor: colors.primary, shadowColor: colors.primary, shadowOpacity: 0.2, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 3 },
   tileAvatar: { fontSize: 44 },
   tileName: { fontSize: 18, fontWeight: '900', color: '#513A27', marginTop: spacing(0.5), maxWidth: '100%' },
+  tileStars: { fontSize: 13, fontWeight: '900', color: '#8A5A0A', marginTop: 2 },
+  sheetCount: { fontSize: 15, fontWeight: '900', color: colors.inkSoft },
+  bookSub: { textAlign: 'center', fontSize: 14, fontWeight: '700', color: colors.inkSoft, marginTop: -spacing(1), marginBottom: spacing(1.5) },
+  bookGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 8, paddingBottom: spacing(1) },
+  bookSlot: { width: 50, height: 50, borderRadius: 14, backgroundColor: '#F3EEE7', alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: '#E8DFD2', borderStyle: 'dashed' },
+  bookSlotOwned: { backgroundColor: colors.happySoft, borderColor: colors.happy, borderStyle: 'solid' },
+  bookEmoji: { fontSize: 30 },
+  bookEmojiLocked: { fontSize: 18, fontWeight: '900', color: '#C9BBA7' },
+  bookHint: { textAlign: 'center', fontSize: 13, fontWeight: '700', color: colors.inkSoft, marginTop: spacing(1) },
   tileAge: { fontSize: 13, fontWeight: '700', color: '#75695F', marginTop: 1 },
   tileCheck: { position: 'absolute', left: 10, top: 10, width: 24, height: 24, borderRadius: 12, backgroundColor: colors.go, alignItems: 'center', justifyContent: 'center' },
   tileCheckText: { color: '#FFFFFF', fontSize: 14, fontWeight: '900' },

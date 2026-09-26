@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable, ActivityIndicator, type TextStyle } from 'react-native';
 import { CATEGORY_GROUPS } from '../categoryGroups';
+import RewardCard from '../components/RewardCard';
+import type { RoundReward } from '../progress';
 import { CATEGORY_VISUALS, GROUP_VISUALS } from '../categoryVisuals';
 import Button from '../components/Button';
 import { colors, spacing, type, column, GUTTER } from '../theme';
@@ -29,6 +31,8 @@ export interface ResultsScreenProps {
   onTryCategory?: (trait: TraitKey, count: number) => void;
   /** Length of the round just finished; the default for a round started here. */
   roundLength?: number;
+  /** Stars and a sticker won this round, for children who see their own results. */
+  reward?: RoundReward | null;
 }
 
 function Bar({ percent, color }: { percent: number; color: string }) {
@@ -260,6 +264,7 @@ export default function ResultsScreen({
   onBackToHistory,
   onTryCategory,
   roundLength = 2,
+  reward,
 }: ResultsScreenProps) {
   const [showDetail, setShowDetail] = useState(false);
   const canTry = !historical && !!onTryCategory;
@@ -297,6 +302,7 @@ export default function ResultsScreen({
           {completedAt ? <Text style={styles.heroText}>{new Date(completedAt).toLocaleString()}</Text> : null}
         </View>
       </View>
+      {reward && !historical ? <RewardCard reward={reward} /> : null}
 
       <View style={styles.overall}>
         <View style={styles.scoreBadge}>

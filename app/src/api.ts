@@ -169,7 +169,7 @@ export function deleteAssessmentSession(sessionId: string): Promise<void> {
   return request(`/api/sessions/${encodeURIComponent(sessionId)}`, { method: 'DELETE' });
 }
 
-export async function fetchTest(childProfileId: string, sessionId: string | null, age?: number, trait?: TraitKey, limit = 5): Promise<TestPayload> {
+export async function fetchTest(childProfileId: string, sessionId: string | null, age?: number, trait?: TraitKey, limit = 5, level?: number): Promise<TestPayload> {
   const requestId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
     const n = Math.floor(Math.random() * 16);
     return (c === 'x' ? n : (n & 3) | 8).toString(16);
@@ -179,7 +179,7 @@ export async function fetchTest(childProfileId: string, sessionId: string | null
     // child has used up every question does the server wait for the AI to
     // write more (~10–20s), which this leaves plenty of room for.
     method: 'POST', timeoutMs: 90000,
-    body: JSON.stringify({ childProfileId, sessionId, age: age ?? 5, trait, count: limit, requestId }),
+    body: JSON.stringify({ childProfileId, sessionId, age: age ?? 5, trait, count: limit, requestId, ...(level ? { level } : {}) }),
   });
   if (!test.profile || typeof test.profile.uiScale !== 'number' || !Array.isArray(test.questions)) {
     throw new Error('This server is incompatible. Start the backend from Documents/kidcog/server and try again.');

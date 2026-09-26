@@ -44,6 +44,9 @@ export const GROUP_VISUALS = {
  * wording (e.g. "Comprehends abstract ideas and concepts") is still shown in the
  * detail sheet and in results, so parents can match it to the school form.
  */
+/** Activities that include play-and-learn games (server/src/games.ts GAME_KINDS). */
+export const GAME_CATEGORIES = new Set<TraitKey>(['mental_math', 'generalization', 'categories_hierarchies', 'observant', 'cause_effect', 'how_things_work']);
+
 export const CATEGORY_NAMES: Record<TraitKey, string> = {
   abstract_concepts: 'Big ideas',
   beyond_experience: 'Imagine that!',

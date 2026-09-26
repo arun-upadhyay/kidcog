@@ -5,10 +5,10 @@ import OpenAI from 'openai';
 import { z } from 'zod';
 import { TRAITS, type TraitKey } from './traits.js';
 import { ASSESSMENT_BLUEPRINTS } from './assessmentBlueprints.js';
-import type { OpenQuestion, McqQuestion, PublicQuestion } from './types.js';
+import type { GameQuestion, OpenQuestion, McqQuestion, PublicQuestion } from './types.js';
 
 /** bankQuestionId: the shared-bank question a session's copy was made from. */
-export type GeneratedQuestion = (OpenQuestion | (McqQuestion & { rubric: string[] })) & { bankQuestionId?: string; skillFacet?: string };
+export type GeneratedQuestion = (OpenQuestion | (McqQuestion & { rubric: string[] }) | GameQuestion) & { bankQuestionId?: string; skillFacet?: string };
 export const OPEN_MAX_POINTS = 3;
 const TTL = 2 * 60 * 60 * 1000;
 const stored = new Map<string, { question: GeneratedQuestion; expires: number }>();
@@ -335,5 +335,6 @@ function toGeneratedQuestion(item: Item, trait: TraitKey, age: number): Generate
 export function publicQuestion(q: GeneratedQuestion): PublicQuestion {
   const choices = q.type === 'mcq' ? q.options : null;
   return { id: q.id, trait: q.trait, type: q.type, format: q.format, prompt: q.prompt, options: choices, timeLimitSeconds: null, visual: q.visual ?? null, figure: null, spoken: null, followUp: null,
-    speechText: choices ? `${q.prompt} Your choices are: ${choices.map(o=>o.text).join(', ')}.` : q.prompt };
+    game: q.type === 'game' ? q.game : null,
+    speechText: choices ? `${q.prompt} Your choices are: ${choices.map(o=>o.text).join(', ')}.` : q.spoken ?? q.prompt };
 }

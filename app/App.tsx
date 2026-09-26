@@ -15,6 +15,8 @@ import { AuthProvider, useAuth } from './src/auth/AuthContext';
 import { deleteAccount, deleteChildProfile, fetchTest, getParentReport, listChildren, prefetchRound, saveChild, submitAnswers, updateChildAvatar } from './src/api';
 import { supabase } from './src/auth/supabase';
 import { stopSpeaking } from './src/speech';
+import { forgetProgress, loadProgress, recordRound, type ChildProgress, type RoundReward } from './src/progress';
+import BreakSheet, { BREAK_AFTER_MS } from './src/components/BreakSheet';
 import { colors } from './src/theme';
 import type { ChildProfile, HistoricalAssessment, Report, ResponseInput, SavedChildProfile, TestPayload, TraitKey } from './src/types';
 
@@ -47,6 +49,19 @@ function KidCogApp() {
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [historyChild, setHistoryChild] = useState<SavedChildProfile | null>(null);
   const [historical, setHistorical] = useState<HistoricalAssessment | null>(null);
+  // Stars, stickers and game difficulty for the child playing (kept on this device).
+  const [progress, setProgress] = useState<ChildProgress | null>(null);
+  const [reward, setReward] = useState<RoundReward | null>(null);
+  // A friendly "time for a break" after about 15 minutes of play.
+  const playStartedAt = useRef<number | null>(null);
+  const [breakOpen, setBreakOpen] = useState(false);
+
+  useEffect(() => {
+    if (!child?.id) { setProgress(null); return; }
+    let live = true;
+    void loadProgress(child.id).then(p => { if (live) setProgress(p); });
+    return () => { live = false; };
+  }, [child?.id]);
 
   useEffect(() => {
     if (!session) { setSavedChildren([]); return; }
@@ -62,7 +77,9 @@ function KidCogApp() {
     try {
       if (!profile.id) throw new Error('Choose or create a child nickname first.');
       // null: a fresh session, so this test's result never includes earlier tests.
-      const t = await fetchTest(profile.id, null, profile.age, trait, count);
+      // The game difficulty this child has reached in this category, if any.
+      const level = (await loadProgress(profile.id)).levels[trait];
+      const t = await fetchTest(profile.id, null, profile.age, trait, count, level);
       if (!t.questions.length) {
         throw new Error('No questions were generated. Please try again.');
       }
@@ -71,6 +88,8 @@ function KidCogApp() {
       setSessionId(t.sessionId);
       setRoundCategory(trait);
       setRoundLength(count);
+      setReward(null);
+      playStartedAt.current ??= Date.now();
       setStage('quiz');
     } catch (err) {
       setError(messageOf(err));
@@ -138,6 +157,13 @@ function KidCogApp() {
         if (!sessionId) throw new Error('This assessment session is missing. Start a new session.');
         const r = await submitAnswers({ sessionId, child, responses });
         setReport(r);
+        if (child?.id) {
+          void recordRound(child.id, roundCategory, r, child.age).then(({ progress: next, reward: won }) => { setProgress(next); setReward(won); }).catch(() => {});
+        }
+        if (playStartedAt.current !== null && Date.now() - playStartedAt.current >= BREAK_AFTER_MS) {
+          setBreakOpen(true);
+          playStartedAt.current = Date.now();
+        }
         // Scores are back; the written note follows a few seconds later.
         if (r.parentReportPending) {
           getParentReport(sessionId)
@@ -156,7 +182,7 @@ function KidCogApp() {
         setBusy(false);
       }
     },
-    [child, test, sessionId]
+    [child, test, sessionId, roundCategory]
   );
 
   /** Another round for the same child, allowing repeated questions. */
@@ -211,6 +237,7 @@ function KidCogApp() {
     setError(null);
     try {
       await deleteChildProfile(selected.id);
+      void forgetProgress(selected.id);
       setSavedChildren(current => current.filter(item => item.id !== selected.id));
       if (child?.id === selected.id) setChild(null);
     } catch (err) { setError(messageOf(err)); throw err; }
@@ -256,7 +283,7 @@ function KidCogApp() {
 
           {stage === 'historical_result' && historical && <ResultsScreen report={historical.report} childName={historical.childName} completedAt={historical.completedAt} historical onBackToHistory={() => setStage('history')} onRestart={restart} onChooseCategory={() => {}} onReassess={() => {}} remainingUnseen={0} busy={false} error={null} />}
 
-          {stage === 'categories' && <CategoryScreen initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} onReport={() => setStage('results')} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
+          {stage === 'categories' && <CategoryScreen initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} progress={progress} onReport={() => setStage('results')} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
 
           {stage === 'quiz' && test && (
             <QuizScreen test={test} onFinish={finish} onExit={leaveQuiz} submitting={busy} error={error} />
@@ -265,6 +292,7 @@ function KidCogApp() {
           {stage === 'celebrate' && (
             <CelebrationScreen
               childName={child?.firstName}
+              reward={reward}
               onUnlock={() => setStage('results')}
               onRestart={restart}
             />
@@ -274,6 +302,7 @@ function KidCogApp() {
             <ResultsScreen
               report={report}
               childName={child?.firstName}
+              reward={test?.profile.showScoreToChild ? reward : null}
               onRestart={restart}
               onChooseCategory={chooseCategory}
               onReassess={reassess}
@@ -285,6 +314,7 @@ function KidCogApp() {
             />
           )}
         </View>
+        <BreakSheet visible={breakOpen} onClose={() => setBreakOpen(false)} />
       </SafeAreaView>
     </SafeAreaProvider>
   );

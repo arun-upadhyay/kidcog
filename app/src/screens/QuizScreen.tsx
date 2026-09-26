@@ -17,6 +17,7 @@ import * as Haptics from 'expo-haptics';
 import Button from '../components/Button';
 import { SpeakerIcon } from '../components/Icons';
 import VoiceAnswer from '../components/VoiceAnswer';
+import GameView from '../games/GameView';
 import { CATEGORY_NAMES, CATEGORY_VISUALS } from '../categoryVisuals';
 import Figure, { CellView } from '../components/Figure';
 import { colors, spacing, type, scaled, OPTION_COLORS, PRAISE, column, GUTTER } from '../theme';
@@ -77,6 +78,12 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
     setPraise(null);
     return () => stopSpeaking();
   }, [question?.id]);
+
+  // After a game is solved, move on by itself (a little pause to enjoy the
+  // star first). Cancelled if the child moves on sooner or leaves.
+  const autoNext = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const goNextRef = useRef<() => void>(() => {});
+  useEffect(() => () => { if (autoNext.current) clearTimeout(autoNext.current); }, [question?.id]);
 
   // Only run a clock when something actually displays it.
   useEffect(() => {
@@ -166,7 +173,24 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
     setElapsed((e) => ({ ...e, [q.id]: Math.round((Date.now() - startedAt.current) / 1000) }));
   }
 
+  // Stars so far this round: games solved, shown in the header.
+  const stars = sequence.filter((q) => {
+    if (q.type !== 'game' || !answers[q.id]) return false;
+    try { return (JSON.parse(answers[q.id]!) as { solved?: boolean }).solved === true; } catch { return false; }
+  }).length;
+
+  function gameDone(answer: string, solved: boolean) {
+    const q = question!;
+    setAnswers((a) => ({ ...a, [q.id]: answer }));
+    if (solved && !isLast) {
+      if (autoNext.current) clearTimeout(autoNext.current);
+      autoNext.current = setTimeout(() => goNextRef.current(), 1600);
+    }
+  }
+
+  goNextRef.current = () => goNext();
   function goNext() {
+    if (autoNext.current) { clearTimeout(autoNext.current); autoNext.current = null; }
     stopSpeaking();
     record(question!);
     if (isLast) {
@@ -223,6 +247,9 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
           <Text style={type.label}>
             {`QUESTION ${index + 1} OF ${sequence.length}`}
           </Text>
+          {sequence.some((q) => q.type === 'game') ? (
+            <Text style={styles.starCount} accessibilityLabel={`${stars} stars so far`}>⭐ {stars}</Text>
+          ) : null}
           {remaining !== null && (
             <Text style={[type.label, remaining <= 20 && { color: colors.warn }]}>
               {String(Math.floor(remaining / 60)).padStart(2, '0')}:
@@ -246,7 +273,7 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
           </View>
         ) : null}
 
-        <Text style={[type.label, { marginBottom: spacing(1) }]}>{question.type === 'mcq' ? (question.options?.some(o=>o.symbol || o.figure) ? '🖼️ TAP A PICTURE' : '👆 TAP YOUR ANSWER') : '🎤 TELL US YOUR IDEA'}</Text>
+        <Text style={[type.label, { marginBottom: spacing(1) }]}>{question.type === 'game' ? '🎮 LET’S PLAY!' : question.type === 'mcq' ? (question.options?.some(o=>o.symbol || o.figure) ? '🖼️ TAP A PICTURE' : '👆 TAP YOUR ANSWER') : '🎤 TELL US YOUR IDEA'}</Text>
         <View style={styles.promptRow}>
           <Text style={[styles.prompt, { fontSize: scaled(22, s), lineHeight: scaled(32, s) }]}>
             {question.prompt}
@@ -270,7 +297,9 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
           )}
         </View>
 
-        {(question.type === 'mcq' || question.type === 'challenge') && question.options ? (
+        {question.type === 'game' && question.game ? (
+          <GameView key={question.id} question={question} uiScale={s} value={current} onDone={gameDone} />
+        ) : (question.type === 'mcq' || question.type === 'challenge') && question.options ? (
           <View style={{ gap: spacing(1.5), marginTop: spacing(3) }}>
             {question.options.map((opt, i) => {
               const selected = current === opt.key;
@@ -393,7 +422,8 @@ const styles = StyleSheet.create({
   dots: { flexDirection: 'row', gap: spacing(1), justifyContent: 'center', flexWrap: 'wrap' },
   progressTrack: { height: 6, backgroundColor: colors.line, borderRadius: 3, overflow: 'hidden' },
   progressFill: { height: 6, backgroundColor: colors.go },
-  headerRow: { flexDirection: 'row', justifyContent: 'space-between' },
+  headerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  starCount: { fontSize: 16, fontWeight: '900', color: '#8A5A0A', backgroundColor: colors.happySoft, paddingHorizontal: 12, paddingVertical: 4, borderRadius: 999, overflow: 'hidden' },
   body: { paddingTop: spacing(3), paddingHorizontal: GUTTER, paddingBottom: spacing(4), ...column },
   visualCard: {
     backgroundColor: colors.surface,

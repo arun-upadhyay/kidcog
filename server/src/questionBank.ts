@@ -53,7 +53,8 @@ type Pickable = Pick<BankCandidate, 'id' | 'type' | 'skillFacet' | 'prompt' | 's
  * Returns null when the pool cannot make a valid round.
  */
 export function assembleRound<T extends Pickable>(pool: T[], count: number, random: () => number = Math.random): T[] | null {
-  const need = count >= 5 ? 2 : 1;
+  // A single question (the AI half of a mixed round) can be either kind.
+  const need = count >= 5 ? 2 : count >= 2 ? 1 : 0;
   const ordered = pool
     .map(item => ({ item, rank: item.servedCount + random() * 3 }))
     .sort((a, b) => a.rank - b.rank)
@@ -260,11 +261,13 @@ export async function roundForChild(input: { parentId: string; childId: string; 
  * from the bank right now, start making one so it is ready (or nearly) by the
  * time "Let's play" is tapped. Never waits for the AI.
  */
-export async function prefetchForChild(input: { parentId: string; childId: string; age: number; trait: TraitKey }) {
+export async function prefetchForChild(input: { parentId: string; childId: string; age: number; trait: TraitKey; largest?: number }) {
   const { parentId, childId, age, trait } = input;
+  const largest = input.largest ?? LARGEST_ROUND;
+  if (largest <= 0) return { ready: true, working: false };
   const pool = await withStore(store => store.candidates(parentId, childId, trait, age));
   const unseen = pool.filter(c => !c.seen);
-  const ready = assembleRound(unseen, LARGEST_ROUND) !== null;
+  const ready = assembleRound(unseen, largest) !== null;
   if (!ready || unseen.length < LOW_WATER()) topUpInBackground(trait, age, 'prefetch', pool);
   return { ready, working: running.has(keyOf(trait, age)) };
 }

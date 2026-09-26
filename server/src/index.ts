@@ -5,6 +5,8 @@ import { z } from 'zod';
 
 import { publicQuestion, generatedQuestionById, rememberGeneratedQuestion } from './generatedQuestions.js';
 import { bankStatus, prefetchForChild, roundForChild } from './questionBank.js';
+import { clampLevel, defaultLevel, gameShare, makeGames } from './games.js';
+import type { GeneratedQuestion } from './generatedQuestions.js';
 import { TRAITS, TRAIT_ORDER, type TraitKey } from './traits.js';
 import { profileForAge } from './ageProfiles.js';
 import { transcribeAnswer } from './transcribe.js';
@@ -176,9 +178,9 @@ app.delete('/api/sessions/:sessionId', requireParent, async (req: AuthRequest, r
 const TRAIT_KEY = z.enum(TRAIT_ORDER as [typeof TRAIT_ORDER[number], ...typeof TRAIT_ORDER[number][]]);
 const pendingRounds = new Map<string, Promise<TestPayload>>();
 app.post('/api/test', requireParent, async (req: AuthRequest, res: Response) => {
-  const input = z.object({ childProfileId: z.string().uuid(), sessionId: z.string().uuid().nullable().optional(), age: z.number().int().min(4).max(12), trait: TRAIT_KEY, count: z.union([z.literal(2), z.literal(5), z.literal(6)]), requestId: z.string().uuid() }).safeParse(req.body);
+  const input = z.object({ childProfileId: z.string().uuid(), sessionId: z.string().uuid().nullable().optional(), age: z.number().int().min(4).max(12), trait: TRAIT_KEY, count: z.union([z.literal(2), z.literal(5), z.literal(6)]), requestId: z.string().uuid(), level: z.number().int().min(1).max(5).optional() }).safeParse(req.body);
   if (!input.success) { res.status(400).json({ error: 'Choose an age, category, and 2, 5, or 6 questions.' }); return; }
-  const { childProfileId, sessionId: requestedSessionId, age, trait, count, requestId } = input.data;
+  const { childProfileId, sessionId: requestedSessionId, age, trait, count, requestId, level } = input.data;
   const key = JSON.stringify([req.parentId, requestId, age, trait, count]);
   try {
     if (!await childBelongsTo(req.parentId!, childProfileId)) { res.status(404).json({ error: 'Child profile was not found.' }); return; }
@@ -187,12 +189,26 @@ app.post('/api/test', requireParent, async (req: AuthRequest, res: Response) => 
       work = (async () => {
         const began = Date.now();
         const sessionId = await getOrCreateSession(req.parentId!, childProfileId, age, requestedSessionId);
-        const { questions, source } = await roundForChild({ parentId: req.parentId!, childId: childProfileId, age, trait, count });
+        // Games (made by code, instantly) plus, for most categories, questions
+        // from the AI-written bank. Maths is all games: no AI at all.
+        const games = makeGames(trait, age, clampLevel(level ?? defaultLevel(age)), gameShare(trait, count));
+        const fromBank = games.length < count
+          ? await roundForChild({ parentId: req.parentId!, childId: childProfileId, age, trait, count: count - games.length })
+          : { questions: [] as GeneratedQuestion[], source: 'games' };
+        // Alternate, starting with a game: a quick win first keeps it fun.
+        const questions: GeneratedQuestion[] = [];
+        for (let i = 0; questions.length < games.length + fromBank.questions.length; i++) {
+          if (games[i]) questions.push(games[i]!);
+          if (fromBank.questions[i]) questions.push(fromBank.questions[i]!);
+        }
         await saveGeneratedQuestions(req.parentId!, sessionId, questions);
-        console.info(`[round] ${trait} age ${age}, ${count} questions from ${source} in ${Date.now() - began}ms`);
+        console.info(`[round] ${trait} age ${age}, ${games.length} games + ${fromBank.questions.length} from ${fromBank.source} in ${Date.now() - began}ms`);
         const profile = profileForAge(age);
         const publicQuestions = questions.map(publicQuestion);
-        if (profile.readAloud) warmSpeech(publicQuestions.map(q => q.speechText ?? q.prompt));
+        // Game prompts are made fresh each time (the numbers change), so their
+        // audio is only made when someone taps Listen; bank questions repeat,
+        // so theirs is worth making ahead.
+        if (profile.readAloud) warmSpeech(publicQuestions.filter(q => q.type !== 'game').map(q => q.speechText ?? q.prompt));
         return { sessionId, traits: TRAIT_ORDER.map(k => ({ ...TRAITS[k], group: TRAITS[k].group ?? 'intellectual' })), questions: publicQuestions, questionCount: questions.length, followUpQuestions: {}, profile, poolExhausted: false, remainingUnseen: -1 };
       })();
       pendingRounds.set(key, work);
@@ -214,7 +230,7 @@ app.post('/api/prefetch', requireParent, async (req: AuthRequest, res: Response)
   if (!input.success) { res.status(400).json({ error: 'Choose a child, age and category.' }); return; }
   try {
     if (!await childBelongsTo(req.parentId!, input.data.childProfileId)) { res.status(404).json({ error: 'Child profile was not found.' }); return; }
-    res.status(202).json(await prefetchForChild({ parentId: req.parentId!, childId: input.data.childProfileId, age: input.data.age, trait: input.data.trait }));
+    res.status(202).json(await prefetchForChild({ parentId: req.parentId!, childId: input.data.childProfileId, age: input.data.age, trait: input.data.trait, largest: 6 - gameShare(input.data.trait, 6) }));
   } catch (err) {
     // Only a head start; the round itself will still work without it.
     res.status(202).json({ ready: false, working: false, detail: err instanceof Error ? err.message : String(err) });

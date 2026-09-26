@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native';
 import Button from '../components/Button';
+import Owl from '../components/Owl';
+import RewardCard from '../components/RewardCard';
+import type { RoundReward } from '../progress';
 import { colors, spacing, type, column, GUTTER } from '../theme';
 import { speak, stopSpeaking, useSpeechState } from '../speech';
 
@@ -8,6 +11,8 @@ export interface CelebrationScreenProps {
   childName?: string | undefined;
   onUnlock: () => void;
   onRestart: () => void;
+  /** Stars and a sticker won this round (appears when ready). */
+  reward?: RoundReward | null;
 }
 
 /**
@@ -25,6 +30,7 @@ export default function CelebrationScreen({
   childName,
   onUnlock,
   onRestart,
+  reward,
 }: CelebrationScreenProps) {
   const speechState = useSpeechState();
   const speechBusy = speechState !== 'idle';
@@ -58,13 +64,13 @@ export default function CelebrationScreen({
     : [];
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.burst}>🎉</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Owl mood="happy" size={112} />
       <Text style={styles.big}>
         {childName ? `Great job, ${childName}!` : 'Great job!'}
       </Text>
       <Text style={styles.sub}>You finished all the puzzles.</Text>
-      <Text style={styles.stars}>⭐ ⭐ ⭐</Text>
+      {reward ? <RewardCard reward={reward} /> : <Text style={styles.stars}>⭐ ⭐ ⭐</Text>}
 
       <Pressable
         accessibilityRole="button"
@@ -107,7 +113,7 @@ export default function CelebrationScreen({
       <View style={styles.footer}>
         <Button title="Play again" variant="secondary" onPress={onRestart} uiScale={1.2} />
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -124,7 +130,7 @@ function shuffle<T>(items: T[]): T[] {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingVertical: spacing(3), paddingHorizontal: GUTTER, ...column },
+  container: { flexGrow: 1, alignItems: 'center', justifyContent: 'center', paddingVertical: spacing(3), paddingHorizontal: GUTTER, ...column },
   burst: { fontSize: 84 },
   big: {
     fontSize: 34,

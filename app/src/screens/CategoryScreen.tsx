@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, Pressable, StyleSheet, useWindowDimensions } from 'react-native';
 import Sheet from '../components/Sheet';
 import { CATEGORY_GROUPS } from '../categoryGroups';
-import { CATEGORY_NAMES, CATEGORY_VISUALS, GROUP_NAMES, GROUP_VISUALS } from '../categoryVisuals';
+import { CATEGORY_NAMES, CATEGORY_VISUALS, GAME_CATEGORIES, GROUP_NAMES, GROUP_VISUALS } from '../categoryVisuals';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import JourneyMap from '../components/JourneyMap';
+import type { ChildProgress } from '../progress';
 import Button from '../components/Button';
 import { fetchCategories } from '../api';
 import { colors, spacing, column, GUTTER, CONTENT_MAX_WIDTH } from '../theme';
@@ -23,10 +26,14 @@ const ROUND_OPTIONS = [
  * The official category wording and description live in that sheet, not on
  * the tiles, so the screen stays mostly pictures.
  */
-export default function CategoryScreen({ onSelect, onPreview, onReport, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
+const VIEW_KEY = 'kidcog.categoryView.v1';
+
+export default function CategoryScreen({ onSelect, onPreview, progress = null, onReport, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
   onSelect: (trait: TraitKey, count: number) => void;
   /** A category's sheet was opened: a chance to get its questions ready early. */
   onPreview?: (trait: TraitKey) => void;
+  /** This child's stars per activity and last one played, for the tiles and the map. */
+  progress?: ChildProgress | null;
   /** Last category and round length used, so coming back keeps the parent's choice. */
   initialCategory?: TraitKey;
   initialCount?: number;
@@ -47,6 +54,10 @@ export default function CategoryScreen({ onSelect, onPreview, onReport, onBack, 
   const [startedFrom, setStartedFrom] = useState<TraitKey | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [attempt, setAttempt] = useState(0);
+  // Picture tiles or the adventure map; remembered on this device.
+  const [view, setView] = useState<'tiles' | 'map'>('tiles');
+  useEffect(() => { AsyncStorage.getItem(VIEW_KEY).then(v => { if (v === 'map') setView('map'); }).catch(() => {}); }, []);
+  const chooseView = (next: 'tiles' | 'map') => { setView(next); AsyncStorage.setItem(VIEW_KEY, next).catch(() => {}); };
 
   // Two tiles per row on a phone, three when there is room.
   const { width } = useWindowDimensions();
@@ -68,7 +79,8 @@ export default function CategoryScreen({ onSelect, onPreview, onReport, onBack, 
     return () => { active = false; };
   }, [attempt, initialCategory]);
 
-  const tried = (key: TraitKey) => (explored.find(t => t.key === key)?.questionCount ?? 0) > 0;
+  const tried = (key: TraitKey) => (explored.find(t => t.key === key)?.questionCount ?? 0) > 0 || (progress?.visited[key]?.plays ?? 0) > 0;
+  const openActivity = (key: TraitKey) => { setOpenKey(key); onPreview?.(key); };
   const tabCategories = categories.filter(c => (c.group ?? 'intellectual') === tab);
   const open = openKey ? categories.find(c => c.key === openKey) : undefined;
 
@@ -135,14 +147,25 @@ export default function CategoryScreen({ onSelect, onPreview, onReport, onBack, 
         </View>
       ) : null}
 
-      <View style={styles.grid}>
+      <View style={styles.viewSwitch} accessibilityRole="tablist">
+        {([['tiles', '▦  Pictures'], ['map', '🗺️  Adventure map']] as const).map(([key, label]) => (
+          <Pressable key={key} onPress={() => chooseView(key)} accessibilityRole="tab" accessibilityState={{ selected: view === key }}
+            style={({ pressed }) => [styles.viewOption, view === key && styles.viewOptionOn, pressed && styles.pressed]}>
+            <Text style={[styles.viewText, view === key && styles.viewTextOn]}>{label}</Text>
+          </Pressable>
+        ))}
+      </View>
+
+      {view === 'map' ? <JourneyMap categories={tabCategories} progress={progress} disabled={busy} onOpen={openActivity} /> : null}
+
+      <View style={[styles.grid, view === 'map' && { display: 'none' }]}>
         {tabCategories.map(category => {
           const visual = CATEGORY_VISUALS[category.key];
           const done = tried(category.key);
           return (
             <View key={category.key} style={[styles.tileWrap, { width: tileWidth }]}>
               <Pressable
-                onPress={() => { setOpenKey(category.key); onPreview?.(category.key); }}
+                onPress={() => openActivity(category.key)}
                 disabled={busy}
                 accessibilityRole="button"
                 accessibilityLabel={`${CATEGORY_NAMES[category.key]}${done ? ', played before' : ''}`}
@@ -151,6 +174,8 @@ export default function CategoryScreen({ onSelect, onPreview, onReport, onBack, 
                 <View style={[styles.tileIcon, { borderColor: visual.border }]}><Text style={styles.tileEmoji}>{visual.icon}</Text></View>
                 <Text style={styles.tileName} numberOfLines={2}>{CATEGORY_NAMES[category.key]}</Text>
                 {done ? <View style={styles.doneBadge}><Text style={styles.doneText}>✓</Text></View> : null}
+                {GAME_CATEGORIES.has(category.key) ? <View style={styles.gameChip}><Text style={styles.gameChipText}>🎮 Games</Text></View> : null}
+                {(progress?.visited[category.key]?.stars ?? 0) > 0 ? <Text style={styles.tileStars}>⭐ {progress!.visited[category.key]!.stars}</Text> : null}
               </Pressable>
             </View>
           );
@@ -227,6 +252,14 @@ const styles = StyleSheet.create({
   tabText: { fontSize: 13, fontWeight: '800', color: colors.inkSoft, marginTop: 2 },
 
   grid: { flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: -spacing(0.75) },
+  viewSwitch: { flexDirection: 'row', alignSelf: 'center', backgroundColor: '#F3EADB', borderRadius: 999, padding: 4, gap: 4 },
+  viewOption: { paddingVertical: 8, paddingHorizontal: 16, borderRadius: 999 },
+  viewOptionOn: { backgroundColor: '#FFFFFF', shadowColor: '#000', shadowOpacity: 0.08, shadowRadius: 4, shadowOffset: { width: 0, height: 1 }, elevation: 1 },
+  viewText: { fontSize: 14, fontWeight: '800', color: colors.inkSoft },
+  viewTextOn: { color: colors.ink },
+  gameChip: { position: 'absolute', left: 10, top: 10, backgroundColor: '#FFFFFF', borderRadius: 999, paddingHorizontal: 8, paddingVertical: 2 },
+  gameChipText: { fontSize: 11, fontWeight: '900', color: '#4E3590' },
+  tileStars: { marginTop: 4, fontSize: 13, fontWeight: '900', color: '#8A5A0A' },
   tileWrap: { padding: spacing(0.75) },
   tile: { minHeight: 150, borderRadius: 24, borderWidth: 2, alignItems: 'center', justifyContent: 'center', padding: spacing(1.5), shadowColor: '#4A3728', shadowOpacity: 0.07, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 2 },
   tileIcon: { width: 72, height: 72, borderRadius: 36, backgroundColor: '#FFFFFF', borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
