@@ -58,8 +58,14 @@ export const API_CONFIG_PROBLEM: string | null = (() => {
   if (__DEV__) return null;
   if (/^https:\/\//i.test(API_BASE_URL)) return null;
   const local = /^http:\/\/(localhost|127\.0\.0\.1)(:|\/|$)/i.test(API_BASE_URL);
-  if (Platform.OS === 'web' && local) return null;
-  return `This build has no secure server address (it points at ${API_BASE_URL}). Set EXPO_PUBLIC_API_URL to your https server in eas.json and build again.`;
+  // A web build may talk to a local server only while the page itself is
+  // running on this computer. A deployed site pointing at localhost would load
+  // and then fail on every screen, so say so plainly instead.
+  const pageIsLocal = Platform.OS === 'web' && typeof window !== 'undefined' && /^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname);
+  if (local && pageIsLocal) return null;
+  return Platform.OS === 'web'
+    ? `This website was built without its server address (it points at ${API_BASE_URL}). Set EXPO_PUBLIC_API_URL to your https server in Vercel's Environment Variables and redeploy.`
+    : `This build has no secure server address (it points at ${API_BASE_URL}). Set EXPO_PUBLIC_API_URL to your https server in eas.json and build again.`;
 })();
 if (API_CONFIG_PROBLEM) console.error(API_CONFIG_PROBLEM);
 
@@ -210,6 +216,12 @@ export function prefetchRound(childProfileId: string, age: number, trait: TraitK
  */
 export function getParentReport(sessionId: string): Promise<Pick<Report, 'parentReport' | 'parentReportError'>> {
   return request(`/api/sessions/${encodeURIComponent(sessionId)}/parent-report`, { timeoutMs: 90000 });
+}
+
+/** A code for reading `text` aloud; the audio is then fetched by code (see speech.ts). */
+export async function registerSpeech(text: string): Promise<string> {
+  const { key } = await request<{ key: string }>('/api/speech-key', { method: 'POST', timeoutMs: 15000, body: JSON.stringify({ text }) });
+  return key;
 }
 
 export function transcribeAudio(

@@ -10,7 +10,7 @@ import type { GeneratedQuestion } from './generatedQuestions.js';
 import { TRAITS, TRAIT_ORDER, type TraitKey } from './traits.js';
 import { profileForAge } from './ageProfiles.js';
 import { transcribeAnswer } from './transcribe.js';
-import { synthesizeSpeech, SPEECH_MIME } from './speak.js';
+import { registerSpeech, speechForKey, synthesizeSpeech, SPEECH_MIME } from './speak.js';
 import { scoreSubmission } from './scoring.js';
 import { generateParentReport, apiKeyProblem } from './grader.js';
 import type { PublicQuestion, TestPayload } from './types.js';
@@ -35,7 +35,14 @@ const app = express();
 // req.ip is the proxy's address, so the rate limiter below would treat all
 // parents as one client and share a single 30-a-minute allowance between them.
 app.set('trust proxy', 1);
-app.use(cors());
+// Which websites may call this server from a browser. Set ALLOWED_ORIGINS in
+// production (for example https://kidcog.ritvikglobal.com); left unset, any
+// origin is allowed, which is what local development needs. The phone apps
+// send no Origin, and every data route still requires a signed-in parent.
+const allowedOrigins = (process.env.ALLOWED_ORIGINS ?? '').split(',').map(o => o.trim().replace(/\/$/, '')).filter(Boolean);
+app.use(cors(allowedOrigins.length === 0 ? undefined : {
+  origin: (origin, callback) => callback(null, !origin || allowedOrigins.includes(origin) || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)),
+}));
 // Raised from 256kb because spoken answers arrive as base64 audio.
 app.use(express.json({ limit: '12mb' }));
 
@@ -255,29 +262,41 @@ function warmSpeech(texts: string[]) {
 }
 
 /**
- * Speech for a question, as plain audio at a URL.
+ * Read-aloud, in two steps.
  *
- * A GET returning audio bytes rather than base64 in JSON, because then the
- * audio player can stream the URL directly on every platform — no blobs, no
- * temporary files, no base64 round trip. The text is the app's own question
- * text, never anything about the child.
+ * 1. POST /api/speech-key (signed in) with the text; the answer is a code.
+ * 2. GET /api/speak?key=<code> returns the audio.
+ *
+ * The audio is a plain GET so the player can stream it directly on every
+ * platform (no blobs, temporary files or base64). It cannot carry a sign-in
+ * header, which is why step 1 exists: only texts a signed-in parent registered
+ * can be turned into new audio, so the open address cannot be used to spend
+ * OpenAI credit, and the text itself (which can include a child's name) never
+ * appears in an address or a server log.
  */
+app.post('/api/speech-key', requireParent, (req: AuthRequest, res: Response) => {
+  const parsed = z.object({ text: z.string().trim().min(1).max(2500) }).safeParse(req.body);
+  if (!parsed.success) { res.status(400).json({ error: 'Send the text to read, up to 2,500 characters.' }); return; }
+  try { res.json({ key: registerSpeech(parsed.data.text) }); }
+  catch (err) { res.status(400).json({ error: err instanceof Error ? err.message : String(err) }); }
+});
+
 app.get('/api/speak', async (req: Request, res: Response) => {
-  const text = typeof req.query.text === 'string' ? req.query.text : '';
-  if (!text.trim()) {
-    res.status(400).json({ error: 'text is required' });
+  const key = typeof req.query.key === 'string' ? req.query.key : '';
+  if (!/^[0-9a-f]{64}$/.test(key)) {
+    res.status(400).json({ error: 'Ask for a speech key first (POST /api/speech-key).' });
     return;
   }
-
   try {
-    const { audio, cached } = await synthesizeSpeech(text);
+    const result = await speechForKey(key);
+    if (!result) { res.status(404).json({ error: 'Unknown speech key. Register the text again.', code: 'unknown_key' }); return; }
     res.setHeader('Content-Type', SPEECH_MIME);
-    res.setHeader('Content-Length', String(audio.byteLength));
-    // Let the client cache too: the same question is replayed whenever the
-    // child taps the speaker button.
-    res.setHeader('Cache-Control', 'public, max-age=86400');
-    res.setHeader('X-Speech-Cache', cached ? 'hit' : 'miss');
-    res.end(audio);
+    res.setHeader('Content-Length', String(result.audio.byteLength));
+    // The same audio is replayed whenever the child taps Listen. Private: a
+    // note read aloud can include the child's name.
+    res.setHeader('Cache-Control', 'private, max-age=86400');
+    res.setHeader('X-Speech-Cache', result.cached ? 'hit' : 'miss');
+    res.end(result.audio);
   } catch (err) {
     const detail = err instanceof Error ? err.message : String(err);
     console.error(`\n  x SPEECH FAILED\n    ${detail}\n`);

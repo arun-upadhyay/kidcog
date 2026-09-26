@@ -2,7 +2,7 @@ import { useSyncExternalStore } from 'react';
 import { Platform } from 'react-native';
 import * as Speech from 'expo-speech';
 import { createAudioPlayer, setAudioModeAsync, type AudioPlayer } from 'expo-audio';
-import { API_BASE_URL } from './api';
+import { API_BASE_URL, registerSpeech } from './api';
 
 export type SpeechState = 'idle' | 'loading' | 'playing';
 let state: SpeechState = 'idle';
@@ -96,8 +96,21 @@ function fallback(text: string, mine: number) {
     });
   } catch { finish(mine); }
 }
-export function speakUrl(text: string): string {
-  return `${API_BASE_URL}/api/speak?text=${encodeURIComponent(text)}`;
+/**
+ * Audio is fetched by a code, never by its text: the text can include a
+ * child's name, and addresses end up in logs. The code comes from a signed-in
+ * request (so strangers can't use the server's voice), once per text.
+ */
+const speechKeys = new Map<string, string>();
+async function keyFor(text: string, fresh = false): Promise<string> {
+  const known = speechKeys.get(text);
+  if (known && !fresh) return known;
+  const key = await registerSpeech(text);
+  speechKeys.set(text, key);
+  return key;
+}
+function speakUrl(key: string): string {
+  return `${API_BASE_URL}/api/speak?key=${key}`;
 }
 
 /** Tap-only playback. The synchronous lock rejects even same-frame double taps. */
@@ -130,10 +143,18 @@ export async function speak(text: string, options: { voice?: 'device' | 'generat
     const cached = Platform.OS === 'web' ? audioCache.get(trimmed) : undefined;
     if (cached) {
       source = cached; // replay: no network at all
-    } else if (Platform.OS !== 'web' && confirmed.has(trimmed)) {
-      source = speakUrl(trimmed); // replay: the player downloads once, no separate check
+    } else if (Platform.OS !== 'web' && confirmed.has(trimmed) && speechKeys.has(trimmed)) {
+      source = speakUrl(speechKeys.get(trimmed)!); // replay: the player downloads once, no separate check
     } else {
-      const response = await fetch(speakUrl(trimmed), { signal: controller.signal });
+      let key = await keyFor(trimmed);
+      if (mine !== generation) return;
+      let response = await fetch(speakUrl(key), { signal: controller.signal });
+      if (response.status === 404) {
+        // The server restarted and forgot this text: register it again, once.
+        key = await keyFor(trimmed, true);
+        if (mine !== generation) return;
+        response = await fetch(speakUrl(key), { signal: controller.signal });
+      }
       if (!response.ok) throw new Error(`Speech request failed (${response.status}).`);
       if (Platform.OS === 'web') {
         const blob = await response.blob();
@@ -142,7 +163,7 @@ export async function speak(text: string, options: { voice?: 'device' | 'generat
         cacheAudio(trimmed, source);
       } else {
         // The native player's stream uses the server's completed audio cache.
-        source = speakUrl(trimmed);
+        source = speakUrl(key);
         confirmed.add(trimmed);
       }
     }
