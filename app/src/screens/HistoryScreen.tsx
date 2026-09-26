@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Alert, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { deleteAssessmentSession, fetchHistoricalAssessment, listAssessmentSessions } from '../api';
 import Button from '../components/Button';
-import { colors, spacing, type } from '../theme';
+import { colors, spacing, type, column, GUTTER } from '../theme';
 import type { AssessmentSessionSummary, HistoricalAssessment, SavedChildProfile } from '../types';
 
 type Props = {
@@ -89,7 +89,7 @@ export default function HistoryScreen({ child, onBack, onOpen }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: { padding: spacing(3), paddingBottom: spacing(6) },
+  container: { paddingTop: spacing(3), paddingHorizontal: GUTTER, paddingBottom: spacing(6), ...column },
   back: { color: colors.primary, fontWeight: '700', marginBottom: spacing(3) },
   title: { marginTop: spacing(1), marginBottom: spacing(0.5) },
   loading: { marginTop: spacing(5) },

@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   ScrollView,
+  ActivityIndicator,
   Pressable,
   TextInput,
   KeyboardAvoidingView,
@@ -14,9 +15,11 @@ import {
 import * as Haptics from 'expo-haptics';
 
 import Button from '../components/Button';
+import { SpeakerIcon } from '../components/Icons';
 import VoiceAnswer from '../components/VoiceAnswer';
+import { CATEGORY_NAMES, CATEGORY_VISUALS } from '../categoryVisuals';
 import Figure, { CellView } from '../components/Figure';
-import { colors, spacing, type, scaled, OPTION_COLORS, PRAISE } from '../theme';
+import { colors, spacing, type, scaled, OPTION_COLORS, PRAISE, column, GUTTER } from '../theme';
 import { speak, stopSpeaking, useSpeechState } from '../speech';
 import type { PublicQuestion, ResponseInput, TestPayload } from '../types';
 
@@ -94,12 +97,12 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
     if (answeredCount === 0) { leave(); return; }
     const message = `${answeredCount} ${answeredCount === 1 ? 'answer' : 'answers'} so far will not be saved. You can pick another activity.`;
     if (Platform.OS === 'web') {
-      if (globalThis.confirm(`Leave this activity?\n\n${message}`)) leave();
+      if (globalThis.confirm(`Go back?\n\n${message}`)) leave();
       return;
     }
-    Alert.alert('Leave this activity?', message, [
+    Alert.alert('Go back?', message, [
       { text: 'Keep playing', style: 'cancel' },
-      { text: 'Leave', style: 'destructive', onPress: leave },
+      { text: 'Go back', style: 'destructive', onPress: leave },
     ]);
   };
 
@@ -200,11 +203,11 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
             onPress={() => leaveRef.current()}
             disabled={submitting}
             accessibilityRole="button"
-            accessibilityLabel="Leave this activity and choose another"
+            accessibilityLabel="Go back and choose another activity"
             hitSlop={8}
             style={({ pressed }) => [styles.leaveButton, (pressed || submitting) && { opacity: 0.6 }]}
           >
-            <Text style={styles.leaveText}>✕ Leave</Text>
+            <Text style={styles.leaveText}>← Back</Text>
           </Pressable>
         </View>
         {young ? (
@@ -215,7 +218,7 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
           </View>
         )}
 
-        <Text style={[type.heading, { marginBottom: spacing(1) }]}>{test.traits.find((t) => t.key === question.trait)?.label ?? 'Thinking activity'}</Text>
+        <Text style={[type.heading, { marginBottom: spacing(1) }]}>{CATEGORY_VISUALS[question.trait]?.icon ?? '⭐'} {CATEGORY_NAMES[question.trait] ?? test.traits.find((t) => t.key === question.trait)?.label ?? 'Thinking activity'}</Text>
         <View style={styles.headerRow}>
           <Text style={type.label}>
             {`QUESTION ${index + 1} OF ${sequence.length}`}
@@ -255,9 +258,14 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
               disabled={speechBusy}
               accessibilityState={{ disabled: speechBusy, busy: speechBusy }}
               onPress={() => void speak(question.speechText || question.prompt)}
-              style={({ pressed }) => [styles.replay, (pressed || speechBusy) && { opacity: 0.5 }]}
+              style={({ pressed }) => [styles.listen, pressed && { transform: [{ scale: 0.95 }] }]}
             >
-              <Text style={{ fontSize: scaled(24, s) }}>{speechState === 'loading' ? '⏳' : speechBusy ? '🔉' : '🔊'}</Text>
+              <View style={[styles.listenCircle, { width: scaled(60, s), height: scaled(60, s), borderRadius: scaled(30, s) }, speechBusy && styles.listenCircleBusy]}>
+                {speechState === 'loading'
+                  ? <ActivityIndicator color="#FFFFFF" />
+                  : <SpeakerIcon size={scaled(32, s)} color="#FFFFFF" />}
+              </View>
+              <Text style={styles.listenLabel}>{speechState === 'loading' ? 'Loading…' : speechBusy ? 'Playing…' : 'Listen'}</Text>
             </Pressable>
           )}
         </View>
@@ -340,10 +348,11 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
         {error ? <Text style={styles.errorBanner}>{error}</Text> : null}
       </ScrollView>
 
+      <View style={styles.footerBar}>
       <View style={styles.footer}>
         {index > 0 && !submitting && (
           <View style={{ flex: 1 }}>
-            <Button title={young ? 'Back' : 'Back'} variant="secondary" onPress={goBack} />
+            <Button title="Previous" variant="secondary" onPress={goBack} />
           </View>
         )}
         <View style={{ flex: 2 }}>
@@ -370,13 +379,14 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
           />
         </View>
       </View>
+      </View>
     </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
   empty: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: spacing(3) },
-  header: { paddingTop: spacing(2), paddingHorizontal: spacing(3), gap: spacing(1.5) },
+  header: { paddingTop: spacing(2), paddingHorizontal: GUTTER, gap: spacing(1.5), ...column },
   topBar: { flexDirection: 'row', justifyContent: 'flex-start' },
   leaveButton: { flexDirection: 'row', alignItems: 'center', minHeight: 40, paddingHorizontal: spacing(1.5), borderRadius: 999, borderWidth: 1.5, borderColor: colors.line, backgroundColor: colors.surface },
   leaveText: { fontSize: 14, fontWeight: '800', color: colors.inkSoft },
@@ -384,7 +394,7 @@ const styles = StyleSheet.create({
   progressTrack: { height: 6, backgroundColor: colors.line, borderRadius: 3, overflow: 'hidden' },
   progressFill: { height: 6, backgroundColor: colors.go },
   headerRow: { flexDirection: 'row', justifyContent: 'space-between' },
-  body: { padding: spacing(3), paddingBottom: spacing(4) },
+  body: { paddingTop: spacing(3), paddingHorizontal: GUTTER, paddingBottom: spacing(4), ...column },
   visualCard: {
     backgroundColor: colors.surface,
     borderRadius: 24,
@@ -397,14 +407,13 @@ const styles = StyleSheet.create({
   },
   visual: { textAlign: 'center', letterSpacing: 2 },
   promptRow: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1.5) },
-  prompt: { flex: 1, fontWeight: '700', color: colors.ink },
-  replay: {
-    backgroundColor: colors.coolSoft,
-    borderRadius: 999,
-    padding: spacing(1.25),
-    borderWidth: 1.5,
-    borderColor: colors.cool,
-  },
+  prompt: { flex: 1, minWidth: 0, fontWeight: '700', color: colors.ink },
+  // "Hear the question": a round blue speaker button, the same shape people
+  // know from read-aloud buttons elsewhere, with its word underneath.
+  listen: { alignItems: 'center', gap: 4, flexShrink: 0 },
+  listenCircle: { backgroundColor: '#2F7FC1', alignItems: 'center', justifyContent: 'center', borderWidth: 3, borderColor: '#FFFFFF', shadowColor: '#2F7FC1', shadowOpacity: 0.3, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 3 },
+  listenCircleBusy: { backgroundColor: '#7FB2DC' },
+  listenLabel: { fontSize: 13, fontWeight: '900', color: '#2F7FC1' },
   option: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -440,13 +449,18 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: colors.go,
   },
-  footer: {
-    flexDirection: 'row',
-    gap: spacing(1.5),
-    padding: spacing(3),
+  // The bar (line + background) spans the window; its buttons stay in the column.
+  footerBar: {
     borderTopWidth: 1,
     borderTopColor: colors.line,
     backgroundColor: colors.bg,
+  },
+  footer: {
+    flexDirection: 'row',
+    gap: spacing(1.5),
+    paddingVertical: spacing(2.5),
+    paddingHorizontal: GUTTER,
+    ...column,
   },
   errorBanner: {
     backgroundColor: '#FBE9E7',

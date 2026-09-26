@@ -5,24 +5,62 @@ import { TRAITS, TRAIT_ORDER, type TraitKey } from './traits.js';
 
 function fail(error: { message: string } | null) { if (error) throw new Error(error.message); }
 
-export async function listChildren(parentId: string) {
-  const { data, error } = await supabaseAdmin.from('child_profiles').select('id,nickname,age,created_at').eq('parent_id', parentId).order('created_at');
-  fail(error); return (data ?? []).map(row => ({ id: row.id, nickname: row.nickname, age: row.age, createdAt: row.created_at }));
+// The avatar column arrives with migration 202609270001. Until it is applied,
+// fall back to the old columns so child profiles keep working (pictures just
+// don't save), and say so once in the server log.
+const CHILD_COLUMNS = 'id,nickname,age,avatar,created_at';
+const CHILD_COLUMNS_NO_AVATAR = 'id,nickname,age,created_at';
+let avatarColumnMissing = false;
+function isMissingAvatarColumn(error: { message: string } | null) {
+  if (!error || !/avatar/i.test(error.message)) return false;
+  if (!avatarColumnMissing) console.warn('  ⚠ child_profiles.avatar is missing. Run supabase/migrations/202609270001_child_profile_avatar.sql so avatar choices are saved.');
+  avatarColumnMissing = true;
+  return true;
+}
+function childColumns() { return avatarColumnMissing ? CHILD_COLUMNS_NO_AVATAR : CHILD_COLUMNS; }
+
+type ChildRow = { id: string; nickname: string; age: number | null; avatar?: string | null; created_at: string };
+function toChild(row: ChildRow) {
+  return { id: row.id, nickname: row.nickname, age: row.age, avatar: row.avatar ?? null, createdAt: row.created_at };
 }
 
-export async function findOrCreateChild(parentId: string, nickname: string, age: number) {
-  const existing = await supabaseAdmin.from('child_profiles').select('id,nickname,age,created_at').eq('parent_id', parentId).ilike('nickname', nickname).limit(1).maybeSingle();
+/** Runs a child_profiles query, retrying once without the avatar column if it isn't there yet. */
+async function withChildColumns<T extends { error: { message: string } | null }>(run: (columns: string) => PromiseLike<T>): Promise<T> {
+  const first = await run(childColumns());
+  if (isMissingAvatarColumn(first.error)) return run(childColumns());
+  return first;
+}
+
+export async function listChildren(parentId: string) {
+  const { data, error } = await withChildColumns(columns => supabaseAdmin.from('child_profiles').select(columns).eq('parent_id', parentId).order('created_at'));
+  fail(error); return ((data ?? []) as unknown as ChildRow[]).map(toChild);
+}
+
+export async function findOrCreateChild(parentId: string, nickname: string, age: number, avatar?: string) {
+  const existing = await withChildColumns(columns => supabaseAdmin.from('child_profiles').select(columns).eq('parent_id', parentId).ilike('nickname', nickname).limit(1).maybeSingle());
   fail(existing.error);
-  let row = existing.data;
+  let row = existing.data as unknown as ChildRow | null;
+  // Only send the avatar when there is one and the column exists.
+  const withAvatar = <T extends object>(fields: T) => (avatar && !avatarColumnMissing ? { ...fields, avatar } : fields);
   if (row) {
-    const updated = await supabaseAdmin.from('child_profiles').update({ age }).eq('id', row.id).eq('parent_id', parentId).select('id,nickname,age,created_at').single();
-    fail(updated.error); row = updated.data;
+    const id = row.id;
+    const updated = await withChildColumns(columns => supabaseAdmin.from('child_profiles').update(withAvatar({ age })).eq('id', id).eq('parent_id', parentId).select(columns).single());
+    fail(updated.error); row = updated.data as unknown as ChildRow;
   } else {
-    const inserted = await supabaseAdmin.from('child_profiles').insert({ parent_id: parentId, nickname, age }).select('id,nickname,age,created_at').single();
-    fail(inserted.error); row = inserted.data;
+    const inserted = await withChildColumns(columns => supabaseAdmin.from('child_profiles').insert(withAvatar({ parent_id: parentId, nickname, age })).select(columns).single());
+    fail(inserted.error); row = inserted.data as unknown as ChildRow;
   }
   if (!row) throw new Error('Could not save child profile.');
-  return { id: row.id, nickname: row.nickname, age: row.age, createdAt: row.created_at };
+  return toChild(row);
+}
+
+/** Changes a child's picture. Returns null when the child isn't this parent's. */
+export async function updateChildAvatar(parentId: string, childId: string, avatar: string) {
+  const missing = new Error('Avatar pictures need the latest database update (migration 202609270001_child_profile_avatar.sql).');
+  if (avatarColumnMissing) throw missing;
+  const { data, error } = await supabaseAdmin.from('child_profiles').update({ avatar }).eq('id', childId).eq('parent_id', parentId).select(CHILD_COLUMNS).maybeSingle();
+  if (isMissingAvatarColumn(error)) throw missing;
+  fail(error); return data ? toChild(data as unknown as ChildRow) : null;
 }
 
 export async function childBelongsTo(parentId: string, childId: string) {

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Pressable, ActivityIndicator, type 
 import { CATEGORY_GROUPS } from '../categoryGroups';
 import { CATEGORY_VISUALS, GROUP_VISUALS } from '../categoryVisuals';
 import Button from '../components/Button';
-import { colors, spacing, type } from '../theme';
+import { colors, spacing, type, column, GUTTER } from '../theme';
 import { speak, stopSpeaking, useSpeechState, lastSpeechError } from '../speech';
 import type { ParentReport as ParentReportType, Report, ScoredResponse, TraitKey, TraitReport } from '../types';
 
@@ -488,7 +488,7 @@ export default function ResultsScreen({
 // heavy warm-brown section titles, and the same per-group colours.
 const styles = StyleSheet.create({
   screen: { backgroundColor: '#FFF8EF' },
-  container: { padding: spacing(2.5), paddingBottom: spacing(6), width: '100%', maxWidth: 850, alignSelf: 'center' },
+  container: { padding: GUTTER, paddingBottom: spacing(6), ...column },
   historyBack: { color: colors.primary, fontWeight: '800', marginBottom: spacing(2) },
   pressed: { opacity: 0.78, transform: [{ scale: 0.985 }] },
 

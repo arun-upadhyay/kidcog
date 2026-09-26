@@ -13,7 +13,7 @@ import {
 import * as AppleAuthentication from 'expo-apple-authentication';
 import Button from '../components/Button';
 import { useAuth } from '../auth/AuthContext';
-import { colors, spacing, type } from '../theme';
+import { colors, spacing, type, column, GUTTER } from '../theme';
 
 export default function LoginScreen() {
   const { loading, configured, signIn, signInWithApple, signInWithEmail, signUpWithEmail, resendVerification } = useAuth();
@@ -182,7 +182,7 @@ export default function LoginScreen() {
               {showApple ? (
                 Platform.OS === 'ios' ? (
                   // Apple's own button, as its design guidelines require on iOS.
-                  <View style={[styles.appleWrap, (!configured || busy !== null) && styles.appleBusy]} pointerEvents={!configured || busy !== null ? 'none' : 'auto'}>
+                  <View style={[styles.appleWrap, (!configured || busy !== null) && styles.appleBusy, { pointerEvents: !configured || busy !== null ? 'none' : 'auto' }]}>
                     <AppleAuthentication.AppleAuthenticationButton
                       buttonType={AppleAuthentication.AppleAuthenticationButtonType.CONTINUE}
                       buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   scroll: { flexGrow: 1, justifyContent: 'center', paddingVertical: spacing(3) },
-  container: { padding: spacing(4), maxWidth: 560, width: '100%', alignSelf: 'center' },
+  container: { paddingVertical: spacing(4), paddingHorizontal: GUTTER, ...column },
   mascot: { fontSize: 54, textAlign: 'center' },
   title: { fontSize: 32, fontWeight: '800', textAlign: 'center', color: colors.primary, marginTop: spacing(1) },
   body: { ...type.body, textAlign: 'center', marginTop: spacing(2), marginBottom: spacing(3) },

@@ -38,3 +38,43 @@ export const GROUP_VISUALS = {
   verbal_linguistic: { icon: '📚', background: '#E5F3FF', border: '#68A8D6', ink: '#2F6F9D' },
   logical_mathematical: { icon: '🧩', background: '#E5F5EA', border: '#63AA7D', ink: '#34734E' },
 } as const;
+
+/**
+ * Short, child-friendly names for the category tiles. The official Harmony
+ * wording (e.g. "Comprehends abstract ideas and concepts") is still shown in the
+ * detail sheet and in results, so parents can match it to the school form.
+ */
+export const CATEGORY_NAMES: Record<TraitKey, string> = {
+  abstract_concepts: 'Big ideas',
+  beyond_experience: 'Imagine that!',
+  generalization: 'Spot the rule',
+  cause_effect: 'What happens next?',
+  challenge_seeking: 'Tricky challenges',
+  curiosity: 'Why and how?',
+  original_methods: 'New ways',
+  observant: 'Sharp eyes',
+  perfectionism: 'Oops, try again',
+  strong_ideas: 'What I think',
+  questions_authority: 'Why the rule?',
+  motivation_focus: 'Stick with it',
+  humor: 'Silly and funny',
+  sensitivity_others: 'Kind hearts',
+  extensive_vocabulary: 'Word wizard',
+  advanced_reading: 'Story time',
+  self_motivated_writing: 'Little writer',
+  viewpoint_mood_intention: 'How do they feel?',
+  advanced_spelling: 'Spelling fun',
+  how_things_work: 'How it works',
+  mental_math: 'Number magic',
+  strategy_games: 'Game plans',
+  categories_hierarchies: 'Sort it out',
+  intuitive_problem_solving: 'Puzzle solver',
+};
+
+/** Short tab names for the four groups. */
+export const GROUP_NAMES = {
+  intellectual: 'Thinking',
+  social_emotional: 'Feelings',
+  verbal_linguistic: 'Words',
+  logical_mathematical: 'Numbers',
+} as const;

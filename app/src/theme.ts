@@ -43,6 +43,17 @@ export const colors = {
 export const spacing = (n: number): number => n * 8;
 
 /**
+ * The one content width every screen uses. On a phone it is simply the screen
+ * width; on a tablet or a wide browser window every screen (sign-in, home,
+ * categories, questions, results, history, the top bar and the pop-up sheets)
+ * stays in the same centred column instead of some stretching edge to edge.
+ */
+export const CONTENT_MAX_WIDTH = 640;
+export const column = { width: '100%', maxWidth: CONTENT_MAX_WIDTH, alignSelf: 'center' } as const;
+/** Side padding inside the column, the same on every screen so edges line up. */
+export const GUTTER = spacing(2.5);
+
+/**
  * Scale multiplier from the age profile. A four-year-old's finger is no bigger
  * than an adult's, but their aim is far worse, so targets grow rather than the
  * layout simply zooming.

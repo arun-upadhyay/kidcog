@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Modal, View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Button from './Button';
-import { colors, spacing, type } from '../theme';
+import AboutSheet from './AboutSheet';
+import { colors, spacing, type, column, GUTTER } from '../theme';
 
 /**
  * The top bar shown on every signed-in screen: the ☰ parent-account menu and
@@ -28,6 +29,7 @@ export interface AppMenuProps {
 
 export default function AppMenu({ accountEmail, accountProviders, accountVerified, accountCreatedAt, onChangePassword, onSignOut, onDeleteAccount, onHome }: AppMenuProps) {
   const insets = useSafeAreaInsets();
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [changingPassword, setChangingPassword] = useState(false);
   const [newPassword, setNewPassword] = useState('');
@@ -114,7 +116,7 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
           {/* Same width as the page column, so on a wide screen the menu opens
               under the ☰ button instead of at the window's far-left edge.
               box-none: taps outside the panel still reach the backdrop. */}
-          <View style={styles.menuColumn} pointerEvents="box-none">
+          <View style={[styles.menuColumn, { pointerEvents: 'box-none' }]}>
           <View style={[styles.accountMenu, { top: insets.top + spacing(1) }]} accessibilityViewIsModal>
             <View style={styles.accountHeader}>
               <View style={styles.avatar}><Text style={styles.avatarText}>🦉</Text></View>
@@ -188,6 +190,9 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
                     <Text style={styles.menuActionIcon}>🏠</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>Home</Text><Text style={type.soft}>Back to choosing a child</Text></View><Text style={styles.chevron}>›</Text>
                   </Pressable>
                 ) : null}
+                <Pressable onPress={() => { closeMenu(); setAboutOpen(true); }} accessibilityRole="button" accessibilityLabel="About KidCog" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
+                  <Text style={styles.menuActionIcon}>ⓘ</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>About KidCog</Text><Text style={type.soft}>How it works and privacy</Text></View><Text style={styles.chevron}>›</Text>
+                </Pressable>
                 {canChangePassword ? (
                   <Pressable onPress={() => { setChangingPassword(true); setAccountMessage(null); }} accessibilityRole="button" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
                     <Text style={styles.menuActionIcon}>🔐</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>Change password</Text><Text style={type.soft}>Update the parent account password</Text></View><Text style={styles.chevron}>›</Text>
@@ -205,13 +210,14 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
           </View>
         </View>
       </Modal>
+      <AboutSheet visible={aboutOpen} onClose={() => setAboutOpen(false)} />
     </>
   );
 }
 
 const styles = StyleSheet.create({
   bar: { backgroundColor: '#FFF8EF', borderBottomWidth: 1, borderBottomColor: '#EEDFCB' },
-  barInner: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.25), width: '100%', maxWidth: 850, alignSelf: 'center', paddingHorizontal: spacing(2.5), paddingVertical: spacing(1) },
+  barInner: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.25), ...column, paddingHorizontal: GUTTER, paddingVertical: spacing(1) },
   brand: { paddingVertical: spacing(0.5), paddingHorizontal: spacing(0.5), borderRadius: 10 },
   brandText: { fontSize: 20, fontWeight: '900', color: '#6B4BB0' },
   menuButton: { width: 46, height: 46, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#CABAF0' },
@@ -221,7 +227,7 @@ const styles = StyleSheet.create({
   backdrop: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 },
   // In normal flow (not absolute): an absolute column with top/bottom 0 collapsed
   // to zero height on web, which squashed the panel into a thin strip.
-  menuColumn: { flex: 1, width: '100%', maxWidth: 850, alignSelf: 'center' },
+  menuColumn: { flex: 1, ...column },
   accountMenu: { position: 'absolute', left: spacing(2.5), width: '88%', maxWidth: 400, maxHeight: '92%', backgroundColor: colors.surface, borderRadius: 22, padding: spacing(2.5), borderWidth: 1.5, borderColor: colors.line, shadowColor: '#2A2118', shadowOpacity: 0.18, shadowRadius: 20, shadowOffset: { width: 0, height: 8 }, elevation: 10 },
   accountHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), paddingBottom: spacing(2), borderBottomWidth: 1, borderBottomColor: colors.line },
   avatar: { width: 48, height: 48, borderRadius: 24, backgroundColor: colors.happySoft, alignItems: 'center', justifyContent: 'center' },

@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, Platform, View, Text, TextInput, StyleSheet, ScrollView, Switch, Pressable } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import AboutSheet from '../components/AboutSheet';
+import Sheet from '../components/Sheet';
 import Button from '../components/Button';
-import { colors, spacing, type } from '../theme';
+import { colors, spacing, type, column, GUTTER } from '../theme';
 import type { ChildProfile, SavedChildProfile } from '../types';
+import { avatarEmoji, defaultAvatarKey, avatarName, firstFreeAvatar } from '../avatars';
+import { AvatarBrowser, AvatarQuickPick } from '../components/AvatarPicker';
 
 export interface StartScreenProps {
   onStart: (profile: ChildProfile) => void;
@@ -11,7 +16,11 @@ export interface StartScreenProps {
   savedChildren: SavedChildProfile[];
   onViewHistory: (child: SavedChildProfile) => void;
   onDeleteChild: (child: SavedChildProfile) => Promise<void>;
+  onChangeAvatar: (child: SavedChildProfile, avatar: string) => Promise<void>;
 }
+
+/** Shown once, the first time a parent reaches this screen on this device. */
+const ABOUT_SEEN_KEY = 'kidcog.aboutSeen.v1';
 
 /**
  * Ages as tappable chips rather than a keyboard.
@@ -24,13 +33,34 @@ const AGES = [4, 5, 6, 7] as const;
 const AGE_ICONS: Record<(typeof AGES)[number], string> = { 4: '🐣', 5: '⭐', 6: '🚀', 7: '🦄' };
 const PROFILE_COLORS = ['#E5F3FF', '#FFF0D9', '#E5F5EA', '#F2EAFE'] as const;
 
-export default function StartScreen({ onStart, loading, error, savedChildren, onViewHistory, onDeleteChild }: StartScreenProps) {
+export default function StartScreen({ onStart, loading, error, savedChildren, onViewHistory, onDeleteChild, onChangeAvatar }: StartScreenProps) {
   const [firstName, setFirstName] = useState('');
   const [age, setAge] = useState<number | null>(5);
   const [consent, setConsent] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  // Kept simple on purpose: saved children are big tiles, and the new-child
+  // form (nickname + age) only appears when adding one.
+  const [adding, setAdding] = useState(false);
+  const [actionsFor, setActionsFor] = useState<SavedChildProfile | null>(null);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  // Picture for a new child, and the saved child whose picture is being changed.
+  const [avatar, setAvatar] = useState<string>(() => firstFreeAvatar(savedChildren.map(c => c.avatar)));
+  const [pictureFor, setPictureFor] = useState<SavedChildProfile | null>(null);
+  const [savingPicture, setSavingPicture] = useState<string | null>(null);
+  const [pictureError, setPictureError] = useState<string | null>(null);
 
-  const canStart = consent && !loading;
+  useEffect(() => {
+    AsyncStorage.getItem(ABOUT_SEEN_KEY).then(seen => { if (!seen) setAboutOpen(true); }).catch(() => {});
+  }, []);
+  function closeAbout() {
+    setAboutOpen(false);
+    AsyncStorage.setItem(ABOUT_SEEN_KEY, '1').catch(() => {});
+  }
+
+  const showNewForm = adding || savedChildren.length === 0;
+  const selected = showNewForm ? undefined : savedChildren.find(c => c.nickname.trim().toLowerCase() === firstName.trim().toLowerCase());
+  const needsAge = showNewForm || (selected !== undefined && selected.age === null);
+  const canStart = consent && !loading && (showNewForm || selected !== undefined);
   const young = age !== null && age <= 7;
 
   function handleStart() {
@@ -38,10 +68,19 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
     const trimmed = firstName.trim();
     if (trimmed) profile.firstName = trimmed;
     if (age !== null) profile.age = age;
+    if (showNewForm) profile.avatar = avatar;
     onStart(profile);
   }
 
+  function startAdding() {
+    setAdding(true);
+    setFirstName('');
+    setAge(5);
+    setAvatar(firstFreeAvatar(savedChildren.map(c => c.avatar)));
+  }
+
   function chooseSaved(child: SavedChildProfile) {
+    setAdding(false);
     setFirstName(child.nickname);
     if (child.age !== null) setAge(child.age);
   }
@@ -52,6 +91,18 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
       await onDeleteChild(child);
       if (firstName.trim().toLowerCase() === child.nickname.trim().toLowerCase()) setFirstName('');
     } finally { setDeletingId(null); }
+  }
+
+  async function pickPicture(child: SavedChildProfile, key: string) {
+    if (key === child.avatar) { setPictureFor(null); return; }
+    setSavingPicture(key);
+    setPictureError(null);
+    try {
+      await onChangeAvatar(child, key);
+      setPictureFor(null);
+    } catch (err) {
+      setPictureError(err instanceof Error ? err.message : 'Could not change the picture.');
+    } finally { setSavingPicture(null); }
   }
 
   function confirmDelete(child: SavedChildProfile) {
@@ -69,95 +120,114 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
-      <View style={styles.header}>
-        <View style={styles.decorOne} />
-        <View style={styles.decorTwo} />
-        <View style={styles.mascotBubble}><Text style={styles.mascot}>🦉</Text></View>
-        <Text style={styles.title}>KidCog</Text>
-        <Text style={styles.tagline}>Little ideas. Big imagination. ✨</Text>
+      <View style={styles.hello}>
+        <View style={styles.helloOwl}><Text style={styles.helloOwlText}>🦉</Text></View>
+        <View style={{ flex: 1 }}>
+          <Text style={styles.helloTitle}>Who’s playing today?</Text>
+          <Text style={styles.helloHint}>{showNewForm ? 'Add a player to start' : 'Tap a player to start'}</Text>
+        </View>
+        <Pressable onPress={() => setAboutOpen(true)} accessibilityRole="button" accessibilityLabel="About KidCog" hitSlop={8} style={({ pressed }) => [styles.infoButton, pressed && styles.pressed]}>
+          <Text style={styles.infoText}>ⓘ</Text>
+        </Pressable>
       </View>
 
-
-      <View style={styles.card}>
-        <View style={styles.cardTitleRow}><View style={styles.grownUpIcon}><Text style={styles.cardEmoji}>🛡️</Text></View><View style={{ flex: 1 }}><Text style={styles.cardTitle}>A note for the grown-up</Text><Text style={styles.cardSubtitle}>A playful practice activity</Text></View></View>
-        <Text style={styles.cardBody}>
-          This is a practice activity, not an IQ test and not a clinical assessment. It does not
-          produce an IQ score, a percentile, or a comparison with other children. Treat the result as
-          a snapshot of one session.
-        </Text>
-        <View style={styles.privacyNote}><Text style={styles.privacyIcon}>🔒</Text><Text style={styles.privacyText}>
-          Spoken and written answers are sent to an AI service to be scored against a rubric. Please
-          don&apos;t include your child&apos;s full name, school, or address in the answers.
-        </Text></View>
-      </View>
-
-      <View style={styles.field}>
-        <View style={styles.sectionHeading}><View><Text style={styles.sectionTitle}>How old are they?</Text><Text style={styles.sectionHint}>We’ll make every activity fit their age.</Text></View><Text style={styles.sectionEmoji}>🎈</Text></View>
-        <View style={styles.chips}>
-          {AGES.map((a) => {
-            const on = age === a;
+      {!showNewForm ? (
+        <View style={styles.tiles}>
+          {savedChildren.map((saved, index) => {
+            const on = selected?.id === saved.id;
             return (
-              <Pressable
-                key={a}
-                accessibilityRole="radio"
-                accessibilityState={{ selected: on }}
-                accessibilityLabel={`Age ${a}`}
-                onPress={() => setAge(a)}
-                style={({ pressed }) => [
-                  styles.chip,
-                  on && styles.chipOn,
-                  pressed && { opacity: 0.85 },
-                ]}
-              >
-                <Text style={styles.ageIcon}>{AGE_ICONS[a]}</Text>
-                <Text style={[styles.chipText, on && styles.chipTextOn]}>Age {a}</Text>
-                {on ? <View style={styles.ageCheck}><Text style={styles.ageCheckText}>✓</Text></View> : null}
-              </Pressable>
+              <View key={saved.id} style={styles.tileWrap}>
+                <Pressable
+                  onPress={() => chooseSaved(saved)}
+                  accessibilityRole="radio"
+                  accessibilityState={{ checked: on }}
+                  accessibilityLabel={`${saved.nickname}${saved.age !== null ? `, age ${saved.age}` : ''}`}
+                  style={({ pressed }) => [styles.tile, { backgroundColor: PROFILE_COLORS[index % PROFILE_COLORS.length] }, on && styles.tileOn, pressed && styles.pressed]}
+                >
+                  <Text style={styles.tileAvatar}>{avatarEmoji(saved.avatar, index)}</Text>
+                  <Text style={styles.tileName} numberOfLines={1}>{saved.nickname}</Text>
+                  {saved.age !== null ? <Text style={styles.tileAge}>Age {saved.age}</Text> : null}
+                  {on ? <View style={styles.tileCheck}><Text style={styles.tileCheckText}>✓</Text></View> : null}
+                </Pressable>
+                <Pressable
+                  onPress={() => setActionsFor(saved)}
+                  accessibilityRole="button"
+                  accessibilityLabel={`More options for ${saved.nickname}`}
+                  hitSlop={6}
+                  style={({ pressed }) => [styles.moreButton, pressed && styles.pressed]}
+                >
+                  <Text style={styles.moreText}>{deletingId === saved.id ? '⏳' : '⋯'}</Text>
+                </Pressable>
+              </View>
             );
           })}
-        </View>
-        <View style={styles.ageTip}><Text style={styles.ageTipIcon}>🔊</Text><Text style={styles.ageTipText}>
-          {young
-            ? 'Tap the speaker button to hear a question, answer by tapping or speaking, and the score is kept for you rather than shown to your child.'
-            : 'Questions are read on screen and written answers are typed.'}
-        </Text></View>
-      </View>
-
-      <View style={styles.field}>
-        <View style={styles.sectionHeading}><View><Text style={styles.sectionTitle}>Who’s playing?</Text><Text style={styles.sectionHint}>Choose a saved child or add a nickname.</Text></View><Text style={styles.sectionEmoji}>🌟</Text></View>
-        {savedChildren.length ? <View style={styles.savedList}>{savedChildren.map((saved, index) => {
-          const selectedProfile = firstName.trim().toLowerCase() === saved.nickname.trim().toLowerCase();
-          return <View key={saved.id} style={[styles.savedCard, { backgroundColor: PROFILE_COLORS[index % PROFILE_COLORS.length] }, selectedProfile && styles.savedCardSelected]}>
-          <Pressable onPress={() => chooseSaved(saved)} style={styles.savedName}><View style={styles.profileAvatar}><Text style={styles.profileAvatarText}>{['🐻','🦊','🐼','🐨'][index % 4]}</Text></View><View style={styles.savedCopy}><Text style={styles.savedNameText}>{saved.nickname}</Text><Text style={styles.savedMeta}>{saved.age !== null ? `Age ${saved.age} · ` : ''}{selectedProfile ? 'Ready to play!' : 'Tap to choose'}</Text></View></Pressable>
-          <View style={styles.savedActions}>
-            <Pressable onPress={() => onViewHistory(saved)} accessibilityRole="button" accessibilityLabel={`View ${saved.nickname}'s previous results`} accessibilityHint="Opens saved assessment reports" style={({ pressed }) => [styles.iconButton, styles.historyButton, pressed && styles.iconPressed]}><Text style={styles.actionIcon}>📚</Text></Pressable>
-            <Pressable disabled={deletingId !== null} onPress={() => confirmDelete(saved)} accessibilityRole="button" accessibilityLabel={`Delete ${saved.nickname}'s profile`} accessibilityHint="Permanently removes this profile and its assessments" style={({ pressed }) => [styles.iconButton, styles.deleteProfile, (pressed || deletingId !== null) && styles.iconPressed]}><Text style={styles.actionIcon}>{deletingId === saved.id ? '⏳' : '🗑️'}</Text></Pressable>
+          <View style={styles.tileWrap}>
+            <Pressable onPress={startAdding} accessibilityRole="button" accessibilityLabel="Add a child" style={({ pressed }) => [styles.tile, styles.addTile, pressed && styles.pressed]}>
+              <Text style={styles.addPlus}>＋</Text>
+              <Text style={styles.addText}>Add a child</Text>
+            </Pressable>
           </View>
-        </View>;
-        })}</View> : null}
-        <Text style={styles.inputLabel}>NEW NICKNAME (OPTIONAL)</Text>
-        <TextInput
-          style={styles.input}
-          value={firstName}
-          onChangeText={setFirstName}
-          placeholder="e.g. Aanya"
-          placeholderTextColor={colors.inkSoft}
-          autoCapitalize="words"
-          maxLength={60}
-        />
-        <Text style={styles.inputHelp}>Use a first name or nickname only. Activities and results are saved privately to your parent account.</Text>
-      </View>
+        </View>
+      ) : (
+        <View style={styles.newCard}>
+          <View style={styles.newTop}>
+            <View style={styles.previewCircle} accessibilityLabel={`Picture: ${avatarName(avatar)}`}>
+              <Text style={styles.previewEmoji}>{avatarEmoji(avatar)}</Text>
+            </View>
+            <View style={{ flex: 1 }}>
+          <Text style={styles.label}>Nickname</Text>
+          <TextInput
+            style={styles.input}
+            value={firstName}
+            onChangeText={setFirstName}
+            placeholder="e.g. Aanya"
+            placeholderTextColor={colors.inkSoft}
+            autoCapitalize="words"
+            maxLength={60}
+          />
+            </View>
+          </View>
+          <Text style={[styles.label, { marginTop: spacing(2) }]}>Pick a picture</Text>
+          <AvatarQuickPick selected={avatar} onPick={setAvatar} />
+        </View>
+      )}
+
+      {needsAge ? (
+        <View style={styles.ageBlock}>
+          <Text style={styles.label}>Age</Text>
+          <View style={styles.chips}>
+            {AGES.map((a) => {
+              const on = age === a;
+              return (
+                <Pressable
+                  key={a}
+                  accessibilityRole="radio"
+                  accessibilityState={{ selected: on }}
+                  accessibilityLabel={`Age ${a}`}
+                  onPress={() => setAge(a)}
+                  style={({ pressed }) => [styles.chip, on && styles.chipOn, pressed && styles.pressed]}
+                >
+                  <Text style={styles.ageIcon}>{AGE_ICONS[a]}</Text>
+                  <Text style={[styles.chipText, on && styles.chipTextOn]}>{a}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        </View>
+      ) : null}
+
+      {showNewForm && savedChildren.length > 0 ? (
+        <Pressable onPress={() => setAdding(false)} accessibilityRole="button" style={styles.backLink}>
+          <Text style={styles.backLinkText}>← Back to saved players</Text>
+        </Pressable>
+      ) : null}
 
       <View style={styles.consentRow}>
-        <Switch
-          value={consent}
-          onValueChange={setConsent}
-          trackColor={{ true: colors.go, false: colors.line }}
-        />
-        <View style={styles.consentCopy}><Text style={styles.consentTitle}>Ready to begin?</Text><Text style={styles.consentText}>
-          I am this child&apos;s parent or guardian, I understand this is a practice activity, and I
-          agree to their answers being sent for AI scoring.
-        </Text></View>
+        <Switch value={consent} onValueChange={setConsent} trackColor={{ true: colors.go, false: colors.line }} accessibilityLabel="I'm the parent or guardian and agree to how KidCog checks answers" />
+        <Text style={styles.consentText}>
+          I’m the parent or guardian and agree to how KidCog checks answers.{' '}
+          <Text style={styles.learnMore} onPress={() => setAboutOpen(true)} accessibilityRole="link">Learn more</Text>
+        </Text>
       </View>
 
       {error ? <Text style={styles.errorBanner}>{error}</Text> : null}
@@ -169,122 +239,113 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
         loading={loading}
         uiScale={young ? 1.2 : 1}
       />
+
+      <AboutSheet visible={aboutOpen} onClose={closeAbout} />
+
+      {/* ⋯ on a player: past results or delete, kept off the tiles themselves. */}
+      <Sheet visible={actionsFor !== null} onClose={() => setActionsFor(null)} closeLabel="Close options">
+            <Text style={styles.sheetTitle}>{actionsFor?.nickname}</Text>
+            <Pressable
+              onPress={() => { const child = actionsFor; setActionsFor(null); if (child) onViewHistory(child); }}
+              accessibilityRole="button"
+              accessibilityLabel={actionsFor ? `View ${actionsFor.nickname}'s previous results` : 'View previous results'}
+              style={({ pressed }) => [styles.sheetAction, pressed && styles.sheetActionPressed]}
+            >
+              <Text style={styles.sheetIcon}>📚</Text><Text style={styles.sheetActionText}>Past results</Text><Text style={styles.sheetChevron}>›</Text>
+            </Pressable>
+            <Pressable
+              onPress={() => { const child = actionsFor; setActionsFor(null); setPictureError(null); if (child) setPictureFor(child); }}
+              accessibilityRole="button"
+              accessibilityLabel={actionsFor ? `Change ${actionsFor.nickname}'s picture` : 'Change picture'}
+              style={({ pressed }) => [styles.sheetAction, pressed && styles.sheetActionPressed]}
+            >
+              <Text style={styles.sheetIcon}>{actionsFor ? avatarEmoji(actionsFor.avatar, savedChildren.findIndex(c => c.id === actionsFor.id)) : '🐻'}</Text><Text style={styles.sheetActionText}>Change picture</Text><Text style={styles.sheetChevron}>›</Text>
+            </Pressable>
+            <Pressable
+              onPress={() => { const child = actionsFor; setActionsFor(null); if (child) confirmDelete(child); }}
+              disabled={deletingId !== null}
+              accessibilityRole="button"
+              accessibilityLabel={actionsFor ? `Delete ${actionsFor.nickname}'s profile` : 'Delete profile'}
+              style={({ pressed }) => [styles.sheetAction, pressed && styles.sheetActionPressed]}
+            >
+              <Text style={styles.sheetIcon}>🗑️</Text><Text style={[styles.sheetActionText, { color: colors.danger }]}>Delete profile</Text>
+            </Pressable>
+            <Pressable onPress={() => setActionsFor(null)} accessibilityRole="button" style={styles.sheetCancel}>
+              <Text style={styles.sheetCancelText}>Cancel</Text>
+            </Pressable>
+      </Sheet>
+
+      <Sheet visible={pictureFor !== null} onClose={() => { if (!savingPicture) setPictureFor(null); }} closeLabel="Close pictures">
+        <Text style={styles.sheetTitle}>Pick a picture{pictureFor ? ` for ${pictureFor.nickname}` : ''}</Text>
+        <AvatarBrowser
+          selected={pictureFor ? (pictureFor.avatar ?? defaultAvatarKey(Math.max(0, savedChildren.findIndex(c => c.id === pictureFor.id)))) : null}
+          busyKey={savingPicture}
+          onPick={(key) => { if (pictureFor && !savingPicture) void pickPicture(pictureFor, key); }}
+        />
+        {pictureError ? <Text style={[styles.errorBanner, { marginTop: spacing(1.5) }]}>{pictureError}</Text> : null}
+        <Pressable onPress={() => setPictureFor(null)} disabled={savingPicture !== null} accessibilityRole="button" style={styles.sheetCancel}>
+          <Text style={styles.sheetCancelText}>Cancel</Text>
+        </Pressable>
+      </Sheet>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   screen: { backgroundColor: '#FFF8EF' },
-  container: { padding: spacing(2.5), paddingBottom: spacing(6), width: '100%', maxWidth: 850, alignSelf: 'center' },
-  header: { position: 'relative', alignItems: 'center', backgroundColor: '#EEE9FF', borderRadius: 26, paddingVertical: spacing(2.5), paddingHorizontal: spacing(2), overflow: 'hidden', borderWidth: 2, borderColor: '#CABAF0' },
-  decorOne: { position: 'absolute', width: 90, height: 90, borderRadius: 45, backgroundColor: '#FFE4A8', top: -42, right: -22, opacity: 0.8 },
-  decorTwo: { position: 'absolute', width: 65, height: 65, borderRadius: 33, backgroundColor: '#CDEEDC', bottom: -34, left: 35, opacity: 0.8 },
-  mascotBubble: { width: 76, height: 76, borderRadius: 38, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#CABAF0', alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '-4deg' }] },
-  mascot: { fontSize: 48, textAlign: 'center' },
-  title: {
-    fontSize: 38,
-    fontWeight: '800',
-    color: '#6B4BB0',
-    textAlign: 'center',
-    marginTop: spacing(0.5),
-  },
-  tagline: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#6D5B91',
-    textAlign: 'center',
-    marginTop: spacing(0.5),
-  },
-  card: {
-    backgroundColor: '#EAF6FF',
-    borderRadius: 22,
-    padding: spacing(2),
-    marginTop: spacing(2),
-    borderWidth: 2,
-    borderColor: '#A8D4EF',
-  },
-  cardTitleRow: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.25) },
-  grownUpIcon: { width: 48, height: 48, borderRadius: 24, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#A8D4EF', alignItems: 'center', justifyContent: 'center' },
-  cardEmoji: { fontSize: 26 },
-  cardTitle: { fontSize: 18, lineHeight: 22, fontWeight: '900', color: '#286789' },
-  cardSubtitle: { fontSize: 12, lineHeight: 16, color: '#56819A', marginTop: 1 },
-  cardBody: { fontSize: 14, lineHeight: 21, color: '#3F5360', marginTop: spacing(1.5) },
-  privacyNote: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1), backgroundColor: '#FFFFFF', borderRadius: 13, padding: spacing(1.25), marginTop: spacing(1.5) },
-  privacyIcon: { fontSize: 16 },
-  privacyText: { flex: 1, fontSize: 12, lineHeight: 18, color: '#5E6E78' },
-  field: { marginTop: spacing(2), gap: spacing(1.25), backgroundColor: '#FFFFFF', borderWidth: 1.5, borderColor: '#EEDFCB', borderRadius: 22, padding: spacing(2) },
-  sectionHeading: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1) },
-  sectionTitle: { fontSize: 18, lineHeight: 23, fontWeight: '900', color: '#513A27' },
-  sectionHint: { fontSize: 12, lineHeight: 17, color: colors.inkSoft, marginTop: 1 },
-  sectionEmoji: { fontSize: 28 },
-  chips: { flexDirection: 'row', gap: spacing(0.75) },
-  chip: {
-    flex: 1,
-    minWidth: 58,
-    height: 82,
-    borderRadius: 18,
-    backgroundColor: '#FFF9F0',
-    borderWidth: 2,
-    borderColor: colors.line,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  chipOn: { backgroundColor: colors.happySoft, borderColor: colors.happy, transform: [{ translateY: -2 }], shadowColor: colors.happy, shadowOpacity: 0.18, shadowRadius: 6, shadowOffset: { width: 0, height: 3 }, elevation: 2 },
-  ageIcon: { fontSize: 25 },
-  chipText: { fontSize: 13, lineHeight: 17, fontWeight: '800', color: colors.inkSoft, marginTop: 2 },
+  container: { padding: GUTTER, paddingBottom: spacing(6), ...column, gap: spacing(2) },
+  pressed: { opacity: 0.8, transform: [{ scale: 0.97 }] },
+
+  hello: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), backgroundColor: '#EEE9FF', borderRadius: 24, borderWidth: 2, borderColor: '#CABAF0', padding: spacing(2) },
+  helloOwl: { width: 58, height: 58, borderRadius: 29, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#CABAF0', alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '-4deg' }] },
+  helloOwlText: { fontSize: 34 },
+  helloTitle: { fontSize: 22, lineHeight: 27, fontWeight: '900', color: '#6B4BB0' },
+  helloHint: { fontSize: 14, color: '#6D5B91', marginTop: 2 },
+  infoButton: { width: 40, height: 40, borderRadius: 20, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#CABAF0', alignItems: 'center', justifyContent: 'center' },
+  infoText: { fontSize: 20, color: '#6B4BB0', fontWeight: '800' },
+
+  tiles: { flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: -spacing(0.75) },
+  tileWrap: { width: '50%', padding: spacing(0.75), maxWidth: 200 },
+  tile: { minHeight: 132, borderRadius: 22, borderWidth: 3, borderColor: 'transparent', alignItems: 'center', justifyContent: 'center', padding: spacing(1.5) },
+  tileOn: { borderColor: colors.primary, shadowColor: colors.primary, shadowOpacity: 0.2, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 3 },
+  tileAvatar: { fontSize: 44 },
+  tileName: { fontSize: 18, fontWeight: '900', color: '#513A27', marginTop: spacing(0.5), maxWidth: '100%' },
+  tileAge: { fontSize: 13, fontWeight: '700', color: '#75695F', marginTop: 1 },
+  tileCheck: { position: 'absolute', left: 10, top: 10, width: 24, height: 24, borderRadius: 12, backgroundColor: colors.go, alignItems: 'center', justifyContent: 'center' },
+  tileCheckText: { color: '#FFFFFF', fontSize: 14, fontWeight: '900' },
+  moreButton: { position: 'absolute', right: spacing(1.5), top: spacing(1.5), width: 32, height: 32, borderRadius: 16, backgroundColor: 'rgba(255,255,255,0.85)', alignItems: 'center', justifyContent: 'center' },
+  moreText: { fontSize: 18, fontWeight: '900', color: '#6F655D', marginTop: -4 },
+  addTile: { backgroundColor: '#FFFFFF', borderColor: '#E3D4BF', borderStyle: 'dashed', borderWidth: 2 },
+  addPlus: { fontSize: 34, color: colors.primary, fontWeight: '700' },
+  addText: { fontSize: 15, fontWeight: '800', color: colors.primary, marginTop: spacing(0.5) },
+
+  newTop: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5) },
+  previewCircle: { width: 76, height: 76, borderRadius: 38, backgroundColor: '#FFF0D9', borderWidth: 3, borderColor: colors.happy, alignItems: 'center', justifyContent: 'center' },
+  previewEmoji: { fontSize: 44 },
+  newCard: { backgroundColor: '#FFFFFF', borderWidth: 1.5, borderColor: '#EEDFCB', borderRadius: 22, padding: spacing(2) },
+  label: { fontSize: 13, fontWeight: '800', letterSpacing: 0.5, color: '#8B7460', marginBottom: spacing(1) },
+  input: { backgroundColor: '#FFF9F0', borderWidth: 2, borderColor: '#E8D5BA', borderRadius: 16, paddingHorizontal: spacing(2), paddingVertical: spacing(1.75), fontSize: 18, color: colors.ink },
+  ageBlock: { },
+  chips: { flexDirection: 'row', gap: spacing(1) },
+  chip: { flex: 1, height: 76, borderRadius: 18, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: colors.line, alignItems: 'center', justifyContent: 'center' },
+  chipOn: { backgroundColor: colors.happySoft, borderColor: colors.happy },
+  ageIcon: { fontSize: 26 },
+  chipText: { fontSize: 16, fontWeight: '900', color: colors.inkSoft, marginTop: 2 },
   chipTextOn: { color: '#8A5A0A' },
-  ageCheck: { position: 'absolute', right: 5, top: 5, width: 19, height: 19, borderRadius: 10, backgroundColor: colors.go, alignItems: 'center', justifyContent: 'center' },
-  ageCheckText: { color: '#FFFFFF', fontSize: 11, fontWeight: '900' },
-  ageTip: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1), backgroundColor: '#F2EAFE', borderRadius: 13, padding: spacing(1.25) },
-  ageTipIcon: { fontSize: 17 },
-  ageTipText: { flex: 1, fontSize: 12, lineHeight: 18, color: '#665582' },
-  savedList: { gap: spacing(1), marginBottom: spacing(1) },
-  savedCard: { flexDirection: 'row', alignItems: 'center', borderRadius: 18, padding: spacing(1.25), gap: spacing(1), borderWidth: 2, borderColor: 'transparent' },
-  savedCardSelected: { borderColor: colors.primary, shadowColor: colors.primary, shadowOpacity: 0.14, shadowRadius: 6, shadowOffset: { width: 0, height: 2 }, elevation: 2 },
-  savedName: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: spacing(1) },
-  profileAvatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' },
-  profileAvatarText: { fontSize: 25 },
-  savedCopy: { flex: 1 },
-  savedNameText: { fontWeight: '800', color: '#513A27', fontSize: 16 },
-  savedMeta: { color: '#75695F', fontSize: 12, lineHeight: 17, marginTop: 1 },
-  savedActions: { flexDirection: 'row', alignItems: 'center', gap: spacing(1) },
-  iconButton: { width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
-  historyButton: { backgroundColor: colors.goSoft },
-  deleteProfile: { backgroundColor: '#FBE9E7' },
-  actionIcon: { fontSize: 27 }, iconPressed: { opacity: 0.55, transform: [{ scale: 0.96 }] },
-  inputLabel: { fontSize: 11, lineHeight: 15, fontWeight: '800', letterSpacing: 0.8, color: '#8B7460', marginTop: spacing(0.5) },
-  input: {
-    backgroundColor: '#FFF9F0',
-    borderWidth: 2,
-    borderColor: '#E8D5BA',
-    borderRadius: 16,
-    paddingHorizontal: spacing(2),
-    paddingVertical: spacing(1.75),
-    fontSize: 16,
-    color: colors.ink,
-  },
-  inputHelp: { fontSize: 12, lineHeight: 18, color: colors.inkSoft },
-  consentRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: spacing(1.5),
-    marginTop: spacing(2),
-    marginBottom: spacing(2),
-    backgroundColor: '#E5F5EA',
-    borderRadius: 18,
-    borderWidth: 1.5,
-    borderColor: '#A9D7B8',
-    padding: spacing(1.5),
-  },
-  consentCopy: { flex: 1 },
-  consentTitle: { fontSize: 15, lineHeight: 20, fontWeight: '800', color: '#34734E', marginBottom: 2 },
-  consentText: { fontSize: 13, lineHeight: 19, color: '#4C6655' },
-  errorBanner: {
-    backgroundColor: '#FBE9E7',
-    color: colors.danger,
-    padding: spacing(2),
-    borderRadius: 12,
-    marginBottom: spacing(2),
-    fontSize: 15,
-  },
+  backLink: { alignSelf: 'flex-start', paddingVertical: spacing(0.5) },
+  backLinkText: { color: colors.primary, fontWeight: '800', fontSize: 14 },
+
+  consentRow: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), backgroundColor: '#E5F5EA', borderRadius: 18, borderWidth: 1.5, borderColor: '#A9D7B8', paddingVertical: spacing(1.25), paddingHorizontal: spacing(1.5) },
+  consentText: { flex: 1, fontSize: 14, lineHeight: 20, color: '#34734E', fontWeight: '600' },
+  learnMore: { color: '#2F6F9D', fontWeight: '800', textDecorationLine: 'underline' },
+  errorBanner: { backgroundColor: '#FBE9E7', color: colors.danger, padding: spacing(2), borderRadius: 12, fontSize: 15 },
+
+  sheetTitle: { fontSize: 20, fontWeight: '900', color: '#513A27', textAlign: 'center', marginBottom: spacing(1.5) },
+  sheetAction: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), minHeight: 58, paddingHorizontal: spacing(1.5), borderRadius: 16 },
+  sheetActionPressed: { backgroundColor: colors.bg },
+  sheetIcon: { fontSize: 24 },
+  sheetActionText: { flex: 1, fontSize: 17, fontWeight: '700', color: colors.ink },
+  sheetChevron: { fontSize: 26, color: colors.inkSoft },
+  sheetCancel: { minHeight: 52, alignItems: 'center', justifyContent: 'center', marginTop: spacing(1), borderRadius: 16, backgroundColor: colors.bg },
+  sheetCancelText: { fontSize: 16, fontWeight: '800', color: colors.inkSoft },
 });

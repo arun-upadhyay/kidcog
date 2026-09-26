@@ -154,12 +154,15 @@ export interface ChildProfile {
   id?: string;
   firstName?: string;
   age?: number;
+  avatar?: string;
 }
 
 export interface SavedChildProfile {
   id: string;
   nickname: string;
   age: number | null;
+  /** Picture key from avatars.ts; null until one is picked. */
+  avatar: string | null;
   createdAt: string;
 }
 

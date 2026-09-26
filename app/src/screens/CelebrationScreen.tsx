@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import Button from '../components/Button';
-import { colors, spacing, type } from '../theme';
+import { colors, spacing, type, column, GUTTER } from '../theme';
 import { speak, stopSpeaking, useSpeechState } from '../speech';
 
 export interface CelebrationScreenProps {
@@ -124,7 +124,7 @@ function shuffle<T>(items: T[]): T[] {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: spacing(3) },
+  container: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingVertical: spacing(3), paddingHorizontal: GUTTER, ...column },
   burst: { fontSize: 84 },
   big: {
     fontSize: 34,

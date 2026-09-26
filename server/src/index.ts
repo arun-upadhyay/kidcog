@@ -14,7 +14,7 @@ import type { PublicQuestion, TestPayload } from './types.js';
 import { supabaseReady, userIdFromBearer } from './supabase.js';
 import { isAccountDeleted, scheduleAccountDeletion, startPurgeSchedule, PURGE_AFTER_DAYS } from './accountDeletion.js';
 import { storeAppleAuthorizationCode } from './appleSignIn.js';
-import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, saveGeneratedQuestions, saveReport } from './repository.js';
+import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, updateChildAvatar, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, saveGeneratedQuestions, saveReport } from './repository.js';
 
 type AuthRequest = Request & { parentId?: string };
 async function requireParent(req: AuthRequest, res: Response, next: NextFunction) {
@@ -104,16 +104,29 @@ app.post('/api/apple/authorization-code', requireParent, async (req: AuthRequest
   }
 });
 
+/** Picture keys the app offers (app/src/avatars.ts); same shape the database checks. */
+const AVATAR_KEY = z.string().regex(/^[a-z]{2,16}$/);
+
 app.get('/api/children', requireParent, async (req: AuthRequest, res: Response) => {
   try { res.json(await listChildren(req.parentId!)); }
   catch (err) { res.status(500).json({ error: 'Could not load child profiles.', detail: err instanceof Error ? err.message : String(err) }); }
 });
 
 app.post('/api/children', requireParent, async (req: AuthRequest, res: Response) => {
-  const parsed = z.object({ nickname: z.string().trim().min(1).max(60), age: z.number().int().min(4).max(12) }).safeParse(req.body);
+  const parsed = z.object({ nickname: z.string().trim().min(1).max(60), age: z.number().int().min(4).max(12), avatar: AVATAR_KEY.optional() }).safeParse(req.body);
   if (!parsed.success) { res.status(400).json({ error: 'Enter a first name or nickname.' }); return; }
-  try { res.status(201).json(await findOrCreateChild(req.parentId!, parsed.data.nickname, parsed.data.age)); }
+  try { res.status(201).json(await findOrCreateChild(req.parentId!, parsed.data.nickname, parsed.data.age, parsed.data.avatar)); }
   catch (err) { res.status(500).json({ error: 'Could not save child profile.', detail: err instanceof Error ? err.message : String(err) }); }
+});
+
+app.patch('/api/children/:childId', requireParent, async (req: AuthRequest, res: Response) => {
+  const parsed = z.object({ childId: z.string().uuid(), avatar: AVATAR_KEY }).safeParse({ ...req.body, childId: req.params.childId });
+  if (!parsed.success) { res.status(400).json({ error: 'Choose one of the pictures.' }); return; }
+  try {
+    const child = await updateChildAvatar(req.parentId!, parsed.data.childId, parsed.data.avatar);
+    if (!child) { res.status(404).json({ error: 'Child profile was not found.' }); return; }
+    res.json(child);
+  } catch (err) { res.status(500).json({ error: 'Could not change the picture.', detail: err instanceof Error ? err.message : String(err) }); }
 });
 
 app.delete('/api/children/:childId', requireParent, async (req: AuthRequest, res: Response) => {

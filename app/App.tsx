@@ -12,7 +12,7 @@ import LoginScreen from './src/screens/LoginScreen';
 import HistoryScreen from './src/screens/HistoryScreen';
 import AppMenu from './src/components/AppMenu';
 import { AuthProvider, useAuth } from './src/auth/AuthContext';
-import { deleteAccount, deleteChildProfile, fetchTest, listChildren, saveChild, submitAnswers } from './src/api';
+import { deleteAccount, deleteChildProfile, fetchTest, listChildren, saveChild, submitAnswers, updateChildAvatar } from './src/api';
 import { supabase } from './src/auth/supabase';
 import { stopSpeaking } from './src/speech';
 import { colors } from './src/theme';
@@ -84,9 +84,9 @@ function KidCogApp() {
     setBusy(true); setError(null);
     try {
       const nickname = profile.firstName?.trim() || 'My child';
-      const saved = await saveChild(nickname, profile.age ?? 5);
-      const next = { ...profile, id: saved.id, firstName: saved.nickname };
-      setSavedChildren(current => current.some(item => item.id === saved.id) ? current : [...current, saved]);
+      const saved = await saveChild(nickname, profile.age ?? 5, profile.avatar);
+      const next = { ...profile, id: saved.id, firstName: saved.nickname, avatar: saved.avatar ?? profile.avatar };
+      setSavedChildren(current => current.some(item => item.id === saved.id) ? current.map(item => item.id === saved.id ? saved : item) : [...current, saved]);
       setChild(next);
       setSessionId(null);
       setStage('categories');
@@ -203,6 +203,12 @@ function KidCogApp() {
       if (child?.id === selected.id) setChild(null);
     } catch (err) { setError(messageOf(err)); throw err; }
   }, [child?.id]);
+  // Errors are shown inside the picture picker, so they are rethrown, not set here.
+  const changeAvatar = useCallback(async (selected: SavedChildProfile, avatar: string) => {
+    const updated = await updateChildAvatar(selected.id, avatar);
+    setSavedChildren(current => current.map(item => item.id === updated.id ? updated : item));
+    setChild(current => current?.id === updated.id ? { ...current, avatar: updated.avatar ?? undefined } : current);
+  }, []);
 
   if (authLoading || !session) return <LoginScreen />;
 
@@ -231,6 +237,7 @@ function KidCogApp() {
             savedChildren={savedChildren}
             onViewHistory={openHistory}
             onDeleteChild={deleteChild}
+            onChangeAvatar={changeAvatar}
           />}
 
           {stage === 'history' && historyChild && <HistoryScreen child={historyChild} onBack={restart} onOpen={(item) => { setHistorical(item); setStage('historical_result'); }} />}

@@ -145,8 +145,12 @@ export function listChildren(): Promise<SavedChildProfile[]> {
   return request<SavedChildProfile[]>('/api/children');
 }
 
-export function saveChild(nickname: string, age: number): Promise<SavedChildProfile> {
-  return request<SavedChildProfile>('/api/children', { method: 'POST', body: JSON.stringify({ nickname, age }) });
+export function saveChild(nickname: string, age: number, avatar?: string): Promise<SavedChildProfile> {
+  return request<SavedChildProfile>('/api/children', { method: 'POST', body: JSON.stringify({ nickname, age, ...(avatar ? { avatar } : {}) }) });
+}
+
+export function updateChildAvatar(childId: string, avatar: string): Promise<SavedChildProfile> {
+  return request<SavedChildProfile>(`/api/children/${encodeURIComponent(childId)}`, { method: 'PATCH', body: JSON.stringify({ avatar }) });
 }
 
 export function deleteChildProfile(childId: string): Promise<void> {
