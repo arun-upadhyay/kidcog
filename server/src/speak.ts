@@ -17,6 +17,7 @@
 
 import { createHash } from 'node:crypto';
 import OpenAI from 'openai';
+import { supabaseAdmin, supabaseReady } from './supabase.js';
 import { apiKeyProblem } from './grader.js';
 
 export const SPEECH_MIME = 'audio/mpeg';
@@ -49,7 +50,7 @@ function getClient(): OpenAI {
   if (!client) {
     const problem = apiKeyProblem();
     if (problem) throw new Error(problem);
-    client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, timeout: 30_000, maxRetries: 1 });
   }
   return client;
 }
@@ -81,7 +82,13 @@ export async function synthesizeSpeech(text: string): Promise<SpeechResult> {
 
   const pending = inFlight.get(key);
   if (pending) return pending;
-  const work = generateSpeech();
+  const work = (async () => {
+    const stored = await fromStorage(key);
+    if (stored) { remember(key, stored); return { audio: stored, cached: true }; }
+    const made = await generateSpeech();
+    void toStorage(key, made.audio);
+    return made;
+  })();
   inFlight.set(key, work);
   try { return await work; }
   finally { inFlight.delete(key); }
@@ -102,15 +109,51 @@ export async function synthesizeSpeech(text: string): Promise<SpeechResult> {
   }
 
   const audio = Buffer.from(await response.arrayBuffer());
+  remember(key, audio);
+  return { audio, cached: false };
+  }
+}
 
+function remember(key: string, audio: Buffer) {
   if (cache.size >= MAX_CACHED) {
     const oldest = cache.keys().next().value;
     if (oldest !== undefined) cache.delete(oldest);
   }
   cache.set(key, audio);
+}
 
-  return { audio, cached: false };
+/*
+ * Permanent copy in Supabase Storage (bucket "tts-cache", created by migration
+ * 202609280001_question_bank.sql). The memory cache above is lost on every
+ * restart or deploy; this one is not, so each question's audio is paid for
+ * once ever, however many children hear it. Any storage problem just means
+ * making the audio again, never a failed request.
+ */
+const BUCKET = 'tts-cache';
+let storageOff = false;
+function storageUsable() {
+  return !storageOff && supabaseReady() && typeof (supabaseAdmin as { storage?: unknown })?.storage === 'object';
+}
+function storageProblem(message: string) {
+  if (/bucket/i.test(message) && /not.?found|does not exist/i.test(message)) {
+    storageOff = true;
+    console.warn('  ⚠ Supabase Storage bucket "tts-cache" is missing, so read-aloud audio is only cached until restart. Run supabase/migrations/202609280001_question_bank.sql.');
   }
+}
+async function fromStorage(key: string): Promise<Buffer | null> {
+  if (!storageUsable()) return null;
+  try {
+    const { data, error } = await supabaseAdmin.storage.from(BUCKET).download(`${key}.mp3`);
+    if (error || !data) { if (error) storageProblem(error.message); return null; }
+    return Buffer.from(await data.arrayBuffer());
+  } catch { return null; }
+}
+async function toStorage(key: string, audio: Buffer) {
+  if (!storageUsable()) return;
+  try {
+    const { error } = await supabaseAdmin.storage.from(BUCKET).upload(`${key}.mp3`, audio, { contentType: 'audio/mpeg', upsert: true });
+    if (error) storageProblem(error.message);
+  } catch { /* the audio still plays; it just isn't kept */ }
 }
 
 export function speechCacheSize(): number {

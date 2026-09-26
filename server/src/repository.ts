@@ -84,8 +84,47 @@ export async function getOrCreateSession(parentId: string, childId: string, age:
 }
 
 export async function saveGeneratedQuestions(parentId: string, sessionId: string, questions: GeneratedQuestion[]) {
-  const rows = questions.map(question => ({ id: question.id, session_id: sessionId, parent_id: parentId, category_key: question.trait, question_type: question.type, prompt: question.prompt, private_payload: question }));
-  const { error } = await supabaseAdmin.from('generated_questions').upsert(rows, { onConflict: 'id' }); fail(error);
+  const rows = questions.map(question => ({ id: question.id, session_id: sessionId, parent_id: parentId, category_key: question.trait, question_type: question.type, prompt: question.prompt, private_payload: question, ...(question.bankQuestionId ? { bank_question_id: question.bankQuestionId } : {}) }));
+  let { error } = await supabaseAdmin.from('generated_questions').upsert(rows, { onConflict: 'id' });
+  // Before the question-bank migration there is no bank_question_id column.
+  if (error && /bank_question_id/i.test(error.message)) {
+    ({ error } = await supabaseAdmin.from('generated_questions').upsert(rows.map(({ bank_question_id: _unused, ...row }: Record<string, unknown>) => row), { onConflict: 'id' }));
+  }
+  fail(error);
+}
+
+// ---------------------------------------------------------------------------
+// Shared question bank (migration 202609280001_question_bank.sql)
+// ---------------------------------------------------------------------------
+
+export type BankCandidate = { id: string; type: 'open' | 'mcq'; skillFacet: string; prompt: string; question: GeneratedQuestion; servedCount: number; seen: boolean };
+
+/** Bank questions for this category and age, least used first, flagged if this child has had them. */
+export async function bankCandidates(parentId: string, childId: string, trait: string, age: number): Promise<BankCandidate[]> {
+  const { data, error } = await supabaseAdmin.rpc('bank_candidates', { p_parent: parentId, p_child: childId, p_category: trait, p_age: age, p_limit: 300 });
+  fail(error);
+  return ((data ?? []) as Array<{ id: string; question_type: 'open' | 'mcq'; skill_facet: string; prompt: string; payload: GeneratedQuestion; served_count: number; seen: boolean }>)
+    .map(row => ({ id: row.id, type: row.question_type, skillFacet: row.skill_facet, prompt: row.prompt, question: row.payload, servedCount: row.served_count, seen: row.seen }));
+}
+
+/** Adds checked questions to the bank. A question already there (same wording) is skipped. */
+export async function insertBankQuestions(trait: string, age: number, questions: GeneratedQuestion[]) {
+  if (questions.length === 0) return;
+  const rows = questions.map(q => ({ id: q.id, category_key: trait, age, question_type: q.type, skill_facet: q.skillFacet ?? '', prompt: q.prompt, payload: q }));
+  const { error } = await supabaseAdmin.from('question_bank').upsert(rows, { onConflict: 'category_key,age,prompt_key', ignoreDuplicates: true });
+  fail(error);
+}
+
+export async function markBankServed(ids: string[]) {
+  if (ids.length === 0) return;
+  const { error } = await supabaseAdmin.rpc('bank_mark_served', { p_ids: ids });
+  fail(error);
+}
+
+/** The written report arrives after the scores; this adds it to the saved result. */
+export async function saveParentReport(parentId: string, sessionId: string, report: Report) {
+  const { error } = await supabaseAdmin.from('assessment_sessions').update({ parent_report: report.parentReport ?? null, report_snapshot: report }).eq('id', sessionId).eq('parent_id', parentId);
+  fail(error);
 }
 
 export async function loadGeneratedQuestions(parentId: string, sessionId: string, ids: string[]): Promise<GeneratedQuestion[]> {

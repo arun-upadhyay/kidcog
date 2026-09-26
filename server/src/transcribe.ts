@@ -31,7 +31,7 @@ function getClient(): OpenAI {
     if (problem) {
       throw new Error(`${problem} Put a real key in server/.env, or set USE_MOCK_GRADER=1.`);
     }
-    client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, timeout: 30_000, maxRetries: 1 });
   }
   return client;
 }
@@ -58,7 +58,8 @@ export async function transcribeAnswer(
     return '[mock transcript] Set USE_MOCK_GRADER=0 for real speech-to-text.';
   }
 
-  const model = process.env.OPENAI_TRANSCRIBE_MODEL || 'whisper-1';
+  // gpt-4o-mini-transcribe: faster than whisper-1 and half the price per minute.
+  const model = process.env.OPENAI_TRANSCRIBE_MODEL || 'gpt-4o-mini-transcribe';
 
   // Prefer what the recorder declared; fall back to the extension. The client
   // reads the type off the blob, which is the only reliable source on web.

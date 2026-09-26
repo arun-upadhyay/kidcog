@@ -50,12 +50,14 @@ test('rounds enforce exact count, interaction variety and matching choice keys',
  assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[{...item(0),answerKey:'z'},item(1)]}),2));
  assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[item(0)]}),5));
 });
-test('age limits reject long prompts and choices and missing picture variety',()=>{
+test('age limits reject long prompts and choices; pictures stay optional',()=>{
  assert.equal(ageRules(5).maxOptions,3);
  assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[{...item(0),prompt:'word '.repeat(36)},item(1)]}),2,5));
  assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[{...item(0),options:[{key:'a',text:'a '.repeat(7),symbol:'⚽',shape:null},{key:'b',text:'Block',symbol:'🧱',shape:null}]},item(1)]}),2,5));
- assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[{...item(0),options:item(0).options!.map(o=>({...o,symbol:null,shape:null}))},item(1)]}),2,5));
- assert.throws(()=>validateGeneratedRound(JSON.stringify({questions:[{...item(0),options:item(0).options!.map(o=>({...o,symbol:'letter card'}))},item(1)]}),2,5));
+ // Pictures are optional (see validateGeneratedRound), so a round without any is valid.
+ assert.equal(validateGeneratedRound(JSON.stringify({questions:[{...item(0),options:item(0).options!.map(o=>({...o,symbol:null,shape:null}))},item(1)]}),2,5).length,2);
+ // A picture label that is not an emoji is dropped (the text label stays), not a reason to reject the question.
+ assert.ok(validateGeneratedRound(JSON.stringify({questions:[{...item(0),options:item(0).options!.map(o=>({...o,symbol:'letter card'}))},item(1)]}),2,5)[0]!.options!.every(o=>o.symbol===null));
 });
 test('picture choices stay visible while rubrics and keys stay private',()=>{
  const q=publicQuestion({id:'test',trait:'observant',type:'mcq',format:'classification',ageBand:[5,5],weight:1,prompt:'Which one is round?',rubric,answerKey:'a',optionScores:{a:3,b:1},options:[{key:'a',text:'Ball',symbol:'⚽'},{key:'b',text:'Block',figure:{shapes:[{kind:'square',fill:'solid'}]}}]});

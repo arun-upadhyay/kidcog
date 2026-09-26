@@ -156,7 +156,9 @@ function getClient(): OpenAI {
     if (problem) {
       throw new Error(`${problem} Put a real key in server/.env, AI generation and grading require a configured model.`);
     }
-    client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    // Bounded, so a stuck request fails in under a minute instead of hanging
+    // the results screen (the SDK default is 10 minutes).
+    client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, timeout: 45_000, maxRetries: 1 });
   }
   return client;
 }
@@ -166,7 +168,9 @@ export async function gradeOpenAnswers(items: GradeRequestItem[]): Promise<Grade
 
 
 
-  const model = process.env.OPENAI_MODEL || 'gpt-4o-mini';
+  // Scoring a few short answers against a written rubric is a small task: a
+  // fast, inexpensive model does it well. OPENAI_MODEL stays the fallback.
+  const model = process.env.OPENAI_GRADE_MODEL || process.env.OPENAI_MODEL || 'gpt-4o-mini';
 
   const completion = await getClient().chat.completions.create({
     model,
@@ -343,7 +347,7 @@ export async function generateParentReport(
 
 
   const completion = await getClient().chat.completions.create({
-    model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
+    model: process.env.OPENAI_REPORT_MODEL || process.env.OPENAI_MODEL || 'gpt-4o-mini',
     ...sampling(0.4),
     messages: [
       { role: 'system', content: reportSystemPrompt(report.responses.length) },

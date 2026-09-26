@@ -12,7 +12,7 @@ import LoginScreen from './src/screens/LoginScreen';
 import HistoryScreen from './src/screens/HistoryScreen';
 import AppMenu from './src/components/AppMenu';
 import { AuthProvider, useAuth } from './src/auth/AuthContext';
-import { deleteAccount, deleteChildProfile, fetchTest, listChildren, saveChild, submitAnswers, updateChildAvatar } from './src/api';
+import { deleteAccount, deleteChildProfile, fetchTest, getParentReport, listChildren, prefetchRound, saveChild, submitAnswers, updateChildAvatar } from './src/api';
 import { supabase } from './src/auth/supabase';
 import { stopSpeaking } from './src/speech';
 import { colors } from './src/theme';
@@ -94,6 +94,12 @@ function KidCogApp() {
     finally { setBusy(false); }
   }, []);
 
+  // Opening a category's sheet starts question-making in the background, so the
+  // round is usually ready by the time "Let's play" is tapped.
+  const previewCategory = useCallback((trait: TraitKey) => {
+    if (child?.id) prefetchRound(child.id, child.age ?? 5, trait);
+  }, [child?.id, child?.age]);
+
   const chooseRound = useCallback(async (trait: TraitKey, count: number) => {
     if (!child) return;
     try {
@@ -132,6 +138,12 @@ function KidCogApp() {
         if (!sessionId) throw new Error('This assessment session is missing. Start a new session.');
         const r = await submitAnswers({ sessionId, child, responses });
         setReport(r);
+        // Scores are back; the written note follows a few seconds later.
+        if (r.parentReportPending) {
+          getParentReport(sessionId)
+            .then(note => setReport(current => current === r ? { ...r, ...note, parentReportPending: false } : current))
+            .catch(err => setReport(current => current === r ? { ...r, parentReportPending: false, parentReportError: messageOf(err) } : current));
+        }
         setExplored(current => {
           const byKey = new Map(current.map(t => [t.key, t]));
           for (const t of r.traits) if (t.questionCount > 0) byKey.set(t.key, t);
@@ -244,7 +256,7 @@ function KidCogApp() {
 
           {stage === 'historical_result' && historical && <ResultsScreen report={historical.report} childName={historical.childName} completedAt={historical.completedAt} historical onBackToHistory={() => setStage('history')} onRestart={restart} onChooseCategory={() => {}} onReassess={() => {}} remainingUnseen={0} busy={false} error={null} />}
 
-          {stage === 'categories' && <CategoryScreen initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onReport={() => setStage('results')} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
+          {stage === 'categories' && <CategoryScreen initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} onReport={() => setStage('results')} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
 
           {stage === 'quiz' && test && (
             <QuizScreen test={test} onFinish={finish} onExit={leaveQuiz} submitting={busy} error={error} />

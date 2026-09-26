@@ -312,6 +312,11 @@ export default function ResultsScreen({
 
       {report.parentReport ? (
         <ParentReportCard report={report.parentReport} />
+      ) : report.parentReportPending ? (
+        <View style={styles.noteCard} accessibilityLiveRegion="polite">
+          <ActivityIndicator color={colors.primary} />
+          <Text style={styles.noteText}>Writing a short note for you… the scores below are ready now.</Text>
+        </View>
       ) : report.parentReportError ? (
         <View style={styles.warnCard}>
           <View style={styles.warnIconBubble}><Text style={styles.iconEmoji}>🌦️</Text></View>
@@ -559,6 +564,8 @@ const styles = StyleSheet.create({
   barTrack: { height: 10, backgroundColor: '#F3EEE7', borderRadius: 5, overflow: 'hidden' },
   barFill: { height: 10, borderRadius: 5 },
 
+  noteCard: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.25), marginTop: spacing(2), backgroundColor: '#F2EAFE', borderWidth: 2, borderColor: '#CABAF0', borderRadius: 20, padding: spacing(1.5) },
+  noteText: { flex: 1, fontSize: 14, lineHeight: 20, color: '#5A3E99', fontWeight: '700' },
   warnCard: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1.25), marginTop: spacing(2), backgroundColor: '#FFF0EE', borderWidth: 2, borderColor: '#F2A28E', borderRadius: 20, padding: spacing(1.5) },
   warnIconBubble: { width: 40, height: 40, borderRadius: 20, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' },
   warnText: { flex: 1, fontSize: 14, lineHeight: 20, color: '#9C402F', fontWeight: '600' },

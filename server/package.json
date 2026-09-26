@@ -10,7 +10,8 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit",
-    "restore-account": "tsx src/restoreAccount.ts"
+    "restore-account": "tsx src/restoreAccount.ts",
+    "fill-bank": "tsx src/fillBank.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.1",

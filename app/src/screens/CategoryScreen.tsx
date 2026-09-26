@@ -23,8 +23,10 @@ const ROUND_OPTIONS = [
  * The official category wording and description live in that sheet, not on
  * the tiles, so the screen stays mostly pictures.
  */
-export default function CategoryScreen({ onSelect, onReport, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
+export default function CategoryScreen({ onSelect, onPreview, onReport, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
   onSelect: (trait: TraitKey, count: number) => void;
+  /** A category's sheet was opened: a chance to get its questions ready early. */
+  onPreview?: (trait: TraitKey) => void;
   /** Last category and round length used, so coming back keeps the parent's choice. */
   initialCategory?: TraitKey;
   initialCount?: number;
@@ -140,7 +142,7 @@ export default function CategoryScreen({ onSelect, onReport, onBack, report, exp
           return (
             <View key={category.key} style={[styles.tileWrap, { width: tileWidth }]}>
               <Pressable
-                onPress={() => setOpenKey(category.key)}
+                onPress={() => { setOpenKey(category.key); onPreview?.(category.key); }}
                 disabled={busy}
                 accessibilityRole="button"
                 accessibilityLabel={`${CATEGORY_NAMES[category.key]}${done ? ', played before' : ''}`}

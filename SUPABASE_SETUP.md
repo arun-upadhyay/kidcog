@@ -138,3 +138,33 @@ npx eas-cli@latest submit --platform ios                            # upload to 
 
 EAS walks you through signing (Apple certificates, Android keystore) on the first build and stores them for you. Keep the Android upload key safe: Google Play needs the same key for every update.
 
+
+## 10. Question bank (speed and AI cost)
+
+Rounds are picked from a shared bank of checked questions instead of being
+written by the AI while a child waits. Questions depend only on the category
+and the child's age (never a name or an answer), so one question serves every
+child of that age, and the AI only runs in the background to top the bank up.
+
+1. Run `supabase/migrations/202609280001_question_bank.sql` in the SQL editor
+   (or `supabase db push`). It adds the `question_bank` table, two server-only
+   functions, a `bank_question_id` column on `generated_questions`, and a
+   private Storage bucket `tts-cache` for read-aloud audio.
+   Until you run it, the server keeps the bank in memory and prints a warning
+   at start-up; everything works, but the bank starts empty on each restart.
+2. Optional but recommended before launch: fill the bank so even the first
+   child never waits.
+
+   ```bash
+   cd server
+   npm run fill-bank                 # shows the plan and estimated cost, does nothing
+   npm run fill-bank -- --yes        # all 24 categories, ages 4–7, 24 questions each
+   ```
+
+   At gpt-4o-mini prices this is roughly $1–2 for everything, once.
+3. Check it at `http://localhost:4000/health`: `questionBank.store` should say
+   `database`.
+
+Limits and model choices are in `server/.env` (see `.env.example`):
+`QUESTION_BANK_MAX_PER_AGE`, `QUESTION_DAILY_BATCH_LIMIT`,
+`OPENAI_GRADE_MODEL`, `OPENAI_REPORT_MODEL`, `OPENAI_TRANSCRIBE_MODEL`.

@@ -35,7 +35,49 @@ export type ItemFormat =
   | 'quantitative_relation'
   | 'prediction'
   | 'explanation'
-  | 'choice';
+  | 'choice'
+  | 'game';
+/**
+ * Play-and-learn games. Made by code from a small content pack, not by the
+ * AI: instant, free, and always correct. The answer travels with the game
+ * because the app checks it on the spot to give the child instant feedback;
+ * these are practice games, so that is fine (the server re-checks on submit).
+ */
+export interface GameThing {
+  /** An emoji, or a short number/word shown on a card. */
+  emoji: string;
+  /** The word said and shown for it ("apple"). */
+  name: string;
+  /** Plural when it isn't just name + "s" ("fish", "butterflies"). */
+  plural?: string;
+}
+export type GameShape = 'circle' | 'square' | 'triangle' | 'star' | 'heart';
+export type GameSpec =
+  | { kind: 'count'; thing: GameThing; count: number; choices: number[]; answer: number }
+  | { kind: 'add'; thing: GameThing; a: number; b: number; choices: number[]; answer: number }
+  | { kind: 'subtract'; thing: GameThing; start: number; away: number; choices: number[]; answer: number }
+  | { kind: 'compare'; ask: 'more' | 'fewer'; groups: [{ thing: GameThing; count: number }, { thing: GameThing; count: number }]; answer: number }
+  | { kind: 'numberline'; max: number; start: number; hop: number; animal: GameThing; answer: number }
+  | { kind: 'tenframe'; filled: number; choices: number[]; answer: number }
+  | { kind: 'shapes'; target: GameShape; shapes: GameShape[]; answer: number[] }
+  | { kind: 'pattern'; sequence: GameThing[]; choices: GameThing[]; answer: number }
+  | { kind: 'sort'; baskets: [GameThing, GameThing]; items: GameThing[]; answer: number[] }
+  | { kind: 'order'; ask: string; items: GameThing[]; answer: number[] }
+  | { kind: 'match'; pairs: GameThing[]; answer: null }
+  | { kind: 'oddoneout'; items: GameThing[]; answer: number }
+  | { kind: 'truefalse'; picture: string; answer: boolean };
+export type GameKind = GameSpec['kind'];
+
+/**
+ * What the app sends back for a game: the final value, how many slips there
+ * were on the way, and whether it was solved.
+ */
+export interface GameResult {
+  v: unknown;
+  mistakes: number;
+  solved: boolean;
+}
+
 
 export type AgeProfileKey = 'early' | 'middle';
 
@@ -140,7 +182,15 @@ export interface ChallengeQuestion extends QuestionBase {
   hardKey: string;
 }
 
-export type Question = McqQuestion | OpenQuestion | ChallengeQuestion;
+/** A play-and-learn game (see GameSpec). Scored by code, never by the AI. */
+export interface GameQuestion extends QuestionBase {
+  type: 'game';
+  game: GameSpec;
+  /** Kept so every question has the same private shape the report expects. */
+  rubric: string[];
+}
+
+export type Question = McqQuestion | OpenQuestion | ChallengeQuestion | GameQuestion;
 
 /** The shape the app receives — answer keys and rubrics stripped out. */
 export interface PublicQuestion {
@@ -156,6 +206,8 @@ export interface PublicQuestion {
   spoken: string | null;
   /** Challenge items only: which question follows each choice. */
   followUp: Record<string, string> | null;
+  /** Games only: what to show and the answer the app checks against. */
+  game?: GameSpec | null;
   /**
    * Everything the child needs to hear, composed server-side: the question AND,
    * for multiple choice, the options. A pre-reader who hears only the question
@@ -297,4 +349,6 @@ export interface Report {
   disclaimer: string;
   parentReport?: ParentReport | null;
   parentReportError?: string;
+  /** True while the written note is still being prepared; fetch it with getParentReport. */
+  parentReportPending?: boolean;
 }

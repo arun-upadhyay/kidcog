@@ -3,7 +3,8 @@ import express, { type Request, type Response, type NextFunction } from 'express
 import cors from 'cors';
 import { z } from 'zod';
 
-import { generateRound, publicQuestion, generatedQuestionById, rememberGeneratedQuestion } from './generatedQuestions.js';
+import { publicQuestion, generatedQuestionById, rememberGeneratedQuestion } from './generatedQuestions.js';
+import { bankStatus, prefetchForChild, roundForChild } from './questionBank.js';
 import { TRAITS, TRAIT_ORDER, type TraitKey } from './traits.js';
 import { profileForAge } from './ageProfiles.js';
 import { transcribeAnswer } from './transcribe.js';
@@ -14,7 +15,8 @@ import type { PublicQuestion, TestPayload } from './types.js';
 import { supabaseReady, userIdFromBearer } from './supabase.js';
 import { isAccountDeleted, scheduleAccountDeletion, startPurgeSchedule, PURGE_AFTER_DAYS } from './accountDeletion.js';
 import { storeAppleAuthorizationCode } from './appleSignIn.js';
-import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, updateChildAvatar, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, saveGeneratedQuestions, saveReport } from './repository.js';
+import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, updateChildAvatar, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, saveGeneratedQuestions, saveParentReport, saveReport } from './repository.js';
+import type { Report } from './types.js';
 
 type AuthRequest = Request & { parentId?: string };
 async function requireParent(req: AuthRequest, res: Response, next: NextFunction) {
@@ -58,6 +60,7 @@ app.get('/health', (_req: Request, res: Response) => {
   res.json({
     ok: true,
     mockGrader: mock,
+    questionBank: bankStatus(),
     model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
     // So `curl /health` answers "is AI actually going to work?" without
     // having to submit a session to find out.
@@ -170,9 +173,10 @@ app.delete('/api/sessions/:sessionId', requireParent, async (req: AuthRequest, r
 });
 
 /** The test the app should present. Answer keys and rubrics stay on the server. */
+const TRAIT_KEY = z.enum(TRAIT_ORDER as [typeof TRAIT_ORDER[number], ...typeof TRAIT_ORDER[number][]]);
 const pendingRounds = new Map<string, Promise<TestPayload>>();
 app.post('/api/test', requireParent, async (req: AuthRequest, res: Response) => {
-  const input = z.object({ childProfileId: z.string().uuid(), sessionId: z.string().uuid().nullable().optional(), age: z.number().int().min(4).max(12), trait: z.enum(TRAIT_ORDER as [typeof TRAIT_ORDER[number], ...typeof TRAIT_ORDER[number][]]), count: z.union([z.literal(2), z.literal(5), z.literal(6)]), requestId: z.string().uuid() }).safeParse(req.body);
+  const input = z.object({ childProfileId: z.string().uuid(), sessionId: z.string().uuid().nullable().optional(), age: z.number().int().min(4).max(12), trait: TRAIT_KEY, count: z.union([z.literal(2), z.literal(5), z.literal(6)]), requestId: z.string().uuid() }).safeParse(req.body);
   if (!input.success) { res.status(400).json({ error: 'Choose an age, category, and 2, 5, or 6 questions.' }); return; }
   const { childProfileId, sessionId: requestedSessionId, age, trait, count, requestId } = input.data;
   const key = JSON.stringify([req.parentId, requestId, age, trait, count]);
@@ -181,19 +185,58 @@ app.post('/api/test', requireParent, async (req: AuthRequest, res: Response) => 
     let work = pendingRounds.get(key);
     if (!work) {
       work = (async () => {
+        const began = Date.now();
         const sessionId = await getOrCreateSession(req.parentId!, childProfileId, age, requestedSessionId);
-        const questions = await generateRound(age, trait, count);
+        const { questions, source } = await roundForChild({ parentId: req.parentId!, childId: childProfileId, age, trait, count });
         await saveGeneratedQuestions(req.parentId!, sessionId, questions);
-        return { sessionId, traits: TRAIT_ORDER.map(k => ({ ...TRAITS[k], group: TRAITS[k].group ?? 'intellectual' })), questions: questions.map(publicQuestion), questionCount: questions.length, followUpQuestions: {}, profile: profileForAge(age), poolExhausted: false, remainingUnseen: -1 };
+        console.info(`[round] ${trait} age ${age}, ${count} questions from ${source} in ${Date.now() - began}ms`);
+        const profile = profileForAge(age);
+        const publicQuestions = questions.map(publicQuestion);
+        if (profile.readAloud) warmSpeech(publicQuestions.map(q => q.speechText ?? q.prompt));
+        return { sessionId, traits: TRAIT_ORDER.map(k => ({ ...TRAITS[k], group: TRAITS[k].group ?? 'intellectual' })), questions: publicQuestions, questionCount: questions.length, followUpQuestions: {}, profile, poolExhausted: false, remainingUnseen: -1 };
       })();
       pendingRounds.set(key, work);
       void work.then(() => { const timer = setTimeout(() => pendingRounds.delete(key), 120_000); timer.unref(); }, () => pendingRounds.delete(key));
     }
     res.json(await work);
   } catch (err) {
-    res.status(502).json({ error: 'AI could not generate this round. Please try again.', detail: err instanceof Error ? err.message : String(err) });
+    res.status(502).json({ error: 'Could not get this round ready. Please try again.', detail: err instanceof Error ? err.message : String(err) });
   }
 });
+
+/**
+ * Called when a category is opened, before "Let's play": starts making
+ * questions in the background if this child doesn't have a round's worth
+ * ready. Answers straight away; never waits for the AI.
+ */
+app.post('/api/prefetch', requireParent, async (req: AuthRequest, res: Response) => {
+  const input = z.object({ childProfileId: z.string().uuid(), age: z.number().int().min(4).max(12), trait: TRAIT_KEY }).safeParse(req.body);
+  if (!input.success) { res.status(400).json({ error: 'Choose a child, age and category.' }); return; }
+  try {
+    if (!await childBelongsTo(req.parentId!, input.data.childProfileId)) { res.status(404).json({ error: 'Child profile was not found.' }); return; }
+    res.status(202).json(await prefetchForChild({ parentId: req.parentId!, childId: input.data.childProfileId, age: input.data.age, trait: input.data.trait }));
+  } catch (err) {
+    // Only a head start; the round itself will still work without it.
+    res.status(202).json({ ready: false, working: false, detail: err instanceof Error ? err.message : String(err) });
+  }
+});
+
+/**
+ * Make read-aloud audio for a new round in the background, two at a time, so
+ * tapping "Listen" plays straight away. Each text is made once ever (speak.ts
+ * keeps it), so a bank question served to many children is paid for once.
+ * Set TTS_PREWARM=0 to only make audio when someone taps.
+ */
+function warmSpeech(texts: string[]) {
+  if (process.env.TTS_PREWARM === '0' || process.env.USE_MOCK_GRADER === '1') return;
+  const queue = [...new Set(texts.filter(Boolean))];
+  const worker = async () => {
+    for (let text = queue.shift(); text; text = queue.shift()) {
+      await synthesizeSpeech(text).catch(error => console.warn(`[speak] warm-up failed: ${error instanceof Error ? error.message : error}`));
+    }
+  };
+  void Promise.all([worker(), worker()]);
+}
 
 /**
  * Speech for a question, as plain audio at a URL.
@@ -277,6 +320,27 @@ const SubmissionSchema = z.object({
     .max(100),
 });
 
+/** Written notes still being prepared, by session, so the app can wait for them. */
+const pendingReports = new Map<string, { parentId: string; work: Promise<Report> }>();
+
+app.get('/api/sessions/:sessionId/parent-report', requireParent, async (req: AuthRequest, res: Response) => {
+  const parsed = z.string().uuid().safeParse(req.params.sessionId);
+  if (!parsed.success) { res.status(400).json({ error: 'Invalid assessment session.' }); return; }
+  try {
+    const pending = pendingReports.get(parsed.data);
+    if (pending && pending.parentId === req.parentId) {
+      const finished = await pending.work;
+      res.json({ parentReport: finished.parentReport ?? null, parentReportError: finished.parentReportError ?? null });
+      return;
+    }
+    const saved = await historicalAssessment(req.parentId!, parsed.data);
+    if (!saved) { res.status(404).json({ error: 'This result is unavailable.' }); return; }
+    res.json({ parentReport: saved.report.parentReport ?? null, parentReportError: saved.report.parentReport ? null : 'The written note is not available for this result.' });
+  } catch (err) {
+    res.status(500).json({ error: 'Could not load the written note.', detail: err instanceof Error ? err.message : String(err) });
+  }
+});
+
 app.post('/api/submit', requireParent, async (req: AuthRequest, res: Response) => {
   const parsed = SubmissionSchema.safeParse(req.body);
   if (!parsed.success) {
@@ -291,21 +355,32 @@ app.post('/api/submit', requireParent, async (req: AuthRequest, res: Response) =
     const ownedQuestions = await loadGeneratedQuestions(req.parentId!, sessionId, responses.map(r => r.questionId));
     if (ownedQuestions.length !== responses.length) { res.status(410).json({ error: 'These questions do not belong to this parent session.' }); return; }
     ownedQuestions.forEach(rememberGeneratedQuestion);
+    const began = Date.now();
     const report = await scoreSubmission(responses);
 
-    // The written report is generated from the scores, not the other way round.
-    // If it fails, the scores still stand, so never let it fail the request.
-    try {
-      report.parentReport = await generateParentReport(report, child?.firstName, child?.age);
-    } catch (err) {
-      report.parentReport = null;
-      report.parentReportError = err instanceof Error ? err.message : String(err);
-      console.error(`\n  ✗ REPORT GENERATION FAILED\n    ${report.parentReportError}\n`);
-    }
-
+    // Scores go back as soon as they exist; the written note for the grown-up
+    // is written afterwards and fetched by the app (GET .../parent-report).
+    // It used to be generated first, which added a second AI call's worth of
+    // waiting to every finished round.
+    report.parentReportPending = true;
     await saveReport(req.parentId!, sessionId, responses, report);
-
+    console.info(`[submit] scored ${responses.length} answers in ${Date.now() - began}ms`);
     res.json(report);
+
+    const writing = (async () => {
+      const finished: Report = { ...report, parentReportPending: false };
+      try {
+        finished.parentReport = await generateParentReport(report, child?.firstName, child?.age);
+      } catch (err) {
+        finished.parentReport = null;
+        finished.parentReportError = err instanceof Error ? err.message : String(err);
+        console.error(`\n  ✗ REPORT GENERATION FAILED\n    ${finished.parentReportError}\n`);
+      }
+      await saveParentReport(req.parentId!, sessionId, finished).catch(err => console.error('Could not save the written report:', err));
+      return finished;
+    })();
+    pendingReports.set(sessionId, { parentId: req.parentId!, work: writing });
+    void writing.finally(() => { const timer = setTimeout(() => pendingReports.delete(sessionId), 120_000); timer.unref(); });
   } catch (err) {
     console.error('Scoring failed:', err);
     res.status(500).json({

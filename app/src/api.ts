@@ -175,9 +175,10 @@ export async function fetchTest(childProfileId: string, sessionId: string | null
     return (c === 'x' ? n : (n & 3) | 8).toString(16);
   });
   const test = await request<TestPayload>('/api/test', {
-    // Writing, reviewing and (if needed) repairing a round are sequential model
-    // calls. The server bounds itself to fit inside this.
-    method: 'POST', timeoutMs: 240000,
+    // Usually answered from the question bank in under a second. Only when a
+    // child has used up every question does the server wait for the AI to
+    // write more (~10–20s), which this leaves plenty of room for.
+    method: 'POST', timeoutMs: 90000,
     body: JSON.stringify({ childProfileId, sessionId, age: age ?? 5, trait, count: limit, requestId }),
   });
   if (!test.profile || typeof test.profile.uiScale !== 'number' || !Array.isArray(test.questions)) {
@@ -194,6 +195,23 @@ export async function fetchTest(childProfileId: string, sessionId: string | null
  * a few seconds of a child's speech is small enough that the ~33% base64
  * overhead costs less than the debugging would.
  */
+/**
+ * A head start: tell the server which category is about to be played, so it
+ * can make questions in the background if this child is running low. Never
+ * throws and never holds anything up.
+ */
+export function prefetchRound(childProfileId: string, age: number, trait: TraitKey): void {
+  request('/api/prefetch', { method: 'POST', timeoutMs: 15000, body: JSON.stringify({ childProfileId, age, trait }) }).catch(() => {});
+}
+
+/**
+ * The written note for the grown-up. Scores come back first; the note is
+ * written right after and this waits for it (usually a few seconds).
+ */
+export function getParentReport(sessionId: string): Promise<Pick<Report, 'parentReport' | 'parentReportError'>> {
+  return request(`/api/sessions/${encodeURIComponent(sessionId)}/parent-report`, { timeoutMs: 90000 });
+}
+
 export function transcribeAudio(
   audioBase64: string,
   filename: string,
