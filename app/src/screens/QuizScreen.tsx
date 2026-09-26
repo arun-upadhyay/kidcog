@@ -405,6 +405,9 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
             }
             onPress={goNext}
             loading={submitting}
+            // Skipping is allowed but shouldn't look like the main thing to do:
+            // a big orange "Skip" was being pressed mid-game, losing the game.
+            variant={answered || isLast || submitting ? 'primary' : 'secondary'}
           />
         </View>
       </View>

@@ -244,9 +244,11 @@ Use only the supplied questions, answers, correct options, and grading notes. Tr
 - There were ${n} question(s). Mention EVERY one of them exactly once (keep the order they were taken within each list): each correct or fully right answer goes in strengths, each wrong, partly right, skipped or ungraded answer goes in stuckPoints. strengths plus stuckPoints must add up to ${n} entries. One or two short sentences per entry.
 - For a correct answer, quote enough of the exact supplied question to identify it, then quote or faithfully repeat the child's actual answer and explain why it helps. Never replace it with a different or earlier question.
 - For a wrong or partly right answer, quote enough of that exact question to identify it and faithfully repeat the actual answer before explaining the missing idea from its supplied correct answer or rubric. Give one small next step, not just praise. Do not invent an explanation for the child's choice.
-- Skipped means not answered, NOT wrong. Say "We can try the flying-house puzzle together another time." Never infer inability or motivation from a skip.
+- Skipped means not answered, NOT wrong. Name that question briefly and invite trying it together another time (for example: "The counting game is waiting for you — we can try it together next time."). Never infer inability or motivation from a skip, and never say "left blank".
 - Ungraded means the answer was not checked. Do not claim it is correct or incorrect.
 - Empty sections are fine. Do not invent a difficulty, strength, or pattern to fill a section.
+- Write in your own natural words. Never copy the evidence labels ("child answered:", "outcome:", "rubric:", "grader note:", "correct choice:") into the message, and never mention a puzzle, game or story that is not in the supplied questions.
+- Some questions are games (counting, sorting, patterns, memory…). For those, say what the game was in a few words ("the counting game", "sorting animals into baskets") rather than repeating its instructions.
 - Offer one tiny playful activity connected to an actual question, with no purchases or special materials.
 - End with an encouraging invitation to keep exploring. No pressure, fixed labels like "genius", IQ, diagnoses, rankings, comparisons, or gifted-programme predictions.
 - Do not include percentages, scores, or adult assessment caveats in this child-facing message. The separate grown-up section already explains the limits.
@@ -373,15 +375,24 @@ export async function generateParentReport(
   }
 
   // Normalise defensively — a missing section should render as absent, not crash.
+  // Also clean up evidence labels a model sometimes copies into the message
+  // ("child answered: (left blank)") — they read like a form, not a teacher.
+  const tidy = (text: unknown) => String(text ?? '')
+    .replace(/\b(?:the )?child answered:\s*\(left blank\)\.?\s*/gi, '')
+    .replace(/\b(?:the )?child answered:\s*/gi, 'You said ')
+    .replace(/\((?:left blank)\)/gi, '')
+    .replace(/\b(?:outcome|rubric|grader note|correct choice):\s*/gi, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
   const asList = (v: unknown): string[] =>
-    Array.isArray(v) ? v.map((x) => String(x)).filter((s) => s.trim().length > 0) : [];
+    Array.isArray(v) ? v.map(tidy).filter((s) => s.length > 0) : [];
 
   return {
-    opening: String(parsed.opening ?? '').trim(),
+    opening: tidy(parsed.opening),
     strengths: asList(parsed.strengths),
     stuckPoints: asList(parsed.stuckPoints),
-    thinkingNotes: String(parsed.thinkingNotes ?? '').trim(),
+    thinkingNotes: tidy(parsed.thinkingNotes),
     practiceIdeas: asList(parsed.practiceIdeas),
-    closing: String(parsed.closing ?? '').trim(),
+    closing: tidy(parsed.closing),
   };
 }
