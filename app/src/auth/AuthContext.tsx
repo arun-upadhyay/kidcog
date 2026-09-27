@@ -14,7 +14,7 @@ type AuthValue = {
   session: Session | null;
   loading: boolean;
   configured: boolean;
-  signIn: (provider: Extract<Provider, 'google' | 'apple'>) => Promise<void>;
+  signIn: (provider: Extract<Provider, 'google' | 'apple' | 'facebook'>) => Promise<void>;
   /** Native Apple sheet on iPhone; browser sign-in elsewhere. Resolves quietly if the parent cancels. */
   signInWithApple: () => Promise<void>;
   signInWithEmail: (email: string, password: string) => Promise<void>;
@@ -59,12 +59,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => subscription.remove();
   }, []);
 
-  async function signIn(provider: Extract<Provider, 'google' | 'apple'>) {
+  async function signIn(provider: Extract<Provider, 'google' | 'apple' | 'facebook'>) {
     if (!supabaseConfigured) throw new Error('Add the Supabase public settings to app/.env first.');
     const redirectTo = Linking.createURL('auth/callback');
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider,
-      options: { redirectTo, skipBrowserRedirect: Platform.OS !== 'web' },
+      // Facebook: ask only for the email address (no profile, friends or photos).
+      options: { redirectTo, skipBrowserRedirect: Platform.OS !== 'web', ...(provider === 'facebook' ? { scopes: 'email' } : {}) },
     });
     if (error) throw error;
     if (Platform.OS === 'web' || !data.url) return;

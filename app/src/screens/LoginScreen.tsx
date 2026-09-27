@@ -20,7 +20,7 @@ export default function LoginScreen() {
   const [mode, setMode] = useState<'signIn' | 'create'>('signIn');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [busy, setBusy] = useState<'google' | 'apple' | 'email' | 'resend' | null>(null);
+  const [busy, setBusy] = useState<'google' | 'apple' | 'facebook' | 'email' | 'resend' | null>(null);
   // Apple's own button on iPhone. On Android and web, Apple sign-in needs an
   // Apple "Services ID" set up in Supabase first, so it is shown only once
   // EXPO_PUBLIC_APPLE_SIGNIN_WEB=1 says that has been done.
@@ -30,6 +30,11 @@ export default function LoginScreen() {
     AppleAuthentication.isAvailableAsync().then(setAppleNative).catch(() => setAppleNative(false));
   }, []);
   const showApple = Platform.OS === 'ios' ? appleNative : process.env.EXPO_PUBLIC_APPLE_SIGNIN_WEB === '1';
+  // Facebook needs a Facebook app set up in Supabase first, so the button is
+  // shown only once EXPO_PUBLIC_FACEBOOK_SIGNIN=1 says that has been done.
+  const showFacebook = process.env.EXPO_PUBLIC_FACEBOOK_SIGNIN === '1';
+  const socialNames = [showApple && 'Apple', 'Google', showFacebook && 'Facebook'].filter(Boolean) as string[];
+  const socialList = socialNames.length > 1 ? `${socialNames.slice(0, -1).join(', ')} or ${socialNames[socialNames.length - 1]}` : socialNames[0]!;
   const [error, setError] = useState<string | null>(null);
   const [verificationEmail, setVerificationEmail] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -42,8 +47,10 @@ export default function LoginScreen() {
     } else if (/user is banned|banned/i.test(message)) {
       // Deleted accounts are blocked from signing in during the 30-day grace period.
       setError('This account was deleted. It will be permanently erased 30 days after deletion. To restore it before then, contact the KidCog team.');
+    } else if (/provider is not enabled|unsupported provider/i.test(message)) {
+      setError('This sign-in option is not switched on yet. Please use another option for now.');
     } else if (/invalid login credentials/i.test(message)) {
-      setError('That email or password does not match. If you previously used Google, continue with Google. Otherwise, create an email account first.');
+      setError(`That email or password does not match. If you previously used ${socialList}, continue with that below. Otherwise, create an email account first.`);
     } else {
       setError(message);
     }
@@ -59,6 +66,13 @@ export default function LoginScreen() {
   async function startGoogle() {
     setBusy('google'); setError(null); setNotice(null);
     try { await signIn('google'); }
+    catch (err) { showError(err); }
+    finally { setBusy(null); }
+  }
+
+  async function startFacebook() {
+    setBusy('facebook'); setError(null); setNotice(null);
+    try { await signIn('facebook'); }
     catch (err) { showError(err); }
     finally { setBusy(null); }
   }
@@ -175,7 +189,7 @@ export default function LoginScreen() {
                 loading={busy === 'email'}
               />
               {mode === 'signIn' ? (
-                <Text style={styles.signInHint}>{showApple ? 'Used Apple or Google before? Continue with them below. They' : 'Used Google before? Continue with Google below. It'} {showApple ? 'do' : 'does'} not automatically have a KidCog password.</Text>
+                <Text style={styles.signInHint}>{socialNames.length > 1 ? `Used ${socialList} before? Continue with it below. Those accounts do` : 'Used Google before? Continue with Google below. It does'} not automatically have a KidCog password.</Text>
               ) : null}
 
               <View style={styles.divider}><View style={styles.rule} /><Text style={styles.or}>OR</Text><View style={styles.rule} /></View>
@@ -205,6 +219,20 @@ export default function LoginScreen() {
                 )
               ) : null}
               <Button title={busy === 'google' ? 'Opening Google…' : 'Continue with Google'} variant="secondary" onPress={() => void startGoogle()} disabled={!configured || busy !== null} loading={busy === 'google'} />
+              {showFacebook ? (
+                <Pressable
+                  onPress={() => void startFacebook()}
+                  disabled={!configured || busy !== null}
+                  accessibilityRole="button"
+                  accessibilityLabel="Continue with Facebook"
+                  style={({ pressed }) => [styles.facebook, (!configured || busy !== null) && styles.appleBusy, pressed && { opacity: 0.85 }]}
+                >
+                  {busy === 'facebook'
+                    ? <ActivityIndicator color="#FFFFFF" style={{ marginRight: spacing(1) }} />
+                    : <View style={styles.facebookMark} accessible={false}><Text style={styles.facebookF}>f</Text></View>}
+                  <Text style={styles.appleWebText}>{busy === 'facebook' ? 'Opening Facebook…' : 'Continue with Facebook'}</Text>
+                </Pressable>
+              ) : null}
             </>
           )}
           <Text style={[type.soft, styles.note]}>This account belongs to the parent or guardian. Children do not sign in.</Text>
@@ -242,6 +270,10 @@ const styles = StyleSheet.create({
   appleBusy: { opacity: 0.5 },
   appleWeb: { minHeight: 52, borderRadius: 14, backgroundColor: '#000000', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: spacing(1.5) },
   appleWebText: { color: '#FFFFFF', fontSize: 16, fontWeight: '600' },
+  // Facebook's brand blue and white "f", per its login button guidelines.
+  facebook: { minHeight: 52, borderRadius: 14, backgroundColor: '#1877F2', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: spacing(1.5) },
+  facebookMark: { width: 22, height: 22, borderRadius: 11, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'flex-end', overflow: 'hidden', marginRight: spacing(1) },
+  facebookF: { color: '#1877F2', fontSize: 20, lineHeight: 21, fontWeight: '900', marginBottom: -3, marginLeft: 3 },
   verifyCard: { backgroundColor: colors.surface, borderColor: colors.line, borderWidth: 1.5, borderRadius: 20, padding: spacing(3) },
   verifyIcon: { fontSize: 42, textAlign: 'center', marginBottom: spacing(1) },
   cardTitle: { ...type.heading, textAlign: 'center', marginBottom: spacing(1) },
