@@ -64,8 +64,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const redirectTo = Linking.createURL('auth/callback');
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider,
-      // Facebook: ask only for the email address (no profile, friends or photos).
-      options: { redirectTo, skipBrowserRedirect: Platform.OS !== 'web', ...(provider === 'facebook' ? { scopes: 'email' } : {}) },
+      // Supabase already asks Facebook for the email address only.
+      options: { redirectTo, skipBrowserRedirect: Platform.OS !== 'web' },
     });
     if (error) throw error;
     if (Platform.OS === 'web' || !data.url) return;
