@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import * as AppleAuthentication from 'expo-apple-authentication';
 import Button from '../components/Button';
+import SocialButton from '../components/SocialButton';
 import { useAuth } from '../auth/AuthContext';
 import { colors, spacing, type, column, GUTTER } from '../theme';
 
@@ -189,7 +190,7 @@ export default function LoginScreen() {
                 loading={busy === 'email'}
               />
               {mode === 'signIn' ? (
-                <Text style={styles.signInHint}>{socialNames.length > 1 ? `Used ${socialList} before? Continue with it below. Those accounts do` : 'Used Google before? Continue with Google below. It does'} not automatically have a KidCog password.</Text>
+                <Text style={styles.signInHint}>Signed up with {socialList}? Use the same button below — those accounts don’t have a KidCog password.</Text>
               ) : null}
 
               <View style={styles.divider}><View style={styles.rule} /><Text style={styles.or}>OR</Text><View style={styles.rule} /></View>
@@ -206,32 +207,12 @@ export default function LoginScreen() {
                     />
                   </View>
                 ) : (
-                  <Pressable
-                    onPress={() => void startApple()}
-                    disabled={!configured || busy !== null}
-                    accessibilityRole="button"
-                    accessibilityLabel="Continue with Apple"
-                    style={({ pressed }) => [styles.appleWeb, (!configured || busy !== null) && styles.appleBusy, pressed && { opacity: 0.85 }]}
-                  >
-                    {busy === 'apple' ? <ActivityIndicator color="#FFFFFF" style={{ marginRight: spacing(1) }} /> : null}
-                    <Text style={styles.appleWebText}>{busy === 'apple' ? 'Opening Apple…' : 'Continue with Apple'}</Text>
-                  </Pressable>
+                  <SocialButton provider="apple" onPress={() => void startApple()} disabled={!configured || busy !== null} busy={busy === 'apple'} />
                 )
               ) : null}
-              <Button title={busy === 'google' ? 'Opening Google…' : 'Continue with Google'} variant="secondary" onPress={() => void startGoogle()} disabled={!configured || busy !== null} loading={busy === 'google'} />
+              <SocialButton provider="google" onPress={() => void startGoogle()} disabled={!configured || busy !== null} busy={busy === 'google'} />
               {showFacebook ? (
-                <Pressable
-                  onPress={() => void startFacebook()}
-                  disabled={!configured || busy !== null}
-                  accessibilityRole="button"
-                  accessibilityLabel="Continue with Facebook"
-                  style={({ pressed }) => [styles.facebook, (!configured || busy !== null) && styles.appleBusy, pressed && { opacity: 0.85 }]}
-                >
-                  {busy === 'facebook'
-                    ? <ActivityIndicator color="#FFFFFF" style={{ marginRight: spacing(1) }} />
-                    : <View style={styles.facebookMark} accessible={false}><Text style={styles.facebookF}>f</Text></View>}
-                  <Text style={styles.appleWebText}>{busy === 'facebook' ? 'Opening Facebook…' : 'Continue with Facebook'}</Text>
-                </Pressable>
+                <SocialButton provider="facebook" onPress={() => void startFacebook()} disabled={!configured || busy !== null} busy={busy === 'facebook'} />
               ) : null}
             </>
           )}
@@ -268,12 +249,6 @@ const styles = StyleSheet.create({
   appleWrap: { marginBottom: spacing(1.5) },
   appleButton: { width: '100%', height: 52 },
   appleBusy: { opacity: 0.5 },
-  appleWeb: { minHeight: 52, borderRadius: 14, backgroundColor: '#000000', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: spacing(1.5) },
-  appleWebText: { color: '#FFFFFF', fontSize: 16, fontWeight: '600' },
-  // Facebook's brand blue and white "f", per its login button guidelines.
-  facebook: { minHeight: 52, borderRadius: 14, backgroundColor: '#1877F2', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: spacing(1.5) },
-  facebookMark: { width: 22, height: 22, borderRadius: 11, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'flex-end', overflow: 'hidden', marginRight: spacing(1) },
-  facebookF: { color: '#1877F2', fontSize: 20, lineHeight: 21, fontWeight: '900', marginBottom: -3, marginLeft: 3 },
   verifyCard: { backgroundColor: colors.surface, borderColor: colors.line, borderWidth: 1.5, borderRadius: 20, padding: spacing(3) },
   verifyIcon: { fontSize: 42, textAlign: 'center', marginBottom: spacing(1) },
   cardTitle: { ...type.heading, textAlign: 'center', marginBottom: spacing(1) },
