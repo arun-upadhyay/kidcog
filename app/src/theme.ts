@@ -48,7 +48,9 @@ export const spacing = (n: number): number => n * 8;
  * categories, questions, results, history, the top bar and the pop-up sheets)
  * stays in the same centred column instead of some stretching edge to edge.
  */
-export const CONTENT_MAX_WIDTH = 640;
+// 760: on a laptop the question text runs about 45–60 characters a line (easy
+// to read aloud and follow), and answers fit side by side; phones are unchanged.
+export const CONTENT_MAX_WIDTH = 760;
 export const column = { width: '100%', maxWidth: CONTENT_MAX_WIDTH, alignSelf: 'center' } as const;
 /** Side padding inside the column, the same on every screen so edges line up. */
 export const GUTTER = spacing(2.5);

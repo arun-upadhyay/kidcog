@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   ScrollView,
+  useWindowDimensions,
   ActivityIndicator,
   Pressable,
   TextInput,
@@ -20,7 +21,7 @@ import VoiceAnswer from '../components/VoiceAnswer';
 import GameView from '../games/GameView';
 import { CATEGORY_NAMES, CATEGORY_VISUALS } from '../categoryVisuals';
 import Figure, { CellView } from '../components/Figure';
-import { colors, spacing, type, scaled, OPTION_COLORS, PRAISE, column, GUTTER } from '../theme';
+import { colors, spacing, type, scaled, OPTION_COLORS, PRAISE, column, GUTTER, CONTENT_MAX_WIDTH } from '../theme';
 import { speak, stopSpeaking, useSpeechState } from '../speech';
 import type { PublicQuestion, ResponseInput, TestPayload } from '../types';
 
@@ -63,6 +64,7 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
   // after it, so picking "a tricky one" actually gets you the tricky one.
   const [sequence, setSequence] = useState<PublicQuestion[]>(test.questions);
   const [index, setIndex] = useState(0);
+  const { width } = useWindowDimensions();
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [elapsed, setElapsed] = useState<Record<string, number>>({});
   const [praise, setPraise] = useState<string | null>(null);
@@ -97,6 +99,15 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
    * ask first, so a stray tap by a child does not throw away their answers.
    */
   const answeredCount = Object.values(answers).filter((a) => a.trim().length > 0).length;
+  // Each new question starts at the top, so its first lines are never hidden
+  // under the bar from wherever the last question was scrolled to.
+  const scrollRef = useRef<ScrollView>(null);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ y: 0, animated: false });
+    setScrolled(false);
+  }, [index]);
+
   const leaveRef = useRef<() => void>(() => {});
   leaveRef.current = () => {
     if (submitting) return;
@@ -215,51 +226,69 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
   }
 
   const young = profile.key === 'early';
+  // Long questions get slightly smaller text so the answers stay in view.
+  const promptLength = (question.prompt ?? '').length;
+  const narrow = width < 480;
+  // One calm type scale (not multiplied by the age scale, which is for tap
+  // targets): questions 24/21 px, very long ones 21/18 px, answers 20/18 px.
+  const promptSize = promptLength > 110 ? (narrow ? 18 : 21) : (narrow ? 21 : 24);
+  const answerSize = narrow ? 18 : 20;
+  const listenSize = promptLength > 70 || narrow ? 48 : 60;
+  // Answer layout: one column on phones; two (or three very short ones) side by side on wider screens.
+  const optionsInner = Math.min(width, CONTENT_MAX_WIDTH) - GUTTER * 2;
+  const options = question.options ?? [];
+  const longest = Math.max(0, ...options.map(o => (o.text ?? '').length));
+  const optionColumns = optionsInner < 560 || options.length > 4 || longest > 28 || options.some(o => o.figure)
+    ? 1
+    : options.length === 3 && longest <= 12 && optionsInner >= 640 ? 3 : 2;
 
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
-      <View style={styles.header}>
-        <View style={styles.topBar}>
-          <Pressable
-            onPress={() => leaveRef.current()}
-            disabled={submitting}
-            accessibilityRole="button"
-            accessibilityLabel="Go back and choose another activity"
-            hitSlop={8}
-            style={({ pressed }) => [styles.leaveButton, (pressed || submitting) && { opacity: 0.6 }]}
-          >
-            <Text style={styles.leaveText}>← Back</Text>
-          </Pressable>
-        </View>
-        {young ? (
-          <ProgressDots total={sequence.length} current={index} scale={s} />
-        ) : (
-          <View style={styles.progressTrack}>
-            <View style={[styles.progressFill, { width: `${progress * 100}%` }]} />
+      {/* A compact bar that stays put: Back, progress, stars. The question
+          scrolls underneath it, and a soft edge appears so that is obvious. */}
+      <View style={[styles.headerWrap, scrolled && styles.headerScrolled]}>
+        <View style={styles.header}>
+          <View style={styles.topBar}>
+            <Pressable
+              onPress={() => leaveRef.current()}
+              disabled={submitting}
+              accessibilityRole="button"
+              accessibilityLabel="Go back and choose another activity"
+              hitSlop={8}
+              style={({ pressed }) => [styles.leaveButton, (pressed || submitting) && { opacity: 0.6 }]}
+            >
+              <Text style={styles.leaveText}>← Back</Text>
+            </Pressable>
+            <View style={styles.progressArea} accessibilityLabel={`Question ${index + 1} of ${sequence.length}`}>
+              {young ? (
+                <ProgressDots total={sequence.length} current={index} scale={s} />
+              ) : (
+                <View style={styles.progressTrack}>
+                  <View style={[styles.progressFill, { width: `${progress * 100}%` }]} />
+                </View>
+              )}
+            </View>
+            {sequence.some((q) => q.type === 'game') ? (
+              <Text style={styles.starCount} accessibilityLabel={`${stars} stars so far`}>⭐ {stars}</Text>
+            ) : remaining !== null ? (
+              <Text style={[styles.timer, remaining <= 20 && { color: colors.warn }]}>
+                {String(Math.floor(remaining / 60)).padStart(2, '0')}:{String(remaining % 60).padStart(2, '0')}
+              </Text>
+            ) : <View style={styles.topBarSpacer} />}
           </View>
-        )}
-
-        <Text style={[type.heading, { marginBottom: spacing(1) }]}>{CATEGORY_VISUALS[question.trait]?.icon ?? '⭐'} {CATEGORY_NAMES[question.trait] ?? test.traits.find((t) => t.key === question.trait)?.label ?? 'Thinking activity'}</Text>
-        <View style={styles.headerRow}>
-          <Text style={type.label}>
-            {`QUESTION ${index + 1} OF ${sequence.length}`}
-          </Text>
-          {sequence.some((q) => q.type === 'game') ? (
-            <Text style={styles.starCount} accessibilityLabel={`${stars} stars so far`}>⭐ {stars}</Text>
-          ) : null}
-          {remaining !== null && (
-            <Text style={[type.label, remaining <= 20 && { color: colors.warn }]}>
-              {String(Math.floor(remaining / 60)).padStart(2, '0')}:
-              {String(remaining % 60).padStart(2, '0')}
-            </Text>
-          )}
         </View>
       </View>
 
-      <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
+      <ScrollView
+        ref={scrollRef}
+        contentContainerStyle={styles.body}
+        keyboardShouldPersistTaps="handled"
+        scrollEventThrottle={32}
+        onScroll={e => { const down = e.nativeEvent.contentOffset.y > 4; if (down !== scrolled) setScrolled(down); }}
+      >
         {test.poolExhausted ? <Text style={[type.soft, { marginBottom: spacing(1.5) }]}>This round uses the {test.questionCount} available questions in this category for your age.</Text> : null}
         {question.figure ? (
           <View style={styles.visualCard}>
@@ -273,9 +302,14 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
           </View>
         ) : null}
 
-        <Text style={[type.label, { marginBottom: spacing(1) }]}>{question.type === 'game' ? '🎮 LET’S PLAY!' : question.type === 'mcq' ? (question.options?.some(o=>o.symbol || o.figure) ? '🖼️ TAP A PICTURE' : '👆 TAP YOUR ANSWER') : '🎤 TELL US YOUR IDEA'}</Text>
+        <View style={styles.questionCard}>
+        <View style={styles.cardTop}>
+          <Text style={styles.activityName} numberOfLines={1}>{CATEGORY_VISUALS[question.trait]?.icon ?? '⭐'} {CATEGORY_NAMES[question.trait] ?? test.traits.find((t) => t.key === question.trait)?.label ?? 'Thinking activity'}</Text>
+          <Text style={styles.questionCount}>{index + 1} of {sequence.length}</Text>
+        </View>
+        <Text style={styles.kindLabel}>{question.type === 'game' ? '🎮 LET’S PLAY!' : question.type === 'mcq' ? (question.options?.some(o=>o.symbol || o.figure) ? '🖼️ TAP A PICTURE' : '👆 TAP YOUR ANSWER') : '🎤 TELL US YOUR IDEA'}</Text>
         <View style={styles.promptRow}>
-          <Text style={[styles.prompt, { fontSize: scaled(22, s), lineHeight: scaled(32, s) }]}>
+          <Text style={[styles.prompt, { fontSize: promptSize, lineHeight: Math.round(promptSize * 1.35) }]}>
             {question.prompt}
           </Text>
           {profile.readAloud && (
@@ -287,23 +321,29 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
               onPress={() => void speak(question.speechText || question.prompt)}
               style={({ pressed }) => [styles.listen, pressed && { transform: [{ scale: 0.95 }] }]}
             >
-              <View style={[styles.listenCircle, { width: scaled(60, s), height: scaled(60, s), borderRadius: scaled(30, s) }, speechBusy && styles.listenCircleBusy]}>
+              <View style={[styles.listenCircle, { width: scaled(listenSize, s), height: scaled(listenSize, s), borderRadius: scaled(listenSize / 2, s) }, speechBusy && styles.listenCircleBusy]}>
                 {speechState === 'loading'
                   ? <ActivityIndicator color="#FFFFFF" />
-                  : <SpeakerIcon size={scaled(32, s)} color="#FFFFFF" />}
+                  : <SpeakerIcon size={scaled(Math.round(listenSize * 0.53), s)} color="#FFFFFF" />}
               </View>
               <Text style={styles.listenLabel}>{speechState === 'loading' ? 'Loading…' : speechBusy ? 'Playing…' : 'Listen'}</Text>
             </Pressable>
           )}
         </View>
+        </View>
 
         {question.type === 'game' && question.game ? (
           <GameView key={question.id} question={question} uiScale={s} value={current} onDone={gameDone} />
         ) : (question.type === 'mcq' || question.type === 'challenge') && question.options ? (
-          <View style={{ gap: spacing(1.5), marginTop: spacing(3) }}>
+          <View style={styles.optionGrid}>
             {question.options.map((opt, i) => {
               const selected = current === opt.key;
               const tone = OPTION_COLORS[i % OPTION_COLORS.length]!;
+              // Wide screens: short answers side by side so they all fit without
+              // scrolling; an odd one out at the end takes the full row.
+              const optionWidth = optionColumns === 1 || (optionColumns === 2 && i === question.options!.length - 1 && question.options!.length % 2 === 1)
+                ? '100%'
+                : Math.floor((optionsInner - OPTION_GAP * (optionColumns - 1)) / optionColumns) - 1;
               return (
                 <Pressable
                   key={opt.key}
@@ -314,6 +354,7 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
                   style={({ pressed }) => [
                     styles.option,
                     {
+                      width: optionWidth,
                       minHeight: scaled(64, s),
                       backgroundColor: selected ? tone.bg : colors.surface,
                       borderColor: selected ? tone.border : colors.line,
@@ -333,7 +374,7 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
                       </Text>
                     </View>
                   )}
-                  <Text style={[styles.optionText, { fontSize: scaled(18, s) }]}>{opt.text}</Text>
+                  <Text style={[styles.optionText, { fontSize: answerSize, lineHeight: Math.round(answerSize * 1.3) }]}>{opt.text}</Text>
                   {selected ? <Text style={{ fontSize: scaled(22, s) }}>✓</Text> : null}
                 </Pressable>
               );
@@ -416,18 +457,30 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
   );
 }
 
+const OPTION_GAP = spacing(1.5);
+
 const styles = StyleSheet.create({
   empty: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: spacing(3) },
-  header: { paddingTop: spacing(2), paddingHorizontal: GUTTER, gap: spacing(1.5), ...column },
-  topBar: { flexDirection: 'row', justifyContent: 'flex-start' },
-  leaveButton: { flexDirection: 'row', alignItems: 'center', minHeight: 40, paddingHorizontal: spacing(1.5), borderRadius: 999, borderWidth: 1.5, borderColor: colors.line, backgroundColor: colors.surface },
+  headerWrap: { backgroundColor: colors.bg, borderBottomWidth: 1, borderBottomColor: 'transparent', zIndex: 2 },
+  headerScrolled: { borderBottomColor: colors.line, shadowColor: '#4A3728', shadowOpacity: 0.08, shadowRadius: 6, shadowOffset: { width: 0, height: 2 }, elevation: 3 },
+  header: { paddingTop: spacing(1.5), paddingBottom: spacing(1.25), paddingHorizontal: GUTTER, ...column },
+  topBar: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5) },
+  progressArea: { flex: 1, justifyContent: 'center' },
+  topBarSpacer: { width: 96 },
+  timer: { fontSize: 15, fontWeight: '900', color: colors.inkSoft, width: 96, textAlign: 'right' },
+  questionCard: { backgroundColor: colors.surface, borderRadius: 24, borderWidth: 1.5, borderColor: colors.line, padding: spacing(2), marginBottom: spacing(2), shadowColor: '#4A3728', shadowOpacity: 0.05, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 1 },
+  cardTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1), marginBottom: spacing(1) },
+  activityName: { flex: 1, fontSize: 16, fontWeight: '900', color: '#513A27' },
+  questionCount: { fontSize: 13, fontWeight: '800', color: colors.inkSoft, backgroundColor: '#F3EEE7', borderRadius: 999, paddingHorizontal: spacing(1.25), paddingVertical: 3, overflow: 'hidden' },
+  kindLabel: { fontSize: 12, fontWeight: '800', letterSpacing: 0.8, color: colors.inkSoft, marginBottom: spacing(1) },
+  leaveButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: 96, minHeight: 40, paddingHorizontal: spacing(1.5), borderRadius: 999, borderWidth: 1.5, borderColor: colors.line, backgroundColor: colors.surface },
   leaveText: { fontSize: 14, fontWeight: '800', color: colors.inkSoft },
   dots: { flexDirection: 'row', gap: spacing(1), justifyContent: 'center', flexWrap: 'wrap' },
   progressTrack: { height: 6, backgroundColor: colors.line, borderRadius: 3, overflow: 'hidden' },
   progressFill: { height: 6, backgroundColor: colors.go },
   headerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  starCount: { fontSize: 16, fontWeight: '900', color: '#8A5A0A', backgroundColor: colors.happySoft, paddingHorizontal: 12, paddingVertical: 4, borderRadius: 999, overflow: 'hidden' },
-  body: { paddingTop: spacing(3), paddingHorizontal: GUTTER, paddingBottom: spacing(4), ...column },
+  starCount: { width: 96, textAlign: 'center', fontSize: 16, fontWeight: '900', color: '#8A5A0A', backgroundColor: colors.happySoft, paddingVertical: 4, borderRadius: 999, overflow: 'hidden' },
+  body: { paddingTop: spacing(2), paddingHorizontal: GUTTER, paddingBottom: spacing(4), ...column },
   visualCard: {
     backgroundColor: colors.surface,
     borderRadius: 24,
@@ -440,13 +493,14 @@ const styles = StyleSheet.create({
   },
   visual: { textAlign: 'center', letterSpacing: 2 },
   promptRow: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1.5) },
-  prompt: { flex: 1, minWidth: 0, fontWeight: '700', color: colors.ink },
+  prompt: { flex: 1, minWidth: 0, fontWeight: '800', color: colors.ink },
   // "Hear the question": a round blue speaker button, the same shape people
   // know from read-aloud buttons elsewhere, with its word underneath.
   listen: { alignItems: 'center', gap: 4, flexShrink: 0 },
   listenCircle: { backgroundColor: '#2F7FC1', alignItems: 'center', justifyContent: 'center', borderWidth: 3, borderColor: '#FFFFFF', shadowColor: '#2F7FC1', shadowOpacity: 0.3, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 3 },
   listenCircleBusy: { backgroundColor: '#7FB2DC' },
   listenLabel: { fontSize: 13, fontWeight: '900', color: '#2F7FC1' },
+  optionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: OPTION_GAP },
   option: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -464,7 +518,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   bulletText: { fontWeight: '700', color: colors.inkSoft },
-  optionText: { flex: 1, color: colors.ink, fontWeight: '600' },
+  optionText: { flex: 1, color: colors.ink, fontWeight: '700' },
   textarea: {
     backgroundColor: colors.surface,
     borderWidth: 1.5,
