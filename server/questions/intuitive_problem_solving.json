@@ -1,0 +1,2853 @@
+{
+  "category": "intuitive_problem_solving",
+  "questions": [
+    {
+      "id": "36f020bc-88ba-41e2-9fa4-f096d2cff8e4",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have a toy train 🚂. If it is stuck, what could help it move?",
+      "rubric": [
+        "3 - Suggests a way to remove the blockage or push it.",
+        "2 - Gives a partial answer related to movement.",
+        "1 - Mentions the train but not a solution.",
+        "0 - Doesn't answer or is confused about the train."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Clear the way"
+        },
+        {
+          "key": "b",
+          "text": "Leave it there"
+        },
+        {
+          "key": "c",
+          "text": "Ignore it"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "finding a solution to a blockage problem",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "provides a practical solution for freeing the train",
+      "alignmentRationale": "This question assesses the child's ability to think critically about solving a simple obstruction issue."
+    },
+    {
+      "id": "9148c82b-13c8-4b91-9861-aad9f5c83781",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you are planting seeds, what can help them grow better?",
+      "rubric": [
+        "3 - Talks about water or sunlight as important.",
+        "2 - Suggests something related to growing but less specific.",
+        "1 - Mentions seeds without a way to help them grow.",
+        "0 - Doesn't answer or is confused about growing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "understanding basic needs for growth",
+      "targetEvidence": "provides a helpful suggestion for assisting plant growth",
+      "alignmentRationale": "This question evaluates the child's understanding of what plants need to thrive."
+    },
+    {
+      "id": "03583591-3566-4afb-86ed-b0185a9b2bc1",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you mix blue and yellow, what color would you get? 💛💙",
+      "rubric": [
+        "3 - Correctly answers 'green'.",
+        "2 - Answers with another color but related to mixing.",
+        "1 - Says a color that doesn't mix or isn't related.",
+        "0 - Doesn't answer or is confused about mixing colors."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "green"
+        },
+        {
+          "key": "b",
+          "text": "blue"
+        },
+        {
+          "key": "c",
+          "text": "orange"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "color understanding through mixing",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies a common outcome in color mixing",
+      "alignmentRationale": "This question assesses the child's understanding of color combinations."
+    },
+    {
+      "id": "f812050f-598c-43ae-bb8b-f9963511f5da",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have a chair at home. How can you use it to reach something high?",
+      "rubric": [
+        "3 - Gives a good way to use the chair, like standing on it or moving it closer.",
+        "2 - Suggests a way to use the chair but not the best one.",
+        "1 - Mentions the chair but doesn't explain how to use it.",
+        "0 - Doesn't talk about the chair or how to reach something."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "finding a practical solution",
+      "targetEvidence": "offers a practical way to use the chair to reach high objects",
+      "alignmentRationale": "This question tests the child's ability to find a practical solution using common household items."
+    },
+    {
+      "id": "e81f30ba-ef64-467f-a5ed-27577e0983e9",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You are playing with a toy car. What could you do to make it move faster?",
+      "rubric": [
+        "3 - Suggests a way to go faster like pushing harder or on a slope.",
+        "2 - Offers a vague suggestion about speed.",
+        "1 - Mentions the car but not a way to speed it up.",
+        "0 - Doesn't provide any answer about the car."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "problem-solving with practical actions",
+      "targetEvidence": "provides a practical idea for making the car move faster",
+      "alignmentRationale": "This item tests how well children can think about actions that influence the speed of an object."
+    },
+    {
+      "id": "9dfcd986-7612-42e7-b356-b4a5af74aee5",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You see 4 birds in a tree 🐦🐦🐦🐦. If 2 fly away, how many are left?",
+      "rubric": [
+        "3 - Correctly answers '2 birds' are left.",
+        "2 - Answers with a different number that shows they are trying.",
+        "1 - Gives an unrelated number.",
+        "0 - Doesn't answer or is confused about the birds."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "2 birds"
+        },
+        {
+          "key": "b",
+          "text": "4 birds"
+        },
+        {
+          "key": "c",
+          "text": "1 bird"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting outcomes",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "correctly counts the remaining items after a decrease",
+      "alignmentRationale": "This question taps into the child's ability to predict the outcome of a simple subtraction scenario."
+    },
+    {
+      "id": "a93d32e5-7e37-4f41-a6f0-58012e36d18c",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You are building a tower with blocks. What could help it not fall over?",
+      "rubric": [
+        "3 - Suggests a strong base or building it carefully.",
+        "2 - Suggests a way that might help but lacks details.",
+        "1 - Talks about blocks but not a good way to keep it steady.",
+        "0 - Can't provide any answer related to building."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "finding a solution to a balance problem",
+      "targetEvidence": "gives a useful suggestion to stabilize a tower with blocks",
+      "alignmentRationale": "This question explores the child's intuitive reasoning regarding balance and stability."
+    },
+    {
+      "id": "fbf192b1-3e8c-42db-9082-1266307b1c9b",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have 2 apples 🍎🍎. What can you add to have 3 apples?",
+      "rubric": [
+        "3 - Answers '1 more apple' correctly.",
+        "2 - Answers with a number or a vague idea related to more apples.",
+        "1 - Tries to answer but misses the question.",
+        "0 - Doesn't answer about apples."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "1 more apple"
+        },
+        {
+          "key": "b",
+          "text": "2 apples"
+        },
+        {
+          "key": "c",
+          "text": "3 oranges"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "pattern completion",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies adding one more item to reach a total",
+      "alignmentRationale": "This question requires the child to recognize a simple addition pattern."
+    },
+    {
+      "id": "6bc9644f-8a33-46e4-b485-9ab2c13380e8",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What would you do if you have three cookies and your friend has none?",
+      "rubric": [
+        "3 - Recognizes the need to share, like giving a cookie to a friend.",
+        "2 - States it’s important to be nice but doesn't specify how to share.",
+        "1 - Mentions they would keep all the cookies without reasoning.",
+        "0 - Doesn’t provide any useful response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "problem solving in social sharing",
+      "targetEvidence": "provides a suitable way to share or help a friend.",
+      "alignmentRationale": "This question evaluates the ability to consider others in a sharing context."
+    },
+    {
+      "id": "5578dbb0-1f56-4309-8e9c-b938dc644992",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You see a bird trying to fly but it can't reach the sky, what can you do to help?",
+      "rubric": [
+        "3 - Suggests getting it help, like calling someone for assistance.",
+        "2 - Offers a reasonable action like moving the bird gently.",
+        "1 - Suggests an unclear or irrelevant action.",
+        "0 - Does not give a helpful answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help it to a nest."
+        },
+        {
+          "key": "b",
+          "text": "Ignore it."
+        },
+        {
+          "key": "c",
+          "text": "Yell at it."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "problem solving in a social context",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "provides a helpful action for the bird's situation.",
+      "alignmentRationale": "This question isolates the ability to suggest appropriate actions to help in a defined scenario."
+    },
+    {
+      "id": "ae2df67b-cd70-4402-aa1a-ce88a33f49ca",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You see a toy that is not working. What do you think could help it work again?",
+      "rubric": [
+        "3 - Shows a clear, helpful idea like fixing it or checking batteries.",
+        "2 - Offers a helpful but less clear suggestion, like looking at it.",
+        "1 - Gives an irrelevant or unclear idea.",
+        "0 - Does not provide a coherent response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "problem solving with objects",
+      "targetEvidence": "provides a workable idea for fixing a toy.",
+      "alignmentRationale": "This task evaluates the ability to think of solutions for objects that are not functioning."
+    },
+    {
+      "id": "cb939237-53e1-49a8-af66-84c7ad3b97ac",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What can you do if you find a lost puppy?",
+      "rubric": [
+        "3 - Suggests a helpful action like calling its owner or taking it to safety.",
+        "2 - Mentions a general idea of helping but not specific.",
+        "1 - Provides an action that does not help.",
+        "0 - Does not offer a reasonable response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "problem solving in a social context",
+      "targetEvidence": "gives a response with a potential action to help a lost puppy.",
+      "alignmentRationale": "This task tests the ability to think socially and suggest actions that support others."
+    },
+    {
+      "id": "7d2e3067-f48e-457b-b3fe-921bd4b146c6",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have 2 red blocks in a row 🔴🔴. What block should come next?",
+      "rubric": [
+        "3 - Correctly suggests a red block 🔴 as the next one.",
+        "2 - Suggests a color that could fit the context without being exact, like multiple colored blocks.",
+        "1 - Suggests a shape instead of a color.",
+        "0 - Fails to suggest a block."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🔴"
+        },
+        {
+          "key": "b",
+          "text": "🟡"
+        },
+        {
+          "key": "c",
+          "text": "🔵"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "pattern completion",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "correctly continues a color pattern with appropriate reasoning.",
+      "alignmentRationale": "This task tests the ability to recognize and continue a simple color pattern."
+    },
+    {
+      "id": "c8869bee-7059-4816-9e4a-7b853d35beff",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you see your friend sad, what can you do to help them feel better?",
+      "rubric": [
+        "3 - Mentions a helpful action like giving a hug or talking to them.",
+        "2 - Suggests a general idea of cheering them up or asking what's wrong.",
+        "1 - Offers a vague suggestion without clear helpfulness.",
+        "0 - Does not provide any helpful idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "problem solving in a social context",
+      "targetEvidence": "gives a response with a potential action to help a friend.",
+      "alignmentRationale": "This task tests the ability to think socially and suggest actions that support others."
+    },
+    {
+      "id": "bfeee59e-8e5a-4afc-a8e1-5e84ed91a7df",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "Look at these shapes: ◻️ ◼️ ◻️. What should come next?",
+      "rubric": [
+        "3 - Correctly continues the pattern with ◼️",
+        "2 - Chooses a shape close to the pattern",
+        "1 - Selects an unrelated shape",
+        "0 - Does not answer correctly"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "◼️"
+        },
+        {
+          "key": "b",
+          "text": "◻️"
+        },
+        {
+          "key": "c",
+          "text": "⏹️"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "pattern completion",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects the correct next shape in the sequence",
+      "alignmentRationale": "This item directly tests the child's ability to recognize and extend a simple pattern using basic shapes."
+    },
+    {
+      "id": "5b8f7984-4f8a-4774-accf-d22a69194928",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What can you do if you are feeling sad?",
+      "rubric": [
+        "3 - Suggests a comforting activity like talking or playing",
+        "2 - Mentions being sad without an action",
+        "1 - Says to ignore how they feel",
+        "0 - Does not answer correctly"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "emotional problem-solving",
+      "targetEvidence": "suggests a way to feel better when sad",
+      "alignmentRationale": "This question engages children to think about emotional well-being and positive coping strategies."
+    },
+    {
+      "id": "891d9342-6b57-4500-876f-bf6086d086ea",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you drop your ice cream cone, what could help?",
+      "rubric": [
+        "3 - Suggests getting more ice cream",
+        "2 - Says to eat it off the ground",
+        "1 - Suggests doing nothing",
+        "0 - Does not provide a solution"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Get more ice cream"
+        },
+        {
+          "key": "b",
+          "text": "Eat it off the ground"
+        },
+        {
+          "key": "c",
+          "text": "Cry about it"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "adapting to a problem",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "provides a solution to cope with the disappointment",
+      "alignmentRationale": "This question encourages children's ability to pivot in response to a sudden disappointment."
+    },
+    {
+      "id": "3c60e18d-8a43-4308-92a8-242683d14903",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What would you do if you found a lost puppy?",
+      "rubric": [
+        "3 - Describes calling a person or helping the puppy",
+        "2 - Says to take it home, without further details",
+        "1 - Suggests ignoring the puppy",
+        "0 - Does not answer correctly"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "social problem-solving",
+      "targetEvidence": "offers a reasonable suggestion for caring for an animal",
+      "alignmentRationale": "This prompt invites children to think critically about how to address a common social/animal care issue."
+    },
+    {
+      "id": "f1259e15-ebc0-4207-9ad6-0de899dbc84a",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have three blocks: a red one, a blue one, and a green one. Which could you stack on top?",
+      "rubric": [
+        "3 - Correctly says any block can stack on another",
+        "2 - Mentions one specific block",
+        "1 - Says none can stack",
+        "0 - Does not answer correctly"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Any block"
+        },
+        {
+          "key": "b",
+          "text": "The blue block"
+        },
+        {
+          "key": "c",
+          "text": "None"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding spatial relationships",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies the possible stacking options",
+      "alignmentRationale": "This question tests understanding of how objects can interact in a spatial context."
+    },
+    {
+      "id": "abb16e16-90ad-47f5-add1-759ad7eae9eb",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you find a puzzle piece that is lost, what could you try to do?",
+      "rubric": [
+        "3 - Suggests trying to find where it belongs or looking for a different piece",
+        "2 - Mentions trying without specifics",
+        "1 - Suggests doing nothing",
+        "0 - Does not attempt to answer"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "trial and error",
+      "targetEvidence": "explores ways to resolve a mismatched puzzle situation",
+      "alignmentRationale": "This question promotes creative thinking about solving a problem through alternative approaches."
+    },
+    {
+      "id": "cc4fe8bf-832f-4e8e-88db-7632e9cdaa61",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You see a box with a toy car 🚗 and a toy plane ✈️. Which one is ready to drive?",
+      "rubric": [
+        "3 - Correctly identifies the toy car as the one ready to drive.",
+        "2 - Selects the toy plane, showing some understanding of the functions of the toys.",
+        "1 - Chooses the wrong toy entirely or does not have a clear answer.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Toy car",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "b",
+          "text": "Toy plane",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "c",
+          "text": "Both",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "function identification",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "picks the toy that can drive",
+      "alignmentRationale": "This question focuses on understanding the functions of objects, isolating the skill of recognition based on properties."
+    },
+    {
+      "id": "7f00476b-1a3a-4e66-89a7-a571c73145cc",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You see a tray with 2 red apples 🍏🍏 and 1 green apple 🍎. How many total apples are there?",
+      "rubric": [
+        "3 - Accurately counts all three apples combined.",
+        "2 - Counts two apples or gives a plausible number close to three.",
+        "1 - Counts only one apple or makes an error.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "3",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "b",
+          "text": "2",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "c",
+          "text": "4",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "counting total objects",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "states the total number of apples",
+      "alignmentRationale": "This prompts children to count and provide a total, isolating the skill of counting objects directly."
+    },
+    {
+      "id": "5b711b8d-536d-4d66-949c-e8429ec8eeb8",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "Imagine you have 3 stars ⭐⭐⭐ on your wall. What would you put next?",
+      "rubric": [
+        "3 - Suggests a logical continuation like another star or a moon.",
+        "2 - Proposes anything that fits the theme of stars or celestial objects.",
+        "1 - Provides an unrelated object without reasoning.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "pattern completion",
+      "targetEvidence": "gives a continuation for the star pattern",
+      "alignmentRationale": "This task tests the ability to identify and continue a simple visual pattern by suggesting a fitting element."
+    },
+    {
+      "id": "7493d847-d2c3-4311-aff3-7e9c7c45202e",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You see a big balloon 🎈 and a small balloon 🎈. Which one is bigger?",
+      "rubric": [
+        "3 - Correctly identifies the big balloon as bigger.",
+        "2 - Recognizes that there are two balloons and chooses the correct one.",
+        "1 - Selects one balloon but does not specify which is bigger.",
+        "0 - Does not answer or selects both balloons."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Big balloon",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "b",
+          "text": "Small balloon",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "c",
+          "text": "Both balloons",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "size comparison",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "chooses the bigger balloon",
+      "alignmentRationale": "This task specifically assesses the child's ability to compare sizes and offer an answer without needing detailed explanation."
+    },
+    {
+      "id": "70c9f708-2b42-42b9-8fe9-4475a62fc420",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you saw a rainbow 🌈, what would you tell your friend?",
+      "rubric": [
+        "3 - Describes the rainbow or expresses excitement about it.",
+        "2 - Shares what a rainbow looks like without joy.",
+        "1 - Offers a short or unclear message about the rainbow.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "expressive description",
+      "targetEvidence": "describes the rainbow to a friend",
+      "alignmentRationale": "This question aims to elicit an expressive response about an observed phenomenon, focusing on description."
+    },
+    {
+      "id": "5a43ce54-e3cf-4f79-9167-b1f1dffaff2c",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "Look at these animals: 🐶🐱🐶🐱. What animal comes next?",
+      "rubric": [
+        "3 - Correctly identifies the dog as coming next in the pattern.",
+        "2 - Gives the correct animal type but makes a similar mistake.",
+        "1 - Offers the wrong animal entirely or mixes up the sequence.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Dog",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "b",
+          "text": "Cat",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "c",
+          "text": "Both",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "pattern recognition",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "continues the animal pattern appropriately",
+      "alignmentRationale": "This task tests the ability to recognize and predict a sequence in a pattern."
+    },
+    {
+      "id": "5861b8f0-2a88-4aa7-9c02-c1ca4e45319e",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you could make a big cake, what flavor would you choose?",
+      "rubric": [
+        "3 - Chooses a popular, fun cake flavor like chocolate or vanilla.",
+        "2 - Suggests a common flavor but less exciting.",
+        "1 - Offers an unusual or unclear flavor choice.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "imaginative thinking",
+      "targetEvidence": "provides an idea for cake flavor",
+      "alignmentRationale": "This question taps into the child's creativity and preferences related to food."
+    },
+    {
+      "id": "c544627d-0880-4288-8cdc-e953048f6bcb",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have a dog 🐶 and a cat 🐱. What do you think they should do together?",
+      "rubric": [
+        "3 - Proposes a fun or logical activity for the dog and cat.",
+        "2 - Suggests something realistic or somewhat fitting.",
+        "1 - Gives an unrelated action or does not match the animals.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "creative prediction",
+      "targetEvidence": "describes an activity for the dog and cat",
+      "alignmentRationale": "This task explores the child's ability to imagine a playful scenario involving the two animals."
+    },
+    {
+      "id": "82faba7f-6605-4c78-92e8-d40c89f1b621",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You see a tall tree 🌳 and a short tree 🌲. Which tree is taller?",
+      "rubric": [
+        "3 - Correctly identifies the tall tree as the taller one.",
+        "2 - Makes a guess that seems reasonable like 'both are equal'.",
+        "1 - Names the short tree or incorrectly identifies them.",
+        "0 - Does not answer correctly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Short tree"
+        },
+        {
+          "key": "b",
+          "text": "Tall tree"
+        },
+        {
+          "key": "c",
+          "text": "They are equal"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "visual comparison and assessment",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "accurately assesses which tree is taller",
+      "alignmentRationale": "This task tests the ability to compare objects based on height, which is a direct observational skill."
+    },
+    {
+      "id": "ece53aef-5383-40b1-b467-99913bfa4d5b",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you see a friend who is sad, what can you do?",
+      "rubric": [
+        "3 - Answers with a caring action like 'give a hug' or 'ask if they're okay'.",
+        "2 - Suggests something to help but is less specific.",
+        "1 - Provides an unrelated action like 'play'.",
+        "0 - Does not respond appropriately."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "empathy and social support",
+      "targetEvidence": "offers a unique action to support a friend",
+      "alignmentRationale": "This question assesses the ability to suggest supportive actions that show empathy toward others."
+    },
+    {
+      "id": "cbc75b69-87d8-4f96-b587-bda04abaaf93",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you see 2 cats 🐱🐱 and 1 dog 🐶 playing together, what will they be?",
+      "rubric": [
+        "3 - Correctly states they will be friends or playing.",
+        "2 - Suggests they are nice or together.",
+        "1 - Gives an unrelated answer like 'eating'.",
+        "0 - Does not answer clearly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Eating"
+        },
+        {
+          "key": "b",
+          "text": "Playing together"
+        },
+        {
+          "key": "c",
+          "text": "Fighting"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "predicting outcomes in social interactions",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "provides a logical conclusion about the animals' interaction",
+      "alignmentRationale": "This question is designed to assess predictions about social dynamics among familiar animals."
+    },
+    {
+      "id": "c8aa0c0b-baf8-4956-ace3-d4223ee42144",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have a big box and a small box. What do you keep in the small box?",
+      "rubric": [
+        "3 - The answer is relevant and logical for a small box.",
+        "2 - The answer is related but not the best fit.",
+        "1 - The answer shows some thought but doesn't fit well.",
+        "0 - The answer doesn't relate to the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "thinking about object size and purpose",
+      "targetEvidence": "gives a relevant answer about appropriate items for a small box",
+      "alignmentRationale": "This question encourages children to think intuitively about size and function without needing to provide detailed reasoning."
+    },
+    {
+      "id": "372e80c3-3a86-474c-b8a6-d364d00aff74",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What do you think could happen if a dog saw a squirrel? 🐶🐿️",
+      "rubric": [
+        "3 - The answer shows a clear prediction of a dog's reaction.",
+        "2 - The answer is somewhat relevant but lacks detail.",
+        "1 - Provides an unclear guess about the situation.",
+        "0 - The answer does not show understanding of the scenario."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It will sit down."
+        },
+        {
+          "key": "b",
+          "text": "It will bark."
+        },
+        {
+          "key": "c",
+          "text": "It will fall asleep."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "predicting reactions in a scenario",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "gives a plausible prediction about a dog's behavior",
+      "alignmentRationale": "This question tests the child’s ability to intuit a reaction based on familiar animals and stimuli."
+    },
+    {
+      "id": "1cb99031-14c7-4574-b689-93fdc03373d9",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have four blocks: a red one, a blue one, a yellow one, and a green one. Which one do you like the most?",
+      "rubric": [
+        "3 - The answer includes a color and reasoning.",
+        "2 - The answer is a color but with little explanation.",
+        "1 - The answer shows some opinion but lacks a clear color.",
+        "0 - The answer doesn't address the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "expressing personal preference",
+      "targetEvidence": "gives a color choice reflecting a preference",
+      "alignmentRationale": "This question encourages children to express their preferences, demonstrating their ability to make choices based on familiarity."
+    },
+    {
+      "id": "78af78c7-12ec-4951-8f5c-1d9f16c01517",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "Which animal can run faster: a rabbit or a turtle? 🐇🐢",
+      "rubric": [
+        "3 - The answer correctly identifies the faster animal.",
+        "2 - The answer is somewhat correct but has minor errors.",
+        "1 - Displays attempt but guesses wrongly or provides unrelated information.",
+        "0 - Doesn't answer correctly or seems confused."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Rabbit"
+        },
+        {
+          "key": "b",
+          "text": "Turtle"
+        },
+        {
+          "key": "c",
+          "text": "They are the same."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding comparisons in animal abilities",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "identifies which animal is faster based on common knowledge",
+      "alignmentRationale": "This question encourages children to use their knowledge of animal abilities to compare two familiar animals."
+    },
+    {
+      "id": "78e48652-0855-48d9-8e89-546fab3822f4",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What can happen when a turtle meets a rabbit?",
+      "rubric": [
+        "3 - Answers with a fun interaction or story like 'they race!' or 'become friends'.",
+        "2 - Suggests something simple like 'just look at each other'.",
+        "1 - Provides a vague answer like 'go away'.",
+        "0 - Does not respond appropriately."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "imaginative thinking about interactions",
+      "targetEvidence": "provides a creative thought about animals meeting",
+      "alignmentRationale": "This open prompt assesses imagination in considering interactions between characters."
+    },
+    {
+      "id": "8702c815-e7c1-4011-9b4f-2bfc010f504f",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "Look at these blocks: 🔴🔵🔴🔵🔴 ? What comes next?",
+      "rubric": [
+        "3 - Correctly identifies the next block as 🔵.",
+        "2 - Suggests an alternative block that fits the pattern.",
+        "1 - Chooses a block that does not match the pattern.",
+        "0 - Does not answer correctly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🔴"
+        },
+        {
+          "key": "b",
+          "text": "🔵"
+        },
+        {
+          "key": "c",
+          "text": "🟣"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "pattern completion",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "correctly identifies the next shape in the repetition",
+      "alignmentRationale": "This prompt encourages the use of colors and shapes in establishing a sequence."
+    },
+    {
+      "id": "7d7b5c11-a00c-444b-8c25-d2534b49eadd",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "Save the told dog from catching the house! You see a dog and a house. What should the dog do instead? 🐕🏠",
+      "rubric": [
+        "3 - Provides a good suggestion like 'go play' or 'find a toy'.",
+        "2 - Suggests a simple action like 'sit' or 'stay'.",
+        "1 - Suggests something unrelated or silly.",
+        "0 - Does not answer correctly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Bark"
+        },
+        {
+          "key": "b",
+          "text": "Go play"
+        },
+        {
+          "key": "c",
+          "text": "Run away"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "problem-solving in social situations",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "offers a reasonable idea for the dog's actions",
+      "alignmentRationale": "This scenario tests the ability to provide an action that solves a problem creatively."
+    },
+    {
+      "id": "094aa0db-ee89-4aa8-8f0e-c0949c76e889",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have 4 apples: 🍏 🍏 🍎 🍏. How many apples are green?",
+      "rubric": [
+        "3 - Correctly states there are three green apples.",
+        "2 - Mentions at least one green apple but not all.",
+        "1 - Counts apples but does not identify green ones.",
+        "0 - Does not answer correctly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "3"
+        },
+        {
+          "key": "b",
+          "text": "1"
+        },
+        {
+          "key": "c",
+          "text": "2"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "counting and identifying",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "names the total of green apples correctly",
+      "alignmentRationale": "This question assesses the ability to count objects and identify characteristics based on color."
+    },
+    {
+      "id": "ea296c26-5a56-4821-a3e2-16052e2f6d38",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You see these toys: 🧸, 🏀, 🧸, ? What toy comes next?",
+      "rubric": [
+        "3 - Correctly identifies the next toy as 🏀.",
+        "2 - Selects another toy that seems reasonable.",
+        "1 - Chooses a toy not shown here.",
+        "0 - Does not answer correctly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🧸"
+        },
+        {
+          "key": "b",
+          "text": "🏀"
+        },
+        {
+          "key": "c",
+          "text": "🪀"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "pattern completion",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "correctly names the next toy in the sequence",
+      "alignmentRationale": "This task directly tests a child's ability to identify a repeating pattern among visible objects."
+    },
+    {
+      "id": "a601f935-9610-44d3-a625-4955f9b6a99a",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What would you do if your toy breaks while playing?",
+      "rubric": [
+        "3 - Suggested a way to fix it or use something else instead.",
+        "2 - Mentioned playing gently or being careful.",
+        "1 - Gave up on playing altogether.",
+        "0 - Did not provide any useful answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "repair strategy development",
+      "targetEvidence": "shows understanding of actions to fix or adapt when a toy breaks",
+      "alignmentRationale": "This measures the ability to respond constructively to challenges faced during play."
+    },
+    {
+      "id": "5ac7f214-f27e-4897-8b4a-3e713012cde6",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "There's a ball stuck in a tree. What do you think you can do?",
+      "rubric": [
+        "3 - Suggested a safe way to retrieve the ball or ask for help.",
+        "2 - Suggested a less safe alternative.",
+        "1 - Gave a vague idea without direct action.",
+        "0 - Did not provide any solution."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask someone for help to get it down."
+        },
+        {
+          "key": "b",
+          "text": "Try to climb the tree yourself."
+        },
+        {
+          "key": "c",
+          "text": "Leave the ball there."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "safe action deliberation",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "suggests a valid method for retrieving the ball while considering safety",
+      "alignmentRationale": "This checks the child's practical reasoning ability in dealing with a common situation."
+    },
+    {
+      "id": "6d7612f8-c809-4c2d-90fa-0e25990cc203",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have a picture to color and your crayons are broken. What can you do?",
+      "rubric": [
+        "3 - Suggested to use a different coloring tool or fix the crayons.",
+        "2 - Suggested only to look for new crayons.",
+        "1 - Said to leave the picture blank.",
+        "0 - Did not suggest anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Use markers or colored pencils."
+        },
+        {
+          "key": "b",
+          "text": "Just stop coloring."
+        },
+        {
+          "key": "c",
+          "text": "Ask for new crayons only."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "adaptation to tools",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "helps find a way to continue coloring despite broken crayons",
+      "alignmentRationale": "This evaluates adaptive thinking when facing a challenge with available resources."
+    },
+    {
+      "id": "ef14dd9c-ad13-4a33-8f9c-593461ecced8",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You see a puzzle with lots of pieces. What could you do to start putting it together?",
+      "rubric": [
+        "3 - Suggested sorting pieces by color or picture to start.",
+        "2 - Suggested a different but unclear starting method.",
+        "1 - Gave an unrelated idea, like asking for help without any action.",
+        "0 - Did not suggest any action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Sort the pieces by color."
+        },
+        {
+          "key": "b",
+          "text": "Just guess where they go."
+        },
+        {
+          "key": "c",
+          "text": "Throw them all on the floor."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategic approach",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "provides a clear first step to solve the puzzle",
+      "alignmentRationale": "This measures intuitive problem-solving in approaching a puzzle without requiring detailed steps."
+    },
+    {
+      "id": "b452eeb7-ce44-482f-bb30-8daf0e4e3bf9",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you can't find your shoes for school, what could you do?",
+      "rubric": [
+        "3 - Suggested looking in a specific place or asking for help.",
+        "2 - Suggested just waiting or doing nothing.",
+        "1 - Mentioned something unrelated or irrelevant.",
+        "0 - Did not suggest any action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Look in your closet or under the bed."
+        },
+        {
+          "key": "b",
+          "text": "Sit down and wait."
+        },
+        {
+          "key": "c",
+          "text": "Ask someone else where they are."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "resourceful action planning",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "provides a practical step to find the shoes",
+      "alignmentRationale": "This evaluates the intuitive ability to generate ideas to solve a problem."
+    },
+    {
+      "id": "6e04f99f-9acd-4c58-81a6-e9fd5882d153",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What could you do if your shoelace is untied while walking?",
+      "rubric": [
+        "3 - Suggested an action to tie the shoelace or prevent tripping.",
+        "2 - Suggested to walk carefully but didn’t mention tying it.",
+        "1 - Suggested something unrelated.",
+        "0 - Did not give a helpful answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "practical problem engagement",
+      "targetEvidence": "demonstrates understanding of walking safely while shoelace is untied",
+      "alignmentRationale": "This tests the ability to solve a common practical problem without needing structured reasoning."
+    },
+    {
+      "id": "1eb4e31d-a2ff-4ae6-a1e6-aa9b22cf6465",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have a sandwich and it won't fit in your lunch box. What can you do?",
+      "rubric": [
+        "3 - Suggested a way to make the sandwich fit, like cutting it or using a bigger box.",
+        "2 - Suggested a clever but less practical solution.",
+        "1 - Gave a vague idea that doesn’t really help.",
+        "0 - Did not suggest anything to solve the problem."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Cut the sandwich in half."
+        },
+        {
+          "key": "b",
+          "text": "Leave the sandwich at home."
+        },
+        {
+          "key": "c",
+          "text": "Use a toy box instead."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "practical solution generation",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "gives a workable solution to fit the sandwich",
+      "alignmentRationale": "This tests intuition in solving a practical problem rather than relying on theoretical knowledge."
+    },
+    {
+      "id": "0a3164b9-d7f2-4b8a-8345-120338862d6b",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have a messy table and your toy car can’t roll. What can you do?",
+      "rubric": [
+        "3 - Suggested clearing the table or moving the car.",
+        "2 - Suggested rolling it anyway with less chance of success.",
+        "1 - Suggested to give up playing.",
+        "0 - Did not suggest any action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Clear the toys off the table."
+        },
+        {
+          "key": "b",
+          "text": "Try to roll it over everything."
+        },
+        {
+          "key": "c",
+          "text": "Put the car away and stop playing."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "environmental awareness",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "indicates a clear solution to ensure the car can roll",
+      "alignmentRationale": "This evaluates practical problem-solving while recognizing the environment."
+    },
+    {
+      "id": "c2714318-e773-46a1-a2a5-2be9de1e7419",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You are juggling 3 balls. If one falls, how can you keep going?",
+      "rubric": [
+        "3 - Correctly says to pick it up and continue juggling.",
+        "2 - Suggests stopping to pick it up.",
+        "1 - Says to give up juggling.",
+        "0 - Does not answer or gives a wrong choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Pick it up and keep juggling"
+        },
+        {
+          "key": "b",
+          "text": "Stop to pick it up"
+        },
+        {
+          "key": "c",
+          "text": "Give up juggling"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "maintaining activity",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "provides a practical method to resolve the situation and keep juggling",
+      "alignmentRationale": "This tests the ability to think on one's feet and stay engaged despite challenges."
+    },
+    {
+      "id": "c52b5d31-ba91-4a91-8551-4d5dfa882eb8",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have a basket with 4 apples and 2 oranges. If you want to take out a fruit, which one will you choose to have the most pieces?",
+      "rubric": [
+        "3 - Correctly chooses apples as they have more pieces.",
+        "2 - Chooses oranges or mentions both without a clear reason.",
+        "1 - Picks something unrelated to the pieces.",
+        "0 - Does not answer or gives a wrong choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Apples"
+        },
+        {
+          "key": "b",
+          "text": "Oranges"
+        },
+        {
+          "key": "c",
+          "text": "Neither"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "comparing quantities",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "chooses apples due to greater quantity",
+      "alignmentRationale": "This tests comparing the number of items, demonstrating problem-solving through intuitive selection."
+    },
+    {
+      "id": "3782be00-8f33-4bde-8077-56a66e4c67b6",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "Imagine you have a toy that doesn't work. What could you try to make it work again?",
+      "rubric": [
+        "3 - Suggests a helpful action like checking batteries or hitting it gently.",
+        "2 - Mentions fixing it without specifics.",
+        "1 - Suggests giving up or throwing it away.",
+        "0 - Does not provide a useful answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "suggesting solutions",
+      "targetEvidence": "provides a workable solution to fix a toy",
+      "alignmentRationale": "This tests the child's ability to provide a practical solution to an everyday problem."
+    },
+    {
+      "id": "e79f206f-b51d-4001-a8f2-b963e5227067",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You see a door that is stuck. What should you do to open it?",
+      "rubric": [
+        "3 - Suggests pushing or pulling the door to try to open it.",
+        "2 - Suggests asking for help or yelling.",
+        "1 - Says to give up on the door.",
+        "0 - Provides no answer or something not related."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Push or pull it"
+        },
+        {
+          "key": "b",
+          "text": "Yell for help"
+        },
+        {
+          "key": "c",
+          "text": "Leave it alone"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "using problem-solving actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "offers a straightforward action to try and open the door",
+      "alignmentRationale": "This tests the child's creativity in fitting a solution to a physical obstacle."
+    },
+    {
+      "id": "70e788ca-84b0-4b4a-b756-78f848bece5d",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If your friend has a puzzle piece missing, what could they do?",
+      "rubric": [
+        "3 - Offers a suggestion like looking for the piece or asking someone.",
+        "2 - Suggests a vague idea with no detail.",
+        "1 - Says they should quit.",
+        "0 - Gives no useful response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "offering help",
+      "targetEvidence": "provides a helpful advice on missing puzzle piece",
+      "alignmentRationale": "This tests the ability to generate support tactics for solving issues collaboratively."
+    },
+    {
+      "id": "a3b45fed-2cea-4bd6-ac63-62344cd86987",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What could you do if your toy car won’t roll anymore?",
+      "rubric": [
+        "3 - Suggests checking wheels or fixing it to make it work.",
+        "2 - Mentions something but not related to fixing.",
+        "1 - Says to throw it away or give up.",
+        "0 - Gives no useful response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "exploring repair options",
+      "targetEvidence": "lists practical steps for fixing a toy car",
+      "alignmentRationale": "This tests the ability to think through problem-solving steps related to toys."
+    },
+    {
+      "id": "cadfe7b7-2f29-4ca3-9445-306cd337f0a8",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If your friend can’t find their toy, what could you do to help them?",
+      "rubric": [
+        "3 - Suggests looking around or checking common places.",
+        "2 - Mentions vaguely about searching.",
+        "1 - Says to ignore it.",
+        "0 - Gives no useful answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "offering assistance",
+      "targetEvidence": "describes a useful action for finding a toy",
+      "alignmentRationale": "This tests the child's ability to think of constructive approaches in helping others."
+    },
+    {
+      "id": "feafd3f6-e888-4f0c-808d-280adb80ecf6",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You see two cats and a dog. One cat is black, and one cat is white. If you want to find an animal with a different color, which one will you pick?",
+      "rubric": [
+        "3 - You correctly choose the dog as a different color animal.",
+        "2 - You choose one of the cats and explain why it's different.",
+        "1 - You choose something unrelated but describe a reason for it.",
+        "0 - You don't choose any animal or your choice is confusing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "the dog"
+        },
+        {
+          "key": "b",
+          "text": "the white cat"
+        },
+        {
+          "key": "c",
+          "text": "the black cat"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing differences in color",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 1
+      },
+      "targetEvidence": "selects the dog as it has a different color than both cats",
+      "alignmentRationale": "The task requires recognition of color differences, key for intuitive problem-solving."
+    },
+    {
+      "id": "03824daa-55c4-456c-9ec8-013308665259",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If someone is sad, how could you help them feel better?",
+      "rubric": [
+        "3 - You suggest kind actions like sharing or saying something nice.",
+        "2 - You think of listening to them.",
+        "1 - You say it's okay to be sad.",
+        "0 - You suggest something unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "empathy and support",
+      "targetEvidence": "gives a thoughtful action to help someone who is sad",
+      "alignmentRationale": "This question measures social problem-solving and emotional understanding, vital for empathy."
+    },
+    {
+      "id": "7be99067-92a3-422c-b020-8b872d1b5c5d",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You are given three colored pencils: red, green, and yellow. If you want to color a tree, which one will you choose?",
+      "rubric": [
+        "3 - You choose the green pencil for the tree.",
+        "2 - You mention using red or yellow for something else.",
+        "1 - You say you can't color a tree.",
+        "0 - You give an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "the green pencil"
+        },
+        {
+          "key": "b",
+          "text": "the red pencil"
+        },
+        {
+          "key": "c",
+          "text": "the yellow pencil"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "selecting based on color appropriateness",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 1
+      },
+      "targetEvidence": "chooses the green pencil correctly for coloring a tree",
+      "alignmentRationale": "This test requires decision-making based on appropriate choices, relevant to problem-solving skills."
+    },
+    {
+      "id": "b2a79951-89a2-4820-a7c0-3652d94819d4",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What would you do if your bike has a flat tire?",
+      "rubric": [
+        "3 - You suggest fixing it or finding someone to help.",
+        "2 - You think of riding a different bike.",
+        "1 - You choose not to ride your bike anymore.",
+        "0 - You suggest an unrelated solution."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inventive problem-solving",
+      "targetEvidence": "gives a relevant solution for fixing or overcoming the flat tire",
+      "alignmentRationale": "Encourages thinking creatively about solving everyday bike problems, a key skill."
+    },
+    {
+      "id": "1e542251-aa60-4760-ba3d-19cd5c8461bd",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you see a puzzle with a missing piece, what should you do first?",
+      "rubric": [
+        "3 - You look for the piece or check around the puzzle.",
+        "2 - You ask someone where it went.",
+        "1 - You say it's okay without looking.",
+        "0 - You give an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "look for the piece"
+        },
+        {
+          "key": "b",
+          "text": "ask where it went"
+        },
+        {
+          "key": "c",
+          "text": "ignore it"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "deciding on actions for problem resolution",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "chooses to search for the piece or investigate its absence",
+      "alignmentRationale": "This task addresses how children would approach a problem scenario intuitively."
+    },
+    {
+      "id": "e257efda-ccf5-449c-ae2b-2e5279d2f121",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you found a puzzle piece that doesn't fit, what could you do?",
+      "rubric": [
+        "3 - You suggest trying a different spot.",
+        "2 - You mention keeping it.",
+        "1 - You say to ignore it.",
+        "0 - You don’t answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Try it in another spot."
+        },
+        {
+          "key": "b",
+          "text": "Just keep it on the side."
+        },
+        {
+          "key": "c",
+          "text": "Don’t worry about it."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "adjusting search approaches",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "offers a solution for finding the right spot for the piece",
+      "alignmentRationale": "This question assesses the child’s ability to adapt their approach when faced with a problem."
+    },
+    {
+      "id": "d58dd6c7-f6c5-491d-8c28-3431c3d15d2e",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If it starts to rain while you are on the playground, what should you do?",
+      "rubric": [
+        "3 - You say to go inside.",
+        "2 - You mention finding a shelter.",
+        "1 - You say to stay outside.",
+        "0 - You don’t answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Run inside to stay dry."
+        },
+        {
+          "key": "b",
+          "text": "Stand under the slide."
+        },
+        {
+          "key": "c",
+          "text": "Keep playing anyway."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "making decisions in weather",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "provides a reasonable action in response to changing conditions",
+      "alignmentRationale": "This question demonstrates the child's intuitive decision-making based on environmental changes."
+    },
+    {
+      "id": "403e403c-b496-4601-9d28-66765b5dc2d9",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "Imagine you find a lost pet. What is something you could do to help?",
+      "rubric": [
+        "3 - You suggest a good way to help the pet.",
+        "2 - You say something about looking for the owner.",
+        "1 - You say to leave it alone.",
+        "0 - You don’t answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "thinking about helping",
+      "targetEvidence": "provides a helpful action for pet care",
+      "alignmentRationale": "This question invites the child to think creatively about a situation requiring care and assistance."
+    },
+    {
+      "id": "d0bf7716-1542-45ed-94d5-849ac32eb5ca",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You are building a tower with blocks and it falls down. What could you do?",
+      "rubric": [
+        "3 - You say to build it again.",
+        "2 - You say to use fewer blocks.",
+        "1 - You say to stop building.",
+        "0 - You don’t answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Build it again carefully."
+        },
+        {
+          "key": "b",
+          "text": "Make it smaller next time."
+        },
+        {
+          "key": "c",
+          "text": "Give up on building."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "responding to challenges",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "offers a constructive next step after a setback",
+      "alignmentRationale": "This question assesses how a child deals with failure and what they propose as a solution."
+    },
+    {
+      "id": "7dbc84d4-e876-481c-96bd-202c9f1283be",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you see a dog chasing a ball, what do you think will happen next?",
+      "rubric": [
+        "3 - You correctly predict the dog will get the ball.",
+        "2 - You say something related but not clear.",
+        "1 - You mention something very different.",
+        "0 - You don’t answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The dog will catch the ball."
+        },
+        {
+          "key": "b",
+          "text": "The dog will bark loudly."
+        },
+        {
+          "key": "c",
+          "text": "The dog will sit down."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting sequence",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "gives a logical next step in the sequence",
+      "alignmentRationale": "This question tests the child's ability to predict an outcome based on a simple action."
+    },
+    {
+      "id": "bb9f1348-edcb-4c6d-bd01-2986f7a06586",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You see your friend drop their toy on the ground. What should you do?",
+      "rubric": [
+        "3 - You say to pick it up and help.",
+        "2 - You say to say sorry.",
+        "1 - You walk away.",
+        "0 - You don’t answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Pick it up and give it back."
+        },
+        {
+          "key": "b",
+          "text": "Tell them it’s okay."
+        },
+        {
+          "key": "c",
+          "text": "Leave it there."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "deciding on support",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "provides a helpful action in a supportive context",
+      "alignmentRationale": "This question helps measure the child's understanding of social support in a friendly context."
+    },
+    {
+      "id": "c91e0083-8e19-4758-bd40-4a774404d1f4",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What could you do to help a friend who is sad?",
+      "rubric": [
+        "3 - You suggest a good way to comfort your friend.",
+        "2 - You mention spending time with them.",
+        "1 - You say to ignore them.",
+        "0 - You don’t answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "providing emotional support",
+      "targetEvidence": "gives a helpful suggestion for comforting a friend",
+      "alignmentRationale": "This question explores emotional intelligence in a peer context and how to respond positively."
+    },
+    {
+      "id": "87441273-f1e7-4b74-a553-5a9dea401013",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you're playing with a toy and it breaks, what could you do?",
+      "rubric": [
+        "3 - You suggest a way to fix it or get help.",
+        "2 - You say you would look for it.",
+        "1 - You say you would ignore it.",
+        "0 - You don’t answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Try to fix it with tape."
+        },
+        {
+          "key": "b",
+          "text": "Ask someone for another toy."
+        },
+        {
+          "key": "c",
+          "text": "Leave it on the floor."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "problem-solving action",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "provides a solution or an idea to handle the toy issue",
+      "alignmentRationale": "This question requires the child to consider how to address a common problem, showcasing intuitive problem-solving."
+    },
+    {
+      "id": "8cdc0ef5-b606-4639-be20-98047ab7ab74",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What do you think is a good way to fix a toy that is broken?",
+      "rubric": [
+        "3 - Suggests a logical way to fix a toy with details.",
+        "2 - Offers a helpful but simple idea to fix it.",
+        "1 - Proposes a vague or impractical solution.",
+        "0 - Does not answer or gives an unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "practical problem solving",
+      "targetEvidence": "gives an actionable idea to repair the toy",
+      "alignmentRationale": "This question evaluates a child's ability to think through a practical solution."
+    },
+    {
+      "id": "81569975-3382-4e98-a4b9-21299426c36f",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "Imagine you have a puzzle with only one piece left. How do you think you could find where it goes?",
+      "rubric": [
+        "3 - Gives a helpful and clear idea of how to find the piece's spot.",
+        "2 - Offers a useful idea but is not very clear.",
+        "1 - Shares a vague or unclear idea about finding the piece.",
+        "0 - Does not answer or gives unrelated ideas."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "spatial problem solving",
+      "targetEvidence": "gives a workable way to find the piece's place",
+      "alignmentRationale": "This item checks for an intuitive solution to a placement problem without needing specific steps."
+    },
+    {
+      "id": "fd10cad3-c350-45be-b165-771c4a1a8a97",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You see a bird building a nest. What do you think will happen next?",
+      "rubric": [
+        "3 - Clearly predicts what might happen based on the bird's actions.",
+        "2 - Suggests something that's somewhat related to the bird's actions.",
+        "1 - Offers a vague guess without clear connection to the nest.",
+        "0 - Gives an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The nest will be finished soon."
+        },
+        {
+          "key": "b",
+          "text": "The bird will fly away."
+        },
+        {
+          "key": "c",
+          "text": "It will rain tomorrow."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting outcomes",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "gives a logical guess about the nest building",
+      "alignmentRationale": "This question tests the ability to predict outcomes based on observed actions."
+    },
+    {
+      "id": "c31d6cdd-8fd8-4dde-b2b7-05c35699c0c8",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you are making a sandwich and realize you are out of bread, what could you do next?",
+      "rubric": [
+        "3 - Offers a creative solution for making a sandwich.",
+        "2 - Suggests a reasonable option but less creative.",
+        "1 - Mentions an unrelated idea or focus.",
+        "0 - Does not provide a relevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "problem solving",
+      "targetEvidence": "gives a practical idea for the sandwich problem",
+      "alignmentRationale": "This item assesses how a child might solve a practical problem in a creative way."
+    },
+    {
+      "id": "646c213a-30fc-4dfa-b52e-d7f2e64f623d",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You are building with blocks and knock down a tower. What do you think you could do next?",
+      "rubric": [
+        "3 - Suggests a helpful action to rebuild the tower.",
+        "2 - Mentions a related but less clear idea.",
+        "1 - Offers an irrelevant suggestion.",
+        "0 - Does not provide an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Try to build it again carefully."
+        },
+        {
+          "key": "b",
+          "text": "Let it stay down forever."
+        },
+        {
+          "key": "c",
+          "text": "Get upset and walk away."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "logical reasoning",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "provides a suitable option related to the building.",
+      "alignmentRationale": "This question checks the ability to think through the next steps after an action."
+    },
+    {
+      "id": "c721f331-5dea-426d-af4d-99b492e92311",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you have a garden and the flowers are wilting, what could be causing it?",
+      "rubric": [
+        "3 - Points out a clear reason like lack of water.",
+        "2 - Suggests a less likely but still relevant cause.",
+        "1 - Offers an unrelated reason or incorrect answer.",
+        "0 - Doesn't provide an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "They need more water."
+        },
+        {
+          "key": "b",
+          "text": "They want to grow taller."
+        },
+        {
+          "key": "c",
+          "text": "They're too sunny outside."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identifying causes",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies a logical cause for the wilting flowers",
+      "alignmentRationale": "This question tests the child's understanding of common causes for a garden problem."
+    },
+    {
+      "id": "06826f1b-193a-4c37-be2a-873ac4bdf8f7",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you are playing outside and the game is too hard, what would you do?",
+      "rubric": [
+        "3 - Provides a practical way to approach a difficult game.",
+        "2 - Mentions a reasonable but less clear option.",
+        "1 - Suggests an unrelated or tough idea.",
+        "0 - Doesn't answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "overcoming challenges",
+      "targetEvidence": "gives a workable idea for handling difficulty",
+      "alignmentRationale": "This prompt evaluates how the child would navigate a challenge during play."
+    },
+    {
+      "id": "cc3940e5-4bf2-4215-8d11-c082f7dc4dd1",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What would you do if you find food in the fridge that is old and moldy?",
+      "rubric": [
+        "3 - States it should be thrown away for health reasons.",
+        "2 - Suggests something related to checking it.",
+        "1 - Offers a vague or unclear response.",
+        "0 - Doesn't provide a relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Throw it away."
+        },
+        {
+          "key": "b",
+          "text": "Smell it first."
+        },
+        {
+          "key": "c",
+          "text": "Keep it in the fridge."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "making health-related decisions",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "gives a sound decision about handling old food",
+      "alignmentRationale": "This question assesses the understanding of safety concerning food."
+    },
+    {
+      "id": "1fa9a0b7-2e96-4774-a9d9-f9c69db6265a",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "You have 3 apples and 2 more fall from a tree. How many apples do you have now?",
+      "rubric": [
+        "3 - Correctly identifies 5 apples as the answer.",
+        "2 - Identifies the correct total but makes a minor error in reasoning.",
+        "1 - Gives an incorrect total but shows some understanding of adding numbers.",
+        "0 - Does not attempt or gives an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "5"
+        },
+        {
+          "key": "b",
+          "text": "4"
+        },
+        {
+          "key": "c",
+          "text": "6"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a quantity",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Gives the number of apples after counting them together.",
+      "alignmentRationale": "This question requires basic counting skills and the ability to combine quantities intuitively."
+    },
+    {
+      "id": "7b967dfa-5d41-4b6c-9852-bd64a1aaaaf3",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "Imagine you forgot your favorite game. What could you do?",
+      "rubric": [
+        "3 - Suggests a specific solution like talking to a friend about it.",
+        "2 - Offers some insight but not a clear plan.",
+        "1 - Gives a vague or unclear answer.",
+        "0 - Does not answer or does not address the situation."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "problem-solving under stress",
+      "targetEvidence": "Proposes a realistic strategy for handling the situation.",
+      "alignmentRationale": "This question assesses problem-solving skills related to handling mistakes."
+    },
+    {
+      "id": "ed0e663c-4f9d-4683-8bb1-02f30f85c5b7",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "If you see a friend looking sad, what could you do to help them?",
+      "rubric": [
+        "3 - Suggests a supportive action like asking what's wrong.",
+        "2 - Suggests something that is somewhat helpful.",
+        "1 - Provides an unrelated action.",
+        "0 - Does not answer or gives an inappropriate action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Leave them alone"
+        },
+        {
+          "key": "b",
+          "text": "Ask if they want to talk"
+        },
+        {
+          "key": "c",
+          "text": "Make a joke"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "supportive action",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "Identifies a compassionate response to a friend in distress.",
+      "alignmentRationale": "This question tests the child's ability to respond supportively to social situations."
+    },
+    {
+      "id": "ce249259-c05b-4db6-9b87-f98670ce4fb3",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "intuitive_problem_solving",
+      "format": "explanation",
+      "prompt": "What would you do if you saw someone drop their ice cream?",
+      "rubric": [
+        "3 - Describes a kind action like offering to help or sharing.",
+        "2 - Suggests an action, but it's not very thoughtful.",
+        "1 - Gives a vague response with little meaning.",
+        "0 - Does not address the situation or gives a wrong idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "empathy and kindness",
+      "targetEvidence": "Suggests a helpful or kind action towards someone in need.",
+      "alignmentRationale": "This open-ended question assesses empathy by eliciting a response that shows understanding and support."
+    }
+  ]
+}

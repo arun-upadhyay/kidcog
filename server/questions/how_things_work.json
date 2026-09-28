@@ -1,0 +1,2745 @@
+{
+  "category": "how_things_work",
+  "questions": [
+    {
+      "id": "d7961abd-6f61-4ad4-885d-279c72186e19",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when you roll a ball?",
+      "rubric": [
+        "3 - It shows ideas about the ball moving.",
+        "2 - It talks about the ball rolling.",
+        "1 - It mentions the ball but no action.",
+        "0 - I don't know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "causal reasoning about movement",
+      "targetEvidence": "explaining the effect of rolling on a ball",
+      "alignmentRationale": "This examines the child's causal reasoning and understanding of movement in relation to familiar objects, like balls."
+    },
+    {
+      "id": "d34dbd42-1d2e-4464-adc1-de5721b1e7a2",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when you squeeze a sponge?",
+      "rubric": [
+        "3 - It shows ideas about water coming out.",
+        "2 - It mentions squeezing.",
+        "1 - It talks about the sponge but no action.",
+        "0 - I don't know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "causal curiosity about actions",
+      "targetEvidence": "ideas about the effect of squeezing on a sponge",
+      "alignmentRationale": "This explores the child's curiosity about cause-and-effect relationships in everyday actions."
+    },
+    {
+      "id": "29a3d9d1-b964-488f-b695-68d4088804e2",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "How does a toaster make your bread warm?",
+      "rubric": [
+        "3 - It shows understanding of heat coming from the toaster.",
+        "2 - It mentions the bread inside heating.",
+        "1 - It talks about the toaster but no action.",
+        "0 - I don't know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "mechanical curiosity about heat",
+      "targetEvidence": "understanding how the toaster produces heat for warming bread",
+      "alignmentRationale": "This isolates the child's understanding of how components in a toaster work together to create heat."
+    },
+    {
+      "id": "18c84da2-a893-475a-a19a-19d6d7477168",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when you turn a faucet?",
+      "rubric": [
+        "3 - It shows ideas about water coming out.",
+        "2 - It talks about turning the faucet handle.",
+        "1 - It mentions the faucet itself.",
+        "0 - I don't know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "causal thinking about water flow",
+      "targetEvidence": "recognizing actions and results when turning a faucet",
+      "alignmentRationale": "This question stimulates thoughts about causal processes involved in common household mechanisms."
+    },
+    {
+      "id": "983330f5-922a-4598-b135-56c60300a7de",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "How do you blow up a balloon?",
+      "rubric": [
+        "3 - You take a deep breath and blow air into it.",
+        "2 - You shake it around.",
+        "1 - You pull it.",
+        "0 - I don't know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "describe an action process",
+      "targetEvidence": "articulates steps or actions involved with inflating a balloon",
+      "alignmentRationale": "Explores understanding of the mechanics in a simple task."
+    },
+    {
+      "id": "c475f421-ec1e-41e7-8963-bb105515d92f",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What happens when you press a button on a toy?",
+      "rubric": [
+        "3 - The toy makes noise or moves.",
+        "2 - Nothing happens.",
+        "1 - It looks pretty.",
+        "0 - I don't know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The toy makes noise or moves."
+        },
+        {
+          "key": "b",
+          "text": "Nothing happens."
+        },
+        {
+          "key": "c",
+          "text": "It looks pretty."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "ask about the action-result relationship",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "describes an observable effect when a button is pressed",
+      "alignmentRationale": "This question prompts understanding actions leading to results in toys."
+    },
+    {
+      "id": "2c4a3704-9685-4bb5-bd2f-56ad3530df65",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What does a remote control help you do?",
+      "rubric": [
+        "3 - It helps you change the TV channel or turn it on and off.",
+        "2 - It makes noise.",
+        "1 - It is a toy.",
+        "0 - I don't know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "describe a device's purpose",
+      "targetEvidence": "identifies the function of a remote control",
+      "alignmentRationale": "This selected question seeks to elicit knowledge about the use of a common household item."
+    },
+    {
+      "id": "5641b4db-0501-45f3-a284-49f02a552ae5",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do leaves do for a plant?",
+      "rubric": [
+        "3 - They help it get food from the sun.",
+        "2 - They look pretty.",
+        "1 - They fall off sometimes.",
+        "0 - I don't know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "describe the function of a part",
+      "targetEvidence": "understands and explains the role leaves play in a plant's life",
+      "alignmentRationale": "This question encourages an exploration of a natural process."
+    },
+    {
+      "id": "57f6a13e-d54f-436f-9fac-0a0060c407ae",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think a blender does?",
+      "rubric": [
+        "3 - A blender mixes food.",
+        "2 - A blender has blades.",
+        "1 - A blender is a machine.",
+        "0 - A blender is made of plastic."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A blender mixes food."
+        },
+        {
+          "key": "b",
+          "text": "A blender has blades."
+        },
+        {
+          "key": "c",
+          "text": "A blender is a machine."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding function of kitchen appliances",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies the primary function of a blender.",
+      "alignmentRationale": "This question engages understanding of a common household object and its use in cooking."
+    },
+    {
+      "id": "c6065d3d-d2f4-4e02-9cdc-6a699208a7a5",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when you drop a spoon in water?",
+      "rubric": [
+        "3 - Describes the splash or sound of the spoon.",
+        "2 - Talks about the spoon but does not explain the effect.",
+        "1 - Mentions a spoon or water without connection.",
+        "0 - Does not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "observing interactions with water",
+      "targetEvidence": "Describes the effects of dropping a spoon in water.",
+      "alignmentRationale": "This question prompts thought about the interaction between solid and liquid."
+    },
+    {
+      "id": "e0347dba-8acf-4a38-8958-e7f5f3d50c01",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when you blow bubbles?",
+      "rubric": [
+        "3 - Describes the bubbles floating and popping clearly.",
+        "2 - Talks about blowing but is vague about bubbles.",
+        "1 - Mentions bubbles without details.",
+        "0 - Does not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "predicting outcomes in playful activities",
+      "targetEvidence": "Describes the effects of blowing bubbles.",
+      "alignmentRationale": "This encourages imaginative thinking about physical actions and their effects in play."
+    },
+    {
+      "id": "06bd9147-12e2-4781-b0c8-2cba2fe529db",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What happens when you shake a bottle of juice?",
+      "rubric": [
+        "3 - The juice mixes and might froth.",
+        "2 - The bottle makes noise.",
+        "1 - The juice is in a bottle.",
+        "0 - The juice is sweet."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The juice mixes and might froth."
+        },
+        {
+          "key": "b",
+          "text": "The bottle makes noise."
+        },
+        {
+          "key": "c",
+          "text": "The juice is in a bottle."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding mixing actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Describes the outcome of shaking juice in a bottle.",
+      "alignmentRationale": "This question evaluates understanding of the effects of agitation on liquids, showcasing curiosity about mixing."
+    },
+    {
+      "id": "633b05d7-26e0-4ce4-bc63-9230d3815126",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What happens if you push a toy train?",
+      "rubric": [
+        "3 - The toy train moves forward.",
+        "2 - The train makes noise.",
+        "1 - The train is on the track.",
+        "0 - The train is made of wood."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The toy train moves forward."
+        },
+        {
+          "key": "b",
+          "text": "The train makes noise."
+        },
+        {
+          "key": "c",
+          "text": "The train is on the track."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding action and consequence",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Describes what occurs when a toy train is pushed.",
+      "alignmentRationale": "This tests recognition of cause and effect in play scenarios with toys."
+    },
+    {
+      "id": "c0159459-080a-4b2d-afe5-958eb5360dc9",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What happens when you turn on a light switch?",
+      "rubric": [
+        "3 - The light turns on and brightens the room.",
+        "2 - Talks about the switch but not the light effect.",
+        "1 - Mentions either light or switch without connection.",
+        "0 - Does not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "understanding electrical mechanisms",
+      "targetEvidence": "Describes the outcome of using a light switch.",
+      "alignmentRationale": "This helps children think about electrical mechanisms in simple terms."
+    },
+    {
+      "id": "5d8d6231-2ac8-4974-9cc4-34853d5c125e",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when you pour water on soil?",
+      "rubric": [
+        "3 - Explains how the soil becomes wet or absorbs water.",
+        "2 - Talks about pouring water but not the soil effect.",
+        "1 - Mentions water or soil without connection between them.",
+        "0 - Does not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "understanding interactions of materials",
+      "targetEvidence": "Describes the interaction when water is poured onto soil.",
+      "alignmentRationale": "This focuses on basic concepts of materials and their behaviors when combined."
+    },
+    {
+      "id": "53682748-a0c3-410b-98a0-171c7836bc54",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What happens when the sun shines on ice?",
+      "rubric": [
+        "3 - The ice melts into water.",
+        "2 - The ice gets wet.",
+        "1 - The ice is cold.",
+        "0 - The ice is white."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The ice melts into water."
+        },
+        {
+          "key": "b",
+          "text": "The ice gets wet."
+        },
+        {
+          "key": "c",
+          "text": "The ice is cold."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding effects of temperature",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies the effect of sunlight on ice.",
+      "alignmentRationale": "This question highlights the basic principle of temperature affecting solid materials, encouraging mechanistic curiosity."
+    },
+    {
+      "id": "d43ab263-6c98-4039-8053-e1ab88d2beb0",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What happens when you turn on a flashlight?",
+      "rubric": [
+        "3 - The answer states that it lights up, demonstrating an understanding of the action's effect.",
+        "2 - The answer notes some change but lacks clarity about lighting up.",
+        "1 - The answer is unclear or does not relate to the flashlight properly.",
+        "0 - No answer or completely unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It lights up."
+        },
+        {
+          "key": "b",
+          "text": "It makes noise."
+        },
+        {
+          "key": "c",
+          "text": "It gets warm."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "light effect",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "Child identifies that turning on the flashlight makes it shine.",
+      "alignmentRationale": "This question tests understanding of cause and effect in a common electrical device, supporting curiosity about how it works."
+    },
+    {
+      "id": "c2f581e0-58e4-47a4-8588-fee56e7d41b8",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What happens when you pull a toy’s string?",
+      "rubric": [
+        "3 - The answer describes one or more effects of pulling the string, showing curiosity about the toy's action.",
+        "2 - The answer mentions pulling the string but does not explain the action's effect clearly.",
+        "1 - The answer is unclear, lacks detail about the action, or seems unrelated.",
+        "0 - No answer or irrelevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "mechanical effect of pulling",
+      "targetEvidence": "Child describes how pulling the string causes something to happen with the toy.",
+      "alignmentRationale": "This task explores how a familiar action leads to an effect in a simple machine, testing understanding of causal relationships."
+    },
+    {
+      "id": "7203a454-5482-419e-8bff-fba9ff47c7a1",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What does a balloon do when you let it go?",
+      "rubric": [
+        "3 - The answer states the balloon flies away, showing understanding of the action.",
+        "2 - The answer notes some movement but lacks detail about flying away.",
+        "1 - The answer is vague about what happens to the balloon.",
+        "0 - No answer or completely incorrect answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It flies away."
+        },
+        {
+          "key": "b",
+          "text": "It stays in place."
+        },
+        {
+          "key": "c",
+          "text": "It falls down."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "action consequence",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "Child identifies that letting go of the balloon leads to it floating away.",
+      "alignmentRationale": "This question assesses knowledge of cause and effect in a familiar scenario, isolating mechanistic curiosity about how an action causes a reaction."
+    },
+    {
+      "id": "ee4db861-a26e-47c3-8111-e16dc915b742",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What happens when you twist open a jar lid?",
+      "rubric": [
+        "3 - The answer explains that the lid comes off, showing understanding of the action's effect.",
+        "2 - The answer notes that something changes but isn't specific about the lid's action.",
+        "1 - The answer is unclear or does not relate to twisting or jars.",
+        "0 - No answer or completely unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The lid comes off."
+        },
+        {
+          "key": "b",
+          "text": "The jar gets filled."
+        },
+        {
+          "key": "c",
+          "text": "The jar becomes heavier."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "twisting effect",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "Child recognizes that twisting leads to the jar lid coming off.",
+      "alignmentRationale": "This question focuses on understanding how a simple action produces a specific outcome, contributing to mechanistic curiosity about everyday objects."
+    },
+    {
+      "id": "799ad1a7-79e1-4d18-98ce-79a1cb6f446a",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What happens when you press a toy's button?",
+      "rubric": [
+        "3 - Really explains what happens, showing understanding of the process.",
+        "2 - Describes some part of what happens, but not very clearly.",
+        "1 - Mentions the button but does not explain what it does.",
+        "0 - Does not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "describe a cause-effect action",
+      "targetEvidence": "Expresses understanding of the toy's action when the button is pressed.",
+      "alignmentRationale": "This question requires the child to think about cause and effect as they process the action of pressing the button."
+    },
+    {
+      "id": "f2d8635f-5781-4f01-ba35-80f4e4cc256f",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What part of a toy car helps it roll?",
+      "rubric": [
+        "3 - Identifies wheels correctly as the part for rolling.",
+        "2 - Chooses another option that supports rolling a little.",
+        "1 - Selects a part that is not for rolling.",
+        "0 - Does not choose correctly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Wheels"
+        },
+        {
+          "key": "b",
+          "text": "Body"
+        },
+        {
+          "key": "c",
+          "text": "Engine"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identify function of parts",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "Selects the part that allows the toy car to roll.",
+      "alignmentRationale": "Identifying which part of a toy car has a mechanical role illustrates understanding of how parts interact in function."
+    },
+    {
+      "id": "4b5c1222-077b-4471-a128-83c9b70a1994",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What question helps you understand how a clock works?",
+      "rubric": [
+        "3 - Chooses 'What makes the hands move?' showing good curiosity about mechanisms.",
+        "2 - Selects a question that somewhat relates to time but does not explore mechanics.",
+        "1 - Picks an unrelated question.",
+        "0 - Fails to answer correctly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What makes the hands move?"
+        },
+        {
+          "key": "b",
+          "text": "What color is the clock?"
+        },
+        {
+          "key": "c",
+          "text": "What sound does it make?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "ask a question to reveal a mechanism",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "Selects a question that can reveal the inner workings of a clock.",
+      "alignmentRationale": "This question encourages curiosity about the mechanisms behind a common object, testing a child's initiative in questioning."
+    },
+    {
+      "id": "f6bf44c0-26a3-4153-9555-28c48ed797bf",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when you pull a string on a toy?",
+      "rubric": [
+        "3 - Clearly explains the action that follows pulling the string.",
+        "2 - Gives a partial explanation about what happens.",
+        "1 - Mentions pulling the string but doesn't explain the outcome.",
+        "0 - Does not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "explain a sequence of events",
+      "targetEvidence": "Describes what occurs as a result of pulling the string.",
+      "alignmentRationale": "This task requires the child to consider the cause and effect of an action in a familiar play scenario."
+    },
+    {
+      "id": "f5da795b-80d4-4266-8bcc-92b953e7b3a1",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What part of a balloon allows it to float?",
+      "rubric": [
+        "3 - Correctly identifies helium or air as the reason it floats.",
+        "2 - Offers another partially correct idea related to buoyancy.",
+        "1 - Suggests a different balloon part that does not help it float.",
+        "0 - Incorrect or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Helium or air"
+        },
+        {
+          "key": "b",
+          "text": "The color"
+        },
+        {
+          "key": "c",
+          "text": "The size"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identify a cause for a function",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "Selects the part or reason related to buoyancy in a balloon.",
+      "alignmentRationale": "Understanding buoyancy relates directly to the child’s grasp of how things function in the world around them."
+    },
+    {
+      "id": "4de109a9-b5aa-48cc-9773-8d943d56a09f",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What happens to a toy when you pull its string?",
+      "rubric": [
+        "3 - Knows it activates something, showing understanding.",
+        "2 - Answers but misses full action description.",
+        "1 - Names a part without explaining what happens.",
+        "0 - Does not answer correctly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It moves or does something"
+        },
+        {
+          "key": "b",
+          "text": "It changes color"
+        },
+        {
+          "key": "c",
+          "text": "It becomes bigger"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predict an action based on input",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "Predicts the action caused by pulling the toy string.",
+      "alignmentRationale": "This question assesses the child’s understanding of mechanical input and output actions."
+    },
+    {
+      "id": "b7fb9cc6-730d-4223-9229-1f7b9855e827",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when you push a swing?",
+      "rubric": [
+        "3 - Clearly explains how the swing moves when pushed.",
+        "2 - Describes some part of how the swing moves.",
+        "1 - Mentions pushing without explaining how it moves.",
+        "0 - Does not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "explain motion due to force",
+      "targetEvidence": "Describes the movement caused by the push on the swing.",
+      "alignmentRationale": "This task encourages critical thinking about physical movement and forces involved in playful activities."
+    },
+    {
+      "id": "bb0e6990-ed47-4520-9bef-eed55a764ae7",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What part of a blender helps it work?",
+      "rubric": [
+        "3 - Identifies the motor as the part that makes it work.",
+        "2 - Offers a somewhat correct idea about mixing.",
+        "1 - Names a part unrelated to its function.",
+        "0 - Provides no valid answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The motor"
+        },
+        {
+          "key": "b",
+          "text": "The lid"
+        },
+        {
+          "key": "c",
+          "text": "The buttons"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identify a key functional part",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "Recognizes the key part that enables operation of the blender.",
+      "alignmentRationale": "Recognizing functional parts of appliances helps illustrate an understanding of how devices work in everyday life."
+    },
+    {
+      "id": "8fa2e01e-2715-4138-ac80-1217e16342db",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What part of a bicycle helps it go?",
+      "rubric": [
+        "3 - The wheels help the bicycle go forward.",
+        "2 - The pedals are important but not the main part.",
+        "1 - The bike frame is what helps it go.",
+        "0 - A bicycle needs a horn to go."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The wheels"
+        },
+        {
+          "key": "b",
+          "text": "The pedals"
+        },
+        {
+          "key": "c",
+          "text": "The bike frame"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a part’s function",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identify a part of the bicycle and its function.",
+      "alignmentRationale": "Asking about the bicycle's part tests understanding of how a familiar system works by focusing on specific mechanisms."
+    },
+    {
+      "id": "394eb7ce-b3a1-47a9-9361-1ad56c3505d0",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when you press a button on a toy?",
+      "rubric": [
+        "3 - The toy makes a sound or moves.",
+        "2 - The toy might light up or do something.",
+        "1 - The button is just for fun.",
+        "0 - Nothing special happens."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "asking about cause and effect",
+      "targetEvidence": "Offer a response that suggests a consequence of pressing a button.",
+      "alignmentRationale": "Allowing for a response about the effect of an action tests a child's curiosity about familiar objects."
+    },
+    {
+      "id": "a1d568b8-c542-444e-8d77-d2af70ad9654",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think makes a balloon float?",
+      "rubric": [
+        "3 - The air inside is lighter than the outside air.",
+        "2 - The balloon is full of special gas.",
+        "1 - The balloon is just bouncy.",
+        "0 - The balloon needs to be blue."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The air inside is lighter"
+        },
+        {
+          "key": "b",
+          "text": "It's full of special gas"
+        },
+        {
+          "key": "c",
+          "text": "The balloon is just bouncy"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a cause of floating",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Explain why a balloon can float based on its contents.",
+      "alignmentRationale": "This tests the understanding of buoyancy and the mechanism behind a balloon's ability to float."
+    },
+    {
+      "id": "1686c9f5-7754-4267-ae94-f59c16afa953",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think makes an elevator go up?",
+      "rubric": [
+        "3 - Something pushes it up with ropes.",
+        "2 - The door opens and closes.",
+        "1 - It rides like a car.",
+        "0 - It needs a person inside."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "asking about a machine operation",
+      "targetEvidence": "Comment on how an elevator functions.",
+      "alignmentRationale": "This encourages thinking about the mechanics behind a common system, engaging their curiosity."
+    },
+    {
+      "id": "d1ad5e59-be93-4d43-9dcb-e638c49af177",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What makes a toy car move when you pull it back?",
+      "rubric": [
+        "3 - The spring inside makes it go forward.",
+        "2 - The wheels help it move.",
+        "1 - You push it with your hand.",
+        "0 - The car is just really nice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The spring inside"
+        },
+        {
+          "key": "b",
+          "text": "The wheels"
+        },
+        {
+          "key": "c",
+          "text": "You push it"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for energy source",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identify the mechanism that causes movement in a spring-operated toy car.",
+      "alignmentRationale": "It focuses on identifying cause and effect through the action of a familiar toy."
+    },
+    {
+      "id": "0cabfe48-2fb4-4fe9-aa4c-d3baedfbf8de",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when a light bulb turns on?",
+      "rubric": [
+        "3 - Electricity makes it glow.",
+        "2 - It gets warm inside.",
+        "1 - The bulb just stands there.",
+        "0 - It needs a lamp to work."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "asking about energy transformation",
+      "targetEvidence": "Describe the process of a light bulb lighting up.",
+      "alignmentRationale": "Asking what happens when a light bulb turns on explores how energy is transformed into light."
+    },
+    {
+      "id": "af3a418a-c9cc-4196-8acd-ee48c956314f",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What does a windmill use to turn?",
+      "rubric": [
+        "3 - The wind makes the blades turn.",
+        "2 - The sun shines on it.",
+        "1 - It has a motor inside.",
+        "0 - The windmill is colorful."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The wind"
+        },
+        {
+          "key": "b",
+          "text": "The sun"
+        },
+        {
+          "key": "c",
+          "text": "A motor"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for driving force",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identify the force that powers a windmill's movement.",
+      "alignmentRationale": "This task isolates mechanical curiosity about how windmills function, relying on the cause of motion."
+    },
+    {
+      "id": "a475d297-0f63-4291-8094-15f8f781b7bf",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when you flip a light switch?",
+      "rubric": [
+        "3 - The light turns on or off.",
+        "2 - The switch moves back and forth.",
+        "1 - It makes a clicking sound.",
+        "0 - The switch is broken."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "question about control mechanism",
+      "targetEvidence": "Describe the effect of manipulating a light switch.",
+      "alignmentRationale": "Engaging with common household objects encourages exploration of their functions."
+    },
+    {
+      "id": "4a8f984a-445b-4e32-8201-5db83cb5b3ed",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What happens when you push a toy car?",
+      "rubric": [
+        "3 - Clearly explains how pushing makes the car move.",
+        "2 - Mentions movement but lacks detail on cause.",
+        "1 - States something happens but not clearly.",
+        "0 - No relevant answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "mechanical action leads to movement",
+      "targetEvidence": "The child describes the effect of pushing on the toy car's movement.",
+      "alignmentRationale": "This tests curiosity about a simple mechanical action with a familiar object."
+    },
+    {
+      "id": "803310c5-7b0d-4216-8be2-95fde9642159",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What makes the swing move?",
+      "rubric": [
+        "3 - Correctly answers that pushing or pulling makes it move.",
+        "2 - Partly explains movement but misses key action.",
+        "1 - Provides a vague answer with no clarity.",
+        "0 - Incorrect or irrelevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It makes noise."
+        },
+        {
+          "key": "b",
+          "text": "Pushing it forward."
+        },
+        {
+          "key": "c",
+          "text": "It goes up high."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "action causes movement",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "The child identifies the action that causes the swing to move.",
+      "alignmentRationale": "This item assesses understanding of movement generated by a specific action, relevant for learning causal relationships."
+    },
+    {
+      "id": "d2cfb935-b644-4760-8e6d-5d49ff2ac384",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when it rains?",
+      "rubric": [
+        "3 - Clearly describes how rain makes things wet or causes plants to grow.",
+        "2 - Mentions rain without explaining what happens.",
+        "1 - Says something general without connection to rain.",
+        "0 - No relevant answer provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "effects of rain",
+      "targetEvidence": "The child explains the outcome of rain on the environment.",
+      "alignmentRationale": "This task encourages inquiry about a common natural occurrence and its consequences."
+    },
+    {
+      "id": "70fd4291-2392-40f7-bd93-88cab232b80e",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What does a refrigerator do?",
+      "rubric": [
+        "3 - Correctly describes that it keeps food cold.",
+        "2 - Mentions something about food but not clearly.",
+        "1 - Provides an unrelated answer.",
+        "0 - Incorrect or non-informative response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Keeps food cold."
+        },
+        {
+          "key": "b",
+          "text": "Makes food hot."
+        },
+        {
+          "key": "c",
+          "text": "Stores books."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "function of an appliance",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "The child identifies the main purpose of the refrigerator.",
+      "alignmentRationale": "This tests understanding of a household object's purpose and function in everyday life."
+    },
+    {
+      "id": "0f21f62f-e3b2-4229-ac6b-3e71c8bacbaa",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What does a gear do in a machine?",
+      "rubric": [
+        "3 - The answer explains that gears help turn other parts of the machine.",
+        "2 - The answer describes part of the function but lacks some detail.",
+        "1 - The answer is related but does not explain clearly.",
+        "0 - The answer does not relate to gears at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Gears help turn other parts."
+        },
+        {
+          "key": "b",
+          "text": "Gears are often metal."
+        },
+        {
+          "key": "c",
+          "text": "Gears can be round."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "asks a useful causal question about parts",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child connects gears with the machine's operation",
+      "alignmentRationale": "This task engages with understanding how gears work, focusing on cause and effect."
+    },
+    {
+      "id": "5c28d65b-ea5e-40b5-a6cd-c5c41ed94a15",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What does a water faucet do?",
+      "rubric": [
+        "3 - The answer explains that a faucet makes water come out.",
+        "2 - The answer describes it but misses the full function.",
+        "1 - The answer is somewhat relevant but incomplete.",
+        "0 - The answer does not relate to a faucet."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It controls the water flow."
+        },
+        {
+          "key": "b",
+          "text": "It is shiny and pretty."
+        },
+        {
+          "key": "c",
+          "text": "It sits on the sink."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "asks a useful causal question about processes",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child explains the purpose of the water faucet",
+      "alignmentRationale": "This question checks the understanding of the cause and effect relationship regarding how a faucet works."
+    },
+    {
+      "id": "ab04255e-80b4-4f95-a661-47e3d6a90a54",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when you open a window on a hot day?",
+      "rubric": [
+        "3 - The child explains that opening a window lets in cool air.",
+        "2 - The child describes part of the process, but misses some details about temperature.",
+        "1 - The child's answer is unrelated to temperature.",
+        "0 - The child does not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "answers a useful causal question about actions",
+      "targetEvidence": "the child connects the action of opening a window with air temperature",
+      "alignmentRationale": "The task requires thinking about the causal effects of the action, not just an opinion."
+    },
+    {
+      "id": "70ceedc6-7f16-494f-abd9-c0575339118f",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What part of a car helps it navigate?",
+      "rubric": [
+        "3 - The answer identifies that the steering wheel helps control direction in a car.",
+        "2 - The answer mentions a part related to the car, but it’s incorrect or vague.",
+        "1 - The answer is somewhat related but does not specify a part that helps navigate.",
+        "0 - The answer does not relate to the car's navigation at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The steering wheel helps it turn."
+        },
+        {
+          "key": "b",
+          "text": "The engine makes it go fast."
+        },
+        {
+          "key": "c",
+          "text": "The horn makes noise."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "asks a useful causal question about parts",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child names the part that aids in navigating a car",
+      "alignmentRationale": "The question requires identifying a specific part of the car that helps with navigation, demonstrating mechanistic curiosity."
+    },
+    {
+      "id": "56f00c0a-9714-4547-90d0-289a09790935",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What helps a blender chop food?",
+      "rubric": [
+        "3 - The answer identifies that the spinning blades chop food.",
+        "2 - The answer describes part of the blender but is vague.",
+        "1 - The answer gives unrelated information.",
+        "0 - The answer is not related to the blender at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The blades spin very fast to chop food."
+        },
+        {
+          "key": "b",
+          "text": "The blender has a light on it."
+        },
+        {
+          "key": "c",
+          "text": "The motor makes noise."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "asks a useful causal question about parts",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child identifies the blade's role in chopping food",
+      "alignmentRationale": "This question focuses on understanding a specific mechanism in the blender and its effect."
+    },
+    {
+      "id": "61c11ac6-5f2a-406b-89ed-b2252b7fdc8b",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "How does a microwave heat food?",
+      "rubric": [
+        "3 - The child describes how microwaves make food hot.",
+        "2 - The child explains part of the process but misses some details.",
+        "1 - The child gives unrelated information about the microwave.",
+        "0 - The child does not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "answers a useful causal question about processes",
+      "targetEvidence": "the child explains the heating process of the microwave",
+      "alignmentRationale": "This task tests the child's ability to think about how a microwave works, not just the fact that it heats food."
+    },
+    {
+      "id": "7e50a316-9536-4da3-88e3-9ce0667a7b7e",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "How does a doorbell work?",
+      "rubric": [
+        "3 - The child explains that pressing the button makes a sound.",
+        "2 - The child describes part of the doorbell's function but is not fully clear.",
+        "1 - The answer is somewhat unrelated to the function of a doorbell.",
+        "0 - The child does not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "answers a useful causal question about processes",
+      "targetEvidence": "the child explains the mechanism of the doorbell",
+      "alignmentRationale": "This question tests the understanding of how a doorbell operates, focusing on the result of the action."
+    },
+    {
+      "id": "2be30282-66ec-4472-b0a8-6d517c927d9a",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What happens when you pull the handle on a toy?",
+      "rubric": [
+        "3 - The answer explains how the toy moves as a result of pulling the handle.",
+        "2 - The answer describes part of the toy's movement but lacks full explanation.",
+        "1 - The answer is related to the toy but does not explain movement.",
+        "0 - The answer is not about the toy or its movement."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The toy moves because it has a spring."
+        },
+        {
+          "key": "b",
+          "text": "The toy just stays still."
+        },
+        {
+          "key": "c",
+          "text": "The toy makes a sound."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "asks a useful causal question about parts",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "the child provides a reason for what happens when the handle is pulled",
+      "alignmentRationale": "This question requires the child to think about the cause and effect of pulling a toy handle, not just a fact."
+    },
+    {
+      "id": "9aaf66c4-faae-4a0c-901e-f0ab2dfda868",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "Which question would tell you how a refrigerator keeps food cold?",
+      "rubric": [
+        "3 - Correctly identifies a question about temperature or cooling mechanisms.",
+        "2 - Suggests a question that is somewhat relevant but vague.",
+        "1 - Suggests a question not related to the cooling process.",
+        "0 - No answer or unrelated question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "How does it make the inside cold?"
+        },
+        {
+          "key": "b",
+          "text": "What color is the fridge?"
+        },
+        {
+          "key": "c",
+          "text": "Who invented refrigerators?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "mechanical process inquiry",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "Child proposes a question about how cooling works in a refrigerator.",
+      "alignmentRationale": "This encourages children to think critically about processes in familiar household appliances."
+    },
+    {
+      "id": "11a21511-2d5c-4bf7-a802-82df18e6fcb2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What part of a bicycle helps it stop?",
+      "rubric": [
+        "3 - Correctly identifies brakes as the stopping part.",
+        "2 - Mentions a part related to stopping but not the brakes.",
+        "1 - Incorrectly identifies a part that does not stop the bike.",
+        "0 - No answer or vague response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Brakes"
+        },
+        {
+          "key": "b",
+          "text": "Pedals"
+        },
+        {
+          "key": "c",
+          "text": "Handlebars"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "mechanical function understanding",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Child identifies the brakes as a crucial part for stopping a bicycle.",
+      "alignmentRationale": "This question isolates curiosity about mechanical functions and requires children to connect a specific part to its purpose in a familiar object."
+    },
+    {
+      "id": "22b520d6-58b5-4269-96c1-2959015d100e",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "Which question helps you learn how a toaster works?",
+      "rubric": [
+        "3 - Identifies a question about heat or function correctly.",
+        "2 - Suggests a question related but not directly about how it works.",
+        "1 - Suggests a question not related to its function.",
+        "0 - No answer or irrelevant question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What color is the toaster?"
+        },
+        {
+          "key": "b",
+          "text": "How does a toaster make bread warm?"
+        },
+        {
+          "key": "c",
+          "text": "Who invented the toaster?"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "curiosity about function",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "Child asks a specific question that sparks exploration of how a toaster operates.",
+      "alignmentRationale": "This checks understanding of functional curiosity and the relationship between parts and their actions in a household object."
+    },
+    {
+      "id": "4743d07b-0696-4f84-8be2-765fe47b4142",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "Why do you think cars have wheels?",
+      "rubric": [
+        "3 - Provides a reason related to movement or stability of the car.",
+        "2 - Offers a vague answer about parts without specific reasoning.",
+        "1 - Mentions wheels but doesn't connect them to car function.",
+        "0 - No answer or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "reasoning about function",
+      "targetEvidence": "Child explains a reason why wheels are important for cars.",
+      "alignmentRationale": "This question encourages children to think about the purpose of a common object, fostering logical reasoning about movement."
+    },
+    {
+      "id": "3de3ff7c-8612-4759-b84a-67679409245b",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What part of a camera helps take pictures?",
+      "rubric": [
+        "3 - Correctly identifies the lens.",
+        "2 - Mentions a related part like the flash, but not crucial for taking pictures.",
+        "1 - Incorrectly identifies something unrelated like the strap.",
+        "0 - No answer or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Lens"
+        },
+        {
+          "key": "b",
+          "text": "Flash"
+        },
+        {
+          "key": "c",
+          "text": "Body"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "part-function relation",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Child identifies the lens as the key part for taking photos.",
+      "alignmentRationale": "This tests understanding of how different parts of a camera contribute to its function."
+    },
+    {
+      "id": "3baf6179-87d2-4a50-9d86-4e9f09879f5f",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when you turn on a washing machine?",
+      "rubric": [
+        "3 - Explains the washing or cleaning process that happens inside.",
+        "2 - Makes a vague statement about washing clothes without detail.",
+        "1 - Mentions the washing machine but not its action.",
+        "0 - No answer or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "process explanation",
+      "targetEvidence": "Child describes actions within a washing machine when it is turned on.",
+      "alignmentRationale": "This tests understanding of how a washing machine functions and the processes involved."
+    },
+    {
+      "id": "5886f60a-6541-4c97-a4e1-929d981bcbdb",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "Which part of a vacuum cleaner helps pick up dirt?",
+      "rubric": [
+        "3 - Correctly identifies the vacuum nozzle.",
+        "2 - Mentions a part like the motor, not directly for picking up.",
+        "1 - Identifies something unrelated like the cord.",
+        "0 - No answer that connects to the function."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Nozzle"
+        },
+        {
+          "key": "b",
+          "text": "Filter"
+        },
+        {
+          "key": "c",
+          "text": "Cord"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identifying operational parts",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Child accurately points out parts of a vacuum cleaner related to its dirt collection.",
+      "alignmentRationale": "This evaluates knowledge of how components work together in household objects."
+    },
+    {
+      "id": "e4fed13c-2bdf-4f55-9ab9-e1b7d6a76cc3",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What helps a wind-up toy move when you twist it?",
+      "rubric": [
+        "3 - Correctly identifies the spring inside.",
+        "2 - Mentions winding without specifying the part.",
+        "1 - Identifies something not related like the body.",
+        "0 - No answer or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Spring"
+        },
+        {
+          "key": "b",
+          "text": "Body"
+        },
+        {
+          "key": "c",
+          "text": "Key"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "mechanical movement understanding",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies the spring as the main driving mechanism in a wind-up toy.",
+      "alignmentRationale": "Focuses on mechanical curiosity regarding how toys operate and their internal mechanisms."
+    },
+    {
+      "id": "dfc60e6e-62bf-42eb-af2b-307c1c382ee6",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What makes a bicycle move when you pedal?",
+      "rubric": [
+        "3 - Correctly explains that pedaling turns the wheels and pushes the bike forward.",
+        "2 - Mentions pedaling or wheels but doesn't explain clearly how they work together.",
+        "1 - Gives a vague or unclear answer about bikes.",
+        "0 - Does not answer or talks about something else."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Pedaling makes the wheels turn."
+        },
+        {
+          "key": "b",
+          "text": "The bike needs air."
+        },
+        {
+          "key": "c",
+          "text": "Bikes go fast when they are blue."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding movement cause",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies the action that causes movement",
+      "alignmentRationale": "This question directly asks for an explanation of how pedaling a bike affects its movement."
+    },
+    {
+      "id": "4b79dba9-4534-47f0-b304-635109985622",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think is inside a clock that makes it tick?",
+      "rubric": [
+        "3 - Mentions gears or mechanisms that cause the ticking sound.",
+        "2 - Talks about time or the clock but no specifics about inside.",
+        "1 - General talk about clocks without details.",
+        "0 - Doesn't answer meaningfully."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "curiosity about timekeeping devices",
+      "targetEvidence": "speculates about inner workings of clocks",
+      "alignmentRationale": "This question encourages thought about the mechanics of a familiar object."
+    },
+    {
+      "id": "c1c47e39-c304-4085-abf0-d60572ef2e82",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "How does a pencil help you write?",
+      "rubric": [
+        "3 - Clearly explains that a pencil is used for writing by marking on paper.",
+        "2 - Connects pencil to writing but lacks clear wording.",
+        "1 - Something about pencils, unclear how they help.",
+        "0 - Unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "understanding writing tools",
+      "targetEvidence": "describes the role of a writing instrument",
+      "alignmentRationale": "This question allows children to articulate what they know about a common writing tool."
+    },
+    {
+      "id": "a9716a59-149e-4958-906d-2d55de4125a8",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do wheels do for cars?",
+      "rubric": [
+        "3 - Explains wheels help cars move.",
+        "2 - Mentions wheels but unclear about their importance.",
+        "1 - Vague mention of cars or wheels without function.",
+        "0 - Irrelevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Wheels help cars move forward."
+        },
+        {
+          "key": "b",
+          "text": "Cars look nice with wheels."
+        },
+        {
+          "key": "c",
+          "text": "Wheels can be different sizes."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding vehicle mechanics",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies the function of wheels on vehicles",
+      "alignmentRationale": "This question focuses on understanding a fundamental component of cars and its purpose."
+    },
+    {
+      "id": "37e96e4f-f665-4eb1-8f52-c55f1974853f",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "How do you think a vacuum cleaner picks up dirt?",
+      "rubric": [
+        "3 - Describes the vacuum's mechanism for picking up dirt.",
+        "2 - Gives a partial explanation about dirt.",
+        "1 - Provides an unrelated idea.",
+        "0 - No answer or unclear response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for mechanism",
+      "targetEvidence": "the ability to describe the mechanism of dirt collection in a vacuum cleaner",
+      "alignmentRationale": "This prompt encourages children to discuss the mechanisms of how a vacuum operates, enhancing their understanding of household objects."
+    },
+    {
+      "id": "6da751b4-6036-46c5-933b-146f7de9129e",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What part helps a microwave cook food quickly?",
+      "rubric": [
+        "3 - Correctly identifies the mechanism behind rapid cooking.",
+        "2 - Identifies a related part but not the cooking mechanism.",
+        "1 - Provides an irrelevant answer.",
+        "0 - No answer or unclear response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Magnetron"
+        },
+        {
+          "key": "b",
+          "text": "Tray"
+        },
+        {
+          "key": "c",
+          "text": "Door"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a part",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "the ability to recognize the component that enables efficient cooking in a microwave",
+      "alignmentRationale": "Targeting the understanding of microwave mechanisms aligns curiosity with function."
+    },
+    {
+      "id": "7b44d70a-4005-4d6d-9c55-129029ac1d3b",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "Why do you think the tires on a car are round?",
+      "rubric": [
+        "3 - Correctly explains why round tires are important for movement.",
+        "2 - Provides a vague or partly relevant reason.",
+        "1 - Gives an unrelated reason.",
+        "0 - No answer or unclear response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "To roll smoothly"
+        },
+        {
+          "key": "b",
+          "text": "To look nice"
+        },
+        {
+          "key": "c",
+          "text": "To fit in the garage"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a reason",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "the ability to explain why round tires are necessary for a vehicle's function",
+      "alignmentRationale": "This question examines understanding of design in household objects by linking shape to function."
+    },
+    {
+      "id": "f979a28d-5ffe-4fca-82c1-616c3039c0c1",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "Which question would help you learn how a refrigerator keeps food cold?",
+      "rubric": [
+        "3 - Correctly identifies a question about the refrigerator mechanism.",
+        "2 - Identifies a relevant but not specific question.",
+        "1 - Provides an unrelated question.",
+        "0 - No answer or unclear response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "How heavy is it?"
+        },
+        {
+          "key": "b",
+          "text": "How does it cool food?"
+        },
+        {
+          "key": "c",
+          "text": "What color is it?"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a helpful question",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "the ability to identify a useful question about how a refrigerator works",
+      "alignmentRationale": "This question helps assess understanding of mechanisms by prompting for questions related to the refrigerator's cooling process."
+    },
+    {
+      "id": "f9c8ac71-ec64-4ea1-8c50-535628e7fe32",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think makes a blender mix things?",
+      "rubric": [
+        "3 - Explains how the blender mixes thoroughly and correctly.",
+        "2 - Gives a partial answer about mixing.",
+        "1 - Provides an unrelated idea.",
+        "0 - No answer or unclear response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for mechanism",
+      "targetEvidence": "the ability to describe how a blender performs its mixing function",
+      "alignmentRationale": "This prompt encourages children to explore the mixing mechanism of a familiar appliance, fostering mechanistic curiosity."
+    },
+    {
+      "id": "026a411f-4c37-49ad-9dc5-036226f23cd9",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What helps a door to open and close easily?",
+      "rubric": [
+        "3 - Correctly names the part that assists door movement.",
+        "2 - Identifies a related feature but not the correct part.",
+        "1 - Provides an unrelated answer.",
+        "0 - No answer or unclear response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Hinge"
+        },
+        {
+          "key": "b",
+          "text": "Lock"
+        },
+        {
+          "key": "c",
+          "text": "Handle"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a part",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "the ability to correctly identify a part that helps a door move",
+      "alignmentRationale": "This item focuses on recognizing the mechanism behind a door's function, which is part of understanding household objects."
+    },
+    {
+      "id": "1662842d-245d-4532-b339-0b6d385c830b",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What movement helps a lever lift something?",
+      "rubric": [
+        "3 - Correctly identifies the type of movement involved in using a lever.",
+        "2 - Provides a partially correct answer but lacks clarity.",
+        "1 - Gives an unrelated answer.",
+        "0 - No answer or unclear response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Up and down"
+        },
+        {
+          "key": "b",
+          "text": "In circles"
+        },
+        {
+          "key": "c",
+          "text": "Side to side"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for movement",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "the ability to explain the type of movement that a lever creates when lifting objects",
+      "alignmentRationale": "This question assesses understanding of the mechanics behind levers, providing insight into how they function based on movement."
+    },
+    {
+      "id": "08ed80f0-7f25-449b-bff7-26a09a2608b2",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What part of a washing machine helps to spin the clothes?",
+      "rubric": [
+        "3 - Correctly identifies the part responsible for spinning clothes.",
+        "2 - Identifies a part but not for spinning clothes.",
+        "1 - Provides an unrelated answer.",
+        "0 - No answer or unclear response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Agitator"
+        },
+        {
+          "key": "b",
+          "text": "Water pump"
+        },
+        {
+          "key": "c",
+          "text": "Door handle"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a part",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "the ability to correctly identify a part of a washing machine that spins clothes",
+      "alignmentRationale": "This question targets knowledge about a washing machine's mechanism, focusing on the recognition of specific parts."
+    },
+    {
+      "id": "b58149b8-75db-4f3c-a14c-0f2155495376",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "Which part of a light bulb helps it shine?",
+      "rubric": [
+        "3 - Identifies the filament as the correct answer.",
+        "2 - Mentions a part related to the electric function, not illumination, e.g., the base.",
+        "1 - Suggests a vague part with no connection to light.",
+        "0 - Provides an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "the filament"
+        },
+        {
+          "key": "b",
+          "text": "the glass"
+        },
+        {
+          "key": "c",
+          "text": "the plug"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identity of a part that creates effect",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child recognizes the correct part that produces light",
+      "alignmentRationale": "This task targets understanding of how electric devices function."
+    },
+    {
+      "id": "c34a3f0f-8c4a-4c65-a7dc-7ef06436d754",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What part of a toaster makes the bread pop up?",
+      "rubric": [
+        "3 - Correctly identifies the mechanism, e.g., 'the spring' or 'the lever'.",
+        "2 - Suggests a relevant part but not quite accurate, e.g., 'the heating element'.",
+        "1 - Gives a vague part but not connected to the popping up process, e.g., 'something inside'.",
+        "0 - Provides an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "the spring"
+        },
+        {
+          "key": "b",
+          "text": "the toaster body"
+        },
+        {
+          "key": "c",
+          "text": "the plug"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a part of a machine",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child identifies a specific part related to the action of popping bread",
+      "alignmentRationale": "This task assesses knowledge of mechanical parts in a common device."
+    },
+    {
+      "id": "e207c43b-b67d-4880-ab8c-73fb66ef73fd",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "How do you think a bicycle works when you ride it?",
+      "rubric": [
+        "3 - Provides a clear explanation of how the parts work together.",
+        "2 - Mentions some parts but without clear interactions.",
+        "1 - Gives a simple, unclear idea about riding a bike.",
+        "0 - Does not answer or is completely off-topic."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "explanation of how parts work together",
+      "targetEvidence": "the child describes the functioning of bicycle components",
+      "alignmentRationale": "This question invites children to express understanding of mechanical operations."
+    },
+    {
+      "id": "c0802ea8-659c-4b35-9778-a9dfa4e57b88",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What would you ask to understand how a blender makes smoothies?",
+      "rubric": [
+        "3 - Asks a clear question about the blending action, e.g., 'What do the blades do?'.",
+        "2 - Poses a general question about the blender, e.g., 'How does it work?'.",
+        "1 - Asks an unrelated question.",
+        "0 - Provides no meaningful question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What do the blades do?"
+        },
+        {
+          "key": "b",
+          "text": "How does it stay on the counter?"
+        },
+        {
+          "key": "c",
+          "text": "What color is the blender?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a useful question",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child formulates a question that reveals the mechanism of the blender",
+      "alignmentRationale": "This task focuses on creating a causal question linked to a familiar object."
+    },
+    {
+      "id": "aacad9ca-968e-4d26-ba23-50fe85cdac73",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think happens when you use a vacuum cleaner?",
+      "rubric": [
+        "3 - Clearly explains the process of suction and cleaning.",
+        "2 - Mentions a feature of the vacuum but lacks depth.",
+        "1 - Provides a vague idea about cleaning without detail.",
+        "0 - No relevant answer or is completely off-topic."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "description of a process",
+      "targetEvidence": "the child explains the working mechanism of a vacuum cleaner",
+      "alignmentRationale": "This question prompts the child to think about the actions involved in using the vacuum."
+    },
+    {
+      "id": "21eaf433-d918-4c5c-8037-a58fd5b748fc",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do you think causes ice to melt when it's outside in the sun?",
+      "rubric": [
+        "3 - Clearly explains the process of heat transfer making ice melt.",
+        "2 - Mentions the sun but lacks complete explanation.",
+        "1 - Offers a vague response regarding temperature or melting.",
+        "0 - No relevant answer or an off-topic response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "causal explanation of heat effects",
+      "targetEvidence": "the child describes how temperature influences ice",
+      "alignmentRationale": "This question encourages exploration of environmental interactions."
+    },
+    {
+      "id": "8e0f72fe-8b0f-47dd-a7e4-6ff49609d199",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What happens when you press the button on a remote control?",
+      "rubric": [
+        "3 - Explains that it sends a signal to the device.",
+        "2 - Suggests a useful action without clarity, like 'it does something'.",
+        "1 - Provides a general action statement.",
+        "0 - Gives an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It sends a signal."
+        },
+        {
+          "key": "b",
+          "text": "It lights up."
+        },
+        {
+          "key": "c",
+          "text": "It makes noise."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "mechanism explanation of a remote control",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child identifies the action of the remote control",
+      "alignmentRationale": "This question assesses understanding of how a simple device functions."
+    },
+    {
+      "id": "24b5a633-c565-4e31-8d22-e9f729575f2a",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "How do you think gears help a watch keep time?",
+      "rubric": [
+        "3 - Clearly explains the function of gears in a clock and their importance for timekeeping.",
+        "2 - Mentions gears but lacks specific details about their role in keeping time.",
+        "1 - Provides a vague answer related to gears without clarity.",
+        "0 - No relevant answer or entirely off-topic."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "importance of parts in a system",
+      "targetEvidence": "the child describes the gears' role in timekeeping",
+      "alignmentRationale": "This question allows for exploration of parts' functions in mechanical systems."
+    },
+    {
+      "id": "607ffff0-0dff-446a-8349-981fb0f4e128",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What part of a bicycle helps you steer?",
+      "rubric": [
+        "3 - You accurately name the handlebars and explain their role in steering.",
+        "2 - You mention steering, but don’t clearly name the part.",
+        "1 - You mention something about riding but not about steering.",
+        "0 - You do not answer or give an unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The handlebars."
+        },
+        {
+          "key": "b",
+          "text": "The wheels."
+        },
+        {
+          "key": "c",
+          "text": "The seat."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identifying parts and their functions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child correctly identifies a specific part of the bicycle that directs movement.",
+      "alignmentRationale": "This tests understanding of how parts of a familiar object work together, focusing on functions rather than general knowledge."
+    },
+    {
+      "id": "d23f88a9-c053-42ae-be1f-64c17f8b95c7",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What do car wheels do?",
+      "rubric": [
+        "3 - You explain they allow the car to roll and move.",
+        "2 - You say they make the car go but don’t add details.",
+        "1 - You mention wheels without explaining their purpose.",
+        "0 - You do not connect wheels to movement."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "They help the car to roll and move."
+        },
+        {
+          "key": "b",
+          "text": "They spin round."
+        },
+        {
+          "key": "c",
+          "text": "They look nice."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding movement",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child connects the role of wheels to the motion of a car.",
+      "alignmentRationale": "This tests knowledge of how a car's parts contribute to its function without overcomplicated vocabulary."
+    },
+    {
+      "id": "aeaadfec-2362-4a74-b8aa-23d489621ed6",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "Can you explain what happens when you press the pedal of a bicycle?",
+      "rubric": [
+        "3 - You describe how pressing the pedal makes the bike move forward.",
+        "2 - You mention pressing the pedal but lack detail on its effect.",
+        "1 - You mention riding without explaining the pedal's action.",
+        "0 - You do not answer or give an unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "describing movement mechanisms",
+      "targetEvidence": "The child articulates the connection between pressing the pedal and bicycle movement.",
+      "alignmentRationale": "This assesses understanding of how actions lead to movement in a familiar context, without needing technical knowledge."
+    },
+    {
+      "id": "383981d9-2d4e-4717-becc-b59f6b2ba444",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "how_things_work",
+      "format": "explanation",
+      "prompt": "What is a lever used for?",
+      "rubric": [
+        "3 - You explain that a lever helps lift things easily.",
+        "2 - You say it helps with action but not specifically lifting.",
+        "1 - You mention a lever but not its use clearly.",
+        "0 - You do not give an answer related to levers."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "To lift heavy things easily."
+        },
+        {
+          "key": "b",
+          "text": "To help people."
+        },
+        {
+          "key": "c",
+          "text": "To push stuff around."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding tools and their uses",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child identifies the functional purpose of a lever clearly.",
+      "alignmentRationale": "This reflects understanding of mechanical advantage and how tools help accomplish tasks, focusing on practical application."
+    }
+  ]
+}

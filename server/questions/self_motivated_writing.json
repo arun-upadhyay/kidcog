@@ -1,0 +1,2485 @@
+{
+  "category": "self_motivated_writing",
+  "questions": [
+    {
+      "id": "61d96f66-fb66-4a18-b00b-329aed666f94",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Make up a story about a robot. What does the robot do?",
+      "rubric": [
+        "3 - Includes a clear action or mission for the robot, creating a fun story.",
+        "2 - Mentions the robot but lacks a specific action or detail.",
+        "1 - Provides only a name or a vague idea without much detail.",
+        "0 - Does not mention a robot or related action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "create a story idea",
+      "targetEvidence": "Describes an action or event involving the robot to form a story.",
+      "alignmentRationale": "This task encourages the child to generate a story idea centered around an imaginative character."
+    },
+    {
+      "id": "b0c41d43-c6b4-421e-a0ba-efcb2aceb8d5",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What would you like to tell a story about?",
+      "rubric": [
+        "3 - Chooses an engaging story idea that sparks creativity.",
+        "2 - Selects a standard idea that isn't interesting.",
+        "1 - Picks a vague or unrelated idea.",
+        "0 - Does not choose any option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A superhero rescue"
+        },
+        {
+          "key": "b",
+          "text": "A long book"
+        },
+        {
+          "key": "c",
+          "text": "A list of chores"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "select a specific story idea",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies a specific idea that can develop into a story.",
+      "alignmentRationale": "This tests the child's capacity to choose a clear and engaging topic for storytelling."
+    },
+    {
+      "id": "7754a642-5d05-4f7c-a566-b5df52eaa590",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Tell a story about your favorite toy. What adventures does it have?",
+      "rubric": [
+        "3 - Includes creative and engaging elements about the toy's adventures.",
+        "2 - Mentions the toy but lacks specific adventurous details.",
+        "1 - Briefly states a toy without a story.",
+        "0 - Does not mention a toy at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "develop a toy adventure story",
+      "targetEvidence": "Creates an imaginative story about the adventures of a favorite toy.",
+      "alignmentRationale": "Encourages creativity by centering the story on a personal and relatable object."
+    },
+    {
+      "id": "5a09248b-b5bf-4ab3-9ae4-0d1229706b5c",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Imagine you could create a funny poem about a dog. What would it say?",
+      "rubric": [
+        "3 - Develops a funny, creative idea for the poem about the dog.",
+        "2 - Describes a dog but lacks humor or detail.",
+        "1 - Briefly mentions a dog without a clear poetic idea.",
+        "0 - Does not mention a dog or a poem."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "create a humorous poem idea",
+      "targetEvidence": "Forms a creative and humorous idea related to the topic.",
+      "alignmentRationale": "This task encourages imaginative and playful thinking in generating a poem about a relatable subject."
+    },
+    {
+      "id": "b202449e-7365-4643-b0a1-8433578f9894",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Tell a poem about the moon. What do you think of when you see it?",
+      "rubric": [
+        "3 - Creates a vivid image or idea in the poem about the moon.",
+        "2 - Mentions the moon but lacks detail or creativity.",
+        "1 - Only names the moon without any descriptive elements.",
+        "0 - Fails to mention the moon or related imagery."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "invent a poem idea",
+      "targetEvidence": "Creates original imagery or ideas related to the moon in the context of the poem.",
+      "alignmentRationale": "This task prompts the child to express creativity by inventing poetry ideas based on a specific theme."
+    },
+    {
+      "id": "9da01e6b-7d04-49f9-a590-b67fff15fc71",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Which of these would you like to tell a story about?",
+      "rubric": [
+        "3 - Correctly identifies a fun or relatable topic for storytelling.",
+        "2 - Indicates an acceptable story topic but less engaging.",
+        "1 - Chooses something unrelated to storytelling.",
+        "0 - Does not choose any option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A treasure hunt"
+        },
+        {
+          "key": "b",
+          "text": "A boring desk"
+        },
+        {
+          "key": "c",
+          "text": "Cleaning a room"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose a story topic",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies a relevant idea for a storytelling prompt from the options.",
+      "alignmentRationale": "This task tests the child's ability to select a story topic, essential for creating an original story."
+    },
+    {
+      "id": "d81c40f3-9823-4d67-8077-354ca511f887",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Tell a short story about your favorite animal. What adventures do they have?",
+      "rubric": [
+        "3 - The story details the favorite animal and includes fun adventures.",
+        "2 - The story mentions the animal but lacks excitement or details.",
+        "1 - The story is very short or unclear about the animal's adventures.",
+        "0 - No story or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "generating a story with adventures",
+      "targetEvidence": "Creates a coherent short story about the animal with adventures.",
+      "alignmentRationale": "This prompts the child to express an idea about their favorite animal in a narrative form."
+    },
+    {
+      "id": "ae529634-9ccc-4950-a62b-554b113826f7",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Make up a story about a bird. What kind of bird is it and what does it do?",
+      "rubric": [
+        "3 - The story has a clear idea and details about the bird's actions.",
+        "2 - The story has a good idea but few details about the bird.",
+        "1 - The story is unclear or not fully developed.",
+        "0 - No story or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "generating a story idea",
+      "targetEvidence": "Creates an original story about a bird with clear actions.",
+      "alignmentRationale": "This task allows the child to demonstrate the ability to create a coherent story concept."
+    },
+    {
+      "id": "ae278611-3806-4827-982d-eae8c06f832c",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you could write a poem about a rainbow, what would it be about?",
+      "rubric": [
+        "3 - The idea includes something colorful or happy about the rainbow.",
+        "2 - The idea is a little related but not clear about the rainbow.",
+        "1 - The idea mentions a rainbow but is unclear or confused.",
+        "0 - No idea about the rainbow."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Colors and happiness"
+        },
+        {
+          "key": "b",
+          "text": "Just water"
+        },
+        {
+          "key": "c",
+          "text": "A long road"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inventing a poem idea",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies a coherent theme for the poem about a rainbow.",
+      "alignmentRationale": "Choosing a specific theme shows the ability to create a focused poetic idea."
+    },
+    {
+      "id": "7b2ec32c-ba18-447f-a147-fb6baa25af8a",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What would you like to write about if you could create a fantasy world?",
+      "rubric": [
+        "3 - The idea includes magical things or fun adventures in a new world.",
+        "2 - The idea is related but lacks a clear fantasy element.",
+        "1 - The idea is very unclear or unrelated to a fantasy world.",
+        "0 - No idea about a fantasy world."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A land with dragons"
+        },
+        {
+          "key": "b",
+          "text": "Just my house"
+        },
+        {
+          "key": "c",
+          "text": "A big tree"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inventing a creative setting",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies a coherent theme for a fantasy world.",
+      "alignmentRationale": "This assesses their ability to conceptualize and describe a fantastic environment."
+    },
+    {
+      "id": "0c274a9b-3e48-4ee6-b8a1-1d9ed37107b5",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you imagined a funny character, who would it be? What do they do?",
+      "rubric": [
+        "3 - The character is funny and has a clear set of actions.",
+        "2 - The character is funny but lacks details.",
+        "1 - The character is unclear or lacking in actions.",
+        "0 - No character or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "creating a character idea",
+      "targetEvidence": "Describes a funny character with actions.",
+      "alignmentRationale": "This focuses on character creation, an essential part of storytelling."
+    },
+    {
+      "id": "98b0f952-8537-4173-8cd6-46d1eae62dfc",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What would you say if you could write a secret message to your favorite toy?",
+      "rubric": [
+        "3 - The message is kind and funny, showing a nice friendship with the toy.",
+        "2 - The message is related to the toy but not very clear or funny.",
+        "1 - The message is unclear or unrelated to the toy.",
+        "0 - No message or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "You're the best, robot!"
+        },
+        {
+          "key": "b",
+          "text": "Are you there?"
+        },
+        {
+          "key": "c",
+          "text": "You're just a toy."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inventing a message",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Gives a coherent and friendly message directed to a toy.",
+      "alignmentRationale": "Assessing the ability to generate a short, focused message is key in creative writing."
+    },
+    {
+      "id": "3a0c1963-6b8a-4350-8239-297a069534e3",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Imagine a world where everything is made of candy. What happens there?",
+      "rubric": [
+        "3 - The idea includes details about the candy world and fun things that happen.",
+        "2 - The idea is about candy but lacks interesting details.",
+        "1 - The idea is unclear or confusing about the candy world.",
+        "0 - No idea or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "creating a fantasy story setting",
+      "targetEvidence": "Generates a creative narrative idea about a candy world.",
+      "alignmentRationale": "This encourages imaginative thinking and storytelling about a unique setting."
+    },
+    {
+      "id": "38ed7865-3cc0-4082-9c50-46f73761d24b",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What kind of adventure would you have with your favorite food?",
+      "rubric": [
+        "3 - The adventure is fun and shows excitement with the food.",
+        "2 - The adventure is related but lacks full detail or excitement.",
+        "1 - The adventure is unclear or not related to food.",
+        "0 - No adventure or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Flying on a pizza!"
+        },
+        {
+          "key": "b",
+          "text": "Just eating it."
+        },
+        {
+          "key": "c",
+          "text": "It falls on the ground."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inventing an adventurous idea",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies a coherent and exciting adventure involving food.",
+      "alignmentRationale": "This measures their ability to creatively engage with familiar objects in a narrative context."
+    },
+    {
+      "id": "c681e11c-325d-445e-89ce-6d2e4625eba8",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you wrote a poem, what would it be about?",
+      "rubric": [
+        "3 - The poem idea is unique and shows creativity or emotion.",
+        "2 - The poem idea is simple but somewhat interesting.",
+        "1 - The poem idea is very basic or does not seem creative.",
+        "0 - The response does not address the question or is unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Flowers and butterflies"
+        },
+        {
+          "key": "b",
+          "text": "Nothing special"
+        },
+        {
+          "key": "c",
+          "text": "An empty rhyme"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inventing an idea for a poem",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child expresses a specific and imaginative idea for a poem.",
+      "alignmentRationale": "Stimulating children's creativity helps assess their motivation to write, fitting with the writing category."
+    },
+    {
+      "id": "f2628a09-6fe1-435e-98f0-40bac6f24298",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Make a short poem about your favorite food. What can you say?",
+      "rubric": [
+        "3 - The poem includes creative language and captures feelings about the food.",
+        "2 - The poem has some interesting words but is not fully developed.",
+        "1 - The poem is very basic or lacks clarity in meaning.",
+        "0 - The response does not create a poem or is unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inventing ideas for a poem",
+      "targetEvidence": "The child creates an original poem about a personal preference.",
+      "alignmentRationale": "Creating a personal poem encourages writing motivation by allowing free expression."
+    },
+    {
+      "id": "80c3853a-e18a-4a08-9cd3-f0ad28e4fd29",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you could write a letter to someone, who would it be and what would you say?",
+      "rubric": [
+        "3 - The letter idea is thoughtful and includes specific content.",
+        "2 - The letter idea is simple or unclear in its message.",
+        "1 - The letter idea lacks coherence or meaningful content.",
+        "0 - The response does not address the prompt."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "forming a letter idea",
+      "targetEvidence": "The child generates a coherent letter idea with a clear recipient and message.",
+      "alignmentRationale": "This task encourages children to connect their thoughts to an audience, fostering a sense of motivation to write."
+    },
+    {
+      "id": "c831b813-7caa-44ad-8dde-d945315b2fe4",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What would you like to write about today?",
+      "rubric": [
+        "3 - The choice is interesting and specific, showing clear preference or creativity.",
+        "2 - The choice is somewhat interesting but lacks detail or enthusiasm.",
+        "1 - The choice is vague or uninspired, without much thought.",
+        "0 - The response does not answer the question or is unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A fun zoo adventure"
+        },
+        {
+          "key": "b",
+          "text": "Something boring"
+        },
+        {
+          "key": "c",
+          "text": "An empty page"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing a writing topic",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child provides a specific topic they wish to write about.",
+      "alignmentRationale": "This question evaluates motivation to create a topic of interest, crucial for self-motivated writing."
+    },
+    {
+      "id": "50e946fe-31dc-449a-9210-03f49b966357",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Imagine a new animal. What does it look like? What does it like to do?",
+      "rubric": [
+        "3 - The animal description is detailed and creative, including both appearance and activities.",
+        "2 - The animal description includes some details but may not be fully clear or creative.",
+        "1 - The description is vague or lacks essential elements of the animal's traits.",
+        "0 - The response does not describe a new animal or is unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inventing a character",
+      "targetEvidence": "The child generates an original animal idea with specific traits.",
+      "alignmentRationale": "Creating a new character engages the child’s imagination while aligning with self-motivated writing."
+    },
+    {
+      "id": "2359fd02-5ddf-4e5b-a3ab-6f86d1081412",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Tell a story about a cat and a dog who become friends. What do they do together?",
+      "rubric": [
+        "3 - The story is clear and has a beginning, middle, and end with specific ideas about their friendship.",
+        "2 - The story includes some ideas about the cat and dog, but lacks clear structure.",
+        "1 - The story is unclear or has very few details about the cat and dog.",
+        "0 - The response does not tell a story or is unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "generating a coherent story",
+      "targetEvidence": "The child tells a connected story that includes a friendship context.",
+      "alignmentRationale": "This task measures the ability to create a structured narrative which is central to the writing motivation topic."
+    },
+    {
+      "id": "f08a40f5-34cc-4b1a-8951-cf04cf62a510",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Tell a story about a cat that goes on a windy day adventure.",
+      "rubric": [
+        "3 - The story has a clear beginning, middle, and end about the cat's adventure.",
+        "2 - The story has some details about the cat but may lack a clear flow.",
+        "1 - The story has very little about the cat or is confusing.",
+        "0 - The response does not include a story about the cat."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "generating a coherent story idea",
+      "targetEvidence": "a story with a clear adventure involving a cat",
+      "alignmentRationale": "The task specifically focuses on the coherence and creativity in making a story about the given character."
+    },
+    {
+      "id": "fd95a6b7-8a30-411f-ad11-44543ba9861e",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What could you do to help a friend?",
+      "rubric": [
+        "3 - Share a toy to play together.",
+        "2 - Say something nice to them.",
+        "1 - Just sit quietly.",
+        "0 - No idea given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Share a toy to play together."
+        },
+        {
+          "key": "b",
+          "text": "Say something nice to them."
+        },
+        {
+          "key": "c",
+          "text": "Just sit quietly."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "communicating helpful actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "an idea for helping a friend that shows empathy or support",
+      "alignmentRationale": "This item assesses the child's ability to think of ways to help friends, promoting social skills."
+    },
+    {
+      "id": "c780c4d8-5d8c-455c-b64f-2c50f282bbb3",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Imagine a superhero! What is their special power?",
+      "rubric": [
+        "3 - Describes a unique and interesting superhero power.",
+        "2 - Gives some details but lacks creativity or specificity.",
+        "1 - Response is too vague or unclear.",
+        "0 - No idea about a superhero power is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "inventing imaginative superhero abilities",
+      "targetEvidence": "a creative idea about a superhero's special power",
+      "alignmentRationale": "The task encourages inventive thought about superheroes, linking to unique characteristics."
+    },
+    {
+      "id": "d653ff3e-8008-44c7-8568-476a20d4c8c7",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Think of a funny animal. What special thing can it do?",
+      "rubric": [
+        "3 - Thoughtful idea with a clear description of the funny animal's special skill.",
+        "2 - Some details but lacks clarity or creativity.",
+        "1 - Vague response without a clear idea.",
+        "0 - No response about the funny animal's special thing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "inventing a creative animal ability",
+      "targetEvidence": "an original idea about an animal's funny skill",
+      "alignmentRationale": "The question prompts inventive thinking around animal abilities, engaging creativity."
+    },
+    {
+      "id": "5a8b0f73-5973-4bf8-b8ab-e660ac24af4d",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Which story idea sounds fun?",
+      "rubric": [
+        "3 - A dragon who loves to dance.",
+        "2 - A frog who finds a hat.",
+        "1 - A worm that eats an apple.",
+        "0 - None of the ideas sound fun."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A dragon who loves to dance."
+        },
+        {
+          "key": "b",
+          "text": "A frog who finds a hat."
+        },
+        {
+          "key": "c",
+          "text": "A worm that eats an apple."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing an original story idea",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects an imaginative story concept",
+      "alignmentRationale": "This task involves evaluating different options that represent story ideas, focusing on imagination."
+    },
+    {
+      "id": "7181bbb9-796d-4e17-b0e3-7b9952cc6fab",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you could create a new game, what would it be?",
+      "rubric": [
+        "3 - Describes a fun game with clear rules and exciting ideas.",
+        "2 - Mentions a game idea but needs more explanations.",
+        "1 - Shares only one word or a very short idea.",
+        "0 - Does not describe a game at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "inventing a game idea",
+      "targetEvidence": "creates an original game concept with details",
+      "alignmentRationale": "Encourages creativity in game-making without writing."
+    },
+    {
+      "id": "ee86a36d-31ba-4ead-9254-8b4ffda2896f",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Tell a story about an adventure a brave little mouse has in a big garden.",
+      "rubric": [
+        "3 - The story is exciting and has clear details about what happens in the garden.",
+        "2 - The story has some details, but may be missing parts of the adventure.",
+        "1 - The story is very short or unclear with little detail.",
+        "0 - The response does not describe a story at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "generating a story idea",
+      "targetEvidence": "describes a coherent story with an adventure theme",
+      "alignmentRationale": "This question encourages creative storytelling without requiring reading or writing."
+    },
+    {
+      "id": "0321473a-54a7-4761-a30b-4ac2faaf7b22",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Imagine a friendly robot. What special thing can it do?",
+      "rubric": [
+        "3 - Describes something really cool the robot can do, like flying or dancing.",
+        "2 - Mentions a fun ability but needs more details.",
+        "1 - Shares only one word or a very short idea.",
+        "0 - Does not give an idea about the robot."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "inventing an idea for a character",
+      "targetEvidence": "creates a unique ability for the robot character",
+      "alignmentRationale": "This task encourages imaginative thinking around a fictional character."
+    },
+    {
+      "id": "c38bda3f-8dac-4240-aa74-a3da470db9f1",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Which can be an animal in a story?",
+      "rubric": [
+        "3 - A wise owl who gives advice.",
+        "2 - A cat who likes to sleep.",
+        "1 - A fish swimming in water.",
+        "0 - A flower in the garden."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A wise owl who gives advice."
+        },
+        {
+          "key": "b",
+          "text": "A cat who likes to sleep."
+        },
+        {
+          "key": "c",
+          "text": "A fish swimming in water."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing an animal character",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects an engaging animal for storytelling",
+      "alignmentRationale": "Tests ability to choose interesting animal characters for stories."
+    },
+    {
+      "id": "2a026f0b-c4e7-4599-8c0c-764712969242",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Tell a funny story about a silly animal, like a dog who wears a hat.",
+      "rubric": [
+        "3 - The story is clear and funny with a silly animal and a hat.",
+        "2 - The story has a silly animal but is not very clear or funny.",
+        "1 - The story is hard to follow and doesn't include the animal or hat.",
+        "0 - No story is told."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "generate a story idea",
+      "targetEvidence": "Creates a coherent original story idea with a funny element.",
+      "alignmentRationale": "This task assesses children's ability to generate a creative narrative by choosing a character and a funny scenario."
+    },
+    {
+      "id": "52fd6755-b471-487a-8e8d-326ef8b6bf47",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Tell about a funny thing that happens to your favorite toy.",
+      "rubric": [
+        "3 - The story is funny and has great details about the toy's adventure.",
+        "2 - The toy does something slightly funny but needs more detail.",
+        "1 - The story is unclear or too short.",
+        "0 - Does not share an idea about the toy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "generating a humorous idea",
+      "targetEvidence": "describes a humorous situation involving a toy",
+      "alignmentRationale": "This question encourages creative thinking while allowing for humor."
+    },
+    {
+      "id": "d493b756-a940-4f45-a08d-0a1ed67cc049",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What would you like to write a story about today?",
+      "rubric": [
+        "3 - A clear idea is given for a story topic.",
+        "2 - An idea is given but isn't very clear.",
+        "1 - The idea is vague and hard to understand.",
+        "0 - No idea is shared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "select a story topic",
+      "targetEvidence": "Chooses a story topic that is coherent and creative.",
+      "alignmentRationale": "This task checks if the child can generate a story topic independently, demonstrating their interest in writing."
+    },
+    {
+      "id": "163ab618-d08c-4f08-ba9d-50b749a2d420",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Which poem idea sounds the best? A tree that dances, a frog that sings, or a cat that cooks?",
+      "rubric": [
+        "3 - The tree that dances is a fun and interesting idea for a poem.",
+        "2 - The frog that sings is good but less exciting than the dancing tree.",
+        "1 - The cat that cooks is the least interesting idea for a poem.",
+        "0 - No choice is made."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "a tree that dances"
+        },
+        {
+          "key": "b",
+          "text": "a frog that sings"
+        },
+        {
+          "key": "c",
+          "text": "a cat that cooks"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "pick a creative poem idea",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Selects an idea for a poem that is imaginative.",
+      "alignmentRationale": "This question evaluates the child’s ability to discern which creative idea would make for an engaging poem."
+    },
+    {
+      "id": "48793905-fdbb-45be-8136-c0a21f733f19",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What special ingredient would make your favorite food even more delicious?",
+      "rubric": [
+        "3 - A clear description of the ingredient and why it’s special is given.",
+        "2 - The ingredient is mentioned, but there’s not much detail about it.",
+        "1 - A vague mention of an ingredient, unclear preferences.",
+        "0 - No ingredient mentioned."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "describe a special food ingredient",
+      "targetEvidence": "Articulates preferences around food in a creative context.",
+      "alignmentRationale": "This tests the child’s ability to express their preferences through creative writing."
+    },
+    {
+      "id": "aace6f51-3e31-473d-997e-09ceba8c454f",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What story idea sounds most exciting? A rabbit in a race, a turtle on a skateboard, or a fish that flies?",
+      "rubric": [
+        "3 - The rabbit in a race is a very fun story idea.",
+        "2 - The turtle on a skateboard is interesting but less exciting than the rabbit.",
+        "1 - The fish that flies is the least engaging idea for a story.",
+        "0 - No choice is made."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "a rabbit in a race"
+        },
+        {
+          "key": "b",
+          "text": "a turtle on a skateboard"
+        },
+        {
+          "key": "c",
+          "text": "a fish that flies"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose an exciting story idea",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies an imaginative story idea that seems exciting.",
+      "alignmentRationale": "This encourages the child to think about fun and engaging content while selecting a story framework."
+    },
+    {
+      "id": "0defee60-597b-466b-a5b1-0fc2f6fa7a60",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Name something fun a superhero could do in a story!",
+      "rubric": [
+        "3 - A clear and creative idea for the superhero's action is provided.",
+        "2 - A vague action is provided but lacks detail.",
+        "1 - Responses are unclear or unrelated to superhero actions.",
+        "0 - No idea shared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "add to a superhero story",
+      "targetEvidence": "Contributes a creative idea to enhance a superhero narrative.",
+      "alignmentRationale": "This assesses how the child can augment a narrative by adding details."
+    },
+    {
+      "id": "0222d50d-c2d1-480b-adbc-fb02bf92e896",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Which story would you choose? A dog that dreams, a frog who helps, or a bear that sings?",
+      "rubric": [
+        "3 - A dog that dreams is the most creative and fun story idea.",
+        "2 - A frog who helps is good but less exciting than the dreaming dog.",
+        "1 - A bear that sings is the least engaging choice for a story.",
+        "0 - No choice is made."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "a dog that dreams"
+        },
+        {
+          "key": "b",
+          "text": "a frog who helps"
+        },
+        {
+          "key": "c",
+          "text": "a bear that sings"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "select a creative story idea",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Chooses a distinct and imaginative story concept.",
+      "alignmentRationale": "This encourages selection of unique characters that can inspire creative narratives."
+    },
+    {
+      "id": "8aba8707-c132-4b4a-9dbe-ed623ab4b1fe",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What would you like your story to be about?",
+      "rubric": [
+        "3 - The idea is very creative and detailed.",
+        "2 - The idea is simple but shows some creativity.",
+        "1 - The idea is very vague.",
+        "0 - No idea given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "idea expression and creativity",
+      "targetEvidence": "The child expresses a unique idea for a story with some details.",
+      "alignmentRationale": "This question requires the child to articulate their own creative story idea clearly, isolating the skill of idea expression."
+    },
+    {
+      "id": "2395cd3b-0ca7-4ebc-a494-7966116db51d",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What could be a silly animal in a story?",
+      "rubric": [
+        "3 - An animal that is very funny and creative.",
+        "2 - An animal that is somewhat funny but not unique.",
+        "1 - An animal that is not funny at all.",
+        "0 - No animal mentioned."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A cat that wears shoes"
+        },
+        {
+          "key": "b",
+          "text": "A fish"
+        },
+        {
+          "key": "c",
+          "text": "A dog that doesn't bark"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "character creation and humor",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child identifies a unique and funny animal character.",
+      "alignmentRationale": "This question tests the ability to create a character idea that is humorous and engaging for a story, isolating character creation."
+    },
+    {
+      "id": "41cc5934-f2f0-40dc-b323-e4ae0ebea5c5",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Tell about what your favorite toy can do!",
+      "rubric": [
+        "3 - Description is clear and the toy has interesting abilities.",
+        "2 - Description is okay but lacks details.",
+        "1 - Very little description or unclear.",
+        "0 - No description or off topic."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "expressing creativity through objects",
+      "targetEvidence": "The child describes their toy and its features or abilities.",
+      "alignmentRationale": "This task asks for creative expression through describing familiar objects, focusing on how well the child can present ideas about personal items."
+    },
+    {
+      "id": "d6292c7d-356e-45c8-8f3f-c182c524fd02",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Imagine you discover a secret door in your house! What story would you tell about where it leads and what you find?",
+      "rubric": [
+        "3 - Great story with clear details and exciting ideas.",
+        "2 - Good story, but some parts are not clear or less exciting.",
+        "1 - Story has a few ideas, but hard to understand.",
+        "0 - No story or ideas shared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "generating a story idea",
+      "targetEvidence": "Creates a coherent original story with imaginative elements.",
+      "alignmentRationale": "This task encourages the child to invent a narrative, demonstrating their creativity in generating a story."
+    },
+    {
+      "id": "c7c7a15b-e76a-4aa7-b239-507780c503c3",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What adventure would you write about a superhero?",
+      "rubric": [
+        "3 - A fun story idea with great details about the superhero's adventure.",
+        "2 - A good idea but not very detailed about the adventure.",
+        "1 - A very simple idea or unclear story.",
+        "0 - No story idea shared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A superhero saving a city from robots"
+        },
+        {
+          "key": "b",
+          "text": "A superhero is cool"
+        },
+        {
+          "key": "c",
+          "text": "A sad story about a superhero"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inventing an adventure concept",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Generates a creative story idea centered on a superhero's journey.",
+      "alignmentRationale": "This question prompts the child to create a narrative focused on a superhero, evaluating their story-generating capabilities."
+    },
+    {
+      "id": "37cd39d7-7455-4ef9-9dc7-cd2b8c04135d",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you found a magic lamp, what would your three wishes be? Tell me what they are!",
+      "rubric": [
+        "3 - Great wishes with clear details and a fun idea.",
+        "2 - Good wishes but less detail or excitement.",
+        "1 - A few simple wishes with no fun ideas.",
+        "0 - No wishes shared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "generating a wish idea",
+      "targetEvidence": "Creates coherent and imaginative wishes with creative elements.",
+      "alignmentRationale": "This task gets the child to think creatively and express desires clearly in a cohesive manner."
+    },
+    {
+      "id": "eca82a8e-089d-4391-8ab8-28b05c6784d8",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you could invent a new food, what would it be like?",
+      "rubric": [
+        "3 - A super creative food idea with great details, like rainbow spaghetti.",
+        "2 - A good food idea, but less detailed, like a yummy cake.",
+        "1 - Very basic food idea or not related.",
+        "0 - No food idea shared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Rainbow spaghetti that can change colors"
+        },
+        {
+          "key": "b",
+          "text": "A yummy cake"
+        },
+        {
+          "key": "c",
+          "text": "A fruit"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inventing a food concept",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Generates a unique and imaginative idea for a food item.",
+      "alignmentRationale": "This question tests the child’s creativity in developing new concepts related to food."
+    },
+    {
+      "id": "3844a50d-0ece-4261-8341-381c1072a598",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What fun adventure would you go on with your favorite toy? Where would you go and what would you do?",
+      "rubric": [
+        "3 - Exciting and detailed adventure with the toy.",
+        "2 - Good adventure idea but missing some details.",
+        "1 - Very simple adventure or unclear.",
+        "0 - No adventure shared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "generating a personal story idea",
+      "targetEvidence": "Creates an original idea related to personal experiences or toys.",
+      "alignmentRationale": "This task asks the child to relate a personal attachment to a toy and use it as a narrative prompt."
+    },
+    {
+      "id": "515766ed-f9af-49f2-bc0c-443713ade959",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you could create a special pet, what would it be?",
+      "rubric": [
+        "3 - A very creative and clearly described special pet, like a talking cat.",
+        "2 - A good idea for a pet but less detailed, like a pet that is fun.",
+        "1 - A simple pet idea or not detailed.",
+        "0 - No pet idea shared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A flying dog that can talk"
+        },
+        {
+          "key": "b",
+          "text": "A cute pet"
+        },
+        {
+          "key": "c",
+          "text": "A pet cat"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inventing a character",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Generates a unique and imaginative idea for a character or pet.",
+      "alignmentRationale": "This question tests the child's ability to think creatively about an original character."
+    },
+    {
+      "id": "b6201eee-d187-4a8b-bb39-d32af854dc37",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Tell me what magical powers you would like if you had them. What would you do with those powers?",
+      "rubric": [
+        "3 - Impressive ideas with magical powers and what to do with them.",
+        "2 - Good ideas but a bit unclear on what to do with the powers.",
+        "1 - Few powers mentioned or not very exciting.",
+        "0 - No powers or ideas shared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "generating an imaginative idea",
+      "targetEvidence": "Creates a creative and coherent idea about magical powers.",
+      "alignmentRationale": "This task elicits imaginative thinking, requiring the child to produce a coherent idea based on magical concepts."
+    },
+    {
+      "id": "aade855f-69e7-44c8-86a7-c0a8faad9f87",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What type of poem would you like to write about stars?",
+      "rubric": [
+        "3 - A clear and creative idea for a star poem, like 'twinkling stars'.",
+        "2 - A good idea that relates to stars, but less detailed, like 'stars are bright'.",
+        "1 - A very simple idea or not really about stars.",
+        "0 - No idea suggested."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A poem called 'Twinkling Stars'"
+        },
+        {
+          "key": "b",
+          "text": "A poem about light"
+        },
+        {
+          "key": "c",
+          "text": "A sad poem"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inventing a poetic idea",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Generates a creative idea for a poem with a specific theme.",
+      "alignmentRationale": "This question requires the child to think of poetic vocabulary related to stars, showcasing their ability to create original content."
+    },
+    {
+      "id": "53419edc-9806-4160-b838-5b1cb3848b64",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you could write a fun letter to a friend about a magic tree, what would you tell them?",
+      "rubric": [
+        "3 - Shares a clear and creative idea about what the tree does or says.",
+        "2 - Offers a creative idea, but details are limited.",
+        "1 - Idea is unclear or very simple without excitement.",
+        "0 - No valid idea or response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It grows candy!"
+        },
+        {
+          "key": "b",
+          "text": "It is very tall."
+        },
+        {
+          "key": "c",
+          "text": "It talks and tells stories!"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "inventing a message",
+      "optionScores": {
+        "a": 2,
+        "b": 1,
+        "c": 3
+      },
+      "targetEvidence": "Generates a creative idea focusing on the magic tree and what makes it special.",
+      "alignmentRationale": "The question prompts children to think creatively about their message, which emphasizes the skill of generating original content through choice."
+    },
+    {
+      "id": "42e85773-3d71-43e6-af20-8449709a29cc",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Think of an exciting adventure! What story would you create about a treasure hunt? Who would go on the hunt and what do they find?",
+      "rubric": [
+        "3 - Conveys a clear adventure with interesting characters and treasure.",
+        "2 - Shares a simple adventure, but details could be clearer.",
+        "1 - Idea is unclear or lacks a purpose, but shows some thought.",
+        "0 - No coherent idea or response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "generating a story",
+      "targetEvidence": "Creates a coherent story about a treasure hunt with characters and discoveries.",
+      "alignmentRationale": "This task isolates the creation of an original narrative by requiring children to invent details and structure around a specific scenario."
+    },
+    {
+      "id": "c7528719-cf59-45f7-a700-245bc84d5a80",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What kind of funny song could you write about your favorite animal?",
+      "rubric": [
+        "3 - Presents a fun idea for the song that includes silly details or actions.",
+        "2 - Shares a catchy idea, but it needs more silly elements.",
+        "1 - Idea is basic or lacks excitement for a song.",
+        "0 - No coherent idea or response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "My cat jumps very high."
+        },
+        {
+          "key": "b",
+          "text": "My dog plays in the mud and slips!"
+        },
+        {
+          "key": "c",
+          "text": "My fish swims fast."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "inventing a poem",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "Creates an imaginative song idea about an animal that is engaging and humorous.",
+      "alignmentRationale": "The question encourages children to think creatively about a fun concept in a poetic format, supporting original idea generation."
+    },
+    {
+      "id": "806f055b-9f52-4556-8adc-5764b438ac5a",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Imagine a world where toys can come to life! What story would you tell about their adventures?",
+      "rubric": [
+        "3 - Creates a clear narrative about the toys' adventures with specific details.",
+        "2 - Shares a simple idea of toys coming to life, but lacks depth.",
+        "1 - Idea is unclear or lacks direction, showing minimal effort.",
+        "0 - No coherent idea or response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "generating a story",
+      "targetEvidence": "Creates a narrative about toys' adventures with imaginative details.",
+      "alignmentRationale": "The task focuses on storytelling about a specific scenario, allowing inference of creativity and organization."
+    },
+    {
+      "id": "84479a74-67a5-4312-8962-85952f6b7b28",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you could invent a new holiday, what would it be? What special things would people do to celebrate?",
+      "rubric": [
+        "3 - Clearly describes a unique holiday and exciting activities associated with it.",
+        "2 - Shares a simple idea of a holiday, but details of activities are vague.",
+        "1 - Leaves the idea unclear or lacks a purposeful celebration.",
+        "0 - No organized idea or response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inventing a message",
+      "targetEvidence": "Creates a coherent idea for a holiday with a celebration detailed.",
+      "alignmentRationale": "This prompt requires children to generate original ideas related to a new topic, isolating their creativity on a specific event."
+    },
+    {
+      "id": "d6d5300d-cd04-4e7d-b870-cb20c644fa81",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What type of message would you write to a character from your favorite book?",
+      "rubric": [
+        "3 - Clearly expresses a thoughtful and creative message to the character.",
+        "2 - Shares an idea, but lacks depth or interesting thoughts.",
+        "1 - Simple message that does not fully connect to the character.",
+        "0 - No valid idea or response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "How do you stay brave?"
+        },
+        {
+          "key": "b",
+          "text": "Your book is nice."
+        },
+        {
+          "key": "c",
+          "text": "Can I be in your story?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inventing a message",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Presents a message that shows connection to a book character with creativity.",
+      "alignmentRationale": "The task invites children to think critically about characters and their stories, providing insight into their reflective creativity."
+    },
+    {
+      "id": "8a3785b8-c9ba-44be-8477-e5d1d23037b0",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What fun story would you tell about a little robot on an adventure? What does the robot do?",
+      "rubric": [
+        "3 - Conveys a clear narrative about the robot's adventure and actions.",
+        "2 - Shares a simple idea but lacks detail about the adventure.",
+        "1 - Idea is unclear or underdeveloped.",
+        "0 - No coherent idea or response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "generating a story",
+      "targetEvidence": "Creates a story idea that centers on the robot's adventure and actions.",
+      "alignmentRationale": "The prompt encourages imaginative thinking while focusing on character development and plot structure."
+    },
+    {
+      "id": "2c936051-3ec2-4688-b577-081bdafaa1c8",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Describe a fantastic journey that a magical creature might take. What would they see along the way?",
+      "rubric": [
+        "3 - Offers a creative description of a journey involving a magical creature with interesting sights.",
+        "2 - Shares some ideas about the journey but lacks clarity or detail.",
+        "1 - Mentions a magical creature but does not clarify the journey idea.",
+        "0 - Does not provide any idea about a journey."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inventing a journey concept",
+      "targetEvidence": "The child outlines a fictional journey involving a magical creature with intriguing elements.",
+      "alignmentRationale": "This task encourages the creation of an overarching narrative concept around a journey and characters."
+    },
+    {
+      "id": "226b7fbf-5c58-4d67-ab2a-633feab037a5",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you could make a fun game, what would it be like? Who would play and what would the rules be?",
+      "rubric": [
+        "3 - Describes a clear game idea with players and rules.",
+        "2 - Shares a game concept but is missing some details about players or rules.",
+        "1 - Mentions a game idea but it's not fully clear or complete.",
+        "0 - Does not share any game idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "creating a game idea",
+      "targetEvidence": "The child describes an original and coherent game with participants and rules.",
+      "alignmentRationale": "This task focuses on generating an original idea, ensuring it is coherent."
+    },
+    {
+      "id": "2a5563f4-4ab2-4ef3-8990-8ecbaf22de84",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Imagine you are writing a letter to your favorite superhero. What would you say to them?",
+      "rubric": [
+        "3 - Writes a clear and thoughtful letter idea with a greeting and a message.",
+        "2 - Shares a basic idea for a letter but lacks detail or structure.",
+        "1 - Mentions a superhero but does not develop it into a letter idea.",
+        "0 - Does not provide a letter idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "creating a message",
+      "targetEvidence": "The child expresses a coherent idea for a letter directed to a superhero.",
+      "alignmentRationale": "This task involves formulating an original and purposeful written message idea."
+    },
+    {
+      "id": "2a08d5d0-fd0f-4663-85db-1137f621460c",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What would you want to write about if you had a magic pen? What would your stories be like?",
+      "rubric": [
+        "3 - Shares a clear idea about stories that would be created with a magic pen.",
+        "2 - Mentions some story ideas but lacks clarity or detail.",
+        "1 - Gives a vague idea without a clear story.",
+        "0 - Does not provide any idea for stories."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "generating an imaginative writing idea",
+      "targetEvidence": "The child describes imaginative story ideas that could be created with a magic pen.",
+      "alignmentRationale": "This task elicits unique and original story concepts using a creative tool, focusing on imagination."
+    },
+    {
+      "id": "aa092e10-1521-46ea-aa49-2a171fd02a4e",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What story would you like to tell about a magic tree? What happens to it?",
+      "rubric": [
+        "3 - A clear story with interesting events about the magic tree.",
+        "2 - Some events are mentioned but it feels incomplete.",
+        "1 - The story is very short or vague about events.",
+        "0 - No story or ideas related to the magic tree."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "generating a magical story idea",
+      "targetEvidence": "Creates a coherent story idea that involves a magical element.",
+      "alignmentRationale": "This task evaluates the ability to create imaginative narratives around a magical concept."
+    },
+    {
+      "id": "9f5b1434-8f4e-48ff-b919-98d101ad187d",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Think of a silly animal! What would it do if it could do anything? Tell me your idea!",
+      "rubric": [
+        "3 - The idea is very silly and fun",
+        "2 - The idea is a bit silly, but not too detailed",
+        "1 - The idea is not very silly or fun",
+        "0 - No clear idea given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "idea generation for a story",
+      "targetEvidence": "Creates a fun and imaginative story idea about an animal.",
+      "alignmentRationale": "The question invites original ideas, demonstrating creativity and coherence in story development."
+    },
+    {
+      "id": "96e27fe0-570e-46cd-b107-e8c516847092",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "You want to write a poem about friendship. What should it be about?",
+      "rubric": [
+        "3 - A theme of sharing or helping a friend",
+        "2 - A theme of fun times with a friend",
+        "1 - A general idea about friendship",
+        "0 - No clear theme provided"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Sharing and caring"
+        },
+        {
+          "key": "b",
+          "text": "Silly things we do"
+        },
+        {
+          "key": "c",
+          "text": "Being alone"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing a theme for writing",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Selects a clear theme related to friendship for the poem.",
+      "alignmentRationale": "The task requires choosing a clear thematic direction, aligning with original idea generation."
+    },
+    {
+      "id": "ef4a356f-5b09-45d1-a1e5-6c4f603bf040",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "You want to invent a new game. What should the game use?",
+      "rubric": [
+        "3 - A unique and fun activity",
+        "2 - A simple or familiar activity",
+        "1 - An unclear or boring idea",
+        "0 - No clear idea given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Jumping and running"
+        },
+        {
+          "key": "b",
+          "text": "Just sitting quietly"
+        },
+        {
+          "key": "c",
+          "text": "Talking and whispering"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inventing an idea",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 2
+      },
+      "targetEvidence": "Generates a creative and unique idea for a game.",
+      "alignmentRationale": "This question assesses ability to create a novel game concept by selecting a unique activity."
+    },
+    {
+      "id": "5c5a8b9a-c812-4ddc-8a67-facf8bf57b7a",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "You found a magic book that can take you anywhere! Where would you go and what would you do? Tell me your idea!",
+      "rubric": [
+        "3 - A very exciting and adventurous place with fun activities",
+        "2 - An interesting place with a few activities",
+        "1 - A place that is not exciting or lacks activities",
+        "0 - No clear idea given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "creating a story idea",
+      "targetEvidence": "Creates a vivid story idea about a magical trip.",
+      "alignmentRationale": "The prompt encourages rich storytelling, showcasing the child’s imaginative ideas."
+    },
+    {
+      "id": "7719e564-b3d2-4db0-9432-d01391a5230d",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you could write a letter to an animal, what kind of animal would you write to?",
+      "rubric": [
+        "3 - A specific and interesting animal",
+        "2 - A common animal",
+        "1 - An unclear choice of animal",
+        "0 - No clear animal mentioned"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A talking parrot"
+        },
+        {
+          "key": "b",
+          "text": "A cat"
+        },
+        {
+          "key": "c",
+          "text": "A dog"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "selecting a subject for writing",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "Chooses a clear and imaginative animal for the letter.",
+      "alignmentRationale": "This question tests ability to choose a creative subject for expressive writing."
+    },
+    {
+      "id": "4d3d282c-65f3-45dc-9f6b-3f116dbfa7ec",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Imagine you could create a festival. What would it celebrate and what would people do at your festival? Tell me your idea!",
+      "rubric": [
+        "3 - A fun festival with lots of activities and a clear theme",
+        "2 - A festival idea, but less clear on activities",
+        "1 - An unclear or boring festival idea",
+        "0 - No clear idea given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "story and event planning",
+      "targetEvidence": "Generates a coherent idea for a festival with a theme and activities.",
+      "alignmentRationale": "The prompt calls for thoughtful construction of a celebratory event, testing creation skills."
+    },
+    {
+      "id": "83f4b5d0-0965-48a7-b946-b452733724f9",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What would you want to create in your story?",
+      "rubric": [
+        "3 - A captivating character or setting",
+        "2 - An interesting simple event",
+        "1 - A vague or unclear creation",
+        "0 - No idea provided"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A magical treehouse"
+        },
+        {
+          "key": "b",
+          "text": "A boring park"
+        },
+        {
+          "key": "c",
+          "text": "A simple house"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "selecting a story element",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "Identifies a creative and engaging element to incorporate into the story.",
+      "alignmentRationale": "This tests the child's ability to pin down ideas crucial for story progression, linked to motivation to write."
+    },
+    {
+      "id": "907dd489-1aba-4344-b057-6a7050e58187",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What is your favorite season, and how would you celebrate it? Tell me your idea!",
+      "rubric": [
+        "3 - A fun and creative way to celebrate the season",
+        "2 - A simple way to celebrate the season",
+        "1 - An unclear idea on how to celebrate",
+        "0 - No clear idea given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "celebration and creativity",
+      "targetEvidence": "Creates an imaginative way to celebrate a chosen season.",
+      "alignmentRationale": "The prompt encourages the child to express creativity in their selection of celebrations for a familiar topic."
+    },
+    {
+      "id": "ccc9b015-7e9d-4265-b8c0-33fb601ff4c1",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What fun adventure would you create for a friend to enjoy?",
+      "rubric": [
+        "3 - Proposes an exciting adventure that would thrill their friend.",
+        "2 - Suggests an adventure but lacks detailed excitement.",
+        "1 - Gives a general idea of an adventure without specific details.",
+        "0 - Does not provide a clear adventure concept."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A day at a magical carnival."
+        },
+        {
+          "key": "b",
+          "text": "A trip on the bus."
+        },
+        {
+          "key": "c",
+          "text": "Just something fun."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "considering audience in writing",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child articulates an engaging adventure idea tailored for a friend.",
+      "alignmentRationale": "This question assesses engagement and motivation in crafting a story for someone else."
+    },
+    {
+      "id": "e2af355d-e42d-4a8a-abe5-d88bc4fc7ddf",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Imagine your favorite animal could talk! What would it say? Tell me your story idea!",
+      "rubric": [
+        "3 - Provides a clear and imaginative idea of what the animal would say.",
+        "2 - Offers a somewhat clear idea but lacks some detail.",
+        "1 - Mentions an animal but does not explain what it would say.",
+        "0 - Does not give a clear idea about the talking animal."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "idea generation for storytelling",
+      "targetEvidence": "The child creates an engaging story idea based on a talking animal.",
+      "alignmentRationale": "This task isolates the skill of generating a story idea by focusing on an imaginative scenario."
+    },
+    {
+      "id": "591dcb17-cdc3-4f0e-80bd-d66d6985f116",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "You want to write a short poem about a season. Which season do you choose?",
+      "rubric": [
+        "3 - Chooses a season like 'spring' and explains why with good detail.",
+        "2 - Chooses a season but gives a less clear reason (like 'I like it').",
+        "1 - Picks a season but doesn’t explain anything about it.",
+        "0 - Does not choose or explain a season."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Spring"
+        },
+        {
+          "key": "b",
+          "text": "Summer"
+        },
+        {
+          "key": "c",
+          "text": "Winter"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "selecting themes for writing",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child selects a season and provides a related reason for their choice.",
+      "alignmentRationale": "This task requires children to identify a theme, helping to demonstrate motivation to write."
+    },
+    {
+      "id": "dd26b440-a2d4-4344-95d9-f842806de174",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Think of a magical place you would like to visit. What would it be like? Describe it!",
+      "rubric": [
+        "3 - Describes a detailed magical place with interesting features.",
+        "2 - Mentions a magical place but with few details.",
+        "1 - Suggests a place but lacks imaginative descriptors.",
+        "0 - Does not provide a clear idea about the magical place."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "creative description in storytelling",
+      "targetEvidence": "The child creates a vivid description of an imaginative place.",
+      "alignmentRationale": "This question encourages creativity and description, key in self-motivated writing tasks."
+    },
+    {
+      "id": "b81f8aaa-ca04-441e-917a-23194dbb1040",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you could create a new character for a story, what would they be like?",
+      "rubric": [
+        "3 - Creates a unique character with special traits or actions.",
+        "2 - Offers a character but with less interesting details.",
+        "1 - Suggests a character name but no traits or actions.",
+        "0 - Does not provide any character idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A brave dragon"
+        },
+        {
+          "key": "b",
+          "text": "A girl"
+        },
+        {
+          "key": "c",
+          "text": "A cat"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inventing characters for stories",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child generates a unique character idea with clear traits.",
+      "alignmentRationale": "This task focuses on character invention, a core component of writing stories."
+    },
+    {
+      "id": "0fa3e1dc-9112-4615-9ca1-9e987b53ddbe",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What is your favorite thing to imagine? Tell me a story about it!",
+      "rubric": [
+        "3 - Shares a detailed and coherent story idea about their favorite imagination.",
+        "2 - Mentions something they like to imagine with some details.",
+        "1 - Gives a vague idea with little connection to a story.",
+        "0 - Does not provide a clear imaginative idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "story creation from imagination",
+      "targetEvidence": "The child crafts an imaginative story idea based on personal interest.",
+      "alignmentRationale": "This question invites imaginative storytelling, assessing self-motivation to write."
+    },
+    {
+      "id": "e4534d8d-2603-4796-beaa-8fea06c9a787",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "You found a treasure map! What would you write in your adventure journal?",
+      "rubric": [
+        "3 - Writes an exciting entry about the treasure and adventure details.",
+        "2 - Discusses finding treasure but with less detail.",
+        "1 - Mentions a treasure map but lacks specifics of the adventure.",
+        "0 - Does not connect to a treasure map or adventure."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I found treasure with pirates!"
+        },
+        {
+          "key": "b",
+          "text": "I saw a map."
+        },
+        {
+          "key": "c",
+          "text": "It was fun."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "writing about experiences",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child articulates an adventurous entry for a journal.",
+      "alignmentRationale": "This task encourages children to write about an imaginative experience, showing motivation and creativity."
+    },
+    {
+      "id": "1ebf58e0-5876-4dd4-b5e2-6fe3e902c615",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "Create a fun game you would like to play. What are the rules?",
+      "rubric": [
+        "3 - Invents a detailed game idea with clear rules and objectives.",
+        "2 - Provides a game idea but with fewer specifics.",
+        "1 - Mentions a game but does not explain the rules.",
+        "0 - Fails to present a coherent game concept."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "designing games",
+      "targetEvidence": "The child explains a game concept, including its rules.",
+      "alignmentRationale": "This prompt allows for creative storytelling through game design, assessing children's motivation to create."
+    },
+    {
+      "id": "2bd1ff3e-798c-4495-821e-91af241e3930",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What's a story you would like to tell? You can think of a character and what happens next. Tell me your idea!",
+      "rubric": [
+        "3 - The idea is clear and has a character and action; it feels exciting or fun.",
+        "2 - The idea has a character but not much action; it could be more interesting.",
+        "1 - The idea is not clear; I can’t understand it well.",
+        "0 - There is no idea shared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "generating a story idea",
+      "targetEvidence": "Child expresses a clear storytelling concept.",
+      "alignmentRationale": "This task tests the child's ability to create a story concept independently."
+    },
+    {
+      "id": "16911e94-bd57-4ec4-b1a0-bde510e5ec3b",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "You want to write a poem. What should your poem be about?",
+      "rubric": [
+        "3 - About something you love, like pets or games; it shows passion.",
+        "2 - About things around you, like trees or the sky; it has some feeling.",
+        "1 - About something random; it doesn’t have a clear idea.",
+        "0 - It doesn’t say what to write about."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "My favorite pet 🐶"
+        },
+        {
+          "key": "b",
+          "text": "The weather"
+        },
+        {
+          "key": "c",
+          "text": "A random item"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing a topic for writing",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies a topic that shows personal interest.",
+      "alignmentRationale": "Choosing a meaningful topic reflects intrinsic motivation to write."
+    },
+    {
+      "id": "675e627c-5229-40f6-8889-b275bd4d30c0",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "If you could write a letter to anyone, who would it be, and what would you want to say?",
+      "rubric": [
+        "3 - The person is important, and the letter has a clear message and feeling.",
+        "2 - The person is good, but the message is simple and basic.",
+        "1 - The person is not clear; the message doesn’t make sense.",
+        "0 - There is no letter idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "inventing a letter message",
+      "targetEvidence": "Child proposes a clear letter idea with empathy or purpose.",
+      "alignmentRationale": "This task assesses the ability to create a thoughtful message."
+    },
+    {
+      "id": "982e6447-2b49-4f29-9679-2d51aca8496c",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "self_motivated_writing",
+      "format": "explanation",
+      "prompt": "What kind of story do you enjoy telling the most?",
+      "rubric": [
+        "3 - A fun adventure story; it’s exciting and creative!",
+        "2 - A fun story about friends; it has some good moments.",
+        "1 - A simple story without much detail; it feels plain.",
+        "0 - I don't like making up stories."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "An adventure story!"
+        },
+        {
+          "key": "b",
+          "text": "A funny story."
+        },
+        {
+          "key": "c",
+          "text": "A boring story."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing a story type",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies a genre they enjoy writing about.",
+      "alignmentRationale": "Choosing a preferred story style shows intrinsic motivation."
+    }
+  ]
+}

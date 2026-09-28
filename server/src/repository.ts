@@ -115,9 +115,55 @@ export async function insertBankQuestions(trait: string, age: number, questions:
   fail(error);
 }
 
+/**
+ * Makes sure reviewed file questions are in the bank under their own ids, with
+ * the reviewed wording. Keeps each row's use count and "retired" flag, so a
+ * question a parent reported stays out even if it is still in a file.
+ * Returns how many rows could not be written (for example, the same wording
+ * already stored under a different id).
+ */
+export async function upsertBankQuestionsById(trait: string, age: number, questions: GeneratedQuestion[]): Promise<number> {
+  if (questions.length === 0) return 0;
+  const rows = questions.map(q => ({ id: q.id, category_key: trait, age, question_type: q.type, skill_facet: q.skillFacet ?? '', prompt: q.prompt, payload: q }));
+  const { error } = await supabaseAdmin.from('question_bank').upsert(rows, { onConflict: 'id' });
+  if (!error) return 0;
+  // One bad row fails the whole batch; retry one by one so the rest get in.
+  let failed = 0;
+  for (const row of rows) {
+    const single = await supabaseAdmin.from('question_bank').upsert(row, { onConflict: 'id' });
+    if (single.error) { failed++; console.warn(`  ⚠ Question ${row.id} (${trait}, age ${age}) could not be stored: ${single.error.message}`); }
+  }
+  return failed;
+}
+
 export async function markBankServed(ids: string[]) {
   if (ids.length === 0) return;
   const { error } = await supabaseAdmin.rpc('bank_mark_served', { p_ids: ids });
+  fail(error);
+}
+
+/** Takes a question out of the shared bank so no child is given it again. */
+export async function retireBankQuestion(id: string) {
+  const { error } = await supabaseAdmin.from('question_bank').update({ retired: true }).eq('id', id);
+  fail(error);
+}
+
+// ---------------------------------------------------------------------------
+// Reports about AI-made content (migration 202609300001_content_reports.sql)
+// ---------------------------------------------------------------------------
+
+export type ContentReport = {
+  parentId: string; sessionId: string; kind: 'question' | 'note';
+  questionId?: string | null; bankQuestionId?: string | null; content: string;
+  reason: 'inappropriate' | 'wrong' | 'confusing' | 'other'; details?: string | null;
+};
+
+export async function saveContentReport(report: ContentReport) {
+  const { error } = await supabaseAdmin.from('content_reports').insert({
+    parent_id: report.parentId, session_id: report.sessionId, kind: report.kind,
+    question_id: report.questionId ?? null, bank_question_id: report.bankQuestionId ?? null,
+    content: report.content.slice(0, 4000), reason: report.reason, details: report.details ?? null,
+  });
   fail(error);
 }
 

@@ -1,0 +1,2725 @@
+{
+  "category": "advanced_spelling",
+  "questions": [
+    {
+      "id": "d4b94bd6-66a1-442d-9887-4d0fe28b1e21",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Say a word that rhymes with 'ball'.",
+      "rubric": [
+        "3 - The word correctly rhymes with 'ball'.",
+        "2 - The word sounds similar but does not rhyme perfectly.",
+        "1 - The word does not rhyme but is a real word.",
+        "0 - No response or unrelated word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a rhyme",
+      "targetEvidence": "The child provides a word that rhymes with 'ball'.",
+      "alignmentRationale": "This task assesses the child's understanding of rhyme and phonetic similarity."
+    },
+    {
+      "id": "242d6f39-55b6-47b0-89af-9d7ec1213dcf",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Say a word that ends with the sound 'ck'.",
+      "rubric": [
+        "3 - The word correctly ends with 'ck'.",
+        "2 - The word sounds close but not exactly 'ck'.",
+        "1 - The word does not match the sound but is a real word.",
+        "0 - No response or unrelated word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a sound",
+      "targetEvidence": "The child provides a word ending with the sound 'ck'.",
+      "alignmentRationale": "This task isolates the child's ability to identify sounds in words by focusing on a specific ending sound."
+    },
+    {
+      "id": "508fe04d-d389-4636-abba-593ca4ae7306",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word starts with the sound 'fl'?",
+      "rubric": [
+        "3 - The answer correctly starts with 'fl'.",
+        "2 - The answer starts with a similar sound.",
+        "1 - The answer is a real word but doesn't relate to 'fl'.",
+        "0 - The answer is not a word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "flat"
+        },
+        {
+          "key": "b",
+          "text": "red"
+        },
+        {
+          "key": "c",
+          "text": "home"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a sound",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child identifies a word that begins with the 'fl' sound.",
+      "alignmentRationale": "This task targets phonemic awareness related to the beginning sounds of words."
+    },
+    {
+      "id": "249d6fa2-cab3-4a5b-9651-b0d284f63365",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Say a word that starts with the sound 't'.",
+      "rubric": [
+        "3 - The word spoken starts correctly with 't'.",
+        "2 - The word starts with a similar sound but is not 't'.",
+        "1 - The word is somewhat related but does not start with 't'.",
+        "0 - No answer or an unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "initial sound recognition",
+      "targetEvidence": "Child produces a word that begins with the specified sound 't'.",
+      "alignmentRationale": "This task tests simple sound-letter correspondence using initial phonemes."
+    },
+    {
+      "id": "0a35f297-5541-4752-8185-645ef9718cc0",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word matches the pattern: 'bat'?",
+      "rubric": [
+        "3 - The word is 'hat'.",
+        "2 - The word is 'bat' (same pattern, repeated).",
+        "1 - The word is 'bag' (similar but not exact).",
+        "0 - The word is unrelated or not recognizable."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "hat"
+        },
+        {
+          "key": "b",
+          "text": "bat"
+        },
+        {
+          "key": "c",
+          "text": "bag"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word-family pattern",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies a word that matches the family of 'bat'.",
+      "alignmentRationale": "This task specifically tests the ability to recognize word patterns within the same family as 'bat'."
+    },
+    {
+      "id": "9803636e-e64a-4890-bbc2-41c33f5a9f47",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Say a word that rhymes with 'tree'.",
+      "rubric": [
+        "3 - The word spoken rhymes with 'tree'.",
+        "2 - The word spoken is similar to 'tree' but may not perfectly rhyme.",
+        "1 - The word is related but does not rhyme with 'tree'.",
+        "0 - No answer or an unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "rhyming word",
+      "targetEvidence": "Child produces a word that has similar ending sounds to 'tree'.",
+      "alignmentRationale": "This task isolates rhyming skills by requiring a specific sound match rather than general vocabulary."
+    },
+    {
+      "id": "e28243a7-a263-44c9-a86f-3bd037e44ef2",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Say a word that rhymes with 'sun'.",
+      "rubric": [
+        "3 - Provides a correct rhyming word.",
+        "2 - Provides a word that is close but not quite a rhyme.",
+        "1 - Provides a different kind of word.",
+        "0 - Does not provide an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "produces a word that rhymes",
+      "targetEvidence": "responds with an appropriate rhyming word",
+      "alignmentRationale": "The task isolates the ability to generate words with similar sounds."
+    },
+    {
+      "id": "55df19b0-8f67-4428-bec5-196d655f9c35",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Listen to this sound: 'dih'. Which letter starts that sound?",
+      "rubric": [
+        "3 - The answer is the letter that starts with the 'dih' sound.",
+        "2 - The answer is a letter that sounds somewhat similar.",
+        "1 - The answer is a letter that does not match the sound.",
+        "0 - The answer is irrelevant or not a letter."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "d"
+        },
+        {
+          "key": "b",
+          "text": "b"
+        },
+        {
+          "key": "c",
+          "text": "p"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "matches a spoken sound to a letter",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "correctly names the letter corresponding to the 'd' sound",
+      "alignmentRationale": "This assesses the connection between spoken phonemes and their written representations."
+    },
+    {
+      "id": "55e77269-4a32-42f0-9867-8f5e89ad2823",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "What word starts with the sound 't'?",
+      "rubric": [
+        "3 - Provides a word that starts with 't'.",
+        "2 - Provides a word that is somewhat similar.",
+        "1 - Provides a different starting sound word.",
+        "0 - Does not provide an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "produces a matching sound to a letter",
+      "targetEvidence": "produces a word starting with the 't' sound",
+      "alignmentRationale": "This assesses the ability to verbalize words that correspond with given sounds."
+    },
+    {
+      "id": "009183e5-513a-4827-8412-d8a48db01d9e",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word starts with the sound 'p'?",
+      "rubric": [
+        "3 - The answer begins with the 'p' sound.",
+        "2 - The answer starts with a sound that is not very different from 'p'.",
+        "1 - The answer starts with a different sound.",
+        "0 - The answer is irrelevant or not a word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "cat"
+        },
+        {
+          "key": "b",
+          "text": "pig"
+        },
+        {
+          "key": "c",
+          "text": "dog"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "matches a spoken sound to a letter",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "correctly identifies a word that starts with 'p'",
+      "alignmentRationale": "This tests the ability to link initial sounds with their corresponding letters."
+    },
+    {
+      "id": "944cf5ec-42b6-4fea-8789-09ab15f3e072",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word rhymes with 'ring'?",
+      "rubric": [
+        "3 - The child chooses 'sing', which is a correct rhyme.",
+        "2 - The child selects 'wing', which is okay but related but not quite right.",
+        "1 - The child picks 'car', which does not rhyme.",
+        "0 - The child does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "sing"
+        },
+        {
+          "key": "b",
+          "text": "wing"
+        },
+        {
+          "key": "c",
+          "text": "car"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a rhyme",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies the rhyming word.",
+      "alignmentRationale": "This activity assesses the understanding of rhyme through a limited set of choices."
+    },
+    {
+      "id": "7e05d18b-47d0-439e-8fcb-c823ed2a8b4a",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Say a word that starts with the sound 'm'.",
+      "rubric": [
+        "3 - The child gives a word that starts with the sound 'm', like 'mouse'.",
+        "2 - The child gives a word that almost starts with 'm', but may not be a correct word, or is not clear.",
+        "1 - The child produces a sound or word that is unrelated to 'm'.",
+        "0 - The child does not respond or refuses to answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a beginning sound",
+      "targetEvidence": "Child responds with a word starting with 'm'.",
+      "alignmentRationale": "This task directly tests recognition and production of sounds, isolating the 'beginning sound' skill."
+    },
+    {
+      "id": "41458fee-5bb7-438c-9469-d042a02b9657",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same ending sound as 'dog'?",
+      "rubric": [
+        "3 - The child chooses 'frog', matching 'og'.",
+        "2 - The child chooses 'cat', which is partly correct with a different ending sound.",
+        "1 - The child chooses 'fish', which does not relate to the sound pattern.",
+        "0 - The child does not answer or is confused."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "frog"
+        },
+        {
+          "key": "b",
+          "text": "cat"
+        },
+        {
+          "key": "c",
+          "text": "fish"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for an ending sound",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child selects the correct word that matches the sound ending.",
+      "alignmentRationale": "This task isolates the ending sound recognition from other skills by requiring a choice based on sound similarity."
+    },
+    {
+      "id": "43f362b5-16e8-4176-aafa-5c85ecb003be",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "What word rhymes with 'hat'?",
+      "rubric": [
+        "3 - The child says a correct rhyming word like 'cat'.",
+        "2 - The child gives a related but incorrect word like 'bat' or an unclear response.",
+        "1 - The child states an unrelated word or sound.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a rhyme",
+      "targetEvidence": "Child provides a word that rhymes with 'hat'.",
+      "alignmentRationale": "This tests the ability to identify rhyming patterns without requiring formal reading or writing."
+    },
+    {
+      "id": "d92df7b8-a769-4fc3-a0ff-5df52ca9f275",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word matches the pattern: 'bed'?",
+      "rubric": [
+        "3 - The child selects 'led', which matches the pattern.",
+        "2 - The child selects 'red', which is similar but not correct.",
+        "1 - The child selects 'big', which is unrelated to the pattern.",
+        "0 - The child does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "led"
+        },
+        {
+          "key": "b",
+          "text": "red"
+        },
+        {
+          "key": "c",
+          "text": "big"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a shared pattern",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child picks the correct rhyming pattern word.",
+      "alignmentRationale": "This task assesses recognition and production of word patterns from a small set of clear options."
+    },
+    {
+      "id": "c8c0faf4-7d8e-449c-9e68-ecfcb1a242dc",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Listen to this sound: 'buh'. Which letter starts that sound?",
+      "rubric": [
+        "3 - Correctly identifies the letter 'B'.",
+        "2 - Chooses a letter that sounds similar like 'P'.",
+        "1 - Chooses an unrelated letter.",
+        "0 - No choice made."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "B"
+        },
+        {
+          "key": "b",
+          "text": "P"
+        },
+        {
+          "key": "c",
+          "text": "D"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "match a spoken sound to a letter",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies the letter that matches the spoken sound accurately.",
+      "alignmentRationale": "This task tests sound-letter recognition based on a given sound, isolating letter recognition from reading ability."
+    },
+    {
+      "id": "c05f320f-a828-4228-83ae-88b453d3911f",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which of these words ends with 'at'?",
+      "rubric": [
+        "3 - Chooses 'bat'.",
+        "2 - Chooses 'rat'.",
+        "1 - Chooses 'dog'.",
+        "0 - No choice made."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "bat"
+        },
+        {
+          "key": "b",
+          "text": "rat"
+        },
+        {
+          "key": "c",
+          "text": "dog"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "notice shared ending patterns",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies a word that ends with the specified letters.",
+      "alignmentRationale": "This question isolates the ability to recognize specific letter patterns at the end of words, distinct from overall spelling proficiency."
+    },
+    {
+      "id": "71c6e792-dda1-4483-8bac-b5fa16e2e4ad",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same ending sound as 'book'?",
+      "rubric": [
+        "3 - Chooses 'hook'.",
+        "2 - Chooses 'bake'.",
+        "1 - Chooses 'red'.",
+        "0 - No choice made."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "hook"
+        },
+        {
+          "key": "b",
+          "text": "bake"
+        },
+        {
+          "key": "c",
+          "text": "red"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "notice shared ending sounds",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child selects a word that shares the same ending sound.",
+      "alignmentRationale": "This question assesses the child's ability to identify and hear shared letter sounds at the end of words, isolated from other reading skills."
+    },
+    {
+      "id": "bf9604ae-1f91-4988-97c5-3e430750d840",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Tell me a word that rhymes with 'ball'.",
+      "rubric": [
+        "3 - Provides a clear rhyming word like 'call'.",
+        "2 - Gives a word that sort of rhymes but not perfectly.",
+        "1 - Offers a word that doesn't rhyme clearly.",
+        "0 - No answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "recognizing rhyming words",
+      "targetEvidence": "Child generates a correct rhyming word when prompted.",
+      "alignmentRationale": "This task focuses on phonemic awareness through rhyming, separate from spelling and sound-letter matching."
+    },
+    {
+      "id": "48f02693-cb64-47db-bde9-08f1ff05ea6e",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word matches this pattern: 'cat'?",
+      "rubric": [
+        "3 - Chooses 'hat'.",
+        "2 - Chooses 'dog'.",
+        "1 - Chooses 'pan'.",
+        "0 - No choice made."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "hat"
+        },
+        {
+          "key": "b",
+          "text": "dog"
+        },
+        {
+          "key": "c",
+          "text": "pan"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "notice a word-family pattern",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies a word that belongs to a specific word family.",
+      "alignmentRationale": "This task evaluates the recognition of rhyme and word family association, distinct from recognizing the sound of a letter."
+    },
+    {
+      "id": "4f1dcaa5-c55d-40bf-a921-3a5ea3114b4b",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word rhymes with 'cake'?",
+      "rubric": [
+        "3 - The word chosen correctly rhymes with 'cake'.",
+        "2 - The word partially rhymes or has a similar sound to 'cake'.",
+        "1 - The word does not rhyme but is a real word.",
+        "0 - The word chosen is not a real word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "cat"
+        },
+        {
+          "key": "b",
+          "text": "make"
+        },
+        {
+          "key": "c",
+          "text": "dog"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "rhyming",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects a word that correctly rhymes with 'cake'",
+      "alignmentRationale": "This question checks the ability to recognize rhyme, which is an important aspect of sound and word pattern knowledge."
+    },
+    {
+      "id": "3c0ff092-1941-411e-9fdd-9f7b3223a6d6",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Say a word that goes with 'sad'.",
+      "rubric": [
+        "3 - The word said fits well with 'sad', such as 'cry' or 'tears'.",
+        "2 - The word is somewhat related to feeling sad but not specific enough.",
+        "1 - The word is loosely related or not connected to feelings at all.",
+        "0 - No response or an incomprehensible answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "related word generation",
+      "targetEvidence": "generates a word contextually related to 'sad'",
+      "alignmentRationale": "This question allows for exploration of emotional vocabulary, testing the ability to connect feelings with relevant words."
+    },
+    {
+      "id": "5b1a4843-02dd-4634-a2dd-943d77753478",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same ending sound as 'fish'?",
+      "rubric": [
+        "3 - The word chosen correctly ends like 'fish'.",
+        "2 - The word partially rhymes with 'fish'.",
+        "1 - The word does not rhyme but is a real word.",
+        "0 - The chosen option is not a real word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "cat"
+        },
+        {
+          "key": "b",
+          "text": "dish"
+        },
+        {
+          "key": "c",
+          "text": "dog"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "rhyming ending sound",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "selects a word that has the same ending sound as 'fish'",
+      "alignmentRationale": "Testing the ability to recognize similar ending sounds helps to assess sound-letter knowledge and phonemic awareness."
+    },
+    {
+      "id": "dc6afaf0-a2bd-473e-81c4-cc848dbf89c2",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Listen to the sound: /p/. Which letter matches this sound?",
+      "rubric": [
+        "3 - The child correctly identifies the letter that makes the /p/ sound.",
+        "2 - The child identifies a plausible letter sound that somewhat relates to /p/.",
+        "1 - The child identifies a letter sound that is not close to /p/.",
+        "0 - The child does not respond or does not answer with a letter."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "p"
+        },
+        {
+          "key": "b",
+          "text": "m"
+        },
+        {
+          "key": "c",
+          "text": "s"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "sound to letter matching",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "correctly identifies the letter 'p' for the sound /p/",
+      "alignmentRationale": "The task directly tests the ability to match sounds to letters, a key part of sound-letter knowledge."
+    },
+    {
+      "id": "3d343355-3e7c-47fe-aad6-86c0d71725b2",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Say a word that rhymes with 'mud'.",
+      "rubric": [
+        "3 - The word said rhymes perfectly with 'mud'.",
+        "2 - The word has a similar ending sound but is not a perfect rhyme.",
+        "1 - The word is only loosely related or not a real word.",
+        "0 - No response or an unrecognizable answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "rhyming production",
+      "targetEvidence": "produces a word that rhymes with 'mud'",
+      "alignmentRationale": "The question engages the child to produce a rhyming word, which tests their ability to generate rhyme within their verbal skills."
+    },
+    {
+      "id": "a4dd2676-ed5f-45f5-8bb3-a2550098e099",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Say a word that rhymes with 'star'.",
+      "rubric": [
+        "3 - Says a clear word that rhymes with 'star'.",
+        "2 - Says a word that has a similar but different sound.",
+        "1 - Says something unrelated or nonsensical.",
+        "0 - Does not respond or says nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for a rhyme",
+      "targetEvidence": "Child produces a word with the same ending sound as 'star'.",
+      "alignmentRationale": "This task assesses the child's ability to generate rhymes, reinforcing sound-letter patterns without other complexities."
+    },
+    {
+      "id": "61f14330-6949-443a-b506-50b28eaacece",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "What word rhymes with 'clock'?",
+      "rubric": [
+        "3 - Says a word that rhymes clearly with 'clock'.",
+        "2 - Says a word that has a similar sound but doesn’t rhyme perfectly.",
+        "1 - Says a word that has some similar sounds to 'clock'.",
+        "0 - Does not say a word or says something unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for a rhyme",
+      "targetEvidence": "Child produces a word that has the same ending sound as 'clock'.",
+      "alignmentRationale": "This task directly assesses the child's ability to produce a rhyme, which is part of sound-letter knowledge."
+    },
+    {
+      "id": "6b1f91f4-eee8-440f-a901-922b2ccc42d0",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Say a word that ends like 'dog'.",
+      "rubric": [
+        "3 - Produces a correct rhyming word such as 'frog'.",
+        "2 - Gives a word that has a similar ending sound, like 'log'.",
+        "1 - Attempts a word but it is not relevant, like 'cat'.",
+        "0 - Does not provide any answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "final sound generation",
+      "targetEvidence": "child finds a word ending that matches 'dog'",
+      "alignmentRationale": "This task evaluates the child’s ability to generate words with specific final sounds."
+    },
+    {
+      "id": "bb4391a5-5587-4843-ba8a-0d9cfd3c9883",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Listen to the sound: /s/. Which letter matches this sound?",
+      "rubric": [
+        "3 - Correctly identifies the letter 's'.",
+        "2 - Identifies a letter with a similar sound, like 'c'.",
+        "1 - Chooses a letter that does not match well, like 'p'.",
+        "0 - Does not answer or guesses incorrectly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "s"
+        },
+        {
+          "key": "b",
+          "text": "c"
+        },
+        {
+          "key": "c",
+          "text": "p"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "letter matching by sound",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child correctly matches the sound to the letter 's'",
+      "alignmentRationale": "This task isolates sound-letter recognition by directly asking for a sound match without relying on printed words."
+    },
+    {
+      "id": "95129001-97f8-4bbc-b6b4-3e7fef20e95e",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word starts with the same sound as 'dog'?",
+      "rubric": [
+        "3 - Correctly identifies 'doll'.",
+        "2 - Chooses an option like 'cat' that begins with a different consonant but is a plausible choice.",
+        "1 - Selects an unrelated option like 'fish'.",
+        "0 - Does not answer or guesses incorrectly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "doll"
+        },
+        {
+          "key": "b",
+          "text": "cat"
+        },
+        {
+          "key": "c",
+          "text": "fish"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "initial sound recognition",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child correctly identifies 'doll' as starting with /d/",
+      "alignmentRationale": "This task focuses on the recognition of initial sounds in words, aiding in phonemic awareness."
+    },
+    {
+      "id": "cbff1ad2-4731-4c15-a521-ed874f88bc24",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "What word rhymes with 'bat'?",
+      "rubric": [
+        "3 - Correctly identifies 'hat'.",
+        "2 - Chooses a word that sounds similar but does not rhyme well, like 'cat'.",
+        "1 - Gives an unrelated option like 'dog'.",
+        "0 - Does not answer or guesses incorrectly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "hat"
+        },
+        {
+          "key": "b",
+          "text": "cat"
+        },
+        {
+          "key": "c",
+          "text": "dog"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "rhyming recognition",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child accurately identifies a word that rhymes with 'bat'",
+      "alignmentRationale": "This task isolates rhyming comprehension by requiring recognition of similar sound endings."
+    },
+    {
+      "id": "9630bebe-1dfa-4b82-8f9d-d8d9dabfb4bf",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same ending sound as 'run'?",
+      "rubric": [
+        "3 - Correctly identifies 'fun'.",
+        "2 - Chooses a partially matching sound word like 'sun'.",
+        "1 - Selects an unrelated option like 'cat'.",
+        "0 - Does not answer or guesses incorrectly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "fun"
+        },
+        {
+          "key": "b",
+          "text": "sun"
+        },
+        {
+          "key": "c",
+          "text": "cat"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "final sound matching",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child selects a word that matches the ending sound of 'run'",
+      "alignmentRationale": "This task focuses on identifying and matching final sounds in words."
+    },
+    {
+      "id": "eafdcb1e-46f4-4c34-b5e2-12ced79c11ef",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Can you say a word that starts with the same sound as 'sun'?",
+      "rubric": [
+        "3 - Produces a correct example such as 'sock'.",
+        "2 - Gives a word that starts similarly but is less fitting, like 'sand'.",
+        "1 - Attempts to say something unrelated to the initial sound.",
+        "0 - Does not provide any answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "initial sound generation",
+      "targetEvidence": "child generates an appropriate initial sound word for '/s/'",
+      "alignmentRationale": "This task assesses the child's ability to generate words based on an initial phoneme."
+    },
+    {
+      "id": "ada2ba47-97e6-4d11-82b3-87fc3d4176f7",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "What group of words does 'big' belong to?",
+      "rubric": [
+        "3 - Correctly identifies a group such as 'size words' or 'adjectives'.",
+        "2 - Names a somewhat related concept but not quite, maybe 'animals'.",
+        "1 - Provides an unrelated term like 'food'.",
+        "0 - Does not respond or fails to provide an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "categorical grouping",
+      "targetEvidence": "child successfully identifies the word group for 'big'",
+      "alignmentRationale": "This task checks for the understanding of word categories, distinguishing between various types of words."
+    },
+    {
+      "id": "841b5d9c-abbc-4592-b3db-5fe20fae84e6",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word begins with the same sound as 'cat'?",
+      "rubric": [
+        "3 - Answers with 'car'.",
+        "2 - Chooses a word that starts with a similar sound, like 'cap'.",
+        "1 - Selects a word that does not start with similar sounds, like 'man'.",
+        "0 - Picks a word that is unrelated, like 'dog'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "car"
+        },
+        {
+          "key": "b",
+          "text": "cap"
+        },
+        {
+          "key": "c",
+          "text": "man"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "initial sound matching",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child correctly finds a word starting with the same initial sound as 'cat'.",
+      "alignmentRationale": "The task measures the child's ability to detect and identify initial sounds in words, which is crucial for their spelling development."
+    },
+    {
+      "id": "657d8d58-2b3a-498a-afe8-6161ace287ae",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Say a word that rhymes with 'bat'.",
+      "rubric": [
+        "3 - Provides a correct rhyming word like 'cat'.",
+        "2 - Gives a word with a similar end sound but not exactly like 'set'.",
+        "1 - Says a word that is loosely related, like 'dog'.",
+        "0 - Says a word that does not rhyme or is unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "rhyme production",
+      "targetEvidence": "The child produces a word that rhymes with 'bat'.",
+      "alignmentRationale": "This task examines the child's ability to generate rhyming words, which is fundamental for developing phonemic awareness and spelling skills."
+    },
+    {
+      "id": "90b8ae8c-bf9c-4b09-bc31-07aec166c5d3",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "What word group does 'hot' belong to?",
+      "rubric": [
+        "3 - Correctly identifies 'not'.",
+        "2 - Chooses a word from the same family but incorrect, like 'hat'.",
+        "1 - Selects a word that is somewhat related but not a pair, like 'big'.",
+        "0 - Picks an unrelated word, like 'dog'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "not"
+        },
+        {
+          "key": "b",
+          "text": "hat"
+        },
+        {
+          "key": "c",
+          "text": "big"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word family recognition",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child recognizes that 'hot' is part of a word family that includes 'not'.",
+      "alignmentRationale": "This question assesses the child's ability to recognize word families, which supports their understanding of spelling patterns."
+    },
+    {
+      "id": "34b5fa90-469e-4301-8ebf-c71633a666e2",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same middle sound as 'pen'?",
+      "rubric": [
+        "3 - Answers with 'ten'.",
+        "2 - Selects a word that has a similar middle sound, like 'pin'.",
+        "1 - Chooses a word with a different middle sound but relates like 'man'.",
+        "0 - Picks an unrelated word like 'cat'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "ten"
+        },
+        {
+          "key": "b",
+          "text": "pin"
+        },
+        {
+          "key": "c",
+          "text": "man"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "medial sound recognition",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child identifies the medial sound in 'pen' and finds another matching word.",
+      "alignmentRationale": "This task evaluates the child's ability to recognize and match medial sounds in words, an important part of phonetic awareness for spelling."
+    },
+    {
+      "id": "b1f993e3-aab7-4353-a425-15b230451dc3",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "What word rhymes with 'see'?",
+      "rubric": [
+        "3 - Provides a correct rhyming word such as 'bee'.",
+        "2 - Gives a word that sounds somewhat similar like 'key'.",
+        "1 - Says a word that is loosely related like 'dog'.",
+        "0 - Gives an unrelated word like 'car'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "rhyme production",
+      "targetEvidence": "The child says a word that rhymes with 'see'.",
+      "alignmentRationale": "This prompts the child to demonstrate their phonological awareness by generating rhymes, which supports spelling ability."
+    },
+    {
+      "id": "0455947d-9ee0-4e15-a943-cb5dd123b3cd",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Say a word that goes with 'happy'.",
+      "rubric": [
+        "3 - Gives an answer like 'joy' or 'smile'.",
+        "2 - Suggests a related word like 'fun' or 'play'.",
+        "1 - Says something loosely related like 'run'.",
+        "0 - Provides an unrelated word like 'tree'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word association",
+      "targetEvidence": "The child produces a word related to the emotion 'happy'.",
+      "alignmentRationale": "This evaluates the child's ability to connect concepts, an important part of vocabulary and language development."
+    },
+    {
+      "id": "4ce186c2-d702-4e01-8244-e531e60d4534",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Can you think of a word that has the long A sound? What is it?",
+      "rubric": [
+        "3 - The child provides a correct word with a long 'A' sound.",
+        "2 - The child offers a word that is partially correct for the long 'A' sound.",
+        "1 - The child mentions a word that does not match the sound specified.",
+        "0 - No response or irrelevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word for a sound",
+      "targetEvidence": "The child can produce a word containing the long 'A' sound.",
+      "alignmentRationale": "This task encourages vocal expression of sound awareness suitable for spelling."
+    },
+    {
+      "id": "8a67c0b6-4dab-4626-9162-6d7755003546",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which of these words starts with the sound 'bl'?",
+      "rubric": [
+        "3 - The answer is 'blue', which starts with 'bl'.",
+        "2 - The answer is 'black', which also starts but is a different word.",
+        "1 - The answer is 'red', which does not start with 'bl'.",
+        "0 - Any other response that doesn't fit the above."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "blue"
+        },
+        {
+          "key": "b",
+          "text": "black"
+        },
+        {
+          "key": "c",
+          "text": "red"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a sound",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child can recognize the initial consonant cluster in words.",
+      "alignmentRationale": "This task isolates the recognition of beginning sounds, which is crucial for developing spelling skills."
+    },
+    {
+      "id": "98d3aa27-d3a1-4b92-accd-e76c80a1ee20",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same ending sound as \"sing\"?",
+      "rubric": [
+        "3 - The answer is 'ring', which matches the ending sound.",
+        "2 - The answer is 'king', which has a similar ending sound but is a different word.",
+        "1 - The answer is 'cat', which does not match the ending sound.",
+        "0 - Any other response that doesn't fit the above."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "ring"
+        },
+        {
+          "key": "b",
+          "text": "king"
+        },
+        {
+          "key": "c",
+          "text": "cat"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a sound",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child can identify rhymes or matching ending sounds in words.",
+      "alignmentRationale": "Recognizing rhymes is a key component of early spelling skills."
+    },
+    {
+      "id": "a0035adc-a473-4118-ae60-a3c1cba96f1d",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word ends with the same sound as \"trip\"?",
+      "rubric": [
+        "3 - The answer is 'hip', which rhymes with 'trip'.",
+        "2 - The answer is 'zap', which does not rhyme but shares an ending sound.",
+        "1 - The answer is 'top', which is not correct but has a different ending sound.",
+        "0 - Any other response that doesn't fit the above."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "hip"
+        },
+        {
+          "key": "b",
+          "text": "zap"
+        },
+        {
+          "key": "c",
+          "text": "top"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a sound",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child recognizes that 'hip' is the correct rhyming sound.",
+      "alignmentRationale": "This task isolates the child's ability to recognize and produce a spelling pattern related to sound endings."
+    },
+    {
+      "id": "7afcdb99-42a1-45a8-b369-8296ba17ac66",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which of these words shares the same middle sound as \"pan\"?",
+      "rubric": [
+        "3 - The answer is 'man', which shares the middle sound.",
+        "2 - The answer is 'pin', which has a similar middle sound but isn't the same.",
+        "1 - The answer is 'bat', which has different middle sounds.",
+        "0 - Any other response that doesn't fit the above."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "man"
+        },
+        {
+          "key": "b",
+          "text": "pin"
+        },
+        {
+          "key": "c",
+          "text": "bat"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a sound",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child recognizes words that share middle sounds.",
+      "alignmentRationale": "Identifying middle sound patterns is critical for spelling and phonetic awareness."
+    },
+    {
+      "id": "21c48d9f-2192-439b-8cbe-e67d5a29cc22",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Think of a word that ends with 'ill'. What is it?",
+      "rubric": [
+        "3 - The child provides a correct word ending in 'ill'.",
+        "2 - The child gives a partially correct response related to 'ill'.",
+        "1 - The child responds but the word doesn't match at all.",
+        "0 - No response or irrelevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word for a sound",
+      "targetEvidence": "The child can produce a word with the specified ending sound.",
+      "alignmentRationale": "This task allows the child to demonstrate their knowledge of word endings through open production."
+    },
+    {
+      "id": "546cfed3-357c-4fd2-a13f-98e520264ba0",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which of these shares the same ending as 'bake'?",
+      "rubric": [
+        "3 - The answer is 'cake', which perfectly matches the ending sound.",
+        "2 - The answer is 'lake', which has a similar ending but different word.",
+        "1 - The answer is 'bag', which has a different sound.",
+        "0 - Any other response that doesn't fit the above."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "cake"
+        },
+        {
+          "key": "b",
+          "text": "lake"
+        },
+        {
+          "key": "c",
+          "text": "bag"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a sound",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child identifies a word that shares an ending sound.",
+      "alignmentRationale": "This question encourages listening for and recognizing rhyming patterns."
+    },
+    {
+      "id": "e6b7b50e-1a6c-4e86-972c-9a5595f89921",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Think of a word that ends with 'ap'.",
+      "rubric": [
+        "3 - The word correctly ends with 'ap' and is age-appropriate.",
+        "2 - The word mostly fits but may be less common.",
+        "1 - The answer does not relate to 'ap'.",
+        "0 - No answer or fails to have 'ap' at the end."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "sound for an ending letter",
+      "targetEvidence": "Produces a word ending with the 'ap' sound.",
+      "alignmentRationale": "This task requires recognition of sound relationships necessary for spelling."
+    },
+    {
+      "id": "7a8405a8-14b8-4820-9ec3-b27b74b7ecfd",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word starts with the same sound as \"play\"?",
+      "rubric": [
+        "3 - The answer has the same initial sound as the word \"play,\" showing understanding of sound patterns.",
+        "2 - The answer is a plausible word but does not start with the same sound.",
+        "1 - The answer is a mix of letters but does not relate to the question.",
+        "0 - There is no answer or it's completely unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "plum"
+        },
+        {
+          "key": "b",
+          "text": "sing"
+        },
+        {
+          "key": "c",
+          "text": "car"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "sound for a beginning letter",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "Identifies a word starting with the same sound as 'play'.",
+      "alignmentRationale": "This question isolates sound-letter recognition, which is vital for spelling awareness."
+    },
+    {
+      "id": "46e9e158-7ad4-4a5d-a968-f4716d9a98ff",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word ends with the same sound as \"dog\"?",
+      "rubric": [
+        "3 - The answer correctly ends with the same sound as 'dog,' showing knowledge of sound patterns.",
+        "2 - The answer partially matches the sound at the end but is not exact.",
+        "1 - The answer is not relevant to the ending sound asked.",
+        "0 - There is no answer or the answer does not relate to 'dog.'"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "cake"
+        },
+        {
+          "key": "b",
+          "text": "log"
+        },
+        {
+          "key": "c",
+          "text": "big"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "sound for an ending letter",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "Identifies a word ending with the same sound as 'dog'.",
+      "alignmentRationale": "This question tests awareness of phonetic patterns in spellings."
+    },
+    {
+      "id": "3afd84ce-527a-4bac-979c-f86132fe39b2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same middle sounds as \"man\"?",
+      "rubric": [
+        "3 - The answer shares the same middle vowel and consonant sound as 'man.'",
+        "2 - The answer has a similar middle but is not exact.",
+        "1 - The answer bears no relation to 'man.'",
+        "0 - There is no answer or it is completely unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "cat"
+        },
+        {
+          "key": "b",
+          "text": "can"
+        },
+        {
+          "key": "c",
+          "text": "fen"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "sound for a middle letter",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "Identifies a word with the same middle sound as 'man'.",
+      "alignmentRationale": "This isolates recognition of middle sound patterns fundamental for spelling."
+    },
+    {
+      "id": "ab23e007-d401-4e1c-af03-3fe6c77dcecb",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word shares the same final sound as \"light\"?",
+      "rubric": [
+        "3 - The answer correctly shares the final sound with 'light.'",
+        "2 - The answer is somewhat close but not quite right.",
+        "1 - The answer does not correspond with 'light.'",
+        "0 - There is no answer or fails to connect."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "kite"
+        },
+        {
+          "key": "b",
+          "text": "sight"
+        },
+        {
+          "key": "c",
+          "text": "cat"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "sound for an ending letter",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "Identifies a word with the same ending sound as 'light'.",
+      "alignmentRationale": "This tests phonetic awareness of spelling patterns."
+    },
+    {
+      "id": "2b3defa5-d8c8-46a4-a1b9-6c603073c095",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word comes from the same family as \"play\" (like \"playing\")?",
+      "rubric": [
+        "3 - The answer correctly adds a form to 'play' that shows understanding of the word family.",
+        "2 - The answer nearly matches but is not quite correct.",
+        "1 - The answer has no connection to 'play.'",
+        "0 - There is no answer or is completely unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "played"
+        },
+        {
+          "key": "b",
+          "text": "fun"
+        },
+        {
+          "key": "c",
+          "text": "sand"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognize a word family pattern",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "Identifies a word belonging to the same family as 'play'.",
+      "alignmentRationale": "This question evaluates knowledge of word families, essential for developing spelling skills."
+    },
+    {
+      "id": "77a6c019-23b6-4477-b15f-73cbc56d2ac5",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Can you say a word that has a short 'e' sound?",
+      "rubric": [
+        "3 - The word has a clear short 'e' sound and is age-appropriate.",
+        "2 - The word is related but may be less common with that vowel sound.",
+        "1 - The answer is not related to short 'e'.",
+        "0 - No answer or fails to have 'e' sound."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word for a vowel sound",
+      "targetEvidence": "Produces a word with a short 'e' sound.",
+      "alignmentRationale": "This task centers on the understanding of vowel sounds, critical for spelling."
+    },
+    {
+      "id": "cb2fe3eb-3c33-496a-a2fb-8e34ef74268c",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same ending sound as \"cat\"?",
+      "rubric": [
+        "3 - Correctly identifies a word that ends with the same sound as 'cat'.",
+        "2 - Chooses a word that has a similar end sound but is not exact.",
+        "1 - Selects a completely different sounding word.",
+        "0 - Does not select a word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "hat"
+        },
+        {
+          "key": "b",
+          "text": "dog"
+        },
+        {
+          "key": "c",
+          "text": "fish"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "sound-letter recognition",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child correctly identifies a word that ends with the same sound as 'cat'.",
+      "alignmentRationale": "This question tests the ability to identify and match ending sounds, essential for developing spelling skills."
+    },
+    {
+      "id": "3696a4b4-9603-4a8e-a7ae-17c7006650b5",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Can you think of a word that starts with 'cl'? What is it?",
+      "rubric": [
+        "3 - Provides a word that correctly starts with 'cl'.",
+        "2 - Gives a word that is similar but doesn't start exactly with 'cl'.",
+        "1 - Names a word that is completely unrelated.",
+        "0 - Cannot think of any word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "sound-letter recognition",
+      "targetEvidence": "The child generates a word that starts with 'cl', showing awareness of letter sounds.",
+      "alignmentRationale": "This open-ended task evaluates understanding of phonemes and their spelling patterns."
+    },
+    {
+      "id": "1ad2ff05-6f98-4823-90dc-2113724b4586",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Think of a word that ends in 'ing'. What is your word?",
+      "rubric": [
+        "3 - Provides a word that correctly ends with 'ing'.",
+        "2 - Offers a word that is almost correct or close to the right ending.",
+        "1 - Names a word but it doesn't end with 'ing'.",
+        "0 - Cannot think of a word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word-ending pattern recognition",
+      "targetEvidence": "The child generates a word that ends in 'ing', reflecting understanding of word endings.",
+      "alignmentRationale": "This open-ended task encourages creative thinking and recognition of common word endings, essential for spelling."
+    },
+    {
+      "id": "3bf12b2f-3297-446a-a92b-a6b7d30e20a3",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Say a word that has a long 'i' sound. What is it?",
+      "rubric": [
+        "3 - Provides a word that correctly has a long 'i' sound.",
+        "2 - Gives a word with a different vowel sound but still related.",
+        "1 - Suggests a word with a close sound or has difficulty naming one.",
+        "0 - Cannot provide a word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "sound-letter recognition",
+      "targetEvidence": "The child produces a word containing the long 'i' sound, demonstrating knowledge of sound-letter patterns.",
+      "alignmentRationale": "This open task evaluates the ability to independently generate a word with a specific sound, promoting spelling skills."
+    },
+    {
+      "id": "9f7a80c5-eed3-4ffb-abfe-a5a2fd18cf80",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which of these words rhymes with \"make\"?",
+      "rubric": [
+        "3 - Correctly identifies a word that rhymes with 'make'.",
+        "2 - Chooses a word that sounds a bit similar but does not rhyme accurately.",
+        "1 - Selects a word unrelated to the rhyme.",
+        "0 - Does not choose a word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "bake"
+        },
+        {
+          "key": "b",
+          "text": "table"
+        },
+        {
+          "key": "c",
+          "text": "mice"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "sound-letter recognition",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child recognizes a word that rhymes with 'make'.",
+      "alignmentRationale": "This question assesses the ability to identify rhyming words, which enhances phonemic awareness in spelling."
+    },
+    {
+      "id": "5ae7c81c-9dd3-4ed2-853d-b08523c36a8e",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word is part of the family with \"cat\" (like \"bat\")?",
+      "rubric": [
+        "3 - Correctly identifies a word that is part of the same family.",
+        "2 - Chooses a word that is related but not part of the exact family.",
+        "1 - Selects a word unrelated to the family.",
+        "0 - Does not pick a word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "dog"
+        },
+        {
+          "key": "b",
+          "text": "hat"
+        },
+        {
+          "key": "c",
+          "text": "rat"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word-family pattern recognition",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "The child recognizes a word that belongs to the same family as 'cat'.",
+      "alignmentRationale": "This question tests the child’s ability to recognize word families, which aids spelling development."
+    },
+    {
+      "id": "788c5560-a746-4dc4-a285-a9993c901507",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same ending sound as 'sock'?",
+      "rubric": [
+        "3 - Correctly identifies the word with the matching ending sound.",
+        "2 - Chooses a word that is close but has a slightly different ending sound.",
+        "1 - Selects a word that has no relation to the sound.",
+        "0 - Does not select any word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "bat"
+        },
+        {
+          "key": "b",
+          "text": "look"
+        },
+        {
+          "key": "c",
+          "text": "rock"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "sound match",
+      "optionScores": {
+        "a": 0,
+        "b": 1,
+        "c": 3
+      },
+      "targetEvidence": "picks the word that rhymes with 'sock'",
+      "alignmentRationale": "This task focuses on recognizing and producing sound patterns by choosing a word that shares an ending sound."
+    },
+    {
+      "id": "4a9fc1c3-8515-4270-b662-86038b2bac5e",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "What is a word that has the 'ng' sound in it, like 'ring'?",
+      "rubric": [
+        "3 - Provides a correct word containing 'ng'.",
+        "2 - Gives a word that is somewhat close but does not have 'ng'.",
+        "1 - Offers anything unrelated or unclear.",
+        "0 - Does not provide any answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "finds a word with a particular sound",
+      "targetEvidence": "generates a word that includes the 'ng' phonetic element",
+      "alignmentRationale": "This task focuses on the ability to create words that utilize specified sounds."
+    },
+    {
+      "id": "550f3031-3002-4848-aa76-038436f32b48",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same rhyming sound as 'moon'?",
+      "rubric": [
+        "3 - Correctly identifies a word that rhymes with 'moon'.",
+        "2 - Picks a word that is close but does not rhyme exactly.",
+        "1 - Selects a word that has no rhyming relation.",
+        "0 - Does not select any word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "noon"
+        },
+        {
+          "key": "b",
+          "text": "cat"
+        },
+        {
+          "key": "c",
+          "text": "sun"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "rhyme recognition",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "chooses a word that shares a rhyme with 'moon'",
+      "alignmentRationale": "This item evaluates the child's ability to recognize and produce rhyming sounds."
+    },
+    {
+      "id": "ee052d31-acd2-45ad-a5bb-19f05dd42f8d",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Can you name a word that has 'ou' in it, like 'house'? What is it?",
+      "rubric": [
+        "3 - Provides a correct word containing 'ou'.",
+        "2 - Gives a word that is somewhat similar but not correct.",
+        "1 - Offers something unrelated or hard to recognize.",
+        "0 - Does not provide any answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "finds a word with a specific sound",
+      "targetEvidence": "produces a word that contains the 'ou' phonetic element",
+      "alignmentRationale": "This prompt assesses the ability to generate words using specific sound patterns."
+    },
+    {
+      "id": "d2b4fa25-48fa-4ea2-8009-fcc23b3ba428",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same starting sound as 'play'?",
+      "rubric": [
+        "3 - Correctly identifies the word with the same starting sound.",
+        "2 - Chooses a word that is similar but starts a bit differently.",
+        "1 - Selects a word with no match in starting sound.",
+        "0 - Does not select any word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "scout"
+        },
+        {
+          "key": "b",
+          "text": "plum"
+        },
+        {
+          "key": "c",
+          "text": "tank"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "initial sound recognition",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "selects a word that has the same starting sound as 'play'",
+      "alignmentRationale": "The question explores sound identification through initial phonetic patterns."
+    },
+    {
+      "id": "9f4b4d86-b866-4c67-acc9-ca5b88767212",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same middle sounds as 'bridge'?",
+      "rubric": [
+        "3 - Correctly identifies the word with the matching middle sounds.",
+        "2 - Chooses a word that is somewhat similar in sound.",
+        "1 - Selects a word that does not match.",
+        "0 - Does not select any word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "drain"
+        },
+        {
+          "key": "b",
+          "text": "fridge"
+        },
+        {
+          "key": "c",
+          "text": "kid"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "middle sound recognition",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "chooses the word containing the same middle sounds as 'bridge'",
+      "alignmentRationale": "This item targets recognition of phonetic patterns in the middle of words."
+    },
+    {
+      "id": "ddc6dcba-3c1b-4a08-a27b-97a2105f3725",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Can you say a word that ends with 'est'? What is it?",
+      "rubric": [
+        "3 - Provides a correct word ending with 'est'.",
+        "2 - Gives a word that sounds similar but does not end with 'est'.",
+        "1 - Offers a word that is unrelated or difficult to determine.",
+        "0 - Does not provide any answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "finds a word ending pattern",
+      "targetEvidence": "generates a word that fits the 'est' ending",
+      "alignmentRationale": "This task requires the child to use their knowledge of phonetic patterns to come up with words that end with a specific suffix."
+    },
+    {
+      "id": "a1ff55fe-91d7-45cf-9003-b34da0040123",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same starting sound as 'light'?",
+      "rubric": [
+        "3 - The answer accurately identifies the same starting sound.",
+        "2 - The answer is similar but does not have the correct starting sound.",
+        "1 - The answer does not relate to the starting sound.",
+        "0 - The answer is irrelevant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "kite"
+        },
+        {
+          "key": "b",
+          "text": "fish"
+        },
+        {
+          "key": "c",
+          "text": "like"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "recognizes initial sound correspondence",
+      "optionScores": {
+        "a": 0,
+        "b": 0,
+        "c": 3
+      },
+      "targetEvidence": "correctly identifies the initial sound",
+      "alignmentRationale": "This question helps establish understanding of initial sounds in words."
+    },
+    {
+      "id": "a37e284d-4490-419d-a3b4-e10d5565e050",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which of these words has the same middle sounds as 'red'?",
+      "rubric": [
+        "3 - The answer correctly identifies the word with the 'ed' sound.",
+        "2 - The answer is partially correct, matching some sound pattern.",
+        "1 - The answer does not match the intended sound pattern.",
+        "0 - The answer is unrelated to the prompt."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "pan"
+        },
+        {
+          "key": "b",
+          "text": "bed"
+        },
+        {
+          "key": "c",
+          "text": "bag"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "recognizes a word-family pattern",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "correctly identifies the middle sound pattern",
+      "alignmentRationale": "This task evaluates the child's ability to discern sound patterns in words."
+    },
+    {
+      "id": "85cf6188-7f60-4a93-979c-da440ab756fc",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word is spelled with 'ai' like in 'train'?",
+      "rubric": [
+        "3 - The answer correctly identifies the word with 'ai'.",
+        "2 - The answer is close but includes an incorrect spelling.",
+        "1 - The answer has little relation to the 'ai' spelling.",
+        "0 - The answer is irrelevant to the task."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "play"
+        },
+        {
+          "key": "b",
+          "text": "peach"
+        },
+        {
+          "key": "c",
+          "text": "cat"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizes a spelling pattern with vowel sounds",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "correctly identifies spelling that uses 'ai'",
+      "alignmentRationale": "This question targets knowledge of vowel combinations and their spelling."
+    },
+    {
+      "id": "566ca3de-bf72-4216-994a-338f251bb673",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word matches the ending sound of 'star'?",
+      "rubric": [
+        "3 - The answer correctly identifies the word with the 'ar' sound.",
+        "2 - The answer is somewhat related to the sound but incorrect.",
+        "1 - The answer does not relate to the ending sound.",
+        "0 - The answer is not relevant at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "bar"
+        },
+        {
+          "key": "b",
+          "text": "tap"
+        },
+        {
+          "key": "c",
+          "text": "run"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizes a word-family pattern",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "correctly identifies the ending sound",
+      "alignmentRationale": "This activity assesses recognition of rhyming or similar-sounding endings."
+    },
+    {
+      "id": "0d143e68-0460-4f88-9c45-3e80d097fe99",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Think of a word that ends with 'ent'. What is it?",
+      "rubric": [
+        "3 - The answer provides a relevant word ending in 'ent'.",
+        "2 - The answer is a related word, but not correctly ending in 'ent'.",
+        "1 - The answer is a word that is not connected to 'ent'.",
+        "0 - The response does not provide a valid word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "produces a spelling pattern",
+      "targetEvidence": "produces a word that correctly demonstrates the spelling pattern",
+      "alignmentRationale": "This encourages the child to produce language that fits a specified pattern."
+    },
+    {
+      "id": "6e3c7a06-2898-4e14-9387-798ad1d7775f",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Can you say a word that has 'qu' in it, like 'queen'? What is it?",
+      "rubric": [
+        "3 - The answer gives a correct word containing 'qu'.",
+        "2 - The answer is related, but does not contain 'qu'.",
+        "1 - The answer is a word unrelated to 'qu'.",
+        "0 - No word is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "produces a spelling pattern",
+      "targetEvidence": "produces a word exemplifying the 'qu' spelling pattern",
+      "alignmentRationale": "This tests the child's ability to generate words based on specific letter patterns."
+    },
+    {
+      "id": "c1db5736-5444-4c44-8dde-560a928548e7",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Tell me a word that starts with 'spr', like 'spring'. What is it?",
+      "rubric": [
+        "3 - The answer provides a correct word beginning with 'spr'.",
+        "2 - The answer is close but does not start with 'spr'.",
+        "1 - The answer does not relate to the 'spr' pattern.",
+        "0 - No response given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "produces a spelling pattern",
+      "targetEvidence": "produces a word demonstrating the 'spr' initial sound",
+      "alignmentRationale": "This tests recognition and generation of sounds that begin with specific letters."
+    },
+    {
+      "id": "ad0c6750-d9ea-4df9-a7e3-c2fb5bf2a81c",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word is spelled correctly?",
+      "rubric": [
+        "3 - 'jumped' is the correct spelling of the past tense of jump.",
+        "2 - 'jumpy' is a related word but not the same form.",
+        "1 - 'jummped' is close but not right.",
+        "0 - 'jumpt' is incorrect and doesn't match the word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "jumped"
+        },
+        {
+          "key": "b",
+          "text": "jumpy"
+        },
+        {
+          "key": "c",
+          "text": "jumpt"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word spelling accuracy",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Child distinguishes between correct and incorrect spellings of a similar-sounding word.",
+      "alignmentRationale": "This assesses knowledge of correct spelling through word familiarity."
+    },
+    {
+      "id": "80948697-8884-4af6-8e57-ecb3b4d3ba7f",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Name a word that uses 'sh' in it, like 'fish'.",
+      "rubric": [
+        "3 - Correct example includes 'sh'.",
+        "2 - Example is close but doesn't use 'sh'.",
+        "1 - Suggests an unrelated word or sound.",
+        "0 - No response or answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "consonant blend recognition",
+      "targetEvidence": "Child produces a word that includes the specified consonant blend accurately.",
+      "alignmentRationale": "This checks the child's ability to recognize sound patterns in words."
+    },
+    {
+      "id": "0ab0bd54-0e77-4544-95d0-3b08ae12a4fa",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Give me a word that ends with 'ing'.",
+      "rubric": [
+        "3 - Example is a correct 'ing' ending word.",
+        "2 - Suggests a close word but misuses the ending.",
+        "1 - Provides a word unrelated to 'ing' endings.",
+        "0 - No answer is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "ending sound identification",
+      "targetEvidence": "Child generates a word that appropriately ends with the given sound.",
+      "alignmentRationale": "This evaluates the child's understanding of word endings."
+    },
+    {
+      "id": "c8aaf0e9-2286-41d7-a55f-5f23fb39d182",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Think of a word that has the 'oo' sound like 'food'. What is it?",
+      "rubric": [
+        "3 - Correctly identifies another word with 'oo' sound.",
+        "2 - Suggests a word similar but not quite right.",
+        "1 - Suggests an unrelated word or sound.",
+        "0 - Does not provide any answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "vowel sound identification",
+      "targetEvidence": "Child identifies a word sharing a specific vowel sound.",
+      "alignmentRationale": "This task checks for the understanding of sound letters corresponding to specific sounds."
+    },
+    {
+      "id": "6c33bfcf-3049-45ea-976c-806739c7abd7",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Tell me a word that starts with the 'fl' sound.",
+      "rubric": [
+        "3 - Provides a clear example of a word with 'fl'.",
+        "2 - Example is close to 'fl' but not quite right.",
+        "1 - Gives a word unrelated to 'fl'.",
+        "0 - No answer or unclear response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "initial sound recognition",
+      "targetEvidence": "Child produces a word that begins with the specified sound.",
+      "alignmentRationale": "This assesses the child's ability to recognize and produce words based on initial sounds."
+    },
+    {
+      "id": "998eb9f4-e6d2-43ce-a40c-f396c440ac37",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_spelling",
+      "format": "explanation",
+      "prompt": "Which word has the same ending sound as 'cat'?",
+      "rubric": [
+        "3 - 'bat' shows complete understanding of sound patterns.",
+        "2 - 'hat' is a good choice but not as clear.",
+        "1 - 'dog' does not match the ending sound at all.",
+        "0 - 'tree' does not relate to 'cat'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "bat"
+        },
+        {
+          "key": "b",
+          "text": "hat"
+        },
+        {
+          "key": "c",
+          "text": "dog"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "sound pattern recognition",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child correctly identifies a word that ends in the same sound as another.",
+      "alignmentRationale": "This task tests the ability to match sounds to letters using familiar words."
+    }
+  ]
+}

@@ -1,0 +1,2545 @@
+{
+  "category": "questions_authority",
+  "questions": [
+    {
+      "id": "cc6b8523-978b-42c9-9a6e-af8ed66b31ab",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "A friend says, 'No eating in the playroom.' What do you want to ask?",
+      "rubric": [
+        "3 - You ask a thoughtful question about why this rule exists.",
+        "2 - You ask a related but less clear question.",
+        "1 - You ask something unrelated.",
+        "0 - You don’t ask a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a reason",
+      "targetEvidence": "The child formulates an appropriate question regarding the rule.",
+      "alignmentRationale": "This task isolates their ability to inquire about rules respectfully."
+    },
+    {
+      "id": "f1d78a4c-7ee1-473e-8390-0a8ad17f9b67",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Your friend says, 'No throwing balls indoors.' What would you like to ask?",
+      "rubric": [
+        "3 - You ask a clear question about the rule, like 'Why not?'",
+        "2 - You ask a related question, but not directly about the rule.",
+        "1 - You ask something unrelated or unclear about the rule.",
+        "0 - You don’t ask a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can’t we?"
+        },
+        {
+          "key": "b",
+          "text": "Can I throw outside?"
+        },
+        {
+          "key": "c",
+          "text": "What about running?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a rule",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child forms a clear question about the reason for the rule.",
+      "alignmentRationale": "This question tests understanding of rules and their reasoning, not simply repeating them."
+    },
+    {
+      "id": "19c83d0d-abb5-4c68-ac1d-288a04375fc3",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If someone says, 'No running in the store,' what do you want to ask them?",
+      "rubric": [
+        "3 - You ask why running is not safe in the store.",
+        "2 - You ask about walking instead.",
+        "1 - You ask something about playing.",
+        "0 - You don’t ask a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for store rules",
+      "targetEvidence": "The child asks specifically about the running rule in the store.",
+      "alignmentRationale": "This assesses their understanding of rules applied to safety in public spaces."
+    },
+    {
+      "id": "3716cc24-1ff7-483e-8abc-68d97c7c2efd",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "A grown-up says, 'No loud voices inside.' What’s something you could ask?",
+      "rubric": [
+        "3 - You clearly ask why loud voices aren't allowed.",
+        "2 - You ask about what's considered loud.",
+        "1 - You ask if whispers are okay.",
+        "0 - You don’t ask a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can't we be loud?"
+        },
+        {
+          "key": "b",
+          "text": "Is whispering okay?"
+        },
+        {
+          "key": "c",
+          "text": "Can I shout outside?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for voice rules",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child shows curiosity about the volume standard in specific environments.",
+      "alignmentRationale": "This checks their ability to inquire about sound levels and expectations."
+    },
+    {
+      "id": "2480dce4-0b1c-473f-975b-a484c9c40994",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Your friend says, 'No pets in the playground.' What would you like to ask?",
+      "rubric": [
+        "3 - You ask a clear question about why pets aren't allowed.",
+        "2 - You ask about a different type of animal.",
+        "1 - You ask something unrelated.",
+        "0 - You don’t ask a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for playground rules",
+      "targetEvidence": "The child creates a specific question about the rule in the playground context.",
+      "alignmentRationale": "This gauges understanding of rules based on specific locations."
+    },
+    {
+      "id": "d22f2643-c273-4b18-9a02-277650b07818",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "A teacher says, 'No running in the classroom.' What do you want to ask?",
+      "rubric": [
+        "3 - You clearly ask why running is not allowed.",
+        "2 - You ask about a different action in the classroom.",
+        "1 - You ask if you can walk quickly instead.",
+        "0 - You don’t ask a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can’t we run?"
+        },
+        {
+          "key": "b",
+          "text": "Can I jump instead?"
+        },
+        {
+          "key": "c",
+          "text": "What if I walk?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for classroom rules",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child shows curiosity about the classroom rule regarding safety.",
+      "alignmentRationale": "This question assesses understanding of safety rules in a classroom setting."
+    },
+    {
+      "id": "15c79199-203e-4d75-b78d-8c1a3950b2a5",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Your friend says, 'No running inside.' What could you ask to understand better?",
+      "rubric": [
+        "3 - Excellent question about the why of the rule.",
+        "2 - Good question but not focused enough.",
+        "1 - Unclear or vague question.",
+        "0 - No question provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "questioning a rule",
+      "targetEvidence": "The child forms a question related to the running rule seeking clarity about it.",
+      "alignmentRationale": "This task focuses on generating curiosity about a simple but common rule, emphasizing respectful inquiry."
+    },
+    {
+      "id": "ac099fb7-5068-46b6-8fcf-dd44d29058d7",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If your friend says, 'No pets in the playground,' what would you like to ask them?",
+      "rubric": [
+        "3 - Clear and thoughtful question about the rule.",
+        "2 - Question is okay but not very clear.",
+        "1 - Unclear or weak question.",
+        "0 - No question formulated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "seeking understanding of a rule",
+      "targetEvidence": "The child constructs a relevant question about the rule regarding pets.",
+      "alignmentRationale": "This encourages the child to think critically and ask for reasons concerning pet restrictions, which involves social interaction."
+    },
+    {
+      "id": "9a71078a-f10c-4e07-8161-b788b11fb299",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Your friend says, 'No bicycles in the house.' What do you want to ask them?",
+      "rubric": [
+        "3 - Excellent question about the rule.",
+        "2 - Good question but not very clear.",
+        "1 - Question is unclear or missing.",
+        "0 - No question asked."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "asking for an explanation",
+      "targetEvidence": "The child forms a clear question about the reason for the rule.",
+      "alignmentRationale": "This task tests the ability to ask about the reasoning behind a specific rule, focusing on clear communication."
+    },
+    {
+      "id": "43807083-085f-4141-9dd3-44b29fb6990a",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "A teacher says, 'No eating in the classroom.' What could you ask?",
+      "rubric": [
+        "3 - Why can't we eat here?",
+        "2 - Can we eat somewhere else?",
+        "1 - What's for lunch?",
+        "0 - I want to eat."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can't we eat here?"
+        },
+        {
+          "key": "b",
+          "text": "Can we eat somewhere else?"
+        },
+        {
+          "key": "c",
+          "text": "What's for lunch?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "requesting an explanation",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child selects a clear question about the rule.",
+      "alignmentRationale": "The question directly seeks clarification on why eating is not allowed, demonstrating respect and inquiry about rules."
+    },
+    {
+      "id": "6728d541-487a-4119-a9e9-3abcc621d984",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If your sibling says, 'No games before bedtime,' what are you curious to ask?",
+      "rubric": [
+        "3 - Wonderful question about the rule.",
+        "2 - Good question but not specific.",
+        "1 - Vague question without focus.",
+        "0 - No question given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "asking for a reason",
+      "targetEvidence": "The child creates a question seeking to understand the reasoning behind the rule.",
+      "alignmentRationale": "This activity encourages the child to express curiosity about a daily rule, focusing on asking for reasons."
+    },
+    {
+      "id": "b06604c3-7f2f-4793-bf90-bdc19c70182e",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "You hear 'No running in the store.' What's a good question to ask?",
+      "rubric": [
+        "3 - Why can't we run here? (clear reason-seeking).",
+        "2 - Can we walk fast instead? (less relevant).",
+        "1 - I don’t want to follow that. (not relevant).",
+        "0 - No question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can't we run here?"
+        },
+        {
+          "key": "b",
+          "text": "Can we walk fast instead?"
+        },
+        {
+          "key": "c",
+          "text": "I don’t want to follow that."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "asking for reasoning",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Child selects a question that effectively seeks the reasoning behind the store rule.",
+      "alignmentRationale": "This question assesses understanding of asking about behavioral rules in public spaces."
+    },
+    {
+      "id": "a38f5f2a-82e0-4d53-8039-7cc14db7ec3a",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Your big sibling says you can't use their toy. What would you like to ask them?",
+      "rubric": [
+        "3 - Asks a clear question about why the toy can't be used.",
+        "2 - Asks a question but it’s not fully clear.",
+        "1 - Provides a comment but not really a question.",
+        "0 - Does not respond with a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "forming a clear question",
+      "targetEvidence": "The child's question expresses curiosity about the rule regarding the toy.",
+      "alignmentRationale": "This task assesses the ability to form a question about a personal rule."
+    },
+    {
+      "id": "7e9d6dda-c521-4904-aa10-47e30e2039a2",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Your friend says, 'No jumping on the couch.' What can you ask them?",
+      "rubric": [
+        "3 - Asks a clear question to understand the rule.",
+        "2 - Asks a question but lacks some clarity.",
+        "1 - Makes a vague comment instead of a question.",
+        "0 - Does not provide a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "requesting clarification",
+      "targetEvidence": "The child clearly seeks to understand the reasoning behind the rule.",
+      "alignmentRationale": "This task isolates the ability to ask for clarification about a social rule."
+    },
+    {
+      "id": "108ab3a9-f60e-4f45-9d47-d54eb6cacd12",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Your friend says, 'No playing outside today.' What could you ask them?",
+      "rubric": [
+        "3 - Asks a clear question about the reason for staying in.",
+        "2 - Asks a question that is somewhat unclear.",
+        "1 - Responds but it’s not a question.",
+        "0 - Does not ask anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inquiring about rules",
+      "targetEvidence": "Child forms a specific question to understand the rule about outdoor play.",
+      "alignmentRationale": "This task tests the ability to inquire about rules concerning play activities."
+    },
+    {
+      "id": "958e9fbb-c7f6-4eb0-a563-cf26b2cdb445",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Your parent says, 'No dessert until dinner.' What could you ask?",
+      "rubric": [
+        "3 - Why must we wait for dessert? (direct approach).",
+        "2 - Can we have a little dessert? (less relevant).",
+        "1 - I don't like that rule. (not a question).",
+        "0 - No question given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why must we wait for dessert?"
+        },
+        {
+          "key": "b",
+          "text": "Can we have a little dessert?"
+        },
+        {
+          "key": "c",
+          "text": "I don't like that rule."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "seeking an explanation",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Child selects the most direct question for understanding the rule about dessert.",
+      "alignmentRationale": "This evaluates the child's ability to ask for an explanation of a household rule."
+    },
+    {
+      "id": "ca46c200-5a33-4c57-b8c3-38b66a949b17",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "A friend tells you, 'No shouting in the hall.' What would you like to ask?",
+      "rubric": [
+        "3 - Asks a clear question about why shouting is not allowed.",
+        "2 - Asks a question a little unclear.",
+        "1 - Gives a statement but not a question.",
+        "0 - Does not ask anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "clarifying a social norm",
+      "targetEvidence": "Child promotes inquiry about the social rule regarding noise in the hallway.",
+      "alignmentRationale": "The task verifies the ability to clarify behavioral expectations in social settings."
+    },
+    {
+      "id": "3493b67e-9290-4d4c-a4e8-c42fb4b12dfc",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Your teacher says, 'No talking during tests.' What could you ask?",
+      "rubric": [
+        "3 - Why can't we talk during tests? (effective reason-seeking).",
+        "2 - Can I whisper? (less direct).",
+        "1 - I don't want that rule. (not a question).",
+        "0 - No question given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can't we talk during tests?"
+        },
+        {
+          "key": "b",
+          "text": "Can I whisper?"
+        },
+        {
+          "key": "c",
+          "text": "I don't want that rule."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inquiry about rules",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child chooses an appropriate question about the testing rule.",
+      "alignmentRationale": "This question evaluates the child's ability to inquire about educational rules."
+    },
+    {
+      "id": "97a99d07-2ecf-4f72-84f4-5eec38f4f456",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "A friend says you can't talk during lunch. Why? What to ask?",
+      "rubric": [
+        "3 - You ask, 'Why can't we talk? It's fun!'",
+        "2 - You say, 'That's not nice.'",
+        "1 - You say nothing.",
+        "0 - You say, 'Okay.'"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can't we talk?"
+        },
+        {
+          "key": "b",
+          "text": "That's not nice."
+        },
+        {
+          "key": "c",
+          "text": "Okay."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "ask about rules",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "chooses a question that asks about the reason for the rule",
+      "alignmentRationale": "This task isolates understanding of rules by prompting a child to inquire respectfully about a rule."
+    },
+    {
+      "id": "fc4d8b6c-6b82-402e-bff0-01aedb5cd953",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If a rule says, 'No playing with toys at the table', what would you like to ask?",
+      "rubric": [
+        "3 - Clearly asks about why that rule exists.",
+        "2 - Mentions something about toys but unclear.",
+        "1 - Says something unrelated.",
+        "0 - Does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "request an explanation",
+      "targetEvidence": "creates a meaningful inquiry about the restrictive rule",
+      "alignmentRationale": "This task encourages exploration of reasoning behind household rules."
+    },
+    {
+      "id": "b6f8f587-6e09-4907-9596-517cf6197fa6",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "In a store, you see a sign saying 'No running.' What could you ask the adult with you about this rule?",
+      "rubric": [
+        "3 - Good question that shows understanding of safety.",
+        "2 - Somewhat clear question, but too general.",
+        "1 - Question not related to the rule.",
+        "0 - Not a clear question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "seeking an explanation for a rule",
+      "targetEvidence": "The child shows curiosity about the reasoning behind the safety rule.",
+      "alignmentRationale": "This promotes critical thinking about rules that ensure safety in public spaces."
+    },
+    {
+      "id": "195d91b0-8dcf-48f7-aab7-97d250aed683",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "At the park, your adult says, 'No climbing on the fence.' What would you ask them about it?",
+      "rubric": [
+        "3 - Good question about safety or reason for the rule.",
+        "2 - Somewhat related question but unclear.",
+        "1 - Question does not relate to the rule.",
+        "0 - Not a clear question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "seeking an explanation for a rule",
+      "targetEvidence": "The child articulates a relevant question prompted by the adult’s rule.",
+      "alignmentRationale": "This encourages the child to think about safety in a playful context."
+    },
+    {
+      "id": "8913c31b-be2a-4114-8922-7a98701295ae",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "At the playground, you see a sign that says, 'No food allowed.' What could you ask?",
+      "rubric": [
+        "3 - Good question about why the rule is there.",
+        "2 - Somewhat clear question, but not specific enough.",
+        "1 - Needs more clarity in the question.",
+        "0 - Not a clear question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "seeking an explanation for a rule",
+      "targetEvidence": "The child forms a question reflecting curiosity about the rule.",
+      "alignmentRationale": "This question prompts the child to think critically about rules and encourages respectful inquiry."
+    },
+    {
+      "id": "21cb1aa3-0720-4530-81e7-029ef5d85e17",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "At a picnic, you hear an adult say, 'No playing with food.' What question could you ask?",
+      "rubric": [
+        "3 - 'Why shouldn't we play with food?'",
+        "2 - 'Can I taste my food?'",
+        "1 - 'Is it ok to eat it?','0 - 'What is a picnic?'",
+        "0 - Not a clear question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why shouldn't we play with food?"
+        },
+        {
+          "key": "b",
+          "text": "Can I taste my food?"
+        },
+        {
+          "key": "c",
+          "text": "Is it ok to eat it?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "seeking an explanation for a rule",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child forms a relevant question asking about the rule.",
+      "alignmentRationale": "This tests the child's ability to think about rules in a casual environment and seek reasons behind them."
+    },
+    {
+      "id": "c199a159-42a6-48d6-94dd-6a8c95b1e827",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "At the park, you see a sign that says, 'No littering.' What could you ask about this rule?",
+      "rubric": [
+        "3 - Formulates a thoughtful question about the importance of not littering.",
+        "2 - Asks a simpler question related to the sign.",
+        "1 - Provides a vague or unrelated question.",
+        "0 - Does not ask a relevant question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "exploring environmental rules",
+      "targetEvidence": "the child articulates a question about an environmental rule",
+      "alignmentRationale": "This is aimed at understanding community and environmental safety rules without requiring reading."
+    },
+    {
+      "id": "3127baf3-1d31-4d3d-8f1a-78dd4b9cd613",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "You’re at a pet store that says 'No touching the animals.' What would you ask?",
+      "rubric": [
+        "3 - 'Why can't we touch the animals?' is a clear, respectful question.",
+        "2 - 'Can we look at them instead?' shows curiosity but not about the rule.",
+        "1 - Asks something unrelated or vague about the store.",
+        "0 - Does not provide a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can't we touch the animals?"
+        },
+        {
+          "key": "b",
+          "text": "Can we look at them instead?"
+        },
+        {
+          "key": "c",
+          "text": "Do they like to be touched?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding rules",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "the child articulates a thoughtful question about the rule",
+      "alignmentRationale": "This question is framed in an everyday context, prompting children to consider the rationale behind a rule."
+    },
+    {
+      "id": "838ed690-7cda-4e44-b5e8-888ab232d8d9",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "You see a bright sign in the library that says, 'No running.' What could you ask about it?",
+      "rubric": [
+        "3 - Answers with a clear question seeking the reason for the rule, showing understanding.",
+        "2 - Gives a somewhat clear question but may not fully express concern for reasons.",
+        "1 - Provides a vague or unthoughtful question related to the rule.",
+        "0 - Does not provide a relevant question about the rule."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "inquiring about public rules",
+      "targetEvidence": "the child forms a question about a public behavior rule",
+      "alignmentRationale": "This prompt encourages children to articulate their questions about a specific safety rule without requiring reading."
+    },
+    {
+      "id": "46b4695d-3888-4073-b62b-0d1011e313d6",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "At school, there’s a sign that says, 'No talking during class.' What could you ask?",
+      "rubric": [
+        "3 - Gives a clear question that seeks reasoning about the rule.",
+        "2 - Offers a vague inquiry related to talking in class.",
+        "1 - Questions something unrelated to the sign.",
+        "0 - Fails to ask a relevant question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "seeking explanations for classroom rules",
+      "targetEvidence": "the child forms a question concerning a classroom conduct rule",
+      "alignmentRationale": "This assesses children's ability to inquire respectfully about behavior expectations in an educational setting."
+    },
+    {
+      "id": "d392dd9c-5199-4115-a63e-fb8f4deec507",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "You're playing in the park, and see a sign saying, 'No bikes in the playground.' What could you ask about this rule?",
+      "rubric": [
+        "3 - Forms a clear question that asks for the reasoning behind not allowing bikes.",
+        "2 - Shows some understanding but might be vague in their question.",
+        "1 - Provides a question that does not relate well to the rule.",
+        "0 - Doesn't ask a relevant question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "questioning playground safety",
+      "targetEvidence": "the child articulates a question about safety rules in a play area",
+      "alignmentRationale": "This allows children to think critically and inquire about safety while engaging in play."
+    },
+    {
+      "id": "0c9f7e6f-b596-429b-9c6c-d3b7f2c2d319",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "At the restaurant, there’s a sign that says, 'No shouting.' What might you ask?",
+      "rubric": [
+        "3 - 'Why can't we shout in here?' shows a clear understanding of the rule.",
+        "2 - 'Can we talk quietly?' expresses a related but less insightful question.",
+        "1 - Asks something unrelated or vague about noise.",
+        "0 - Does not provide a relevant question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can't we shout in here?"
+        },
+        {
+          "key": "b",
+          "text": "Can we talk quietly?"
+        },
+        {
+          "key": "c",
+          "text": "What food do they have?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding dining etiquette",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "the child asks a relevant question regarding behavior in public spaces",
+      "alignmentRationale": "This prompt helps assess the ability to inquire about behavioral expectations in dining settings."
+    },
+    {
+      "id": "a7eb21cf-b10c-4da8-b0db-7cbca3b8c804",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "In a store, there's a sign saying 'No running.' What question can you think of?",
+      "rubric": [
+        "3 - Why can't we run here?",
+        "2 - Can we walk fast?",
+        "1 - Are we allowed to run?",
+        "0 - Can we run?"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can't we run here?"
+        },
+        {
+          "key": "b",
+          "text": "Can we walk fast?"
+        },
+        {
+          "key": "c",
+          "text": "Are we allowed to run?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "questioning a rule",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects a thoughtful question about the reason for the running rule",
+      "alignmentRationale": "This task helps identify the child's ability to inquire respectfully about rules in public spaces."
+    },
+    {
+      "id": "22e5655d-f73f-4aff-b39a-881f34bd66be",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "You’re playing tag, and someone says, 'No touching.' What could you ask?",
+      "rubric": [
+        "3 - Why can't we touch each other?",
+        "2 - Can we just tag lightly?",
+        "1 - Is touching not allowed?",
+        "0 - Can I touch you?"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can't we touch each other?"
+        },
+        {
+          "key": "b",
+          "text": "Can we just tag lightly?"
+        },
+        {
+          "key": "c",
+          "text": "Is touching not allowed?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "questioning a rule",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "forms a question that aims to understand the rationale for the touching rule",
+      "alignmentRationale": "This interaction tests how children understand and ask about rules in a game setting."
+    },
+    {
+      "id": "845aca00-90fd-423b-ad53-3d46c9c63460",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "You find a toy in the park that's not yours. What would you ask an adult about it?",
+      "rubric": [
+        "3 - I'd ask, \"Can I play with this?\"",
+        "2 - I'd ask, \"Whose toy is this?\"",
+        "1 - I'd ask if I can take it home.",
+        "0 - I'd ask nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "questioning a rule",
+      "targetEvidence": "gives a clear question regarding a found item relating to ownership and rules",
+      "alignmentRationale": "Encourages understanding of social rules about shared spaces and belongings."
+    },
+    {
+      "id": "cf2a9083-d9bf-40d6-8d88-ca6bd16c7f27",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "At a friend's house, you see a sign that says 'No pets on the couch.' What would you ask about that?",
+      "rubric": [
+        "3 - I'd ask, \"Why can't the pets go there?\"",
+        "2 - I'd ask if they can sit on the floor instead.",
+        "1 - I'd just see if I can keep them off.",
+        "0 - I wouldn’t ask anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "questioning a rule",
+      "targetEvidence": "develops a relevant question about a specific household rule",
+      "alignmentRationale": "This allows for exploration of understanding rules in social situations."
+    },
+    {
+      "id": "3b8aa249-5d04-42a7-acb6-c441d3de5fde",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "In class, you see a rule that says 'No food.' What question would you ask the teacher?",
+      "rubric": [
+        "3 - I'd ask, \"Why can't we eat?\"",
+        "2 - I'd ask if we can have snacks after.",
+        "1 - I'd ask if I can eat my lunch.",
+        "0 - I wouldn't ask anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "questioning a rule",
+      "targetEvidence": "articulates a clear inquiry about the classroom policy",
+      "alignmentRationale": "Gives insight into how children view rules in academic settings."
+    },
+    {
+      "id": "a73365f6-0c29-4d1c-8020-74a05bef50b8",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "At the library, you hear 'No yelling.' What would you like to ask?",
+      "rubric": [
+        "3 - I'd ask, \"Why can't we yell?\"",
+        "2 - I'd ask if we can whisper.",
+        "1 - I'd ask if I can just be quiet.",
+        "0 - I wouldn't ask anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "questioning a rule",
+      "targetEvidence": "provides a thoughtful question regarding noise policies",
+      "alignmentRationale": "This assesses the child's understanding of appropriate behavior in specific environments."
+    },
+    {
+      "id": "867f4b76-9b08-4e6f-9625-7f8beb177187",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "You see a sign that says 'No eating in the library.' What could you ask?",
+      "rubric": [
+        "3 - Why can't we eat here?",
+        "2 - Can we eat quietly?",
+        "1 - Is eating allowed?",
+        "0 - Can I eat my snack?"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can't we eat here?"
+        },
+        {
+          "key": "b",
+          "text": "Can we eat quietly?"
+        },
+        {
+          "key": "c",
+          "text": "Is eating allowed?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "questioning a rule",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a clear question asking for the reason behind the rule",
+      "alignmentRationale": "This question explores the child's ability to ask about rules in a library context."
+    },
+    {
+      "id": "e6b1e2aa-3f28-4a3d-8cfd-d00f4caf7fd8",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "At the playground, your friends are told, 'No climbing on the slide.' What could you ask?",
+      "rubric": [
+        "3 - Why can't we climb on it?",
+        "2 - Can we climb other things?",
+        "1 - Is it dangerous to climb?",
+        "0 - Can I climb the slide?"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can't we climb on it?"
+        },
+        {
+          "key": "b",
+          "text": "Can we climb other things?"
+        },
+        {
+          "key": "c",
+          "text": "Is it dangerous to climb?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "questioning a rule",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a clear question seeking to understand the reason for the climbing rule",
+      "alignmentRationale": "This prompt encourages thoughtful questioning about a common play rule."
+    },
+    {
+      "id": "eb8f802f-68ee-4122-b9ab-c0022231f654",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If you're at a friend's house and the rule is 'no shoes inside,' what could you ask?",
+      "rubric": [
+        "3 - Why can't we wear shoes inside?",
+        "2 - Can I take my shoes off?",
+        "1 - Is it okay to wear socks?",
+        "0 - I don’t want to talk."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can't we wear shoes inside?"
+        },
+        {
+          "key": "b",
+          "text": "Can I take my shoes off?"
+        },
+        {
+          "key": "c",
+          "text": "Is it okay to wear socks?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a rule",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies a relevant question about rules around footwear.",
+      "alignmentRationale": "This focuses on questioning rules related to behavior, separate from general knowledge or inquiry about locations."
+    },
+    {
+      "id": "e7acb251-3b14-43a7-a338-cd33266aee30",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "You want to jump on the couch, but your adult says no. What would you ask them about it?",
+      "rubric": [
+        "3 - Asks why jumping on the couch is not allowed.",
+        "2 - Asks if jumping is okay anywhere else.",
+        "1 - Asks if you can stand on the couch instead.",
+        "0 - Does not ask anything about jumping and the rule."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for actions",
+      "targetEvidence": "Child articulates a question about the action and established rule.",
+      "alignmentRationale": "Inquiring about safety and permission based on behavior demonstrates understanding of social rules."
+    },
+    {
+      "id": "8fd67cae-3e2f-4d61-837e-42a8015758ab",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If there’s a rule about not running during recess, what might you ask to understand it better?",
+      "rubric": [
+        "3 - You ask a clear question about why running isn't allowed during recess.",
+        "2 - You may ask something that's connected but not very clear.",
+        "1 - You mention running without a clear question.",
+        "0 - You don’t provide a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "ask about a guideline",
+      "targetEvidence": "child forms a relevant question to understand the rule better",
+      "alignmentRationale": "This question allows assessment of the child's ability to respectfully explore rules and their purposes."
+    },
+    {
+      "id": "eb3438ae-8027-44a3-9e4d-b093ec6b02b2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If a teacher says not to run in the classroom, what is a kind question to ask?",
+      "rubric": [
+        "3 - You ask why we shouldn't run and listen to the answer.",
+        "2 - You ask about running in class but it's not clear.",
+        "1 - You mention running but it’s not a question.",
+        "0 - You don’t ask about running."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can’t we run in class?"
+        },
+        {
+          "key": "b",
+          "text": "Is running fun?"
+        },
+        {
+          "key": "c",
+          "text": "I like running!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "ask about a rule",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "child asks a question to understand the reason for the no running rule",
+      "alignmentRationale": "This question allows the child to respectfully inquire about classroom rules without making assumptions or guesses."
+    },
+    {
+      "id": "d8b57547-d91c-4431-b06d-cbf9ac22451e",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If you see a friend can’t play because they have to finish chores, what could you ask them?",
+      "rubric": [
+        "3 - You ask them what chores they have and if they can play later.",
+        "2 - You ask about chores but it’s not clear.",
+        "1 - You mention playing without asking a question.",
+        "0 - You don’t say anything about chores."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What chores do you have to do?"
+        },
+        {
+          "key": "b",
+          "text": "Can I help you?"
+        },
+        {
+          "key": "c",
+          "text": "You should play!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "ask about a guideline",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "child asks about a friend’s chores showing concern",
+      "alignmentRationale": "This prompt assesses the child's ability to understand a friend's situation and invite discussion."
+    },
+    {
+      "id": "9f54dbf4-6240-417a-8936-8a2a0b816418",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "When there's a rule to raise your hand before speaking, what’s a question you could ask your teacher?",
+      "rubric": [
+        "3 - You ask why we should raise our hand to talk.",
+        "2 - You ask about speaking but it’s not clear.",
+        "1 - You mention speaking without a question.",
+        "0 - You don’t mention raising hands."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why do we raise our hands to speak?"
+        },
+        {
+          "key": "b",
+          "text": "Can I talk right now?"
+        },
+        {
+          "key": "c",
+          "text": "Talking is fun!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "ask about a rule",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "child seeks clarification on the hand-raising rule",
+      "alignmentRationale": "This item tests the child's capacity to question classroom management strategies in a respectful manner."
+    },
+    {
+      "id": "9f7be9d8-45f0-409f-9824-fcf0138ba858",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If your teacher says you can’t talk during tests, what could you ask them?",
+      "rubric": [
+        "3 - You ask a thoughtful question about why talking is not allowed.",
+        "2 - You ask about the test but it’s vague.",
+        "1 - You mention tests without asking a question.",
+        "0 - You don’t provide a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "ask about a guideline",
+      "targetEvidence": "child formulates a relevant question about testing silence",
+      "alignmentRationale": "This question encourages children to engage with rules about tests in a thoughtful manner, reflecting respect."
+    },
+    {
+      "id": "d057066a-67ac-4f73-a06e-098a4bd1491b",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If you notice a friend not following a safety rule, what can you ask them to help?",
+      "rubric": [
+        "3 - You ask a good question about what they are doing and safety.",
+        "2 - You ask something related but it’s unclear.",
+        "1 - You mention safety without a clear question.",
+        "0 - You don’t provide a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "ask about a guideline",
+      "targetEvidence": "child expresses concern over friend’s safety actions",
+      "alignmentRationale": "This prompt assesses emotional intelligence and the ability to inquire respectfully about friends' decisions regarding safety."
+    },
+    {
+      "id": "d9a4a1b8-dcaf-4e97-a111-d91c9881bb57",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If there’s a rule against talking in line, what could you ask your teacher about it?",
+      "rubric": [
+        "3 - You ask a clear question about why we cannot talk in line.",
+        "2 - You ask something related but it’s vague.",
+        "1 - You say something about talking without forming a question.",
+        "0 - You don’t provide anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "ask about a guideline",
+      "targetEvidence": "child seeks to clarify the reason for the talking restriction in line",
+      "alignmentRationale": "This task checks ability to ask questions about school rules to promote understanding and respect."
+    },
+    {
+      "id": "91bf72cc-3754-425d-921f-9e27f0d72282",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If there's a rule that you must raise your hand to speak in class, what would you ask the teacher about it?",
+      "rubric": [
+        "3 - You clearly ask why the rule is important and helpful.",
+        "2 - You ask a question related to the rule but not very clear.",
+        "1 - You say something but it's not really a question about the rule.",
+        "0 - You don't ask anything about the rule."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why do we have to raise hands?"
+        },
+        {
+          "key": "b",
+          "text": "What is the reason for raising our hands?"
+        },
+        {
+          "key": "c",
+          "text": "Can I talk now?"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "asking for a reason",
+      "optionScores": {
+        "a": 2,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "the child asks a clear question seeking the reason for the rule",
+      "alignmentRationale": "This question prompts the child to seek reasoning behind an established rule in a classroom setting."
+    },
+    {
+      "id": "fc6d6ba2-c702-423c-ad3b-24413183d22c",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If you see a friend not wearing their helmet while riding a bike, what can you ask them?",
+      "rubric": [
+        "3 - You ask why they aren't wearing it and if it’s safe.",
+        "2 - You suggest wearing it but don’t ask a good question.",
+        "1 - You mention the helmet but don’t question anything.",
+        "0 - You don’t say anything to your friend."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why aren’t you wearing a helmet?"
+        },
+        {
+          "key": "b",
+          "text": "Maybe you should wear your helmet."
+        },
+        {
+          "key": "c",
+          "text": "I ride without one sometimes."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inquiring about safety",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child asks a question related to a safety issue",
+      "alignmentRationale": "This question encourages the child to engage in a conversation about safety practices."
+    },
+    {
+      "id": "91d7502e-637c-4dc4-a0b5-0bf761975e80",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If there is a rule in the playground about not running, what would you ask the adults?",
+      "rubric": [
+        "3 - You ask why running might be unsafe on the playground.",
+        "2 - You mention the rule but don’t ask a strong question.",
+        "1 - You ask a question that isn't clear or related.",
+        "0 - You do not ask anything at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Is running bad here?"
+        },
+        {
+          "key": "b",
+          "text": "What if we run fast?"
+        },
+        {
+          "key": "c",
+          "text": "Why is running not allowed in the playground?"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "questioning rules for clarity",
+      "optionScores": {
+        "a": 1,
+        "b": 2,
+        "c": 3
+      },
+      "targetEvidence": "the child asks about the reasoning behind a playground rule",
+      "alignmentRationale": "The question focuses on understanding safety measures in a recreational environment."
+    },
+    {
+      "id": "3a26a85d-21b7-4a14-a334-a097fa82145f",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If there's a rule that we can't talk during lunch, what should you ask your lunch supervisor?",
+      "rubric": [
+        "3 - You clearly ask why it's quiet during lunch.",
+        "2 - You suggest breaking the rule but don’t ask well.",
+        "1 - You talk about lunch but not about the rule.",
+        "0 - You don't ask anything to the supervisor."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can’t we talk during lunch?"
+        },
+        {
+          "key": "b",
+          "text": "Let’s just talk loudly anyways!"
+        },
+        {
+          "key": "c",
+          "text": "Lunch is fun and joke time."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "exploring communication rules",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "the child seeks clarification about a specific communication rule",
+      "alignmentRationale": "The question encourages inquiry regarding a communication guideline in a social setting."
+    },
+    {
+      "id": "89391532-5251-4729-acca-6989ef696e2c",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If there's a rule about sharing toys at home, what could you ask your parents?",
+      "rubric": [
+        "3 - You ask why sharing is important for everyone.",
+        "2 - You say sharing is good but not a clear question.",
+        "1 - You talk about toys, but don’t ask anything.",
+        "0 - You don’t ask your parents anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Can I keep all the toys to myself?"
+        },
+        {
+          "key": "b",
+          "text": "What if I don’t want to share?"
+        },
+        {
+          "key": "c",
+          "text": "Why do we need to share our toys?"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "asking about sharing behavior",
+      "optionScores": {
+        "a": 0,
+        "b": 1,
+        "c": 3
+      },
+      "targetEvidence": "the child inquires about the reasoning for a sharing rule",
+      "alignmentRationale": "This question prompts the child to think about the social importance of sharing."
+    },
+    {
+      "id": "868ebe8e-e98c-4607-ac78-b22c6b92b7ac",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "What would you want to know if someone said you cannot sit in a certain spot at the lunch table?",
+      "rubric": [
+        "3 - You explain a clear question about the reason for the rule.",
+        "2 - You ask something but it isn’t very clear.",
+        "1 - You mention the spot but don’t ask anything specific.",
+        "0 - You don’t say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "understanding social rules",
+      "targetEvidence": "the child expresses an inquiry about seating arrangements",
+      "alignmentRationale": "Encourages children to think critically about social interactions with peers."
+    },
+    {
+      "id": "2c7171d5-e1be-4bae-a4b4-aa018d959697",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If someone said you can’t play a game because of the rules, what question can you ask them?",
+      "rubric": [
+        "3 - You show how to ask for help understanding the rules.",
+        "2 - You show an idea but it is not very clear.",
+        "1 - You mention the game but don’t ask anything specific.",
+        "0 - You don’t say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "questioning game rules",
+      "targetEvidence": "the child articulates a question regarding game rules",
+      "alignmentRationale": "This promotes critical thinking about understanding the reason behind game rules."
+    },
+    {
+      "id": "7ba1ebf0-f566-463e-a9ed-ac55d054d396",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If there's a rule that you must take turns, what is a good question to ask about it?",
+      "rubric": [
+        "3 - You make a clear point about why turn-taking is important.",
+        "2 - You mention something about turns but it's vague.",
+        "1 - You talk about playing but don’t ask a question.",
+        "0 - You don’t say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "exploring fairness in games",
+      "targetEvidence": "the child considers the fairness aspect of taking turns",
+      "alignmentRationale": "Encourages children to understand the importance of fairness and sharing attention."
+    },
+    {
+      "id": "66689584-e5cc-4e61-b3e1-fe92565ab657",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If there's a rule to always say 'thank you', why do you think it makes people happy?",
+      "rubric": [
+        "3 - It shows respect and makes friends feel good.",
+        "2 - It helps you remember people.",
+        "1 - I don’t know why it helps.",
+        "0 - It’s just what you’re supposed to say."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It shows respect and makes friends feel good."
+        },
+        {
+          "key": "b",
+          "text": "It helps you remember people."
+        },
+        {
+          "key": "c",
+          "text": "I don’t know why it helps."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "ask for a reason",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The response connects gratitude to positive feelings.",
+      "alignmentRationale": "This question focuses on understanding the emotional impact of manners."
+    },
+    {
+      "id": "6906c0bc-26a4-45be-9c3a-8b3e3a151913",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Imagine you see someone not following a rule. What can you say to help them understand?",
+      "rubric": [
+        "3 - Suggests a clear reason to follow the rule respectfully.",
+        "2 - Gives a good reason but it's not very clear.",
+        "1 - Makes an unclear or weak suggestion.",
+        "0 - Does not make a helpful suggestion."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "request an explanation",
+      "targetEvidence": "The response should indicate a way to explain the importance of rules.",
+      "alignmentRationale": "By asking how to help others see rules, this tests respectful inquiry."
+    },
+    {
+      "id": "a71c24cf-5c7c-4d44-a7b5-8e051f4bba7d",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If your teacher has a rule about no talking during tests, why might that be important?",
+      "rubric": [
+        "3 - It helps everyone focus and do their best.",
+        "2 - It might make the test easier.",
+        "1 - I don’t know why.",
+        "0 - It’s just what they say."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It helps everyone focus and do their best."
+        },
+        {
+          "key": "b",
+          "text": "It might make the test easier."
+        },
+        {
+          "key": "c",
+          "text": "I don’t know why."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "ask for a reason",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The response connects quietness to test performance.",
+      "alignmentRationale": "This question checks understanding of learning environments and their rules."
+    },
+    {
+      "id": "225e7dc7-9e2e-4f98-a4a5-d6419586b32a",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "What would you ask if someone said you can’t have a snack until everyone finishes their lunch?",
+      "rubric": [
+        "3 - Asks why it’s fair to wait for snacks.",
+        "2 - Suggests talking to them about lunch.",
+        "1 - Gives a question but it’s not clear.",
+        "0 - Does not ask anything relevant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "request an explanation",
+      "targetEvidence": "The response indicates a thoughtful question about fairness.",
+      "alignmentRationale": "By prompting for curiosity around fairness, this aligns with respectful questioning about rules."
+    },
+    {
+      "id": "17e88bcf-5958-42f4-bbdb-414b3c2c406d",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "What do you think you could ask a friend who wanted to change a rule for a game?",
+      "rubric": [
+        "3 - Suggests a clear question about changing the rule.",
+        "2 - Gives a vague idea but it’s not very clear.",
+        "1 - Makes an unclear suggestion.",
+        "0 - Doesn't suggest any question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "request an explanation",
+      "targetEvidence": "The response should indicate a thoughtful way to discuss rule changes.",
+      "alignmentRationale": "This action targets negotiating rule changes in games through respectful inquiry."
+    },
+    {
+      "id": "8efa9b64-8305-49f0-8bfb-cd75804b8dc0",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Describe a rule you don’t understand. What would you like to ask about it?",
+      "rubric": [
+        "3 - You clearly explain the rule and your questions about it.",
+        "2 - You mention the rule but your question is unclear.",
+        "1 - You describe a rule without any questions.",
+        "0 - You don’t provide an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "request an explanation",
+      "targetEvidence": "The child articulates a rule they question along with a specific inquiry.",
+      "alignmentRationale": "This item focuses on the ability to express confusion and seek further explanation, isolating it from general rule following."
+    },
+    {
+      "id": "ab461405-dbfe-4451-85c9-87de57ff07f2",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If there’s a rule that says no jumping in the house, what could you ask about it?",
+      "rubric": [
+        "3 - Why can’t we jump in the house?",
+        "2 - Can we jump outside?",
+        "1 - Is it fun to jump?",
+        "0 - I don't care about that."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can’t we jump in the house?"
+        },
+        {
+          "key": "b",
+          "text": "Can we jump outside?"
+        },
+        {
+          "key": "c",
+          "text": "Is it fun to jump?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "request an explanation",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child chooses a question that seeks the reasoning for a specific rule.",
+      "alignmentRationale": "This item evaluates the child's ability to inquire about safety or behavior rules respectfully."
+    },
+    {
+      "id": "e48873d5-2fca-4f41-82fe-48d81455db86",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Can you think of a time when you had to ask someone about a rule? What did you ask?",
+      "rubric": [
+        "3 - You describe a clear question you asked about a rule.",
+        "2 - You mention a rule, but your question is vague.",
+        "1 - You mention a rule with no question.",
+        "0 - You don’t provide an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "request an explanation",
+      "targetEvidence": "The child shares a past experience related to asking about a rule.",
+      "alignmentRationale": "This task measures reflection and inquiry about rules, assessing the ability to articulate a question in context."
+    },
+    {
+      "id": "ec759984-eaa3-44b5-9f6b-d5cdadc26917",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "At school, there is a rule to keep hands to yourself. Why do you think that rule is important?",
+      "rubric": [
+        "3 - It keeps everyone safe and comfortable while learning.",
+        "2 - It helps people not to touch things.",
+        "1 - It might make it easier to play.",
+        "0 - I don’t think it matters."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It keeps everyone safe and comfortable while learning."
+        },
+        {
+          "key": "b",
+          "text": "It helps people not to touch things."
+        },
+        {
+          "key": "c",
+          "text": "It might make it easier to play."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a reason",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child selects the most logical and respectful reason for a rule.",
+      "alignmentRationale": "This question measures the understanding of the purpose behind a rule, rather than merely personal opinion."
+    },
+    {
+      "id": "1525340c-97d1-4069-bb75-3e9b5d04243a",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If a friend says they need to wear a seatbelt in the car, what could you ask them?",
+      "rubric": [
+        "3 - Why is it important to wear a seatbelt?",
+        "2 - Do you like wearing a seatbelt?",
+        "1 - Can I sit next to you?",
+        "0 - I don’t care about seatbelts."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why is it important to wear a seatbelt?"
+        },
+        {
+          "key": "b",
+          "text": "Do you like wearing a seatbelt?"
+        },
+        {
+          "key": "c",
+          "text": "Can I sit next to you?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "request an explanation",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child selects a question seeking the reason behind the seatbelt rule.",
+      "alignmentRationale": "This question assesses the ability to inquire respectfully about safety rules, differentiating it from irrelevant social questions."
+    },
+    {
+      "id": "f02ace25-86cf-49e3-a90a-bef19f3dd0a6",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Think of a rule at home. What question could you ask a family member to understand it better?",
+      "rubric": [
+        "3 - You provide a clear and specific question about the rule.",
+        "2 - Your question is somewhat clear but vague.",
+        "1 - Your question is unclear or off-topic.",
+        "0 - You don’t provide a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "request an explanation",
+      "targetEvidence": "The child formulates a specific question about a family rule.",
+      "alignmentRationale": "This task isolates the ability to inquire thoughtfully about rules in a home environment, testing understanding rather than simple compliance."
+    },
+    {
+      "id": "8ec9fa54-1c0e-4e40-85c1-ebdcf493de57",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If you have a rule that you do not understand, what would you ask the person who made it?",
+      "rubric": [
+        "3 - You clearly explain a thought-provoking question about the rule.",
+        "2 - You ask a relevant question, but it lacks detail or clarity.",
+        "1 - Your question is unclear or doesn’t relate directly to the rule.",
+        "0 - You do not provide a question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "request an explanation",
+      "targetEvidence": "The child asks a relevant question about the reason behind a rule.",
+      "alignmentRationale": "This task tests the ability to articulate a thoughtful question about a rule, isolating this from simple knowledge recall or obedience."
+    },
+    {
+      "id": "59065280-2ac0-4e26-adec-0df661537eba",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If there is a rule about not eating candy before dinner, what could you ask your parents?",
+      "rubric": [
+        "3 - Why can’t we eat candy before dinner?",
+        "2 - Can I eat candy after dinner?",
+        "1 - Do you like candy?",
+        "0 - I don’t care about candy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can’t we eat candy before dinner?"
+        },
+        {
+          "key": "b",
+          "text": "Can I eat candy after dinner?"
+        },
+        {
+          "key": "c",
+          "text": "Do you like candy?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "request an explanation",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child identifies a question that seeks reasoning for the candy rule.",
+      "alignmentRationale": "This question aims to assess the children's understanding of healthy eating rules through purposeful inquiry."
+    },
+    {
+      "id": "183464e1-02fc-436f-9507-e9784fae6e97",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "At home, you can’t jump on the sofa. What could be a good question to ask?",
+      "rubric": [
+        "3 - The question seeks to understand the reason behind the rule clearly.",
+        "2 - The question suggests curiosity but is somewhat vague.",
+        "1 - The question does not relate clearly to the rule.",
+        "0 - No relevant question is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why can’t I jump on the sofa?"
+        },
+        {
+          "key": "b",
+          "text": "Is jumping fun?"
+        },
+        {
+          "key": "c",
+          "text": "Can I bounce instead?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "questioning household rules",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "chooses a thoughtful inquiry about the no-jumping rule",
+      "alignmentRationale": "This task prompts the child to question a household rule and its reasoning."
+    },
+    {
+      "id": "1b85aad4-6708-4c6f-85b6-768fbaac6f68",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Your parents say no toys during dinner. Why do you think they might want that?",
+      "rubric": [
+        "3 - The answer shows a clear understanding of the importance of having a focus during meal times.",
+        "2 - The answer mentions one reason, but it might not connect directly to the situation.",
+        "1 - The answer is unclear or only somewhat related to the reason for the rule.",
+        "0 - No relevant reason is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "So everyone can talk and eat together."
+        },
+        {
+          "key": "b",
+          "text": "Because toys are loud."
+        },
+        {
+          "key": "c",
+          "text": "Because no one likes toys."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "asking for reasons behind rules",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "chooses a thoughtful reason for the rule",
+      "alignmentRationale": "This task prompts the child to consider the reason for a designated rule during meals."
+    },
+    {
+      "id": "787d27f0-a6b6-48ea-87e7-1047f79b8331",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "What question would you ask your teacher about stickers in class?",
+      "rubric": [
+        "3 - The question shows curiosity and a desire to understand the sticker rule.",
+        "2 - The question is clear but lacks depth or curiosity.",
+        "1 - The question is vague or unclear.",
+        "0 - No question is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "formulating questions about rules",
+      "targetEvidence": "provides a clear and thoughtful question regarding the rule",
+      "alignmentRationale": "This task encourages the child to think about and ask a question on a specific classroom rule."
+    },
+    {
+      "id": "53bb1f12-a969-4967-9bb5-92e8c7f98ef0",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Your friend has to wear a helmet while biking. What could you ask them?",
+      "rubric": [
+        "3 - The question seeks an explanation of the helmet rule and why it is important.",
+        "2 - The question mentions a reason, but is less clear or thoughtful.",
+        "1 - The question is unclear or not specific to the helmet rule.",
+        "0 - No relevant question is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why do you like biking?"
+        },
+        {
+          "key": "b",
+          "text": "Why do you need a helmet when biking?"
+        },
+        {
+          "key": "c",
+          "text": "Is biking fun?"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "inquiring about safety rules",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "chooses a relevant question about the importance of wearing a helmet",
+      "alignmentRationale": "This task guides the child to ask a pertinent question regarding safety measures."
+    },
+    {
+      "id": "f7e54ea5-8d89-45f7-9177-18b52c16b069",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If there is a rule against talking during class, what would you ask your teacher about it?",
+      "rubric": [
+        "3 - The question is insightful and asks for clarification on the rule.",
+        "2 - The question is clear but lacks some depth.",
+        "1 - The question is vague.",
+        "0 - No question is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "asking questions to clarify rules",
+      "targetEvidence": "provides a clear question seeking clarification on a classroom rule",
+      "alignmentRationale": "This task encourages the child to formulate a question regarding classroom conduct."
+    },
+    {
+      "id": "3c7554bf-8c34-4f55-bc6b-8dcdac449d71",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "What would you like to know about the rules in gym class?",
+      "rubric": [
+        "3 - The question shows an interest in understanding the gym rules.",
+        "2 - The question is clear but might lack detail.",
+        "1 - The question is vague.",
+        "0 - No question is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "asking about gym class rules",
+      "targetEvidence": "provides a clear inquiry about rules in gym class",
+      "alignmentRationale": "This task encourages the child to engage with the rules specific to physical activity."
+    },
+    {
+      "id": "7622d47a-f03d-433d-8407-2fd2035ba07a",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Describe a rule at home and ask why it is important.",
+      "rubric": [
+        "3 - The description and question show clear understanding and curiosity.",
+        "2 - The description is clear but the question lacks depth.",
+        "1 - The description or question is vague.",
+        "0 - No information is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "describing rules and their importance",
+      "targetEvidence": "describes a rule and asks a thoughtful question about its importance",
+      "alignmentRationale": "This task encourages the child to articulate a household rule and question it."
+    },
+    {
+      "id": "5f96be6e-97fe-4441-be97-fa7ef70b9ef8",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "What do you think is a good reason for having rules at school?",
+      "rubric": [
+        "3 - Explains a clear reason for having rules, showing understanding.",
+        "2 - Provides a reason but it's not fully clear or complete.",
+        "1 - Offers an idea but it does not explain why.",
+        "0 - No relevant answer or reasoning is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "understanding purpose",
+      "targetEvidence": "the child articulates a reason for rules that displays understanding of their purpose",
+      "alignmentRationale": "This question encourages thoughtful reflection on the purpose of rules rather than just stating likes or dislikes."
+    },
+    {
+      "id": "95b305e1-11a0-456a-999d-3f285d968286",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "What is one rule you think everyone should follow? Why?",
+      "rubric": [
+        "3 - Clearly states a rule and explains the reason well.",
+        "2 - States a rule but explanation is unclear.",
+        "1 - Mentions a rule but doesn’t connect it to importance.",
+        "0 - No relevant answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "evaluating rule importance",
+      "targetEvidence": "the child evaluates a rule and expresses why it is important",
+      "alignmentRationale": "This encourages critical thinking about the implications of rules rather than a direct question."
+    },
+    {
+      "id": "85dae208-b0db-4626-8031-599caee03e74",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "If you have a question about a rule, who is a good person to ask?",
+      "rubric": [
+        "3 - Suggests a teacher or parent as an appropriate person to ask.",
+        "2 - Suggests a friend but may not be the best choice.",
+        "1 - Says anyone would be fine.",
+        "0 - Suggests that asking is not important."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A classmate."
+        },
+        {
+          "key": "b",
+          "text": "A teacher or parent."
+        },
+        {
+          "key": "c",
+          "text": "No one; I can figure it out myself."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "identifying responsible adults",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "the child identifies a suitable adult to ask about rules",
+      "alignmentRationale": "This focuses on understanding whom to approach for questions rather than simply stating a general action."
+    },
+    {
+      "id": "8c24566e-c6a9-4bc0-aa46-1ebb83ffd3f4",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Why do you think it's important to follow rules at home?",
+      "rubric": [
+        "3 - Explains a thoughtful reason for following rules at home.",
+        "2 - Provides a reason that's somewhat clear but needs detail.",
+        "1 - Mentions rules but does not connect it to home.",
+        "0 - States no relevant reasoning."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "reflection on household rules",
+      "targetEvidence": "the child articulates an understanding of the importance of home rules",
+      "alignmentRationale": "This encourages children to think about the relevance and importance of rules in their everyday home life."
+    },
+    {
+      "id": "443ea2a7-7570-4114-b81f-5de73fa9c00e",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "questions_authority",
+      "format": "explanation",
+      "prompt": "Your teacher says no running in the hall. What could happen if someone does?",
+      "rubric": [
+        "3 - States safety or someone getting hurt as a reason.",
+        "2 - Mentions fun, but does not focus on safety.",
+        "1 - States running is bad, but doesn't explain why.",
+        "0 - States that rules are silly without a reason."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Someone could get hurt."
+        },
+        {
+          "key": "b",
+          "text": "Running is fun."
+        },
+        {
+          "key": "c",
+          "text": "It’s a silly rule."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding safety",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child identifies safety as a key reason for the rule against running",
+      "alignmentRationale": "This task assesses understanding of the reasons for rules, specifically safety, rather than just general rule opinions."
+    }
+  ]
+}

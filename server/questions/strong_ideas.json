@@ -1,0 +1,1744 @@
+{
+  "category": "strong_ideas",
+  "questions": [
+    {
+      "id": "e6cfceca-d7d9-46cc-af43-ddc3bd633e5e",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What is your favorite thing to do in the summer: swimming or riding a bike? Why?",
+      "rubric": [
+        "3 - Explains the favorite activity in detail; can suggest another fun summer activity.",
+        "2 - States a favorite but doesn't elaborate much.",
+        "1 - Names an activity without reasoning.",
+        "0 - Does not favorite offer an activity."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "personal preference",
+      "targetEvidence": "states a summer activity with reasoning",
+      "alignmentRationale": "Allows for expression of preference and thinking of varied experiences."
+    },
+    {
+      "id": "e2fd9434-3b23-4bc0-a0b8-21508d1a2344",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you like more: being outdoors or staying inside? Why?",
+      "rubric": [
+        "3 - Clearly states a preference with a detailed reason; includes thoughts about the other option.",
+        "2 - Names one and gives a vague reason.",
+        "1 - Picks one option without explanation.",
+        "0 - Does not show preference."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "expression of liking outdoors or indoors",
+      "targetEvidence": "chooses a favorite activity with reasoning",
+      "alignmentRationale": "The open question lets children express what they like while considering an alternative."
+    },
+    {
+      "id": "9a2cac13-0245-4bd8-a4da-028f86f2a895",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What makes you giggle more: silly games or funny jokes? Why?",
+      "rubric": [
+        "3 - Clearly explains why one makes them giggle and can also mention the other option.",
+        "2 - States a choice but provides little explanation for it.",
+        "1 - Mentions one option without reason.",
+        "0 - Does not express giggle preference towards either."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "opinion on giggle sources",
+      "targetEvidence": "identifies a source of giggles and explains the choice",
+      "alignmentRationale": "The question is designed to elicit a personal opinion while considering alternatives."
+    },
+    {
+      "id": "735c40c1-9f47-46d0-a08d-99a5d7713aa2",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Which is more fun: playing in the sandbox or playing in water? Why?",
+      "rubric": [
+        "3 - Clearly explains why one option is more fun and considers the other.",
+        "2 - Says one is more fun but barely explains why.",
+        "1 - States a preference without explanation.",
+        "0 - Does not express a clear preference."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "opinion on playtime activity",
+      "targetEvidence": "states which activity is more fun and explains why",
+      "alignmentRationale": "This open question allows for expressing a preference while considering another viewpoint."
+    },
+    {
+      "id": "aa5712a4-ebd2-4f06-b90e-07cc1d09ea53",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Would you rather have popcorn, candy, or fruit for a snack? Why?",
+      "rubric": [
+        "3 - Chooses a snack and gives a clear reason; can say why another snack is also good.",
+        "2 - Chooses a snack; reasons are unclear or focus only on that snack.",
+        "1 - Picks a snack without a clear reason.",
+        "0 - Does not choose a snack."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Popcorn"
+        },
+        {
+          "key": "b",
+          "text": "Candy"
+        },
+        {
+          "key": "c",
+          "text": "Fruit"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a snack choice",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "picks a snack and explains the choice",
+      "alignmentRationale": "The prompt requires the child to state a preference and supports reasoning for other options."
+    },
+    {
+      "id": "fe276d3d-5c23-49ab-b6bb-b45c8cabb5b0",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Which dessert would you choose: ice cream, cake, or cookies? Why?",
+      "rubric": [
+        "3 - Chooses a dessert and explains why; acknowledges that others are tasty too.",
+        "2 - Chooses a dessert; gives a reason but does not mention others.",
+        "1 - Picks a dessert without saying why.",
+        "0 - Does not pick a dessert."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ice cream"
+        },
+        {
+          "key": "b",
+          "text": "Cake"
+        },
+        {
+          "key": "c",
+          "text": "Cookies"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a dessert choice",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects a dessert and reasons for the choice",
+      "alignmentRationale": "The question encourages individual preference and consideration of alternatives."
+    },
+    {
+      "id": "97f0fbfd-c0bc-4a68-bdf6-1e788026d729",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Which would you prefer to play with: a ball, building blocks, or dolls? Why?",
+      "rubric": [
+        "3 - Chooses an item and gives a clear reason; includes a mention of another item.",
+        "2 - Chooses an item; gives a reason mostly focused on that item.",
+        "1 - Picks an item without explaining why.",
+        "0 - Does not choose an item."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ball"
+        },
+        {
+          "key": "b",
+          "text": "Building blocks"
+        },
+        {
+          "key": "c",
+          "text": "Dolls"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a toy",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "chooses a toy and provides an explanation",
+      "alignmentRationale": "The prompt asks for a toy choice and encourages reasoning about other toys."
+    },
+    {
+      "id": "a2244caa-0848-4e9a-ad83-4a952491d40d",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "If you could pick a friend, would you choose to play with a cat, a dog, or a bunny? Why?",
+      "rubric": [
+        "3 - Chooses an animal and explains why, mentioning a quality of the other animals.",
+        "2 - Chooses an animal; reasons focus mostly on that animal.",
+        "1 - Picks an animal without saying why.",
+        "0 - Does not pick an animal."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Cat"
+        },
+        {
+          "key": "b",
+          "text": "Dog"
+        },
+        {
+          "key": "c",
+          "text": "Bunny"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a pet preference",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "picks a pet and gives a reason",
+      "alignmentRationale": "The choice and reasoning explore the child's opinion and recognition of other animals."
+    },
+    {
+      "id": "0ff31e65-d0c2-4aa7-abc9-44d3eb2503c5",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you enjoy doing with your friends?",
+      "rubric": [
+        "3 - Shares an interesting activity they enjoy with friends.",
+        "2 - Shares an activity but it’s vague or common.",
+        "1 - Mentions something unrelated to friends.",
+        "0 - Does not answer or stay unclear."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a social activity",
+      "targetEvidence": "states an activity they do with friends",
+      "alignmentRationale": "This question encourages the child to reflect on social experiences, allowing them to express their social preferences."
+    },
+    {
+      "id": "1c676ecd-26a7-419d-9315-f3eb55a0590f",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Do you like cats or dogs better? What do you like about it?",
+      "rubric": [
+        "3 - Likes one and shares a good reason.",
+        "2 - Likes one but gives a weak reason.",
+        "1 - States a choice with no reason.",
+        "0 - Does not choose or answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Cats 🐱"
+        },
+        {
+          "key": "b",
+          "text": "Dogs 🐶"
+        },
+        {
+          "key": "c",
+          "text": "Neither"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a preference",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "states a clear favorite and gives a reason for liking it",
+      "alignmentRationale": "This question isolates the ability to express a preference with a reason while allowing for individual choice."
+    },
+    {
+      "id": "993c6826-a190-471f-82b4-4f93d222d7d4",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you think is more fun: playing outside or playing inside?",
+      "rubric": [
+        "3 - States one and gives a clear reason.",
+        "2 - States one but gives a weak reason.",
+        "1 - States a choice with no reason.",
+        "0 - Does not choose or answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Playing outside"
+        },
+        {
+          "key": "b",
+          "text": "Playing inside"
+        },
+        {
+          "key": "c",
+          "text": "Both are fun!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a preference",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "states a clear choice with a reason",
+      "alignmentRationale": "The question effectively examines the child’s ability to express a preference and its justification, allowing for divergent opinions."
+    },
+    {
+      "id": "bed31a8b-aacd-4c68-9cfd-de810dd3bcb4",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you like to do when you feel happy?",
+      "rubric": [
+        "3 - Shares an activity that shows what makes them happy.",
+        "2 - Shares an activity that is vague but related.",
+        "1 - Mentions something but it doesn't connect to happiness.",
+        "0 - Does not answer or stays unclear."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "states an activity related to their feeling of happiness",
+      "alignmentRationale": "The task isolates the understanding of feelings by connecting an activity to them, a basic social-emotional skill."
+    },
+    {
+      "id": "d0d1c7a8-5d10-4ff6-b0f3-08532ed928fe",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "If you could only have one toy forever, would you pick a teddy bear or a robot? Why?",
+      "rubric": [
+        "3 - Chooses one with a good reason.",
+        "2 - Chooses one but reasons are weak.",
+        "1 - States a choice without a reason.",
+        "0 - Does not choose or answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Teddy bear"
+        },
+        {
+          "key": "b",
+          "text": "Robot"
+        },
+        {
+          "key": "c",
+          "text": "Neither"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a preference",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "states a favorite and gives a relevant reason",
+      "alignmentRationale": "This question allows children to express preferences while giving a reason, testing their ability to articulate their thinking."
+    },
+    {
+      "id": "93c5cf3a-4a60-422c-990c-0a14c38586f9",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Which would you rather eat for breakfast: pancakes or cereal?",
+      "rubric": [
+        "3 - Chooses one with a clear reason.",
+        "2 - Chooses one but reasons are vague.",
+        "1 - States a choice with no reason.",
+        "0 - Does not choose or answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Pancakes"
+        },
+        {
+          "key": "b",
+          "text": "Cereal"
+        },
+        {
+          "key": "c",
+          "text": "Neither"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a preference",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "states a preference along with a reasoning",
+      "alignmentRationale": "The task effectively isolates preference expression and reasoning in a food-related decision, simple and relatable."
+    },
+    {
+      "id": "cce1387a-4fb4-4f4f-a31c-700bbb5aab20",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Is it more fun to share toys or play alone?",
+      "rubric": [
+        "3 - States sharing is better with a good reason.",
+        "2 - States sharing with a weak reason.",
+        "1 - Chooses keeping with no reason.",
+        "0 - Does not choose or answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Share toys"
+        },
+        {
+          "key": "b",
+          "text": "Play alone"
+        },
+        {
+          "key": "c",
+          "text": "I don't know"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a value",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "states an opinion about sharing",
+      "alignmentRationale": "This question asks for an opinion on sharing while allowing for discussion of differing attitudes, assessing the child's viewpoint."
+    },
+    {
+      "id": "e3dbde22-c2e9-4012-b61d-189d8aea1faa",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What makes you feel sad?",
+      "rubric": [
+        "3 - Shares a clear reason what makes them sad.",
+        "2 - Shares something but is vague.",
+        "1 - Mentions something unrelated to sadness.",
+        "0 - Does not answer or is unclear."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "states something that causes them sadness",
+      "alignmentRationale": "This question uniquely explores feelings, allowing for honest responses without predefined choices."
+    },
+    {
+      "id": "ff358733-f6f4-46bd-86d1-334a004edbe7",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What is your favorite animal? Can you say why you like it?",
+      "rubric": [
+        "3 - Gives a clear reason why they like the animal. Includes details like what it does or how it looks.",
+        "2 - States a reason that is somewhat related, but lacks detail.",
+        "1 - Mentions the animal but does not provide a reason.",
+        "0 - Does not say an animal or why they like it."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a favorite animal",
+      "targetEvidence": "The child states a preference and provides a reason.",
+      "alignmentRationale": "This task isolates the ability to express a preference and support it with reasoning."
+    },
+    {
+      "id": "7630e82f-53e9-4584-8a29-229393210a65",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Would you prefer to play outside or stay inside? Why?",
+      "rubric": [
+        "3 - Chooses one with a good reason. Acknowledges the other option too.",
+        "2 - Chooses one but gives a simple reason.",
+        "1 - Chooses one with no reason.",
+        "0 - Does not choose or provide any reason."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Outside"
+        },
+        {
+          "key": "b",
+          "text": "Inside"
+        },
+        {
+          "key": "c",
+          "text": "Neither is fun"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing an activity",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child selects an activity and explains their preference.",
+      "alignmentRationale": "This question assesses the ability to express a preference with reasoning."
+    },
+    {
+      "id": "8245d71a-4ea9-486c-9785-29b1f640767b",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "If you could choose a superhero to help you, who would it be? Tell me why!",
+      "rubric": [
+        "3 - Names a superhero and gives clear reasons for their choice.",
+        "2 - Names a superhero with a brief reason.",
+        "1 - Names a superhero with no reason.",
+        "0 - Does not provide an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a superhero",
+      "targetEvidence": "The child expresses a choice of superhero and justifies it.",
+      "alignmentRationale": "This task helps children articulate a choice and the reasoning behind it."
+    },
+    {
+      "id": "81e3354d-120a-4d97-a31b-502f690e7a56",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you like more, grapes or apples? Why?",
+      "rubric": [
+        "3 - Chooses one and gives a strong reason why. Mentions the other as well.",
+        "2 - Chooses one and gives a reason about that fruit only.",
+        "1 - Chooses one without a reason.",
+        "0 - Does not choose or explain."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Grapes"
+        },
+        {
+          "key": "b",
+          "text": "Apples"
+        },
+        {
+          "key": "c",
+          "text": "Both are yummy"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "choosing a favorite fruit",
+      "optionScores": {
+        "a": 2,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "The child picks a favorite fruit and explains while acknowledging the other choice.",
+      "alignmentRationale": "This question allows exploration of preferences with reasoning."
+    },
+    {
+      "id": "d2a52e86-248c-4a8a-ae98-4f98eed9765d",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you think someone might say to like a different sport than your favorite?",
+      "rubric": [
+        "3 - You give a reason why someone might like a different sport.",
+        "2 - You mention a sport but without a clear reason.",
+        "1 - You only say a sport without connection.",
+        "0 - You do not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "recognize diverse interests",
+      "targetEvidence": "child provides a reasonable explanation for why someone might enjoy a different sport than theirs.",
+      "alignmentRationale": "This question tests the ability to acknowledge and explain reasons for differing interests."
+    },
+    {
+      "id": "4f386e07-a7b4-43ba-89d6-66610ded462f",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "You like apples more than bananas. Why do you feel this way?",
+      "rubric": [
+        "3 - You clearly explain your reason for liking apples.",
+        "2 - You give a helpful reason for your opinion.",
+        "1 - You mention apples but without a clear reason.",
+        "0 - You do not state a preference."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Apples taste better because they're sweet."
+        },
+        {
+          "key": "b",
+          "text": "I just like apples."
+        },
+        {
+          "key": "c",
+          "text": "Bananas are okay too."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "state a preference with reasoning",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "child explains why they prefer apples and mentions bananas in their answer.",
+      "alignmentRationale": "This question tests the ability to express a preference for apples while incorporating a mention of another fruit for consideration."
+    },
+    {
+      "id": "069f5c57-6a76-4a3a-8659-24f6c949ea87",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Imagine your friend likes oranges more than you do. Why might they prefer oranges?",
+      "rubric": [
+        "3 - You clearly explain a reason why they might like oranges.",
+        "2 - You suggest some reasons for their choice.",
+        "1 - You say they might like oranges but without details.",
+        "0 - You do not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "consider another person's viewpoint",
+      "targetEvidence": "child thinks of a reasonable explanation for why a friend likes oranges.",
+      "alignmentRationale": "This item assesses the child's ability to generate a reason for another person's preference."
+    },
+    {
+      "id": "a60b2802-571a-40c0-930b-93bb943edbd3",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "You love to play outside, but your friend prefers to stay inside. What might be a good reason for this?",
+      "rubric": [
+        "3 - You give a clear reason for your friend's choice to stay inside.",
+        "2 - You suggest a reasonable reason for staying inside.",
+        "1 - You state they like staying inside without a reason.",
+        "0 - You do not mention your friend's preference."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "They don't like fresh air."
+        },
+        {
+          "key": "b",
+          "text": "They might enjoy quiet activities inside."
+        },
+        {
+          "key": "c",
+          "text": "I like playing outside more."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "understand different preferences",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "child identifies a reason why a friend prefers to stay inside over playing outside.",
+      "alignmentRationale": "This question encourages the child to recognize and articulate valid reasons for different preferences."
+    },
+    {
+      "id": "940721cc-3f35-439c-91d1-e9a64cdc4c25",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "If you enjoy reading books, what might be a reason your sibling prefers watching TV?",
+      "rubric": [
+        "3 - You clearly explain why your sibling might prefer TV.",
+        "2 - You provide a reasonable suggestion for their choice.",
+        "1 - You say they just prefer TV with no reason.",
+        "0 - You do not mention anything about preferences."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "They like the moving images and sounds."
+        },
+        {
+          "key": "b",
+          "text": "They just like it better."
+        },
+        {
+          "key": "c",
+          "text": "Reading is boring."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "express reasoning for a different choice",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "child offers a reason why a sibling chooses TV over books.",
+      "alignmentRationale": "This prompt focuses on contrasting preferences, prompting the child to consider different interests."
+    },
+    {
+      "id": "b7a4ac2f-b94f-4d02-a667-11db8577495a",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Can you think of a reason someone might choose to eat ice cream instead of cake?",
+      "rubric": [
+        "3 - You give a clear reason for choosing ice cream.",
+        "2 - You mention something about ice cream without a strong reason.",
+        "1 - You say ice cream but without details.",
+        "0 - You do not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "discuss food preferences",
+      "targetEvidence": "child provides a reasonable explanation for choosing ice cream over cake.",
+      "alignmentRationale": "This prompt encourages the child to explain a preference for a specific food item."
+    },
+    {
+      "id": "3db76e01-872c-475e-8ca6-6dac67b8e18f",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "You think playing soccer is more fun than basketball. What is a good reason for this?",
+      "rubric": [
+        "3 - You explain very clearly why you find soccer fun.",
+        "2 - You suggest a reason about soccer's fun.",
+        "1 - You state a preference with no reason.",
+        "0 - You do not discuss soccer or basketball."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Basketball is too hard."
+        },
+        {
+          "key": "b",
+          "text": "Soccer is easier to play."
+        },
+        {
+          "key": "c",
+          "text": "I enjoy kicking the ball more in soccer."
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "justify a personal opinion",
+      "optionScores": {
+        "a": 1,
+        "b": 2,
+        "c": 3
+      },
+      "targetEvidence": "child clearly states a reason for their preference for soccer over basketball.",
+      "alignmentRationale": "This question evaluates the ability to explain personal opinions about activities."
+    },
+    {
+      "id": "a46ab266-c2c3-4d26-9f2b-dd947c9e4fdd",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you think makes a good pet? Can you think of why someone else might like a different pet?",
+      "rubric": [
+        "3 - Gives a clear idea of a good pet with valid reasons, considers other pet options clearly",
+        "2 - States a good pet but provides weak reason or does mention another pet",
+        "1 - Mentions a good pet or different pet but does not explain why",
+        "0 - No clear opinion or reason given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "idea about pets",
+      "targetEvidence": "describes what makes a pet good and considers alternatives",
+      "alignmentRationale": "The question seeks to understand what children value in pets while prompting them to consider other views."
+    },
+    {
+      "id": "bf5ba7e9-f44f-4aae-993a-f077ee44bc75",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you enjoy more, ice cream or cake? Can you think of why others might pick the other?",
+      "rubric": [
+        "3 - Clearly states ice cream with a good reason, considers cake as a different opinion",
+        "2 - States ice cream but with a weak reason, mentions cake",
+        "1 - Says ice cream or cake but no reason or other view",
+        "0 - No clear choice or reason given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ice cream"
+        },
+        {
+          "key": "b",
+          "text": "Cake"
+        },
+        {
+          "key": "c",
+          "text": "Neither"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "preference about dessert",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "states ice cream as favorite and acknowledges cake as a possibility",
+      "alignmentRationale": "This question encourages giving a reason for a preference and recognizing an alternative."
+    },
+    {
+      "id": "f71ff080-0dee-459d-8466-f3eca0ab87a9",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you think is the best game to play? Can you think of what makes another game good for someone?",
+      "rubric": [
+        "3 - Clearly states a favorite game with reasons, considers another game option",
+        "2 - States a game, reasons weak, mentions another game",
+        "1 - Mentions a game but no reasons given, no other view",
+        "0 - No clear opinion or reasoning"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "opinion about games",
+      "targetEvidence": "states a preference for a game and acknowledges alternatives",
+      "alignmentRationale": "This question isolates the ability to express opinions and consider others' viewpoints."
+    },
+    {
+      "id": "9db61255-4201-4641-8802-58ed56d659f2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Which is more fun for playing with friends, riding bikes or playing tag? Why do you think some might prefer the other?",
+      "rubric": [
+        "3 - Clearly states riding bikes with a valid reason, considers playing tag as a different view",
+        "2 - States riding bikes but with a weak or unclear reason, mentions tag",
+        "1 - Says riding bikes or tag but does not give why, no other view considered",
+        "0 - No clear choice or reason given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Riding bikes"
+        },
+        {
+          "key": "b",
+          "text": "Playing tag"
+        },
+        {
+          "key": "c",
+          "text": "Neither"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "opinion about play activity",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "states riding bikes as fun and considers tag as another opinion",
+      "alignmentRationale": "This question asks for a preference and includes a consideration of an alternative viewpoint."
+    },
+    {
+      "id": "2736bc02-6840-434b-87cf-ec6e3cf0334e",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Can you think of something fun to do after school? Why might your friend choose a different activity?",
+      "rubric": [
+        "3 - Gives a clear fun activity with a reason, considers another activity choice",
+        "2 - Names a fun activity but weak reason, acknowledges different activity",
+        "1 - Mentions an activity but without explanation or another view",
+        "0 - No clear activity or reasoning"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "idea about after-school activity",
+      "targetEvidence": "describes an after-school activity with consideration of alternatives",
+      "alignmentRationale": "This question emphasizes giving a reason for a preference while recognizing other choices."
+    },
+    {
+      "id": "149dff75-d014-46b0-8964-5f0a1f543ead",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Which do you prefer, superheroes or animals in stories? What could be a reason for someone to like the other?",
+      "rubric": [
+        "3 - States superheroes with a clear reason, considers animals as another viewpoint",
+        "2 - States superheroes but weak reasoning, mentions animals",
+        "1 - Names either superheroes or animals without reasons or other view",
+        "0 - No clear choice or reasons given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Superheroes"
+        },
+        {
+          "key": "b",
+          "text": "Animals"
+        },
+        {
+          "key": "c",
+          "text": "Neither"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choice about story characters",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "articulates a preference and presents alternative views",
+      "alignmentRationale": "This question tests the ability to prefer something and recognize another possible view."
+    },
+    {
+      "id": "a6ab97be-2ba5-4ada-af36-4542500b40d2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Do you like reading books or watching movies more? Why might your friend prefer the other?",
+      "rubric": [
+        "3 - Clearly states books with a good reason, considers movies as a different option",
+        "2 - States books but gives weak rationale, mentions movies",
+        "1 - Names books or movies without explanation, does not consider other view",
+        "0 - No clear preference or reasons given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Reading books"
+        },
+        {
+          "key": "b",
+          "text": "Watching movies"
+        },
+        {
+          "key": "c",
+          "text": "Neither"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "opinion on entertainment",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "expresses a choice and considers other entertainment options",
+      "alignmentRationale": "The task encourages expressing opinions while recognizing differing preferences."
+    },
+    {
+      "id": "51fabb93-db83-417c-a3ab-76ca722f6139",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Would you rather play outside or stay inside? What might be a reason for someone to choose the opposite?",
+      "rubric": [
+        "3 - States a clear choice like outside with a reason, mentions opposite view",
+        "2 - States a choice but reason is weak or vague, acknowledges opposite",
+        "1 - Mentions outside or inside but without reason, no other view considered",
+        "0 - No clear choice or reason given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Play outside"
+        },
+        {
+          "key": "b",
+          "text": "Stay inside"
+        },
+        {
+          "key": "c",
+          "text": "Neither"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choice about activity location",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "presents preference and recognizes other views",
+      "alignmentRationale": "This question tests the ability to give a reason for a preference while considering another's viewpoint."
+    },
+    {
+      "id": "5b3a1e97-6a47-4f51-b6e3-211b10315b0e",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you like about the way a pizza tastes? Can you think of why someone might prefer another food?",
+      "rubric": [
+        "3 - Explains what they like about pizza and provides a reason for a different food preference.",
+        "2 - Mentions what they like and suggests another food without a strong reason.",
+        "1 - Talks about pizza but doesn't give a reason for other food.",
+        "0 - Doesn't say much about pizza or other food."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "stating a preference",
+      "targetEvidence": "Child describes their opinion and gives a reason while considering another's view.",
+      "alignmentRationale": "This explores personal tastes and encourages children to consider others' opinions."
+    },
+    {
+      "id": "5de28d5e-4a53-4817-b4b8-71f0911c803d",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you think about your favorite game? Why do you enjoy it? Can you think of a reason someone might prefer a different game?",
+      "rubric": [
+        "3 - Explains why they like their favorite game and considers another game reason.",
+        "2 - Talks about their game but is vague about the other game.",
+        "1 - States their favorite game without reason for the other.",
+        "0 - Gives little detail on either game."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "stating a preference with reasons",
+      "targetEvidence": "Child identifies their game preference and gives a reason while recognizing a different viewpoint.",
+      "alignmentRationale": "This engages children to reflect on their preferences while acknowledging varied choices."
+    },
+    {
+      "id": "964e08a2-39f0-4c01-9c67-b2a62cb862da",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What is your favorite snack, and why do you like it? Can you think of a reason another snack could be better?",
+      "rubric": [
+        "3 - States what they like about their snack and gives a solid reason for liking another snack.",
+        "2 - Talks about their snack and vaguely mentions another.",
+        "1 - States their favorite snack without reasoning for another.",
+        "0 - Gives little detail about their snack or others."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "expressing personal preference",
+      "targetEvidence": "The child indicates a favorite snack while thoughtfully considering an alternative option.",
+      "alignmentRationale": "This explores personal preferences while recognizing other options that could appeal."
+    },
+    {
+      "id": "253580c8-785e-4fc7-b3fb-b126d5541888",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Think about a book you enjoy. Why do you like it? What could your friend think about a different book?",
+      "rubric": [
+        "3 - Describes the enjoyment about their book and suggests a reason for a friend’s choice.",
+        "2 - Gives their favorite book and mentions a different one briefly.",
+        "1 - Says why they like their book but not about another.",
+        "0 - Struggles to answer about either book."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "giving reasons for an opinion",
+      "targetEvidence": "Child states their own book preference with a relevant reason, and considers their friend's perspective.",
+      "alignmentRationale": "This directs attention to individual tastes along with an awareness of others' preferences."
+    },
+    {
+      "id": "58258f75-f5f8-4628-9ecf-3605c71232b8",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "You enjoy drawing pictures. What could your friend find fun instead?",
+      "rubric": [
+        "3 - Suggests a relevant activity with a good reason why it is fun.",
+        "2 - Provides a reasonable activity, but the reason is vague or unclear.",
+        "1 - Mentions an activity inaccurately or without reason.",
+        "0 - No answer or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Playing with friends, because it's exciting."
+        },
+        {
+          "key": "b",
+          "text": "Cleaning up, because it's important."
+        },
+        {
+          "key": "c",
+          "text": "Doing schoolwork, because it helps you learn."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "suggesting alternative activities",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "provides a related activity with a reason to support it",
+      "alignmentRationale": "This question tests the ability to see alternatives in leisure activities while expressing a love for drawing."
+    },
+    {
+      "id": "8f1bfedb-e5ae-4c3e-8f39-1744a0b899a5",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What is something you think is fun to do? Why?",
+      "rubric": [
+        "3 - You share what you find fun and provide a good reason, plus mention someone might think differently.",
+        "2 - You state what you find fun and give a reason but don’t mention anyone else’s view.",
+        "1 - You state a fun activity but do not explain why or recognize different views.",
+        "0 - You do not clearly share what is fun or give a reason."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "explaining fun",
+      "targetEvidence": "child states a fun activity with a reason and considers another opinion",
+      "alignmentRationale": "This question prompts the child to express a preference while considering that others may feel differently."
+    },
+    {
+      "id": "bc381922-0bb9-485e-afee-c2cf265c0bfb",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What is something you believe makes people happy? Why?",
+      "rubric": [
+        "3 - You explain what makes people happy with a good reason and mention that others might think differently.",
+        "2 - You state what makes people happy and why but do not consider other views.",
+        "1 - You mention something about happiness but do not explain why or see another view.",
+        "0 - You do not clearly share your thoughts about happiness."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "explaining happiness",
+      "targetEvidence": "child states a belief about happiness with a reason and considers other views",
+      "alignmentRationale": "This open question assesses the ability to explore opinions about happiness while recognizing potential differences in perspective."
+    },
+    {
+      "id": "29c2cc69-b0be-41e1-8b45-9c156b43c161",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What would you choose: pizza or pasta for dinner? Why?",
+      "rubric": [
+        "3 - You clearly choose one and give a good reason, plus mention that others might enjoy the other option.",
+        "2 - You choose one with a reason but do not mention the other option.",
+        "1 - You mention a choice but do not explain why or consider another view.",
+        "0 - You do not express a clear choice or reason."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I want pizza because it has cheese."
+        },
+        {
+          "key": "b",
+          "text": "I guess pasta is okay too."
+        },
+        {
+          "key": "c",
+          "text": "I don’t care, whatever."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "stating a choice",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "child states a choice of food with an explanation and considers the other option",
+      "alignmentRationale": "This question tests the ability to express a preference while acknowledging another viewpoint."
+    },
+    {
+      "id": "c2a44688-8a48-4d2a-b14a-93b19eab7f16",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you think is a good way to help a friend? Why?",
+      "rubric": [
+        "3 - You share a helpful action with a good reason, plus consider how others might help differently.",
+        "2 - You state a helpful action and explain why but don’t mention others' ideas.",
+        "1 - You say something about helping but do not explain it or consider other views.",
+        "0 - You do not clearly state a helpful action or reason."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "offering help",
+      "targetEvidence": "child suggests a way to help a friend with a reason and considers alternative actions",
+      "alignmentRationale": "This task allows children to express an opinion about helping while recognizing different approaches others might take."
+    },
+    {
+      "id": "b9afeac8-2459-4fd5-9175-0f081fe9fd16",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you think makes a good story? Why?",
+      "rubric": [
+        "3 - You explain what makes a great story with a good reason and mention others may like different ones.",
+        "2 - You share what you think makes a good story with a reason but do not consider other views.",
+        "1 - You mention something about stories but do not explain why or acknowledge other views.",
+        "0 - You do not express a clear opinion about what makes a good story."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "describing stories",
+      "targetEvidence": "child describes what makes a good story and acknowledges that others might prefer different aspects",
+      "alignmentRationale": "This open question allows children to share ideas about storytelling while considering different perspectives."
+    },
+    {
+      "id": "720cdbe9-1184-4be3-a4e2-27947371a78f",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Which kind of sport do you think is the best to watch? Why?",
+      "rubric": [
+        "3 - Chooses a sport and gives a strong reason for the choice.",
+        "2 - Chooses a sport but provides a weak reason.",
+        "1 - Chooses a sport without any reason given.",
+        "0 - No response or unclear choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Football"
+        },
+        {
+          "key": "b",
+          "text": "Basketball"
+        },
+        {
+          "key": "c",
+          "text": "Baseball"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "stating a preference and reasoning",
+      "optionScores": {
+        "a": 2,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "The child articulates a sport choice and emphasizes its appeal through reasoning.",
+      "alignmentRationale": "This item focuses on personal belief and justification, fostering thoughtful responses with several valid interpretations."
+    },
+    {
+      "id": "bb3bb92c-c243-4b27-9345-5b49dcc4223e",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What is a fun game to play? Why do you think it's fun?",
+      "rubric": [
+        "3 - Names a game and gives a good reason why it is fun.",
+        "2 - Names a game with a vague reason.",
+        "1 - Names a game without any reason.",
+        "0 - No response or topic is unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "stating a preference and justifying it",
+      "targetEvidence": "The child effectively communicates why a specific game is enjoyable.",
+      "alignmentRationale": "This question elicits personal opinion backed by reasoning without an absolute right or wrong answer."
+    },
+    {
+      "id": "2bcb6df2-cfd7-4a2a-a6b6-423337c82f16",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Which holiday do you think is the best? Why?",
+      "rubric": [
+        "3 - Chooses a holiday and gives a solid reason why it’s great.",
+        "2 - Chooses a holiday but offers only a weak reason.",
+        "1 - Chooses a holiday without giving any reason.",
+        "0 - No response or unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Christmas"
+        },
+        {
+          "key": "b",
+          "text": "Thanksgiving"
+        },
+        {
+          "key": "c",
+          "text": "New Year"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "giving reasons for opinions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child articulates a choice of holiday and supports it with reasoning.",
+      "alignmentRationale": "This question reinforces the ability to express a preference alongside reasoning, aligning with giving insights into one's beliefs."
+    },
+    {
+      "id": "63aa383c-68c4-43d6-b13e-83d2111b3e3a",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What do you think is the best activity for a rainy day? Why?",
+      "rubric": [
+        "3 - Clearly describes a rainy day activity with good reasoning.",
+        "2 - Suggests an activity but provides a vague reason.",
+        "1 - Suggests an activity without a reason.",
+        "0 - No response or unrelated to topic."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "explaining a preference",
+      "targetEvidence": "The child specifies an activity for a rainy day and provides reasoning.",
+      "alignmentRationale": "This question prompts the child to express personal thoughts and justify them, isolating this social skill without a right or wrong answer."
+    },
+    {
+      "id": "ee9ba1a6-b848-4e4c-95ec-438ce68c8b62",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Which type of movie do you think is the best to watch with family? Why?",
+      "rubric": [
+        "3 - Chooses a type of movie and gives a strong reason for the choice.",
+        "2 - Chooses a type of movie but provides a weak reason.",
+        "1 - Chooses a movie without any reason given.",
+        "0 - No response or unclear choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Action"
+        },
+        {
+          "key": "b",
+          "text": "Comedy"
+        },
+        {
+          "key": "c",
+          "text": "Animation"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "stating a preference with rationale",
+      "optionScores": {
+        "a": 1,
+        "b": 2,
+        "c": 3
+      },
+      "targetEvidence": "The child makes a clear movie choice and explains why it suits family time.",
+      "alignmentRationale": "This facilitates the expression of opinions with supporting reasons, ensuring children think about their choices."
+    },
+    {
+      "id": "78666245-1b40-45f9-9eb4-9d3369a96298",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "If you could plan the best picnic, what food would you bring? Why?",
+      "rubric": [
+        "3 - Indicates a food choice for a picnic with a solid reason.",
+        "2 - Indicates food with an unclear reason.",
+        "1 - Indicates food without any reason.",
+        "0 - No response or unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "expressing and justifying preferences",
+      "targetEvidence": "The child describes a food they would choose for a picnic and provides a rationale.",
+      "alignmentRationale": "The response allows the child to express their opinions and offer justification, isolating this interpersonal skill."
+    },
+    {
+      "id": "30118cec-0ab0-4807-90e4-7d98faf3eff8",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "What is your favorite animal? Why do you like it?",
+      "rubric": [
+        "3 - Clearly states a favorite animal with a good reason for liking it.",
+        "2 - States a favorite animal but gives a vague reason.",
+        "1 - Mentions an animal without any reason.",
+        "0 - No response or not related to animals."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "stating a preference and giving a reason",
+      "targetEvidence": "The child clearly expresses a preference for an animal with a reason.",
+      "alignmentRationale": "This item isolates the skill of expressing a preference with reasoning and does not lead to a right or wrong answer."
+    },
+    {
+      "id": "0c701b29-0c8b-4e88-8bec-547ad09d612b",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strong_ideas",
+      "format": "explanation",
+      "prompt": "Which dessert do you think is the best? Why?",
+      "rubric": [
+        "3 - Chooses a dessert and gives a strong reason why it's the best.",
+        "2 - Chooses a dessert but provides a weak reason.",
+        "1 - Chooses a dessert with no reason given.",
+        "0 - No response or unclear choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Cake"
+        },
+        {
+          "key": "b",
+          "text": "Ice Cream"
+        },
+        {
+          "key": "c",
+          "text": "Cookies"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "stating a preference and giving a reason",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "The child makes a clear choice of dessert and includes a reason.",
+      "alignmentRationale": "This item requires the child to take a stance and articulate a reason, which aligns with expressing beliefs and supporting them."
+    }
+  ]
+}

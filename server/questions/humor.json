@@ -1,0 +1,2665 @@
+{
+  "category": "humor",
+  "questions": [
+    {
+      "id": "7e732a06-754b-4604-9a0a-59cafe798e64",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make a silly joke about a dog!",
+      "rubric": [
+        "3 - The joke is clever and uses playful language or a pun.",
+        "2 - The joke is funny but not particularly clever with words.",
+        "1 - Basic response without humor.",
+        "0 - No answer or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "invent a silly joke",
+      "targetEvidence": "creates a joke involving a dog using wordplay.",
+      "alignmentRationale": "Isolates the ability to create humor using language."
+    },
+    {
+      "id": "85a36f06-2243-4e05-86e1-52ec5cefa846",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Why did the cookie cry?",
+      "rubric": [
+        "3 - The answer makes a clever twist on 'crumb.'",
+        "2 - The answer suggests sadness but lacks humor.",
+        "1 - Mentions crying without a humorous context.",
+        "0 - No answer or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Because it felt crumby!"
+        },
+        {
+          "key": "b",
+          "text": "Because it got eaten!"
+        },
+        {
+          "key": "c",
+          "text": "Because it was lonely!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizes a joke",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "responds with a joke involving wordplay or double meaning.",
+      "alignmentRationale": "This task tests humor in context rather than pure emotional facts."
+    },
+    {
+      "id": "0120429b-5bfb-4713-bde3-a49c51f368db",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a snowman in the summer?",
+      "rubric": [
+        "3 - The answer cleverly plays on the idea of melting or heat.",
+        "2 - The answer is funny but lacks wordplay.",
+        "1 - A basic assumption without a humorous element.",
+        "0 - No answer or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A puddle!"
+        },
+        {
+          "key": "b",
+          "text": "A warm snowman!"
+        },
+        {
+          "key": "c",
+          "text": "A snowman that frowns!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizes a pun",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "responds correctly using wordplay related to melting.",
+      "alignmentRationale": "This question tests understanding of humor through wordplay."
+    },
+    {
+      "id": "0a1a0399-f410-4ad5-a0de-6f10e7678fc6",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make up a funny joke about a cat.",
+      "rubric": [
+        "3 - The joke is clever and contains a play on words or sounds.",
+        "2 - The joke is funny, but not playful with language.",
+        "1 - The response is basic and does not connect as humor.",
+        "0 - No answer or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "invent a silly joke",
+      "targetEvidence": "creates an age-appropriate joke using wordplay or sound.",
+      "alignmentRationale": "This task isolates humor through the child's ability to invent a joke."
+    },
+    {
+      "id": "31ee3046-9d3a-4a97-b2db-2e858e2b0a61",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What did the frog say to the fly?",
+      "rubric": [
+        "3 - The answer includes a playful and silly twist related to the fly.",
+        "2 - An answer that's somewhat funny but not as clever.",
+        "1 - A basic response that doesn’t convey humor.",
+        "0 - No answer or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "You look fly today!"
+        },
+        {
+          "key": "b",
+          "text": "Jump around!"
+        },
+        {
+          "key": "c",
+          "text": "Buzz off!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "creates a light joke",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "provides a playful response that forms a gentle joke.",
+      "alignmentRationale": "This prompt aims to elicit original humor through playful word association."
+    },
+    {
+      "id": "95a8b48b-f644-4458-9184-6b2540292d4d",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a funny rabbit?",
+      "rubric": [
+        "3 - The answer connects 'hare' to 'hair', showing clever wordplay.",
+        "2 - The answer connects to bunnies or something funny but not wordplay.",
+        "1 - References a rabbit without being funny.",
+        "0 - No answer or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A hare-raising comedian!"
+        },
+        {
+          "key": "b",
+          "text": "A hopping animal!"
+        },
+        {
+          "key": "c",
+          "text": "A funny bunny!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizes a pun",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "responds with a joke that plays on the sound of a word or its meaning.",
+      "alignmentRationale": "This task isolates subtle humor through pun recognition rather than simple association."
+    },
+    {
+      "id": "f46b612e-26c6-49f3-a9bb-55747ba6e11d",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a bear with no ears?",
+      "rubric": [
+        "3 - The answer reveals clever wordplay with 'B' and 'ear.'",
+        "2 - The answer reflects some cleverness, but less humor.",
+        "1 - A basic answer that doesn't show humor.",
+        "0 - No answer or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "B!"
+        },
+        {
+          "key": "b",
+          "text": "A bear with no sound!"
+        },
+        {
+          "key": "c",
+          "text": "A funny animal!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizes a pun",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "responds creatively involving a pun about definition.",
+      "alignmentRationale": "This tests the understanding of jokes based on wordplay."
+    },
+    {
+      "id": "9cf2814f-ae68-46f2-a301-c1034ab653d8",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make up a funny joke about a banana!",
+      "rubric": [
+        "3 - A playful and clever joke about a banana that makes people laugh.",
+        "2 - A joke about a banana but it's not very funny.",
+        "1 - Tries to say something about a banana but is unclear.",
+        "0 - No joke about a banana."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "banana joke invention",
+      "targetEvidence": "The child creates a funny banana-related joke that is clear and amusing.",
+      "alignmentRationale": "Tests creative ability to invent jokes specifically about bananas."
+    },
+    {
+      "id": "468beed9-4eab-450e-881d-6c2c094d65d1",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What did the cookie say to the chocolate chip?",
+      "rubric": [
+        "3 - \"You crack me up!\"",
+        "2 - \"I'm sweet!\"",
+        "1 - \"I'm a cookie.\"",
+        "0 - \"What's a cookie?\""
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "You crack me up!"
+        },
+        {
+          "key": "b",
+          "text": "I'm sweet!"
+        },
+        {
+          "key": "c",
+          "text": "I'm a cookie."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing playful dialogue",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child chooses a humorous answer that involves cookies and chocolate chips.",
+      "alignmentRationale": "Tests ability to recognize a funny interaction related to cookies, establishing understanding of humor."
+    },
+    {
+      "id": "bad7f060-b656-43d8-bd11-ea7f5ec004ad",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a sleeping bull?",
+      "rubric": [
+        "3 - \"A bulldozer!\"",
+        "2 - \"A sleepy bull!\"",
+        "1 - \"A bull that snores.\"",
+        "0 - \"What's a bull?\""
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A bulldozer!"
+        },
+        {
+          "key": "b",
+          "text": "A sleepy bull!"
+        },
+        {
+          "key": "c",
+          "text": "A bull that snores."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing pun-based humor",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child identifies the pun involving 'bulldozer'.",
+      "alignmentRationale": "Tests ability to recognize and appreciate humor derived from wordplay."
+    },
+    {
+      "id": "7011eb5c-b45c-4719-b2e8-c69350aa3d7a",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make up a funny joke about a fish!",
+      "rubric": [
+        "3 - Creative and clear joke about a fish that has humor.",
+        "2 - A joke about a fish, but not very funny or clear.",
+        "1 - Tries to make a joke but it's not about a fish.",
+        "0 - No joke about a fish."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "creative joke about an animal",
+      "targetEvidence": "The child invents a joke about a fish that makes sense and is funny.",
+      "alignmentRationale": "Tests ability to create humor specifically about a fish, isolating the skill to form age-appropriate jokes."
+    },
+    {
+      "id": "850824d5-28d9-45d9-996f-30fa512421a1",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Tell a silly joke about an elephant!",
+      "rubric": [
+        "3 - Funny and imaginative joke about an elephant.",
+        "2 - A joke about an elephant that is somewhat funny.",
+        "1 - Attempts a joke not clearly related to an elephant.",
+        "0 - No joke about an elephant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "silly animal joke creation",
+      "targetEvidence": "The child comes up with a joke related to an elephant that elicits a laugh.",
+      "alignmentRationale": "Focuses on inventing humor tied to elephants, showcasing creative thinking."
+    },
+    {
+      "id": "6fd0d1cc-718e-4203-84c4-eaf7c30c3464",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a bear with no socks?",
+      "rubric": [
+        "3 - \"Barefoot bear!\"",
+        "2 - \"Silly bear!\"",
+        "1 - \"A bear that is cold.\"",
+        "0 - \"What's a bear?\""
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Barefoot bear!"
+        },
+        {
+          "key": "b",
+          "text": "Silly bear!"
+        },
+        {
+          "key": "c",
+          "text": "A bear that is cold."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing playful double meaning",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child identifies the pun involving 'bare' and 'bear'.",
+      "alignmentRationale": "Focuses on identifying humor from double meanings, demonstrating comprehension of wordplay."
+    },
+    {
+      "id": "dfba28f2-9ce2-46cd-b844-d87ebb5c9617",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Why did the tomato blush?",
+      "rubric": [
+        "3 - \"Because it saw the salad dressing!\"",
+        "2 - \"Because it was red!\"",
+        "1 - \"Because it was sad.\"",
+        "0 - \"What's a tomato?\""
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Because it saw the salad dressing!"
+        },
+        {
+          "key": "b",
+          "text": "Because it was red!"
+        },
+        {
+          "key": "c",
+          "text": "Because it was sad."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing wordplay humor",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child identifies the humor related to the tomato and dressing.",
+      "alignmentRationale": "Tests the ability to discern humor stemming from a pun involving food."
+    },
+    {
+      "id": "0344c929-93ff-4d8b-bc9f-db28d601f9c4",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Tell a silly joke about a cookie!",
+      "rubric": [
+        "3 - Creative and fun joke about a cookie that is funny.",
+        "2 - A joke about a cookie, but not really funny.",
+        "1 - Attempts to say something about a cookie but not clear.",
+        "0 - No joke about a cookie."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "cookie humor creation",
+      "targetEvidence": "The child invents a joke related to cookies that people find funny.",
+      "alignmentRationale": "Isolates the ability to think of whimsical humor specifically about cookies."
+    },
+    {
+      "id": "ede59af3-3c82-48f9-88a9-1d6c268eb2d0",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call cheese that isn’t yours?",
+      "rubric": [
+        "3 - Nacho cheese! This is a clever play on words that’s funny.",
+        "2 - It’s a cheese joke but needs more context.",
+        "1 - It sounds funny but isn't a clear joke.",
+        "0 - It's not related to cheese."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "nacho cheese!"
+        },
+        {
+          "key": "b",
+          "text": "stinky cheese!"
+        },
+        {
+          "key": "c",
+          "text": "funny cheese!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "wordplay",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies the joke about 'nacho cheese' as humorous.",
+      "alignmentRationale": "The joke plays on the similarity in sound between 'nacho' and 'not your,' creating humor."
+    },
+    {
+      "id": "82cb203d-8459-4276-8300-2f82197f441d",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make up a funny joke about fruit!",
+      "rubric": [
+        "3 - Jokes are funny and related to fruit; very creative!",
+        "2 - There’s some humor but needs adjustment.",
+        "1 - The joke is unclear or isn’t funny.",
+        "0 - No joke is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inventing humor",
+      "targetEvidence": "Creates a playful fruit joke showing creativity.",
+      "alignmentRationale": "This task requires the child to invent humor using familiar food items, directly assessing their creative thinking."
+    },
+    {
+      "id": "cf2262db-5c52-4052-95b3-62b0ea6e1aed",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Why did the cookie go to the doctor?",
+      "rubric": [
+        "3 - Because it felt crummy! That's a clever joke because it plays on words.",
+        "2 - It’s close to a cookie joke but doesn’t quite fit.",
+        "1 - The idea is funny but hard to understand.",
+        "0 - It’s not a cookie joke."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Because it felt crummy!"
+        },
+        {
+          "key": "b",
+          "text": "It was broken!"
+        },
+        {
+          "key": "c",
+          "text": "It was hungry!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "wordplay",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Recognizes that the joke about a 'crummy' cookie is humorous.",
+      "alignmentRationale": "This joke utilizes a pun on the word 'crummy' that connects to cookies and health."
+    },
+    {
+      "id": "65f76166-cf28-4c3b-8854-22d047cb2b10",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make a funny animal sound and say a silly word!",
+      "rubric": [
+        "3 - Funny animal sound and silly word create good humor together!",
+        "2 - Sound is funny and word is close to silly.",
+        "1 - Not quite funny or silly enough combo.",
+        "0 - No sound or word given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inventing humor",
+      "targetEvidence": "Creates a connection between an animal sound and a humorous word.",
+      "alignmentRationale": "This activity explores humor generation through expressive play, inviting creativity and laughter."
+    },
+    {
+      "id": "eb20af71-ba82-4084-8e16-36cdcacf2651",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a cat that loves to bowl?",
+      "rubric": [
+        "3 - A funny twist relating cats to bowling; very clever!",
+        "2 - Some humor is present, but it's unclear.",
+        "1 - It seems like a joke but doesn’t fit.",
+        "0 - No answer is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inventing humor",
+      "targetEvidence": "Creates a funny name or twist about a cat that connects to bowling.",
+      "alignmentRationale": "This task checks if the child can invent a playful connection between seemingly unrelated things."
+    },
+    {
+      "id": "f3729270-1e73-4ad8-94bd-33bab138c301",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a cow in a funny hat?",
+      "rubric": [
+        "3 - Udderly ridiculous!",
+        "2 - Moo-sical hat!",
+        "1 - Funny cow!",
+        "0 - I don’t know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Udderly ridiculous!"
+        },
+        {
+          "key": "b",
+          "text": "Moo-sical hat!"
+        },
+        {
+          "key": "c",
+          "text": "Funny cow!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognize a playful double meaning",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child picks the best response that plays with words",
+      "alignmentRationale": "Here, the task focuses on identifying the humorous response that cleverly uses pun-based language."
+    },
+    {
+      "id": "e4d4474a-83d0-4e51-a958-705b349c2c76",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Invent a silly joke about a fish and a bicycle. What do they say to each other?",
+      "rubric": [
+        "3 - You tell a funny story that connects a fish and a bike.",
+        "2 - Your joke is silly but not clear.",
+        "1 - The joke idea is there, but it needs more.",
+        "0 - There is no joke or funny idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "create a gentle joke",
+      "targetEvidence": "child creates a playful joke involving a fish and a bicycle",
+      "alignmentRationale": "Creating a joke based on two unrelated objects demonstrates imaginative wordplay and reflexive thinking."
+    },
+    {
+      "id": "6bff4ce1-e35a-4ae3-b2c3-99c0c64e7ae9",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a cat who wears a bow tie?",
+      "rubric": [
+        "3 - Purr-fectly dressed!",
+        "2 - Fancy feline!",
+        "1 - Cute cat!",
+        "0 - I don’t know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Purr-fectly dressed!"
+        },
+        {
+          "key": "b",
+          "text": "Fancy feline!"
+        },
+        {
+          "key": "c",
+          "text": "Cute cat!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognize a playful double meaning",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child selects the best humorous response",
+      "alignmentRationale": "This task assesses the child’s recognition of humor via a pun that utilizes wordplay effectively."
+    },
+    {
+      "id": "42fb1544-6b17-47f2-ae06-46ecded906bb",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What did the tomato say to the other tomato when they were running?",
+      "rubric": [
+        "3 - Catch up!",
+        "2 - Let's slow down!",
+        "1 - I can run too!",
+        "0 - I don't know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Catch up!"
+        },
+        {
+          "key": "b",
+          "text": "Let's slow down!"
+        },
+        {
+          "key": "c",
+          "text": "I can run too!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognize a gentle joke",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child selects a punchline that makes a connection",
+      "alignmentRationale": "This task emphasizes the child's ability to choose a humorous response that relies on wordplay and context."
+    },
+    {
+      "id": "e640b66d-4ca0-417c-8d49-1d17df29cf60",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make up a funny joke about a frog and a fly. What happens?",
+      "rubric": [
+        "3 - You tell a creative joke with a fun twist.",
+        "2 - Your joke is silly but not quite clear.",
+        "1 - The joke idea is there, but it needs more.",
+        "0 - There is no joke or funny idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "create a gentle joke",
+      "targetEvidence": "child creates a playful joke involving a frog and a fly",
+      "alignmentRationale": "This task requires the child to invent a joke, demonstrating playful word use and humor without reading."
+    },
+    {
+      "id": "c4ff0743-a971-4405-a4a3-25ec4f56cf39",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Tell me a funny joke about a bear and some honey. What happens?",
+      "rubric": [
+        "3 - You create a clever joke with the bear and honey.",
+        "2 - Your joke is silly but not clear.",
+        "1 - The joke idea is there, but it needs more.",
+        "0 - There is no joke or funny idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "create a gentle joke",
+      "targetEvidence": "child makes up a joke involving a bear and honey",
+      "alignmentRationale": "The child’s ability to invent a joke using associated objects shows their understanding of playful language and humor."
+    },
+    {
+      "id": "93479c86-4569-4697-8ee1-6ff58d1eb391",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What does a peanut say when it jokes?",
+      "rubric": [
+        "3 - The answer is a clever response like 'I crack myself up!'.",
+        "2 - The answer is fairly amusing like 'I'm funny!'.",
+        "1 - The answer is silly but not a good joke, like 'Just laughing!'.",
+        "0 - The answer doesn’t relate to peanuts or jokes."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I crack myself up!"
+        },
+        {
+          "key": "b",
+          "text": "I'm funny!"
+        },
+        {
+          "key": "c",
+          "text": "Just laughing!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognition of a joke",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies a response that makes sense as a joke about nuts.",
+      "alignmentRationale": "This item assesses the child's ability to recognize humor in a playful pun related to peanuts."
+    },
+    {
+      "id": "82b0fe61-73dc-4f7a-86a5-a19a3256a17b",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Create a funny joke about a bird and a worm.",
+      "rubric": [
+        "3 - The joke is clever and includes both characters humorously.",
+        "2 - The joke is a reasonable attempt that may not be funny or clear.",
+        "1 - The joke involves the characters but lacks a punchline.",
+        "0 - The response does not relate to birds or worms."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "creation of a playful joke",
+      "targetEvidence": "Child invents an original joke involving two characters and humor.",
+      "alignmentRationale": "This item assesses the child's humor creativity using specific elements."
+    },
+    {
+      "id": "e0bfda2f-614c-4619-a066-22b54c17b1bb",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What did the banana say to the dog?",
+      "rubric": [
+        "3 - The answer is a funny and clever response like 'Nothing, bananas can't talk!'.",
+        "2 - The answer is somewhat funny or relates to the characters, like 'Woof!'.",
+        "1 - The answer is silly but not quite a joke, like 'I like dogs.'",
+        "0 - The answer doesn't make sense or is unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Nothing, bananas can't talk!"
+        },
+        {
+          "key": "b",
+          "text": "I like dogs."
+        },
+        {
+          "key": "c",
+          "text": "Woof!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognition of a playful joke",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "Child selects a joke that makes sense based on playful context.",
+      "alignmentRationale": "This item requires understanding of humor in the form of a joke about talking fruit and an animal."
+    },
+    {
+      "id": "5366d391-d586-4d9b-a8b0-b9bb83d4bf5f",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a funny cow?",
+      "rubric": [
+        "3 - The answer is a clever pun like 'A moo-d comedian!'.",
+        "2 - The answer is a decent attempt at humor like 'A silly cow.'",
+        "1 - The answer misses the joke but has some humor like 'A cow that laughs.'",
+        "0 - The answer is unrelated or makes no sense."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A moo-d comedian!"
+        },
+        {
+          "key": "b",
+          "text": "A silly cow."
+        },
+        {
+          "key": "c",
+          "text": "A cow that laughs."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "creation of a playful pun",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child selects a clever phrase that plays on words related to cows.",
+      "alignmentRationale": "This question tests understanding of puns, requiring connections between cows and humor."
+    },
+    {
+      "id": "7ab1b70a-f847-4c5a-85be-c03ee0e203cd",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make up a funny joke about a cat and a hat.",
+      "rubric": [
+        "3 - The joke is creative and funny, involving both cat and hat.",
+        "2 - The joke includes both elements but lacks humor.",
+        "1 - The joke is silly but not really funny; maybe not clear.",
+        "0 - The response does not relate to cats or hats."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "creation of a playful joke",
+      "targetEvidence": "Child invents a simple joke involving two elements.",
+      "alignmentRationale": "This task asks for a unique joke demonstrating creativity with specific characters."
+    },
+    {
+      "id": "0fe01fc0-d8cf-4659-bb8a-796617aa02c7",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What did one cookie say to the other cookie at the party?",
+      "rubric": [
+        "3 - The answer is a clever and funny line like 'You crumble me up!'.",
+        "2 - The answer is funny but a bit off like 'I feel sweet here.'",
+        "1 - The answer is silly but not really a joke like 'Let's have fun!'.",
+        "0 - The answer does not make sense or relate to cookies."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "You crumble me up!"
+        },
+        {
+          "key": "b",
+          "text": "I feel sweet here."
+        },
+        {
+          "key": "c",
+          "text": "Let's have fun!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognition of playful dialogue",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child picks a line that sounds like playful banter between objects.",
+      "alignmentRationale": "This question invites the child to identify humor in the context of cookies interacting."
+    },
+    {
+      "id": "3501d04c-fa9a-4605-9e2f-8000d9a81ce3",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Tell me a silly story about a dog and a toy. What happens?",
+      "rubric": [
+        "3 - The story is creative, funny, and makes sense with both characters.",
+        "2 - The story includes both but may lack humor or details.",
+        "1 - The story is silly but unclear, may not connect the characters well.",
+        "0 - The story does not relate to dogs or toys."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "creation of a silly narrative",
+      "targetEvidence": "Child creates a story involving two characters in a humorous way.",
+      "alignmentRationale": "This task is inventive and asks the child to engage with humor in a story context."
+    },
+    {
+      "id": "e65994c5-debf-424b-84a4-0d12d49ed3ef",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a funny fish?",
+      "rubric": [
+        "3 - The answer is a clever pun like 'A clownfish!'.",
+        "2 - The answer is humorous but less clever, like 'A silly fish.'",
+        "1 - The answer is unrelated to humor or fish like 'Swimming.'",
+        "0 - The answer does not connect to fish or jokes."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A clownfish!"
+        },
+        {
+          "key": "b",
+          "text": "A silly fish."
+        },
+        {
+          "key": "c",
+          "text": "Swimming."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognition of pun",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child selects a good pun related to fish and humor.",
+      "alignmentRationale": "This item measures the child's ability to recognize a playful name related to fish."
+    },
+    {
+      "id": "845c6e88-9f33-4ed5-b58a-8c37ead4e5f7",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a funny tree?",
+      "rubric": [
+        "3 - The answer is 'a silly tree.'",
+        "2 - The answer is 'a happy tree.'",
+        "1 - The answer is 'a tall tree.'",
+        "0 - The answer is none of these."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "a silly tree."
+        },
+        {
+          "key": "b",
+          "text": "a happy tree."
+        },
+        {
+          "key": "c",
+          "text": "a tall tree."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a type of humor",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child recognizes a playful wordplay about a tree",
+      "alignmentRationale": "This task tests the child's ability to choose humor based on wordplay involving adjectives and nouns."
+    },
+    {
+      "id": "d8aaf701-c55a-4a9e-ad58-0b876fcbdb99",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What did the big cat say when it saw a mouse?",
+      "rubric": [
+        "3 - The child responds with a funny sound or phrase that relates to a cat and a mouse.",
+        "2 - The child responds with something related to cats or mice but not humorous.",
+        "1 - The child gives a general answer without a clear connection to the cat and mouse.",
+        "0 - The child does not respond or the answer does not connect to the cat and mouse."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "recognizing humor in situations",
+      "targetEvidence": "child creates a funny response involving a cat and a mouse",
+      "alignmentRationale": "This task tests the child's ability to create humor through wordplay and situations."
+    },
+    {
+      "id": "5a3419ee-1939-4f58-a9a8-f83d52ac833c",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "If a puppy wore glasses, what would it say?",
+      "rubric": [
+        "3 - The child provides a funny or playful response by imagining the puppy with glasses.",
+        "2 - The child offers an appropriate response about puppies but it’s not humorous.",
+        "1 - The child shares something general about puppies.",
+        "0 - The child does not respond or the answer does not relate to puppies with glasses."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "inventing humorous scenarios",
+      "targetEvidence": "child imagines a funny thought from a puppy with glasses",
+      "alignmentRationale": "This item encourages the child to creatively think of a funny idea involving an animal and an object."
+    },
+    {
+      "id": "889f5202-429d-434f-ac93-5939e1a0bef3",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What’s orange and sounds like a parrot?",
+      "rubric": [
+        "3 - The answer is 'a carrot.'",
+        "2 - The answer is 'an orange.'",
+        "1 - The answer is 'a bird.'",
+        "0 - The answer is none of these."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "a carrot."
+        },
+        {
+          "key": "b",
+          "text": "an orange."
+        },
+        {
+          "key": "c",
+          "text": "a bird."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "wordplay identification",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child identifies the pun in the question about sound and color",
+      "alignmentRationale": "This task assesses the child's ability to recognize humor through sound and color."
+    },
+    {
+      "id": "b9181632-1b63-4230-b2b1-a7a45f26633d",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What type of fish loves doing math?",
+      "rubric": [
+        "3 - The answer is 'a math fish.'",
+        "2 - The answer is 'a smart fish.'",
+        "1 - The answer is 'a big fish.'",
+        "0 - The answer is none of these."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "a math fish."
+        },
+        {
+          "key": "b",
+          "text": "a smart fish."
+        },
+        {
+          "key": "c",
+          "text": "a big fish."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a playful concept",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child identifies wordplay related to fish and math",
+      "alignmentRationale": "This question assesses the understanding of humorous connections between unrelated topics."
+    },
+    {
+      "id": "631ffa44-37fc-4932-8da5-9394811dd96a",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What did one shoe say to the other shoe?",
+      "rubric": [
+        "3 - The child gives a funny response involving shoes.",
+        "2 - The child gives an answer related to shoes but not humorous.",
+        "1 - The child provides a general statement about shoes.",
+        "0 - The child does not answer or the response is unrelated to shoes."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "creating playful interactions",
+      "targetEvidence": "child creates a humorous dialogue between shoes",
+      "alignmentRationale": "Encourages creative thinking and imagination related to humor."
+    },
+    {
+      "id": "1125c47a-6883-4d86-a96e-939de09f7562",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What does a cat do when it eats too much candy?",
+      "rubric": [
+        "3 - it has 'a feline sugar rush!'",
+        "2 - it just feels full",
+        "1 - it could feel funny",
+        "0 - cats should not eat candy"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A feline sugar rush!"
+        },
+        {
+          "key": "b",
+          "text": "It feels full!"
+        },
+        {
+          "key": "c",
+          "text": "It could be funny!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Chooses the answer linking 'feline' to a cat and sugar high.",
+      "alignmentRationale": "This isolates recognition of playful language involving similarities and connotations."
+    },
+    {
+      "id": "64694a3b-22bd-4f66-9961-fa9fd80ec6e8",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Tell a joke about a duck going to the doctor!",
+      "rubric": [
+        "3 - involves a pun or clever twist related to ducks or doctors",
+        "2 - presents a funny statement about a duck",
+        "1 - shares a silly idea",
+        "0 - is nonsensical"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "create playful humor",
+      "targetEvidence": "Forms a humorous statement regarding a duck and context.",
+      "alignmentRationale": "This encourages children to think creatively with clear narrative structure."
+    },
+    {
+      "id": "7d24dce0-26f7-4653-9178-d65b5051cb78",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What does a cow say when it gets a new toy?",
+      "rubric": [
+        "3 - says 'Moo-ving up in the world!'",
+        "2 - says 'This is nice!'",
+        "1 - says 'I like it!'",
+        "0 - cows don't get toys."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Moo-ving up in the world!"
+        },
+        {
+          "key": "b",
+          "text": "This is nice!"
+        },
+        {
+          "key": "c",
+          "text": "I like it!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a playful idea",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Recognizes the joke in 'moo-ving'.",
+      "alignmentRationale": "This tests the ability to identify jokes based on sound play."
+    },
+    {
+      "id": "6926eaa7-c3f0-4afa-ba3a-53033291894c",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What silly thing would a butterfly say to a flower?",
+      "rubric": [
+        "3 - uses a clever pun or play on words about butterflies or flowers",
+        "2 - presents a funny idea",
+        "1 - is simply weird",
+        "0 - doesn't make sense"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "create playful humor",
+      "targetEvidence": "Forms a humorous statement between butterfly and flower themes.",
+      "alignmentRationale": "This reinforces creativity while allowing humorous thought processes."
+    },
+    {
+      "id": "ee5d46c5-0294-4ad5-8fd0-2e9057f85b60",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What would a silly pineapple say to a pizza?",
+      "rubric": [
+        "3 - includes a playful or punny connection to food",
+        "2 - offers a funny idea not connecting to food",
+        "1 - is a strange or silly statement",
+        "0 - doesn't make sense"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "create playful humor",
+      "targetEvidence": "Creates a humorous statement involving a pineapple and pizza.",
+      "alignmentRationale": "Participants formulate original humor effectively leveraging imagination."
+    },
+    {
+      "id": "36131e47-39d9-4c14-9449-d33e666893f5",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call an elephant that can do magic?",
+      "rubric": [
+        "3 - because it's actually 'a trunk magician'",
+        "2 - could be referred to as a 'big magician'",
+        "1 - it's just a funny big animal",
+        "0 - elephants can't do magic"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A trunk magician!"
+        },
+        {
+          "key": "b",
+          "text": "A big elephant!"
+        },
+        {
+          "key": "c",
+          "text": "A huge animal!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a playful idea",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Identifies the punchline that plays on 'trunk' meaning.",
+      "alignmentRationale": "This focuses on recognizing humor in dual meanings, particularly around words."
+    },
+    {
+      "id": "ba65b64b-c678-4df5-96e7-55792da2c0ea",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make a silly joke about a squirrel!",
+      "rubric": [
+        "3 - includes a pun or sound joke about squirrels",
+        "2 - is funny but not a pun",
+        "1 - is a silly idea",
+        "0 - doesn't make sense"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "create playful humor",
+      "targetEvidence": "Creates an age-appropriate humorous statement about a squirrel.",
+      "alignmentRationale": "Participants generate humor through original thought, demonstrating creativity."
+    },
+    {
+      "id": "d63b5946-ed8e-47f7-b6bb-c3318efeb1d1",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What does a fish use to play music?",
+      "rubric": [
+        "3 - because it has fins and can 'tuna' a guitar",
+        "2 - it can play with other fish songs",
+        "1 - it might like to listen to music",
+        "0 - fish don't play music"
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A tuna!"
+        },
+        {
+          "key": "b",
+          "text": "A shell!"
+        },
+        {
+          "key": "c",
+          "text": "Water!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a sound",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Chooses the joke answer by linking 'tuna' and 'playing music'.",
+      "alignmentRationale": "This question prompts children to recognize puns based on sound and meaning."
+    },
+    {
+      "id": "35dc8267-7e49-4c01-a3e9-be061d0fb708",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a bear with no teeth?",
+      "rubric": [
+        "3 - Because it's funny!",
+        "2 - A fun answer!",
+        "1 - Not quite funny.",
+        "0 - Wrong answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A gummy bear!"
+        },
+        {
+          "key": "b",
+          "text": "A sleepy bear!"
+        },
+        {
+          "key": "c",
+          "text": "A dancing bear!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "kind wordplay",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The response is relevant and humorous related to the joke.",
+      "alignmentRationale": "This task specifically elicits recognition of a simple joke that plays with words and situations, not a broader understanding of humor."
+    },
+    {
+      "id": "0e5890b7-27a9-464f-9eb2-0ba074ee51f3",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Tell me something silly that a cloud could say to a sun!",
+      "rubric": [
+        "3 - A very funny idea!",
+        "2 - A good idea, but not so funny.",
+        "1 - A bit silly, but not clear.",
+        "0 - Not silly or relevant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "playful reinterpretation",
+      "targetEvidence": "Child provides an imaginative yet relevant answer that reflects light-heartedness.",
+      "alignmentRationale": "This question requires the child to create a playful dialogue, focusing on humorous connections between the characters."
+    },
+    {
+      "id": "3dfc6001-0fef-4312-8815-a4c9a30045ef",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you get when you cross a snowman with a vampire?",
+      "rubric": [
+        "3 - That's a clever joke!",
+        "2 - A fun play on words!",
+        "1 - Not as funny as it could be.",
+        "0 - Doesn't answer the joke."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Frostbite!"
+        },
+        {
+          "key": "b",
+          "text": "A chilly vampire!"
+        },
+        {
+          "key": "c",
+          "text": "A snow vampire!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "kind wordplay",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Provides an age-appropriate response that matches the joke's theme.",
+      "alignmentRationale": "This item tests the child's ability to connect two different ideas in a humorous way and to recognize the meaning of the humor involved."
+    },
+    {
+      "id": "d5f3a44a-311f-4965-9d39-a21b6cf4c159",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What does a silly monkey think is the best snack?",
+      "rubric": [
+        "3 - A really funny answer!",
+        "2 - A good idea, but missing some humor.",
+        "1 - A little silly, but not clear.",
+        "0 - Not silly or relevant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "playful reinterpretation",
+      "targetEvidence": "Child provides a creative and humorous response.",
+      "alignmentRationale": "This question invites imaginative thinking and humorous expression through the character of a monkey."
+    },
+    {
+      "id": "ff43c903-70b1-4f52-a347-aa3814064816",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a frog that tells jokes?",
+      "rubric": [
+        "3 - That's a great joke!",
+        "2 - A fun idea but not quite right.",
+        "1 - Not really funny this time.",
+        "0 - Doesn't make sense."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A jumping frog!"
+        },
+        {
+          "key": "b",
+          "text": "A funny frog!"
+        },
+        {
+          "key": "c",
+          "text": "A tired frog!"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "incongruity",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "Recognizes a humorous double meaning of the word 'jokes'.",
+      "alignmentRationale": "This question targets understanding of humor through puns and playful language, mapping directly to the fun our kids could have with the word 'jokes'."
+    },
+    {
+      "id": "9c1f86aa-77b1-474e-b61c-7294b1ad212a",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What silly thing would a tomato say to a salad?",
+      "rubric": [
+        "3 - A really funny idea!",
+        "2 - A good idea but less funny.",
+        "1 - A little silly, but unclear.",
+        "0 - Not funny or relevant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "playful reinterpretation",
+      "targetEvidence": "Child provides an imaginative response that reflects a humorous approach.",
+      "alignmentRationale": "This task encourages the child to generate a playful connection between two food items, aiming for humor."
+    },
+    {
+      "id": "d1e08e84-83b6-488d-bc73-8afa24706bf0",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you call a kangaroo that loves to bounce?",
+      "rubric": [
+        "3 - That's a clever joke!",
+        "2 - A fun alternative!",
+        "1 - Just okay, but not funny.",
+        "0 - Doesn't make sense."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A bouncy house!"
+        },
+        {
+          "key": "b",
+          "text": "A jumping kangaroo!"
+        },
+        {
+          "key": "c",
+          "text": "A tired kangaroo!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "kind wordplay",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The response is relevant to the joke format and humorous.",
+      "alignmentRationale": "This question invites selection of the best punchline that matches common humor used with animals, targeting a playful twist."
+    },
+    {
+      "id": "d8868100-011f-4e49-b19f-5f91930bc4f0",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What kind of silly dance would a carrot do if it could move?",
+      "rubric": [
+        "3 - A really funny dance idea!",
+        "2 - A good idea, but not humorous.",
+        "1 - A little silly, but unclear.",
+        "0 - Not funny or relevant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "playful reinterpretation",
+      "targetEvidence": "Child's response captures humor regarding the character of a carrot.",
+      "alignmentRationale": "This encourages creativity and humor through the character’s imagined actions."
+    },
+    {
+      "id": "ea3d1ba9-a104-4f10-858c-4feac9751c35",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What is a silly thing for a dog to wear?",
+      "rubric": [
+        "3 - A funny tutu!",
+        "2 - A big sweater!",
+        "1 - A collar.",
+        "0 - Nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A funny tutu!"
+        },
+        {
+          "key": "b",
+          "text": "A big sweater!"
+        },
+        {
+          "key": "c",
+          "text": "A collar."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing humorous imagery",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child identifies a funny item a dog might wear",
+      "alignmentRationale": "This assesses recognition of humor in unexpected items while remaining relevant to dogs."
+    },
+    {
+      "id": "63b8c38b-62c4-4be9-8917-cd1877a22a29",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make up a funny phrase about a fish and a bicycle!",
+      "rubric": [
+        "3 - A clever and funny phrase about a fish and a bicycle.",
+        "2 - A somewhat humorous phrase about a fish and a bicycle.",
+        "1 - A simple phrase mentioning a fish or a bicycle.",
+        "0 - No phrase or an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "creating playful phrases",
+      "targetEvidence": "child generates a humorous phrase involving unconventional combinations",
+      "alignmentRationale": "This encourages inventive language play and testing children's capacity for creating humor."
+    },
+    {
+      "id": "427a99bd-f0c1-4609-8ae8-95e0a1042ba4",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What does a clock do when it's hungry?",
+      "rubric": [
+        "3 - It goes back for seconds!",
+        "2 - It ticks once!",
+        "1 - It just tells time.",
+        "0 - It's a clock."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It goes back for seconds!"
+        },
+        {
+          "key": "b",
+          "text": "It ticks once!"
+        },
+        {
+          "key": "c",
+          "text": "It just tells time."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identifying humorous scenarios",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child recognizes the humor in a clock's actions related to hunger",
+      "alignmentRationale": "This assesses the understanding of humor by interpreting plays on words in common daily objects."
+    },
+    {
+      "id": "9eb2c35d-4e0e-4094-9934-58b228f586d7",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What do you think a robot would say if it got a funny joke?",
+      "rubric": [
+        "3 - A creative response about a robot and a joke.",
+        "2 - A humorous idea about a robot.",
+        "1 - A simple idea about a robot.",
+        "0 - No idea or an unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inventing humorous responses",
+      "targetEvidence": "child invents a humorous reaction involving a robot",
+      "alignmentRationale": "This evaluates the ability to create humor in a response and involves imaginative thinking."
+    },
+    {
+      "id": "008a7645-057f-4629-bc23-3792af4efb21",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What did the ocean say to the beach?",
+      "rubric": [
+        "3 - Very funny answer that fits well.",
+        "2 - Some humor, but not the best fit.",
+        "1 - An answer that is somewhat funny.",
+        "0 - An answer that isn't funny at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Nothing, it just waved!"
+        },
+        {
+          "key": "b",
+          "text": "I love you, beach!"
+        },
+        {
+          "key": "c",
+          "text": "The beach is boring!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "kind wordplay",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "recognizes a joke based on how it uses words or ideas humorously",
+      "alignmentRationale": "The task tests the ability to identify humor from wordplay rather than unrelated responses."
+    },
+    {
+      "id": "ec5e5ca6-d29e-4e82-b9a5-f6bea9f3f1e2",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Create a funny reason why a cat won't play with a ball of yarn!",
+      "rubric": [
+        "3 - Very funny answer that's easy to understand.",
+        "2 - A fun answer, but not very clear.",
+        "1 - An answer that's slightly funny.",
+        "0 - An answer that isn't funny at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "playful reinterpretation",
+      "targetEvidence": "inventive humor related to a familiar situation",
+      "alignmentRationale": "This prompt encourages original thinking about a cat's perspective in a playful context."
+    },
+    {
+      "id": "6bc3953c-79f6-4d26-b229-801b0f7b9680",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make up a funny name for a silly hat!",
+      "rubric": [
+        "3 - A very funny and creative name.",
+        "2 - A decent name, but not very funny.",
+        "1 - An ordinary name that’s not very funny.",
+        "0 - A name that isn’t funny or silly at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "playful reinterpretation",
+      "targetEvidence": "inventive humor related to a familiar object",
+      "alignmentRationale": "This prompt allows for creative naming that demonstrates playful thinking."
+    },
+    {
+      "id": "4a4ed5df-3704-4345-a171-938d5914f07e",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Why did the ladder go to school?",
+      "rubric": [
+        "3 - Very funny answer that's easy to understand.",
+        "2 - A fun answer, but not very clear.",
+        "1 - An answer that's slightly funny.",
+        "0 - An answer that isn't funny at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "playful reinterpretation",
+      "targetEvidence": "inventive humor related to a familiar situation",
+      "alignmentRationale": "This encourages a creative twist on a familiar concept with playful wording."
+    },
+    {
+      "id": "d9199d03-4798-4a55-bd68-fbf1ea390ebb",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Think of a funny reason why a chicken crossed the playground!",
+      "rubric": [
+        "3 - Very funny answer that's easy to understand.",
+        "2 - A fun answer, but not very clear.",
+        "1 - An answer that's slightly funny.",
+        "0 - An answer that isn't funny at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "playful reinterpretation",
+      "targetEvidence": "inventive humor related to a familiar situation",
+      "alignmentRationale": "This prompt encourages original thinking through a playful twist on a classic joke."
+    },
+    {
+      "id": "bb87f75d-1746-445f-a159-fa2cc30d06b8",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What did the hungry computer eat?",
+      "rubric": [
+        "3 - It ate a byte!",
+        "2 - It ate some cookies.",
+        "1 - It ate a cake.",
+        "0 - It ate something weird."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "a byte!"
+        },
+        {
+          "key": "b",
+          "text": "some cookies."
+        },
+        {
+          "key": "c",
+          "text": "a cake."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "complete a gentle joke",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child selects the punchline that fits the setup of the joke",
+      "alignmentRationale": "This task involves recognizing a clever punchline based on wordplay, fulfilling the criteria of age-appropriate humor."
+    },
+    {
+      "id": "d9c68c27-5df2-4fd7-a750-454032c73db5",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Why did the teddy bear say no to dessert?",
+      "rubric": [
+        "3 - Because it was stuffed!",
+        "2 - Because it was too full.",
+        "1 - Because it was not hungry.",
+        "0 - Because it did not like dessert."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Because it was stuffed!"
+        },
+        {
+          "key": "b",
+          "text": "Because it was too full."
+        },
+        {
+          "key": "c",
+          "text": "Because it was not hungry."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "complete a gentle joke",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child selects the punchline that uses humor in context",
+      "alignmentRationale": "This item checks for recognition of humor through a punchline based on wordplay, assessing cleverness in answering."
+    },
+    {
+      "id": "e6f51f9c-54d9-4aa5-bff2-4b3d94f97269",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make up a funny name for a pet. What is it?",
+      "rubric": [
+        "3 - A creative and funny pet name with a clear connection to humor.",
+        "2 - A funny pet name that is a little less clear.",
+        "1 - A pet name, but it is not really funny.",
+        "0 - Just a regular name, not funny."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "invent a silly safe twist",
+      "targetEvidence": "child generates a creative name that carries a humorous element",
+      "alignmentRationale": "The task encourages children to create humor in a safe context by inventing an amusing name, showing creativity."
+    },
+    {
+      "id": "be489373-89d6-420b-b187-258d12198494",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Think of a funny job for an animal. What is it?",
+      "rubric": [
+        "3 - A humorous and imaginative job idea for an animal.",
+        "2 - A job that is slightly related to animals, but not funny.",
+        "1 - A job, but it is not clear why it’s funny.",
+        "0 - A non-animal job or a regular idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "invent a silly safe twist",
+      "targetEvidence": "child formulates a humorous job concept for an animal",
+      "alignmentRationale": "The activity invites children to creatively twist normal concepts into humorous ones, focusing on playful reinterpretation."
+    },
+    {
+      "id": "74c4f158-d191-4365-8f73-72a4861f149b",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What did the cat say when it lost its toys?",
+      "rubric": [
+        "3 - You've gotta be kitten me!",
+        "2 - I need some new toys!",
+        "1 - Where are my toys?",
+        "0 - I lost my toys."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "You've gotta be kitten me!"
+        },
+        {
+          "key": "b",
+          "text": "I need some new toys!"
+        },
+        {
+          "key": "c",
+          "text": "Where are my toys?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "complete a gentle joke",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child picks the punchline that fits with punny humor",
+      "alignmentRationale": "This task evaluates the ability to recognize a punchline that relies on wordplay and humor specific to the context."
+    },
+    {
+      "id": "b71c1b36-08ff-4678-a8c7-28ed0a44e7fc",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Tell a silly story about a shoe and a hat. What happens?",
+      "rubric": [
+        "3 - A creative story about a shoe and a hat with funny twists or actions.",
+        "2 - A story about them, but not very funny.",
+        "1 - A simple idea with no clear humor.",
+        "0 - Just regular things happen."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "invent a silly safe twist",
+      "targetEvidence": "child narrates an imaginative and humorous story involving objects",
+      "alignmentRationale": "This item assesses creativity using humor in a playful context by encouraging stories that twist expectations."
+    },
+    {
+      "id": "1234fbfe-f0b3-4443-a8c8-4d63b5428d07",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What did the cow say to the scarecrow?",
+      "rubric": [
+        "3 - 'You’re outstanding in your field!'",
+        "2 - 'Moo, how are you?'",
+        "1 - 'What’s for dinner?'",
+        "0 - 'Hello there.'"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "'You’re outstanding in your field!'"
+        },
+        {
+          "key": "b",
+          "text": "'Moo, how are you?'"
+        },
+        {
+          "key": "c",
+          "text": "'What’s for dinner?'"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "complete a gentle joke",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child selects a punchline that showcases clever wordplay",
+      "alignmentRationale": "The focus is on understanding and picking up the humor in wordplay, essential to appreciating and creating jokes."
+    },
+    {
+      "id": "860da1a0-c647-47c1-822e-91553632c958",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What does a cloud wear under its raincoat?",
+      "rubric": [
+        "3 - The answer is clever and related to the joke.",
+        "2 - The answer shows some understanding of humor but is less relevant.",
+        "1 - The answer is somewhat amusing but not connected.",
+        "0 - The answer misses any humor connection at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A sunny smile!"
+        },
+        {
+          "key": "b",
+          "text": "Underwear!"
+        },
+        {
+          "key": "c",
+          "text": "More clouds!"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "understanding playful language",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "identification of a witty response to the setup",
+      "alignmentRationale": "The task assesses comprehension of humor from wordplay."
+    },
+    {
+      "id": "5e8ec942-334c-4eb5-961a-fa17ac38686e",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Tell a silly story about a fruit that can talk!",
+      "rubric": [
+        "3 - The story is creative, funny, and clear.",
+        "2 - The story is somewhat funny but lacks clarity or imagination.",
+        "1 - The story has an idea but is confusing or not amusing.",
+        "0 - There is no story or it doesn’t make sense."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "creating a humorous narrative",
+      "targetEvidence": "construction of an amusing story involving a talking fruit",
+      "alignmentRationale": "This task focuses on creative storytelling that incorporates humor."
+    },
+    {
+      "id": "6bd5a741-5c50-44b7-a52f-5be49e704b7b",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Why did the banana go to the doctor?",
+      "rubric": [
+        "3 - The answer is a clever, humorous response to the setup.",
+        "2 - The answer has a funny idea but isn't as spot-on.",
+        "1 - The answer is creative but lacks humor or relevance.",
+        "0 - The answer is not related to the joke."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Because it wasn’t peeling well!"
+        },
+        {
+          "key": "b",
+          "text": "Because it wanted a snack!"
+        },
+        {
+          "key": "c",
+          "text": "To find a friend!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing humor in a pun",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identification of the punchline in a common joke context",
+      "alignmentRationale": "The task assesses the ability to recognize humor in the form of a pun."
+    },
+    {
+      "id": "5789c1a3-8fe6-4f40-8264-e18c3a4420cd",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Imagine a funny mask for a pet! What is it like?",
+      "rubric": [
+        "3 - The description is funny, creative, and clear.",
+        "2 - The description is somewhat funny but lacks clarity.",
+        "1 - The idea is there but confusing or not funny.",
+        "0 - There is no description or it doesn’t make sense."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "inventing a silly item description",
+      "targetEvidence": "original creation of a humorous item description",
+      "alignmentRationale": "This task pushes for creativity in describing a playful scenario."
+    },
+    {
+      "id": "7621d647-4b41-4eae-a5ff-7a3e4f72ac44",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What did the grape say when it got stepped on?",
+      "rubric": [
+        "3 - The answer is a clever punchline that fits the joke.",
+        "2 - The answer shows some understanding but is less relevant.",
+        "1 - The answer is somewhat amusing but not connected.",
+        "0 - The answer doesn’t relate to the joke at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ouch!"
+        },
+        {
+          "key": "b",
+          "text": "That was juicy!"
+        },
+        {
+          "key": "c",
+          "text": "Nothing, it just let out a little wine!"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "identifying humorous responses",
+      "optionScores": {
+        "a": 1,
+        "b": 0,
+        "c": 3
+      },
+      "targetEvidence": "recognition of a fitting humorous response based on context",
+      "alignmentRationale": "Assessing recognition of humor in familiar joke formats."
+    },
+    {
+      "id": "488dd4ef-819b-41d5-8a9f-9544c079bdbe",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make a silly joke about an animal!",
+      "rubric": [
+        "3 - The joke is original, clear, and funny.",
+        "2 - The joke is somewhat funny but unclear at times.",
+        "1 - The joke has an idea but is confusing or not funny.",
+        "0 - There is no joke or it doesn’t make sense."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "inventing a funny animal joke",
+      "targetEvidence": "creation of a humorous original statement about an animal",
+      "alignmentRationale": "This task focuses on the ability to create humor through original thought in a playful context."
+    },
+    {
+      "id": "63b6ea08-6511-445a-a5ad-8c20f35f30bd",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "Make up a joke about a robot!",
+      "rubric": [
+        "3 - The joke is original, clear, and funny.",
+        "2 - The joke has potential but needs clarity or creativity.",
+        "1 - The joke has an idea but is unclear or not funny.",
+        "0 - There is no joke or it doesn’t make sense."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "inventing a humorous idea",
+      "targetEvidence": "creation of an original joke about a robot",
+      "alignmentRationale": "This task is focused on eliciting creative and humorous ideas."
+    },
+    {
+      "id": "5c228fcf-154a-4326-9ce1-e8838d9e04a6",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "humor",
+      "format": "explanation",
+      "prompt": "What did one wall say to the other wall?",
+      "rubric": [
+        "3 - The answer is clever and relates to the joke's context.",
+        "2 - The answer shows some wordplay but is less relevant.",
+        "1 - The answer is not funny but somewhat relevant.",
+        "0 - The answer doesn't relate to the joke."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I'll meet you at the corner!"
+        },
+        {
+          "key": "b",
+          "text": "Let's build something together!"
+        },
+        {
+          "key": "c",
+          "text": "What are you doing?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing a joke's punchline",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "recognition of a humorous phrase that completes the joke",
+      "alignmentRationale": "The task encourages children to recognize humor based on sound and meaning."
+    }
+  ]
+}

@@ -1,0 +1,2885 @@
+{
+  "category": "abstract_concepts",
+  "questions": [
+    {
+      "id": "807f8151-18a5-4fda-b795-cfbdf03be805",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If you see a friend feeling sad, what can you do to be friendly?",
+      "rubric": [
+        "3 - Give them a hug",
+        "2 - Ask if they are okay",
+        "1 - Ignore them",
+        "0 - Laugh at them"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Give them a hug"
+        },
+        {
+          "key": "b",
+          "text": "Ask if they are okay"
+        },
+        {
+          "key": "c",
+          "text": "Ignore them"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for being friendly",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies a friendly action related to comforting.",
+      "alignmentRationale": "Tests the ability to understand friendship through supportive actions."
+    },
+    {
+      "id": "56dffe53-e94f-4563-a3d9-13b6f5e6908e",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Think of a time you saw someone being kind. What did they do?",
+      "rubric": [
+        "3 - Clearly describes an action of kindness",
+        "2 - Partly describes how to be kind",
+        "1 - Mentions something kind without explaining",
+        "0 - Doesn't mention kindness"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "explaining an act of kindness",
+      "targetEvidence": "Describes an instance of kindness to demonstrate understanding.",
+      "alignmentRationale": "Prompts the child to express understanding of kindness through an example."
+    },
+    {
+      "id": "0f2dbdbe-36b6-4f07-bf77-1b534a7d6978",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "When you play with friends, what shows teamwork?",
+      "rubric": [
+        "3 - Helping each other during a game",
+        "2 - Playing at the same time",
+        "1 - Watching others play",
+        "0 - Playing alone"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Helping each other during a game"
+        },
+        {
+          "key": "b",
+          "text": "Playing at the same time"
+        },
+        {
+          "key": "c",
+          "text": "Watching others play"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for teamwork",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies collaborative action among peers.",
+      "alignmentRationale": "Evaluates the recognition of teamwork beyond simple play."
+    },
+    {
+      "id": "a9d35394-590f-4077-a372-271fc9966521",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What does it mean to be fair? Can you give an example?",
+      "rubric": [
+        "3 - Clearly describes fairness with a good example",
+        "2 - Mentions fairness but not an example",
+        "1 - Has a vague idea of fairness",
+        "0 - Does not mention fairness"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "understanding fairness",
+      "targetEvidence": "Describes or gives an example showing understanding of fairness.",
+      "alignmentRationale": "Encourages children to explain their understanding of fairness in their own language."
+    },
+    {
+      "id": "f7ade921-8ca1-4292-b113-e6682b12db1b",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Can you tell me about a time when friends played together? What were they doing?",
+      "rubric": [
+        "3 - Describes a fun play activity with friends",
+        "2 - Mentions playing but lacks detail",
+        "1 - Vague mention of play",
+        "0 - Doesn't talk about play"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "explaining a play scenario",
+      "targetEvidence": "Describes a situation reflecting cooperative play.",
+      "alignmentRationale": "Requires the child to demonstrate understanding of play in a group context."
+    },
+    {
+      "id": "4d3549b8-d86d-4830-a7b4-318fb8d3c6f3",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If being nice helps everyone feel good, what else is nice?",
+      "rubric": [
+        "3 - Helping a friend who needs it",
+        "2 - Sharing toys with others",
+        "1 - Smiling at someone",
+        "0 - Ignoring people"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Helping a friend who needs it"
+        },
+        {
+          "key": "b",
+          "text": "Sharing toys with others"
+        },
+        {
+          "key": "c",
+          "text": "Smiling at someone"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a nice action",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Selects another action that reflects kindness in interactions.",
+      "alignmentRationale": "Assesses recognition of supportive behaviors in social activities."
+    },
+    {
+      "id": "67941271-e164-4477-8e0b-54c6e875f04d",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What is a way to include someone in a game? Can you explain?",
+      "rubric": [
+        "3 - Clearly describes a method to include others",
+        "2 - Mentions inclusion but lacks detail",
+        "1 - Has a vague idea about inclusion",
+        "0 - Does not mention inclusion"
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "understanding inclusion",
+      "targetEvidence": "Offers a method or idea about including others in a group activity.",
+      "alignmentRationale": "Prompts the child to express understanding of inclusion as a concept."
+    },
+    {
+      "id": "27fcef8b-7763-4608-96e4-7915e2bbfd16",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "When you are thoughtful, it makes others feel good. What else makes a person feel good?",
+      "rubric": [
+        "3 - It gives another clear action that makes someone feel good, like helping.",
+        "2 - It suggests something partially good but unclear.",
+        "1 - It mentions something unrelated to feeling good.",
+        "0 - No answer or random words."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Being rude"
+        },
+        {
+          "key": "b",
+          "text": "Giving a compliment"
+        },
+        {
+          "key": "c",
+          "text": "Ignoring someone"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for feeling good action",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "provides another action that creates positive feelings",
+      "alignmentRationale": "This question encourages identifying actions linked to positive feelings, tapping into the abstract concept of emotional well-being."
+    },
+    {
+      "id": "89d1cac3-592a-4f69-aab2-c07371f19f35",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If you help someone, you are being nice. What else is nice?",
+      "rubric": [
+        "3 - It describes another nice action clearly, like helping or sharing.",
+        "2 - It suggests partially nice actions, maybe unclear.",
+        "1 - It mentions something unrelated to being nice.",
+        "0 - No answer or random words."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Being mean"
+        },
+        {
+          "key": "b",
+          "text": "Helping a friend"
+        },
+        {
+          "key": "c",
+          "text": "Taking away toys"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a kind action",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "identifies another kind action",
+      "alignmentRationale": "This question tests the ability to identify examples of kindness, which is an abstract concept."
+    },
+    {
+      "id": "1ca0af9a-5680-4487-84ea-d50c77dd4b39",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If you share, everyone can play. What is another way to include others?",
+      "rubric": [
+        "3 - It gives a clear example of including others, like inviting.",
+        "2 - It suggests something partially related but unclear.",
+        "1 - It mentions something unrelated to inclusion.",
+        "0 - No answer or random words."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Inviting someone to join"
+        },
+        {
+          "key": "b",
+          "text": "Ignoring them"
+        },
+        {
+          "key": "c",
+          "text": "Yelling at them"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for including others",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "provides another way to include others",
+      "alignmentRationale": "The prompt elicits concrete examples of inclusion, tapping into the understanding of fairness as an abstract concept."
+    },
+    {
+      "id": "0ab2663a-69ba-424d-8b48-8fce1dbd4d34",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Can you tell me how you feel when someone shares with you?",
+      "rubric": [
+        "3 - It describes a clear positive feeling, like happiness or joy.",
+        "2 - It mentions a feeling, but not entirely clear or correct.",
+        "1 - It mentions a negative feeling or is unrelated.",
+        "0 - No answer or random words."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "describes feelings about sharing",
+      "alignmentRationale": "This question assesses the child's understanding of feelings related to an abstract concept of sharing, instead of simply recounting an experience."
+    },
+    {
+      "id": "c86230fb-937d-49fd-93b5-4698a8b42dd6",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If everyone listens, it shows respect. What else shows respect?",
+      "rubric": [
+        "3 - It gives another clear example of respect, like being polite.",
+        "2 - It suggests something partially related but unclear.",
+        "1 - It mentions something unrelated to respect.",
+        "0 - No answer or random words."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Talking loudly"
+        },
+        {
+          "key": "b",
+          "text": "Listening to others"
+        },
+        {
+          "key": "c",
+          "text": "Ignoring someone"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for respect action",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "provides another action that shows respect",
+      "alignmentRationale": "This question explores the idea of respect by asking for concrete examples that align with the abstract concept."
+    },
+    {
+      "id": "4104b003-abd1-4ffc-9e07-b81cb2c5e8dd",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Think of a time when someone was kind to you. How did it make you feel?",
+      "rubric": [
+        "3 - It expresses a clear feeling, like happy or loved.",
+        "2 - It mentions a feeling, but is not completely clear.",
+        "1 - It describes something unrelated to the feeling.",
+        "0 - No answer or random words."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "describes feelings from kindness",
+      "alignmentRationale": "This item helps assess understanding of feelings tied to the abstract concept of kindness."
+    },
+    {
+      "id": "fe509f86-fc58-4d19-8742-566c2ec9d4a5",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If everyone takes turns, it is fair. What also makes things fair?",
+      "rubric": [
+        "3 - It gives another clear example of fairness, such as sharing.",
+        "2 - It suggests something partially related but unclear.",
+        "1 - It mentions something unrelated to fairness.",
+        "0 - No answer or random words."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Sharing toys"
+        },
+        {
+          "key": "b",
+          "text": "Eating candy"
+        },
+        {
+          "key": "c",
+          "text": "Fighting"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for fairness",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies another example of fairness",
+      "alignmentRationale": "This question tests the ability to connect actions to the abstract concept of fairness, requiring concrete examples."
+    },
+    {
+      "id": "65df5099-c279-48e9-8dea-eafcc13fe0f3",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "A sunny day often makes people happy. What else makes people happy?",
+      "rubric": [
+        "3 - The child identifies another joyful event, like playing or celebrating.",
+        "2 - The child references something related but less joyful, like smiling.",
+        "1 - The child provides a vague answer not linked to joy.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Playing games"
+        },
+        {
+          "key": "b",
+          "text": "Reading quietly"
+        },
+        {
+          "key": "c",
+          "text": "Being alone"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "apply a concept of happiness",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child gives an example of something else that induces happiness.",
+      "alignmentRationale": "This question encourages the child to connect different actions or events that relate to happiness, testing their grasp on the abstract idea."
+    },
+    {
+      "id": "f191bd7b-d352-43e1-9e91-56d60baa0fed",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If a dog is happy, it wags its tail. If a cat is happy, what might it do?",
+      "rubric": [
+        "3 - The child suggests a relevant action that cats do when happy, like purr, meow, or play.",
+        "2 - The child mentions something close, like jumping or running, but it doesn't fit all cats.",
+        "1 - The child gives an unrelated action, like sleeping.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Purr"
+        },
+        {
+          "key": "b",
+          "text": "Bark"
+        },
+        {
+          "key": "c",
+          "text": "Swim"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "apply a concept of behavior",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child provides a relevant, recognizable action that indicates happiness in cats.",
+      "alignmentRationale": "This question tests generalization of a concept (happiness) to a different but related animal, showing understanding of non-physical relationships."
+    },
+    {
+      "id": "dc301a8f-8719-4002-8dab-312d36336173",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If you share your toys, you are being kind. What else can you do to be kind?",
+      "rubric": [
+        "3 - The child gives a helpful example of a kind action, like helping or complimenting.",
+        "2 - The child suggests something somewhat related, like sharing stories.",
+        "1 - The child gives an irrelevant answer, like being loud or silly.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help someone"
+        },
+        {
+          "key": "b",
+          "text": "Be funny"
+        },
+        {
+          "key": "c",
+          "text": "Be quiet"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "apply a concept of kindness",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child suggests another action that represents kindness.",
+      "alignmentRationale": "By asking for another action, this question tests the ability to understand and apply the abstract idea of kindness to a concrete example."
+    },
+    {
+      "id": "89fdeb44-2a95-463f-ad6d-ae397dbc5e7f",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "A big heart means you care. What else shows you care about someone?",
+      "rubric": [
+        "3 - The child suggests a caring action, like hugging or asking how they feel.",
+        "2 - The child gives a close but not quite relevant answer, like listening.",
+        "1 - The child gives an unrelated action, like jumping or running.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Hug them"
+        },
+        {
+          "key": "b",
+          "text": "Yell loud"
+        },
+        {
+          "key": "c",
+          "text": "Run away"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "apply a concept of caring",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child identifies another action that indicates caring for someone.",
+      "alignmentRationale": "This question engages the child to think about various expressions of an abstract idea (caring) and apply it to a new scenario."
+    },
+    {
+      "id": "2d726f09-2586-4f4f-95a3-23ae8761f566",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Tell me a time when you felt happy. What was happening?",
+      "rubric": [
+        "3 - The child describes a clear, specific action or event that made them happy.",
+        "2 - The child speaks about happiness but lacks detail or relevance.",
+        "1 - The child’s answer is vague or linked loosely to happiness.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "explain a happiness experience",
+      "targetEvidence": "The child shares an example of what made them happy.",
+      "alignmentRationale": "This question allows the child to demonstrate their understanding of happiness through a personal experience, connecting to the abstract concept of feeling happy."
+    },
+    {
+      "id": "5818f759-a9fd-4301-80a5-d943b438466f",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If you feel sad, what could help you feel better?",
+      "rubric": [
+        "3 - The child suggests a comforting action, like talking to someone or playing.",
+        "2 - The child provides a somewhat helpful action, like eating.",
+        "1 - The child suggests something unrelated, like leaving.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Talk to a friend"
+        },
+        {
+          "key": "b",
+          "text": "Sit quietly"
+        },
+        {
+          "key": "c",
+          "text": "Close your eyes"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "apply a concept of comfort",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child identifies an action that provides support when feeling sad.",
+      "alignmentRationale": "The focus here is on understanding the concept of emotional support and applying it to feelings, confirming recognition of abstract emotional responses."
+    },
+    {
+      "id": "839a8ed3-3660-4278-817f-f182ef7bd823",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What do you think it means to be a good friend?",
+      "rubric": [
+        "3 - Clearly describes a helpful friendship trait.",
+        "2 - Partially relevant but unclear.",
+        "1 - Vague or unrelated idea.",
+        "0 - No answer or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for friendship",
+      "targetEvidence": "the child expresses understanding of friendship",
+      "alignmentRationale": "This allows the child to articulate their view on friendships, highlighting their understanding of relationships."
+    },
+    {
+      "id": "3a1deced-b20b-4003-9a6d-63369a449214",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which one helps us be fair? 🤝",
+      "rubric": [
+        "3 - Explains a helpful action toward fairness.",
+        "2 - Provides a partly relevant answer.",
+        "1 - Mentions something unrelated or not clear.",
+        "0 - No answer or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Sharing toys"
+        },
+        {
+          "key": "b",
+          "text": "Eating candy"
+        },
+        {
+          "key": "c",
+          "text": "Going to bed"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for fairness",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child identifies a helpful action that supports fairness in a scenario",
+      "alignmentRationale": "The task asks the child to choose an abstract action that relates to fairness rather than recalling a fact."
+    },
+    {
+      "id": "1aceb2ba-cee8-4485-870d-22762cb56e48",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which is something we all need? 🌍",
+      "rubric": [
+        "3 - Correctly identifies a need everyone has.",
+        "2 - Partly relevant answer.",
+        "1 - Suggests something unrelated.",
+        "0 - No relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Friends"
+        },
+        {
+          "key": "b",
+          "text": "Toys"
+        },
+        {
+          "key": "c",
+          "text": "Stickers"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for belonging",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child identifies a need that supports a sense of belonging",
+      "alignmentRationale": "This directly relates to finding a category of shared needs, isolating understanding of belonging."
+    },
+    {
+      "id": "773e1c52-23d4-4e6d-942c-3834fd90c41a",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Tell me about a time you helped someone feel happy.",
+      "rubric": [
+        "3 - Gives a clear helpful action.",
+        "2 - Mentions something relevant but not clear.",
+        "1 - Shares a vague or unrelated idea.",
+        "0 - No answer or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for kindness",
+      "targetEvidence": "the child shares a good action that demonstrates kindness",
+      "alignmentRationale": "This encourages the child to express an understanding of kindness through their own experiences."
+    },
+    {
+      "id": "e910762d-f572-4b2a-bec6-2f924f11180e",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which explains waiting in line? ⏳",
+      "rubric": [
+        "3 - Accurately describes the action of waiting in line.",
+        "2 - Partially explains but misses key details.",
+        "1 - Vague mention, unrelated to the action.",
+        "0 - No relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Taking turns until it's your turn"
+        },
+        {
+          "key": "b",
+          "text": "Standing still and looking around"
+        },
+        {
+          "key": "c",
+          "text": "Running very fast"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "explain waiting",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child explains the concept of waiting in line",
+      "alignmentRationale": "This focuses on their understanding of the abstract idea of waiting as a rule in social contexts."
+    },
+    {
+      "id": "62607451-a3ac-406e-8361-8040755c2995",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which helps us feel included? 🎉",
+      "rubric": [
+        "3 - Correctly identifies an action that promotes inclusion.",
+        "2 - Provides a partly relevant answer.",
+        "1 - Mentions something unrelated or vague.",
+        "0 - No answer or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Inviting friends to play"
+        },
+        {
+          "key": "b",
+          "text": "Eating snacks alone"
+        },
+        {
+          "key": "c",
+          "text": "Keeping secrets"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for inclusion",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child understands an action that supports inclusion",
+      "alignmentRationale": "This focuses on actions that relate to the concept of belonging."
+    },
+    {
+      "id": "eba349ce-6804-431b-a461-771f87aeb273",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What helps everyone work together? 👫",
+      "rubric": [
+        "3 - Correctly identifies an action that promotes teamwork.",
+        "2 - Provides a partly relevant answer.",
+        "1 - Suggests something unrelated.",
+        "0 - No relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Helping each other"
+        },
+        {
+          "key": "b",
+          "text": "Playing alone"
+        },
+        {
+          "key": "c",
+          "text": "Ignoring others"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for cooperation",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child recognizes actions that facilitate cooperation in a group",
+      "alignmentRationale": "This focuses on understanding actions that promote social agreements."
+    },
+    {
+      "id": "a281d836-3c9e-40c7-a58d-0188f75c6f77",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "How do you feel when you help others?",
+      "rubric": [
+        "3 - Describes a positive feeling related to helping.",
+        "2 - Mentions feelings but is not clear.",
+        "1 - Shares a vague emotion or unrelated idea.",
+        "0 - No answer or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "the child expresses emotions connected to helping others",
+      "alignmentRationale": "This lets the child share their emotional understanding related to kindness, which is abstract."
+    },
+    {
+      "id": "beba37d8-7469-4d2e-a537-9bb4b0225355",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Banana, apple, carrot. Which one is a fruit?",
+      "rubric": [
+        "3 - Correctly identifies 'banana' as the fruit.",
+        "2 - Chooses 'apple' but does not recognize it's not the only option.",
+        "1 - Chooses 'carrot', showing some confusion about categories.",
+        "0 - Any incorrect or irrelevant choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Banana"
+        },
+        {
+          "key": "b",
+          "text": "Apple"
+        },
+        {
+          "key": "c",
+          "text": "Carrot"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "category identification",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Chooses the correct example of a fruit from mixed options.",
+      "alignmentRationale": "This task assesses understanding of the abstract category of 'fruit' using a simple analogy."
+    },
+    {
+      "id": "63bf3780-b30b-47be-b800-fdf2c8ffc192",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If a duck is to quack, what does a cow do?",
+      "rubric": [
+        "3 - Correctly identifies that a cow moos.",
+        "2 - Mentions another sound that cows can make but not 'moo'.",
+        "1 - Chooses 'quack', mistaking the animal sounds.",
+        "0 - Any unrelated or incorrect response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Moos"
+        },
+        {
+          "key": "b",
+          "text": "Quacks"
+        },
+        {
+          "key": "c",
+          "text": "Neighs"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing animal sounds",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies the expected sound made by a cow following a specific pattern.",
+      "alignmentRationale": "This task assesses understanding of animal sounds, establishing relationships between different animal noises."
+    },
+    {
+      "id": "571f4151-d778-44c4-b8a8-c5fbd9d7b70a",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What does it mean to wait for your turn in a game?",
+      "rubric": [
+        "3 - Explains clearly how it means to give others a chance.",
+        "2 - Mentions waiting but lacks clarity on its meaning.",
+        "1 - Talks about turns without clarity.",
+        "0 - Any irrelevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "understanding waiting",
+      "targetEvidence": "Articulates the concept of waiting for turns in an activity.",
+      "alignmentRationale": "This question assesses understanding of the abstract idea of waiting and fairness in social interactions."
+    },
+    {
+      "id": "ec269e9a-3c8c-4b8e-be49-c754b3bee9c2",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Family, toy, book. Which one means you are part of a group?",
+      "rubric": [
+        "3 - Correctly identifies 'family' as belonging.",
+        "2 - Selects 'toy' but misses the deeper meaning.",
+        "1 - Chooses 'book', confusing it with belonging.",
+        "0 - Any unrelated choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Family"
+        },
+        {
+          "key": "b",
+          "text": "Toy"
+        },
+        {
+          "key": "c",
+          "text": "Book"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding belonging",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Recognizes which option represents the idea of belonging to a group.",
+      "alignmentRationale": "This task tests the understanding of the abstract concept of belonging by distinguishing it from unrelated objects."
+    },
+    {
+      "id": "5fecb421-e882-4ae1-8a6a-55734d09cf4c",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If a cat is to meow, what does a dog do?",
+      "rubric": [
+        "3 - Correctly identifies that a dog barks.",
+        "2 - Mentions another noise like 'growl' or 'whine' but not 'bark'.",
+        "1 - Chooses 'meow', confusing the animals' sounds.",
+        "0 - Any unrelated or incorrect noise."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Barks"
+        },
+        {
+          "key": "b",
+          "text": "Meows"
+        },
+        {
+          "key": "c",
+          "text": "Roars"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing animal sounds",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies the expected sound of a dog as related to the cat's sound.",
+      "alignmentRationale": "This task tests understanding of the relationship between different animals' sounds, an abstract concept."
+    },
+    {
+      "id": "ff5d545e-052d-4ab5-9b0a-bfab5f3a54eb",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Share an example of being nice to someone.",
+      "rubric": [
+        "3 - Provides a specific example showing kindness.",
+        "2 - States an action but lacks concrete details.",
+        "1 - Talks about nice behavior without clarity.",
+        "0 - Any irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "describing kindness",
+      "targetEvidence": "Gives a concrete example of a kind action or behavior.",
+      "alignmentRationale": "This question tests understanding of the abstract concept of kindness through a specific example."
+    },
+    {
+      "id": "9d0fd9e8-1c1d-48c3-8a3f-7ad37f0f7a52",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Jumping, running, sleeping. Which one is a way to rest?",
+      "rubric": [
+        "3 - Correctly identifies 'sleeping' as resting.",
+        "2 - Chooses 'running' but misunderstands its purpose.",
+        "1 - Chooses 'jumping', not recognizing it is active.",
+        "0 - Any unrelated choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Jumping"
+        },
+        {
+          "key": "b",
+          "text": "Running"
+        },
+        {
+          "key": "c",
+          "text": "Sleeping"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "recognizing rest versus activity",
+      "optionScores": {
+        "a": 1,
+        "b": 2,
+        "c": 3
+      },
+      "targetEvidence": "Selects the option that represents an activity related to rest.",
+      "alignmentRationale": "This task assesses comprehension of the abstract concept of 'rest' by contrasting with active states."
+    },
+    {
+      "id": "8fd8956c-b494-4f12-ba58-931d33afcca4",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Tell me how sharing toys helps everyone have fun.",
+      "rubric": [
+        "3 - Clearly explains how sharing benefits all kids.",
+        "2 - Mentions sharing but without a full explanation.",
+        "1 - Talks about toys but doesn’t relate it to fun.",
+        "0 - Any irrelevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "explaining sharing",
+      "targetEvidence": "Provides an explanation of sharing in relation to having fun.",
+      "alignmentRationale": "This question evaluates comprehension of the abstract idea—sharing—in a social context."
+    },
+    {
+      "id": "7e6da500-5cb5-4119-9e78-c781ef73120f",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which is an example of belonging? 🌈",
+      "rubric": [
+        "3 - It shows being part of a group or community, like friends or family.",
+        "2 - It hints at connection but may not show strong belonging.",
+        "1 - It loosely relates to the idea of belonging but lacks clarity.",
+        "0 - It does not show belonging at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Playing alone."
+        },
+        {
+          "key": "b",
+          "text": "Being with friends."
+        },
+        {
+          "key": "c",
+          "text": "Sitting away from others."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "recognize a sense of belonging",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "identifies a situation or example that indicates belonging",
+      "alignmentRationale": "This tests whether a child can understand and illustrate the concept of belonging through examples."
+    },
+    {
+      "id": "e9951572-8589-408b-b456-c9a2a55cdf44",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Tell me about a time you shared something.",
+      "rubric": [
+        "3 - Provides a clear example of sharing with details about the event.",
+        "2 - Shares a relevant experience but lacks some details.",
+        "1 - Mentions sharing without a specific example.",
+        "0 - Does not answer or relates to something else."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "express an example of sharing",
+      "targetEvidence": "shares a personal experience related to sharing",
+      "alignmentRationale": "This encourages the child to apply the concept of sharing in a personal context."
+    },
+    {
+      "id": "a0351e39-0a13-4cb2-b4ef-da9feccfddc6",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If a friend is sad, what should you do? 💔",
+      "rubric": [
+        "3 - It suggests a helpful and kind action towards the friend.",
+        "2 - It suggests a neutral action that might help a little.",
+        "1 - It suggests an action that doesn't respond to a friend’s sadness.",
+        "0 - It gives an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Walk away."
+        },
+        {
+          "key": "b",
+          "text": "Ask them what’s wrong."
+        },
+        {
+          "key": "c",
+          "text": "Ignore them."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "identify helpful response to a feeling",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects a caring action to help a friend in need",
+      "alignmentRationale": "This tests understanding of how to respond to others' emotions in a caring way."
+    },
+    {
+      "id": "7df360a3-491b-493a-8a04-907c386ba665",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which is a good way to include someone? 🎈",
+      "rubric": [
+        "3 - It clearly shows an action to help someone feel included.",
+        "2 - It shows a nice action that might include them a little.",
+        "1 - It mentions something unrelated to inclusion.",
+        "0 - It does not relate to including someone."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Telling jokes alone."
+        },
+        {
+          "key": "b",
+          "text": "Leaving them out."
+        },
+        {
+          "key": "c",
+          "text": "Inviting them to play."
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "identify an action of inclusion",
+      "optionScores": {
+        "a": 0,
+        "b": 0,
+        "c": 3
+      },
+      "targetEvidence": "chooses an option that helps include someone else",
+      "alignmentRationale": "This examines the understanding of actions that foster inclusivity."
+    },
+    {
+      "id": "bdfd682e-b551-4489-b4f8-76f47cb77238",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What is a kind thing to do when someone achieves something?",
+      "rubric": [
+        "3 - Tell them they did a great job!",
+        "2 - Ignore them.",
+        "1 - Think they did okay but not say anything.",
+        "0 - Say something mean."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Tell them they did a great job!"
+        },
+        {
+          "key": "b",
+          "text": "Ignore them."
+        },
+        {
+          "key": "c",
+          "text": "Think they did okay."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "encouraging others",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "selecting a response that encourages positive behavior",
+      "alignmentRationale": "Tests the understanding of encouragement as an abstract concept through a specific action."
+    },
+    {
+      "id": "050557c3-9f0b-4b43-8f1f-ae933b80b811",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What does it mean to be part of a team?",
+      "rubric": [
+        "3 - Talks about working together, helping each other.",
+        "2 - Mentions being there but not much else.",
+        "1 - Says it’s just being together with no details.",
+        "0 - Does not know what it means."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "defining teamwork",
+      "targetEvidence": "relating teamwork to cooperative actions",
+      "alignmentRationale": "Evaluates understanding of teamwork as an abstract concept through personal interpretation."
+    },
+    {
+      "id": "791de16e-22ba-4e48-81e4-dfe9a9ab9d7d",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which of these shows how to be fair?",
+      "rubric": [
+        "3 - Everyone gets the same amount in a game.",
+        "2 - One person gets more than others.",
+        "1 - Sharing but not equally.",
+        "0 - Not sharing at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Everyone gets the same amount."
+        },
+        {
+          "key": "b",
+          "text": "One person gets more."
+        },
+        {
+          "key": "c",
+          "text": "Some sharing, not equal."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing fairness",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "identifying fair actions in a given situation",
+      "alignmentRationale": "Tests recognition of fairness as an abstract idea applied to a game scenario."
+    },
+    {
+      "id": "53b59dbf-ab8c-455b-a96e-4a89cd0a5a92",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which example shows sharing?",
+      "rubric": [
+        "3 - Giving something to others so they have it too.",
+        "2 - Keeping it all for yourself and not letting anyone have it.",
+        "1 - Sometimes sharing and sometimes not sharing.",
+        "0 - Not understanding what sharing is."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Giving something to others."
+        },
+        {
+          "key": "b",
+          "text": "Keeping it for yourself."
+        },
+        {
+          "key": "c",
+          "text": "Sometimes sharing."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing sharing",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "identifying practical scenarios showing sharing",
+      "alignmentRationale": "Evaluates the understanding of sharing as an abstract idea in practical terms."
+    },
+    {
+      "id": "e42f685c-076f-4b83-b716-e14c21b04f33",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Can you think of a time when you helped a friend? What happened?",
+      "rubric": [
+        "3 - Shares a specific story about helping a friend.",
+        "2 - Mentions helping but no details given.",
+        "1 - Says they helped but not when or how.",
+        "0 - No answer or unclear."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "recalling helping actions",
+      "targetEvidence": "offering a specific example of helping",
+      "alignmentRationale": "Examines the ability to connect personal experience to the abstract principle of friendship and helping."
+    },
+    {
+      "id": "36312ebd-c3e7-419f-9a81-470695686321",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which action is kind when someone gets hurt?",
+      "rubric": [
+        "3 - Choosing to help them feel better.",
+        "2 - Saying kind words to them.",
+        "1 - Noticing they are hurt but doing nothing.",
+        "0 - Ignoring them completely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help them feel better."
+        },
+        {
+          "key": "b",
+          "text": "Say kind words."
+        },
+        {
+          "key": "c",
+          "text": "Do nothing."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing a kind action",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "picking a helpful action towards someone in need",
+      "alignmentRationale": "Tests the ability to recognize and apply the abstract concept of kindness through action."
+    },
+    {
+      "id": "74bbb89d-0369-4ede-a10a-382d6921b6c7",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Explain what it feels like to be included in a game.",
+      "rubric": [
+        "3 - Describes feelings of happiness and belonging.",
+        "2 - Mentions feeling good but not why.",
+        "1 - Says it feels okay but gives no details.",
+        "0 - Does not describe feelings."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "expressing feelings about inclusion",
+      "targetEvidence": "articulating emotions related to being included",
+      "alignmentRationale": "Assesses the child’s ability to express feelings connected to the abstract concept of belonging."
+    },
+    {
+      "id": "95c6c546-04e9-43b5-adb6-f923059417d5",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What does it mean to share? Think of these options.",
+      "rubric": [
+        "3 - Sharing means giving some of what you have to others.",
+        "2 - Sharing is letting someone borrow something.",
+        "1 - Sharing is forgetting about others.",
+        "0 - No idea about sharing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Giving part of your candy to a friend."
+        },
+        {
+          "key": "b",
+          "text": "Hiding candy from everyone."
+        },
+        {
+          "key": "c",
+          "text": "Keeping all your toys to yourself."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for sharing",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "Knows the meaning of sharing in social contexts.",
+      "alignmentRationale": "This question tests understanding the abstract idea of sharing and its application."
+    },
+    {
+      "id": "4e4dffc6-50ed-47b2-8c22-b5d911f2e732",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What does it mean to be part of a group?",
+      "rubric": [
+        "3 - Describes feelings of being accepted or included in a group.",
+        "2 - Gives one example of being with a group or an activity.",
+        "1 - Gives a vague idea of being in a group.",
+        "0 - No response or unclear answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word for belonging",
+      "targetEvidence": "Expresses a concept of belonging in social settings.",
+      "alignmentRationale": "This task evaluates the child's understanding of belonging in a group context."
+    },
+    {
+      "id": "1e7837dc-a3de-4f79-9de7-41d71c966d00",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If you see someone alone, what can you do?",
+      "rubric": [
+        "3 - Invite them to join your game, showing kindness.",
+        "2 - Smile at them, helping them feel better.",
+        "1 - Ignore them completely.",
+        "0 - Do nothing or no idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Invite them to join your game."
+        },
+        {
+          "key": "b",
+          "text": "Just smile at them."
+        },
+        {
+          "key": "c",
+          "text": "Walk away without saying anything."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for kindness",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Identifies an empathetic action appropriate to a social scenario.",
+      "alignmentRationale": "This item judges the child's understanding of kindness through offered actions."
+    },
+    {
+      "id": "9ca79b82-432c-4a79-be79-fe00b0e02872",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If a friend feels sad, what should you do?",
+      "rubric": [
+        "3 - Ask how to help them feel better.",
+        "2 - Let them be sad for a while.",
+        "1 - Ignore them.",
+        "0 - No answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask how to help them feel better."
+        },
+        {
+          "key": "b",
+          "text": "I don't know what to do."
+        },
+        {
+          "key": "c",
+          "text": "Just walk away."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for support",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Recognizes appropriate support for a friend in need.",
+      "alignmentRationale": "This task tests understanding of a supportive action in a social context."
+    },
+    {
+      "id": "32392ca4-8112-4174-8eec-bc5d1bf12e57",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which example shows fairness? You play a game where everyone gets 3 turns.",
+      "rubric": [
+        "3 - All players have equal turns, showing fairness.",
+        "2 - Most players have turns, but not the same amount.",
+        "1 - Some players didn’t get turns at all.",
+        "0 - Fairness is not shown. No idea given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Everyone gets 3 turns."
+        },
+        {
+          "key": "b",
+          "text": "One player gets 5 turns."
+        },
+        {
+          "key": "c",
+          "text": "Only two players play."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for fairness",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies a clear example of fairness between players.",
+      "alignmentRationale": "This task requires the child to understand and select an example of fairness."
+    },
+    {
+      "id": "710514fa-1953-4100-872c-77e3332efff9",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which of these is a group that belongs together?",
+      "rubric": [
+        "3 - Correctly identifies all items in a shared group.",
+        "2 - Identifies some items that belong, missing others.",
+        "1 - Shows some understanding of the group but gets most wrong.",
+        "0 - Does not understand the grouping."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Dog, cat, car"
+        },
+        {
+          "key": "b",
+          "text": "Dog, cat, rabbit"
+        },
+        {
+          "key": "c",
+          "text": "Shoe, hat, dog"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a category",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "child recognizes items that share a common category",
+      "alignmentRationale": "This task assesses categorization skills by having the child identify a group of related items."
+    },
+    {
+      "id": "9a7f93de-9922-4345-82ad-c791d973432d",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If someone includes you in a game, how does that make you feel?",
+      "rubric": [
+        "3 - Clearly connects inclusion to positive feelings.",
+        "2 - Identifies a feeling but lacks link to inclusion.",
+        "1 - Names a feeling without connection to game inclusion.",
+        "0 - No response or irrelevant feeling mentioned."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Sad"
+        },
+        {
+          "key": "b",
+          "text": "Happy"
+        },
+        {
+          "key": "c",
+          "text": "Angry"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "child connects inclusion with positive emotions",
+      "alignmentRationale": "This question assesses the emotional understanding related to social inclusion."
+    },
+    {
+      "id": "334d99cb-8204-4dd6-9074-d7ca6dc48a23",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What does it mean to be kind?",
+      "rubric": [
+        "3 - Treating others nicely.",
+        "2 - Sometimes being nice.",
+        "1 - It doesn’t matter how you treat them.",
+        "0 - Not knowing what kind means."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Treating others nicely."
+        },
+        {
+          "key": "b",
+          "text": "Sometimes being nice."
+        },
+        {
+          "key": "c",
+          "text": "It doesn’t matter."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding kindness",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "articulating an understanding of kindness",
+      "alignmentRationale": "Tests the ability to explain kindness as an abstract concept through an action or behavior."
+    },
+    {
+      "id": "a4b2d5ac-44a6-4085-98fa-b38e38acec1a",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Can you tell me about a time you helped someone? What happened?",
+      "rubric": [
+        "3 - Clear story about helping and how it felt.",
+        "2 - Mention of helping but less detail about feelings.",
+        "1 - Vague or unclear helping instance.",
+        "0 - No helping mentioned."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word for support",
+      "targetEvidence": "Shares an experience directly related to the concept of helping others.",
+      "alignmentRationale": "This task looks at the ability to relate a personal experience involving helping."
+    },
+    {
+      "id": "f484ef71-29b8-4700-aa44-803fda7ee1f7",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What makes a fun game with friends?",
+      "rubric": [
+        "3 - Everyone shares ideas and helps each other.",
+        "2 - Just following the rules is fun.",
+        "1 - Nothing is fun without winning.",
+        "0 - Doesn't explain what makes it fun."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Everyone shares ideas and helps each other."
+        },
+        {
+          "key": "b",
+          "text": "Just listening to instructions."
+        },
+        {
+          "key": "c",
+          "text": "It's not fun at all."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for fun",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies contributing factors that enhance group activities.",
+      "alignmentRationale": "Assesses the understanding of collaboration and its impact on enjoyment."
+    },
+    {
+      "id": "917f8726-20f4-4c41-ad64-a7160afd972c",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which action helps everyone in a group project?",
+      "rubric": [
+        "3 - Helping someone who is stuck is very helpful.",
+        "2 - Listening to others, but not helping.",
+        "1 - Not paying attention to the group.",
+        "0 - No helpful actions described."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Helping someone who is stuck."
+        },
+        {
+          "key": "b",
+          "text": "Just standing by and doing nothing."
+        },
+        {
+          "key": "c",
+          "text": "Listening without speaking up."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for teamwork",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "Understands and identifies a helpful action in a team setting.",
+      "alignmentRationale": "Tests the child's comprehension of teamwork through a specific action."
+    },
+    {
+      "id": "abb92d07-260f-4f64-94e8-0eb9d723072f",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which action shows belonging in a group activity?",
+      "rubric": [
+        "3 - Correctly identifies an action that demonstrates belonging.",
+        "2 - Identifies an action but isn’t clearly about belonging.",
+        "1 - Some understanding of group actions but misses the point.",
+        "0 - No connection identified."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Helping each other"
+        },
+        {
+          "key": "b",
+          "text": "Sitting quietly"
+        },
+        {
+          "key": "c",
+          "text": "Reading alone"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for belonging",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "child recognizes actions that relate to belonging",
+      "alignmentRationale": "This task assesses understanding of the abstract concept of belonging through a specific action."
+    },
+    {
+      "id": "67044ca3-23f6-47f9-ae87-d5f2ee8754c5",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Tell me how you would treat someone who is sad.",
+      "rubric": [
+        "3 - Describes a specific action to help a sad person.",
+        "2 - Gives a general idea but lacks clarity or detail.",
+        "1 - Vague response lacking a clear action.",
+        "0 - No response or irrelevant explanation."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "explain kindness",
+      "targetEvidence": "child describes an action demonstrating kindness towards someone sad",
+      "alignmentRationale": "This task assesses the ability to apply the concept of kindness in a concrete situation without relying on definitions."
+    },
+    {
+      "id": "ac14f2bf-ce21-4ab0-868e-279dd12af245",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If the rule is \"Helping others is kind,\" which action shows kindness?",
+      "rubric": [
+        "3 - The answer clearly picks an action that reflects helping others.",
+        "2 - The answer suggests an action related to kindness but is not clearly helpful.",
+        "1 - The answer provides an irrelevant action.",
+        "0 - The answer fails to connect to the concept of kindness."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Helping a friend with homework"
+        },
+        {
+          "key": "b",
+          "text": "Playing alone"
+        },
+        {
+          "key": "c",
+          "text": "Telling a secret"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identifying kind actions",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "selects an action that exemplifies kindness through helping",
+      "alignmentRationale": "This question assesses the identification of concrete examples that align with the abstract concept of kindness."
+    },
+    {
+      "id": "dd792cf9-d98f-4479-ad90-cc218f43413d",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If the rule is \"All pets need care,\" which pet needs care?",
+      "rubric": [
+        "3 - The answer correctly identifies one pet that needs care, demonstrating understanding of the rule.",
+        "2 - The answer identifies a pet but does not fully understand the need for care.",
+        "1 - The answer is somewhat related but does not answer the question clearly.",
+        "0 - The answer does not relate to pets or care."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A dog"
+        },
+        {
+          "key": "b",
+          "text": "A toy"
+        },
+        {
+          "key": "c",
+          "text": "A rock"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "applying a rule",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "chooses a pet that embodies the concept of needing care",
+      "alignmentRationale": "This question tests the child’s ability to identify a concrete example that follows the abstract concept of needing care."
+    },
+    {
+      "id": "86948c26-c77c-4f34-a8e0-867e78206e09",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What does it mean to be a good friend? Can you give an example?",
+      "rubric": [
+        "3 - The answer provides a clear explanation of being a good friend with a relevant example.",
+        "2 - The answer explains being a good friend but lacks a strong example.",
+        "1 - The answer mentions friendship but is vague or unclear.",
+        "0 - The answer does not relate to friendship."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "explaining friendship",
+      "targetEvidence": "describes qualities of good friendship and provides an example",
+      "alignmentRationale": "This question assesses the understanding of abstract relationships related to friendship without relying on specific vocabulary."
+    },
+    {
+      "id": "03858202-266f-472c-bdda-e48f6c626f6b",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If the rule is \"All shapes with three sides are triangles,\" which of these is a triangle?",
+      "rubric": [
+        "3 - The answer correctly identifies a triangle based on the rule specified.",
+        "2 - The answer identifies a three-sided shape but may not be correct about it being a triangle.",
+        "1 - The answer suggests a shape but does not relate to three sides or triangles.",
+        "0 - The answer does not relate to shapes or triangles."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A square"
+        },
+        {
+          "key": "b",
+          "text": "A triangle"
+        },
+        {
+          "key": "c",
+          "text": "A circle"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "identifying properties of shapes",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "chooses a shape that is accurately recognized as a triangle based on its sides",
+      "alignmentRationale": "This question tests the child’s application of the rule regarding shapes by identifying a specific example."
+    },
+    {
+      "id": "16cad7bb-4bcb-4e25-bd23-4f57a6de25cd",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Can you think of a time when you helped someone? What was good about helping them?",
+      "rubric": [
+        "3 - The answer shares a meaningful experience of helping and discusses its benefits.",
+        "2 - The answer describes an experience but lacks depth about its impact.",
+        "1 - The answer is unclear about what happened or why it was good.",
+        "0 - The answer does not mention helping."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "explaining helping",
+      "targetEvidence": "describes a positive experience of helping someone",
+      "alignmentRationale": "This question explores the abstract idea of helping through a specific experience and assesses the ability to articulate its benefits."
+    },
+    {
+      "id": "4c1548da-93de-4806-86a9-5a66a8068b5d",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If the rule is \"Sharing makes people happy,\" which action makes people happy?",
+      "rubric": [
+        "3 - The answer selects an action that clearly demonstrates sharing leading to happiness.",
+        "2 - The answer identifies an action related to sharing, but not clearly linked to happiness.",
+        "1 - The answer suggests an action that is unrelated to sharing or happiness.",
+        "0 - The answer is incorrect or doesn't relate to the context."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Keeping a toy private"
+        },
+        {
+          "key": "b",
+          "text": "Ignoring a friend"
+        },
+        {
+          "key": "c",
+          "text": "Giving a toy to a friend"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "understanding sharing",
+      "optionScores": {
+        "a": 0,
+        "b": 0,
+        "c": 3
+      },
+      "targetEvidence": "chooses an action tied to the concept of sharing and happiness",
+      "alignmentRationale": "This question evaluates understanding of the emotional impact of sharing as an abstract concept."
+    },
+    {
+      "id": "a19abd1f-9f8f-4527-9df1-c375d5cfd5b1",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What do you think it means to be responsible? Can you tell me an example?",
+      "rubric": [
+        "3 - The answer gives a clear definition of responsibility and an example.",
+        "2 - The answer defines responsibility but lacks a clear example.",
+        "1 - The answer is vague and does not show understanding of responsibility.",
+        "0 - The answer does not relate to responsibility."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "explaining responsibility",
+      "targetEvidence": "describes the idea of responsibility with an example",
+      "alignmentRationale": "This question tests understanding of the concept of responsibility while allowing for a personal example."
+    },
+    {
+      "id": "45eff47c-7c3e-4df7-aa6b-fb5bf494567b",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If the rule is \"Good teammates listen to each other,\" which action shows listening?",
+      "rubric": [
+        "3 - The answer identifies an action that clearly demonstrates listening to teammates.",
+        "2 - The answer suggests an action related to listening but is vague.",
+        "1 - The answer is not related to the concept of listening.",
+        "0 - The answer fails to connect with teammates or listening."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Talking a lot in a group"
+        },
+        {
+          "key": "b",
+          "text": "Nodding while someone speaks"
+        },
+        {
+          "key": "c",
+          "text": "Ignoring a teammate"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "understanding listening",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "chooses an action that exemplifies listening in a team context",
+      "alignmentRationale": "This question evaluates recognition of a specific behavior that embodies the abstract idea of listening as a teammate."
+    },
+    {
+      "id": "ab7accb2-276c-44db-9bd6-17008df6b875",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If the rule is \"All fruits are sweet,\" which of these is a fruit?",
+      "rubric": [
+        "3 - Correctly identifies 'apple' as a fruit.",
+        "2 - Identifies 'banana' but misses 'apple.'",
+        "1 - Chooses 'carrot,' a vegetable.",
+        "0 - Provides a completely different answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "apple"
+        },
+        {
+          "key": "b",
+          "text": "carrot"
+        },
+        {
+          "key": "c",
+          "text": "banana"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing categories",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 2
+      },
+      "targetEvidence": "Identifies 'apple' as it fits the fruit category.",
+      "alignmentRationale": "This question tests the ability to recognize and apply the category of fruits."
+    },
+    {
+      "id": "f145c116-3f3b-4a28-bc39-f3f3d4dfc823",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which of these actions shows fairness?",
+      "rubric": [
+        "3 - Correctly selects 'sharing snacks equally.'",
+        "2 - Selects 'taking turns.' but misses 'sharing equally.'",
+        "1 - Chooses 'eating all snacks for themselves.'",
+        "0 - Provides a completely different answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "sharing snacks equally"
+        },
+        {
+          "key": "b",
+          "text": "taking turns"
+        },
+        {
+          "key": "c",
+          "text": "eating all snacks for themselves"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding fairness",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Identifies an example of fairness in action.",
+      "alignmentRationale": "This question evaluates understanding of the abstract concept of fairness through practical examples."
+    },
+    {
+      "id": "1dd4f8df-88d9-4de1-91bc-5cc0eea01499",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What do you think it means to belong to a group? Can you give an example?",
+      "rubric": [
+        "3 - Provides a clear definition and personal example.",
+        "2 - Offers a definition but no example.",
+        "1 - Mentions belonging but doesn't explain.",
+        "0 - Does not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "explaining belonging",
+      "targetEvidence": "Describes the meaning of belonging and gives an example.",
+      "alignmentRationale": "This task evaluates the understanding of the abstract concept of belonging."
+    },
+    {
+      "id": "9c47c5da-761e-4d13-bd7d-0349c083a098",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If the rule is 'Good friends help each other,' which action shows this?",
+      "rubric": [
+        "3 - Correctly identifies 'helping with homework.'",
+        "2 - Chooses 'playing together.' but misses helping.",
+        "1 - Selects 'ignoring a friend.'",
+        "0 - Gives a completely different answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "helping with homework"
+        },
+        {
+          "key": "b",
+          "text": "playing together"
+        },
+        {
+          "key": "c",
+          "text": "ignoring a friend"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing supportive actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Identifies an action that aligns with supporting friends.",
+      "alignmentRationale": "This question assesses understanding of the abstract concept of support in friendships."
+    },
+    {
+      "id": "112c82f3-2ebb-4833-acf4-a18ccb698493",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Why is it important to be kind to others? Can you share a reason?",
+      "rubric": [
+        "3 - Provides a thoughtful reason and explanation.",
+        "2 - Gives a reason but lacks detail.",
+        "1 - Mentions kindness without explanation.",
+        "0 - Does not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "explaining kindness",
+      "targetEvidence": "Describes why kindness matters in relationships.",
+      "alignmentRationale": "This question evaluates the understanding of kindness as an abstract concept."
+    },
+    {
+      "id": "6d825a60-9d4d-4252-b3df-55a9aa735938",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Think about a time when you learned something new. What did you learn?",
+      "rubric": [
+        "3 - Shares a specific example and what was learned.",
+        "2 - States 'I learned something,' but no example.",
+        "1 - Gives a vague answer about learning.",
+        "0 - Does not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "describing learning experiences",
+      "targetEvidence": "Describes a significant learning experience with details.",
+      "alignmentRationale": "This task evaluates understanding of learning as an abstract concept."
+    },
+    {
+      "id": "ff28857a-edb9-4045-a1a6-c56bc38dfb60",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Tell me a time when it was kind to share your toys with someone. What happened?",
+      "rubric": [
+        "3 - Provides a clear, detailed example of sharing.",
+        "2 - Gives a brief example but lacks details.",
+        "1 - Mentions sharing but no example.",
+        "0 - Doesn't answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "explaining kindness",
+      "targetEvidence": "Describes a concrete instance of kindness through sharing toys.",
+      "alignmentRationale": "This task assesses explaining the abstract concept of kindness using personal experience."
+    },
+    {
+      "id": "dad97229-b20e-45ce-baf4-4609aeccbe40",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "Which action best represents being responsible?",
+      "rubric": [
+        "3 - Correctly selects 'cleaning up after play.'",
+        "2 - Selects 'helping others' but isn't responsibility.",
+        "1 - Chooses 'not caring for things.'",
+        "0 - Provides a completely different answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "cleaning up after play"
+        },
+        {
+          "key": "b",
+          "text": "helping others"
+        },
+        {
+          "key": "c",
+          "text": "not caring for things"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing responsibility",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Identifies an action that corresponds with being responsible.",
+      "alignmentRationale": "This question tests understanding of responsibility as an abstract concept."
+    },
+    {
+      "id": "66a15083-862b-4956-99ed-1174377d114a",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "What do you think it means to be a good neighbor? Can you give an example?",
+      "rubric": [
+        "3 - Provides a clear example of a good neighbor.",
+        "2 - Gives an idea but lacks a clear example.",
+        "1 - Mentions neighbors without a clear idea.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "conceptualizing good relationships in the community",
+      "targetEvidence": "articulate a description of what it means to be a good neighbor",
+      "alignmentRationale": "This task evaluates understanding of community relationships."
+    },
+    {
+      "id": "92e0027b-96c7-4251-8798-6a88cc969a54",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If the rule is \"People who are helpful are kind,\" which action shows helpfulness?",
+      "rubric": [
+        "3 - Correctly identifies a helpful action.",
+        "2 - Identifies a helpful action and includes a non-helpful action.",
+        "1 - Incorrectly identifies a non-helpful action only.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Helping a person carry their bags"
+        },
+        {
+          "key": "b",
+          "text": "Ignoring someone who needs help"
+        },
+        {
+          "key": "c",
+          "text": "Taking someone’s snack"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding kindness through helpful acts",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "chooses an action that embodies helpfulness",
+      "alignmentRationale": "This task tests understanding of kindness relating to helpful actions."
+    },
+    {
+      "id": "58c2baa3-8c32-4c64-bf32-493d641dc211",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If the rule is \"Sharing food is nice,\" which action shows sharing food?",
+      "rubric": [
+        "3 - Correctly identifies sharing food.",
+        "2 - Identifies a non-sharing action but has a good option too.",
+        "1 - Chooses a completely unrelated action.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Eating alone"
+        },
+        {
+          "key": "b",
+          "text": "Giving some food to a friend"
+        },
+        {
+          "key": "c",
+          "text": "Throwing food away"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "recognizing sharing in context",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects an appropriate sharing food example",
+      "alignmentRationale": "This task focuses on understanding sharing as an abstract concept."
+    },
+    {
+      "id": "18182821-36b1-4715-952e-3c9f46274481",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "abstract_concepts",
+      "format": "explanation",
+      "prompt": "If the rule is \"All types of fruits grow on trees,\" which of these is a fruit?",
+      "rubric": [
+        "3 - Correctly identifies a fruit that grows on trees.",
+        "2 - Identifies some correct fruits but also includes non-fruits.",
+        "1 - Incorrectly identifies a non-fruit.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Carrot"
+        },
+        {
+          "key": "b",
+          "text": "Apple"
+        },
+        {
+          "key": "c",
+          "text": "Potato"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "recognizing types of categories",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "chooses an appropriate fruit from a selection",
+      "alignmentRationale": "This task checks understanding of categories in relation to examples."
+    }
+  ]
+}

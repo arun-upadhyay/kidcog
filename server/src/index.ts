@@ -4,7 +4,8 @@ import cors from 'cors';
 import { z } from 'zod';
 
 import { publicQuestion, generatedQuestionById, rememberGeneratedQuestion } from './generatedQuestions.js';
-import { bankStatus, prefetchForChild, roundForChild } from './questionBank.js';
+import { bankStatus, prefetchForChild, retireQuestion, roundForChild, seedFromFiles } from './questionBank.js';
+import { questionSource } from './questionFiles.js';
 import { clampLevel, defaultLevel, gameShare, makeGames } from './games.js';
 import type { GeneratedQuestion } from './generatedQuestions.js';
 import { TRAITS, TRAIT_ORDER, type TraitKey } from './traits.js';
@@ -17,7 +18,7 @@ import type { PublicQuestion, TestPayload } from './types.js';
 import { supabaseReady, userIdFromBearer } from './supabase.js';
 import { isAccountDeleted, scheduleAccountDeletion, startPurgeSchedule, PURGE_AFTER_DAYS } from './accountDeletion.js';
 import { storeAppleAuthorizationCode } from './appleSignIn.js';
-import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, updateChildAvatar, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, saveGeneratedQuestions, saveParentReport, saveReport } from './repository.js';
+import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, updateChildAvatar, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, saveContentReport, saveGeneratedQuestions, saveParentReport, saveReport } from './repository.js';
 import type { Report } from './types.js';
 
 type AuthRequest = Request & { parentId?: string };
@@ -197,7 +198,7 @@ app.post('/api/test', requireParent, async (req: AuthRequest, res: Response) => 
         const began = Date.now();
         const sessionId = await getOrCreateSession(req.parentId!, childProfileId, age, requestedSessionId);
         // Games (made by code, instantly) plus, for most categories, questions
-        // from the AI-written bank. Maths is all games: no AI at all.
+        // from the reviewed question files (server/questions). Maths is all games.
         const games = makeGames(trait, age, clampLevel(level ?? defaultLevel(age)), gameShare(trait, count));
         const fromBank = games.length < count
           ? await roundForChild({ parentId: req.parentId!, childId: childProfileId, age, trait, count: count - games.length })
@@ -358,6 +359,60 @@ const SubmissionSchema = z.object({
 /** Written notes still being prepared, by session, so the app can wait for them. */
 const pendingReports = new Map<string, { parentId: string; work: Promise<Report> }>();
 
+/**
+ * A parent reports AI-made content: a question, or the written note. Google
+ * Play requires this for apps that generate content with AI. A reported bank
+ * question is retired at once, so no other child is given it; every report is
+ * kept in content_reports for review.
+ */
+const ReportBody = z.object({
+  kind: z.enum(['question', 'note']),
+  sessionId: z.string().uuid(),
+  questionId: z.string().min(1).max(100).optional(),
+  reason: z.enum(['inappropriate', 'wrong', 'confusing', 'other']),
+  details: z.string().trim().max(500).optional(),
+}).strict();
+
+app.post('/api/reports', requireParent, async (req: AuthRequest, res: Response) => {
+  const parsed = ReportBody.safeParse(req.body);
+  if (!parsed.success || (parsed.data.kind === 'question' && !parsed.data.questionId)) { res.status(400).json({ error: 'That report could not be read.' }); return; }
+  const { kind, sessionId, questionId, reason, details } = parsed.data;
+  const parentId = req.parentId!;
+  try {
+    let content = '';
+    let bankQuestionId: string | null = null;
+    if (kind === 'question') {
+      const [saved] = await loadGeneratedQuestions(parentId, sessionId, [questionId!]).catch(() => [] as GeneratedQuestion[]);
+      const question = saved ?? generatedQuestionById(questionId!);
+      if (!question) { res.status(404).json({ error: 'That question could not be found.' }); return; }
+      content = question.prompt;
+      bankQuestionId = question.bankQuestionId ?? null;
+    } else {
+      const pending = pendingReports.get(sessionId);
+      const note = pending && pending.parentId === parentId ? (await pending.work).parentReport : (await historicalAssessment(parentId, sessionId))?.report.parentReport;
+      if (!note) { res.status(404).json({ error: 'That note could not be found.' }); return; }
+      content = [note.opening, ...note.strengths, ...note.stuckPoints, note.thinkingNotes, ...note.practiceIdeas, note.closing].filter(Boolean).join('\n');
+    }
+
+    let removed = false;
+    if (bankQuestionId) {
+      try { await retireQuestion(bankQuestionId); removed = true; }
+      catch (err) { console.warn('  ⚠ Could not retire a reported question:', err instanceof Error ? err.message : err); }
+    }
+    try {
+      await saveContentReport({ parentId, sessionId, kind, questionId: questionId ?? null, bankQuestionId, content, reason, details: details || null });
+    } catch (err) {
+      // Before the migration is run the report still reaches the logs.
+      console.warn('  ⚠ Content report not saved (run supabase/migrations/202609300001_content_reports.sql):', err instanceof Error ? err.message : err);
+      console.warn('    REPORT', JSON.stringify({ kind, sessionId, questionId, bankQuestionId, reason, details, content: content.slice(0, 300) }));
+    }
+    console.log(`[report] ${kind} ${reason}${removed ? ' — question retired from the bank' : ''}`);
+    res.json({ ok: true, removed });
+  } catch (err) {
+    res.status(500).json({ error: 'Could not send the report. Please try again.', detail: err instanceof Error ? err.message : String(err) });
+  }
+});
+
 app.get('/api/sessions/:sessionId/parent-report', requireParent, async (req: AuthRequest, res: Response) => {
   const parsed = z.string().uuid().safeParse(req.params.sessionId);
   if (!parsed.success) { res.status(400).json({ error: 'Invalid assessment session.' }); return; }
@@ -429,6 +484,11 @@ const port = Number(process.env.PORT || 4000);
 app.listen(port, () => {
   console.log(`KidCog API listening on http://localhost:${port}`);
   startPurgeSchedule();
+  if (questionSource() === 'files') {
+    void seedFromFiles().catch(error => console.warn(`  ⚠ Could not load the reviewed questions into the bank yet: ${error instanceof Error ? error.message : error}`));
+  } else {
+    console.log('  Questions: written by AI (no reviewed files in server/questions yet, or QUESTION_SOURCE=ai).');
+  }
 
 
   const problem = apiKeyProblem();

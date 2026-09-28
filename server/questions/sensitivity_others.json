@@ -1,0 +1,2705 @@
+{
+  "category": "sensitivity_others",
+  "questions": [
+    {
+      "id": "99430ab4-dbe4-452d-a378-d406e5efad86",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If a friend seems scared at the playground, what can you do?",
+      "rubric": [
+        "3 - You suggest standing with them and playing nearby.",
+        "2 - You offer to go up the slide together.",
+        "1 - You say it’s okay, but don’t offer help.",
+        "0 - No helpful suggestion is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Let’s stay together on the ground."
+        },
+        {
+          "key": "b",
+          "text": "Just try it, it’s fun!"
+        },
+        {
+          "key": "c",
+          "text": "Look at how fun it is!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing a friend's fears",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "suggests a supportive action to ease the friend's fear.",
+      "alignmentRationale": "This tests the child's ability to notice a friend's emotional state and respond with reassurance."
+    },
+    {
+      "id": "ea06e5e3-c6bd-4db0-9411-81b8d13137e3",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your sibling looks tired after playing. What could you do?",
+      "rubric": [
+        "3 - You suggest a calming activity like a book or resting.",
+        "2 - Your suggestion helps a little but isn’t as restful.",
+        "1 - You suggest something active when they need rest.",
+        "0 - No helpful idea is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Let’s read a book together."
+        },
+        {
+          "key": "b",
+          "text": "Let’s play a game!"
+        },
+        {
+          "key": "c",
+          "text": "Do you want a snack?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing a sibling's needs",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "suggests a calming response to the sibling's tiredness.",
+      "alignmentRationale": "This prompts the child to notice a sibling's physical emotional state and respond appropriately."
+    },
+    {
+      "id": "755aff2e-d98f-4e12-bc52-dc20bf9e162c",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your friend is sitting quietly. What could you ask them?",
+      "rubric": [
+        "3 - You suggest a fun question to make them smile or talk.",
+        "2 - You suggest a question, but it doesn’t invite conversation.",
+        "1 - You say something that doesn’t help.",
+        "0 - No helpful question is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why are you quiet?"
+        },
+        {
+          "key": "b",
+          "text": "Do you want to play?"
+        },
+        {
+          "key": "c",
+          "text": "What’s wrong?"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "noticing a friend's mood",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "suggests a specific question that encourages interaction.",
+      "alignmentRationale": "This tests noticing a friend's mood and prompting a positive interaction."
+    },
+    {
+      "id": "0e798be3-39af-4e82-b04c-b9883b885a7d",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If a classmate is sitting alone during playtime, what could you do to include them?",
+      "rubric": [
+        "3 - You invite them to join your game.",
+        "2 - You wave at them to say hi.",
+        "1 - You don’t say anything helpful.",
+        "0 - No helpful action is suggested."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "considering inclusiveness",
+      "targetEvidence": "suggests a way to include someone in play.",
+      "alignmentRationale": "This assesses the child's ability to include others in group activities."
+    },
+    {
+      "id": "8b5fa9ed-0b6c-4945-8237-444505eae3f4",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "When you see someone upset because they lost their toy, what can you do to help them feel better?",
+      "rubric": [
+        "3 - You suggest looking for the toy together or chatting.",
+        "2 - You say you’re sorry that they lost it.",
+        "1 - You tell them it’s just a toy.",
+        "0 - No response is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing a friend's sadness",
+      "targetEvidence": "suggests a comforting action to ease sadness.",
+      "alignmentRationale": "This tests how well the child can comfort others who are sad."
+    },
+    {
+      "id": "7b58173d-dd5c-407d-a1d7-f3361ac6321a",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If a friend looks confused while playing a game, what could you say to help?",
+      "rubric": [
+        "3 - You offer to explain the game or help them play.",
+        "2 - You say they can ask you if they need.",
+        "1 - You tell them to just try it.",
+        "0 - No helpful suggestion is made."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing a friend's struggles",
+      "targetEvidence": "suggests a supportive way to help during confusion.",
+      "alignmentRationale": "This task evaluates the child's sensitivity to a friend's confusion."
+    },
+    {
+      "id": "8fcf189d-fd2a-4e83-b3bc-a29c29611fae",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If you see someone who looks lonely at the park, what could you do to help?",
+      "rubric": [
+        "3 - You suggest joining them to play or talk.",
+        "2 - You say you might invite them if you feel like it.",
+        "1 - You don’t say anything helpful.",
+        "0 - No response is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "considering a lonely person's feelings",
+      "targetEvidence": "suggests a way to engage and include someone.",
+      "alignmentRationale": "This item assesses the child's ability to recognize and respond to loneliness."
+    },
+    {
+      "id": "c954d48f-bb82-4af0-9423-1ec11046b7d2",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If a classmate is upset because they dropped their toy, what can you do?",
+      "rubric": [
+        "3 - You help them find another toy.",
+        "2 - You offer to share your toy.",
+        "1 - You just ignore them.",
+        "0 - You tell them to be careful next time."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "helping friends",
+      "targetEvidence": "Suggests a supportive action to assist a classmate.",
+      "alignmentRationale": "Measures the ability to provide social support in response to a peer's distress."
+    },
+    {
+      "id": "15214ebb-f533-4c8d-b920-77fa6e43c779",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If your friend is sad because they dropped their ice cream, what could you say?",
+      "rubric": [
+        "3 - You offer to help them get a new one.",
+        "2 - You say it's okay and share your ice cream.",
+        "1 - You ignore them.",
+        "0 - You laugh at them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "offering comfort",
+      "targetEvidence": "Suggests a kind action to help a friend who is upset.",
+      "alignmentRationale": "This measures empathy and the ability to support someone in distress."
+    },
+    {
+      "id": "684bd5e2-a806-4995-a94a-8e4f04f6d079",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your classmate is sitting alone at lunch. How might you include them?",
+      "rubric": [
+        "3 - You invite them to sit with you.",
+        "2 - You nod at them but don't speak.",
+        "1 - You just stay by yourself.",
+        "0 - You tell them to go away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "including others",
+      "targetEvidence": "Offers a suggestion to involve someone in a group.",
+      "alignmentRationale": "Tests sensitivity to others' feelings and promoting inclusion."
+    },
+    {
+      "id": "c0bc5e6d-34c0-480d-9289-df2b96ff4881",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If someone is upset about missing playing with others, what can you say?",
+      "rubric": [
+        "3 - You can say, \"Come and play with us!\"",
+        "2 - You just look at them quietly.",
+        "1 - You ignore them.",
+        "0 - You make fun of them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inviting inclusion",
+      "targetEvidence": "Generates a friendly invitation for someone who feels left out.",
+      "alignmentRationale": "This assesses the ability to extend friendship and inclusiveness towards others."
+    },
+    {
+      "id": "e406adda-7004-4e1e-b4c7-8163cb35a886",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If someone is upset because they lost their favorite toy, how can you help?",
+      "rubric": [
+        "3 - You can help them look for it together.",
+        "2 - You say you'll keep an eye out for it.",
+        "1 - You tell them they can get a new toy.",
+        "0 - You laugh about it."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help them look for it"
+        },
+        {
+          "key": "b",
+          "text": "Keep an eye out"
+        },
+        {
+          "key": "c",
+          "text": "Laugh about it"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "offering practical help",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "offers to assist in a search or comfort someone",
+      "alignmentRationale": "This task tests the ability to empathize and engage in practical help."
+    },
+    {
+      "id": "1aa07c36-5ce9-432c-bb9e-dc37df6aae47",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your friend forgot their toy at home and looks sad. What can you do?",
+      "rubric": [
+        "3 - You can share your toy with them so they feel happy.",
+        "2 - You say it's okay and try to make them smile.",
+        "1 - You tell them not to worry. It's just a toy.",
+        "0 - You ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Share your toy"
+        },
+        {
+          "key": "b",
+          "text": "Say it's okay"
+        },
+        {
+          "key": "c",
+          "text": "Ignore them"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing another person's need",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "suggests sharing or comforting actions based on the situation",
+      "alignmentRationale": "This task focuses on identifying a friend's sadness and suggesting a thoughtful response."
+    },
+    {
+      "id": "f1169451-5568-4201-9c6d-077ee40162de",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "A classmate is trying to build a block tower, but it keeps falling down. What could you do to help?",
+      "rubric": [
+        "3 - You ask if you can help them build it together.",
+        "2 - You say you're sorry it's falling down.",
+        "1 - You leave them alone because they seem busy.",
+        "0 - You laugh at their tower."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help them build"
+        },
+        {
+          "key": "b",
+          "text": "Say sorry"
+        },
+        {
+          "key": "c",
+          "text": "Leave them alone"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "offering practical help",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "suggests a way to help with a hands-on task",
+      "alignmentRationale": "This task tests the ability to identify a practical need and offer help."
+    },
+    {
+      "id": "12ec900b-5e95-4a2a-ac97-a71dac311c6f",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your friend looks like they need help. What could you do to make them feel better?",
+      "rubric": [
+        "3 - You offer help or ask how they are.",
+        "2 - You say something nice.",
+        "1 - You ignore them.",
+        "0 - No response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing another person's need",
+      "targetEvidence": "provides thoughtful suggestions to help a friend",
+      "alignmentRationale": "This open task encourages the child to think of a personalized response that shows awareness of a friend's feelings."
+    },
+    {
+      "id": "c1b7594b-de9c-4d47-9608-ee369cf3b30b",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If you see someone looking anxious about a game, what should you do?",
+      "rubric": [
+        "3 - You can ask if they want to play together.",
+        "2 - You say it’s okay to be nervous.",
+        "1 - You tell them to just try.",
+        "0 - You ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask to play together"
+        },
+        {
+          "key": "b",
+          "text": "Say it's okay"
+        },
+        {
+          "key": "c",
+          "text": "Ignore them"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing another person's need",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "identifies a positive action to comfort someone anxious",
+      "alignmentRationale": "This task tests empathy and the ability to suggest a supportive action."
+    },
+    {
+      "id": "5b12bfbe-c4a5-40cc-8128-16eaa32ad0d5",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your sibling looks bored and upset. What might you do to help them have fun?",
+      "rubric": [
+        "3 - You suggest a game or activity to do together.",
+        "2 - You try to cheer them up with a joke.",
+        "1 - You leave them alone.",
+        "0 - No response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "offering practical help",
+      "targetEvidence": "provides suggestions for activities to help a sibling",
+      "alignmentRationale": "This encourages thoughtfulness about helping a sibling find joy."
+    },
+    {
+      "id": "36fa1f87-8d99-4d9a-a000-c3246165242d",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "A friend is trying to finish a puzzle and looks frustrated. What can you do?",
+      "rubric": [
+        "3 - You can offer to help them with the puzzle.",
+        "2 - You tell them not to give up.",
+        "1 - You say it's too hard.",
+        "0 - You walk away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Offer to help them"
+        },
+        {
+          "key": "b",
+          "text": "Tell them not to give up"
+        },
+        {
+          "key": "c",
+          "text": "Say it's too hard"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "offering practical help",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "suggests a supportive action to assist in solving a puzzle",
+      "alignmentRationale": "This tests the child’s ability to recognize a need for support and offer help."
+    },
+    {
+      "id": "62cad458-0e4f-49b5-ad18-4fffc1831343",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your classmate wants to play, but everyone is busy. What other ways could you invite them to play?",
+      "rubric": [
+        "3 - You suggest an activity that you can both do.",
+        "2 - You ask if they want to wait for others.",
+        "1 - You say nothing.",
+        "0 - You tell them to just leave."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing another person's need",
+      "targetEvidence": "proposes ways to engage with a classmate who feels left out",
+      "alignmentRationale": "This opens up thinking for social connection and inclusion."
+    },
+    {
+      "id": "06607cd8-aeba-4137-8be3-60c3b3879392",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your friend looks sad because no one is playing with them. What could you do?",
+      "rubric": [
+        "3 - You could say, 'Come play with us!' and invite them to join.",
+        "2 - You might go over and talk to them gently.",
+        "1 - You could wave to them from far away.",
+        "0 - You can ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Invite them to play"
+        },
+        {
+          "key": "b",
+          "text": "Talk to them gently"
+        },
+        {
+          "key": "c",
+          "text": "Wave from afar"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing feelings",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies a helpful way to include the friend.",
+      "alignmentRationale": "This question tests the ability to recognize a friend’s feelings and respond in a caring way."
+    },
+    {
+      "id": "36c0bfbd-e430-440c-a7ea-8cc644897784",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If someone looks tired from playing, what can you offer to help them?",
+      "rubric": [
+        "3 - You could invite them to take a rest.",
+        "2 - You could say they look lazy.",
+        "1 - You could ignore them.",
+        "0 - You could say to keep playing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing someone needs to rest",
+      "targetEvidence": "suggests a kind action for someone who looks tired",
+      "alignmentRationale": "This question evaluates recognizing signs of fatigue and suggesting rest."
+    },
+    {
+      "id": "787e13bf-c2de-40b3-a868-6da3ec471f70",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "What could you do if your friend is sad because it’s raining and they can’t play outside?",
+      "rubric": [
+        "3 - You could suggest a fun game inside.",
+        "2 - You could say it's going to rain forever.",
+        "1 - You could leave them alone.",
+        "0 - You could make fun of them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "comforting someone feeling down",
+      "targetEvidence": "gives a supportive suggestion for someone who is sad",
+      "alignmentRationale": "This task assesses the ability to comfort someone feeling down."
+    },
+    {
+      "id": "437574f0-5b01-4443-bb2d-2cc44efb3ef6",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If a friend is feeling hot at the park, what could you do?",
+      "rubric": [
+        "3 - Offer them a drink of water.",
+        "2 - Tell them to stop running.",
+        "1 - Say you're hot too.",
+        "0 - Tell them to keep playing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Offer them a drink of water."
+        },
+        {
+          "key": "b",
+          "text": "Tell them to stop running."
+        },
+        {
+          "key": "c",
+          "text": "Say you're hot too."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing someone is overheated",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "suggests a helpful action for someone feeling hot",
+      "alignmentRationale": "This question focuses on understanding physical discomfort and reacting accordingly."
+    },
+    {
+      "id": "a36e9bed-0c6b-4d47-8eb4-7620214eb5d0",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "A new kid looks confused on the playground. What could you say to help?",
+      "rubric": [
+        "3 - Would you like to play together?",
+        "2 - Just follow me, you'll understand.",
+        "1 - I think it's easy here.",
+        "0 - Go ask someone else."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Would you like to play together?"
+        },
+        {
+          "key": "b",
+          "text": "Just follow me, you'll understand."
+        },
+        {
+          "key": "c",
+          "text": "I think it's easy here."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "helpful communication",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "offers a friendly invitation to include a confused child",
+      "alignmentRationale": "This item tests the ability to communicate thoughtfully with someone needing clarity."
+    },
+    {
+      "id": "b0a2000c-1e81-476f-ac97-d362d97d5dc6",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If your friend feels cold outside, what could you offer to help?",
+      "rubric": [
+        "3 - You could give them your jacket.",
+        "2 - You could tell them to go inside.",
+        "1 - You could say it’s not that cold.",
+        "0 - You could ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing someone is uncomfortable",
+      "targetEvidence": "provides a helpful suggestion for someone who feels cold",
+      "alignmentRationale": "This scenario assesses the response to a person feeling uncomfortable."
+    },
+    {
+      "id": "1dd82494-1159-4529-b64e-de3cc83d2755",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your sister looks upset because she lost her favorite book. What can you do?",
+      "rubric": [
+        "3 - Help her look for it together.",
+        "2 - Say it's just a book.",
+        "1 - Ask her why she lost it.",
+        "0 - Tell her to find it herself."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help her look for it together."
+        },
+        {
+          "key": "b",
+          "text": "Say it's just a book."
+        },
+        {
+          "key": "c",
+          "text": "Ask her why she lost it."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing someone's feelings",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "suggests a helpful action for someone who is upset",
+      "alignmentRationale": "This question assesses the ability to recognize and respond to emotional needs."
+    },
+    {
+      "id": "5689c5c3-afa2-44ab-895a-6d2e31c3bccc",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If you see someone drop their toys, what could you do to help?",
+      "rubric": [
+        "3 - You could pick up the toys.",
+        "2 - You could tell them to pick it up.",
+        "1 - You could look away.",
+        "0 - You could laugh."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing someone needs help",
+      "targetEvidence": "gives a thoughtful answer to help someone pick up their toys",
+      "alignmentRationale": "This task focuses on recognizing when someone needs help and suggesting a way to assist."
+    },
+    {
+      "id": "1655005b-b279-4a82-9f2e-de448df28b12",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "A classmate looks sad during a group game. What can you do to help?",
+      "rubric": [
+        "3 - You ask them if they want to join or play something else.",
+        "2 - You tell them to cheer up.",
+        "1 - You leave them alone.",
+        "0 - You laugh at them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask them to join"
+        },
+        {
+          "key": "b",
+          "text": "Tell them to cheer up"
+        },
+        {
+          "key": "c",
+          "text": "Laugh at them"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing sadness",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "the child attempts to engage the sad classmate",
+      "alignmentRationale": "This tests the child's ability to see sadness and act to include the person."
+    },
+    {
+      "id": "7c47a400-5f21-4c36-b13a-2b511e5e0a49",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your friend is scared of the dark. What can you do to help?",
+      "rubric": [
+        "3 - You suggest turning on a light or staying with them until they feel better.",
+        "2 - You say it's okay to be scared but don't suggest a way to help.",
+        "1 - You tell them not to be scared without offering any help.",
+        "0 - You ignore their fear."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Turn on a light"
+        },
+        {
+          "key": "b",
+          "text": "Say don't worry"
+        },
+        {
+          "key": "c",
+          "text": "Leave the room"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing a fear",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child suggests a comforting action to ease fear",
+      "alignmentRationale": "This item tests the child's ability to notice and respond to a specific fear, offering comfort through action."
+    },
+    {
+      "id": "09831640-f327-4ed3-bcab-8f518265fa93",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your sibling is tired after playing. What could you do to help them?",
+      "rubric": [
+        "3 - You offer to help them clean up or suggest they take a break.",
+        "2 - You say they should just rest but don't offer to help.",
+        "1 - You tell them to stop playing.",
+        "0 - You ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help clean up"
+        },
+        {
+          "key": "b",
+          "text": "Say just rest"
+        },
+        {
+          "key": "c",
+          "text": "Tell them to stop"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing tiredness",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "the child offers a helpful action to address tiredness",
+      "alignmentRationale": "This question measures the child's ability to identify a need for rest and suggest a way to assist."
+    },
+    {
+      "id": "4ffe7c58-81d9-497e-91fd-9026187251a1",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "A friend is feeling shy at a party. What could you do to help them?",
+      "rubric": [
+        "3 - You invite them to play a game with you.",
+        "2 - You tell them it’s okay to be shy.",
+        "1 - You ignore them.",
+        "0 - You leave them alone."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Invite them to play"
+        },
+        {
+          "key": "b",
+          "text": "Say it's okay to be shy"
+        },
+        {
+          "key": "c",
+          "text": "Leave them alone"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing shyness",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "the child identifies a way to encourage and include the friend",
+      "alignmentRationale": "This scenario allows the child to recognize shyness and suggest inclusive behavior."
+    },
+    {
+      "id": "d49a128e-c512-411d-8aa1-8025f277fad3",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If a friend looks bored while playing, what could you suggest?",
+      "rubric": [
+        "3 - You give a specific suggestion for a new game or activity.",
+        "2 - You suggest a general idea like play something else.",
+        "1 - You say nothing or avoid the friend.",
+        "0 - You change the subject and ignore their boredom."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing boredom",
+      "targetEvidence": "the child provides a new idea to address boredom",
+      "alignmentRationale": "The child must identify boredom and suggest an alternative to engage their friend."
+    },
+    {
+      "id": "3d5e6eb0-3699-4aeb-ad43-bc2d5ec268cb",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If someone is nervous about joining a new activity, what could you say to help?",
+      "rubric": [
+        "3 - You offer encouragement or suggest they can try even if they are scared.",
+        "2 - You say it’s okay to be nervous.",
+        "1 - You ignore them.",
+        "0 - You tell them they should just try."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing nervousness",
+      "targetEvidence": "the child offers support that acknowledges the person's feelings",
+      "alignmentRationale": "This question requires the child to recognize nervousness and offer a comforting response."
+    },
+    {
+      "id": "a2409e48-77f7-4c28-b11a-4b1d355f3991",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If your friend says they are hungry, what is something nice you could offer?",
+      "rubric": [
+        "3 - You offer to share your snack or get them food.",
+        "2 - You say that you feel hungry too.",
+        "1 - You don't respond.",
+        "0 - You ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing hunger",
+      "targetEvidence": "the child suggests a way to help address hunger",
+      "alignmentRationale": "This item assesses the child’s ability to recognize a need for food and suggest a solution."
+    },
+    {
+      "id": "85c4bd4e-fe73-4d12-acb8-0babf24d6e97",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If a classmate is confused about a game, how could you help?",
+      "rubric": [
+        "3 - You explain the rules or help them join in.",
+        "2 - You say they can figure it out on their own.",
+        "1 - You ignore them.",
+        "0 - You tell them to just follow others."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing confusion",
+      "targetEvidence": "the child indicates how they would assist with understanding the game",
+      "alignmentRationale": "This question checks if the child can identify confusion and offer support in learning."
+    },
+    {
+      "id": "50a5564d-aff6-40b2-96aa-cf83620c73cb",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "You see someone sitting alone at lunch. What can you do to help?",
+      "rubric": [
+        "3 - You invite them to sit with you.",
+        "2 - You wave at them.",
+        "1 - You pretend not to see them.",
+        "0 - You walk away without saying anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Invite them to sit with you."
+        },
+        {
+          "key": "b",
+          "text": "Wave at them."
+        },
+        {
+          "key": "c",
+          "text": "Walk away quietly."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing someone needing company",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child offers a friendly action to include someone.",
+      "alignmentRationale": "This question assesses the child's ability to notice loneliness and take a welcoming action."
+    },
+    {
+      "id": "a01ad9b7-2cc4-43d6-b4c7-5d16aae28ca1",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If someone spills their drink, what’s a good thing to do?",
+      "rubric": [
+        "3 - You grab some paper towels to help.",
+        "2 - You laugh and say oops.",
+        "1 - You walk away.",
+        "0 - You ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Get paper towels."
+        },
+        {
+          "key": "b",
+          "text": "Laugh at them."
+        },
+        {
+          "key": "c",
+          "text": "Walk away quietly."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "helpful response to an accident",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child suggests a practical way to assist after a spill.",
+      "alignmentRationale": "This question tests the child’s ability to notice an accident and react in a helpful manner."
+    },
+    {
+      "id": "57b6dd60-9625-4a22-9e40-5657a159ce53",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If someone looks sad and you want to help, what could you say?",
+      "rubric": [
+        "3 - The answer includes kind words or actions.",
+        "2 - The answer shows some awareness but lacks detail.",
+        "1 - The answer is vague or unhelpful.",
+        "0 - No answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing a friend’s emotion",
+      "targetEvidence": "The child offers comforting words for sadness.",
+      "alignmentRationale": "This item checks how well the child can think of ways to comfort someone who seems sad."
+    },
+    {
+      "id": "7d5e08d7-ce06-463a-8ba2-cae0d41f8497",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your classmate looks worried about a test. What’s a nice thing to do?",
+      "rubric": [
+        "3 - You tell them you can study together.",
+        "2 - You say it'll be okay.",
+        "1 - You don’t talk to them.",
+        "0 - You laugh at them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Study together."
+        },
+        {
+          "key": "b",
+          "text": "Say it'll be okay."
+        },
+        {
+          "key": "c",
+          "text": "Ignore their worry."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing anxiety in others",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child suggests support to help ease anxiety.",
+      "alignmentRationale": "This question assesses whether a child acknowledges someone else's worry and proposes to assist."
+    },
+    {
+      "id": "3705d9fb-be91-4701-9e1f-fbf55bc8c475",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your friend is sad because they lost their toy. What can you do?",
+      "rubric": [
+        "3 - You suggest playing with another toy together.",
+        "2 - You offer to help look for the lost toy.",
+        "1 - You tell them it's not a big deal.",
+        "0 - You ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Play with another toy."
+        },
+        {
+          "key": "b",
+          "text": "Help look for the toy."
+        },
+        {
+          "key": "c",
+          "text": "Say it's not important."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing a friend's feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child suggests a way to help cheer their friend up.",
+      "alignmentRationale": "This question tests how well the child identifies a friend's emotion and responds with a helpful suggestion."
+    },
+    {
+      "id": "d792daa3-a718-4af1-9737-12ef7524b194",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "At the playground, you see a friend sitting alone. What could you do?",
+      "rubric": [
+        "3 - You ask them to play or sit down with them, showing you care.",
+        "2 - You say hi but don't invite them to play.",
+        "1 - You ignore them and keep playing.",
+        "0 - You leave the playground."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask them to play with you."
+        },
+        {
+          "key": "b",
+          "text": "Say hi to them."
+        },
+        {
+          "key": "c",
+          "text": "Ignore them."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing another person’s possible need",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "correctly identifies a kind action to include a friend",
+      "alignmentRationale": "This question tests the ability to notice someone alone and suggest a friendly action."
+    },
+    {
+      "id": "1e97c793-57eb-4cf3-b0d3-184776b45965",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "You notice someone dropped their toy. What is the best way to help?",
+      "rubric": [
+        "3 - Pick it up and give it back to them.",
+        "2 - Just point it out to them.",
+        "1 - Leave it where it is.",
+        "0 - Take it for yourself."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Pick it up and give it back."
+        },
+        {
+          "key": "b",
+          "text": "Just tell them about it."
+        },
+        {
+          "key": "c",
+          "text": "Leave it alone."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing another person’s possible need",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "correctly identifies a helpful action by returning an item",
+      "alignmentRationale": "This question assesses the understanding of helping someone in need of their belongings."
+    },
+    {
+      "id": "a4b4c347-3b6b-4fe9-be34-60696077d09f",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "A new kid is in class and looks shy. What can you do?",
+      "rubric": [
+        "3 - Invite them to join your game or talk to them.",
+        "2 - Smile but don’t say anything.",
+        "1 - Ignore them and play by yourself.",
+        "0 - Make fun of them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Invite them to join your game."
+        },
+        {
+          "key": "b",
+          "text": "Smile but not speak."
+        },
+        {
+          "key": "c",
+          "text": "Play by yourself."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing another person’s possible need",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "suggests a welcoming action to support a new classmate",
+      "alignmentRationale": "This question tests the ability to recognize social discomfort and propose a friendly gesture."
+    },
+    {
+      "id": "7b230ca3-2bbb-44cf-919b-d678aff7b1d0",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "You see a friend drop their snack and get sad. What could you suggest?",
+      "rubric": [
+        "3 - You could share your snack with them.",
+        "2 - You could tell them not to worry.",
+        "1 - You laugh at them.",
+        "0 - You just walk away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Share your snack with them."
+        },
+        {
+          "key": "b",
+          "text": "Tell them not to feel bad."
+        },
+        {
+          "key": "c",
+          "text": "Laugh at them."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing another person’s possible need",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "offers a generous and supportive response to a friend's sadness",
+      "alignmentRationale": "This question evaluates the response to a situation where someone is upset by offering help."
+    },
+    {
+      "id": "f173d387-44d9-4a31-b1e7-7bd487d308f5",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Imagine you see a kid sitting alone at lunchtime. What could you do to be nice?",
+      "rubric": [
+        "3 - You share your lunch or invite them to sit with you.",
+        "2 - You smile at them but don't speak.",
+        "1 - You ignore them and eat.",
+        "0 - You leave the lunch area."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "noticing another person’s possible need",
+      "targetEvidence": "the response suggests an action to include the lonely child.",
+      "alignmentRationale": "This question encourages imaginative thinking and thoughtful action towards a peer."
+    },
+    {
+      "id": "56b3b3f1-ac46-4dee-a3c5-700b152819f0",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "What would you do if a classmate fell down and looked hurt?",
+      "rubric": [
+        "3 - You would help them up and check if they're okay.",
+        "2 - You would just look at them.",
+        "1 - You would laugh and walk away.",
+        "0 - You would ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "noticing another person’s possible need",
+      "targetEvidence": "provides a thoughtful action in response to someone needing assistance.",
+      "alignmentRationale": "This question assesses the ability to respond compassionately to someone in distress."
+    },
+    {
+      "id": "010d0e6b-bc35-47e6-b009-d41ef15f783c",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If you see a friend who forgot their favorite toy at home, how could you make them feel better?",
+      "rubric": [
+        "3 - You could lend them a toy or play with them.",
+        "2 - You might say 'Don't worry'.",
+        "1 - You ignore the situation.",
+        "0 - You tease them for forgetting."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "noticing another person’s possible need",
+      "targetEvidence": "suggests a friendly action to help lessen disappointment.",
+      "alignmentRationale": "This question tests the ability to offer comfort to a friend experiencing a minor issue."
+    },
+    {
+      "id": "12e646b9-02a5-438e-8199-5df0adf9fadf",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "What would you do if you saw someone sitting alone on the bus?",
+      "rubric": [
+        "3 - You would sit with them and ask if they want to talk.",
+        "2 - You would smile at them from afar.",
+        "1 - You ignore them and look out the window.",
+        "0 - You tell others to make fun of them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "noticing another person’s possible need",
+      "targetEvidence": "indicates a helpful action to include someone who may feel lonely.",
+      "alignmentRationale": "This question assesses the ability to notice others' feelings in a social setting and respond supportively."
+    },
+    {
+      "id": "f7f83a90-ca7e-443c-a157-3b0107edcf5f",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "What could you do if you see a kid sitting alone during a game?",
+      "rubric": [
+        "3 - Provides a kind suggestion that includes inviting them to join.",
+        "2 - Offers a vague idea of support without specifics.",
+        "1 - Suggests ignoring them isn't nice.",
+        "0 - Gives an unkind response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word for inclusion",
+      "targetEvidence": "Child gives a thoughtful response to include someone left out.",
+      "alignmentRationale": "This opportunity assesses how children conceptualize actions toward helping others feel included."
+    },
+    {
+      "id": "ebd066a3-4d3c-40b7-bb98-74eaab316e06",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "A kid is sitting quietly on the playground and looks lonely. What could you do to help them?",
+      "rubric": [
+        "3 - Suggests a kind way to invite the child to play, considering their feelings.",
+        "2 - Offers a suggestion but misses some needs of the lonely child.",
+        "1 - Gives an action that doesn't really help the child feel included.",
+        "0 - Suggests something unrelated or unkind."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask if they want to join your game."
+        },
+        {
+          "key": "b",
+          "text": "Ignore them and play with others."
+        },
+        {
+          "key": "c",
+          "text": "Laugh with friends nearby."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for noticing loneliness",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies a helpful way to include someone who looks lonely.",
+      "alignmentRationale": "This task highlights the ability to perceive social situations and suggests thoughtful actions."
+    },
+    {
+      "id": "4405d811-b6d4-480c-b7f3-85b640aa33d5",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "You see a classmate drop their crayons. What is a kind thing to do?",
+      "rubric": [
+        "3 - Offers to help pick up the crayons and comfort the classmate.",
+        "2 - Suggests just watching them without helping, which is not very supportive.",
+        "1 - Gives an answer that does not include helping at all.",
+        "0 - Suggests doing nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help them pick up the crayons."
+        },
+        {
+          "key": "b",
+          "text": "Just tell them to be careful next time."
+        },
+        {
+          "key": "c",
+          "text": "Walk away and ignore it."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for helping with practical needs",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Child offers a supportive action when someone drops something.",
+      "alignmentRationale": "The prompt encourages children to notice practical needs and respond accordingly."
+    },
+    {
+      "id": "f0d415a1-a177-436f-a59f-815527e583a7",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If a new student looks lost at school, what should you do?",
+      "rubric": [
+        "3 - Offer to help them find their class.",
+        "2 - Suggest just saying hi but not helping.",
+        "1 - Tell them to find someone else.",
+        "0 - Walk away and not help at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help show them where their class is."
+        },
+        {
+          "key": "b",
+          "text": "Just say hello without helping."
+        },
+        {
+          "key": "c",
+          "text": "Tell them it's their problem."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for being welcoming",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Child suggests an action that helps someone feel comfortable in a new place.",
+      "alignmentRationale": "The task emphasizes the importance of making others feel welcomed in unfamiliar environments."
+    },
+    {
+      "id": "bddf5305-b7cb-499b-857a-ba6c25410618",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If you see someone at school looking shy, what is one nice thing you could say or do for them?",
+      "rubric": [
+        "3 - Suggests a specific supportive action or kind statement.",
+        "2 - Offers a vague idea of support without specifics.",
+        "1 - Provides something unlikely or unhelpful.",
+        "0 - Does not suggest any support."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word for being friendly",
+      "targetEvidence": "Child expresses a thoughtful action to comfort a shy person.",
+      "alignmentRationale": "The focus is on generating personal, kind responses to social situations."
+    },
+    {
+      "id": "9f0f2c6f-662b-4c88-bb39-f18e1a8caaff",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "You see a child sitting alone and looking sad. What is a friendly thing to do?",
+      "rubric": [
+        "3 - Offers to sit with them and ask how they feel.",
+        "2 - Suggests waving from a distance, still friendly but not engaging.",
+        "1 - Says to ignore them if they look sad.",
+        "0 - Suggests teasing them to make them feel better."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask if you can sit with them."
+        },
+        {
+          "key": "b",
+          "text": "Wave and smile from far away."
+        },
+        {
+          "key": "c",
+          "text": "Ignore them and talk to friends instead."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for including others",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Child proposes a kind action to connect with someone sad.",
+      "alignmentRationale": "This question measures the child's ability to empathize and respond kindly in social settings."
+    },
+    {
+      "id": "dc63ba7c-e8f4-401d-87e4-a387a19dde0d",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "You notice a friend looks upset during lunch. What is a good response?",
+      "rubric": [
+        "3 - Suggests asking the friend why they are upset and offering help.",
+        "2 - Offers to share food to cheer them up without asking first.",
+        "1 - Says it's not their business to ask.",
+        "0 - Suggests ignoring the friend entirely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask if they want to talk about it."
+        },
+        {
+          "key": "b",
+          "text": "Share your lunch with them."
+        },
+        {
+          "key": "c",
+          "text": "Just leave them alone."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for caring about feelings",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Child suggests inquiring about a friend's feelings and offering support.",
+      "alignmentRationale": "It tests the ability to notice emotions and suggest supportive actions accordingly."
+    },
+    {
+      "id": "1ae6dba7-4ec2-460b-98d3-93d168154567",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If a friend seems shy about joining a group activity, what could you do to help?",
+      "rubric": [
+        "3 - Suggests a way to include them in a friendly manner.",
+        "2 - Mentions talking to them but without a plan to include.",
+        "1 - Says to leave them alone instead.",
+        "0 - Suggests doing something unkind."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Invite them to play with you."
+        },
+        {
+          "key": "b",
+          "text": "Just tell them to be brave."
+        },
+        {
+          "key": "c",
+          "text": "Ignore their shyness."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for encouraging participation",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Child suggests a way to invite a shy friend to join in.",
+      "alignmentRationale": "This task helps identify kind responses that promote inclusion of others."
+    },
+    {
+      "id": "b2fcc7d9-d9bc-4b84-927e-da3e640d7f3c",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "How would you help a sibling who is feeling sad after losing a game?",
+      "rubric": [
+        "3 - Offers a way to cheer them up or play again.",
+        "2 - Suggests a few activities.",
+        "1 - Says it's just a game.",
+        "0 - Doesn't suggest anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "emotional support",
+      "targetEvidence": "provides a comforting response that addresses the sibling's feelings",
+      "alignmentRationale": "This question encourages the child to think how to emotionally support someone who is upset."
+    },
+    {
+      "id": "67a8e568-af9f-43c0-b6fa-fe9a71a84273",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If you see a classmate looking upset, what could you say or do to help them?",
+      "rubric": [
+        "3 - Provides a thoughtful way to help.",
+        "2 - Suggests something that is somewhat helpful.",
+        "1 - Mentions a generic action with no connection.",
+        "0 - Gives no response or an unrelated action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "thoughtful response",
+      "targetEvidence": "offers a thoughtful suggestion based on the scenario",
+      "alignmentRationale": "This taps into understanding emotional cues and encouraging helpful actions."
+    },
+    {
+      "id": "c773e032-81d8-4ca5-9f61-e9b9532bdfec",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Imagine you see a child looking scared on a slide. What would you do?",
+      "rubric": [
+        "3 - Suggest they hold your hand and try it together.",
+        "2 - Offer to help but hesitate.",
+        "1 - Tell them it's okay to be scared.",
+        "0 - Say they shouldn't feel scared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "encouraging action",
+      "targetEvidence": "offers a specific supportive action that helps overcome fear",
+      "alignmentRationale": "This task reflects on ways to encourage someone who is scared, promoting empathy and support."
+    },
+    {
+      "id": "84315f60-53f3-4311-8141-67dc90846bc2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If a friend is nervous about speaking in front of the class, what would you suggest?",
+      "rubric": [
+        "3 - Tell them you will help them practice.",
+        "2 - Say they shouldn't be nervous.",
+        "1 - Ignore their feelings.",
+        "0 - Make fun of them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Tell them you will help them practice."
+        },
+        {
+          "key": "b",
+          "text": "Say they shouldn't be nervous."
+        },
+        {
+          "key": "c",
+          "text": "Ignore their feelings."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "offering encouragement",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects a supportive suggestion that acknowledges the friend's feelings",
+      "alignmentRationale": "This item isolates the skill of encouragement by providing a specific supportive action."
+    },
+    {
+      "id": "a773edb7-edc4-4d27-9e1b-153e8a8de036",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If you see a friend looking confused about homework, what is a helpful action?",
+      "rubric": [
+        "3 - Offer to help them understand it.",
+        "2 - Ask if they need help but walk away.",
+        "1 - Say everyone gets confused sometimes.",
+        "0 - Ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help them understand it"
+        },
+        {
+          "key": "b",
+          "text": "Just ask if they need help"
+        },
+        {
+          "key": "c",
+          "text": "Ignore them"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing a need",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "proposes help based on a friend's struggle",
+      "alignmentRationale": "This question assesses the ability to recognize confusion and provide support."
+    },
+    {
+      "id": "08a1793f-b172-4d94-8fc6-56c6bf521de1",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If a classmate is struggling to tie their shoe, what is a nice thing to do?",
+      "rubric": [
+        "3 - Offer to help them tie it.",
+        "2 - Watch and do nothing.",
+        "1 - Tell them they should learn.",
+        "0 - Ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help them tie it"
+        },
+        {
+          "key": "b",
+          "text": "Just watch them"
+        },
+        {
+          "key": "c",
+          "text": "Ignore them"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing a need",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "suggests a practical way to assist someone",
+      "alignmentRationale": "It checks if the child recognizes a practical need and suggests help."
+    },
+    {
+      "id": "2c7b9325-0549-435a-926d-0e302618ef02",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "You see a classmate looking confused about a game rule. How could you support them?",
+      "rubric": [
+        "3 - You explain the rule calmly or ask them to join you.",
+        "2 - You ask if they need help but don’t offer details.",
+        "1 - You ignore them.",
+        "0 - You laugh at them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing a need",
+      "targetEvidence": "demonstrates how to assist someone in understanding",
+      "alignmentRationale": "This prompt tests the ability to recognize confusion and suggest helpful guidance."
+    },
+    {
+      "id": "4cdbc18c-9eec-4e3d-89bf-93e9e81ac3a8",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your classmate forgot their lunch and looks worried. What can you do to help?",
+      "rubric": [
+        "3 - You offer to share your lunch or help them get food.",
+        "2 - You ask if they want to borrow your snack.",
+        "1 - You say it's too bad they forgot their lunch.",
+        "0 - You ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Share your lunch"
+        },
+        {
+          "key": "b",
+          "text": "Borrow a snack"
+        },
+        {
+          "key": "c",
+          "text": "Ignore them"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing a need",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "suggests a helpful response based on the classmate's situation",
+      "alignmentRationale": "This scenario encourages identifying a need and responding appropriately to it."
+    },
+    {
+      "id": "c6e0e81b-028a-48c6-9508-e7d68cb873e0",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "A new student is sitting by themselves during recess. What could you say to make them feel welcome?",
+      "rubric": [
+        "3 - You suggest a friendly greeting or invite them to play.",
+        "2 - You ask them if they are okay.",
+        "1 - You just smile at them.",
+        "0 - You don’t say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing a need",
+      "targetEvidence": "suggests a way to welcome someone based on the situation",
+      "alignmentRationale": "This task tests the ability to notice a peer's separation and suggest thoughtful actions."
+    },
+    {
+      "id": "0742e90c-19a0-4738-9015-f58314379686",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If you see a classmate with a scraped knee, what is a kind way to help?",
+      "rubric": [
+        "3 - Offer to help them get a bandage or call for help.",
+        "2 - Ask if they are okay and leave them alone.",
+        "1 - Say it looks bad but do nothing.",
+        "0 - Ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help get a bandage"
+        },
+        {
+          "key": "b",
+          "text": "Ask if they're okay"
+        },
+        {
+          "key": "c",
+          "text": "Ignore them"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing a need",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "provides a helpful suggestion in response to someone's injury",
+      "alignmentRationale": "It targets recognizing a classmate's physical discomfort and how to respond."
+    },
+    {
+      "id": "07c694a9-11d8-4b5c-810c-cca20f904c30",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "You see someone is nervous before their presentation. What could you say to support them?",
+      "rubric": [
+        "3 - You offer encouraging words to help calm their nerves.",
+        "2 - You smile and nod at them.",
+        "1 - You don’t say anything.",
+        "0 - You laugh at them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing a need",
+      "targetEvidence": "shows a thoughtful approach to comforting someone nervous",
+      "alignmentRationale": "The task focuses on identifying emotional support needs and responding with kindness."
+    },
+    {
+      "id": "8821644c-14d5-413a-bf8a-27cb7187dc87",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "You notice your friend is upset after losing a game. What could you say to support them?",
+      "rubric": [
+        "3 - You offer kind words or suggest playing again together.",
+        "2 - You ask if they're alright but don’t offer help.",
+        "1 - You ignore their feelings.",
+        "0 - You laugh at them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing a need",
+      "targetEvidence": "demonstrates how to support an upset friend",
+      "alignmentRationale": "This prompt tests the ability to recognize and respond to emotional distress."
+    },
+    {
+      "id": "dd5d63e6-edba-4cae-9e09-140c43d7a317",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If you see a person struggling to carry something heavy, what should you do?",
+      "rubric": [
+        "3 - Offer to help carry it with them.",
+        "2 - Just watch and maybe laugh.",
+        "1 - Say they should ask someone else for help.",
+        "0 - Walk away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Offer to help carry it with them."
+        },
+        {
+          "key": "b",
+          "text": "Just watch and maybe laugh."
+        },
+        {
+          "key": "c",
+          "text": "Say they should ask someone else for help."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing someone needs practical help",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "The child identifies a helpful action for someone struggling.",
+      "alignmentRationale": "This question examines empathy and proactivity in aiding others."
+    },
+    {
+      "id": "68afcb2d-cb11-491b-a8c6-916a929f5f97",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your friend is sitting alone at lunch. What can you do?",
+      "rubric": [
+        "3 - Invite them to join you at your table.",
+        "2 - Smile at them but keep eating.",
+        "1 - Ignore them and stay with your friends.",
+        "0 - Don't do anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Invite them to join you at your table."
+        },
+        {
+          "key": "b",
+          "text": "Smile at them but keep eating."
+        },
+        {
+          "key": "c",
+          "text": "Ignore them and stay with your friends."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing a friend feeling left out",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child suggests a way to include the friend.",
+      "alignmentRationale": "This question encourages the child to recognize a social situation and propose a helpful action."
+    },
+    {
+      "id": "faeee5f0-268e-4a00-8bd0-db3402aaba97",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "What would you do if you see someone fall down?",
+      "rubric": [
+        "3 - Help them up and ask if they're okay.",
+        "2 - Check if they need help then walk away.",
+        "1 - Laugh and point at them.",
+        "0 - Do nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing someone needs practical help",
+      "targetEvidence": "The child suggests actions to help a person who has fallen.",
+      "alignmentRationale": "The prompt allows for various responses based on empathy and practical support."
+    },
+    {
+      "id": "c8509523-75b5-4b49-814d-999884ae76c4",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "Your friend looks sad. What should you do?",
+      "rubric": [
+        "3 - Ask if they want to talk about it.",
+        "2 - Tell them to cheer up.",
+        "1 - Change the topic to something happy.",
+        "0 - Ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask if they want to talk about it."
+        },
+        {
+          "key": "b",
+          "text": "Tell them to cheer up."
+        },
+        {
+          "key": "c",
+          "text": "Ignore them."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing a friend feeling sad",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child recognizes emotions and offers support.",
+      "alignmentRationale": "This question tests the ability to understand and respond to a friend's emotional need."
+    },
+    {
+      "id": "fefc1661-6b66-48ff-95ed-c758701e84f8",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "How can you help someone who is sad?",
+      "rubric": [
+        "3 - Give them a hug or listen to them.",
+        "2 - Tell them to smile more.",
+        "1 - Leave them alone.",
+        "0 - Do nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing someone needs emotional support",
+      "targetEvidence": "The child provides suggestions for helping someone who is sad.",
+      "alignmentRationale": "This task encourages thoughtfulness and empathy in helping others emotionally."
+    },
+    {
+      "id": "bea55436-d4ef-42ca-8680-76597c904153",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "What would you do if you see someone looking lonely?",
+      "rubric": [
+        "3 - Go talk to them and ask if they want to play.",
+        "2 - Just smile at them.",
+        "1 - Ignore them and walk past.",
+        "0 - Do nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing someone feeling lonely",
+      "targetEvidence": "The child offers ideas on how to reach out to someone who appears lonely.",
+      "alignmentRationale": "This task assesses the child’s ability to identify and respond to social isolation."
+    },
+    {
+      "id": "acd75e21-9bf3-4aff-b335-d32361de2bac",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If a friend is having a bad day, how could you help them feel better?",
+      "rubric": [
+        "3 - Listen to them and share something nice.",
+        "2 - Tell them it will be okay, then ignore them.",
+        "1 - Suggest they should be happy.",
+        "0 - Leave them alone."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing someone feeling down",
+      "targetEvidence": "The child suggests comforting actions for a friend having a tough day.",
+      "alignmentRationale": "This prompt assesses the child's empathy and proactive approach to helping a friend in distress."
+    },
+    {
+      "id": "f2e5e351-1c92-415b-92bb-ae22114414d1",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "You notice a classmate is upset. What could you say to help?",
+      "rubric": [
+        "3 - Ask what’s wrong and offer support.",
+        "2 - Ignore them and continue playing.",
+        "1 - Tell others about it.",
+        "0 - Laugh at them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask what’s wrong and offer support."
+        },
+        {
+          "key": "b",
+          "text": "Ignore them and continue playing."
+        },
+        {
+          "key": "c",
+          "text": "Laugh at them."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing someone needs emotional support",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child provides a supportive suggestion for someone who is upset.",
+      "alignmentRationale": "This question encourages the child to recognize emotions in others and respond positively."
+    },
+    {
+      "id": "10d4989c-ed75-4702-bd08-3051ddeb140b",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "If you see a classmate struggling to open their locker, what is a nice thing to do?",
+      "rubric": [
+        "3 - You offer to help them open it.",
+        "2 - You ask if they need some help.",
+        "1 - You say they should try harder.",
+        "0 - You laugh and walk away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Here, let me help!"
+        },
+        {
+          "key": "b",
+          "text": "Do you need assistance?"
+        },
+        {
+          "key": "c",
+          "text": "Figure it out yourself!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "being helpful",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The response should reference a constructive form of assistance based on the scenario.",
+      "alignmentRationale": "This question evaluates the ability to recognize someone needing help and responding accordingly."
+    },
+    {
+      "id": "c3c7de69-268d-436f-aad4-25b818e7533a",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "You see a friend who looks sad during lunch. What could you say to help them feel better?",
+      "rubric": [
+        "3 - You invite them to join your game or activity.",
+        "2 - You ask if they want to talk about it.",
+        "1 - You tell them not to be sad.",
+        "0 - You ignore them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Come play with us! 🎈"
+        },
+        {
+          "key": "b",
+          "text": "What's wrong?"
+        },
+        {
+          "key": "c",
+          "text": "Just cheer up!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "offering support",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The answer indicates a specific way to engage the friend positively.",
+      "alignmentRationale": "This item assesses the ability to notice a friend's emotions and suggest a way to help that aligns with that awareness."
+    },
+    {
+      "id": "4860ae74-bdc5-407a-9dec-087caf23481c",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "You spot a friend looking worried about a test. What can you say to support them?",
+      "rubric": [
+        "3 - You offer to review together before the test.",
+        "2 - You reassure them they will be okay.",
+        "1 - You tell them they shouldn't worry.",
+        "0 - You ignore their feelings."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Let's study together! 📚"
+        },
+        {
+          "key": "b",
+          "text": "You will do just fine!"
+        },
+        {
+          "key": "c",
+          "text": "Don't worry at all."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "encouraging relaxation",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "An ideal answer shows proactive support by suggesting specific behavior for calming their nerves.",
+      "alignmentRationale": "This question focuses on noticing a peer's anxiety and offering direct encouragement related to the situation."
+    },
+    {
+      "id": "beed2d93-7be9-4702-9e5c-235b274d8556",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "sensitivity_others",
+      "format": "explanation",
+      "prompt": "A classmate is sitting alone at recess. What can you do to include them?",
+      "rubric": [
+        "3 - You invite them to play with your group.",
+        "2 - You wave and smile at them.",
+        "1 - You ignore them completely.",
+        "0 - You laugh and continue playing without them."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Come join us! 🎉"
+        },
+        {
+          "key": "b",
+          "text": "Hi there!"
+        },
+        {
+          "key": "c",
+          "text": "Let them be alone."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "promoting inclusion",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The best answer reflects a proactive effort to include the classmate in the activity.",
+      "alignmentRationale": "This task confirms awareness of another's exclusion and suggests a concrete way to include them drawing on social awareness."
+    }
+  ]
+}

@@ -1,0 +1,2765 @@
+{
+  "category": "challenge_seeking",
+  "questions": [
+    {
+      "id": "22a08f96-89bb-4978-b487-0a7d096f3d5d",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You have two cookies. One is soft and easy to eat, and the other is hard and has a surprise inside. Which one do you want?",
+      "rubric": [
+        "3 - You choose the hard cookie, showing you want a challenge.",
+        "2 - You might choose the hard cookie but are unsure or mention both.",
+        "1 - You choose the soft cookie.",
+        "0 - You do not pick a cookie."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Soft cookie"
+        },
+        {
+          "key": "b",
+          "text": "Hard cookie"
+        },
+        {
+          "key": "c",
+          "text": "Both cookies"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "deciding on challenge",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "selects the harder cookie option and reasons why",
+      "alignmentRationale": "This task focuses on children's willingness to select a more challenging option based on their strategy."
+    },
+    {
+      "id": "6c4267bf-28a9-4744-b74e-2c91b27232b3",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You can choose between two toys. One is a simple car and the other is a car puzzle that is tricky. Which toy do you want to play with?",
+      "rubric": [
+        "3 - You pick the puzzle toy, showing you enjoy challenges.",
+        "2 - You might choose the puzzle but hesitate or say both are fun.",
+        "1 - You choose the simple car.",
+        "0 - You don't make a choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Simple car"
+        },
+        {
+          "key": "b",
+          "text": "Car puzzle"
+        },
+        {
+          "key": "c",
+          "text": "Both toys"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "deciding on challenge",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "selects the tougher toy to play with",
+      "alignmentRationale": "This question assesses the child's ability to opt for a challenging toy and what this choice reflects."
+    },
+    {
+      "id": "fe5ff609-6f3f-4f5b-beae-aa7557a8f196",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You find a big box of blocks. What can you do if you want to build something tricky?",
+      "rubric": [
+        "3 - You explain a step-by-step strategy including how to find help or take breaks.",
+        "2 - You mention building a tricky item but not a clear strategy.",
+        "1 - You suggest to build, but no details are provided.",
+        "0 - You do not answer or suggest anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "strategizing effort",
+      "targetEvidence": "describes how to approach a hard building task",
+      "alignmentRationale": "This assesses how the child thinks about taking on a difficult building task and their approach."
+    },
+    {
+      "id": "7d2824ba-d563-4424-8040-4486b8f2650a",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you have to do a new puzzle and it’s very hard, what could you try?",
+      "rubric": [
+        "3 - You mention asking for help or taking breaks while trying.",
+        "2 - You mention doing your best or trying harder.",
+        "1 - You say to just keep going without extra help.",
+        "0 - You do not give an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask someone for help"
+        },
+        {
+          "key": "b",
+          "text": "Keep trying without help"
+        },
+        {
+          "key": "c",
+          "text": "Just give up"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "problem-solving approach",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies a helpful strategy when faced with a challenge",
+      "alignmentRationale": "The question seeks to understand how children think about approaching difficult tasks."
+    },
+    {
+      "id": "76fabcef-e792-4a09-9b42-7190b1f550dd",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "Your friend wants to play with you, but the game is really hard. What could you say to your friend?",
+      "rubric": [
+        "3 - You show a supportive and encouraging approach, offering to try together.",
+        "2 - You mention wanting to play but feeling unsure.",
+        "1 - You say you don’t want to play.",
+        "0 - You don’t answer or provide no actions."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "communicating feelings",
+      "targetEvidence": "expresses how to address a friend's jokingly challenging game",
+      "alignmentRationale": "This evaluates the child's ability to communicate their feelings towards a hard task."
+    },
+    {
+      "id": "28cf8af8-409f-44eb-b411-20da7dd69eed",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You see a race with two tracks. One track is easy with no hills, the other is hard with many hills. Which one do you want to run on?",
+      "rubric": [
+        "3 - You choose the hard track, showing you want more challenge.",
+        "2 - You mention both tracks or seem unsure.",
+        "1 - You pick the easy track.",
+        "0 - You do not decide."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Easy track"
+        },
+        {
+          "key": "b",
+          "text": "Hard track"
+        },
+        {
+          "key": "c",
+          "text": "Both tracks"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "decision-making for challenge",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "selects the harder track option",
+      "alignmentRationale": "The task targets the child's choice regarding difficulty."
+    },
+    {
+      "id": "6c77b365-d9bc-4e8e-87c6-389818cfa737",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You see a choice to make something easy like a simple picture or a tricky picture with lots of details. Which one do you want to make?",
+      "rubric": [
+        "3 - You select the tricky picture with lots of details.",
+        "2 - You talk about both options.",
+        "1 - You choose the easy picture.",
+        "0 - You don't pick anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Simple picture"
+        },
+        {
+          "key": "b",
+          "text": "Tricky picture with details"
+        },
+        {
+          "key": "c",
+          "text": "Both pictures"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "choosing difficulty",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "chooses to create the more complex picture",
+      "alignmentRationale": "This task tests the child's ability to pick a task based on its difficulty level."
+    },
+    {
+      "id": "6396ad6e-b0ea-4370-9a5e-c3f039f287a3",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You want to make a building with blocks. One way is to stack them high and one way is to make a flat house. Which way do you want to try?",
+      "rubric": [
+        "3 - You choose stacking them high, showing you're ready for a challenge.",
+        "2 - You mention both ways or are unsure.",
+        "1 - You pick the flat house.",
+        "0 - You don't make a choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Make a flat house"
+        },
+        {
+          "key": "b",
+          "text": "Stack them high"
+        },
+        {
+          "key": "c",
+          "text": "Both ways"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "choosing difficulty",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "selects the more challenging building method",
+      "alignmentRationale": "The focus here is on the choice of task difficulty."
+    },
+    {
+      "id": "5b1deda8-a89f-4d9f-9585-90aeb00dc4e2",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "When you play a new sport and it feels hard, what could you say or do?",
+      "rubric": [
+        "3 - You say to ask for help or practice more and explain.",
+        "2 - You say you will ask for help but don’t say why.",
+        "1 - You say you want to keep trying alone.",
+        "0 - You say you don’t know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "suggesting support for tough tasks",
+      "targetEvidence": "provides a way to get support when learning something new",
+      "alignmentRationale": "This open question focuses on strategies for managing difficulty in new activities."
+    },
+    {
+      "id": "c411177d-6222-4c3b-80f2-224e69dbfedc",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You have a toy to build. One way to build it is easy, and another way is hard. What do you want to try?",
+      "rubric": [
+        "3 - You choose the hard way and explain you want a challenge.",
+        "2 - You choose the hard way but do not explain why.",
+        "1 - You choose the easy way but say you want to try the hard way later.",
+        "0 - You seem unsure and won't choose any way."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The easy way"
+        },
+        {
+          "key": "b",
+          "text": "The hard way"
+        },
+        {
+          "key": "c",
+          "text": "I don't want to try"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "choosing to try a harder task",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "chooses the harder option and reasons for it",
+      "alignmentRationale": "This question shows the ability to tackle a more complex option while assessing the rationale."
+    },
+    {
+      "id": "5b12d642-9cab-4cc1-8030-53e1e82938f9",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you get stuck while doing a hard puzzle, what could you do?",
+      "rubric": [
+        "3 - You say to ask for help or take a break and explain why.",
+        "2 - You say to ask for help but don’t say why.",
+        "1 - You say you want to try again without help.",
+        "0 - You say you don’t know what to do next."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "finding a way to continue",
+      "targetEvidence": "mentions seeking help or taking a break when stuck",
+      "alignmentRationale": "This open question assesses the ability to find strategies for overcoming challenges."
+    },
+    {
+      "id": "1f47c547-961e-4fbe-be80-cb98e5ffd1c0",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You see a basket with toy animals. One animal is soft and easy to play with, and another animal is hard and has moving parts. Which one do you want?",
+      "rubric": [
+        "3 - You choose the hard animal and explain you want the challenge.",
+        "2 - You choose the hard animal but don’t explain why.",
+        "1 - You choose the soft animal but mention wanting to try the hard one later.",
+        "0 - You don’t choose either animal."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The soft animal"
+        },
+        {
+          "key": "b",
+          "text": "The hard animal"
+        },
+        {
+          "key": "c",
+          "text": "Neither animal"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "selecting a challenging activity",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects the challenging animal and offers reasoning",
+      "alignmentRationale": "This question targets the child's ability to identify preference for a challenging activity and provide reasoning."
+    },
+    {
+      "id": "19bab5ce-cfdb-42a4-80c8-3c515809fd16",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You start a drawing but find it hard. What can you do to keep going?",
+      "rubric": [
+        "3 - You say to take a break or ask for help and explain.",
+        "2 - You mention asking for help but not why.",
+        "1 - You say you will keep trying alone.",
+        "0 - You say you don’t know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "finding strategies for challenges",
+      "targetEvidence": "suggests ways to manage struggles with a task",
+      "alignmentRationale": "This open question assesses thoughts on handling difficulties with creative challenges."
+    },
+    {
+      "id": "80d65f24-7d68-45f0-b87d-cd7046c42212",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You are at the playground. One swing is easy and another swing is harder to use. Which one do you want to try?",
+      "rubric": [
+        "3 - You choose the harder swing and say you want a challenge.",
+        "2 - You choose the harder swing but don’t explain why.",
+        "1 - You choose the easy swing but mention the harder one looks fun.",
+        "0 - You say you don’t want to try either swing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The easy swing"
+        },
+        {
+          "key": "b",
+          "text": "The harder swing"
+        },
+        {
+          "key": "c",
+          "text": "Neither swing"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "picking a harder option",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "picks the challenging swing and provides a reason",
+      "alignmentRationale": "This question evaluates the capacity to choose a more difficult physical activity and to explain the choice."
+    },
+    {
+      "id": "208ba608-10a1-43bf-8302-c8bdcac7a01b",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You can build with blocks. One set is big and easy to use, and another set is small and tricky. Which set do you want to play with?",
+      "rubric": [
+        "3 - You choose the small and tricky set and explain that you like a challenge.",
+        "2 - You choose the small and tricky set but don't say why.",
+        "1 - You choose the big and easy set, but mention wanting to try the smaller one later.",
+        "0 - You don't pick either set or say you can't choose."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The big set"
+        },
+        {
+          "key": "b",
+          "text": "The small set"
+        },
+        {
+          "key": "c",
+          "text": "Neither set"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "choosing a challenging option",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "describes why they want the harder option",
+      "alignmentRationale": "This question assesses the strategy in choosing difficult tasks while allowing for explanation."
+    },
+    {
+      "id": "45242122-43cd-4667-9d5a-4382a3edd0ef",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You see some colored beads. Some are big and easy to put on a string, and some are small and tricky. What will you do?",
+      "rubric": [
+        "3 - You say you want to try the small beads and describe how you'll do it.",
+        "2 - You say you want to try the small beads but don't explain.",
+        "1 - You say you want to use the big beads, but mention wanting to try the small ones later.",
+        "0 - You say you don't want to try either."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "describing a strategy for a challenge",
+      "targetEvidence": "suggests a way to manage a tricky task",
+      "alignmentRationale": "This open question focuses on how to approach a challenging task, confirming their ability to provide a strategy."
+    },
+    {
+      "id": "fe665f1f-aa73-4a9c-baf9-6f3ea6f4194b",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You have a coloring book. One page is easy to color, and one page has lots of small details. Which one do you choose?",
+      "rubric": [
+        "3 - You pick the hard one and say you can take breaks.",
+        "2 - You pick the hard one but don't mention breaks.",
+        "1 - You pick the easy one because it's fun.",
+        "0 - You just choose without thinking."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Easy page"
+        },
+        {
+          "key": "b",
+          "text": "Hard page"
+        },
+        {
+          "key": "c",
+          "text": "Don't know"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a script or action",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects the challenging coloring page and mentions breaks",
+      "alignmentRationale": "This question tests the choice of a challenging task along with self-regulation."
+    },
+    {
+      "id": "2c06fc17-ae35-4c52-9e1e-15f3cd5c061c",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you try a new game and it's really hard, what can you do?",
+      "rubric": [
+        "3 - You explain a good way to keep trying or ask for help.",
+        "2 - You mention trying more but don't say how.",
+        "1 - You say to give up or not try anymore.",
+        "0 - Your answer doesn't make sense."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "sharing a strategy",
+      "targetEvidence": "describes a useful approach to facing a challenge",
+      "alignmentRationale": "This task focuses on how to approach challenging activities beyond initial effort."
+    },
+    {
+      "id": "7e57dcd8-6bed-4fdb-ba54-b4536f10900e",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you try drawing and it doesn't look like you want, what can you do next?",
+      "rubric": [
+        "3 - You say to keep trying or find new ideas.",
+        "2 - You mention trying again but not how.",
+        "1 - You say to give up drawing.",
+        "0 - Your answer doesn't fit."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "coping with frustration",
+      "targetEvidence": "provides a constructive way to handle drawing difficulties",
+      "alignmentRationale": "This task assesses resilience in creative attempts."
+    },
+    {
+      "id": "e2aef616-3af8-4e58-a0ff-7bbb4e0f2d32",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You see a climbing wall. One part is easy, and one part is very high. Which one do you want to try?",
+      "rubric": [
+        "3 - You choose the high part and say you'll ask if you want help.",
+        "2 - You choose the high part but don’t mention help.",
+        "1 - You choose the easy part for fun.",
+        "0 - You choose without thinking."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Easy part"
+        },
+        {
+          "key": "b",
+          "text": "High part"
+        },
+        {
+          "key": "c",
+          "text": "Don't want to climb."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for choosing a challenge",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects the difficult option and indicates willingness to seek support",
+      "alignmentRationale": "This question tests the ability to choose a tougher challenge while being open to assistance."
+    },
+    {
+      "id": "8276210f-5e7a-4990-8388-a0a0dff65ce6",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You see a puzzle with 8 pieces. It looks tricky! What will you do?",
+      "rubric": [
+        "3 - You want to try the tricky puzzle and ask for help if needed.",
+        "2 - You want to try the tricky puzzle but feel worried about it.",
+        "1 - You want to do something else and avoid the puzzle.",
+        "0 - You don't want to try any puzzle."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Try the tricky puzzle!"
+        },
+        {
+          "key": "b",
+          "text": "I don't want to try it."
+        },
+        {
+          "key": "c",
+          "text": "Maybe later I'll try it."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "decide on help with a harder task",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "chooses to try the challenging puzzle and seeks help",
+      "alignmentRationale": "This task evaluates how a child approaches the option of a harder task and whether they consider seeking help."
+    },
+    {
+      "id": "cc4ec652-3e68-4a62-afa7-4582afa54bae",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "What will you do if you find a hard toy?",
+      "rubric": [
+        "3 - You play with the hard toy and ask for help if needed.",
+        "2 - You think about playing with it, but feel unsure.",
+        "1 - You avoid it and play with an easy toy.",
+        "0 - You don't want to play with any toy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "describing action with a challenging toy",
+      "targetEvidence": "describes an approach to engaging with a harder toy",
+      "alignmentRationale": "This prompt captures how a child envisions interacting with a more challenging option, assessing their willingness to try."
+    },
+    {
+      "id": "0e3a41b5-1b74-41e8-89f3-f82c10fd310e",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "What do you like to try when something is hard for you?",
+      "rubric": [
+        "3 - I like trying harder things with help!",
+        "2 - I like to give it a try and see what happens.",
+        "1 - I usually want to stop trying.",
+        "0 - I don’t want to do anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "describing actions with hard tasks",
+      "targetEvidence": "expresses preferences for engaging with challenging tasks",
+      "alignmentRationale": "This prompt allows children to articulate their strategies or interests when attempting harder tasks."
+    },
+    {
+      "id": "e4741716-32e8-4101-ac54-9ba0c9982e71",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You see a toy with lots of buttons. What will you do?",
+      "rubric": [
+        "3 - I will press the buttons one by one and see what happens!",
+        "2 - I will try to press some buttons, but not all.",
+        "1 - I think I will just watch someone else use it.",
+        "0 - I won't touch it at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Press all the buttons!"
+        },
+        {
+          "key": "b",
+          "text": "Try a few buttons only."
+        },
+        {
+          "key": "c",
+          "text": "Just watch someone else use it."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "trying new experiences",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "decides to engage with a new toy despite its difficulty",
+      "alignmentRationale": "This question evaluates a child's willingness to experiment with something unfamiliar or difficult."
+    },
+    {
+      "id": "62adae05-7011-4898-9548-7463b62a7131",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You see a climbing structure. One side is easy, and one side is hard. What do you want to do?",
+      "rubric": [
+        "3 - I want to try the hard side and see if I can do it!",
+        "2 - I might try the hard side if I have help.",
+        "1 - I will go for the easy side instead.",
+        "0 - I won't climb at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Try the hard side!"
+        },
+        {
+          "key": "b",
+          "text": "Try the hard side with help."
+        },
+        {
+          "key": "c",
+          "text": "Climb the easy side."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing between climbing options",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects the challenging climbing option",
+      "alignmentRationale": "This task gauges the child's willingness to try a more difficult activity and their consideration of assistance."
+    },
+    {
+      "id": "7d2e5230-17f3-44c3-983a-bef788cc1dd5",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you have a toy that is too hard to figure out, what’s your plan?",
+      "rubric": [
+        "3 - I will keep trying and ask for help from a friend!",
+        "2 - I might try to play with it a little bit.",
+        "1 - I want to use a different, easier toy.",
+        "0 - I will not try anything at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Keep trying and ask for help!"
+        },
+        {
+          "key": "b",
+          "text": "Play with it a little bit."
+        },
+        {
+          "key": "c",
+          "text": "Use a different, easier toy."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "deciding on help with a difficult toy",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "plans to continue challenging play with support",
+      "alignmentRationale": "This question measures if the child is willing to confront a challenging task and how they approach getting help."
+    },
+    {
+      "id": "03d404bf-49f7-4f83-884b-e875645f4054",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you find a puzzle with missing pieces, what is your first step?",
+      "rubric": [
+        "3 - You describe a good way to start solving it.",
+        "2 - You mention starting but it’s not clear how.",
+        "1 - You say you won’t try the puzzle.",
+        "0 - You don’t answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "starting a task with missing pieces",
+      "targetEvidence": "outlines a way to begin the puzzle despite missing pieces",
+      "alignmentRationale": "This allows the child to show their initial thought process for tackling a challenge where not all resources are available."
+    },
+    {
+      "id": "2627598a-de34-42b0-a88f-15e68dd32bf8",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You found two puzzles. One is easy, and the other one is tricky. Which do you want to try?",
+      "rubric": [
+        "3 - You choose the tricky puzzle and explain it seems fun.",
+        "2 - You choose the tricky puzzle but don’t explain.",
+        "1 - You choose the easy puzzle but mention the tricky one.",
+        "0 - You don't pick either puzzle."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The easy puzzle"
+        },
+        {
+          "key": "b",
+          "text": "The tricky puzzle"
+        },
+        {
+          "key": "c",
+          "text": "Neither puzzle"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a preference on challenge",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects the tricky puzzle and provides reasoning or not",
+      "alignmentRationale": "This tests the child's engagement with a challenging choice and reasoning."
+    },
+    {
+      "id": "c059e710-8c44-4988-85b9-a722ed640477",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "When drawing, if you are having trouble, what can you do to keep having fun?",
+      "rubric": [
+        "3 - You give a good way to keep enjoying drawing.",
+        "2 - You suggest a way but it’s not clear.",
+        "1 - You say you want to stop drawing.",
+        "0 - You don’t say what you would do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "strategy when facing a challenge",
+      "targetEvidence": "offers a strategy for maintaining enjoyment while drawing",
+      "alignmentRationale": "This prompts the child to reflect on their strategies for coping with a challenge."
+    },
+    {
+      "id": "700e7044-5688-4ec4-9bbd-bf6cf1e9cac4",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you see a challenging game, what will be your first step to play?",
+      "rubric": [
+        "3 - You describe a smart way to start playing.",
+        "2 - You mention starting but it’s not clear how.",
+        "1 - You say you won’t try the game.",
+        "0 - You don’t answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "starting a challenging task",
+      "targetEvidence": "outlines a clear first step toward engaging with the game",
+      "alignmentRationale": "This allows the child to articulate their initial strategy for tackling a challenge."
+    },
+    {
+      "id": "c0f536ef-7e4e-4d93-a99d-fb1c4fb908af",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "What will you do when you are playing and it gets too hard?",
+      "rubric": [
+        "3 - You say something helpful to keep going.",
+        "2 - You suggest something but it's unclear.",
+        "1 - You say you want to stop playing.",
+        "0 - You don’t answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "staying engaged with difficult tasks",
+      "targetEvidence": "provides a strategy to manage frustration and persistence while playing",
+      "alignmentRationale": "This checks the ability to communicate coping strategies during difficulty."
+    },
+    {
+      "id": "c48bbd5b-8800-4ac5-85ea-dd1c4bc61e31",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You are making a tall block tower. If it falls down, what could you do next?",
+      "rubric": [
+        "3 - Suggests to rebuild or ask for help with ideas.",
+        "2 - Mentions trying again but with less detail.",
+        "1 - Expresses feeling frustrated or gives vague response.",
+        "0 - No answer or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "strategy when facing difficulty",
+      "targetEvidence": "describes a plan to continue after a mistake",
+      "alignmentRationale": "This tests the ability to form a strategy to overcome challenges in building."
+    },
+    {
+      "id": "8abdaa59-dcd6-4371-9ae8-c778049c277a",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you are coloring and the picture is hard to stay inside the lines, what can you do?",
+      "rubric": [
+        "3 - Suggests taking breaks, using a different color, or trying again.",
+        "2 - Says to just keep coloring even if hard.",
+        "1 - Expresses frustration about the picture.",
+        "0 - No answer or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "approaching difficult tasks",
+      "targetEvidence": "offers a strategy for dealing with coloring challenges",
+      "alignmentRationale": "This assesses the ability to reflect on and choose a strategy when faced with artistic challenges."
+    },
+    {
+      "id": "6a7d9687-eb88-4df1-9e2c-78f03c6c6602",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You found a climbing wall. One side is easy, and the other is a bit tricky. Which side do you want to try climbing?",
+      "rubric": [
+        "3 - Chooses the tricky side, showing readiness to take on a challenge.",
+        "2 - Chooses the easy side but mentions trying the tricky side later.",
+        "1 - Doesn't express a clear choice.",
+        "0 - No answer or unsure about what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The tricky side ⛰️"
+        },
+        {
+          "key": "b",
+          "text": "The easy side 🧗"
+        },
+        {
+          "key": "c",
+          "text": "Not sure"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "risk-taking in activities",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "actively selects the harder climbing option",
+      "alignmentRationale": "This focuses on physical activity choices that reflect the willingness to face challenges."
+    },
+    {
+      "id": "8c2f1ece-8896-4405-b460-08e806f32bc9",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "There are two toys. One is easy to play with, and one is new and different. Which toy are you more excited to try?",
+      "rubric": [
+        "3 - Chooses the new toy, showing eagerness to challenge themselves.",
+        "2 - Chooses the easy toy but states they might try the new one.",
+        "1 - Doesn't clearly show a choice.",
+        "0 - No answer or chooses without thinking."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The new toy 🆕"
+        },
+        {
+          "key": "b",
+          "text": "The easy toy 🎲"
+        },
+        {
+          "key": "c",
+          "text": "I don't want to play"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "excitement for new experiences",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects the more challenging toy as a choice",
+      "alignmentRationale": "This evaluates the emotional response to trying something new and challenging."
+    },
+    {
+      "id": "b4c7a618-8c5e-4866-8213-e28b8a15312b",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you have a hard game to play, what’s your first step?",
+      "rubric": [
+        "3 - Describes how to ask for help or set a small goal.",
+        "2 - Mentions trying to play with it.",
+        "1 - Talks about being confused without a clear plan.",
+        "0 - No answer or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "strategy on starting tough tasks",
+      "targetEvidence": "expresses an actionable idea for approaching a challenging game",
+      "alignmentRationale": "This assesses the child's strategy for overcoming initial frustration in playing a new game."
+    },
+    {
+      "id": "4348dab1-42b4-4bef-aee3-4010cb7c9081",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You are playing with toys. One toy is easy to play with, and another one is harder. Which will you choose to play with today?",
+      "rubric": [
+        "3 - Chooses the harder toy and is excited about it.",
+        "2 - Chooses the harder toy but seems unsure.",
+        "1 - Chooses the easy toy but shows some interest in the hard one.",
+        "0 - Does not choose or simply repeats 'I don't know.'"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The easy toy."
+        },
+        {
+          "key": "b",
+          "text": "The harder toy."
+        },
+        {
+          "key": "c",
+          "text": "I don’t want to play."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "decision-making for play",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "chooses the harder toy and shares a feeling about it",
+      "alignmentRationale": "This question assesses the willingness to engage with a more difficult toy."
+    },
+    {
+      "id": "41c9c050-d303-4901-ba9e-690d3a9258eb",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you find a hard book, what can you do to still enjoy it?",
+      "rubric": [
+        "3 - Says to ask for help or to look at pictures.",
+        "2 - Suggests taking breaks or reading a little.",
+        "1 - Says to just try to read it without help.",
+        "0 - No response or unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "finding ways to cope with difficulty",
+      "targetEvidence": "offers strategies to enjoy a hard book",
+      "alignmentRationale": "This item explores how to adapt to a challenging reading situation."
+    },
+    {
+      "id": "4de87700-2a94-4e73-beb4-c1adec28ecf0",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "What will you do if your game gets tricky and you don’t know what to do next?",
+      "rubric": [
+        "3 - Describes a method such as asking a friend or taking a break.",
+        "2 - Suggests trying again without much detail.",
+        "1 - Says to give up or doesn’t know what to do.",
+        "0 - No response or unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "responding to challenges",
+      "targetEvidence": "gives a strategy for helping oneself with a tricky game",
+      "alignmentRationale": "This question tests coping strategies in a game situation."
+    },
+    {
+      "id": "51f15674-b957-4586-93d6-5e55067aaf49",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You want to color but some pictures are easy and some are hard. What will you do?",
+      "rubric": [
+        "3 - Chooses the hard picture and says why.",
+        "2 - Chooses the hard picture but doesn’t explain.",
+        "1 - Chooses the easy picture but shows interest in the hard one.",
+        "0 - Does not choose or says 'I don’t know.'"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Color the easy picture."
+        },
+        {
+          "key": "b",
+          "text": "Color the hard picture."
+        },
+        {
+          "key": "c",
+          "text": "I don’t want to color."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "approach to creative challenges",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "selects the harder picture and expresses enjoyment",
+      "alignmentRationale": "This prompts decision-making regarding creative challenges."
+    },
+    {
+      "id": "28366599-f0a5-4eca-86ce-340d59751972",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "Which of these is a way to make a task easier while still working hard?",
+      "rubric": [
+        "3 - You mentioned breaking it into smaller parts.",
+        "2 - You said to take it slow and steady.",
+        "1 - You suggested skipping parts.",
+        "0 - No helpful ideas were shared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Do it in small steps"
+        },
+        {
+          "key": "b",
+          "text": "Try to finish super fast"
+        },
+        {
+          "key": "c",
+          "text": "Ask someone to do it for me"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "adjusting task difficulty",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "gives a smart strategy for managing a tough task",
+      "alignmentRationale": "This question tests the ability to adapt a hard task into manageable steps."
+    },
+    {
+      "id": "6ff3930f-1450-4741-8da6-7e3bb079066d",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You can pick a task! Which one seems more fun to try?",
+      "rubric": [
+        "3 - You picked the tricky one and explained why it seemed fun.",
+        "2 - You picked the tricky one but didn't say why.",
+        "1 - You picked the easy one or didn't explain your choice.",
+        "0 - No choice was made."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Build a tall tower with blocks"
+        },
+        {
+          "key": "b",
+          "text": "Color a picture"
+        },
+        {
+          "key": "c",
+          "text": "Count from 1 to 10"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing a challenging task",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects the more challenging option and shares a reason why it's fun",
+      "alignmentRationale": "This question isolates the skill of choosing challenging tasks by asking for a specific preference."
+    },
+    {
+      "id": "fa587ffb-6263-42ae-b60f-3201d34675b2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "Imagine you have a big puzzle. What is the best first step to solve it?",
+      "rubric": [
+        "3 - You said to look at the pieces and find edges.",
+        "2 - You said to put some pieces together but didn’t explain.",
+        "1 - You suggested looking at the box but not much else.",
+        "0 - No useful steps were mentioned."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Find the edge pieces first"
+        },
+        {
+          "key": "b",
+          "text": "Just start anywhere"
+        },
+        {
+          "key": "c",
+          "text": "Look at the picture again"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "first step on a puzzle",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "provides a specific, helpful first step for completing a puzzle.",
+      "alignmentRationale": "This question tests the child's ability to think about how to begin a challenging task effectively."
+    },
+    {
+      "id": "3552c9b2-adea-4dbe-b04e-90570d7b368d",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If your friend picks a very hard game to play, what should you do?",
+      "rubric": [
+        "3 - You offer to help them and play together.",
+        "2 - You say it’s okay to try even if it’s hard.",
+        "1 - You ask them to pick something easier.",
+        "0 - You don’t respond in a helpful way."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Play together and help out"
+        },
+        {
+          "key": "b",
+          "text": "Cheer them on"
+        },
+        {
+          "key": "c",
+          "text": "Suggest a different game"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "helping with challenges",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "describes a supportive action towards a friend facing a difficult task",
+      "alignmentRationale": "This question examines the social aspect of seeking help, focusing on helping friends engage with challenges."
+    },
+    {
+      "id": "897e6c3f-3ae4-40e0-b17d-bd8b603e86db",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "Think about a time when you tried something hard. How did you feel when you finished?",
+      "rubric": [
+        "3 - You shared a positive feeling about finishing.",
+        "2 - You talked about how you felt but didn’t sound positive.",
+        "1 - You said you didn't like it or found it hard.",
+        "0 - No feelings were expressed."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "reflecting on challenge completion",
+      "targetEvidence": "describes a feeling related to completing a challenging task",
+      "alignmentRationale": "This question encourages self-reflection on the emotions associated with facing challenges."
+    },
+    {
+      "id": "bd9ca0e1-f5a6-4ddd-b455-6eb904ead3b9",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "During a tricky craft, what's a good way to ask for help?",
+      "rubric": [
+        "3 - You clearly explained what you need help with.",
+        "2 - You simply asked for help but not what for.",
+        "1 - You looked confused or didn’t ask well.",
+        "0 - You didn’t ask for help at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Can you help me with this part?"
+        },
+        {
+          "key": "b",
+          "text": "I don't know what to do."
+        },
+        {
+          "key": "c",
+          "text": "It's too hard, I give up!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "asking for help",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "describes a clear request for assistance from someone else",
+      "alignmentRationale": "This question focuses on the practical skill of asking for help when faced with a challenge."
+    },
+    {
+      "id": "136a5ad1-7e2d-4522-aa71-4cd5eea91824",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If a hard book is too confusing, what might you do?",
+      "rubric": [
+        "3 - You read a few pages then talk about it.",
+        "2 - You try to read it again slowly.",
+        "1 - You put it away and look for a picture book.",
+        "0 - You don’t finish it or seek help."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask someone to read with me"
+        },
+        {
+          "key": "b",
+          "text": "Just give it another try alone"
+        },
+        {
+          "key": "c",
+          "text": "Stop reading it completely"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "determining when to persist",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "provides a specific strategy for managing confusion in reading",
+      "alignmentRationale": "This assesses the ability to take a moment to persist or adapt in a challenging situation."
+    },
+    {
+      "id": "5e0bb4a5-131c-4691-8cad-0974f15bebc4",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "When you try something tough and it doesn’t go well, what do you think you should do next?",
+      "rubric": [
+        "3 - You suggested trying again in a different way.",
+        "2 - You talked about feeling sad then not wanting to try.",
+        "1 - You said you wouldn't try anymore.",
+        "0 - You didn’t suggest any next step."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "responding to failure",
+      "targetEvidence": "suggests a constructive next step after encountering a challenge",
+      "alignmentRationale": "This question examines the child's thought process in responding to failure in a challenge."
+    },
+    {
+      "id": "96c132a8-49b4-463a-afcc-84e351e27684",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "What do you think could be a fun way to challenge yourself more?",
+      "rubric": [
+        "3 - You suggested an interesting challenge and said why it would be fun.",
+        "2 - You suggested a challenge but didn't explain.",
+        "1 - You mentioned something slightly difficult but unsure why.",
+        "0 - You didn't suggest a challenge."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "create a challenge for self",
+      "targetEvidence": "describes an engaging challenge with reasoning",
+      "alignmentRationale": "This question aims to uncover creative challenge-seeking behavior."
+    },
+    {
+      "id": "a429a4b1-f25a-45f4-8d80-b38ba1618a52",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You can pick a game to play. Would you choose:",
+      "rubric": [
+        "3 - You picked the harder game and said why it would be fun.",
+        "2 - You picked the harder game but didn't explain.",
+        "1 - You chose an easy game but tried to make it fun.",
+        "0 - You picked an easy game without any reason."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A simple puzzle"
+        },
+        {
+          "key": "b",
+          "text": "A tricky riddle"
+        },
+        {
+          "key": "c",
+          "text": "A game for babies"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a choice between tasks",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "chooses the harder game, possibly explaining the choice",
+      "alignmentRationale": "This question assesses the ability to choose a challenge based on potential enjoyment."
+    },
+    {
+      "id": "fb5821ad-7799-4e85-ab28-62802bb72c8c",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you tried a tricky puzzle and got stuck, what would you do first?",
+      "rubric": [
+        "3 - You said you would ask for help and try again.",
+        "2 - You said you would take a break and think.",
+        "1 - You said something, but it didn't help much.",
+        "0 - You didn't say what you would do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "describe a strategy for problem-solving",
+      "targetEvidence": "describes a reasonable step to take when stuck",
+      "alignmentRationale": "This question targets the ability to articulate a strategy for overcoming challenges."
+    },
+    {
+      "id": "7fcbe100-011a-4b2e-bd06-5e6266b61b9c",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If a craft is too easy, what would you choose to do?",
+      "rubric": [
+        "3 - You picked a harder craft and said why it’s exciting.",
+        "2 - You picked a harder craft but gave no reason.",
+        "1 - You chose to stick with the easy one but tried to add something.",
+        "0 - You picked something really easy without any thought."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Keep doing the easy one."
+        },
+        {
+          "key": "b",
+          "text": "Choose a hard project, like building a model."
+        },
+        {
+          "key": "c",
+          "text": "Try to draw something different with colors."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "decide on a new challenge",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "indicates a choice of crafting project that increases difficulty",
+      "alignmentRationale": "This question checks for evidence of seeking more challenging tasks in creative activities."
+    },
+    {
+      "id": "a06f22a3-387a-4e6f-9d3d-7a6bc5d61046",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "Can you tell me about a time you did something hard? How did you feel?",
+      "rubric": [
+        "3 - You described a hard task and how you felt proud or excited.",
+        "2 - You mentioned it was hard but didn’t explain feelings.",
+        "1 - You said it was hard but didn’t explain much.",
+        "0 - You didn’t talk about a hard task."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "reflect on challenging experiences",
+      "targetEvidence": "articulates a challenging experience and associated feelings",
+      "alignmentRationale": "This question encourages reflection on personal challenges to promote understanding of their value."
+    },
+    {
+      "id": "620e1e16-57ad-4864-8ebb-e1a33831f4af",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "When trying something new, how do you think you might learn better?",
+      "rubric": [
+        "3 - You explained using help and practice to learn more easily.",
+        "2 - You mentioned practice but not how to get help.",
+        "1 - You said something about learning that was unclear.",
+        "0 - You didn’t describe a learning method."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "identify ways to learn from challenges",
+      "targetEvidence": "offers a strategy for learning more effectively when facing difficulties",
+      "alignmentRationale": "This question allows for the expression of learning strategies in challenging contexts."
+    },
+    {
+      "id": "af9a46a6-bbe7-4533-81fe-5a27236c2757",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "Which of these could help you complete a hard challenge?",
+      "rubric": [
+        "3 - You selected asking a friend for help and explained it.",
+        "2 - You chose asking a friend but gave no reason.",
+        "1 - You picked trying it alone, also unclear why.",
+        "0 - You chose something that doesn't help at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask a friend for help."
+        },
+        {
+          "key": "b",
+          "text": "Give up and walk away."
+        },
+        {
+          "key": "c",
+          "text": "Try to guess without any clues."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identify a strategy for help",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "selecting a helpful resource or strategy for challenging tasks",
+      "alignmentRationale": "This question evaluates the understanding of seeking assistance as a strategic step."
+    },
+    {
+      "id": "c2960cc2-21ab-441b-959a-6891a363058b",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You have two puzzles. One is very easy and one is tricky. Which do you want to try?",
+      "rubric": [
+        "3 - You pick the tricky puzzle and explain it sounds fun.",
+        "2 - You pick the tricky puzzle but don’t say why.",
+        "1 - You pick the easy puzzle but say you will try the hard one later.",
+        "0 - You say you don’t want to do either puzzle."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The easy puzzle"
+        },
+        {
+          "key": "b",
+          "text": "The tricky puzzle"
+        },
+        {
+          "key": "c",
+          "text": "Neither puzzle"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "choosing a harder task",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects the tricky puzzle and explains why",
+      "alignmentRationale": "This question tests the willingness to engage with difficulty by choosing a challenging task over an easy one."
+    },
+    {
+      "id": "ab5a3d04-4268-46dc-90e0-ce6933fa1719",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you finish a simple task, what might you choose to make it tougher?",
+      "rubric": [
+        "3 - You say to add more pieces or a new challenge.",
+        "2 - You suggest a few more pieces of the same task.",
+        "1 - You say you will take a break after the task.",
+        "0 - You say you don't want to do more."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Add more pieces or challenges"
+        },
+        {
+          "key": "b",
+          "text": "Just do the same task again"
+        },
+        {
+          "key": "c",
+          "text": "Skip to another easy task"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "increasing difficulty",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "describes a way to make a task harder",
+      "alignmentRationale": "This question evaluates how a child decides to increase task difficulty after completing an easy one."
+    },
+    {
+      "id": "c78d5884-f031-4602-a916-1d500c38c38c",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "Imagine you want to solve a tricky maze. What could you do if you get lost?",
+      "rubric": [
+        "3 - You suggest asking someone or trying a different way.",
+        "2 - You mention taking a break or thinking hard about it.",
+        "1 - You say you might just give up.",
+        "0 - You say nothing at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "strategy for getting unstuck",
+      "targetEvidence": "offers a reasonable strategy to continue",
+      "alignmentRationale": "The prompt focuses on the child's approach to overcoming challenges when they feel stuck, essential for challenge-seeking."
+    },
+    {
+      "id": "2134b703-8bd0-438c-892c-1c765302600a",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You can try a new hobby! Which one sounds more fun?",
+      "rubric": [
+        "3 - You pick the harder hobby and explain why it’s exciting.",
+        "2 - You pick the harder hobby but don’t explain.",
+        "1 - You pick a simple hobby instead of the hard one.",
+        "0 - You say none of the hobbies sound fun."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Painting (easy)"
+        },
+        {
+          "key": "b",
+          "text": "Building a robot (hard)"
+        },
+        {
+          "key": "c",
+          "text": "Just playing outside (not a hobby)"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "drawing excitement from challenge",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects a new hobby and reasons",
+      "alignmentRationale": "This question measures how children gravitate towards harder options while expressing their thoughts."
+    },
+    {
+      "id": "424c5e4c-a6a3-4c79-9c59-4cf01f680963",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you want to make a hard recipe, what would you do first?",
+      "rubric": [
+        "3 - You read it carefully and gather the right stuff.",
+        "2 - You choose some ingredients but skip steps.",
+        "1 - You just pick something random to do.",
+        "0 - You don’t want to try any recipe."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Read and get ready"
+        },
+        {
+          "key": "b",
+          "text": "Just pick some things"
+        },
+        {
+          "key": "c",
+          "text": "Say it's too hard"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "preparing to tackle a challenge",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "describes how to start a difficult task",
+      "alignmentRationale": "This question assesses children's readiness to engage with the starting steps of a challenging endeavor."
+    },
+    {
+      "id": "fd01222f-5b4a-4d85-89c2-0397a5aeb424",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "What is one way you like to improve in a hard sport?",
+      "rubric": [
+        "3 - The answer describes a specific way or action they take to practice.",
+        "2 - The answer mentions something general but lacks details about practicing.",
+        "1 - The answer is unclear or vague.",
+        "0 - The answer lacks engagement with practice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "practicing a hard skill",
+      "targetEvidence": "articulates a strategy for practicing something challenging",
+      "alignmentRationale": "This question invites the child to share their method for improving a difficult skill, indicating engagement with challenges."
+    },
+    {
+      "id": "021c0d35-ab9a-4b8f-b99f-21dab5276187",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "When you finish a challenging book or game, how do you think you might feel?",
+      "rubric": [
+        "3 - The answer describes feeling proud or excited and explains why.",
+        "2 - The answer mentions a positive feeling but lacks a reason.",
+        "1 - The answer notes a neutral or slightly negative feeling.",
+        "0 - The answer does not engage with feelings."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I might feel tired"
+        },
+        {
+          "key": "b",
+          "text": "I may feel proud of my effort"
+        },
+        {
+          "key": "c",
+          "text": "I wouldn't want to try if it's hard"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "understanding emotions from challenge",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "expresses a positive feeling about completing a challenge with a reason",
+      "alignmentRationale": "This question encourages the child to reflect on the positive emotions tied to overcoming challenges."
+    },
+    {
+      "id": "07b76d28-b9d5-479b-9ed5-50ab0a93dd50",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You can draw a sunset or a night sky full of stars. Which one do you want to try?",
+      "rubric": [
+        "3 - The answer chooses the detailed night sky and provides a fun reason.",
+        "2 - The answer chooses the night sky but gives a simple reason.",
+        "1 - The answer chooses the sunset with a slight reason.",
+        "0 - The answer does not decide or explains unrelated ideas."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Draw a sunset"
+        },
+        {
+          "key": "b",
+          "text": "Draw a night sky full of stars"
+        },
+        {
+          "key": "c",
+          "text": "Neither, I want to play"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "selecting a more complex option",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "chooses the harder drawing task with an exciting rationale",
+      "alignmentRationale": "This question tests the child's ability to opt for a more complicated creative task over a simpler one."
+    },
+    {
+      "id": "e5f37ba9-7ed3-45bc-9040-42d4d18129b6",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You have two tasks: paint a colorful picture or create a jungle scene with animals. Which one do you choose?",
+      "rubric": [
+        "3 - The answer shows a clear selection of the challenging task and includes a reason like wanting to learn more.",
+        "2 - The answer chooses the challenging task but gives a vague reason.",
+        "1 - The answer chooses the easy task but includes a little reason.",
+        "0 - The answer does not choose a task or includes irrelevant information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Paint a colorful picture"
+        },
+        {
+          "key": "b",
+          "text": "Create a jungle scene with animals"
+        },
+        {
+          "key": "c",
+          "text": "None of these"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "choosing a challenging task",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "picks the harder task and provides a reason for the choice",
+      "alignmentRationale": "This question asks the child to actively choose a more difficult task, demonstrating their approach to challenge-seeking."
+    },
+    {
+      "id": "361ec116-2700-4717-9bfc-099f7653b10e",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "What would you do if your friend challenges you to a hard game?",
+      "rubric": [
+        "3 - The answer explains a strategy to tackle the game, possibly asking for help or taking a break.",
+        "2 - The answer mentions a positive action but lacks enough detail.",
+        "1 - The answer states a vague response without strategy.",
+        "0 - The answer does not engage with the challenge."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "approaching someone else's challenge",
+      "targetEvidence": "describes a helpful action toward tackling a challenge presented by a friend",
+      "alignmentRationale": "This question prompts the child to share a strategy for engaging with difficulties, reflecting their approach to accepting help."
+    },
+    {
+      "id": "6873e2a4-16fb-4898-9b04-d4d0599040c5",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You see a big Lego project with lots of pieces. Do you want to give it a try?",
+      "rubric": [
+        "3 - The answer shows excitement for trying the project and explains why it is fun.",
+        "2 - The answer says yes but lacks a detailed reason.",
+        "1 - The answer says no but gives a vague reason.",
+        "0 - The answer does not engage with the project at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "No, it looks too hard"
+        },
+        {
+          "key": "b",
+          "text": "Yes, I want to try this project"
+        },
+        {
+          "key": "c",
+          "text": "Maybe, if I have help"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "desiring challenge",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "expresses enthusiasm for the project with a reason",
+      "alignmentRationale": "This question gauges the child's willingness to embrace a large challenge and their reasoning process."
+    },
+    {
+      "id": "b26c6810-2da2-4918-b57f-744fb6ed150f",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "Imagine you find a new hard game. What do you do first?",
+      "rubric": [
+        "3 - The answer describes a specific approach to tackling the game, such as practicing or asking a friend for help.",
+        "2 - The answer mentions doing something but lacks details.",
+        "1 - The answer is vague or unclear about how to start.",
+        "0 - The answer does not refer to the game at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "first step on a challenging task",
+      "targetEvidence": "provides a concrete action taken to start playing the game",
+      "alignmentRationale": "This question invites the child to explain how they would approach an initial challenge, showcasing their problem-solving strategy."
+    },
+    {
+      "id": "a3b61e25-ed9d-4e44-b079-331aefdffe1f",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You can solve a tricky puzzle or watch an easy cartoon. What will you choose?",
+      "rubric": [
+        "3 - The answer shows a clear choice of the puzzle and explains why it's more interesting.",
+        "2 - The answer chooses the puzzle but gives a simple reason.",
+        "1 - The answer picks the cartoon and includes a slight reason.",
+        "0 - The answer does not choose or explains unrelated things."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Watch an easy cartoon"
+        },
+        {
+          "key": "b",
+          "text": "Solve the tricky puzzle"
+        },
+        {
+          "key": "c",
+          "text": "I don't want to do either"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "choosing engagement",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects the harder puzzle and describes an appealing reason",
+      "alignmentRationale": "This question measures whether the child actively seeks a challenge by opting for a puzzle over an easier option."
+    },
+    {
+      "id": "be357be2-1b0a-48a5-ba32-6bab8f7664e6",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "What do you do if you find a difficult puzzle?",
+      "rubric": [
+        "3 - Clearly explains a strategy for tackling the puzzle, like asking for help.",
+        "2 - Describes something to try but lacks detail on solving it.",
+        "1 - Says they would just give up or doesn't provide a clear action.",
+        "0 - Does not answer or speaks generally without specifics."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "managing difficulty in tasks",
+      "targetEvidence": "describes a specific approach to handle a difficult task",
+      "alignmentRationale": "This question requires the child to think about their strategy when facing a challenge, which aligns with the concept of seeking challenges responsibly."
+    },
+    {
+      "id": "da1d9feb-3b9b-422e-89a3-4e305cf74836",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You can choose to build a tall tower with blocks or a big airplane. Which would you pick?",
+      "rubric": [
+        "3 - You clearly choose the tall tower and explain why it's challenging and fun.",
+        "2 - You choose the tall tower but give less detail about its challenge.",
+        "1 - You choose the airplane, with some explanation of why.",
+        "0 - You choose neither or don’t explain your choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The tall tower"
+        },
+        {
+          "key": "b",
+          "text": "The big airplane"
+        },
+        {
+          "key": "c",
+          "text": "Neither"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing a challenging task",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "selects a challenging task and provides a brief reason for the choice",
+      "alignmentRationale": "This question directly observes the child's preference for challenge through a choice, illustrating their willingness to engage with more difficult tasks."
+    },
+    {
+      "id": "5d1f7f02-e6bb-4c25-9260-d6ff99f824da",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you wanted to try learning a new skill you found hard, how would you start?",
+      "rubric": [
+        "3 - Clearly describes an action to start trying the new skill with good reasoning.",
+        "2 - Gives a starting action but lacks detail or reason.",
+        "1 - Mentions trying the skill but does not say how.",
+        "0 - Does not answer or gives no helpful details."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "describing a strategy for challenge",
+      "targetEvidence": "describes a strategy to start a challenging new activity",
+      "alignmentRationale": "This question allows the child to articulate their approach instead of simply stating a preference, showcasing their thought process and willingness to face difficulty."
+    },
+    {
+      "id": "cd5305ec-275a-41d9-9682-ed8fa54c6d80",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You want to solve a tricky maze. Your friend says it's too hard. What do you say to encourage them?",
+      "rubric": [
+        "3 - You suggest a way to try the maze step by step.",
+        "2 - You encourage them but with less detail on strategy.",
+        "1 - You tell them it’s fun but no specific encouragement.",
+        "0 - You agree it’s too hard or say nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "We can try it together, step by step!"
+        },
+        {
+          "key": "b",
+          "text": "It is too hard; let’s skip it."
+        },
+        {
+          "key": "c",
+          "text": "Just keep guessing!"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "encouraging others in challenge",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "suggests a supportive strategy for a friend facing a challenge",
+      "alignmentRationale": "This question assesses empathy and social strategy while focusing on challenge, as it helps understand how children engage with both their own and others' difficulties."
+    },
+    {
+      "id": "8f03d31d-5329-4459-b705-65df9171eb31",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "Think about a recent time you faced something tough in a game. What did you do to try to solve it?",
+      "rubric": [
+        "3 - Shares a specific action taken, clearly explaining their thought process.",
+        "2 - Gives an action but lacks clarity or reasoning.",
+        "1 - Mentions facing something tough but doesn’t elaborate steps.",
+        "0 - Does not provide any clear response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "reflecting on problem-solving",
+      "targetEvidence": "describes an action taken to overcome a challenge",
+      "alignmentRationale": "This prompt engages the child's self-reflection on past challenges, which is essential for encouraging growth in handling difficult situations."
+    },
+    {
+      "id": "6c3ddb4d-90be-4295-b3c3-be61b68d3b03",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you finish your work early, what is one challenging thing you could choose to do?",
+      "rubric": [
+        "3 - You suggest a specific challenging task or activity that sounds fun.",
+        "2 - You mention a task but it’s not very challenging.",
+        "1 - You talk about resting instead of a challenge.",
+        "0 - You don’t suggest anything to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Try a harder puzzle!"
+        },
+        {
+          "key": "b",
+          "text": "Just watch TV."
+        },
+        {
+          "key": "c",
+          "text": "Playing an easy game."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "selecting further challenges",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "suggests a challenging option after completing another task",
+      "alignmentRationale": "This question focuses on how children choose to continue embracing challenge even after completing a task, reinforcing positive behavior toward effort."
+    },
+    {
+      "id": "2d75ebd7-4a6b-4a4c-b074-7c0ffe535dce",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "Can you tell me how you would feel if you tried and failed at something tough? What would you do next?",
+      "rubric": [
+        "3 - Clearly explains feelings and a positive action to take next.",
+        "2 - Mentions feelings but not a helpful next step.",
+        "1 - Talks about failing without focusing on feelings or next steps.",
+        "0 - Does not respond to the feelings or actions."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "thinking about feelings in challenges",
+      "targetEvidence": "describes feelings and possible actions after a setback",
+      "alignmentRationale": "This question encourages emotional intelligence and resilience, asking children to think constructively about failure in a manageable way."
+    },
+    {
+      "id": "65f1141b-6565-4687-8334-7a57ef70b290",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You can do a puzzle or a drawing. Which one will you try?",
+      "rubric": [
+        "3 - You choose the puzzle and explain you like the challenge.",
+        "2 - You choose the puzzle but don't say why.",
+        "1 - You choose the drawing and say it is easy.",
+        "0 - You choose the drawing and don't explain."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I want to do the puzzle! It's fun!"
+        },
+        {
+          "key": "b",
+          "text": "I will do the puzzle."
+        },
+        {
+          "key": "c",
+          "text": "I want to do the drawing."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose challenging tasks",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Selects the puzzle as a more difficult option and gives a reason.",
+      "alignmentRationale": "This question tests the ability to choose a challenging task over an easier one."
+    },
+    {
+      "id": "7d0645a7-f99f-4236-941b-789b7bebfc50",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "You made a mistake while drawing. What should you do next?",
+      "rubric": [
+        "3 - You try again with a different plan.",
+        "2 - You complain about the mistake.",
+        "1 - You ignore it and move on.",
+        "0 - You don't say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Try again with a new plan!"
+        },
+        {
+          "key": "b",
+          "text": "That's not fair!"
+        },
+        {
+          "key": "c",
+          "text": "I don't care anymore."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "respond positively to mistakes",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies trying again as a positive response to error.",
+      "alignmentRationale": "This question assesses their resilience and ability to cope with failure."
+    },
+    {
+      "id": "71fcee89-ae12-4be7-88f8-0ffe5cc55c8c",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you finish your project early, what can you do?",
+      "rubric": [
+        "3 - Suggest a harder task or project to start.",
+        "2 - Suggest reviewing what you did.",
+        "1 - Say you will wait for someone.",
+        "0 - Don't respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Start a harder project!"
+        },
+        {
+          "key": "b",
+          "text": "Look over what I did."
+        },
+        {
+          "key": "c",
+          "text": "I will just wait."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identify options for harder tasks",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Proposes pursuing another challenging activity after finishing.",
+      "alignmentRationale": "This question evaluates decision-making regarding continued engagement with challenge."
+    },
+    {
+      "id": "488f472e-e899-4194-9088-5ce8717c1435",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "If you could do a harder project, what would it be? Why do you want to try?",
+      "rubric": [
+        "3 - Describes a specific project and explains why it's exciting.",
+        "2 - Names a project but without a reason.",
+        "1 - Says they like easy things instead.",
+        "0 - Doesn't answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "express interest in challenging tasks",
+      "targetEvidence": "Articulates a desire for a specific challenge and reasons behind it.",
+      "alignmentRationale": "This question seeks to understand interest in engaging with more difficult tasks."
+    },
+    {
+      "id": "57011aac-1820-4607-8b43-e6b672dae201",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "challenge_seeking",
+      "format": "explanation",
+      "prompt": "Your friend said a puzzle is too hard. What could you say to support them?",
+      "rubric": [
+        "3 - Suggest taking a break or getting help.",
+        "2 - Say they should just keep trying.",
+        "1 - Agree that it is hard and walk away.",
+        "0 - Don’t respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Let's take a break or ask someone!"
+        },
+        {
+          "key": "b",
+          "text": "You should just keep trying."
+        },
+        {
+          "key": "c",
+          "text": "Yes, it's too hard."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "support others with difficult tasks",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Suggests a helpful response to encourage a friend.",
+      "alignmentRationale": "This tests the ability to offer emotional support in face of challenges."
+    }
+  ]
+}

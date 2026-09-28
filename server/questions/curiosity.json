@@ -1,0 +1,2685 @@
+{
+  "category": "curiosity",
+  "questions": [
+    {
+      "id": "7ba1642e-58ba-497c-b287-acc4dac9ef5d",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "How do you think a snowman feels during winter?",
+      "rubric": [
+        "3 - Provides a thought-out feeling related to being a snowman.",
+        "2 - Mentions a simple feeling but lacks depth.",
+        "1 - States something unrelated to a snowman.",
+        "0 - Does not answer anything related."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "consider feelings of non-living things",
+      "targetEvidence": "expresses a possible emotion that reflects imagination about snowman's feelings",
+      "alignmentRationale": "This task pushes for thinking about feelings in a creative way, even for inanimate objects."
+    },
+    {
+      "id": "063cab03-9bbf-4847-a825-ab3fb352673a",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "Look at these different fruits 🍎🍌🍍. What can we make with them?",
+      "rubric": [
+        "3 - Chooses a creative dish or drink idea, showing imagination.",
+        "2 - Chooses an item that is somewhat related to the fruits, but less creative.",
+        "1 - Chooses something that is not typically made from these fruits.",
+        "0 - Does not answer or selects an irrelevant item."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Fruit salad"
+        },
+        {
+          "key": "b",
+          "text": "Plastic toys"
+        },
+        {
+          "key": "c",
+          "text": "A chair"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose a related option",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects a relevant use or creation involving the fruits",
+      "alignmentRationale": "This task tests the ability to extend thoughts by considering how to use the provided fruits creatively."
+    },
+    {
+      "id": "08a42306-2a51-4a5e-8aa9-81441764eaad",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "What if you could have a pet unicorn 🦄? What would you want to ask it?",
+      "rubric": [
+        "3 - Asks an imaginative question about the unicorn's magic or adventures.",
+        "2 - Asks a simple question about the unicorn's preferences or likes.",
+        "1 - Asks about a normal animal instead of a unicorn.",
+        "0 - Does not answer or asks something unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Can you fly with me?"
+        },
+        {
+          "key": "b",
+          "text": "What do you eat?"
+        },
+        {
+          "key": "c",
+          "text": "Are you big?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "ask a what-if question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects or formulates a relevant question for the unicorn",
+      "alignmentRationale": "This item encourages imaginative speculation and the asking of open-ended possibilities related to a fantasy creature."
+    },
+    {
+      "id": "a07dc773-1412-4873-8d21-870cda01128e",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "Imagine a magic fish 🐟 can grant wishes. What would you ask for?",
+      "rubric": [
+        "3 - States a fun and imaginative wish that shows creativity.",
+        "2 - States a wish that is somewhat common or expected, but still relevant.",
+        "1 - States a wish that does not really fit with the idea of a magic fish.",
+        "0 - Does not respond or suggests something totally unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "To swim in the ocean!"
+        },
+        {
+          "key": "b",
+          "text": "A toy fish"
+        },
+        {
+          "key": "c",
+          "text": "To visit the zoo"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "ask a creative wish",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "selects or demonstrates a suitable wish related to the magic fish",
+      "alignmentRationale": "This question prompts children to think out of the box and ask for something imaginative, testing curiosity."
+    },
+    {
+      "id": "e7f39d68-d660-4c32-bf1e-d750c807d329",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "What could we do if we see clouds ☁️?",
+      "rubric": [
+        "3 - Suggests a creative or fun activity related to clouds.",
+        "2 - Suggests a common activity associated with clouds.",
+        "1 - Mentions something unrelated to clouds.",
+        "0 - Does not answer or gives an irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Make a cloud sculpture"
+        },
+        {
+          "key": "b",
+          "text": "Watch TV"
+        },
+        {
+          "key": "c",
+          "text": "Go to sleep"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose a cloud-related activity",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects or suggests a relevant activity involving clouds",
+      "alignmentRationale": "This item encourages thinking about the environment and imaginative play based on observable phenomena."
+    },
+    {
+      "id": "34696694-aff7-4344-a483-e8f589acd846",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If your toy could come to life, what would it do?",
+      "rubric": [
+        "3 - Describes a vivid action or event involving the toy.",
+        "2 - States a simple action the toy might take.",
+        "1 - Mention an object but provides no action.",
+        "0 - Does not respond or is unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "imagine an action",
+      "targetEvidence": "describes a possible activity of the toy after coming to life",
+      "alignmentRationale": "This task isolates the skill of imagining and creating scenarios, which is a sign of curiosity and creative thinking."
+    },
+    {
+      "id": "ef328aba-1f85-4c44-bcbb-2c9503d609a8",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "What would happen if animals could talk?",
+      "rubric": [
+        "3 - Suggests an interesting conversation or interaction with animals.",
+        "2 - Mentions something animals might say but lacks detail.",
+        "1 - Offers a simple fact about animals without imaginative thought.",
+        "0 - Does not respond or is unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "imagine a conversation",
+      "targetEvidence": "explains potential talking scenarios with animals",
+      "alignmentRationale": "This question prompts children to think creatively about communication and interaction with animals, extending their curiosity."
+    },
+    {
+      "id": "795af6e7-47f4-4b71-aaac-bec83ad8f354",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "What do you want to learn about the stars?",
+      "rubric": [
+        "3 - Asks a specific and thoughtful question about stars.",
+        "2 - Mentions something basic but it lacks detail.",
+        "1 - States a fact instead of a question.",
+        "0 - Does not respond or offers something unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "ask a question about the unknown",
+      "targetEvidence": "poses a question showing curiosity about stars",
+      "alignmentRationale": "This focuses on the child's inquisitiveness about the unknown in a creative way."
+    },
+    {
+      "id": "ba6e6a75-1e83-4334-ab7c-8f2993e83f56",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "Look at these animals 🐶🐱🐰. What if they could switch places? What would happen?",
+      "rubric": [
+        "3 - Answer suggests an interesting change and explains it.",
+        "2 - Answer describes a change without much detail.",
+        "1 - Answer is unclear or off-topic.",
+        "0 - No answer or no relevance."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The dog would be sad."
+        },
+        {
+          "key": "b",
+          "text": "Then they would do fun things!"
+        },
+        {
+          "key": "c",
+          "text": "The rabbit likes carrots."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "invent a what-if",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects a relevant what-if question to explore the scenario further",
+      "alignmentRationale": "This question tests the child's ability to extend thinking beyond a simple situation by considering changes."
+    },
+    {
+      "id": "16949203-8dea-4852-a6bb-ff248d64c9d3",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "Look at this yummy fruit 🍎🍌🍍. What could we do with it?",
+      "rubric": [
+        "3 - Answer includes a fun idea to use the fruit.",
+        "2 - Answer suggests a way to use them but is less creative.",
+        "1 - Answer is unrelated to using the fruit.",
+        "0 - No answer or no relevance."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Can we make a fruit salad?"
+        },
+        {
+          "key": "b",
+          "text": "They're colorful."
+        },
+        {
+          "key": "c",
+          "text": "I like apples."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the question that would teach more",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects a relevant question about possibilities for the fruit",
+      "alignmentRationale": "This question evaluates curiosity about practical uses, prompting creative thought on different scenarios."
+    },
+    {
+      "id": "2c8c1bed-1d71-463f-aee4-30cf5d0c8e9c",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you could fly like a bird 🦅, where would you go?",
+      "rubric": [
+        "3 - Answer includes an interesting place with a reason.",
+        "2 - Answer suggests a place but no reason.",
+        "1 - Answer is vague or unclear about places.",
+        "0 - No answer or no relevance."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "In the sky above!"
+        },
+        {
+          "key": "b",
+          "text": "To the mountains to see eagles!"
+        },
+        {
+          "key": "c",
+          "text": "Birds are cool."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "invent a what-if",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "presents a relevant what-if question regarding flying",
+      "alignmentRationale": "This tests their imagination regarding flying, prompting thoughts about locations and adventures."
+    },
+    {
+      "id": "91f0463b-108d-4702-b0e5-8dbbc8bdac4e",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If we could travel to the moon 🌙, what would you want to see there?",
+      "rubric": [
+        "3 - Answer includes a specific and interesting idea.",
+        "2 - Mentions an idea but lacks details.",
+        "1 - Vague or no interesting ideas.",
+        "0 - No answer or no relevance."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Maybe aliens! 👽"
+        },
+        {
+          "key": "b",
+          "text": "It's far away."
+        },
+        {
+          "key": "c",
+          "text": "I like the moon."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "invent a what-if",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "creates an imaginative question regarding travel to the moon",
+      "alignmentRationale": "This task tests their imagination about space exploration and what could be found there."
+    },
+    {
+      "id": "2ff2c5ea-ef1b-4ba2-9c0f-800efc2da50c",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "Look at these toys 🚂🧸🍭. What game could we play with them?",
+      "rubric": [
+        "3 - Provides a creative game idea connected to the toys.",
+        "2 - Suggests a game but lacks a clear connection.",
+        "1 - Vague or unclear game suggestion.",
+        "0 - No answer or no relevance."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "notice what remains unknown",
+      "targetEvidence": "provides a relevant game idea that links to the toys",
+      "alignmentRationale": "This question prompts reflection on creative use, seeking to expand the play context."
+    },
+    {
+      "id": "99726079-438e-43d5-80c8-dd98142fdc62",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "Imagine a robot could help with chores 🤖. What would you want it to do?",
+      "rubric": [
+        "3 - Suggests a specific chore for the robot.",
+        "2 - States a chore but lacks detail.",
+        "1 - Answer is unrelated to chores.",
+        "0 - No answer or no relevance."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Can it cook my dinner?"
+        },
+        {
+          "key": "b",
+          "text": "Robots are fun."
+        },
+        {
+          "key": "c",
+          "text": "I like see robots."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the question that would teach more",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects a useful question involving the robot's tasks",
+      "alignmentRationale": "This question assesses curiosity by prompting thoughts about household tasks and creativity in using technology."
+    },
+    {
+      "id": "d4683d19-14fd-42e8-b006-060b763fc451",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "Imagine planting a magic seed 🌱. What could grow from it?",
+      "rubric": [
+        "3 - Provides a creative idea about what the seed could grow.",
+        "2 - Mentions something but lacks creativity.",
+        "1 - Vague answer about plants.",
+        "0 - No answer or no relevance."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "notice what remains unknown",
+      "targetEvidence": "suggests a relevant idea about unknown growth",
+      "alignmentRationale": "This question encourages creative thinking and exploration of possibilities."
+    },
+    {
+      "id": "f68ab0e5-4a73-4c1a-9811-34a0e2667ece",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you had a pet dragon 🐉, what could you ask it?",
+      "rubric": [
+        "3 - Suggests a fun and interesting question for the dragon.",
+        "2 - Presents a question but lacks creativity.",
+        "1 - Answer is unrelated to asking the dragon.",
+        "0 - No answer or no relevance."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Do you like to eat rocks?"
+        },
+        {
+          "key": "b",
+          "text": "What cool things can you do?"
+        },
+        {
+          "key": "c",
+          "text": "Dragons fly fast."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "choose the question that would teach more",
+      "optionScores": {
+        "a": 2,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects an engaging question related to the pet dragon",
+      "alignmentRationale": "This assesses curiosity by prompting the child to think about imaginative interactions."
+    },
+    {
+      "id": "ac6fef88-5b1d-4b6d-bec5-ea7fbd0a7a7e",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "What do you think we would do if it rained all the time?",
+      "rubric": [
+        "3 - The answer shows a realistic idea of what continuous rain would change, like 'We would build boats!'.",
+        "2 - The answer includes some thoughts like 'It would be different'.",
+        "1 - The answer is very vague, like 'Things would change'.",
+        "0 - The answer is off-topic, like 'I want to play'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inventing a what-if scenario",
+      "targetEvidence": "generates plausible consequences related to constant rain",
+      "alignmentRationale": "This creative task invites speculation about an everyday phenomenon, focusing on possible adaptations."
+    },
+    {
+      "id": "ea49b5cb-918d-463f-97dd-0f5af9bece8a",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "Imagine if toys could talk! What question would you ask them? 🧸💬",
+      "rubric": [
+        "3 - The question reveals curiosity, like 'What do you like to do?'.",
+        "2 - The question is about one toy, like 'What is your favorite game?'.",
+        "1 - The question is simple, like 'What are toys?'.",
+        "0 - The question is unrelated, like 'What time is it?'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What do you like to do?"
+        },
+        {
+          "key": "b",
+          "text": "What is your favorite game?"
+        },
+        {
+          "key": "c",
+          "text": "What are toys?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "selecting a learning question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a question that reveals deeper curiosity about toys",
+      "alignmentRationale": "This task measures the ability to think creatively about interaction with toys, prompting an open-ended exploration."
+    },
+    {
+      "id": "c4d02d64-b42f-49e8-a933-21871ee8a752",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "There are stars in the night sky 🌌. What could we ask about them?",
+      "rubric": [
+        "3 - The question is deep, like 'How many stars are there?'.",
+        "2 - The question is about one star, like 'What is a star?'.",
+        "1 - The question is general, like 'Where are stars?'.",
+        "0 - The question does not relate, like 'What color is the tree?'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "How many stars are there?"
+        },
+        {
+          "key": "b",
+          "text": "What is a star?"
+        },
+        {
+          "key": "c",
+          "text": "Where are stars?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "selecting a learning question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "picks a meaningful question that shows curiosity about stars",
+      "alignmentRationale": "The purpose is to guide thinking towards specific inquiry, integrating concepts rather than simply stating observations."
+    },
+    {
+      "id": "78c7a847-63ca-4bb2-b729-2d0397b4ab6c",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "What would happen if we had no trees?",
+      "rubric": [
+        "3 - The answer shows a clear understanding of the importance of trees, like 'We would have no air to breathe!'.",
+        "2 - The answer includes some ideas like 'It would be different without trees'.",
+        "1 - The answer is very vague, like 'Things would change'.",
+        "0 - The answer is off-topic, like 'I would play outside'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inventing a what-if scenario",
+      "targetEvidence": "suggests outcomes clearly related to the concept of trees",
+      "alignmentRationale": "This question requires a creative response to explore imaginary consequences, rather than factual recall."
+    },
+    {
+      "id": "632dd4d9-dd64-4145-b650-eddf8896c674",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "Imagine you could ask a flower about the weather. What would you want to know?",
+      "rubric": [
+        "3 - An interesting question that shows curiosity about a flower's perspective.",
+        "2 - A good question related to flowers and weather.",
+        "1 - A simple question that does not explore much.",
+        "0 - An unrelated question that doesn't make sense for a flower."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "imaginative curiosity",
+      "targetEvidence": "a creative question that relates to a flower's experience with weather",
+      "alignmentRationale": "This enhances imaginative thinking while connecting flowers to the outside world."
+    },
+    {
+      "id": "70348bac-fa8d-4112-91e6-a5068b8f534e",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "What if you could ask a fish one question? What would it be?",
+      "rubric": [
+        "3 - An interesting question that shows curiosity about the fish's life.",
+        "2 - A good question that touches on fish experiences.",
+        "1 - A simple question that does not explore much.",
+        "0 - An unrelated question that doesn't make sense for a fish."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "imaginative questioning",
+      "targetEvidence": "a relevant imaginative question about a fish's life",
+      "alignmentRationale": "This question encourages imaginative thinking by asking for scenarios that enhance understanding of the fish."
+    },
+    {
+      "id": "782a62ac-d8b2-41fe-a645-2cae8cc89f97",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "You found a hidden treasure chest. What question would you ask about it to learn more?",
+      "rubric": [
+        "3 - A question that reveals lots about the treasure, like 'Where did it come from?'",
+        "2 - A good question about the treasure, like 'What’s inside?'",
+        "1 - A less relevant question, like 'Is it heavy?'.",
+        "0 - An irrelevant question like 'Can I open it?'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Where did it come from?"
+        },
+        {
+          "key": "b",
+          "text": "What’s inside?"
+        },
+        {
+          "key": "c",
+          "text": "Can I open it?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "exploring unknowns",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "selecting a question that digs into the treasure's story",
+      "alignmentRationale": "This question aims to assess the ability to ask deeper questions to uncover hidden information about a treasure."
+    },
+    {
+      "id": "f12171a8-6acc-476c-8b88-eaf70a697d78",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you could ask a rabbit what it wanted, which question would be best?",
+      "rubric": [
+        "3 - A question about the rabbit's feelings, like 'What makes you happy?'",
+        "2 - A good question about what the rabbit needs, like 'What do you eat?'.",
+        "1 - A simple question like 'What is it?' that doesn't help.",
+        "0 - An unrelated question like 'Can I pet it?'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What makes you happy?"
+        },
+        {
+          "key": "b",
+          "text": "What do you eat?"
+        },
+        {
+          "key": "c",
+          "text": "Can I pet it?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding feelings",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "selecting a question that explores the rabbit's emotions",
+      "alignmentRationale": "This question encourages understanding of the rabbit's desires, showing empathy towards the animal."
+    },
+    {
+      "id": "dc9f63fa-dc60-4396-8178-0efe6f1b2939",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "You see a spaceship fly by. What would you ask to learn more about it?",
+      "rubric": [
+        "3 - A question that opens up space for discovery, like 'Where does it come from?'",
+        "2 - A good question about the spaceship, like 'Is it big?'.",
+        "1 - A question that's not very helpful, like 'Is it flying?'.",
+        "0 - An unrelated question like 'What color is it?'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Where does it come from?"
+        },
+        {
+          "key": "b",
+          "text": "Is it big?"
+        },
+        {
+          "key": "c",
+          "text": "What color is it?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "curiosity about technology",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "selecting a relevant question regarding a spaceship",
+      "alignmentRationale": "This focuses on how well a child can expand curiosity through questioning to understand technology."
+    },
+    {
+      "id": "4556c925-ab96-4d06-a21b-7055eff16fd5",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "You see a big balloon. Which question would help you learn more about it?",
+      "rubric": [
+        "3 - You choose a question that gets lots of information, like 'How was it made?'",
+        "2 - You choose a question that gets some information, like 'What color is it?'",
+        "1 - You choose a question that's a little off, like 'Is it light?'.",
+        "0 - You choose a question that doesn't help, like 'Is it a balloon?'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "How was it made?"
+        },
+        {
+          "key": "b",
+          "text": "What color is it?"
+        },
+        {
+          "key": "c",
+          "text": "Is it a balloon?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "expanding curiosity",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "selecting a question that extends learning about the balloon",
+      "alignmentRationale": "This item tests the ability to identify a question that seeks deeper understanding beyond the obvious."
+    },
+    {
+      "id": "482667bd-5573-438a-b9e4-783a40a739ca",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you could ask a cat one question, which one might help you learn more about it?",
+      "rubric": [
+        "3 - You choose a question that gives new insights, like 'What do you see all day?'",
+        "2 - You choose a question that gets some info, like 'What do you eat?'",
+        "1 - You pick a simple question, like 'Is it a cat?'.",
+        "0 - You choose something unrelated, like 'Do you like toys?'."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What do you see all day?"
+        },
+        {
+          "key": "b",
+          "text": "What do you eat?"
+        },
+        {
+          "key": "c",
+          "text": "Is it a cat?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "curiosity about daily life",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "selecting a question that is relevant to the cat's environment",
+      "alignmentRationale": "The task focuses on finding deeper understanding of a cat's experiences and daily life."
+    },
+    {
+      "id": "e2179a3b-97ea-415c-8ea0-ff972be71a23",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you could ask a food what it tastes like, what food would you choose?",
+      "rubric": [
+        "3 - Picks a food and explains something interesting about its taste.",
+        "2 - Names a food but provides a simple response about it.",
+        "1 - Mentions a food but does not explore its taste at all.",
+        "0 - Does not relate to taste or food."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "inventing a what-if scenario",
+      "targetEvidence": "proposes an imaginative yet relevant interaction with food using taste",
+      "alignmentRationale": "This task emphasizes creativity and pushing boundaries about taste experiences rather than merely conveying facts."
+    },
+    {
+      "id": "9c0157e8-a765-4529-bd7d-ce7f945ab39b",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "What if you could ask a tree about its age? What would you want to know?",
+      "rubric": [
+        "3 - Offers a thoughtful question about the tree's experiences or life.",
+        "2 - Asks a basic question that touches on age but lacks depth.",
+        "1 - Provides a vague answer that does not explore age-related topics.",
+        "0 - The answer does not relate to the tree's age at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "inventing a what-if scenario",
+      "targetEvidence": "creates a relevant question based on a hypothetical situation involving a tree",
+      "alignmentRationale": "It highlights imaginative question formation that goes beyond factual knowledge pertaining to trees."
+    },
+    {
+      "id": "7227a13c-5685-4b6d-96b4-e5257f749e1f",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "You see three birds flying. Which question would lead you to learn more about them?",
+      "rubric": [
+        "3 - This question shows curiosity about the birds' behavior or environment.",
+        "2 - This question is a bit relevant but less informative.",
+        "1 - This question does not guide you to learn more about the birds.",
+        "0 - This question is unrelated to the flying birds."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Where are they going?"
+        },
+        {
+          "key": "b",
+          "text": "What color are they?"
+        },
+        {
+          "key": "c",
+          "text": "How many are there?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "selecting a curiosity question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a question that asks for more information regarding the birds in context",
+      "alignmentRationale": "It fosters the ability to gather deeper insights instead of focusing purely on observable traits."
+    },
+    {
+      "id": "38b0449c-53fa-4b5b-95c9-c46bfe74deff",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "What if the doll could talk? What would you want to ask it?",
+      "rubric": [
+        "3 - Provides a thoughtful question that shows curiosity about the doll's feelings or thoughts.",
+        "2 - Asks a simple question about the doll but might miss deeper curiosity.",
+        "1 - Gives a basic idea but does not explore the doll's talking ability.",
+        "0 - The answer does not relate to what the doll could say."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "inventing a what-if scenario",
+      "targetEvidence": "creates a relevant question based on a hypothetical situation",
+      "alignmentRationale": "This task focuses on the creativity in forming questions based on imaginative scenarios rather than recounting existing facts."
+    },
+    {
+      "id": "0880af52-d6fd-48b2-aa91-ce406f1a4599",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "You see a bee buzzing around. What would you ask to know more about it?",
+      "rubric": [
+        "3 - Asks how bees make honey or their role in flowers, like 'How do you make honey?'",
+        "2 - Asks about where bees live, like 'Where do you sleep?'",
+        "1 - Asks a simple question about what bees do, like 'Do you sting?'",
+        "0 - Asks a question not about bees, like 'What is your favorite toy?'"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "How do you make honey?"
+        },
+        {
+          "key": "b",
+          "text": "Where do you sleep?"
+        },
+        {
+          "key": "c",
+          "text": "Do you sting?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "selecting a relevant question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "searches for more understanding about the bee's work or life",
+      "alignmentRationale": "This isolates the curiosity about the bee's environment or contributions."
+    },
+    {
+      "id": "a2913543-d1ad-47ec-ad53-b3edf49909a9",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you could ask a goldfish anything, what would it be?",
+      "rubric": [
+        "3 - Asks about the goldfish's world or what it enjoys, like 'What do you see in your bowl?'",
+        "2 - Asks about where the goldfish swims, like 'Where do you like to go?'",
+        "1 - Asks a simple question like 'Are you orange?'",
+        "0 - Asks a question unrelated to the goldfish, like 'What is your favorite food?'"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing what remains unknown",
+      "targetEvidence": "explores the goldfish's environment or preferences",
+      "alignmentRationale": "Asking about the goldfish's life encourages exploring curiosity about its underwater world."
+    },
+    {
+      "id": "36dd761e-8281-4974-9f01-5f1a7169c17c",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "What would you ask a tree?",
+      "rubric": [
+        "3 - Asks a question that relates to the tree's life or environment, like 'How do you grow?'",
+        "2 - Asks about the tree's height or age, like 'How tall are you?'",
+        "1 - Asks a basic question like 'Are you big?'",
+        "0 - Asks any question unrelated to the tree's life, like 'What do you like to eat?'"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "selecting a relevant question",
+      "targetEvidence": "searches for more information about the tree's growth or surroundings",
+      "alignmentRationale": "This isolates curiosity about the tree's life rather than its physical size or age."
+    },
+    {
+      "id": "7f5c9d1e-c554-4c6e-a6fb-ce418b260c5d",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you could ask a kitten one question, what would it be?",
+      "rubric": [
+        "3 - Asks a question about the kitten's actions or preferences, like 'What do you like to play with?'",
+        "2 - Asks about the kitten's home, like 'Where do you sleep?'",
+        "1 - Asks a simple question, like 'Are you cute?'",
+        "0 - Asks a question that is not really about the kitten, like 'What is your favorite food?'"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "selecting a relevant question",
+      "targetEvidence": "asks for what the kitten likes or prefers",
+      "alignmentRationale": "This explores curiosity about the kitten's feelings or needs, not just its appearance."
+    },
+    {
+      "id": "991a9c1a-e827-4ceb-b1d7-e10effec4274",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "You see a frog jumping. What might you ask it to learn more?",
+      "rubric": [
+        "3 - Asks about how frogs jump or what they eat, like 'What do you eat?'",
+        "2 - Asks about where frogs live, like 'Where do you stay?'",
+        "1 - Asks a simple question about frogs, like 'Are you green?'",
+        "0 - Asks a question unrelated to frogs, like 'What is your favorite food?'"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What do you eat?"
+        },
+        {
+          "key": "b",
+          "text": "Where do you stay?"
+        },
+        {
+          "key": "c",
+          "text": "Are you green?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "selecting a relevant question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "inquires further about the frog's habits or environment",
+      "alignmentRationale": "This isolates the curiosity about the frog's life rather than its general appearance."
+    },
+    {
+      "id": "337e2e75-809d-4283-a27f-7cbd66f04ee8",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you could talk to a butterfly, what would you want to know?",
+      "rubric": [
+        "3 - You asked a good question about what butterflies do.",
+        "2 - Your question is okay but is quite general.",
+        "1 - Your question doesn’t relate closely to butterflies.",
+        "0 - You didn’t provide a relevant question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "develop a curiosity question",
+      "targetEvidence": "articulates an imaginative question about butterflies",
+      "alignmentRationale": "This task elicits a curiosity-driven question that is imaginative and about butterflies."
+    },
+    {
+      "id": "6149a779-bca7-4176-b403-2661e89d519f",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "You see a big bear. What would you want to learn more about?",
+      "rubric": [
+        "3 - You chose a question that shows real curiosity about the bear's life or habits.",
+        "2 - You chose a good question but it’s less focused on learning about the bear itself.",
+        "1 - You chose a question that doesn't really help learn about the bear.",
+        "0 - You didn’t choose a relevant question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why do bears sleep?"
+        },
+        {
+          "key": "b",
+          "text": "Are bears big?"
+        },
+        {
+          "key": "c",
+          "text": "What do bears eat?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identify a curiosity question",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "selects a relevant question that could help learn more about the bear",
+      "alignmentRationale": "The task focuses on recognizing an extension question about the bear rather than stating facts."
+    },
+    {
+      "id": "168da43c-d259-41b9-a72e-5c82e0ac25b6",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you could ask a dolphin one question, what would it be?",
+      "rubric": [
+        "3 - You gave a thoughtful question that helps learn about dolphins.",
+        "2 - You asked a question that is related but less in-depth.",
+        "1 - Your question is not really about dolphins.",
+        "0 - There is no relevant question given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "invent a what-if",
+      "targetEvidence": "provides an interesting and relevant question about dolphins",
+      "alignmentRationale": "The task requires creating a relevant question that extends thoughts about dolphins."
+    },
+    {
+      "id": "0a489d88-9a46-4a8d-9803-6727917d6a17",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "You found a magic key. What would you want to ask about it?",
+      "rubric": [
+        "3 - You chose a question that helps you understand the key's magic better.",
+        "2 - You asked a general question but it’s not very specific to the key.",
+        "1 - Your question doesn’t connect well to the magic key.",
+        "0 - No relevant question is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What is a key?"
+        },
+        {
+          "key": "b",
+          "text": "What can this key unlock?"
+        },
+        {
+          "key": "c",
+          "text": "Why is it shiny?"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "choose the best curiosity question",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "selects a question that better reveals the mystery of the magic key",
+      "alignmentRationale": "This task focuses on identifying a question that opens inquiry about the magical aspect of the key."
+    },
+    {
+      "id": "c1221a06-07a9-4bf2-a30a-76ba0b380c00",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A mouse finds a big piece of cheese. What question could it ask?",
+      "rubric": [
+        "3 - The mouse could ask if the cheese is safe to eat.",
+        "2 - The mouse might wonder how long it’s been there.",
+        "1 - The mouse asks if the cheese is tasty.",
+        "0 - The mouse just smells the cheese."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Is this cheese safe to eat?"
+        },
+        {
+          "key": "b",
+          "text": "How long has it been here?"
+        },
+        {
+          "key": "c",
+          "text": "Does it smell good?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses an extension question about the cheese's safety or condition",
+      "alignmentRationale": "This item requires understanding the safety aspect of the cheese while extending the thought process."
+    },
+    {
+      "id": "a227861a-ff07-4462-9674-59eedc630233",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If clouds could think, what would they ask about the sun?",
+      "rubric": [
+        "3 - The clouds might wonder why the sun is so bright.",
+        "2 - The clouds could ask if the sun likes them.",
+        "1 - The clouds may ponder if the sun is warm.",
+        "0 - The clouds just float around."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word for a question",
+      "targetEvidence": "provides a relevant and imaginative question about the clouds' perspective",
+      "alignmentRationale": "The question assesses the ability to think creatively about the clouds' interaction with the sun."
+    },
+    {
+      "id": "4e60d46c-3e40-4e72-be32-8111bf15a80c",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A robot sees a new gadget. What could it want to know?",
+      "rubric": [
+        "3 - The robot could ask how to use the gadget.",
+        "2 - The robot might wonder where it came from.",
+        "1 - The robot asks if it is fun.",
+        "0 - The robot likes new things."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "How do I use this gadget?"
+        },
+        {
+          "key": "b",
+          "text": "Where did this gadget come from?"
+        },
+        {
+          "key": "c",
+          "text": "Is this gadget cool?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "picks a useful 'how' question related to the gadget",
+      "alignmentRationale": "This is aimed at evaluating the interest in understanding functionality."
+    },
+    {
+      "id": "fc2bdc66-f842-4d85-b0c5-c1fd78ec7e92",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you met a fairy, what would you want to ask it?",
+      "rubric": [
+        "3 - You could ask how it became a fairy.",
+        "2 - You might ask what magic it can do.",
+        "1 - You could ask if it likes flying.",
+        "0 - You would just wave."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word for a question",
+      "targetEvidence": "articulates a thoughtful question about the fairy's nature or abilities",
+      "alignmentRationale": "This assesses the ability to connect with an imaginative character and inquire about its traits."
+    },
+    {
+      "id": "ff2f2cc2-76e6-432d-867b-079a0ad8a9df",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A cupcake sees some sprinkles. What could it wonder about them?",
+      "rubric": [
+        "3 - The cupcake might ask how the sprinkles are made.",
+        "2 - The cupcake could wonder if everyone likes sprinkles.",
+        "1 - The cupcake asks if they are sweet.",
+        "0 - The cupcake just looks pretty."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "How are the sprinkles made?"
+        },
+        {
+          "key": "b",
+          "text": "Do people like sprinkles?"
+        },
+        {
+          "key": "c",
+          "text": "Are they sweet?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects an informative question that extends the thought about the sprinkles",
+      "alignmentRationale": "This question is aimed at testing curiosity about food and ingredients."
+    },
+    {
+      "id": "588c58d1-4bfe-4d0b-9fa4-49bf972acd6a",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If a star could ask a question about Earth, what would it want to know?",
+      "rubric": [
+        "3 - The star might wonder about life on Earth.",
+        "2 - The star could ask why Earth shines at night.",
+        "1 - The star might want to know what people see.",
+        "0 - The star just twinkles."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word for a question",
+      "targetEvidence": "offers a question reflecting curiosity about Earth from an imaginative perspective",
+      "alignmentRationale": "The task encourages children to think about the relationship between the star and Earth critically."
+    },
+    {
+      "id": "deead887-6242-4159-abd1-b92a1f35f965",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A fish swims to a new place. What could it wonder about?",
+      "rubric": [
+        "3 - The fish could ask where the food is in this new place.",
+        "2 - The fish might ask if there are other fish here.",
+        "1 - The fish asks if it's a nice place to swim.",
+        "0 - The fish is happy to swim."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Where can I find food here?"
+        },
+        {
+          "key": "b",
+          "text": "Are there any other fish?"
+        },
+        {
+          "key": "c",
+          "text": "Is this place pretty?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a relevant question that extends the situation",
+      "alignmentRationale": "The task focuses on identifying a relevant question tied to the situation presented."
+    },
+    {
+      "id": "2a5c65d6-93c7-40d5-8307-d813fc46d43e",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If a tree could talk, what would it want to know?",
+      "rubric": [
+        "3 - The tree might wonder about who visits it.",
+        "2 - The tree could ask about the weather.",
+        "1 - The tree would want to learn more about the world.",
+        "0 - The tree just wants to stand still."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word for a question",
+      "targetEvidence": "responds with a relevant question about the tree's experience",
+      "alignmentRationale": "This task assesses a child's ability to think beyond the immediate context and to imagine the tree's curiosity."
+    },
+    {
+      "id": "3683c2b5-12f7-48e1-bb77-279c5ff961b4",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A puppy sees a new toy. What could it ask?",
+      "rubric": [
+        "3 - The question shows curiosity about the toy.",
+        "2 - The question is related but not completely relevant.",
+        "1 - The question is about something else or unclear.",
+        "0 - No relevant question is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What is this toy made of?"
+        },
+        {
+          "key": "b",
+          "text": "Can I chew it?"
+        },
+        {
+          "key": "c",
+          "text": "Will it get dirty?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "selecting relevant wonder",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a question that shows curiosity about the toy",
+      "alignmentRationale": "This question tests the ability to consider what more could be known about the toy."
+    },
+    {
+      "id": "5ee6c727-053c-445b-8c0f-cdeb2a8ce543",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you saw a rainbow, what could you wonder about it?",
+      "rubric": [
+        "3 - The idea reflects deep curiosity or a unique question.",
+        "2 - The idea is interesting but somewhat simple.",
+        "1 - The idea is a bit off-topic or unclear.",
+        "0 - No relevant question is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inventing possibilities",
+      "targetEvidence": "offers an original or thoughtful question about the rainbow",
+      "alignmentRationale": "This question encourages children to think creatively about a natural phenomenon."
+    },
+    {
+      "id": "f85e3112-c54a-43dd-8f04-54c3c4779522",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you had a robot, what would you want to know about it?",
+      "rubric": [
+        "3 - The idea reflects curiosity about unique functions or abilities.",
+        "2 - The idea is related to basic aspects of the robot.",
+        "1 - The idea is vague or unrelated.",
+        "0 - No relevant question is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inventing possibilities",
+      "targetEvidence": "offers an original question about robot functions",
+      "alignmentRationale": "This task encourages imaginative thinking about future possibilities."
+    },
+    {
+      "id": "00301ef7-694f-40a8-ace3-288a0b194768",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A bee finds a colorful flower. What could it ask?",
+      "rubric": [
+        "3 - The question shows curiosity about the flower.",
+        "2 - The question is related but less relevant.",
+        "1 - The question is somewhat unclear.",
+        "0 - No relevant question is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Why is this flower so bright?"
+        },
+        {
+          "key": "b",
+          "text": "Can I land on it?"
+        },
+        {
+          "key": "c",
+          "text": "Is it safe to touch?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "selecting relevant wonder",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a question focusing on the flower's qualities",
+      "alignmentRationale": "This question tests how well the child can relate questions to objects in nature."
+    },
+    {
+      "id": "1a46a430-9947-4e4a-8c39-5ad2008a1d64",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you heard a funny sound, what would you wonder about it?",
+      "rubric": [
+        "3 - The answer reflects deep curiosity or a specific question.",
+        "2 - The idea is funny but a bit too simple.",
+        "1 - The idea is unclear or unrelated.",
+        "0 - No relevant question is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inventing possibilities",
+      "targetEvidence": "offers a question that seeks information about the sound",
+      "alignmentRationale": "This task encourages children to think about their environment creatively."
+    },
+    {
+      "id": "be213d03-9658-46ad-92a0-94f79e83d278",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you discover a hidden doorway, what do you want to know about it?",
+      "rubric": [
+        "3 - The answer reflects curiosity about the doorway's purpose or secrets.",
+        "2 - The answer is interesting but somewhat vague.",
+        "1 - The idea is unclear or unrelated.",
+        "0 - No relevant question is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inventing possibilities",
+      "targetEvidence": "offers thoughtful questions about the hidden doorway",
+      "alignmentRationale": "This question encourages imaginative thinking about possibilities."
+    },
+    {
+      "id": "da02eeb3-9d6a-4179-84f6-f1e48654cff8",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A rabbit sees a big carrot. What could it ask?",
+      "rubric": [
+        "3 - The rabbit could ask how to reach the carrot easily.",
+        "2 - The rabbit might ask why the carrot is so big.",
+        "1 - The rabbit could wonder if someone else likes carrots too.",
+        "0 - The rabbit asks what carrots are."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "How can I get the carrot?"
+        },
+        {
+          "key": "b",
+          "text": "Why is it orange?"
+        },
+        {
+          "key": "c",
+          "text": "What are veggies?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selecting a relevant question that explores the situation further",
+      "alignmentRationale": "This tests the ability to ask a helpful, open-ended question that extends the scenario."
+    },
+    {
+      "id": "4f9e37c5-5374-4882-a2c6-c2fc06b3a6b1",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A cat hears a strange noise. What could it wonder?",
+      "rubric": [
+        "3 - The cat might wonder what is making that noise.",
+        "2 - The cat could ask why it's so loud.",
+        "1 - The cat wonders if it is morning.",
+        "0 - The cat thinks it sounds funny."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What is that noise?"
+        },
+        {
+          "key": "b",
+          "text": "Why is it dark?"
+        },
+        {
+          "key": "c",
+          "text": "Is it a song?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selecting a question that helps understand the unknown noise",
+      "alignmentRationale": "This item requires the child to think of a question that encourages exploration of the noise."
+    },
+    {
+      "id": "d9442406-0dd5-4cbc-bfff-7c36a43b925c",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "Imagine you found a treasure map. What questions would you ask about it?",
+      "rubric": [
+        "3 - Provides a thoughtful or curious question about the treasure map.",
+        "2 - Gives an interesting but less relevant question.",
+        "1 - Offers a simple observation about the map.",
+        "0 - Doesn't provide any clear questions."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word for a question",
+      "targetEvidence": "asking a relevant question that goes beyond the treasure map itself",
+      "alignmentRationale": "This allows for open exploration of curiosity related to the treasure map."
+    },
+    {
+      "id": "d50a2075-d2d5-4770-b2b3-74c68702a631",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you found a time machine, what would you want to know?",
+      "rubric": [
+        "3 - You might want to know when you could go.",
+        "2 - You could ask who made it.",
+        "1 - You wonder if it's safe to use.",
+        "0 - You just want to try it out."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "When can I go in it?"
+        },
+        {
+          "key": "b",
+          "text": "Who owns it?"
+        },
+        {
+          "key": "c",
+          "text": "Is it really there?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "choosing a question that extends the idea of a time machine",
+      "alignmentRationale": "This tests the ability to think beyond the obvious and explore possibilities."
+    },
+    {
+      "id": "45bed15e-537b-4ad4-89d1-5c626346715f",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "Think about a world without cars. What questions do you have about that?",
+      "rubric": [
+        "3 - Offers a curious question about life in that world.",
+        "2 - Provides an interesting thought related to the topic.",
+        "1 - States a simple idea related to transportation.",
+        "0 - Shares irrelevant comments."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "word for a question",
+      "targetEvidence": "generating relevant questions that explore the concept of a car-free world",
+      "alignmentRationale": "This involves children thinking creatively and exploring their questions about a hypothetical scenario."
+    },
+    {
+      "id": "2d633e26-7d74-4ba0-8ba2-61b58c348c33",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A bird sees the sky is getting cloudy. What might it ask?",
+      "rubric": [
+        "3 - The bird could ask if it will rain soon.",
+        "2 - It might wonder why clouds are gray.",
+        "1 - The bird asks if it can fly.",
+        "0 - The bird thinks it looks pretty."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Will it rain soon?"
+        },
+        {
+          "key": "b",
+          "text": "Why are clouds puffy?"
+        },
+        {
+          "key": "c",
+          "text": "Do birds like clouds?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selecting a question that connects with the changing weather",
+      "alignmentRationale": "This question asks the child to select a relevant inquiry that goes beyond just the sight of clouds."
+    },
+    {
+      "id": "f03fdcc5-4101-463b-8077-b211c565d1aa",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you could ask a famous inventor one question, what would it be?",
+      "rubric": [
+        "3 - Indicates a deep or insightful question about their inventions or ideas.",
+        "2 - Suggests a question related to their experiences or challenges.",
+        "1 - A simple inquiry about their inventions.",
+        "0 - No relevant questions are proposed about the inventor."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "inquiring beyond the obvious",
+      "targetEvidence": "proposes interesting questions that connect to an inventor's creativity or work",
+      "alignmentRationale": "This open prompt encourages original thinking about innovation and creativity."
+    },
+    {
+      "id": "c1513c95-c1e2-45a5-bc60-0cc1da3d63ca",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "You find a puzzle with missing pieces. What could you ask about it?",
+      "rubric": [
+        "3 - The question dives into why some pieces are missing or where they could be.",
+        "2 - A good question could relate to how to complete it.",
+        "1 - A simple inquiry about the puzzle's picture.",
+        "0 - No relevant questions are provided about the puzzle."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What does it show?"
+        },
+        {
+          "key": "b",
+          "text": "Why are some pieces missing?"
+        },
+        {
+          "key": "c",
+          "text": "Is it old?"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "exploring possibilities",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "selects a relevant question that extends understanding of the puzzle's condition",
+      "alignmentRationale": "This question prompts the child to think critically about the incomplete puzzle."
+    },
+    {
+      "id": "dcb9e9d8-1eed-4449-b683-bd2da3461e95",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you could meet an alien, what questions might you want to ask them?",
+      "rubric": [
+        "3 - Suggests multiple interesting and creative questions about the alien's world or experiences.",
+        "2 - Asks thought-provoking questions about aliens in general.",
+        "1 - Provides one basic question about the alien.",
+        "0 - Offers no relevant questions or thoughts about meeting an alien."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "inquiring about the unknown",
+      "targetEvidence": "proposes interesting ideas about the alien and possibilities relating to them",
+      "alignmentRationale": "This task helps gauge the child’s curiosity about other worlds and encourages imaginative thinking."
+    },
+    {
+      "id": "8e80d861-745a-4912-9954-43060b8f3ba4",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A child sees a big, old tree. What might they wonder about it?",
+      "rubric": [
+        "3 - The child suggests a deep or thoughtful question, like how long the tree has been there.",
+        "2 - The child asks a question about the tree's age or size.",
+        "1 - The question is simple, like asking what kind of tree it is.",
+        "0 - The child does not provide a relevant question about the tree."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Is it green?"
+        },
+        {
+          "key": "b",
+          "text": "How many years has it lived?"
+        },
+        {
+          "key": "c",
+          "text": "Are there bugs in it?"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "noticing the unknown",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "chooses a relevant question about the tree that extends the thought beyond the obvious",
+      "alignmentRationale": "This item prompts the child to think critically beyond basic observations, allowing for a richer inquiry."
+    },
+    {
+      "id": "180d0938-386b-42f8-b0e3-4d5cdfc4557d",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A young scientist finds an unusual plant. What might they ask about it?",
+      "rubric": [
+        "3 - The question digs into the plant’s purpose or its effect on the environment.",
+        "2 - The question connects to how the plant grows or survives.",
+        "1 - A simple inquiry about the plant's color or size.",
+        "0 - No relevant questions are posed about the plant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Is it green?"
+        },
+        {
+          "key": "b",
+          "text": "What is this plant used for?"
+        },
+        {
+          "key": "c",
+          "text": "Does it smell funny?"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "selecting a relevant question",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "picks a question that shows curiosity about the plant's role or features.",
+      "alignmentRationale": "This question prompts the child to think scientifically and critically about nature."
+    },
+    {
+      "id": "7e6b440b-a7a4-4e1a-b0ed-78914841dc45",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "You see someone building a huge sandcastle. What might you be curious about it?",
+      "rubric": [
+        "3 - Proposes multiple thoughtful questions about the sandcastle's design or purpose.",
+        "2 - Asks a specific question about how it's being built.",
+        "1 - Shares a simple question about the sandcastle.",
+        "0 - Gives no relevant thoughts or questions on the sandcastle."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing and questioning",
+      "targetEvidence": "offers creative and focused questions about the sandcastle detailing",
+      "alignmentRationale": "This task assesses the child’s curiosity and creativity regarding physical activities and interactions."
+    },
+    {
+      "id": "9708dfac-4622-4f9b-9ec5-c753f998c405",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A kid finds a shiny, strange shell on the beach. What could they be curious about?",
+      "rubric": [
+        "3 - The child asks a question about where the shell came from or how it was made.",
+        "2 - The question relates to what animals might live in it.",
+        "1 - The question is basic, like asking if it is pretty.",
+        "0 - The child does not ask a relevant question about the shell."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Is it colorful?"
+        },
+        {
+          "key": "b",
+          "text": "What kind of sea creature made it?"
+        },
+        {
+          "key": "c",
+          "text": "Can I keep it?"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "choosing a deeper wonder",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "selects a relevant question that reveals a deeper curiosity about the shell",
+      "alignmentRationale": "The item encourages the child to go beyond surface observations and engage with the subject matter meaningfully."
+    },
+    {
+      "id": "4f145d1b-227f-425d-818f-457c98952c7c",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "Imagine you find a magic wand. What could you wonder about it?",
+      "rubric": [
+        "3 - Suggests multiple deep questions about its powers or origin.",
+        "2 - Asks interesting questions about what it can do.",
+        "1 - Suggests one simple question about the wand.",
+        "0 - Provides no relevant thoughts or questions about it."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "inventing a what-if",
+      "targetEvidence": "asks a relevant question about the wand that extends the scenario creatively",
+      "alignmentRationale": "This open prompt encourages the child to explore a fantasy context and generate original ideas."
+    },
+    {
+      "id": "77b4429c-62db-4420-892a-7dd2df352c6c",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "What would you ask a time traveler about their journey?",
+      "rubric": [
+        "3 - The question shows interest in time travel and events.",
+        "2 - The question is interesting but not very deep.",
+        "1 - The question is simple or doesn’t relate much to time travel.",
+        "0 - The response doesn’t ask a question or is off-topic."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for a learning question",
+      "targetEvidence": "Asks a thoughtful question that relates to time travel.",
+      "alignmentRationale": "It encourages children to extend their curiosity about time and events."
+    },
+    {
+      "id": "d28a1d15-cea4-4ad5-b56e-48eda4c1529b",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A bee is buzzing around flowers. What could it wonder?",
+      "rubric": [
+        "3 - It might wonder how flowers help bees.",
+        "2 - It could ask about the best flower to visit.",
+        "1 - Maybe it is curious about what flowers taste like.",
+        "0 - It would ask if it can fly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "How do flowers help bees?"
+        },
+        {
+          "key": "b",
+          "text": "What color are flowers?"
+        },
+        {
+          "key": "c",
+          "text": "Can bees buzz?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a learning question",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Selects a question that invites further learning about flowers.",
+      "alignmentRationale": "The task tests the ability to generate a relevant question that goes beyond the basic observation."
+    },
+    {
+      "id": "262309b8-aab0-41c4-aced-2c7097e07c28",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you could ask a whale one question, what would it be?",
+      "rubric": [
+        "3 - The question shows curiosity about whales and their lives.",
+        "2 - The question is interesting but not very deep.",
+        "1 - The question is simple or doesn’t relate much to whales.",
+        "0 - The response doesn’t ask a question or is off-topic."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for a learning question",
+      "targetEvidence": "Asks a thoughtful and relevant question about whales.",
+      "alignmentRationale": "The task directly elicits an original question that reflects curiosity about whales."
+    },
+    {
+      "id": "1bed4cf5-0493-47d0-9526-a2049139f96c",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A child finds a strange rock on the ground. What could they wonder about it?",
+      "rubric": [
+        "3 - They might wonder where it came from.",
+        "2 - They could ask if it’s heavy.",
+        "1 - Maybe they ask if it’s pretty.",
+        "0 - The child just likes the rock."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Where did this rock come from?"
+        },
+        {
+          "key": "b",
+          "text": "Is it a big rock?"
+        },
+        {
+          "key": "c",
+          "text": "Can I hold it?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a learning question",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Chooses a question that seeks to understand the rock's background.",
+      "alignmentRationale": "This activity assesses the ability to think beyond surface details and seek deeper information."
+    },
+    {
+      "id": "7f914260-6da2-47ab-a2a6-4e643249ace6",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A kid sees a rainbow. What could they wonder about it?",
+      "rubric": [
+        "3 - They might wonder how rainbows are made.",
+        "2 - They could ask what colors are in it.",
+        "1 - Maybe they ask if rainbows are pretty.",
+        "0 - They just like the rainbow."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "How is a rainbow made?"
+        },
+        {
+          "key": "b",
+          "text": "What colors are in it?"
+        },
+        {
+          "key": "c",
+          "text": "Is it sunny outside?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a learning question",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Selects a relevant wonder that explores the phenomenon of rainbows.",
+      "alignmentRationale": "This checks for depth of curiosity by asking for further understanding of a natural occurrence."
+    },
+    {
+      "id": "99cdb858-2168-4c39-89ca-ff885cd8bc3c",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you could ask a dinosaur anything, what would you want to know?",
+      "rubric": [
+        "3 - The question shows deep curiosity about dinosaurs.",
+        "2 - The question is interesting but not very deep.",
+        "1 - The question is simple or doesn’t relate much to dinosaurs.",
+        "0 - The response doesn’t ask a question or is off-topic."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for a learning question",
+      "targetEvidence": "Asks an engaging question about dinosaurs.",
+      "alignmentRationale": "The prompt encourages the child to express curiosity about prehistoric life."
+    },
+    {
+      "id": "59f8a2b9-94c5-4bd5-95fb-c3055a4aeb59",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A rabbit sees a carrot on the ground. What would be a good question to ask?",
+      "rubric": [
+        "3 - This question asks about another possible action or choice for the rabbit.",
+        "2 - This question is relevant but focuses only on the carrot without expanding.",
+        "1 - This question is somewhat related but not about the rabbit's options.",
+        "0 - This question does not connect to the rabbit or the carrot."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What if the rabbit decides to hop away?"
+        },
+        {
+          "key": "b",
+          "text": "Is the carrot orange?"
+        },
+        {
+          "key": "c",
+          "text": "Can rabbits eat carrots?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "how actions can change",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "Selection of a question that explores different possibilities for the rabbit's actions.",
+      "alignmentRationale": "The question examines curiosity about animal choices, extending beyond the observed scenario."
+    },
+    {
+      "id": "7b1d86de-6505-49d1-b38b-0abacb678646",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "Imagine you find a secret door. What do you think is behind it?",
+      "rubric": [
+        "3 - The response includes imaginative ideas about what could be behind the door.",
+        "2 - The response shows some thought but is less imaginative.",
+        "1 - The response is somewhat related to doors but lacks depth.",
+        "0 - The response doesn't make sense or connect to doors."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "imagining possibilities",
+      "targetEvidence": "Creative thinking about what might be behind a secret door.",
+      "alignmentRationale": "This encourages imaginative thinking and curiosity about unknown experiences."
+    },
+    {
+      "id": "6c9663f4-5de7-4a18-b21f-11cf5397f686",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A child looks at the stars. What could they ask?",
+      "rubric": [
+        "3 - This question opens up possibilities about the stars and the universe.",
+        "2 - This question is relevant but doesn’t invite much exploration.",
+        "1 - This question is somewhat unrelated and not as curious.",
+        "0 - This question is completely off-topic."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What if those stars are like the sun?"
+        },
+        {
+          "key": "b",
+          "text": "Are some stars big?"
+        },
+        {
+          "key": "c",
+          "text": "Is the sky blue?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "wondering about the universe",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Selection of a question that inspires curiosity about astronomy.",
+      "alignmentRationale": "Encourages further questioning about the night sky."
+    },
+    {
+      "id": "b4bde580-5c93-4c18-81c5-865d5a507b2e",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "A cat sees a moving toy. What question might it have?",
+      "rubric": [
+        "3 - This question considers the effect or reason for the toy's movement.",
+        "2 - This question is relevant but less focused on the curiosity element.",
+        "1 - This question is related to the toy but doesn't explore its action.",
+        "0 - This question doesn't connect to the situation."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "What if that toy runs away?"
+        },
+        {
+          "key": "b",
+          "text": "Is the toy soft?"
+        },
+        {
+          "key": "c",
+          "text": "Is the toy red?"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "querying movement",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Choice of a question that generates further inquiry about the situation.",
+      "alignmentRationale": "Focuses on curiosity about movement and behavior of objects."
+    },
+    {
+      "id": "30efeba3-b3ee-4e3e-aeaa-c5ee0abe1e64",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "What do you think happens to a balloon after it pops?",
+      "rubric": [
+        "3 - The response includes creative or interesting ideas about popping.",
+        "2 - The response is thoughtful but lacks specific detail about outcomes.",
+        "1 - The response is related to the balloon but doesn’t encourage exploration.",
+        "0 - The response doesn’t make sense or relate to balloons."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "wondering about outcomes",
+      "targetEvidence": "Thoughtful speculation on the effects of a popped balloon.",
+      "alignmentRationale": "Encourages imaginative thinking and curiosity about cause and effect."
+    },
+    {
+      "id": "580320e1-0595-4cc9-8e57-e422220ff5d6",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "curiosity",
+      "format": "explanation",
+      "prompt": "If you could ask one question to a robot, what would it be?",
+      "rubric": [
+        "3 - The question encourages discovery or creativity, going beyond obvious answers.",
+        "2 - The question is curious but may be less open for discovery.",
+        "1 - The question relates to robots but doesn't inspire deeper thought.",
+        "0 - The question does not connect to robots."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "inventing a question",
+      "targetEvidence": "A unique or thoughtful question that suggests further exploration.",
+      "alignmentRationale": "Promotes creativity and curiosity in questioning."
+    }
+  ]
+}

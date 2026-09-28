@@ -1,0 +1,2733 @@
+{
+  "category": "observant",
+  "questions": [
+    {
+      "id": "69317407-ef9d-49c1-b783-3f8b0098b8ee",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two apples. Tell me one color you see.  \\n🍏 🍎",
+      "rubric": [
+        "3 - The color given correctly matches one of the apples.",
+        "2 - The color is close but not exact or any answer confirms the apple types.",
+        "1 - The answer is unclear about colors.",
+        "0 - The answer does not relate to colors."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing relevant details",
+      "targetEvidence": "identifies the color of the apples correctly",
+      "alignmentRationale": "It encourages the child to observe and express color differences."
+    },
+    {
+      "id": "6fd97e06-496e-4f7d-b2c5-19362ae06d6f",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look closely at these two frogs. Tell me one thing that is different about them.  \\n🐸🐸",
+      "rubric": [
+        "3 - The answer provides a visible difference between the frogs.",
+        "2 - The answer mentions a similarity but not a difference.",
+        "1 - The answer is unclear or vague.",
+        "0 - The answer does not relate to the frogs."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing relevant details",
+      "targetEvidence": "identifies a specific difference between the frogs",
+      "alignmentRationale": "It prompts the child to observe and articulate differences."
+    },
+    {
+      "id": "c8729f33-41e5-497e-b3df-59c921609555",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two fruits. Tell me one way they are the same.  \\n🍌🍍",
+      "rubric": [
+        "3 - The answer identifies a shared characteristic between the fruits.",
+        "2 - The answer mentions a difference instead of similarity.",
+        "1 - The answer is unclear or vague.",
+        "0 - The answer does not relate to the fruits."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing relevant details",
+      "targetEvidence": "identifies a common feature between the fruits",
+      "alignmentRationale": "It encourages the child to compare and find similarities in objects."
+    },
+    {
+      "id": "291af4a0-468f-41ab-af43-b1a5090f8003",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look closely at these two pencils. Which one is shorter?  \\n📝 ✏️",
+      "rubric": [
+        "3 - The answer shows clear understanding of which pencil is shorter.",
+        "2 - The answer shows some understanding but is unclear.",
+        "1 - The answer identifies a pencil but lacks clarity.",
+        "0 - The answer does not relate to the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "📝"
+        },
+        {
+          "key": "b",
+          "text": "✏️"
+        },
+        {
+          "key": "c",
+          "text": "None"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "noticing relevant details",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "identifies the pencil that is visibly shorter",
+      "alignmentRationale": "It tests the child's ability to notice and compare visual details in a simple scenario."
+    },
+    {
+      "id": "8ae708d7-9515-48ab-a890-cfc21a0590fa",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look closely at these two animals. Which one is furrier?  \\n🐶 🐱",
+      "rubric": [
+        "3 - Correctly identifies the furrier animal.",
+        "2 - Chooses the less furry animal, recognizing it's different.",
+        "1 - Answers incorrectly without explaining.",
+        "0 - Fails to answer properly or misunderstands the task."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🐶"
+        },
+        {
+          "key": "b",
+          "text": "🐱"
+        },
+        {
+          "key": "c",
+          "text": "Both are the same"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing texture differences",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifying which animal has more fur.",
+      "alignmentRationale": "This task encourages kids to observe texture differences in a relatable context."
+    },
+    {
+      "id": "1b9fdaf1-397f-4cf5-88eb-1b077fe6e05d",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two sandwiches. Tell me one way they are different.",
+      "rubric": [
+        "3 - Clearly states a specific detail about the sandwiches.",
+        "2 - Mentions something about the sandwiches but not clearly.",
+        "1 - Gives a vague answer.",
+        "0 - Fails to provide an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing food details",
+      "targetEvidence": "Recognizing a detail that distinguishes the two sandwiches.",
+      "alignmentRationale": "Engages observation of food differences without leading to trivial answers."
+    },
+    {
+      "id": "2a22c4f6-cfb9-4fdc-8879-96e056c6f345",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two shirts. Which one has stripes?  \\n👕👚",
+      "rubric": [
+        "3 - Correctly identifies the shirt with stripes.",
+        "2 - Identifies the shirt without stripes, noting it's different.",
+        "1 - Misidentifies either shirt or gives wrong information.",
+        "0 - Fails to answer or misunderstands entirely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "👕"
+        },
+        {
+          "key": "b",
+          "text": "👚"
+        },
+        {
+          "key": "c",
+          "text": "Both have stripes"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "noticing patterns in clothing",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "Identifying the shirt based on a specific pattern (stripes).",
+      "alignmentRationale": "This activity directly checks the child's ability to notice patterns in familiar clothing items."
+    },
+    {
+      "id": "74637420-0c6a-4920-a9b7-49fa5e4e0d8f",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two hats. Which one is red?  \\n🎩 👒",
+      "rubric": [
+        "3 - Correctly identifies the red hat.",
+        "2 - Identifies the hat that is different but not red.",
+        "1 - Answers incorrectly without clarity.",
+        "0 - Fails to answer or misunderstands completely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🎩"
+        },
+        {
+          "key": "b",
+          "text": "👒"
+        },
+        {
+          "key": "c",
+          "text": "Both are red"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "noticing color differences",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "Identifying a specific color in hats.",
+      "alignmentRationale": "Encouraged recognition of color while ensuring clarity of the task."
+    },
+    {
+      "id": "5fafe12c-9580-4f8c-87ae-0114473cda9f",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look closely at these two plants. What is one way they are the same?",
+      "rubric": [
+        "3 - Accurately finds a shared detail between the plants.",
+        "2 - Mentions a detail but not fully accurate.",
+        "1 - Vague response about the plants.",
+        "0 - Does not answer or misunderstands."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing similarities in objects",
+      "targetEvidence": "Identifying a similarity between the two plants.",
+      "alignmentRationale": "Tests observation and comparison skills in a simple way without complexity."
+    },
+    {
+      "id": "5f393f38-d710-4511-96bf-fbfee43c23aa",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two dogs. Which one is standing?  \\n🐶🐕",
+      "rubric": [
+        "3 - Correctly identifies the standing dog.",
+        "2 - Names the sitting dog, noting it as different.",
+        "1 - Wrong answer with no reasoning.",
+        "0 - Fails to answer or misunderstands the prompt completely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🐶"
+        },
+        {
+          "key": "b",
+          "text": "🐕"
+        },
+        {
+          "key": "c",
+          "text": "Both are standing"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "noticing position differences",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "Identifying the position of the dogs through observation.",
+      "alignmentRationale": "Enables recognition of positioning differences in animals."
+    },
+    {
+      "id": "acc68b53-1118-4786-84a7-df933324dcce",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these toys. Tell me one way they are different.",
+      "rubric": [
+        "3 - Clearly states a specific feature of the toys.",
+        "2 - Comments on something but not a clear difference.",
+        "1 - Gives a vague answer about the toys.",
+        "0 - Fails to provide an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing toy details",
+      "targetEvidence": "Recognizing a distinct detail between the toys.",
+      "alignmentRationale": "Helps to demonstrate observational skills within a recognizable context."
+    },
+    {
+      "id": "ad82049a-c2ab-4488-9f93-c0596f4b9b04",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two circles. Which one is bigger?  \\n⚪️ 🔵",
+      "rubric": [
+        "3 - Correctly identifies the bigger circle.",
+        "2 - Identifies the smaller circle, but notes it as different.",
+        "1 - Answers but does not correctly identify either circle.",
+        "0 - Fails to answer or misinterprets the task."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "⚪️",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "b",
+          "text": "🔵",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "c",
+          "text": "Neither"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "noticing size differences",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "Identifying the larger of two circles.",
+      "alignmentRationale": "This task directly tests the ability to notice size differences in a clear, visual way."
+    },
+    {
+      "id": "7f70594e-ef9c-44f4-9d1e-4754c4c0f38f",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look closely at these two cats. What is one thing that is different about them?",
+      "rubric": [
+        "3 - The child identifies a clear and specific difference, like color, size, or a feature.",
+        "2 - The child provides a plausible difference but slightly vague or less obvious.",
+        "1 - The child mentions something that does not clearly relate to their appearance.",
+        "0 - The child does not provide a relevant difference or seems confused."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing differences in appearance",
+      "targetEvidence": "Identifies a specific visual difference between the two cats.",
+      "alignmentRationale": "Testing the ability to notice specific and relevant details by reflecting on visual differences."
+    },
+    {
+      "id": "f89a24f4-373c-43aa-9aa3-608f9ec323bf",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two fruits. Which one is different? 🍎 🍏 🍌",
+      "rubric": [
+        "3 - The child correctly identifies the unique fruit (banana), representing a different type.",
+        "2 - The child selects an apple (or green apple), which is a choice but not the right answer.",
+        "1 - The child chooses none or shows uncertainty about the fruits.",
+        "0 - The child does not respond or chooses incorrectly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🍎"
+        },
+        {
+          "key": "b",
+          "text": "🍏"
+        },
+        {
+          "key": "c",
+          "text": "🍌"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "identifying differences in categories",
+      "optionScores": {
+        "a": 0,
+        "b": 0,
+        "c": 3
+      },
+      "targetEvidence": "Identifies the fruit that is in a different category (type of fruit).",
+      "alignmentRationale": "This question checks their ability to categorize fruit and notice differences in types."
+    },
+    {
+      "id": "db3f6f32-e4e2-4580-b20f-52ac7f1bd230",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two toys. What is one way they are the same?",
+      "rubric": [
+        "3 - The child provides a specific similarity such as color, shape, or type.",
+        "2 - The child offers a general similarity but is not specific.",
+        "1 - The child mentions unrelated items or expresses confusion.",
+        "0 - The child does not attempt to answer or provides no relevant information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing similarities",
+      "targetEvidence": "Identifies a specific similarity between two toys.",
+      "alignmentRationale": "This question measures the ability to observe and articulate shared features between two objects."
+    },
+    {
+      "id": "50b4fd47-b27d-4cb6-9208-84f848b81469",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two shapes. What is one way they are different?",
+      "rubric": [
+        "3 - The child identifies a clear difference in shape, size, or color.",
+        "2 - The child provides a plausible difference but less specific.",
+        "1 - The child gives a vague or unrelated answer.",
+        "0 - The child does not answer or seems confused."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing differences in shapes",
+      "targetEvidence": "Identifies a relevant difference between the characteristics of the two shapes.",
+      "alignmentRationale": "This activity measures the ability to observe and articulate details in visual differences."
+    },
+    {
+      "id": "ae2b9dcd-ee75-49db-802b-85a774ede417",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two hats. Which one is different? 🎩 🎓",
+      "rubric": [
+        "3 - The child correctly identifies the graduation hat as different from the top hat.",
+        "2 - The child picks a top hat, which is incorrect but somewhat related.",
+        "1 - The child chooses none or shows confusion about the hats.",
+        "0 - The child does not respond or chooses incorrectly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🎩"
+        },
+        {
+          "key": "b",
+          "text": "🎓"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "identifying difference in usage or style",
+      "optionScores": {
+        "a": 0,
+        "b": 3
+      },
+      "targetEvidence": "Recognizes the difference in purpose or style between the hats.",
+      "alignmentRationale": "This question assesses the ability to differentiate between items based on style or function."
+    },
+    {
+      "id": "319a816f-06ac-456d-b47e-66ce4a318bd4",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two birds. What is one way they are the same?",
+      "rubric": [
+        "3 - The child provides a specific similarity like color or type.",
+        "2 - The child mentions a vague similarity (e.g., they are both birds).",
+        "1 - The child gives a non-answer or something unrelated.",
+        "0 - The child does not attempt to answer or seems confused."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing similarities in appearance",
+      "targetEvidence": "Identifies a relevant similarity between the birds.",
+      "alignmentRationale": "This question tests the child's ability to observe and express a common characteristic."
+    },
+    {
+      "id": "584f4f95-d9cd-470d-b58e-2d39975b2565",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two flowers. Which one is different? 🌼 🌻",
+      "rubric": [
+        "3 - The child accurately identifies the sunflower as different from the daisy.",
+        "2 - The child picks a daisy, which is incorrect but in the right range.",
+        "1 - The child doesn't answer or shows confusion on the flower types.",
+        "0 - The child does not respond or selects incorrectly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🌼"
+        },
+        {
+          "key": "b",
+          "text": "🌻"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "categorizing objects by differences",
+      "optionScores": {
+        "a": 0,
+        "b": 3
+      },
+      "targetEvidence": "Recognizes a flower that is of a different type or species.",
+      "alignmentRationale": "This question examines the ability to categorize flowers based on their type."
+    },
+    {
+      "id": "2712f044-d5fb-4dd8-8d1e-22238aa199c2",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look closely at this picture of two dogs. Tell me one way they are different.  \n🔍",
+      "rubric": [
+        "3 - Correctly identifies a clear detail that is different between the two dogs.",
+        "2 - Identifies a general difference but not a specific detail.",
+        "1 - Mentions a detail that isn't different or relevant.",
+        "0 - Doesn't identify any difference."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "noticing detail",
+      "targetEvidence": "The child identifies a specific and observable difference in the two dogs.",
+      "alignmentRationale": "This task focuses specifically on recognizing subtle differences, aligning with observing details."
+    },
+    {
+      "id": "7afcbf9a-84d5-44f7-afe1-cda6c6b33b94",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these pictures of two cats. One cat has a tail, and one does not. Which cat is missing its tail?",
+      "rubric": [
+        "3 - Chooses the cat without a tail, correctly identifying the difference.",
+        "2 - Chooses the cat with a tail or misidentifies the other cat, showing some recognition of features.",
+        "1 - Makes a choice but does not show understanding of the tail difference.",
+        "0 - Does not choose any cat or answers incorrectly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Cat with a tail"
+        },
+        {
+          "key": "b",
+          "text": "Cat without a tail"
+        },
+        {
+          "key": "c",
+          "text": "Neither cat"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "noticing a difference in appearance",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "identifies the cat missing its tail to show observation skills",
+      "alignmentRationale": "This task specifically assesses the ability to spot a clear and relevant visual difference."
+    },
+    {
+      "id": "1559ae01-7904-4c41-b2f5-825c81be4e0f",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "A dog has a red collar. It’s playing with a blue ball. What color is the ball?",
+      "rubric": [
+        "3 - Correctly says blue, showing understanding of colors related to the dog and ball.",
+        "2 - Says a different color, showing some color recognition but misunderstanding context.",
+        "1 - Acknowledges the dog or collar but misses the ball color.",
+        "0 - Doesn't respond about the ball color."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Red"
+        },
+        {
+          "key": "b",
+          "text": "Blue"
+        },
+        {
+          "key": "c",
+          "text": "Green"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "remembering specific details",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "recalls the color of the blue ball amidst other details",
+      "alignmentRationale": "This task measures the ability to remember and identify key information from a scenario."
+    },
+    {
+      "id": "4db6fa44-606a-4c55-b80b-908ff76fee27",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at this drawing of a bird in a tree. Tell me one thing you see in the picture.",
+      "rubric": [
+        "3 - Mentions a specific detail from the picture relevant to the bird or tree, showing good observation.",
+        "2 - States something about the picture but not specifically related to key elements like the bird or tree.",
+        "1 - Makes an observation but is vague or unclear about what is seen.",
+        "0 - Does not provide a response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing details in an image",
+      "targetEvidence": "observes and communicates a part of the drawing clearly",
+      "alignmentRationale": "This task emphasizes the ability to notice and articulate specific visual details within an image."
+    },
+    {
+      "id": "b2e3f110-3122-4d2a-8fa8-5fad8aefb5f8",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two fruit baskets. One has apples, and the other has oranges. Which basket has the oranges?",
+      "rubric": [
+        "3 - Chooses the basket with oranges, correctly identifying differences in contents.",
+        "2 - Chooses the apple basket, recognizing one type but missing the other.",
+        "1 - Does not identify the correct basket or is confused about the fruits.",
+        "0 - Does not choose any basket."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Basket with oranges"
+        },
+        {
+          "key": "b",
+          "text": "Basket with apples"
+        },
+        {
+          "key": "c",
+          "text": "Both baskets"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "spotting differences in content",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "identifies the basket with the oranges by noticing the fruit type",
+      "alignmentRationale": "This question measures the ability to observe and distinguish between clearly labeled items."
+    },
+    {
+      "id": "fc5e9b10-6cab-4b1a-aa3d-1bfd3986ce76",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "In the park, there is a tall tree and a short bush. Which one is tall?",
+      "rubric": [
+        "3 - Correctly identifies the tall tree, noticing the height difference.",
+        "2 - Refers to the bush, showing some understanding but missing the tall option.",
+        "1 - Answers incorrectly or does not address the height difference clearly.",
+        "0 - Does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Tree"
+        },
+        {
+          "key": "b",
+          "text": "Bush"
+        },
+        {
+          "key": "c",
+          "text": "Neither"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing height differences",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "correctly discerns that the tree is tall while the bush is short",
+      "alignmentRationale": "This question assesses the recognition of size differences among objects."
+    },
+    {
+      "id": "8e2fc10b-c357-4cb9-a7a0-457a4b966760",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "What do you see in the sky?",
+      "rubric": [
+        "3 - Describes a specific detail visible in the sky (clouds, sun, etc.).",
+        "2 - Makes a general statement about the sky but lacks specifics.",
+        "1 - Gives a vague or unclear answer about what is seen.",
+        "0 - Does not respond or relates to something else."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing environmental details",
+      "targetEvidence": "able to articulate specific features of what is in the sky",
+      "alignmentRationale": "This task explores the ability to observe and share details about an environment."
+    },
+    {
+      "id": "3b480b46-6321-429a-9321-380b7bfea854",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Describe one thing you see on the playground.",
+      "rubric": [
+        "3 - Names a specific object or detail seen on the playground (slide, swing, etc.).",
+        "2 - Describes something general about the playground with less detail.",
+        "1 - Makes a vague observation that does not clearly relate to the playground.",
+        "0 - Does not answer or relates to something else."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "identifying specific objects in environments",
+      "targetEvidence": "recognizes and shares a visible object on the playground",
+      "alignmentRationale": "This task emphasizes the skill of observing and naming visible objects in a familiar context."
+    },
+    {
+      "id": "89f911ba-5a04-483d-a901-8dc9e17a145f",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "There is a cat and a dog. The cat is sitting, and the dog is lying down. What position is the cat in?",
+      "rubric": [
+        "3 - Correctly states the cat is sitting, noticing the position change.",
+        "2 - Incorrectly states the position but shows some understanding of the question.",
+        "1 - Answers with an unrelated position, lacking correct observation.",
+        "0 - Does not respond correctly or completely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Lying down"
+        },
+        {
+          "key": "b",
+          "text": "Sitting"
+        },
+        {
+          "key": "c",
+          "text": "Standing"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "noticing position",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "accurately identifies the position of the cat as sitting",
+      "alignmentRationale": "This task aims to assess the skill of recognizing and articulating different positions of objects or animals."
+    },
+    {
+      "id": "b1b43e69-290e-46b4-a97d-80d6a572bac4",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Here are two pictures of a cat and a dog. How many ears does the dog have?",
+      "rubric": [
+        "3 - The correct number of ears for the dog is identified as 2.",
+        "2 - A nearly correct number of ears is given (e.g., 1 or 3).",
+        "1 - A guess or unrelated number is provided (e.g., 0 or 4).",
+        "0 - No answer is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "2"
+        },
+        {
+          "key": "b",
+          "text": "1"
+        },
+        {
+          "key": "c",
+          "text": "3"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "counting visible body parts",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "identifies the correct number of ears for the dog",
+      "alignmentRationale": "The task specifically tests counting of easily observable parts, which isolates this from other skills."
+    },
+    {
+      "id": "cc0c1931-0c1f-4eb1-8a65-c19c4e8db9ec",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two pictures of a bird and a fish. What can you see swimming?",
+      "rubric": [
+        "3 - Correctly identifies the fish as swimming.",
+        "2 - Identifies a body of water without a clear animal.",
+        "1 - A guess that does not relate to swimming animals.",
+        "0 - No answer is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Bird"
+        },
+        {
+          "key": "b",
+          "text": "Fish"
+        },
+        {
+          "key": "c",
+          "text": "None"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "recognizing actions of animals",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "correctly identifies the animal associated with swimming",
+      "alignmentRationale": "This task assesses the understanding of animal actions based on their habitats and activities, isolating it from other observations."
+    },
+    {
+      "id": "48c757f3-e0c7-4f68-8254-b91687a36978",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "There are two pictures of a sun. Describe one thing you see that is different about them.",
+      "rubric": [
+        "3 - Clearly identifies a specific difference between the two suns.",
+        "2 - Mentions a general detail about suns without specifics.",
+        "1 - Provides unrelated information.",
+        "0 - No answer is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing differences in visuals",
+      "targetEvidence": "observes and communicates specific differences in visuals",
+      "alignmentRationale": "This task focuses on visual analysis and differentiation, ensuring it tests a unique aspect of observation."
+    },
+    {
+      "id": "b4b9c74b-a67b-47dd-98f9-8eccc47abd18",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at this picture of a tree. Tell me one detail you see about the leaves.",
+      "rubric": [
+        "3 - A clear and correct detail about the leaves is given.",
+        "2 - A partially correct detail about the leaves is mentioned.",
+        "1 - A vague answer or unrelated detail is provided.",
+        "0 - No answer is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing details in plants",
+      "targetEvidence": "observes specific details about the leaves of the tree",
+      "alignmentRationale": "This task explicitly tests the child's ability to notice details in a natural object, isolating it clearly from other skills."
+    },
+    {
+      "id": "bfbe423d-0f96-4043-9aa8-5272936e9fe6",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "There are two cartoon characters. Describe one thing you notice about their shoes.",
+      "rubric": [
+        "3 - A specific and accurate detail about the shoes is shared.",
+        "2 - A partially accurate detail about the shoes is mentioned.",
+        "1 - A vague detail or unrelated observation is given.",
+        "0 - No response is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "observing footwear features",
+      "targetEvidence": "describes specific aspects of characters' footwear",
+      "alignmentRationale": "This task targets the child's ability to observe and articulate differences in shoes, separating it from broader observation tasks."
+    },
+    {
+      "id": "b407aea9-d305-476e-847a-56a5ea6aba8a",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "In a picture of two different cakes, which one is decorated with fruit?",
+      "rubric": [
+        "3 - Correctly identifies the cake with fruit decoration.",
+        "2 - Choses a cake based on another feature (like color).",
+        "1 - An unrelated option is selected.",
+        "0 - No answer is given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Cake with fruit"
+        },
+        {
+          "key": "b",
+          "text": "Plain cake"
+        },
+        {
+          "key": "c",
+          "text": "Cake with icing"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing details of food",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "identifies a cake that has visible fruit decoration",
+      "alignmentRationale": "This task isolates the ability to notice specific features of food items."
+    },
+    {
+      "id": "4ef7c5d0-3bb7-42d4-8902-5248babc150e",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "There are two fruits: an apple and a banana. Which one is yellow?",
+      "rubric": [
+        "3 - Correctly identifies the banana as yellow.",
+        "2 - A partially correct answer indicating another attribute (like being round).",
+        "1 - Selects the apple mistakenly, without any clear logic.",
+        "0 - No answer is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Apple"
+        },
+        {
+          "key": "b",
+          "text": "Banana"
+        },
+        {
+          "key": "c",
+          "text": "Both"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "color identification of fruits",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "correctly associates the banana's color with yellow",
+      "alignmentRationale": "This task tests color recognition based on observable attributes of fruits."
+    },
+    {
+      "id": "27c2fc3e-4cd9-4411-9284-5f12742ce4a5",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at this picture of a garden. What is one insect you see?",
+      "rubric": [
+        "3 - Names a visible insect accurately.",
+        "2 - Mentions common insects not in the picture.",
+        "1 - Vague response or non-insect items.",
+        "0 - No answer is provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "identifying insects in a scene",
+      "targetEvidence": "correctly names an insect from the picture",
+      "alignmentRationale": "This task isolates the child's ability to recognize and identify insects in a given visual context."
+    },
+    {
+      "id": "f878e113-cb1b-424c-8410-50ffde160496",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at this picture of a dog and a cat. Tell me one thing you see that is different about them.",
+      "rubric": [
+        "3 - Correctly identifies a clear difference in appearance or position between the dog and cat.",
+        "2 - Mentions a detail but it doesn’t clearly show a difference between the dog and cat.",
+        "1 - Gives a vague or unclear observation.",
+        "0 - Doesn’t provide any relevant detail."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing appearance differences",
+      "targetEvidence": "Identifies a specific difference between the dog and cat.",
+      "alignmentRationale": "This task checks the child's ability to spot differences in appearance, aligning with the construct."
+    },
+    {
+      "id": "3f47b191-b526-41ea-928e-d32ab4414c7c",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "In the garden, there are two flowers. One is red and one is yellow. What color is the yellow flower?",
+      "rubric": [
+        "3 - Chooses the correct answer: yellow.",
+        "2 - Chooses red or another option, showing some understanding of the colors.",
+        "1 - Selects an answer that doesn't relate to colors.",
+        "0 - Provides no answer or an unrelated option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "red"
+        },
+        {
+          "key": "b",
+          "text": "blue"
+        },
+        {
+          "key": "c",
+          "text": "yellow"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "identifying color",
+      "optionScores": {
+        "a": 2,
+        "b": 1,
+        "c": 3
+      },
+      "targetEvidence": "Correctly names the color of the yellow flower.",
+      "alignmentRationale": "Recognizing and identifying colors is a key observational skill, testing detail differentiation."
+    },
+    {
+      "id": "7ef4c423-d3ee-446e-9b0d-2b648af69f18",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "There are two animals in the picture: a rabbit and a turtle. The rabbit has long ears. What is one thing the turtle has?",
+      "rubric": [
+        "3 - Correctly identifies the turtle has a shell or another correct attribute.",
+        "2 - Mentions something not usually associated with turtles.",
+        "1 - Provides a vague answer.",
+        "0 - Does not provide a relevant detail."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "long ears"
+        },
+        {
+          "key": "b",
+          "text": "a shell"
+        },
+        {
+          "key": "c",
+          "text": "quick legs"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "identifying specific features",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "Correctly describes a feature of the turtle.",
+      "alignmentRationale": "This task requires the child to observe specific details of animals, testing their ability to notice key features."
+    },
+    {
+      "id": "84b13ece-906e-4f44-81d9-91ff1b1c8958",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two pictures of a sandwich. How are they different?",
+      "rubric": [
+        "3 - Clearly describes a specific difference between the two sandwiches.",
+        "2 - Gives a partial description that suggests a difference.",
+        "1 - Provides a vague statement about the sandwiches.",
+        "0 - Doesn’t mention anything relevant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing food details",
+      "targetEvidence": "Identifies specific differences between two sandwiches.",
+      "alignmentRationale": "This question tests the child's ability to notice differences in food items, fitting the observational category."
+    },
+    {
+      "id": "23421f77-39d8-4871-b246-183d2a8b0ef9",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look out the window and find something that does not move. What is it?",
+      "rubric": [
+        "3 - Clearly describes a stationary object (e.g., a tree or building).",
+        "2 - Mentions an object but might not clearly indicate if it's moving or not.",
+        "1 - Talks about a moving object or provides vague details.",
+        "0 - Does not answer or describes something unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "noticing stationary items",
+      "targetEvidence": "child identifies a non-moving object in the environment",
+      "alignmentRationale": "This task draws attention to the child's capacity to notice stationary items around them."
+    },
+    {
+      "id": "a39444be-cef7-471e-93f8-23f94a13fe78",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "There are two flowers. One is red, and one is yellow. What color is the red flower?",
+      "rubric": [
+        "3 - Correctly identifies the color of the red flower as red, showing clear understanding.",
+        "2 - Identifies the color but mixes details (e.g., calls the red flower yellow).",
+        "1 - Provides a color that is not mentioned (e.g., blue or purple).",
+        "0 - Gives an unrelated answer or does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Red"
+        },
+        {
+          "key": "b",
+          "text": "Yellow"
+        },
+        {
+          "key": "c",
+          "text": "Green"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing a color",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "child identifies the color red when prompted",
+      "alignmentRationale": "This task requires the child to notice and clearly state a detail about color."
+    },
+    {
+      "id": "271371e2-168f-4384-b974-305956d5fbb3",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "In the playground, there is a swing, a slide, and a merry-go-round. What is not there?",
+      "rubric": [
+        "3 - Correctly identifies a play item like a sandbox or climber not listed.",
+        "2 - Names a play item but not one typically at playgrounds (like a trampoline).",
+        "1 - Gives a completely unrelated item that is not found in playgrounds (like a table).",
+        "0 - Does not answer or provides no relevant detail."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Sandbox"
+        },
+        {
+          "key": "b",
+          "text": "Swing"
+        },
+        {
+          "key": "c",
+          "text": "Slide"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing missing objects",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "child identifies an object that isn't mentioned in a set",
+      "alignmentRationale": "The task asks for the identification of a missing item from a clear set of objects."
+    },
+    {
+      "id": "411cee7c-c8dd-48cd-af59-0615dfc163e2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "In the toy box, there is a teddy bear, a toy car, and a robot. What kind of toy is not in the box?",
+      "rubric": [
+        "3 - Correctly identifies another type of toy like a doll or puzzle.",
+        "2 - Names a non-toy item (like a book) or a toy that does not fit.",
+        "1 - Provides any random object that has no relation to toys.",
+        "0 - Does not answer or is unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Doll"
+        },
+        {
+          "key": "b",
+          "text": "Car"
+        },
+        {
+          "key": "c",
+          "text": "Robot"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing types of items",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "child identifies a toy type that differs from listed items",
+      "alignmentRationale": "The question relates to recognizing categories of items in relation to the prompt."
+    },
+    {
+      "id": "ce89bcba-7fff-4c6c-9622-01d3f2078d18",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look around you. What is one thing you see that is a different shape from your chair?",
+      "rubric": [
+        "3 - Clearly describes another object with a different shape (e.g., circular).",
+        "2 - Mentions an object but doesn't clearly specify the shape difference.",
+        "1 - Identifies an object but allows for ambiguity in shape relation.",
+        "0 - Does not answer or describes something unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "noticing shape differences",
+      "targetEvidence": "child identifies and explains a physical shape that differs",
+      "alignmentRationale": "The task engages the child's ability to observe and articulate different shapes in their environment."
+    },
+    {
+      "id": "8ae0dfa3-c35f-4374-85b3-801b1888d6aa",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "You see two ice cream cones. One has chocolate, and the other has vanilla. What flavor is the vanilla cone?",
+      "rubric": [
+        "3 - Correctly states the flavor is vanilla.",
+        "2 - States chocolate or mixes up the names of the ice cream flavors.",
+        "1 - Provides a flavor not mentioned at all.",
+        "0 - Does not answer or provides no relevant detail."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Vanilla"
+        },
+        {
+          "key": "b",
+          "text": "Chocolate"
+        },
+        {
+          "key": "c",
+          "text": "Strawberry"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing flavors",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "child correctly names the flavor of one of the cones",
+      "alignmentRationale": "The task focuses on observing details related to flavors, which are clearly defined."
+    },
+    {
+      "id": "19100a58-4ea9-4df9-91e7-cf67bcb40e34",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at two different types of toys at home. What is one difference you see?",
+      "rubric": [
+        "3 - Clearly identifies a specific difference (e.g., one is soft and the other is hard).",
+        "2 - Mention a feature but is vague or not specific about differences.",
+        "1 - Provides a general statement about toys but not a specific difference.",
+        "0 - Does not answer or is unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "noticing visual details",
+      "targetEvidence": "child identifies a visual feature that distinguishes two objects",
+      "alignmentRationale": "This task encourages the child to notice and articulate differences in visual design."
+    },
+    {
+      "id": "fb9c904d-8941-417f-bd9a-572ae3413fca",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "There are three birds: one is blue, another is red, and the last is yellow. What color is the blue bird?",
+      "rubric": [
+        "3 - Correctly identifies the blue bird as blue.",
+        "2 - Mixes up the colors but recognizes one is blue.",
+        "1 - Identifies a color of another bird incorrectly.",
+        "0 - Does not answer or gives an unrelated color."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Blue"
+        },
+        {
+          "key": "b",
+          "text": "Red"
+        },
+        {
+          "key": "c",
+          "text": "Yellow"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing colors",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "child identifies the blue bird correctly",
+      "alignmentRationale": "The task tests the child's ability to notice and name the correct color within a context."
+    },
+    {
+      "id": "5dd11329-b0d9-486f-8714-535d027cc917",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two pictures of a cat. One has a ball, and one does not. Which picture shows a cat with a ball?",
+      "rubric": [
+        "3 - Chooses the picture that clearly shows a ball with the cat.",
+        "2 - Chooses a picture, but it does not show a ball.",
+        "1 - Chooses a picture, but it shows a different animal.",
+        "0 - Does not choose a picture or chooses randomly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Cat with ball"
+        },
+        {
+          "key": "b",
+          "text": "Cat without ball"
+        },
+        {
+          "key": "c",
+          "text": "Dog with ball"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing differences in details",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "identifies the picture with the ball near the cat",
+      "alignmentRationale": "This question tests the ability to notice specific details by comparing two objects."
+    },
+    {
+      "id": "2b54e228-d8f7-403b-bfc0-f64c76968433",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "In the kitchen, there are apples, bananas, and oranges. What fruit is not in the kitchen?",
+      "rubric": [
+        "3 - Correctly identifies the missing fruit.",
+        "2 - Identifies a fruit but it is not missing from the kitchen.",
+        "1 - Chooses a fruit that is present in the kitchen.",
+        "0 - Does not answer or chooses something unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Apple"
+        },
+        {
+          "key": "b",
+          "text": "Grapes"
+        },
+        {
+          "key": "c",
+          "text": "Banana"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "noticing missing details",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "identifies the fruit that is not listed in the kitchen",
+      "alignmentRationale": "This question requires the child to recall and notice that a specific detail is missing from a set."
+    },
+    {
+      "id": "00a4e7a2-ab19-4b24-bf06-377c79bd41b9",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "In our story, the dog had a blue ball. In the next picture, the ball is red. What color is the ball now?",
+      "rubric": [
+        "3 - Correctly answers red as the new color of the ball.",
+        "2 - Chooses an unrelated color.",
+        "1 - Chooses blue thinking it did not change.",
+        "0 - Does not answer or responds randomly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Blue"
+        },
+        {
+          "key": "b",
+          "text": "Yellow"
+        },
+        {
+          "key": "c",
+          "text": "Red"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "noticing changes in details",
+      "optionScores": {
+        "a": 1,
+        "b": 0,
+        "c": 3
+      },
+      "targetEvidence": "identifies the new color of the ball correctly",
+      "alignmentRationale": "This question tests the ability to notice a color change from one description to another."
+    },
+    {
+      "id": "c1935808-ff68-4922-8a5f-00b664f956de",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Think of your favorite animal. Describe something special about it that others may not notice.",
+      "rubric": [
+        "3 - Describes a specific, unique detail.",
+        "2 - Describes a detail, but it is common or less specific.",
+        "1 - Gives a general statement about the animal.",
+        "0 - Does not provide a specific detail or answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "noticing special features",
+      "targetEvidence": "shares a unique or subtle feature of the animal",
+      "alignmentRationale": "This question encourages the child to articulate subtle details of a familiar object, demonstrating their observational skills."
+    },
+    {
+      "id": "9cd7ede3-ea80-4840-aab0-9c32795f0425",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "There are three pets: a dog, a cat, and a bunny. The dog is brown, the cat is black, and the bunny is white. What color is the cat?",
+      "rubric": [
+        "3 - Correctly identifies black as the cat's color.",
+        "2 - Chooses the color of another pet.",
+        "1 - Chooses an unrelated color.",
+        "0 - Does not answer or responds randomly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Brown"
+        },
+        {
+          "key": "b",
+          "text": "Black"
+        },
+        {
+          "key": "c",
+          "text": "White"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "remembering stated details",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "recalls the specific detail about the cat's color",
+      "alignmentRationale": "This question tests the child's memory of details stated in a short description."
+    },
+    {
+      "id": "2e09b1db-afec-4cd7-8ac8-b7ace002a5c2",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Describe something interesting you saw outside today. What made it interesting?",
+      "rubric": [
+        "3 - Shares a specific interesting detail.",
+        "2 - Mentions something interesting but not specific.",
+        "1 - Gives a general statement about being outside.",
+        "0 - Does not provide a specific detail or answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "noticing interesting aspects",
+      "targetEvidence": "articulates a specific enjoyable feature observed outside",
+      "alignmentRationale": "This prompt asks the child to reflect on their observation of their environment, showcasing their ability to identify interesting aspects of their surroundings."
+    },
+    {
+      "id": "3dbbca5e-b150-4b6b-9214-3589054eba75",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Think of a time you saw something that made you happy. What was it?",
+      "rubric": [
+        "3 - Clearly describes a happy detail or event.",
+        "2 - Mentions something happy but lacks detail.",
+        "1 - Gives a vague statement without specifics.",
+        "0 - Does not provide a detail or answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "noticing happy details",
+      "targetEvidence": "describes a specific happy element",
+      "alignmentRationale": "This question prompts the child to explore their observational skills and recall details of joyful experiences."
+    },
+    {
+      "id": "d71b463c-5ae2-458d-a7ab-326d0c0c39dd",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Lily has a blue fish, and Tom has a red fish. What color is Lily's fish?",
+      "rubric": [
+        "3 - Correctly identifies blue as the color of Lily's fish.",
+        "2 - Chooses red thinking of Tom's fish.",
+        "1 - Incorrectly chooses a different unrelated color.",
+        "0 - Fails to answer or responds randomly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Blue"
+        },
+        {
+          "key": "b",
+          "text": "Red"
+        },
+        {
+          "key": "c",
+          "text": "Green"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing different details",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "identifies the correct detail about Lily's fish color",
+      "alignmentRationale": "This question tests the child's ability to distinguish between two similar details."
+    },
+    {
+      "id": "b84ef26d-3f77-4e91-b70c-273bac1031e5",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at some fruits in your kitchen. Describe something special about one of them that you notice.",
+      "rubric": [
+        "3 - Provides a clear and specific detail about the fruit, such as its color, shape, or size.",
+        "2 - Describes a feature of the fruit but lacks clarity or detail.",
+        "1 - Gives an answer that is vague or unrelated to the fruit.",
+        "0 - Does not attempt the question or offers irrelevant information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "noticing specific features",
+      "targetEvidence": "The child provides detailed characteristics about a fruit they see or know about.",
+      "alignmentRationale": "This question encourages children to observe and articulate details about a common object, honing their observational skills."
+    },
+    {
+      "id": "d0765d04-7127-4e19-a1c4-a3b43053eedc",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "You see a red car and a blue car. What color is the car that is not red?",
+      "rubric": [
+        "3 - Correctly identifies the blue color and demonstrates an understanding of color differentiation.",
+        "2 - Identifies the correct color but does not specify the context of the question clearly.",
+        "1 - Answers incorrectly, whether by naming the wrong color or providing a vague response.",
+        "0 - Does not attempt the question or makes irrelevant statements."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "red"
+        },
+        {
+          "key": "b",
+          "text": "blue"
+        },
+        {
+          "key": "c",
+          "text": "green"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "identifying contrasting colors",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "The child accurately identifies the color of the car that is different from red.",
+      "alignmentRationale": "This question tests the child's ability to discern and identify contrasting colors in a simple context."
+    },
+    {
+      "id": "ce19b147-fea5-43d0-9542-936c539031e9",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at your toys. What is something that has a different shape from a ball?",
+      "rubric": [
+        "3 - Accurately names a specific toy and identifies its shape as different from a ball's.",
+        "2 - Accurately names a toy but does not clarify its shape or why it is different.",
+        "1 - Provides a vague response or names a toy that does not fit the shape criteria.",
+        "0 - Does not attempt the question or gives irrelevant or incorrect information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "noticing shape differences",
+      "targetEvidence": "The child identifies a toy's shape and explains how it differs from the shape of a ball.",
+      "alignmentRationale": "This question focuses on the child's ability to visually discriminate between shapes and articulate that difference."
+    },
+    {
+      "id": "df2f8825-e353-4dfd-abc3-dfa5c78cc15d",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Think of an outdoor scene you saw. Describe one thing that caught your attention and what made it special.",
+      "rubric": [
+        "3 - Offers a clear description of a noticeable detail in an outdoor scene along with a reason.",
+        "2 - Identifies a detail but lacks clarity about its significance or depth.",
+        "1 - Provides an unclear or vague response without a decisive detail.",
+        "0 - Does not attempt the question or gives irrelevant information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "noticing details in a scene",
+      "targetEvidence": "The child describes a specific detail from an outdoor scene and explains why they found it notable.",
+      "alignmentRationale": "This question encourages the child to observe details in a natural setting and articulate their significance."
+    },
+    {
+      "id": "60c5b39d-860c-4e9b-bae9-31971fa63e19",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look around the room. What is something that is different from the last time you were here?",
+      "rubric": [
+        "3 - You clearly describe a different detail.",
+        "2 - You mention a change but it’s unclear.",
+        "1 - You talk about being in the room but not a change.",
+        "0 - You do not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing changes in environment",
+      "targetEvidence": "describes a specific change noticed in the environment.",
+      "alignmentRationale": "This open question invites children to observe changes in their surroundings, further enhancing their observational skills."
+    },
+    {
+      "id": "88cfff90-b5c3-4675-8dac-ffa5b7e4d06e",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "You see a white cat and a brown dog in a picture. Which animal is brown?",
+      "rubric": [
+        "3 - You correctly identify the dog as brown.",
+        "2 - You mention the cat but get it wrong.",
+        "1 - You describe an animal without identifying color.",
+        "0 - You do not provide any relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The dog"
+        },
+        {
+          "key": "b",
+          "text": "The cat"
+        },
+        {
+          "key": "c",
+          "text": "Both"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing colors in animals",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "identifies the brown animal as the dog.",
+      "alignmentRationale": "This question tests the ability to notice color differentiation in types of animals presented in the same visual context."
+    },
+    {
+      "id": "ccc78ad7-2338-492a-a540-3654ec7e147f",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "What do you see when you look out your window? Describe something you notice.",
+      "rubric": [
+        "3 - You describe a clear detail about what you see.",
+        "2 - You mention something, but it’s unclear or lacks detail.",
+        "1 - You talk about looking outside without specifics.",
+        "0 - You do not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing details in the environment",
+      "targetEvidence": "describes something specific seen outside.",
+      "alignmentRationale": "This open question prompts children to articulate observations of their surroundings, encouraging keen observation without restrictions."
+    },
+    {
+      "id": "aef4cd4c-86ad-4436-8cc8-e4010c17a9b7",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "You see two pictures of a bicycle. In one picture, there is a basket, and in the other, there isn't. What does the bicycle have in the first picture?",
+      "rubric": [
+        "3 - You correctly identify that the bicycle has a basket.",
+        "2 - You mention something about the bicycle but it’s incorrect.",
+        "1 - You describe the bicycle without mentioning the basket.",
+        "0 - You do not provide any relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A basket"
+        },
+        {
+          "key": "b",
+          "text": "No basket"
+        },
+        {
+          "key": "c",
+          "text": "A bell"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing objects in images",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "identifies that the bicycle has a basket.",
+      "alignmentRationale": "This question tests the ability to notice specific features in images, focusing on objects."
+    },
+    {
+      "id": "c7b5d784-0445-4d13-90ed-965c2f47c562",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "You see two pictures of a girl. In one, she is wearing a pink dress. In the other, she is wearing a green dress. What color is her dress in the first picture?",
+      "rubric": [
+        "3 - You correctly identify the dress color as pink.",
+        "2 - You mention the color but get it wrong.",
+        "1 - You describe the girl without mentioning dress color.",
+        "0 - You do not provide any relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Pink"
+        },
+        {
+          "key": "b",
+          "text": "Green"
+        },
+        {
+          "key": "c",
+          "text": "Blue"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing colors in images",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "identifies the dress color as pink.",
+      "alignmentRationale": "This question tests the ability to notice specific details in images, focusing on color."
+    },
+    {
+      "id": "37c3968e-4ef7-4ac9-a642-611f9cfae613",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Think of a time you noticed something interesting in your room. What was it?",
+      "rubric": [
+        "3 - You give a clear example of something interesting you noticed.",
+        "2 - You mention an object but it’s unclear why it's interesting.",
+        "1 - You talk about your room without specifics.",
+        "0 - You do not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing interesting details in surroundings",
+      "targetEvidence": "describes an interesting object or detail noticed in the room.",
+      "alignmentRationale": "This open question encourages children to notice and articulate interesting details from their environment without prompts."
+    },
+    {
+      "id": "bc55d899-760f-493e-a0ac-664c277dd803",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "You see two pictures of a house. One house has a red door, and the other has a blue door. What color is the door in the first picture?",
+      "rubric": [
+        "3 - You correctly identify the door color as red.",
+        "2 - You mention the door color but get it wrong.",
+        "1 - You describe the house without mentioning the door color.",
+        "0 - You do not provide any relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Red"
+        },
+        {
+          "key": "b",
+          "text": "Blue"
+        },
+        {
+          "key": "c",
+          "text": "Yellow"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing colors in images",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "identifies the door color as red.",
+      "alignmentRationale": "This question tests the ability to notice specific details in images, focusing on color."
+    },
+    {
+      "id": "f589044b-0aa6-4277-bf31-97072aaa3a5f",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at a place with pictures. What is something that is different about the pictures?",
+      "rubric": [
+        "3 - You clearly describe a noticeable difference in the pictures.",
+        "2 - You mention a difference, but it is not clear.",
+        "1 - You talk about the pictures but don’t state a difference.",
+        "0 - You do not answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing differences in images",
+      "targetEvidence": "describes a noticeable difference between the pictures.",
+      "alignmentRationale": "This open question asks for details highlighting differences observed, testing the ability to spot detail without options."
+    },
+    {
+      "id": "cee538e7-4e4c-4223-b107-cc8b31d47d93",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "You are looking at two pictures of a car. One car is parked on grass and the other on a road. Where is the first car parked?",
+      "rubric": [
+        "3 - You correctly identify that the first car is on the grass.",
+        "2 - You correctly say that it is on the road but miss which picture is first.",
+        "1 - You mention the car but are unclear about where it is.",
+        "0 - You provide an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "On the grass"
+        },
+        {
+          "key": "b",
+          "text": "On the road"
+        },
+        {
+          "key": "c",
+          "text": "In the garage"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing location differences",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "correctly identifies the first car's location as on the grass",
+      "alignmentRationale": "This task requires understanding location details presented in a picture context."
+    },
+    {
+      "id": "d74b8589-990e-4d3b-8ed9-152c0b9a4473",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "You see a picture of a bird. In one picture, it has a red beak, and in the other, it has a yellow beak. Which beak does the bird have in the first picture?",
+      "rubric": [
+        "3 - You correctly identify the red beak as in the first picture.",
+        "2 - You identify the yellow beak but do not correctly note the first picture.",
+        "1 - You mention a beak but are unclear or incorrect about the colors.",
+        "0 - You do not answer correctly or give unrelated information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Red"
+        },
+        {
+          "key": "b",
+          "text": "Yellow"
+        },
+        {
+          "key": "c",
+          "text": "Both"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing color differences",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "correctly identifies the color of the beak as red in the first picture",
+      "alignmentRationale": "This task requires noticing a subtle but clearly visible detail: the color of the bird's beak."
+    },
+    {
+      "id": "8e7e6ad2-669e-4ed1-8d4b-b1bdbed9cd85",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "What is something interesting you noticed about a plant outside?",
+      "rubric": [
+        "3 - You give a clear and detailed description of a specific feature you noticed.",
+        "2 - You describe a feature but it's not very detailed or clear.",
+        "1 - You mention something about a plant but it's vague or unclear.",
+        "0 - You do not answer or give unrelated information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "noticing unique features",
+      "targetEvidence": "describes an actual detail about a plant",
+      "alignmentRationale": "This question encourages children to reflect on details in their environment, testing their observational skills."
+    },
+    {
+      "id": "1fcac029-6131-41b6-bf8c-3cf810eb8bda",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "You see two pictures of a cat. One picture has a red collar and the other a blue collar. Which collar does the cat wear in the first picture?",
+      "rubric": [
+        "3 - You correctly identify the red collar as in the first picture.",
+        "2 - You identify the blue collar but do not correctly note the first picture.",
+        "1 - You mention a collar but are unclear or incorrect about the colors.",
+        "0 - You do not answer correctly or give unrelated information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Red collar"
+        },
+        {
+          "key": "b",
+          "text": "Blue collar"
+        },
+        {
+          "key": "c",
+          "text": "Both collars"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing accessory differences",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "correctly identifies the color of the collar on the cat in the first picture",
+      "alignmentRationale": "This task requires understanding color details presented in a picture context."
+    },
+    {
+      "id": "4b8860e0-f217-4836-920b-dad0043eff3b",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "What do you see when you look at your shoes? Describe any details you notice.",
+      "rubric": [
+        "3 - You provide a clear description of specific details about your shoes.",
+        "2 - You mention some characteristics but they are not very detailed.",
+        "1 - You touch on your shoes but lack clear details.",
+        "0 - You do not answer or provide unrelated information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "observing personal items",
+      "targetEvidence": "describes specific features of their shoes",
+      "alignmentRationale": "This question encourages children to examine and describe details of an item they own."
+    },
+    {
+      "id": "885202b2-7f26-441e-acbb-f5c6a9d1a349",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Think of a time you saw something unusual outdoors. Describe it and what was special about it.",
+      "rubric": [
+        "3 - You provide a clear description of the unusual thing and why it was special.",
+        "2 - You mention the thing but are vague about it or why it was unusual.",
+        "1 - You bring up something but lack detail or clarity.",
+        "0 - You do not answer or give unrelated information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "describing unique objects in nature",
+      "targetEvidence": "provides details about something observed outdoors",
+      "alignmentRationale": "This encourages children to reflect on unique features in their environment, promoting observational skills."
+    },
+    {
+      "id": "d2dc5308-f812-4227-a290-da3baf83230e",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "In pictures of two animals, one is a dog running and the other is a dog sitting. Which dog is running?",
+      "rubric": [
+        "3 - You correctly identify the dog that is running.",
+        "2 - You mention the dog that is sitting but fail to identify the running dog.",
+        "1 - You mention a dog but are unclear about which one is running.",
+        "0 - You provide an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The running dog"
+        },
+        {
+          "key": "b",
+          "text": "The sitting dog"
+        },
+        {
+          "key": "c",
+          "text": "Both dogs"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing action differences",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "correctly identifies the dog that is running",
+      "alignmentRationale": "This task tests the ability to distinguish between different actions displayed in pictures."
+    },
+    {
+      "id": "51955b8d-1a5c-48b7-b708-8af9d6143b6f",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "You see two pictures of a boy. In one, he is wearing glasses, and in the other, he is not. What is he wearing in the first picture?",
+      "rubric": [
+        "3 - You correctly identify that he is wearing glasses in the first picture.",
+        "2 - You identify that he is not wearing glasses but do not indicate the first picture.",
+        "1 - You mention he wears something, but it’s unclear.",
+        "0 - You do not answer correctly or give unrelated information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Glasses"
+        },
+        {
+          "key": "b",
+          "text": "A hat"
+        },
+        {
+          "key": "c",
+          "text": "No accessories"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing accessory differences",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "correctly identifies that the boy is wearing glasses",
+      "alignmentRationale": "This task tests the ability to spot a specific detail about the boy in a visual context."
+    },
+    {
+      "id": "e7599356-0af4-4c78-b4a0-dc5b04a7c702",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two pictures of a cat. One picture has a red collar and the other a blue collar. Which collar does the cat wear in the first picture?",
+      "rubric": [
+        "3 - Correctly identifies the collar color in the first picture.",
+        "2 - Chooses the wrong color but explains some detail about the cat.",
+        "1 - Identifies the cat but doesn't mention the collar.",
+        "0 - No relevant answer or misses the cat."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "red"
+        },
+        {
+          "key": "b",
+          "text": "blue"
+        },
+        {
+          "key": "c",
+          "text": "green"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "noticing differences in details",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "Identifies the correct color of the cat's collar.",
+      "alignmentRationale": "This task focuses on noticing specific differences between two similar images."
+    },
+    {
+      "id": "4c388e5d-9567-44a4-b60d-ba79569142af",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "Look at these two images of trees. One tree has green leaves, and the other has yellow leaves. Which tree has yellow leaves?",
+      "rubric": [
+        "3 - Correctly identifies the tree with yellow leaves.",
+        "2 - Chooses the wrong tree but explains a detail about the trees.",
+        "1 - Identifies the trees but doesn't mention the leaves.",
+        "0 - No relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "green leaves tree"
+        },
+        {
+          "key": "b",
+          "text": "yellow leaves tree"
+        },
+        {
+          "key": "c",
+          "text": "red leaves tree"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "noticing differences in color",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "Identifies the correct tree color from given options.",
+      "alignmentRationale": "This question assesses the ability to notice color differences in comparable objects."
+    },
+    {
+      "id": "97cd5fc6-c987-4299-8f81-adb0fed3bcca",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "In a cartoon, a dog chases a cat. What is the opposite of chasing?",
+      "rubric": [
+        "3 - Correctly identifies the action as running away.",
+        "2 - Suggests another related action.",
+        "1 - Misses the concept of chase completely.",
+        "0 - No relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "running away"
+        },
+        {
+          "key": "b",
+          "text": "jumping"
+        },
+        {
+          "key": "c",
+          "text": "sitting"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding opposite actions",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "Identifies the opposite action of chasing in context.",
+      "alignmentRationale": "This task tests comprehension of opposites in observable actions."
+    },
+    {
+      "id": "6f30b8d3-56a6-4661-b503-0db6b8d7e419",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "observant",
+      "format": "explanation",
+      "prompt": "There are two toys on a shelf: a red car and a blue plane. If the car is missing, which toy is still on the shelf?",
+      "rubric": [
+        "3 - Accurately identifies the remaining toy as the blue plane.",
+        "2 - Selects an unrelated option but connects to a toy.",
+        "1 - Doesn't name the toys specifically.",
+        "0 - No relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "red car"
+        },
+        {
+          "key": "b",
+          "text": "blue plane"
+        },
+        {
+          "key": "c",
+          "text": "yellow boat"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "remembering specific details",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "Correctly recalls which toy remains after one is missing.",
+      "alignmentRationale": "This task focuses on a simple narrative observation."
+    }
+  ]
+}

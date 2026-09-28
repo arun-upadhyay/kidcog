@@ -218,6 +218,17 @@ export function getParentReport(sessionId: string): Promise<Pick<Report, 'parent
   return request(`/api/sessions/${encodeURIComponent(sessionId)}/parent-report`, { timeoutMs: 90000 });
 }
 
+/** A parent reports AI-made content (see ReportSheet). A reported question is taken out of future rounds. */
+export function reportContent(input: {
+  kind: 'question' | 'note';
+  sessionId: string;
+  questionId?: string;
+  reason: 'inappropriate' | 'wrong' | 'confusing' | 'other';
+  details?: string;
+}): Promise<{ ok: true; removed: boolean }> {
+  return request('/api/reports', { method: 'POST', timeoutMs: 20000, body: JSON.stringify(input) });
+}
+
 /** A code for reading `text` aloud; the audio is then fetched by code (see speech.ts). */
 export async function registerSpeech(text: string): Promise<string> {
   const { key } = await request<{ key: string }>('/api/speech-key', { method: 'POST', timeoutMs: 15000, body: JSON.stringify({ text }) });

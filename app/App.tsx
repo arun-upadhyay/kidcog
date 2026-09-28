@@ -11,6 +11,7 @@ import ResultsScreen from './src/screens/ResultsScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import HistoryScreen from './src/screens/HistoryScreen';
 import ThankYouScreen, { isThankYouPage } from './src/screens/ThankYouScreen';
+import LegalScreen, { isLegalPage } from './src/screens/LegalScreen';
 import AppMenu from './src/components/AppMenu';
 import IdleGuard from './src/components/IdleGuard';
 import { AuthProvider, useAuth } from './src/auth/AuthContext';
@@ -285,7 +286,7 @@ function KidCogApp() {
 
           {stage === 'history' && historyChild && <HistoryScreen child={historyChild} onBack={restart} onOpen={(item) => { setHistorical(item); setStage('historical_result'); }} />}
 
-          {stage === 'historical_result' && historical && <ResultsScreen report={historical.report} childName={historical.childName} completedAt={historical.completedAt} historical onBackToHistory={() => setStage('history')} onRestart={restart} onChooseCategory={() => {}} onReassess={() => {}} remainingUnseen={0} busy={false} error={null} />}
+          {stage === 'historical_result' && historical && <ResultsScreen report={historical.report} sessionId={historical.id} childName={historical.childName} completedAt={historical.completedAt} historical onBackToHistory={() => setStage('history')} onRestart={restart} onChooseCategory={() => {}} onReassess={() => {}} remainingUnseen={0} busy={false} error={null} />}
 
           {stage === 'categories' && <CategoryScreen initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} progress={progress} onReport={() => setStage('results')} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
 
@@ -305,6 +306,7 @@ function KidCogApp() {
           {stage === 'results' && report && (
             <ResultsScreen
               report={report}
+              sessionId={sessionId}
               childName={child?.firstName}
               reward={test?.profile.showScoreToChild ? reward : null}
               onRestart={restart}
@@ -328,9 +330,11 @@ function KidCogApp() {
 export default function App() {
   // Stripe and PayPal send parents to /thank-you after a support payment.
   const [thankYou, setThankYou] = useState(isThankYouPage);
-  if (thankYou) {
-    return <ThankYouScreen onContinue={() => { globalThis.history?.replaceState(null, '', '/'); setThankYou(false); }} />;
-  }
+  // Public pages Google Play and the App Store link to: no sign-in needed.
+  const [legal, setLegal] = useState(isLegalPage);
+  const home = () => { globalThis.history?.replaceState(null, '', '/'); setThankYou(false); setLegal(null); };
+  if (thankYou) return <ThankYouScreen onContinue={home} />;
+  if (legal) return <LegalScreen page={legal} onContinue={home} />;
   return <AuthProvider><KidCogApp /></AuthProvider>;
 }
 

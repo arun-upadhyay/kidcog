@@ -2,6 +2,12 @@
  * Rounds come from a shared bank of checked questions instead of being written
  * by the AI while a child waits.
  *
+ * Since 2026-09: by default the bank holds only the reviewed questions in
+ * server/questions/*.json (see questionFiles.ts) and the AI writes no
+ * questions at all. The AI-writing path below still works with
+ * QUESTION_SOURCE=ai, and is what `npm run draft-questions` uses to draft new
+ * files for review.
+ *
  * Why: logs/generation.log showed 8 s (2 questions) to 35 s (6 questions) per
  * round, with 22% of rounds failing outright, and every round paid for 2–4 AI
  * calls. A question depends only on the category and the child's age, so one
@@ -29,7 +35,9 @@
  */
 import { randomUUID } from 'node:crypto';
 import { generateBatch, sameActivity, type BatchReason, type GeneratedQuestion } from './generatedQuestions.js';
-import { bankCandidates, insertBankQuestions, markBankServed, type BankCandidate } from './repository.js';
+import { bankCandidates, insertBankQuestions, markBankServed, retireBankQuestion, upsertBankQuestionsById, type BankCandidate } from './repository.js';
+import { allFileQuestions, fileQuestionCount, fileQuestionsFor, questionFilesVersion, questionSource } from './questionFiles.js';
+import { supabaseReady } from './supabase.js';
 import type { TraitKey } from './traits.js';
 
 function setting(name: string, fallback: number) {
@@ -89,6 +97,10 @@ interface Store {
   candidates(parentId: string, childId: string, trait: string, age: number): Promise<BankCandidate[]>;
   insert(trait: string, age: number, questions: GeneratedQuestion[]): Promise<void>;
   served(childId: string, ids: string[]): Promise<void>;
+  /** A parent reported it: never serve it again. */
+  retire(id: string): Promise<void>;
+  /** Store reviewed file questions under their own ids. Returns how many failed. */
+  seed(trait: string, age: number, questions: GeneratedQuestion[]): Promise<number>;
 }
 
 const databaseStore: Store = {
@@ -96,6 +108,8 @@ const databaseStore: Store = {
   insert: insertBankQuestions,
   // "Seen" is recorded by saving the session copies with their bank id.
   served: (_childId, ids) => markBankServed(ids),
+  retire: retireBankQuestion,
+  seed: upsertBankQuestionsById,
 };
 
 const memoryBank = new Map<string, BankCandidate[]>();
@@ -121,7 +135,21 @@ const memoryStore: Store = {
     memorySeen.set(childId, seen);
     for (const list of memoryBank.values()) for (const c of list) if (ids.includes(c.id)) c.servedCount++;
   },
+  async retire(id) {
+    memoryRetired.add(id);
+    for (const [key, list] of memoryBank) memoryBank.set(key, list.filter(c => c.id !== id));
+  },
+  async seed(trait, age, questions) {
+    const list = (memoryBank.get(keyOf(trait, age)) ?? []).filter(c => !questions.some(q => q.id === c.id));
+    for (const q of questions) {
+      if (memoryRetired.has(q.id)) continue;
+      list.push({ id: q.id, type: q.type as 'open' | 'mcq', skillFacet: q.skillFacet ?? '', prompt: q.prompt, question: q, servedCount: 0, seen: false });
+    }
+    memoryBank.set(keyOf(trait, age), list);
+    return 0;
+  },
 };
+const memoryRetired = new Set<string>();
 
 let useMemory = false;
 function isMissingBank(error: unknown) {
@@ -130,6 +158,8 @@ function isMissingBank(error: unknown) {
 }
 /** Runs a bank operation, switching to the in-memory bank if the tables aren't there yet. */
 async function withStore<T>(run: (store: Store) => Promise<T>): Promise<T> {
+  // No database configured at all (local tests): keep everything in memory.
+  if (!useMemory && !supabaseReady()) useMemory = true;
   if (useMemory) return run(memoryStore);
   try {
     return await run(databaseStore);
@@ -218,8 +248,70 @@ function topUpInBackground(trait: TraitKey, age: number, reason: BatchReason, ex
 
 export type RoundSource = 'bank' | 'fresh' | 'repeat';
 
+// ---------------------------------------------------------------------------
+// Reviewed question files (the default): no AI, instant.
+// ---------------------------------------------------------------------------
+
+let seeding: Promise<void> | null = null;
+let seededVersion = '';
+/** Puts the file questions into the bank (again whenever the files change), so use is tracked per child. */
+export function seedFromFiles(): Promise<void> {
+  const version = questionFilesVersion();
+  if (!seeding || version !== seededVersion) {
+    seededVersion = version;
+    seeding = (async () => {
+      let failed = 0;
+      for (const group of allFileQuestions()) failed += await withStore(store => store.seed(group.trait, group.age, group.questions));
+      console.log(`[bank] ${fileQuestionCount()} reviewed questions loaded from server/questions${failed ? ` (${failed} could not be stored; see warnings above)` : ''}.`);
+    })().catch(error => {
+      seeding = null; // try again on the next round
+      throw error;
+    });
+  }
+  return seeding;
+}
+
+const warnedNoFile = new Set<string>();
+function warnNoFile(trait: string, age: number) {
+  if (warnedNoFile.has(keyOf(trait, age))) return;
+  warnedNoFile.add(keyOf(trait, age));
+  console.warn(`[bank] no reviewed questions for ${trait} age ${age} in server/questions; using questions already in the bank. Run npm run draft-questions.`);
+}
+
+/** Up to `count` of the least-used questions, ignoring the spoken/tap mix (last resort). */
+function anyRound(pool: BankCandidate[], count: number): BankCandidate[] | null {
+  if (pool.length === 0) return null;
+  return [...pool].sort((a, b) => a.servedCount - b.servedCount + (Math.random() - 0.5)).slice(0, Math.min(count, pool.length));
+}
+
+async function roundFromFiles(input: { parentId: string; childId: string; age: number; trait: TraitKey; count: number }) {
+  const { parentId, childId, age, trait, count } = input;
+  await seedFromFiles();
+  const reviewed = fileQuestionsFor(trait, age);
+  // The bank tells us which of these this child has had (and hides reported ones);
+  // the file supplies the reviewed wording.
+  const stored = await withStore(store => store.candidates(parentId, childId, trait, age));
+  const pool = reviewed.size > 0
+    ? stored
+      .filter(c => reviewed.has(c.id))
+      .map(c => { const question = reviewed.get(c.id)!; return { ...c, prompt: question.prompt, type: question.type as 'open' | 'mcq', skillFacet: question.skillFacet ?? '', question }; })
+    // No reviewed file for this activity and age yet: use the questions already
+    // stored in the bank (made earlier), but never ask the AI for new ones.
+    : (warnNoFile(trait, age), stored);
+  const unseen = pool.filter(c => !c.seen);
+  let source: RoundSource = 'bank';
+  let picked = assembleRound(unseen, count);
+  if (!picked) { picked = assembleRound(pool, count) ?? anyRound(pool, count); source = 'repeat'; }
+  if (!picked) throw new Error('There are no questions ready for this activity and age yet. Please try another activity.');
+  const ids = picked.map(c => c.id);
+  void withStore(store => store.served(childId, ids)).catch(error => console.warn(`[bank] could not record use: ${error instanceof Error ? error.message : error}`));
+  const questions: GeneratedQuestion[] = picked.map(c => ({ ...c.question, id: randomUUID(), bankQuestionId: c.id }));
+  return { questions, source };
+}
+
 /** A round for this child: session copies of bank questions, with where they came from. */
 export async function roundForChild(input: { parentId: string; childId: string; age: number; trait: TraitKey; count: number }) {
+  if (questionSource() === 'files') return roundFromFiles(input);
   const { parentId, childId, age, trait, count } = input;
   const load = () => withStore(store => store.candidates(parentId, childId, trait, age));
   let pool = await load();
@@ -262,6 +354,8 @@ export async function roundForChild(input: { parentId: string; childId: string; 
  * time "Let's play" is tapped. Never waits for the AI.
  */
 export async function prefetchForChild(input: { parentId: string; childId: string; age: number; trait: TraitKey; largest?: number }) {
+  // Reviewed files are always ready; nothing to make ahead.
+  if (questionSource() === 'files') return { ready: true, working: false };
   const { parentId, childId, age, trait } = input;
   const largest = input.largest ?? LARGEST_ROUND;
   if (largest <= 0) return { ready: true, working: false };
@@ -284,5 +378,16 @@ export async function fillBank(trait: TraitKey, age: number, target: number) {
 }
 
 export function bankStatus() {
-  return { store: useMemory ? 'memory' : 'database', batchesToday, running: [...running.keys()] };
+  return { source: questionSource(), fileQuestions: fileQuestionCount(), store: useMemory ? 'memory' : 'database', batchesToday, running: [...running.keys()] };
+}
+
+/** Every stored question for a category and age (for the draft script's export). */
+export async function bankQuestionsFor(trait: TraitKey, age: number) {
+  const none = '00000000-0000-0000-0000-000000000000';
+  return withStore(store => store.candidates(none, none, trait, age));
+}
+
+/** A parent reported this bank question: take it out of every future round. */
+export async function retireQuestion(bankQuestionId: string) {
+  await withStore(store => store.retire(bankQuestionId));
 }

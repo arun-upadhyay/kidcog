@@ -1,0 +1,2961 @@
+{
+  "category": "categories_hierarchies",
+  "questions": [
+    {
+      "id": "12dbfcb0-2677-4ec7-8b98-b43f9e4bdde9",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a green fruit? 🍏",
+      "rubric": [
+        "3 - Correctly identifies a green fruit.",
+        "2 - Identifies something that is not a fruit but is green.",
+        "1 - Identifies something that is not green or a fruit.",
+        "0 - No attempt or an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Apple"
+        },
+        {
+          "key": "b",
+          "text": "Lettuce"
+        },
+        {
+          "key": "c",
+          "text": "Chocolate"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "sorting by color and type",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "picks the correct green fruit",
+      "alignmentRationale": "Choosing the right green fruit demonstrates understanding of food categories based on color."
+    },
+    {
+      "id": "aadc5cc6-e867-42b6-a86a-f4053187dc5e",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these can fly? 🦅",
+      "rubric": [
+        "3 - This is a bird or insect that can fly.",
+        "2 - This can be something that is commonly seen in the sky but cannot really fly.",
+        "1 - This is something that cannot fly at all.",
+        "0 - No attempt or an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Eagle"
+        },
+        {
+          "key": "b",
+          "text": "Fish"
+        },
+        {
+          "key": "c",
+          "text": "Dog"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "sorting by activity",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects the correct flying creature",
+      "alignmentRationale": "Choosing the right option shows understanding of animal abilities."
+    },
+    {
+      "id": "fbe50a14-ebe5-46a2-9fb0-25e7a7e1bb24",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a fruit? 🍏",
+      "rubric": [
+        "3 - It's the only fruit here.",
+        "2 - It is a fruit but not the only one mentioned.",
+        "1 - It's not relevant, or the answer is unclear.",
+        "0 - No attempt or an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Apple"
+        },
+        {
+          "key": "b",
+          "text": "Carrot"
+        },
+        {
+          "key": "c",
+          "text": "Beef"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "sorting by category",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "chooses the only correct fruit from the options",
+      "alignmentRationale": "Choosing correctly shows they can differentiate fruits from non-fruits."
+    },
+    {
+      "id": "e6f58471-63fe-47e1-8931-81b28d44dac8",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Can you name two kinds of birds?",
+      "rubric": [
+        "3 - Names two correct types of birds.",
+        "2 - Names one correct type of bird.",
+        "1 - Gives an unrelated or unclear answer.",
+        "0 - No attempt or complete unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "recognizing kinds",
+      "targetEvidence": "names at least two different birds",
+      "alignmentRationale": "Naming birds shows understanding of categories within animals."
+    },
+    {
+      "id": "419f074d-d233-45a4-a8f6-147f8ffd5b74",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a good pet? 🐶",
+      "rubric": [
+        "3 - This is a common pet.",
+        "2 - This animal can be a pet but not typical as the best option.",
+        "1 - This is not suitable as a pet.",
+        "0 - No attempt or an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Elephant"
+        },
+        {
+          "key": "b",
+          "text": "Dog"
+        },
+        {
+          "key": "c",
+          "text": "Fish"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "sorting by suitability",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "selects the most suitable pet from the options",
+      "alignmentRationale": "Choosing a suitable pet demonstrates understanding of what makes an animal a good companion."
+    },
+    {
+      "id": "257ead79-d377-4446-9e48-0061f987f495",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What two things can you find in a kitchen?",
+      "rubric": [
+        "3 - Names two kitchen items.",
+        "2 - Names one kitchen item correctly.",
+        "1 - Gives an unrelated or unclear answer.",
+        "0 - No attempt or complete unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "identifying common items",
+      "targetEvidence": "names two relevant kitchen items",
+      "alignmentRationale": "Identifying kitchen items shows understanding of functional categories."
+    },
+    {
+      "id": "fd96403d-7417-4ac0-a49a-a482d818b5db",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Can you think of two colors?",
+      "rubric": [
+        "3 - Names two distinct colors.",
+        "2 - Names one color correctly.",
+        "1 - Gives an unrelated or unclear answer.",
+        "0 - No attempt or complete unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "recognizing colors",
+      "targetEvidence": "provides two distinct color names",
+      "alignmentRationale": "Naming colors demonstrates understanding of visual categories."
+    },
+    {
+      "id": "679d6af4-790f-41c0-869e-b57eed6370aa",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Can you name two toys you like?",
+      "rubric": [
+        "3 - Names two distinct toys.",
+        "2 - Names one toy correctly.",
+        "1 - Gives an unrelated or unclear answer.",
+        "0 - No attempt or complete unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "identifying toys",
+      "targetEvidence": "names two different toys",
+      "alignmentRationale": "Naming toys shows understanding of different types within that category."
+    },
+    {
+      "id": "81c88d58-0778-4758-a745-b4308d7d1efe",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Can you think of two animals that are large?",
+      "rubric": [
+        "3 - Provides two correct examples of large animals clearly.",
+        "2 - Gives one correct animal and different irrelevant thing.",
+        "1 - Provides an incomplete answer with only one animal named.",
+        "0 - Does not answer correctly or entirely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "specific sizes",
+      "targetEvidence": "recognition of large animals",
+      "alignmentRationale": "This task assesses the ability to categorize animals based on their sizes."
+    },
+    {
+      "id": "dc18e415-dcfb-4ea6-b789-573b056d867e",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a reptile? 🐍",
+      "rubric": [
+        "3 - Correctly identifies the reptile as the best option.",
+        "2 - Chooses a warm-blooded animal, showing some familiarity.",
+        "1 - Chooses the incorrect animal but shows some understanding.",
+        "0 - Selects an unrelated option or shows no understanding."
+      ],
+      "visual": "🐍",
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "snake"
+        },
+        {
+          "key": "b",
+          "text": "dog"
+        },
+        {
+          "key": "c",
+          "text": "fish"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a category",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "correct identification of a reptile among options",
+      "alignmentRationale": "This task isolates the child's ability to identify a subgroup of animals based on features."
+    },
+    {
+      "id": "d2f3e671-81db-4651-94d5-fba90f83b469",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Can you think of two fruits that are red?",
+      "rubric": [
+        "3 - Provides two correct examples of red fruits clearly.",
+        "2 - Gives one correct fruit and a different irrelevant answer.",
+        "1 - Provides an incomplete answer, such as only one fruit by mistake.",
+        "0 - Does not answer correctly or entirely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "specific fruits",
+      "targetEvidence": "recognition of fruits under the color red",
+      "alignmentRationale": "This task tests the ability to identify a subgroup of fruits by color."
+    },
+    {
+      "id": "20cac17b-d548-46ac-a198-e06875a533cf",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Name two things that are yellow.",
+      "rubric": [
+        "3 - Provides two correct examples of yellow things clearly.",
+        "2 - Gives one correct example and another irrelevant thing.",
+        "1 - Provides an incomplete answer with only one item identified.",
+        "0 - Does not answer correctly or entirely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "specific colors",
+      "targetEvidence": "recognition of items that fit the color yellow",
+      "alignmentRationale": "This task assesses the ability to categorize objects based on color."
+    },
+    {
+      "id": "e645bff2-ede5-4470-986d-dc24a978f98b",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Can you name two types of food you like?",
+      "rubric": [
+        "3 - Provides two correct examples of food clearly.",
+        "2 - Gives one correct example and another irrelevant thing.",
+        "1 - Names only one correct food item.",
+        "0 - Doesn't answer correctly or fails to provide an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "specific food types",
+      "targetEvidence": "recognition of different types of food",
+      "alignmentRationale": "This item tests knowledge of food categorization based on personal preference."
+    },
+    {
+      "id": "1b8b39dc-c091-4d4c-b055-5a8168694482",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a type of nut? 🥜",
+      "rubric": [
+        "3 - Correctly identifies the nut as the best option.",
+        "2 - Chooses a related food that is not a nut, showing some understanding.",
+        "1 - Selects an unrelated option without clear connection.",
+        "0 - Cannot recognize any food options accurately."
+      ],
+      "visual": "🥜",
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "carrot"
+        },
+        {
+          "key": "b",
+          "text": "almond"
+        },
+        {
+          "key": "c",
+          "text": "cookie"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a category",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "correct identification of nuts among food options",
+      "alignmentRationale": "This task focuses on the child's ability to categorize foods into nuts and non-nuts."
+    },
+    {
+      "id": "9fa56577-e992-4354-ad00-b3481d7dee95",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these animals is a bird? 🐦",
+      "rubric": [
+        "3 - Correctly identifies the bird and explains why, like 'A bird flies.'",
+        "2 - Identifies the bird but gives unclear or less relevant reasoning.",
+        "1 - Makes an incorrect choice but has some idea about animals.",
+        "0 - Does not identify a bird or explains incorrectly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "eagle",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "triangle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "b",
+          "text": "dog",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "square",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "c",
+          "text": "fish",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a type of animal",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "Selects the correct animal and provides a related explanation.",
+      "alignmentRationale": "This task directly tests the ability to categorize animals based on their characteristics."
+    },
+    {
+      "id": "69364d7c-b8fd-4b66-9f9b-e1a9ce86d1d1",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which one of these is a vegetable? 🥕",
+      "rubric": [
+        "3 - Correctly identifies the vegetable and explains why.",
+        "2 - Names a vegetable but does not provide clear reasoning.",
+        "1 - Chooses something that is not a vegetable but has some idea of food.",
+        "0 - Incorrectly identifies any food item or provides no reasoning."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "apple",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "b",
+          "text": "burger",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "square",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "c",
+          "text": "carrot",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "triangle",
+                "tone": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "word for a type of food",
+      "optionScores": {
+        "a": 0,
+        "b": 0,
+        "c": 3
+      },
+      "targetEvidence": "Selects the vegetable and may provide a simple explanation.",
+      "alignmentRationale": "This question assesses the ability to sort foods based on their classifications."
+    },
+    {
+      "id": "ba5f84e0-e7cb-41d4-83c2-c4c75897f1ea",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What kind of animal is a cat? 🐱",
+      "rubric": [
+        "3 - Correctly names the broader category and explains it, like saying 'A cat is a pet.'",
+        "2 - Identifies some category but lacks a full explanation.",
+        "1 - Names the animal but does not connect to its group.",
+        "0 - Fails to categorize the animal or chooses incorrectly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "mammal",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "diamond",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "b",
+          "text": "reptile",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "hexagon",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "c",
+          "text": "fish",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "star",
+                "tone": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a type of animal",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "Selects a correct category for the animal and provides rationale.",
+      "alignmentRationale": "This task tests understanding of how specific animals fit into larger groups."
+    },
+    {
+      "id": "8f5fd1b2-2cf7-4d16-a8bd-f426b61c39bd",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which fruit is also a color? 🍍",
+      "rubric": [
+        "3 - Correctly identifies the fruit with a color and explains what color it is.",
+        "2 - Identifies the fruit but gives unclear reasoning or misses the connection to color.",
+        "1 - Picks a fruit without understanding the color connection.",
+        "0 - Incorrectly identifies a fruit or does not connect to color."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "grape",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "b",
+          "text": "orange",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "square",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "c",
+          "text": "kiwi",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "triangle",
+                "tone": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a type of food",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "Selects the fruit with the color connection accurately.",
+      "alignmentRationale": "This item asks about categorizing foods by color, a skill in understanding groups."
+    },
+    {
+      "id": "ab7514cc-3287-41c5-81fd-527b86a2041f",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What two animals live on a farm?",
+      "rubric": [
+        "3 - Names two animals that are commonly found on farms.",
+        "2 - Names one farm animal or includes a non-farm animal.",
+        "1 - Name unrelated animals or does not answer clearly.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "explaining two valid grouping rules",
+      "targetEvidence": "correctly identifies animals associated with farms",
+      "alignmentRationale": "This question assesses ability to recognize the farm animal category."
+    },
+    {
+      "id": "0d88e21e-67b3-4dc1-83ab-916714129c8e",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Name two feelings you know.",
+      "rubric": [
+        "3 - Provides two clear examples of feelings.",
+        "2 - Names one feeling or mixes in non-feelings.",
+        "1 - Names unclear or irrelevant answers.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "explaining two valid grouping rules",
+      "targetEvidence": "successfully names feelings that are appropriate",
+      "alignmentRationale": "This question evaluates understanding of the feeling category."
+    },
+    {
+      "id": "a15b23d0-997d-4caa-ae95-9f278705088d",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these animals fits with pets? 🐈🐕🐢",
+      "rubric": [
+        "3 - Correctly identifies any common pet, like a cat or dog.",
+        "2 - Identifies an animal that could be a pet but less common.",
+        "1 - Chooses an unrelated animal or does not specify.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🐈"
+        },
+        {
+          "key": "b",
+          "text": "🐘"
+        },
+        {
+          "key": "c",
+          "text": "🐒"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing a subgroup",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 2
+      },
+      "targetEvidence": "chooses an animal that is recognized as a pet",
+      "alignmentRationale": "This question tests the ability to recognize which animals fit into the category of pets."
+    },
+    {
+      "id": "e627cdfd-ab89-4be4-ab5e-c17ecb20193d",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which food belongs with vegetables? 🥕🥦🍅",
+      "rubric": [
+        "3 - Correctly identifies one of the vegetables, like broccoli.",
+        "2 - Identifies a food that is not a vegetable but is somewhat related.",
+        "1 - Chooses an unrelated food or does not specify.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🍗"
+        },
+        {
+          "key": "b",
+          "text": "🥦"
+        },
+        {
+          "key": "c",
+          "text": "🍌"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "recognizing a subgroup",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects a food item correctly categorized as a vegetable",
+      "alignmentRationale": "This question helps assess the ability to identify which foods fit into the vegetable category."
+    },
+    {
+      "id": "446d35b6-5d3d-47d7-8866-6cc7769b83fe",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these belong in the snack group? 🍏🍪🍌",
+      "rubric": [
+        "3 - Correctly identifies a snack item like a cookie or fruit.",
+        "2 - Identifies an item that could be a snack but is less obvious.",
+        "1 - Chooses an unrelated food or does not specify.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🍏"
+        },
+        {
+          "key": "b",
+          "text": "🍪"
+        },
+        {
+          "key": "c",
+          "text": "🍟"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "recognizing a subgroup",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "correctly identifies an item that fits the snack category",
+      "alignmentRationale": "This task evaluates understanding of food categories based on snacks."
+    },
+    {
+      "id": "10383d7d-846c-47b3-8d46-7286af00eb6d",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Name two things that are fruits.",
+      "rubric": [
+        "3 - Lists two items clearly recognized as fruits.",
+        "2 - Lists one fruit or includes a mix of fruit and non-fruits.",
+        "1 - Lists non-fruits or no clear items.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "explaining two valid grouping rules",
+      "targetEvidence": "successfully names two examples of fruits",
+      "alignmentRationale": "This item requires the child to demonstrate knowledge of the fruit category."
+    },
+    {
+      "id": "6c6a9d8c-4df9-409b-a435-5e35f8b35403",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Tell me two types of toys.",
+      "rubric": [
+        "3 - Provides two clear examples of toys.",
+        "2 - Mentions only one type or mixes with non-toys.",
+        "1 - Provides unclear answers or only non-toys.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "explaining two valid grouping rules",
+      "targetEvidence": "can identify items recognized as toys",
+      "alignmentRationale": "Answers show understanding of the toy group by naming examples."
+    },
+    {
+      "id": "5beb6b34-c6f1-4ad4-a8ca-aa6616583aff",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a kind of animal?",
+      "rubric": [
+        "3 - It is a valid animal, like a cat.",
+        "2 - It is animal-related but not an animal, like food.",
+        "1 - It is not an animal or related to animals, like a chair.",
+        "0 - No relevant idea about animals."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Sofa"
+        },
+        {
+          "key": "b",
+          "text": "Dog"
+        },
+        {
+          "key": "c",
+          "text": "Bread"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a category (animals)",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "selects a valid animal from options",
+      "alignmentRationale": "This question gives children multiple choices to identify and categorize based on shared features."
+    },
+    {
+      "id": "28be2ad1-0022-4d49-99ca-435b1969b1b9",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is grouped with vehicles?",
+      "rubric": [
+        "3 - It is a vehicle, like a bus.",
+        "2 - It is something related, like a bike.",
+        "1 - It is not a vehicle, like a tree.",
+        "0 - No relevant idea about vehicles."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Bus"
+        },
+        {
+          "key": "b",
+          "text": "Tree"
+        },
+        {
+          "key": "c",
+          "text": "Fruit"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a category (vehicles)",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "chooses a valid vehicle from options",
+      "alignmentRationale": "This question assesses whether children can identify something by its function or type, fostering categorization skills."
+    },
+    {
+      "id": "371943b9-6989-4b93-be7d-163a271e31f4",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these toys is a soft toy?",
+      "rubric": [
+        "3 - It is a toy made of soft material, like a teddy bear.",
+        "2 - It is somewhat soft but not really a classic soft toy, like a doll.",
+        "1 - The answer is not a soft toy, like a toy car.",
+        "0 - No relevant idea about soft toys."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Teddy bear"
+        },
+        {
+          "key": "b",
+          "text": "Toy car"
+        },
+        {
+          "key": "c",
+          "text": "Puzzle"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a category (soft toys)",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "selects a valid example of a soft toy among choices",
+      "alignmentRationale": "This task isolates the ability to identify a specific category based on shared features (softness) and is not a simple matching task."
+    },
+    {
+      "id": "74d59254-9306-44f0-b48b-81e50e9deedf",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Tell me two things that are toys.",
+      "rubric": [
+        "3 - Names two clear examples of toys.",
+        "2 - Names one good toy and another item that's not a toy.",
+        "1 - Only mentions things that are not toys.",
+        "0 - No relevant idea about toys."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "example of a category (toys)",
+      "targetEvidence": "provides two valid examples of toys",
+      "alignmentRationale": "This activity requires the child to think actively about a category and produce valid examples, showing their understanding."
+    },
+    {
+      "id": "5066cd93-d3b1-4b24-8fdd-23dfe0269f6c",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What can you find in the kitchen?",
+      "rubric": [
+        "3 - Names two correct kitchen items like spoon or plate.",
+        "2 - Names one correct item and one that doesn’t belong.",
+        "1 - Names only items that do not belong to the kitchen.",
+        "0 - No relevant reply about kitchen items."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "example of a category (kitchen items)",
+      "targetEvidence": "gives examples of objects found in a kitchen",
+      "alignmentRationale": "This question helps assess understanding of a familiar category and allows open expression of examples."
+    },
+    {
+      "id": "8c9a77a2-6414-4dde-848c-f8765fbd66bc",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these belongs with the colors? 🔴🔵🟡",
+      "rubric": [
+        "3 - Correctly identifies the color that fits, such as green.",
+        "2 - Identifies a color but it does not fit well.",
+        "1 - Gives an unrelated answer or does not specify.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🟢"
+        },
+        {
+          "key": "b",
+          "text": "⚪"
+        },
+        {
+          "key": "c",
+          "text": "🟣"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing a subgroup",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "chooses the color that fits with the others",
+      "alignmentRationale": "This task requires recognizing how a specific item fits into a group based on shared features."
+    },
+    {
+      "id": "61ac60bf-ebd4-4406-8911-d7c6f8bfea76",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What two things can you find at the park?",
+      "rubric": [
+        "3 - Provides two clear examples like swings and grass.",
+        "2 - Names one clear thing and something unrelated.",
+        "1 - Names only unrelated items.",
+        "0 - No relevant idea about park items."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "example of a category (park items)",
+      "targetEvidence": "gives examples of things commonly found at a park",
+      "alignmentRationale": "This open activity requires recall of everyday objects and demonstrates grouping by function in a setting."
+    },
+    {
+      "id": "c9281a17-153f-422e-9fea-0655df0692b2",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a dairy product?",
+      "rubric": [
+        "3 - It is a dairy product, like cheese.",
+        "2 - It is related but not a dairy product, like an egg.",
+        "1 - It is not dairy-related, like a stick.",
+        "0 - No relevant idea about dairy products."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Cheese"
+        },
+        {
+          "key": "b",
+          "text": "Egg"
+        },
+        {
+          "key": "c",
+          "text": "Stick"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a category (dairy)",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects a valid dairy item from options",
+      "alignmentRationale": "This question isolates categorization through common attributes of dairy items."
+    },
+    {
+      "id": "948bb44c-d18a-4e7b-8e52-5d2fb6a9a8c5",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these belongs with the fruit? 🍌",
+      "rubric": [
+        "3 - It is a fruit, like an apple.",
+        "2 - It is a food but not a fruit, like a carrot.",
+        "1 - It is a drink and unrelated to fruit, like juice.",
+        "0 - No relevant idea about fruits."
+      ],
+      "visual": "🍏",
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Apple"
+        },
+        {
+          "key": "b",
+          "text": "Carrot"
+        },
+        {
+          "key": "c",
+          "text": "Juice"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a category (fruit)",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "chooses a valid fruit from options",
+      "alignmentRationale": "This task tests the ability to recognize and categorize fruits by attributes, not just matching visual examples."
+    },
+    {
+      "id": "62a0e143-7fe5-4bbb-8e36-5b4b2387969a",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which two are feelings? 😊😡🎉",
+      "rubric": [
+        "3 - Identifies both correct feelings showing clear grouping skill.",
+        "2 - Identifies one feeling, partially correct, with one unrelated.",
+        "1 - Incorrect choice, indicating poor ability to sort feelings.",
+        "0 - No related feelings recognized in any choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "😊😡",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "b",
+          "text": "😊🎉",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "c",
+          "text": "😡🎉",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 2
+      },
+      "targetEvidence": "recognizes emotional expressions as part of feelings",
+      "alignmentRationale": "This task explores the child’s ability to categorize based on emotional understanding."
+    },
+    {
+      "id": "604ab6ac-5011-44e6-af4c-1e0eb55681eb",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which animal belongs with pets? 🦁🐕🐠",
+      "rubric": [
+        "3 - Correctly identifies the pet animal, showing understanding of pets.",
+        "2 - Chooses a wild animal that could be misunderstood as domestic.",
+        "1 - Picks an unrelated animal without clear thinking.",
+        "0 - Picks none that relates to pets."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🦁",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "b",
+          "text": "🐕",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "c",
+          "text": "🐠",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a pet animal",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "sorts animals recognizing domesticated versus wild ones",
+      "alignmentRationale": "This question targets the grouping of domesticated animals compared to wild animals in understanding pet categories."
+    },
+    {
+      "id": "dc30a9e0-6198-4491-be17-763208154bdd",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these fits in the toy group? 📚🚗🧸",
+      "rubric": [
+        "3 - Picks the correct toy, showing clear understanding of grouping.",
+        "2 - Chooses an item that could relate to children but isn't a toy.",
+        "1 - Chooses an unrelated item, missing concept of toys.",
+        "0 - Chooses none related to toys at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "📚",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "b",
+          "text": "🚗",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "c",
+          "text": "🧸",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "word for a type of object",
+      "optionScores": {
+        "a": 0,
+        "b": 0,
+        "c": 3
+      },
+      "targetEvidence": "sorts objects as toys versus non-toys",
+      "alignmentRationale": "This question tests whether the child can recognize toys specifically, addressing categorical knowledge."
+    },
+    {
+      "id": "b1e58cb8-872a-4177-9d4e-1fc8e5f65517",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which food belongs with the fruit group? 🥕🍎🍞",
+      "rubric": [
+        "3 - Correctly identifies the fruit, showing solid grouping.",
+        "2 - Identifies a food that is somewhat related but is not fruit.",
+        "1 - Makes an irrelevant choice with no connection.",
+        "0 - Shows no understanding of fruits."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "🥕",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "b",
+          "text": "🍎",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "key": "c",
+          "text": "🍞",
+          "figure": {
+            "shapes": [
+              {
+                "fill": "solid",
+                "kind": "circle",
+                "tone": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a food group",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "sorts food items recognizing which one is fruit",
+      "alignmentRationale": "This question asks to recognize food types, targeting the understanding of categories in food."
+    },
+    {
+      "id": "8d17d84b-4d9d-407b-a8e8-5ae00c5f7a28",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these belongs in the group of pets? 🐰",
+      "rubric": [
+        "3 - Correctly identifies a pet.",
+        "2 - Names a related but non-pet animal.",
+        "1 - Chooses a wild animal.",
+        "0 - Does not choose any option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Lion"
+        },
+        {
+          "key": "b",
+          "text": "Eagle"
+        },
+        {
+          "key": "c",
+          "text": "Rabbit"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "word for a group",
+      "optionScores": {
+        "a": 1,
+        "b": 0,
+        "c": 3
+      },
+      "targetEvidence": "selects the correct pet as an option.",
+      "alignmentRationale": "This question assesses the ability to recognize a common category of animals."
+    },
+    {
+      "id": "0990c029-527a-49a4-9af7-a2763c70caa6",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What are two colors of crayons you can sort by?",
+      "rubric": [
+        "3 - Names two clear and distinct crayon colors.",
+        "2 - Names one color and partly explains.",
+        "1 - Gives a vague color or example.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "explain two valid grouping rules",
+      "targetEvidence": "provides two specific examples that show understanding of color categories.",
+      "alignmentRationale": "This question assesses the ability to understand and articulate grouping of familiar items."
+    },
+    {
+      "id": "06391e19-a7c9-4bbb-a0ed-4c5feaa1a48f",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Name two types of fruit.",
+      "rubric": [
+        "3 - Names two clear and distinct types of fruit.",
+        "2 - Names one fruit type and partly explains.",
+        "1 - Gives a vague fruit type or example.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "explain two valid grouping rules",
+      "targetEvidence": "provides two specific examples that show understanding of fruit categories.",
+      "alignmentRationale": "This question assesses the ability to understand and articulate grouping of familiar items."
+    },
+    {
+      "id": "8ed5428b-8a8b-4f16-b6a1-b783d9b66bc0",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which belongs to the group of things we cook with? 🍳",
+      "rubric": [
+        "3 - Correctly identifies a cooking item.",
+        "2 - Names a related but non-cooking item.",
+        "1 - Chooses an item that cannot be cooked with.",
+        "0 - Does not choose any option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Spoon"
+        },
+        {
+          "key": "b",
+          "text": "Pencil"
+        },
+        {
+          "key": "c",
+          "text": "Cup"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a category",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "selects an object that is classified as cooking ware.",
+      "alignmentRationale": "This question tests familiarity with kitchen-related items."
+    },
+    {
+      "id": "1243b439-4b3f-4c2d-a7d9-1d25a4110657",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which item belongs to the group of vehicles? 🚗",
+      "rubric": [
+        "3 - Correctly identifies a vehicle.",
+        "2 - Names a related but non-vehicle item.",
+        "1 - Chooses an item that is not a vehicle.",
+        "0 - Does not choose any option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Chair"
+        },
+        {
+          "key": "b",
+          "text": "Bus"
+        },
+        {
+          "key": "c",
+          "text": "Tree"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a category",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects an item that is correctly classified as a vehicle.",
+      "alignmentRationale": "This question tests understanding of a category based on common objects."
+    },
+    {
+      "id": "e86a15a3-689d-494d-b811-352a3dc10eb2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these belongs in the group of small animals?",
+      "rubric": [
+        "3 - Identifies a valid small animal.",
+        "2 - Chooses an animal that is not small but is related in some way.",
+        "1 - Selects an animal that is larger but shows awareness of animals.",
+        "0 - Chooses something non-animal or unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Mouse"
+        },
+        {
+          "key": "b",
+          "text": "Elephant"
+        },
+        {
+          "key": "c",
+          "text": "Giraffe"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing nested groups",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "identifies a small animal among various options",
+      "alignmentRationale": "This task assesses the understanding of how smaller categories fit into larger groups of animals."
+    },
+    {
+      "id": "b915c219-edda-404e-82f8-d1845a36455e",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these items is part of the group of things we can wear?",
+      "rubric": [
+        "3 - Correctly identifies a clothing item as part of the wear category.",
+        "2 - Correctly identifies a non-clothing item but ties it to wearing in some way.",
+        "1 - Chooses an unrelated item but shows some understanding of categories.",
+        "0 - Chooses completely unrelated item or shows no understanding."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Shirt"
+        },
+        {
+          "key": "b",
+          "text": "Car"
+        },
+        {
+          "key": "c",
+          "text": "Pizza"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "grouping by attributes",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "sorts items by whether they are clothing or not",
+      "alignmentRationale": "This task directly measures a child's ability to group objects by a common feature."
+    },
+    {
+      "id": "37204f63-c1ba-4f6d-a072-3e08ca730c0b",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Name a group of animals that live in water.",
+      "rubric": [
+        "3 - Clearly identifies a specific water animal group (like fish).",
+        "2 - Mentions an animal but not as a specific group.",
+        "1 - Lists animals without clear grouping.",
+        "0 - Does not provide a valid response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "explaining grouping rules",
+      "targetEvidence": "demonstrates knowledge of water-dwelling animals by naming a group",
+      "alignmentRationale": "This task asks for a child to articulate the concept of a group based on a habitat."
+    },
+    {
+      "id": "b2a8937e-b3cc-4067-8d11-b15ff3833a49",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these items belongs in the group of kitchen utensils?",
+      "rubric": [
+        "3 - Correctly identifies a kitchen utensil.",
+        "2 - Selects a related item that is not a utensil.",
+        "1 - Chooses an unrelated item but shows some connection.",
+        "0 - Chooses something completely unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Spoon"
+        },
+        {
+          "key": "b",
+          "text": "Apple"
+        },
+        {
+          "key": "c",
+          "text": "Table"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "grouping by properties",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "identifies kitchen utensils correctly among other options",
+      "alignmentRationale": "This task focuses on categorizing items based on their properties relevant to kitchen use."
+    },
+    {
+      "id": "a5851ad6-fef7-4e1d-b700-46fcf111df6d",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What is one way to sort your toys?",
+      "rubric": [
+        "3 - Provides a specific sorting rule (by color, type, etc.)",
+        "2 - Mentions some toys but lacks clarity in sorting",
+        "1 - Describes toys but doesn’t provide a clear sorting rule",
+        "0 - Gives no relevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "explaining sorting rules",
+      "targetEvidence": "articulates a method for categorizing toys based on a feature",
+      "alignmentRationale": "This task directly tests the child's ability to conceptualize sorting criteria."
+    },
+    {
+      "id": "817d0fdd-d21a-485e-a6ed-a03f36279859",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which animal fits into the group of farm animals?",
+      "rubric": [
+        "3 - Correctly identifies a common farm animal.",
+        "2 - Chooses a wild animal that is related in some way.",
+        "1 - Identifies something unrelated but shows some connection.",
+        "0 - Selects something completely irrelevant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Sheep"
+        },
+        {
+          "key": "b",
+          "text": "Lion"
+        },
+        {
+          "key": "c",
+          "text": "Dolphin"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing family groups",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "demonstrates the ability to recognize common farm animals among other options",
+      "alignmentRationale": "This task explores understanding of categorizing domesticated animals."
+    },
+    {
+      "id": "6b335176-eed3-40d0-91a0-463c4ef9732e",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Name a group of toys you like.",
+      "rubric": [
+        "3 - Specifies a coherent category (like action figures, dolls).",
+        "2 - Mentions a toy but lacks specificity.",
+        "1 - Lists items without clear grouping.",
+        "0 - Provides no relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "explaining common categories",
+      "targetEvidence": "can name a relevant group of toys",
+      "alignmentRationale": "This task assesses the ability to categorize familiar items based on preferences."
+    },
+    {
+      "id": "d7117e7f-4bf5-4eac-87a1-3684f0107cb1",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a type of transportation?",
+      "rubric": [
+        "3 - Correctly identifies a vehicle.",
+        "2 - Chooses a related feature but does not represent a vehicle.",
+        "1 - Identifies something with no connection to transporting.",
+        "0 - Completely unrelated selection."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Bicycle"
+        },
+        {
+          "key": "b",
+          "text": "Chair"
+        },
+        {
+          "key": "c",
+          "text": "Table"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identifying functional categories",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "correctly identifies a mode of transport from other options",
+      "alignmentRationale": "This task tests the understanding of the functional use category of vehicles."
+    },
+    {
+      "id": "daa34944-b6f7-4577-a8ff-7d6687420cc8",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these can you use to clean your hands? 🧼",
+      "rubric": [
+        "3 - Identifies the item that can be used for hand cleaning effectively.",
+        "2 - Selects an item that might help with cleaning but isn't the best fit.",
+        "1 - Picks an item that has no relation to hand cleaning.",
+        "0 - No correct or relevant answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Cup"
+        },
+        {
+          "key": "b",
+          "text": "Soap"
+        },
+        {
+          "key": "c",
+          "text": "Stick"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "recognizing hygiene items",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects an item that accurately represents hand cleaning tools",
+      "alignmentRationale": "This tests the ability to categorize items based on their intended use."
+    },
+    {
+      "id": "4a21fc10-f70c-4eef-90e5-ef2c28c24eb5",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a kind of fruit? 🍌",
+      "rubric": [
+        "3 - Correctly selects the item that is undeniably a fruit.",
+        "2 - Chooses an item that is somewhat related but not a fruit.",
+        "1 - Selects an item that is clearly not a fruit, showing misunderstanding.",
+        "0 - No correct or relevant answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Potato"
+        },
+        {
+          "key": "b",
+          "text": "Carrot"
+        },
+        {
+          "key": "c",
+          "text": "Banana"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "identifying food types",
+      "optionScores": {
+        "a": 0,
+        "b": 0,
+        "c": 3
+      },
+      "targetEvidence": "selects the correct fruit from the options",
+      "alignmentRationale": "The question tests the ability to categorize food based on type and characteristics."
+    },
+    {
+      "id": "02873f5e-6166-48b7-a26f-a25a1cc45373",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these belongs in the group of things you can eat? 🍏",
+      "rubric": [
+        "3 - Correctly identifies the food item that can be eaten, showing a good understanding of the category.",
+        "2 - Chooses an item that is somewhat related to food but is not edible.",
+        "1 - Selects an item that does not belong at all, showing little understanding.",
+        "0 - No correct or relevant answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Apple"
+        },
+        {
+          "key": "b",
+          "text": "Rock"
+        },
+        {
+          "key": "c",
+          "text": "Table"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing edible items",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "selects the correct food item from the options",
+      "alignmentRationale": "This item directly tests the ability to categorize based on food attributes."
+    },
+    {
+      "id": "27b3a80c-9758-47d8-9693-8997366697b0",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Name a place where we see animals and people together.",
+      "rubric": [
+        "3 - Clearly names a specific place where both can be found.",
+        "2 - Names a place but lacks clarity on the connection to animals and people.",
+        "1 - Gives a vague response that doesn't clearly relate.",
+        "0 - No relevant answer or off-topic response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "linking places to inhabitants",
+      "targetEvidence": "names a relevant location for animals and people",
+      "alignmentRationale": "This question requires the child to think about environments where both are present."
+    },
+    {
+      "id": "5878b102-45f5-4f77-89b4-419a3a4214fc",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a type of toy? 🧸",
+      "rubric": [
+        "3 - Correctly recognizes the toy from the choices given.",
+        "2 - Chooses something that is somewhat toy-like but not correct.",
+        "1 - Selects an option that is not a toy at all.",
+        "0 - No correct or relevant answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Teddy Bear"
+        },
+        {
+          "key": "b",
+          "text": "Chair"
+        },
+        {
+          "key": "c",
+          "text": "Book"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identifying toy categories",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "selects the item that accurately represents a toy",
+      "alignmentRationale": "This tests the ability to categorize items based on their function as toys."
+    },
+    {
+      "id": "129185df-3904-4e8c-8966-9752644c4ef1",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What is one way to sort books?",
+      "rubric": [
+        "3 - Clearly explains a specific way to sort books based on features.",
+        "2 - Partially explains a method but lacks detail or clarity.",
+        "1 - Suggests a vague idea that doesn’t clearly sort books.",
+        "0 - No relevant answer or off-topic response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "explaining sorting methods for books",
+      "targetEvidence": "provides a clear sorting method for books",
+      "alignmentRationale": "This question encourages critical thinking about how to categorize different types of books."
+    },
+    {
+      "id": "48c3bb71-69ba-4a23-a413-949febe8a663",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these can fly in the sky? 🦅",
+      "rubric": [
+        "3 - Correctly selects the flying object from the options.",
+        "2 - Chooses an object that is somewhat related to flying but does not actually fly.",
+        "1 - Selects an object that clearly cannot fly.",
+        "0 - No correct or relevant answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Car"
+        },
+        {
+          "key": "b",
+          "text": "Train"
+        },
+        {
+          "key": "c",
+          "text": "Bird"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "recognizing flying creatures",
+      "optionScores": {
+        "a": 0,
+        "b": 0,
+        "c": 3
+      },
+      "targetEvidence": "selects the correct item that can fly",
+      "alignmentRationale": "This tests categorization based on the ability of items to perform a specific action associated with flying."
+    },
+    {
+      "id": "35ee6b56-a958-455b-99e8-64efa639a93b",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a type of snack?",
+      "rubric": [
+        "3 - Correctly identifies the snack from the choices provided.",
+        "2 - Chooses an option that is somewhat related but not a snack.",
+        "1 - Selects an item that does not match at all.",
+        "0 - Does not select any option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "chips"
+        },
+        {
+          "key": "b",
+          "text": "broccoli"
+        },
+        {
+          "key": "c",
+          "text": "pasta"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "category recognition",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "selects the correct snack from options",
+      "alignmentRationale": "The task tests the ability to categorize food items based on their type."
+    },
+    {
+      "id": "71859a25-ca5e-46ce-9f7a-3bb08dd94733",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Name two vegetables you put in a salad.",
+      "rubric": [
+        "3 - Names two vegetables typically found in salads.",
+        "2 - Names one correct vegetable and an unrelated item.",
+        "1 - Provides a vague or incorrect response.",
+        "0 - Does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "name types",
+      "targetEvidence": "provides appropriate vegetable examples",
+      "alignmentRationale": "This question encourages recognition of a specific category related to food."
+    },
+    {
+      "id": "72f4c0a9-3509-4ca8-b952-b9ed4591af16",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What are two types of pets?",
+      "rubric": [
+        "3 - Gives two correct types of pets.",
+        "2 - Gives one correct pet name and an unrelated item.",
+        "1 - Provides a vague or unrelated response.",
+        "0 - Does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "name types",
+      "targetEvidence": "provides two correct pet names",
+      "alignmentRationale": "This question focuses on categorizing animals commonly kept as pets."
+    },
+    {
+      "id": "c4384cc5-d55f-4542-824b-2e7c4fe979db",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What category fits these: Hammer, Screwdriver, Wrench?",
+      "rubric": [
+        "3 - Correctly identifies 'tools' as the appropriate category.",
+        "2 - Selects a related tool type but misses the overall grouping.",
+        "1 - Chooses an answer that does not relate to the set.",
+        "0 - Does not select any option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "kitchenware"
+        },
+        {
+          "key": "b",
+          "text": "tools"
+        },
+        {
+          "key": "c",
+          "text": "furniture"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "grouping by attributes",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "correctly identifies the category for tools",
+      "alignmentRationale": "This item checks understanding of how specific tools fit into a broader category."
+    },
+    {
+      "id": "cd6cf96d-13df-4d6b-b4e1-cad5e2d7a5be",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which group do these belong to? Bee, Ant, Butterfly.",
+      "rubric": [
+        "3 - Correctly identifies 'insects' as the group for the given items.",
+        "2 - Identifies another relevant category that might include these organisms.",
+        "1 - Chooses an unrelated group that does not fit.",
+        "0 - Does not select any option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "birds"
+        },
+        {
+          "key": "b",
+          "text": "insects"
+        },
+        {
+          "key": "c",
+          "text": "mammals"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "grouping by attributes",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "correctly names the category for insects",
+      "alignmentRationale": "The task evaluates the ability to understand how specific items can fit into a larger classification."
+    },
+    {
+      "id": "55ed341c-b561-42bc-957c-704be2d5dc85",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a type of animal that lives in water?",
+      "rubric": [
+        "3 - Correctly identifies an aquatic animal from the choices provided.",
+        "2 - Selects an option that could be considered aquatic but is not typical.",
+        "1 - Chooses an option that is not an aquatic animal.",
+        "0 - Does not select any option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "cat"
+        },
+        {
+          "key": "b",
+          "text": "dog"
+        },
+        {
+          "key": "c",
+          "text": "fish"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "category recognition",
+      "optionScores": {
+        "a": 1,
+        "b": 1,
+        "c": 3
+      },
+      "targetEvidence": "selects the correct aquatic animal",
+      "alignmentRationale": "The task assesses the ability to categorize animals based on their habitat."
+    },
+    {
+      "id": "eb73ee74-118b-44cf-a0d7-39888a42e12f",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Name two types of transportation.",
+      "rubric": [
+        "3 - Gives two correct types",
+        "2 - Gives one correct and one related type",
+        "1 - Only one typed or unrelated",
+        "0 - No answer given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "recognizing modes of transport",
+      "targetEvidence": "Child identifies two valid forms of transportation",
+      "alignmentRationale": "This question tests the ability to categorize modes of transport, requiring the child to think of related items within one larger category."
+    },
+    {
+      "id": "0b0ccfc1-38f6-4514-b61a-8e0041b5952c",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a type of fish? 🐠",
+      "rubric": [
+        "3 - Correctly identifies the type of fish (0 points: incorrect option)",
+        "2 - Chooses a related but wrong option or a non-fish option",
+        "1 - Chooses an unrelated option",
+        "0 - No selection made"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Goldfish"
+        },
+        {
+          "key": "b",
+          "text": "Dog"
+        },
+        {
+          "key": "c",
+          "text": "Eagle"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing a subgroup",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "Child selects the correct answer identifying the fish category",
+      "alignmentRationale": "This question tests the ability to recognize a specific subgroup within a larger category, in this case, identifying fish from other types of animals."
+    },
+    {
+      "id": "6c2304b3-49f2-4d15-87ab-fb7947326850",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these fruits is orange? 🍊",
+      "rubric": [
+        "3 - Correctly identifies the orange fruit",
+        "2 - Picks a fruit of another color",
+        "1 - Chooses something that is not a fruit",
+        "0 - No selection made"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Orange"
+        },
+        {
+          "key": "b",
+          "text": "Strawberry"
+        },
+        {
+          "key": "c",
+          "text": "Apple"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "sorting by color",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "Child correctly identifies the fruit that meets the color criterion",
+      "alignmentRationale": "This question assesses the ability to sort fruits by color, a clear attribute for sorting categories."
+    },
+    {
+      "id": "2b460bc9-1d84-4198-8eaa-9725387b25f8",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What are two types of games you can play?",
+      "rubric": [
+        "3 - Names two correct games",
+        "2 - Names one correct and one related type",
+        "1 - Names unrelated items",
+        "0 - No answer given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "identifying game categories",
+      "targetEvidence": "Child names two distinct games, demonstrating categorization.",
+      "alignmentRationale": "This tests understanding of types of games and their categorization, encouraging recognition of common gaming categories."
+    },
+    {
+      "id": "e2fa914c-d260-4f31-9385-276f1c1f6ea0",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these shapes is a square? ◼️",
+      "rubric": [
+        "3 - Correctly identifies the square",
+        "2 - Picks a shape closely related but not a square",
+        "1 - Chooses something that is not a shape",
+        "0 - No selection made"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Circle"
+        },
+        {
+          "key": "b",
+          "text": "Triangle"
+        },
+        {
+          "key": "c",
+          "text": "Square"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "categorizing geometric shapes",
+      "optionScores": {
+        "a": 0,
+        "b": 0,
+        "c": 3
+      },
+      "targetEvidence": "Child correctly identifies a shape that fits the square category",
+      "alignmentRationale": "This question assesses the categorization ability for geometric shapes, specifically identifying the square based on its characteristics."
+    },
+    {
+      "id": "398a1b6a-93b4-425e-a3fb-1e1cc6af0167",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What are two types of nut?",
+      "rubric": [
+        "3 - Names two correct nuts",
+        "2 - Names one correct and one related item",
+        "1 - Names unrelated items",
+        "0 - No answer given"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "identifying food categories",
+      "targetEvidence": "Child identifies items that can be grouped as nuts.",
+      "alignmentRationale": "This checks the child's ability to recognize food categories relevant to nuts, exploring basic food classification."
+    },
+    {
+      "id": "1a182bfe-c7f5-4468-9036-18afc5a91029",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a type of vegetable? 🥕",
+      "rubric": [
+        "3 - Correctly identifies a vegetable",
+        "2 - Chooses something related to food but not a vegetable",
+        "1 - Chooses an unrelated option",
+        "0 - No selection made"
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Carrot"
+        },
+        {
+          "key": "b",
+          "text": "Apple"
+        },
+        {
+          "key": "c",
+          "text": "Chicken"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identifying food categories",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "Child selects the correct identification of a vegetable",
+      "alignmentRationale": "This question aims to test the child's ability to identify specific types within the general category of food, focusing on vegetables."
+    },
+    {
+      "id": "02024c18-c8ba-48f8-8211-bf0d2caf5cca",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is NOT a vegetable? 🥦",
+      "rubric": [
+        "3 - Correctly identifies a non-vegetable option.",
+        "2 - Chooses something that could be mistaken for a vegetable.",
+        "1 - Chooses a vegetable by mistake.",
+        "0 - Chooses something unrelated to food."
+      ],
+      "visual": "🥦",
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Spinach"
+        },
+        {
+          "key": "b",
+          "text": "Carrot"
+        },
+        {
+          "key": "c",
+          "text": "Banana"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "word for a category",
+      "optionScores": {
+        "a": 1,
+        "b": 1,
+        "c": 3
+      },
+      "targetEvidence": "Recognizes and selects an item that does not fit the vegetable category.",
+      "alignmentRationale": "This task assesses the ability to exclude items based on their category."
+    },
+    {
+      "id": "55bac473-b4f3-4e4c-adc7-b6335c9bf340",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which animal is a type of bird? 🦜",
+      "rubric": [
+        "3 - Correctly identifies the bird.",
+        "2 - Chooses an option that is similar to a bird but not one.",
+        "1 - Chooses an option that is not a bird.",
+        "0 - Chooses something unrelated to animals."
+      ],
+      "visual": "🦜",
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Dog"
+        },
+        {
+          "key": "b",
+          "text": "Parrot"
+        },
+        {
+          "key": "c",
+          "text": "Lizard"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "word for a subgroup",
+      "optionScores": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "targetEvidence": "Chooses the correct subgroup of birds from the options given.",
+      "alignmentRationale": "This question checks the understanding of different animal categories."
+    },
+    {
+      "id": "de878afe-14d2-43f7-b6d8-d1f931f9ae20",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What are two ways to categorize fruits?",
+      "rubric": [
+        "3 - Provides two correct and distinct categorization methods.",
+        "2 - Provides one correct categorization method.",
+        "1 - Offers an unrelated option.",
+        "0 - Doesn't provide a relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "explain two valid grouping rules",
+      "targetEvidence": "Explains methods for categorizing fruits.",
+      "alignmentRationale": "The task is meant to analyze how well a child understands grouping rules."
+    },
+    {
+      "id": "ea752e04-bc9b-4e29-aa2a-b2c922c55db2",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "What are two categories for grouping sports?",
+      "rubric": [
+        "3 - Provides two correct and distinct categories for sports.",
+        "2 - Provides one correct category for sports.",
+        "1 - Offers an unrelated option.",
+        "0 - Doesn't provide a relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "explain two valid grouping rules",
+      "targetEvidence": "Explains methods for categorizing sports.",
+      "alignmentRationale": "This question assesses understanding of how to group different types of sports based on attributes."
+    },
+    {
+      "id": "2d924e3a-e4fd-42ed-ba89-e0208e9a06da",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Name two types of flowers.",
+      "rubric": [
+        "3 - Lists two correct types of flowers.",
+        "2 - Lists one correct type of flower.",
+        "1 - Lists an incorrect option.",
+        "0 - Does not provide a relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for a subgroup",
+      "targetEvidence": "Ability to identify members of a specific category.",
+      "alignmentRationale": "This question assesses the recognition of floral subcategories."
+    },
+    {
+      "id": "5b598cde-6792-4257-aa85-1565d0d9c49b",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Which of these is a fruit? 🍎",
+      "rubric": [
+        "3 - Correctly identifies the fruit.",
+        "2 - Chooses an option that can be a fruit but isn't always.",
+        "1 - Chooses an option that is not a fruit.",
+        "0 - Chooses something unrelated to fruit."
+      ],
+      "visual": "🍎",
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Apple"
+        },
+        {
+          "key": "b",
+          "text": "Carrot"
+        },
+        {
+          "key": "c",
+          "text": "Chicken"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a category",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Selects the correct item from the options provided.",
+      "alignmentRationale": "This task evaluates the ability to identify and categorize based on attributes."
+    },
+    {
+      "id": "8dd2428c-9f7f-4f84-9fbd-64922ac5424d",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "categories_hierarchies",
+      "format": "explanation",
+      "prompt": "Name two types of pets.",
+      "rubric": [
+        "3 - Gives two correct types of pets.",
+        "2 - Gives one correct type of pet.",
+        "1 - Gives an unrelated option.",
+        "0 - Doesn't answer appropriately."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for a category",
+      "targetEvidence": "Identifies appropriate pet categories.",
+      "alignmentRationale": "This question evaluates the ability to classify pets."
+    }
+  ]
+}

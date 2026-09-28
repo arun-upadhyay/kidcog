@@ -1,0 +1,2805 @@
+{
+  "category": "viewpoint_mood_intention",
+  "questions": [
+    {
+      "id": "7ec688b2-5c27-4e78-8684-6080cde32a6e",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Charlie sees his brother jump with joy after winning a game. What feeling does Charlie notice in his brother?",
+      "rubric": [
+        "3 - Charlie notices his brother is joyful.",
+        "2 - Charlie thinks his brother is silly jumping.",
+        "1 - Charlie wonders why his brother is jumping.",
+        "0 - Charlie thinks his brother is sad."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "joyful"
+        },
+        {
+          "key": "b",
+          "text": "silly"
+        },
+        {
+          "key": "c",
+          "text": "wondering"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a mood",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies a plausible mood based on observing his brother's joyful jump.",
+      "alignmentRationale": "This task isolates the category by requiring a response based on a contextual mood clue from the jumping."
+    },
+    {
+      "id": "6ae0e773-dc5d-43b6-9e1b-acd96a12b6d0",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Lila hears her friend say, \"That was a fun day!\" What do you think Lila feels when she hears this?",
+      "rubric": [
+        "3 - Lila feels happy thinking about the fun day.",
+        "2 - Lila wishes it was a different day.",
+        "1 - Lila might be bored.",
+        "0 - Lila feels sad."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "Identifies a plausible feeling based on listening to her friend's words about fun.",
+      "alignmentRationale": "This task isolates the category by requiring a response about emotions evoked by her friend's statement."
+    },
+    {
+      "id": "fd292fb4-4b26-4dad-9ea9-3cf2903815e8",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Ben sees his sister smile and clap when she gets a cookie. What might Ben think about her?",
+      "rubric": [
+        "3 - Ben thinks she is happy to get a cookie.",
+        "2 - Ben might think she likes to clap.",
+        "1 - Ben could think she wants more cookies.",
+        "0 - Ben thinks she is tired."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "happy"
+        },
+        {
+          "key": "b",
+          "text": "likes clapping"
+        },
+        {
+          "key": "c",
+          "text": "wants more"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a mood",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies a plausible mood based on his sister's smile and the action of clapping.",
+      "alignmentRationale": "This task isolates the category by requiring a response based on a contextual clue about his sister's excitement."
+    },
+    {
+      "id": "ebfd668e-50a8-4df2-8807-374a714eae9b",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Sara sees her friend frown after losing a toy. What does Sara think her friend is feeling?",
+      "rubric": [
+        "3 - Sara thinks her friend is sad about the toy.",
+        "2 - Sara thinks her friend might be angry.",
+        "1 - Sara could think her friend is confused.",
+        "0 - Sara thinks her friend is tired."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "sad"
+        },
+        {
+          "key": "b",
+          "text": "angry"
+        },
+        {
+          "key": "c",
+          "text": "confused"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies a plausible feeling based on her friend's frown and points to the clue of losing a toy.",
+      "alignmentRationale": "This task isolates the category by requiring a response based on a contextual clue about her friend's frown."
+    },
+    {
+      "id": "3ef42070-c07d-40f0-913f-83691a3fd92c",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Emma sees a butterfly land near her. What might Emma be feeling?",
+      "rubric": [
+        "3 - Emma is likely feeling happy because butterflies are beautiful.",
+        "2 - Emma might feel curious about the butterfly's colors.",
+        "1 - Emma could be surprised that the butterfly is close.",
+        "0 - Emma might feel scared of the butterfly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "happy"
+        },
+        {
+          "key": "b",
+          "text": "curious"
+        },
+        {
+          "key": "c",
+          "text": "surprised"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies a plausible feeling and points to a clue like the butterfly's beauty.",
+      "alignmentRationale": "This task isolates the category by requiring a response based on a contextual clue about the butterfly's presence."
+    },
+    {
+      "id": "da4f90da-138f-44fc-aa57-12d37d20726a",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Tom hears his friend say, \"I lost my game!\" What do you think Tom might be feeling when he hears this?",
+      "rubric": [
+        "3 - Tom feels sad for his friend and wants to help.",
+        "2 - Tom might feel happy because he won.",
+        "1 - Tom could feel nothing or be confused.",
+        "0 - Tom feels really angry."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "Identifies a plausible feeling based on listening to his friend's words.",
+      "alignmentRationale": "This task isolates the category by requiring a response about emotions evoked by a friend's comment."
+    },
+    {
+      "id": "5be50eab-48f4-4bea-9450-4a9d311f791b",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Mia sees her friend jump up and down with excitement. What mood does Mia notice?",
+      "rubric": [
+        "3 - Mia notices her friend is excited.",
+        "2 - Mia thinks her friend might be happy.",
+        "1 - Mia wonders what is happening.",
+        "0 - Mia feels sleepy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "excited"
+        },
+        {
+          "key": "b",
+          "text": "happy"
+        },
+        {
+          "key": "c",
+          "text": "wondering"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a mood",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies the mood from the jumping and points to excitement as a clue.",
+      "alignmentRationale": "This task isolates the category by requiring a response based on a contextual mood clue from the friend's action."
+    },
+    {
+      "id": "b8d21cd7-3428-4384-a184-501e271a8981",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Liam throws a surprise party for his friend. What does Liam likely want to show his friend?",
+      "rubric": [
+        "3 - Liam wants to show he cares about his friend.",
+        "2 - Liam might want attention from everyone.",
+        "1 - Liam could want to have fun at the party.",
+        "0 - Liam wants to eat lots of cake."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "he cares"
+        },
+        {
+          "key": "b",
+          "text": "to have fun"
+        },
+        {
+          "key": "c",
+          "text": "to eat cake"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies the intention to care and points to the action of throwing a party.",
+      "alignmentRationale": "This task isolates the category by requiring a response based on an intention behind an action."
+    },
+    {
+      "id": "8c40b421-3fc1-4102-93c4-e0b404576706",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Mia sees a flower and smiles. What do you think she is feeling?",
+      "rubric": [
+        "3 - The answer connects a smile to happy feelings well (like joy or excitement).",
+        "2 - The answer connects a smile to some feelings but lacks depth.",
+        "1 - The answer has a guess about feelings but is very vague.",
+        "0 - The answer does not relate to feelings at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "describing feelings from expressions",
+      "targetEvidence": "child gestures or expresses an emotion they attribute to Mia's smile",
+      "alignmentRationale": "This question isolates the skill of linking expressions to emotions without suggestive cues."
+    },
+    {
+      "id": "c5c8503f-91e8-43bd-ab9c-44617e4d6728",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Ava hears her friend say, \"I don't want to play now.\" What could be a reason for this?",
+      "rubric": [
+        "3 - The answer shows a good guess about her friend's mood, like being tired or sad.",
+        "2 - The answer is somewhat related, like saying she might be sleepy.",
+        "1 - The answer is a guess but not directly about her friend's feelings.",
+        "0 - The answer is not related to the situation."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "She might be tired."
+        },
+        {
+          "key": "b",
+          "text": "She doesn’t like Ava."
+        },
+        {
+          "key": "c",
+          "text": "She wants a snack."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identifying feelings based on spoken clues",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "child identifies a plausible reason for the friend's mood and points to the friend saying they don’t want to play",
+      "alignmentRationale": "This question isolates identifying emotions through explicit spoken cues."
+    },
+    {
+      "id": "2667919f-ced2-46c8-875c-54fd2708bfc0",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Tom is smiling and dancing during his birthday party. What does this tell us about how he feels?",
+      "rubric": [
+        "3 - The answer explains he feels happy and excited.",
+        "2 - The answer says he feels good, but doesn't explain it well.",
+        "1 - The answer is a guess about how he feels with no real reason.",
+        "0 - The answer doesn't connect to Tom's mood."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "He feels happy!"
+        },
+        {
+          "key": "b",
+          "text": "He feels silly."
+        },
+        {
+          "key": "c",
+          "text": "He wants to go home."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring mood from actions",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "child explains Tom's mood based on his behavior, like smiling and dancing",
+      "alignmentRationale": "This question requires interpreting mood from visible actions."
+    },
+    {
+      "id": "1b499297-de9a-41e3-ab82-b2eef2973b01",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Jess sees her friend cry after losing a game. What might Jess want to do?",
+      "rubric": [
+        "3 - The answer shows she wants to comfort her friend, like giving a hug.",
+        "2 - The answer suggests helping but is vague, like saying play again.",
+        "1 - The answer doesn’t relate to comforting the friend.",
+        "0 - The answer is not about what Jess might do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Give her a hug."
+        },
+        {
+          "key": "b",
+          "text": "Leave her alone."
+        },
+        {
+          "key": "c",
+          "text": "Play a different game."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring intention based on a character's action",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "child identifies a helpful action Jess might take, linking it to her friend crying",
+      "alignmentRationale": "This question helps to identify intention from emotional situations."
+    },
+    {
+      "id": "b788a406-9618-4d32-8330-bb95700c0229",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Liam is quiet and looking down after he loses his toy. What does this tell us?",
+      "rubric": [
+        "3 - The answer shows he feels sad about losing his toy.",
+        "2 - The answer says he might be upset, but not explained well.",
+        "1 - The answer is somewhat a guess, not directly about feelings.",
+        "0 - The answer is not related to Liam's mood."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "He feels sad."
+        },
+        {
+          "key": "b",
+          "text": "He is thinking about something."
+        },
+        {
+          "key": "c",
+          "text": "He wants to play."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding mood from context",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "child connects Liam's quietness and looking down to a feeling of sadness",
+      "alignmentRationale": "This question encourages understanding emotional context based on behavior."
+    },
+    {
+      "id": "4be49565-8afb-402e-91a2-7930e7953f6c",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Ben sees a dog wag its tail and barks happily. What do you think the dog might be feeling?",
+      "rubric": [
+        "3 - The answer describes a happy feeling for the dog because of tail wagging.",
+        "2 - The answer mentions some feelings but not clearly connected to actions.",
+        "1 - The answer is very vague about feelings related to the dog.",
+        "0 - The answer does not connect to the dog's feelings at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inferring feelings from behavior",
+      "targetEvidence": "child describes emotional state for the dog based on its actions",
+      "alignmentRationale": "This question enables the child to infer feelings from observable behavior."
+    },
+    {
+      "id": "49fc2613-3eb1-4743-b1ea-f6d832d52f0b",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Sophie sees a rainbow and jumps for joy. What do you think she is feeling?",
+      "rubric": [
+        "3 - The answer connects her jumping to a feeling of joy or excitement.",
+        "2 - The answer relates to a feeling but lacks specificity.",
+        "1 - The answer is very vague about what she might be thinking.",
+        "0 - The answer does not relate to how Sophie feels."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "identifying thoughts from actions",
+      "targetEvidence": "child connects Sophie’s jumping for joy to a specific thought of happiness",
+      "alignmentRationale": "This question narrows the focus to understanding thoughts linked with feelings through action."
+    },
+    {
+      "id": "b212d021-50dc-43a4-8bdf-430023d65c65",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Aiden sees his sister sharing her toy. How do you think Aiden feels about that?",
+      "rubric": [
+        "3 - The answer connects Aiden's view of joy or happiness about his sister's share.",
+        "2 - The answer mentions some feeling but lacks clear connection.",
+        "1 - The answer is vague, not really about Aiden's feelings.",
+        "0 - The answer does not relate to how Aiden feels at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inferring mood from contextual actions",
+      "targetEvidence": "child identifies some positive response Aiden might have about his sister sharing",
+      "alignmentRationale": "This question explores the child's ability to interpret feelings stemming from observations."
+    },
+    {
+      "id": "4d87cfcb-e78f-4e12-9ac4-891d517d8536",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Sam sees a big, scary dog and feels afraid. Mia sees the same dog and thinks it looks friendly. What is a clue that helps us understand Sam's feeling?",
+      "rubric": [
+        "3 - Correctly identifies the dog's appearance as a clue to Sam's fear.",
+        "2 - Suggests a clue related to Sam but lacks detail.",
+        "1 - Provides an unrelated answer not connected to the dog.",
+        "0 - Offers no relevant clue."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The dog looks scary."
+        },
+        {
+          "key": "b",
+          "text": "Sam likes dogs."
+        },
+        {
+          "key": "c",
+          "text": "Mia is not afraid."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring feelings from context",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies a specific contextual clue explaining Sam's emotion about the dog.",
+      "alignmentRationale": "This assesses the ability to extract inference about feelings based on observable context, relevant to different perspectives."
+    },
+    {
+      "id": "0f97891d-024f-4b26-9228-75a310742623",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Luke sees his dad smiling after dinner. What do you think Luke feels?",
+      "rubric": [
+        "3 - Recognizes that Luke feels happy or proud and explains why.",
+        "2 - Provides a vague feeling like 'good' without context.",
+        "1 - Suggests Luke feels nervous.",
+        "0 - Offers irrelevant thoughts."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "connecting feelings with observations",
+      "targetEvidence": "Infers a feeling based on Luke's observation of his dad.",
+      "alignmentRationale": "This question prompts responses about emotions derived explicitly from observations, isolating the skill effectively."
+    },
+    {
+      "id": "bf39d833-5665-492d-bf61-b131743306b6",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Emma hugs her teddy bear tightly. What do you think she's feeling?",
+      "rubric": [
+        "3 - Correctly identifies that Emma feels comforted or safe and explains why with context.",
+        "2 - Suggests she might feel tired or sleepy without linking it back to her actions.",
+        "1 - States she might be scared.",
+        "0 - Provides no relevant information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Emma feels comforted."
+        },
+        {
+          "key": "b",
+          "text": "Emma feels scared."
+        },
+        {
+          "key": "c",
+          "text": "Emma feels bored."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing comfort from actions",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies Emma's feelings from her hugging action.",
+      "alignmentRationale": "This assessment focuses on linking emotional states with a specific comfort behavior."
+    },
+    {
+      "id": "a2b58d01-8956-49cc-a6a0-7331ed445396",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Nina sees her sister crying and runs over to help her. What do you think Nina wants to do?",
+      "rubric": [
+        "3 - Suggests Nina wants to comfort or help her sister and explains.",
+        "2 - States Nina might feel sad but without connecting it to helping.",
+        "1 - Suggests Nina is angry.",
+        "0 - Provides unclear or unrelated ideas."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inferring actions from feelings",
+      "targetEvidence": "Describes Nina's intention based on her response to her sister's tears.",
+      "alignmentRationale": "The prompt requires interpretation about intentions based on contextual emotions and actions."
+    },
+    {
+      "id": "4b01e049-a0df-49bf-93d0-b2d66d7c0050",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A girl sees a friend drop a toy and frowns. What might she feel?",
+      "rubric": [
+        "3 - She feels worried about her friend.",
+        "2 - She feels neutral about it.",
+        "1 - She might be happy that the toy is dropped.",
+        "0 - She is angry that the toy was dropped."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "worried"
+        },
+        {
+          "key": "b",
+          "text": "neutral"
+        },
+        {
+          "key": "c",
+          "text": "happy"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child recognizes worry from the girl's action of frowning while observing the event.",
+      "alignmentRationale": "This question links an observable response (frowning) to inferring the concern for a friend, focusing on emotional understanding in response to social situations."
+    },
+    {
+      "id": "8a38c890-e4db-42ac-81aa-2ab7fba56368",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A kitten is hiding under the sofa and looks scared. How does it feel?",
+      "rubric": [
+        "3 - The kitten feels scared and wants to hide.",
+        "2 - The kitten might be curious about something.",
+        "1 - The kitten is bored.",
+        "0 - The kitten is happy under the sofa."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "scared"
+        },
+        {
+          "key": "b",
+          "text": "curious"
+        },
+        {
+          "key": "c",
+          "text": "bored"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child recognizes fear from the context of hiding and expression.",
+      "alignmentRationale": "This task uses a clear action (hiding) linked to an emotional state, isolating the recognition of feelings."
+    },
+    {
+      "id": "6ee08c22-b21d-48a3-b90d-183769b8837e",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A dad watches his son playing soccer and smiles. What does he probably feel?",
+      "rubric": [
+        "3 - He feels happy and proud of his son.",
+        "2 - He feels okay about the game.",
+        "1 - He might be bored watching.",
+        "0 - He is frustrated with the game."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "happy"
+        },
+        {
+          "key": "b",
+          "text": "okay"
+        },
+        {
+          "key": "c",
+          "text": "bored"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies happiness from the action of smiling during the child's game.",
+      "alignmentRationale": "This prompt uses the father's action (smiling) to infer his emotional state, effectively measuring emotional awareness."
+    },
+    {
+      "id": "c2e9e0b1-500b-4972-a86a-d807ca4d6031",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A dog sees a big bone and wags its tail. What might the dog want to do?",
+      "rubric": [
+        "3 - The dog wants to eat the bone or play with it.",
+        "2 - The dog is excited about the bone.",
+        "1 - The dog doesn't care about the bone.",
+        "0 - The dog is scared of the bone."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "inferring intention from action",
+      "targetEvidence": "Child explains the dog's desire or intention based on its action of wagging its tail.",
+      "alignmentRationale": "This task requires inferring intention from a specific action, thereby isolating the child's understanding of goal-directed behavior."
+    },
+    {
+      "id": "e40e268a-92d9-4052-990c-437b90aced84",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A girl is laughing while playing with her friends. What is she feeling?",
+      "rubric": [
+        "3 - She feels very happy and enjoys playing.",
+        "2 - She feels okay while playing.",
+        "1 - She might be bored with the game.",
+        "0 - She is upset that they are playing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "happy"
+        },
+        {
+          "key": "b",
+          "text": "okay"
+        },
+        {
+          "key": "c",
+          "text": "bored"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child links laughter to happiness when playing.",
+      "alignmentRationale": "This question connects a social action (laughing while playing) to accurately identifying emotional responses in group situations."
+    },
+    {
+      "id": "a2060937-fa67-4287-baa8-1e98e4ed810f",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A rabbit hops around happily after eating a carrot. What do you think the rabbit wants to do next?",
+      "rubric": [
+        "3 - The rabbit wants to play or eat more.",
+        "2 - The rabbit is just hopping around.",
+        "1 - The rabbit is not interested in anything.",
+        "0 - The rabbit wants to rest."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "inferring intention from action",
+      "targetEvidence": "Child suggests the rabbit's intention based on its joyful hopping.",
+      "alignmentRationale": "This question focuses on intention derived from a joyful action, isolating child’s understanding of behavior linked to desire."
+    },
+    {
+      "id": "e795b4f8-50e6-4516-9e24-d33014c29aa1",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A boy jumps up and down with wide eyes when he sees his friend. What is he feeling?",
+      "rubric": [
+        "3 - He feels very excited and happy to see his friend.",
+        "2 - He feels okay about seeing his friend.",
+        "1 - He might be worried about something.",
+        "0 - He is confused about who it is."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "excited"
+        },
+        {
+          "key": "b",
+          "text": "okay"
+        },
+        {
+          "key": "c",
+          "text": "worried"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child identifies excitement from jumping and wide eyes context.",
+      "alignmentRationale": "This question connects energetic actions with emotions, targeting the understanding of mood in social situations."
+    },
+    {
+      "id": "6478ae46-4597-4c0e-a6fe-df22b39a9cf5",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A girl looks at a big chocolate cake and smiles. What do you think she is thinking?",
+      "rubric": [
+        "3 - She wants to eat some cake or is happy about it.",
+        "2 - She maybe likes the cake.",
+        "1 - She might be confused about the cake.",
+        "0 - She is angry about the cake."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "inferring intention from action",
+      "targetEvidence": "Child suggests a positive thought based on the smile and context of the cake.",
+      "alignmentRationale": "This question targets thinking about intentions derived from a visible expression, emphasizing emotional recognition in the context of food."
+    },
+    {
+      "id": "af0fddb6-5ac1-4ef9-8ffa-dd47cb56a741",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A girl frowns and says, 'I don’t want to play today.' What does she likely feel?",
+      "rubric": [
+        "3 - She feels sad and doesn't want to play.",
+        "2 - She feels excited to play.",
+        "1 - She feels tired but happy.",
+        "0 - She feels angry at everyone."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Sad"
+        },
+        {
+          "key": "b",
+          "text": "Excited"
+        },
+        {
+          "key": "c",
+          "text": "Angry"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Identifies the girl's feeling as sad based on expression and words.",
+      "alignmentRationale": "This question assesses the ability to infer emotions from verbal and non-verbal clues."
+    },
+    {
+      "id": "94ecf4aa-142d-4d6e-92ab-0ecea769c13e",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A girl was playing with her toys when her friend arrives, and she smiles. What does the girl probably want to do?",
+      "rubric": [
+        "3 - She wants to share her toys with her friend.",
+        "2 - She wants to play alone.",
+        "1 - She doesn't want to play at all.",
+        "0 - She is angry at her friend."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Share her toys"
+        },
+        {
+          "key": "b",
+          "text": "Play alone"
+        },
+        {
+          "key": "c",
+          "text": "Be angry"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing intention",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Infers the girl's intention to share based on her smile.",
+      "alignmentRationale": "This question tests the ability to interpret intentions using inferred context."
+    },
+    {
+      "id": "c401d1b9-f262-42b7-a092-6c432140ab26",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A boy sees a cake and claps his hands excitedly. What is he feeling?",
+      "rubric": [
+        "3 - He feels excited about the cake.",
+        "2 - He feels confused about the cake.",
+        "1 - He feels tired looking at it.",
+        "0 - He feels angry at the cake."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Excited"
+        },
+        {
+          "key": "b",
+          "text": "Confused"
+        },
+        {
+          "key": "c",
+          "text": "Angry"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Identifies the boy's feeling as excited.",
+      "alignmentRationale": "This question focuses on recognizing emotions presented in a scenario."
+    },
+    {
+      "id": "e0cf13df-1873-492c-9c73-88ccb463e0a3",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A puppy barks happily when it sees its owner. How does the puppy feel?",
+      "rubric": [
+        "3 - The puppy feels happy because it sees its owner.",
+        "2 - The puppy feels excited when it sees anyone.",
+        "1 - The puppy feels nothing special when it sees its owner.",
+        "0 - The puppy is sad."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Happy"
+        },
+        {
+          "key": "b",
+          "text": "Excited"
+        },
+        {
+          "key": "c",
+          "text": "Sad"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Identifies the puppy's feeling as happy.",
+      "alignmentRationale": "This question examines the ability to infer emotions based on specific contextual clues."
+    },
+    {
+      "id": "7f7877ee-313e-49a6-8906-5d37ef2729a1",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "What makes your pet happy?",
+      "rubric": [
+        "3 - It wags its tail or jumps around silly.",
+        "2 - It looks tired or is quiet.",
+        "1 - It looks like nothing special.",
+        "0 - It hides from you."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "Describes observable behavior that indicates a pet's happiness.",
+      "alignmentRationale": "This question allows for expression of knowledge regarding feelings by observing behavior."
+    },
+    {
+      "id": "0735526e-8459-48dc-af80-845b8da8a789",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "How does your favorite toy show that it is fun?",
+      "rubric": [
+        "3 - It makes sounds or lights up when you play.",
+        "2 - It sits quietly on the shelf.",
+        "1 - It looks boring.",
+        "0 - It is too heavy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "recognizing mood",
+      "targetEvidence": "Describes a way that a toy can convey a feeling of fun.",
+      "alignmentRationale": "This question empowers creative expression related to feelings associated with objects."
+    },
+    {
+      "id": "f54987be-3fae-44e1-8205-4907b8fb952b",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Imagine you see your friend drop their toy. What could you do?",
+      "rubric": [
+        "3 - She can pick it up and give it back.",
+        "2 - She can look and walk away.",
+        "1 - She can say nothing.",
+        "0 - She can hide the toy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "recognizing intention",
+      "targetEvidence": "Proposes a helpful action in response to a friend's need.",
+      "alignmentRationale": "This open question allows for a demonstration of understanding how to respond to social situations."
+    },
+    {
+      "id": "6041faba-89c5-4e0d-a946-65e8163cd80c",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A girl is laughing and her friend is frowning at a movie. What do you think they both feel?",
+      "rubric": [
+        "3 - The girl is happy and the friend is not.",
+        "2 - They are both confused.",
+        "1 - The girl loves it; the friend hates it.",
+        "0 - They don’t care."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Happy and not happy"
+        },
+        {
+          "key": "b",
+          "text": "Both confused"
+        },
+        {
+          "key": "c",
+          "text": "Don't care"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring viewpoint from context",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Different feelings inferred from their reactions to the same event.",
+      "alignmentRationale": "This checks comprehension of differing perspectives from situations based on emotional responses."
+    },
+    {
+      "id": "45e7b503-e8b4-4eb9-933a-4773daca6f8c",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A girl holds her stuffed bear and sits quietly. What do you think she is feeling?",
+      "rubric": [
+        "3 - She feels comforted and safe.",
+        "2 - She might be tired.",
+        "1 - She is just bored.",
+        "0 - She is angry."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "inferring mood from behavior",
+      "targetEvidence": "Suggests an emotional state based on physical comfort and stillness.",
+      "alignmentRationale": "This prompt invites reasoning about mood from the character's silent behavior and object connection, essential for understanding emotions."
+    },
+    {
+      "id": "c7540776-f134-4942-9d28-e3a331cfacc6",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A boy is jumping up and down and laughing at a party. What is he likely feeling?",
+      "rubric": [
+        "3 - He is very happy.",
+        "2 - He is excited but a little nervous.",
+        "1 - He is just silly.",
+        "0 - He is tired."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Very happy"
+        },
+        {
+          "key": "b",
+          "text": "Excited but nervous"
+        },
+        {
+          "key": "c",
+          "text": "Just silly"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring mood from action",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies happiness from the boy's actions of jumping and laughing.",
+      "alignmentRationale": "This question examines the child's ability to decode emotional expression from observable, joyful behavior at a specific event."
+    },
+    {
+      "id": "372f3adc-43e5-47af-a77a-37e07387d7f8",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A boy looks at ice cream with a big smile and licks his lips. What is he likely thinking?",
+      "rubric": [
+        "3 - He wants to eat the ice cream.",
+        "2 - He is curious about the ice cream.",
+        "1 - He does not want the ice cream.",
+        "0 - He is annoyed by it."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Wants to eat it"
+        },
+        {
+          "key": "b",
+          "text": "Curious about it"
+        },
+        {
+          "key": "c",
+          "text": "Doesn't want it"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring intention from a tone",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Identifies wanting to eat ice cream from the smile and licking lips.",
+      "alignmentRationale": "This question assesses the child's ability to identify a character's intention based on their actions and expressions."
+    },
+    {
+      "id": "0d3b9103-7b09-4cbb-bc38-fa9463fdf034",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "A girl sees a rain cloud and frowns. How does she likely feel?",
+      "rubric": [
+        "3 - She is unhappy about the rain.",
+        "2 - She is surprised by the cloud.",
+        "1 - She is excited about the rain.",
+        "0 - She is calm."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Unhappy"
+        },
+        {
+          "key": "b",
+          "text": "Surprised"
+        },
+        {
+          "key": "c",
+          "text": "Excited"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring mood from a character's expression",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Correctly identifies an unhappy mood from the character's frown.",
+      "alignmentRationale": "This item evaluates the child's understanding of mood based on a character's expression in a specific context."
+    },
+    {
+      "id": "76888a67-d1c3-4b58-8b43-941673a98117",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Sofia is standing alone during the school play while others are laughing. What do you think she might feel?",
+      "rubric": [
+        "3 - She might feel sad or shy about not joining in.",
+        "2 - She might feel angry that no one includes her.",
+        "1 - She might feel happy just watching.",
+        "0 - She might be confused about what's happening."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inferring mood",
+      "targetEvidence": "Sofia's circumstances give to a likely emotional state based on social dynamics.",
+      "alignmentRationale": "This question allows children to interpret emotions in social scenarios, reflecting their understanding of feelings in others."
+    },
+    {
+      "id": "3ca5547b-7820-46e4-914e-1103d4697be1",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "When Timmy hears his mom say, 'Wow, look at that!' while pointing outside, how does Timmy likely feel?",
+      "rubric": [
+        "3 - He feels excited to see something interesting.",
+        "2 - He feels bored and doesn't want to look.",
+        "1 - He feels nervous about what it is.",
+        "0 - He feels confused about the situation."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "He feels excited to see something interesting."
+        },
+        {
+          "key": "b",
+          "text": "He feels bored and doesn't want to look."
+        },
+        {
+          "key": "c",
+          "text": "He feels nervous about what it is."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring mood",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Timmy connects his mom's tone and actions to a feeling of excitement.",
+      "alignmentRationale": "This question assesses the ability to connect verbal and non-verbal expressions with emotional responses."
+    },
+    {
+      "id": "4fa3a29d-4bc3-479f-98ef-f7d444c87ae2",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Ava sees her friend looking away while others are playing. What might that mean about how her friend feels?",
+      "rubric": [
+        "3 - Her friend might feel sad or left out.",
+        "2 - Her friend might be thinking about something else.",
+        "1 - Her friend might be trying to be silly.",
+        "0 - Her friend is very happy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inferring mood",
+      "targetEvidence": "Ava recognizes cues indicating her friend's emotions.",
+      "alignmentRationale": "This effectively assesses how the child interprets emotional cues in interactions."
+    },
+    {
+      "id": "90ff496f-ffd2-4804-8232-0e767aaa0e6b",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "During a class, Lucas tells a funny story, and everyone laughs. What does Lucas probably want from them?",
+      "rubric": [
+        "3 - He wants them to enjoy and laugh.",
+        "2 - He wants to be the center of attention.",
+        "1 - He wants to share a story.",
+        "0 - He wants them to work quietly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "He wants them to enjoy and laugh."
+        },
+        {
+          "key": "b",
+          "text": "He wants to be the center of attention."
+        },
+        {
+          "key": "c",
+          "text": "He wants to share a story."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring intention",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Lucas’s storytelling aims to get laughter and enjoyment from his peers.",
+      "alignmentRationale": "The question helps assess understanding of the intention behind storytelling in social contexts."
+    },
+    {
+      "id": "ab2ca32d-9fcf-4371-8043-42967d9a75ec",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Max sees his brother looking upset with a toy in his hand. What might Max think?",
+      "rubric": [
+        "3 - Max thinks his brother wants help or is sad about the toy.",
+        "2 - Max thinks his brother is just tired.",
+        "1 - Max thinks his brother is playing.",
+        "0 - Max thinks nothing at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "He wants help with the toy."
+        },
+        {
+          "key": "b",
+          "text": "He is just tired."
+        },
+        {
+          "key": "c",
+          "text": "He's playing."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring intention",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Max identifies a possible reason for his brother's mood based on the contextual clue of the toy.",
+      "alignmentRationale": "This question directly tests the ability to infer intention from visible cues."
+    },
+    {
+      "id": "2051375c-b5e1-4b73-b1ff-c7efe04256c0",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Emma tells her friend that she loves her drawing while smiling. What do you think Emma means?",
+      "rubric": [
+        "3 - She really likes the drawing and wants to encourage her friend.",
+        "2 - She just wants to be nice at the moment.",
+        "1 - She thinks the drawing is okay.",
+        "0 - She wants to change the subject."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inferring intention",
+      "targetEvidence": "Emma's encouragement shows her positive feelings towards her friend's work.",
+      "alignmentRationale": "This question asks the child to interpret supportive intentions from Emma’s action."
+    },
+    {
+      "id": "786ee29f-279c-4b05-af1c-be0abc3ec80b",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Liam hears a loud noise and covers his ears. How might Liam be feeling?",
+      "rubric": [
+        "3 - He is scared or surprised.",
+        "2 - He is curious about the noise.",
+        "1 - He is happy that it's loud.",
+        "0 - He is sleepy because of the noise."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "He is scared or surprised."
+        },
+        {
+          "key": "b",
+          "text": "He is curious about the noise."
+        },
+        {
+          "key": "c",
+          "text": "He is happy that it's loud."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring mood",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Liam recognizes a reaction linked to fear or surprise from the loud noise.",
+      "alignmentRationale": "This question assesses the child's ability to connect reactions to emotional interpretations."
+    },
+    {
+      "id": "f0f1d330-ad9d-4870-acae-b0a301c5ef69",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Sophie sees her friend crying after losing a game. What do you think Sophie might do?",
+      "rubric": [
+        "3 - She might comfort her friend with kind words.",
+        "2 - She might ignore her friend.",
+        "1 - She might tell a joke.",
+        "0 - She might leave the room."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inferring intention",
+      "targetEvidence": "Sophie shows understanding of how to respond to her friend's emotional state.",
+      "alignmentRationale": "This question tests how well the child understands empathy and responds to emotional cues directly."
+    },
+    {
+      "id": "5370cf4a-c15f-4373-983d-e02dafdf57c9",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Sophie sees her dad smiling while looking at her drawings. What does she likely think?",
+      "rubric": [
+        "3 - Sophie thinks her dad likes her drawings.",
+        "2 - Sophie thinks her dad is just being nice.",
+        "1 - Sophie thinks her dad is angry.",
+        "0 - Sophie doesn't care how her dad feels."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Likes my drawings"
+        },
+        {
+          "key": "b",
+          "text": "Just being nice"
+        },
+        {
+          "key": "c",
+          "text": "Is angry"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring viewpoint",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Sophie relates her dad's smile to his thoughts about her work.",
+      "alignmentRationale": "This task asks the child to infer feelings from a character's expression."
+    },
+    {
+      "id": "c7017a02-2a35-4139-83e2-e5774ef6093b",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Nina sees a puppy playing with a ball. She laughs and points at it. What does Nina probably feel?",
+      "rubric": [
+        "3 - Nina is happy because she finds the puppy funny.",
+        "2 - Nina might be amused but not sure why.",
+        "1 - Nina doesn't care about the puppy.",
+        "0 - Nina is upset about something else."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Happy"
+        },
+        {
+          "key": "b",
+          "text": "Amused"
+        },
+        {
+          "key": "c",
+          "text": "Upset"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Nina's reaction of laughter suggests happiness or amusement.",
+      "alignmentRationale": "The task isolates feelings by focusing on Nina's reaction rather than the puppy alone."
+    },
+    {
+      "id": "245142ff-f86e-4c3f-96b5-4fe5da569015",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Ben whispers to Mia during a show, 'Did you see that?' What is Ben likely feeling?",
+      "rubric": [
+        "3 - Ben is excited to share something funny with Mia.",
+        "2 - Ben might be annoyed with the show.",
+        "1 - Ben doesn't care what Mia thinks.",
+        "0 - Ben is bored and wants to leave."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Excited"
+        },
+        {
+          "key": "b",
+          "text": "Annoyed"
+        },
+        {
+          "key": "c",
+          "text": "Bored"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring intention",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Ben's whisper indicates he wants to engage Mia's attention about something he observed.",
+      "alignmentRationale": "This question tests intention through dialogue clues rather than personality."
+    },
+    {
+      "id": "d7227279-9e2b-4b74-9451-faec6bb9b01e",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Lily sees her friend Sam frowning while holding a toy. What might be going on with Sam?",
+      "rubric": [
+        "3 - Sam might be feeling sad because he didn't get to play.",
+        "2 - Sam might think something is wrong with his toy.",
+        "1 - Sam doesn't want to play with Lily.",
+        "0 - Can't tell how Sam feels."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inferring viewpoint",
+      "targetEvidence": "Lily's observation allows reasoning about Sam's emotions based on the context.",
+      "alignmentRationale": "This item tests recognition of mood through context without needing advanced terminology."
+    },
+    {
+      "id": "41817d7c-6b12-454c-b732-0817914985b5",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "During lunch, Mia shares her sandwich with her friend. What might Mia's intention be?",
+      "rubric": [
+        "3 - Mia wants to be kind and friendly to her friend.",
+        "2 - Mia needs to get rid of her sandwich.",
+        "1 - Mia is worried about her friend being hungry.",
+        "0 - Mia wants to eat lunch alone."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Be kind"
+        },
+        {
+          "key": "b",
+          "text": "Get rid of"
+        },
+        {
+          "key": "c",
+          "text": "Eat alone"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring intention",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Mia's action of sharing suggests goodwill toward her friend.",
+      "alignmentRationale": "This question tests intention from the action taken in an interaction."
+    },
+    {
+      "id": "02d1fe40-2947-4232-ad04-8472fab2958d",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Alex sees his friend look worried while they are waiting for the bus. What may Alex do to help his friend?",
+      "rubric": [
+        "3 - Alex might comfort his friend by asking what's wrong.",
+        "2 - Alex might try to make his friend laugh.",
+        "1 - Alex ignores his friend completely.",
+        "0 - Alex does nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inferring intention",
+      "targetEvidence": "Alex's potential actions demonstrate his desire to help based on observation.",
+      "alignmentRationale": "This question examines how a character responds to another's mood, testing situational empathy."
+    },
+    {
+      "id": "c9e4f1dc-32e3-4a28-9018-dc8ce75e9464",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "When Jake sees a rainbow, he jumps up and down. What does Jake probably feel?",
+      "rubric": [
+        "3 - Jake is excited and happy about the rainbow.",
+        "2 - Jake is curious about the rainbow.",
+        "1 - Jake doesn't care about the rainbow.",
+        "0 - Jake doesn't feel anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Excited"
+        },
+        {
+          "key": "b",
+          "text": "Curious"
+        },
+        {
+          "key": "c",
+          "text": "Doesn't care"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Jake's physical reaction suggests a strong positive feeling towards the rainbow.",
+      "alignmentRationale": "This task focuses on the emotion tied to the character's action, making it direct and observable."
+    },
+    {
+      "id": "0fc91400-b6b3-4405-86de-a8e7300790b2",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Mia sees her friend sad during a game. What might Mia say or do to help?",
+      "rubric": [
+        "3 - Mia might offer to play a different game with her.",
+        "2 - Mia might ask her friend why she is sad.",
+        "1 - Mia ignores her friend.",
+        "0 - Mia feels sad too."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inferring intention",
+      "targetEvidence": "Mia's actions indicate an attempt to address her friend's feelings.",
+      "alignmentRationale": "This task seeks to understand the social intentions based on a mood observed."
+    },
+    {
+      "id": "70b16b99-722a-488c-94df-0da064e6f487",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Sam and Lily watch a dog bark. Sam thinks the dog is angry, but Lily thinks it is just playing. Who is most correct about how the dog feels?",
+      "rubric": [
+        "3 - Sam is correct because he sees the dog's body language, which shows anger.",
+        "2 - Lily is partly correct since the dog might be playing while still looking angry.",
+        "1 - Sam or Lily could be right, but there is no clear evidence from the story.",
+        "0 - There is no reason to choose either Sam or Lily."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Sam"
+        },
+        {
+          "key": "b",
+          "text": "Lily"
+        },
+        {
+          "key": "c",
+          "text": "Both"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring a mood from actions",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "The child identifies that Sam's viewpoint on the dog is supported by the dog's behavior.",
+      "alignmentRationale": "This question focuses on inferring mood from character observations rather than guessing emotions without context."
+    },
+    {
+      "id": "eb13746a-d87a-420f-99ca-2f913ab727cb",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "If Lucy sees her friend at the playground and runs to play, how is she feeling?",
+      "rubric": [
+        "3 - Lucy feels excited and happy to see her friend.",
+        "2 - Lucy might feel neutral but still wants to play.",
+        "1 - Lucy seems normal and not excited.",
+        "0 - Lucy probably doesn’t like the playground."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "recognizing a mood from actions",
+      "targetEvidence": "The child explains Lucy's mood based on her action of running towards her friend.",
+      "alignmentRationale": "This question targets mood recognition from behavior rather than making arbitrary emotional assumptions."
+    },
+    {
+      "id": "6496fc81-2201-4949-8da6-e92a27ff4c13",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Lucas tells a story about a brave knight while smiling. What might he be trying to show?",
+      "rubric": [
+        "3 - Lucas wants to share joy and excitement about the story.",
+        "2 - Lucas may be trying to impress his friends.",
+        "1 - Lucas is happy but may simply be telling a tale.",
+        "0 - Lucas really doesn't care if people listen or not."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Joy and excitement"
+        },
+        {
+          "key": "b",
+          "text": "Wanting attention"
+        },
+        {
+          "key": "c",
+          "text": "No care about others"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring mood from storytelling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child connects Lucas's smile with an intention or mood related to sharing joy.",
+      "alignmentRationale": "This question focuses on the emotional tone conveyed in storytelling rather than guessing without context."
+    },
+    {
+      "id": "0563e829-efda-4f4e-834f-1698b09af641",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Anna sees her friend sad and decides to give her a hug. What does Anna hope to show?",
+      "rubric": [
+        "3 - Anna wants to show kindness and comfort her friend.",
+        "2 - Anna might want to cheer up her friend.",
+        "1 - Anna might feel good giving a hug, but not think about her friend.",
+        "0 - Anna gives a hug but doesn't mean anything by it."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "identifying intentions from actions",
+      "targetEvidence": "The child explains Anna's caring intention behind the hug in response to feeling sad.",
+      "alignmentRationale": "This question assesses the child's ability to delineate intentions from actions rather than purely factual responses."
+    },
+    {
+      "id": "726fbc76-0dc8-4cbd-a86b-c4d9869b0dbb",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Lily told her friend, \"I didn't mean to bump into you!\" What does she want her friend to think?",
+      "rubric": [
+        "3 - She wants her friend to understand it was an accident.",
+        "2 - She wants her friend to forgive her quickly.",
+        "1 - She wants her friend to get mad.",
+        "0 - She doesn't care about her friend."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It was an accident."
+        },
+        {
+          "key": "b",
+          "text": "Forgive me quickly."
+        },
+        {
+          "key": "c",
+          "text": "Get mad at me."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring intention from speech",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "identifies that Lily wants her friend to understand her intention and that it was not on purpose",
+      "alignmentRationale": "This question asks the child to infer intention based on Lily's words."
+    },
+    {
+      "id": "82aee451-4601-4b5a-bd8c-d88679de2f8d",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Tom saw that Sam was upset after losing a game and said, \"It's just a game!\" What mood does Tom likely want to create?",
+      "rubric": [
+        "3 - He wants Sam to feel better and relaxed about losing.",
+        "2 - He wants Sam to forget the game entirely.",
+        "1 - He wants Sam to be more upset.",
+        "0 - He doesn't care how Sam feels."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Feel better about losing."
+        },
+        {
+          "key": "b",
+          "text": "Forget the game."
+        },
+        {
+          "key": "c",
+          "text": "Be more upset."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring mood from context",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "identifies Tom's intention to lighten the mood and comfort Sam",
+      "alignmentRationale": "This tests the ability to infer the emotional intention behind words in context."
+    },
+    {
+      "id": "ccb7e1c7-e370-43b4-880f-0ec46b40c693",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Mia saw her mom looking very tired after a long day. What could Mia say or do to help her mom feel better?",
+      "rubric": [
+        "3 - Mia can suggest a rest or offer to help with chores.",
+        "2 - Mia might ask if she can play quietly.",
+        "1 - Mia could ignore her mom's tiredness.",
+        "0 - Mia doesn't say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "recognizing gestures of comfort",
+      "targetEvidence": "identifies a gesture or statement that shows care or support",
+      "alignmentRationale": "This question asks the child to provide an empathetic response based on a character's mood."
+    },
+    {
+      "id": "59f53a23-ce88-44ae-a8bb-2c84201918c3",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "During art class, Sam told Jessica, \"Your painting is amazing!\" What does Sam likely want Jessica to feel?",
+      "rubric": [
+        "3 - Sam wants Jessica to feel proud of her work.",
+        "2 - Sam wants Jessica to paint differently.",
+        "1 - Sam wants Jessica to think art is silly.",
+        "0 - Sam doesn't want to say anything nice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Proud of her work."
+        },
+        {
+          "key": "b",
+          "text": "Paint differently."
+        },
+        {
+          "key": "c",
+          "text": "Think art is silly."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring intention from praise",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "identifies that Sam's intent is to offer encouragement through praise",
+      "alignmentRationale": "This question focuses on understanding intention through a compliment."
+    },
+    {
+      "id": "66e6f638-3302-4bea-a687-c29a72278f5e",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "When Alex told a joke and his friends laughed a lot, what do you think Alex wanted them to feel?",
+      "rubric": [
+        "3 - Alex wants them to feel happy and entertained.",
+        "2 - Alex might want them to laugh at him.",
+        "1 - Alex thinks the joke was bad.",
+        "0 - Alex doesn’t care about their reaction."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "inferring intention from humor",
+      "targetEvidence": "identifies the intention behind telling a joke which is to create joy",
+      "alignmentRationale": "This question seeks to explore the emotional reaction intended from humor."
+    },
+    {
+      "id": "4b54eeac-d697-4d0e-9509-93f62fe59613",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Max overheard Sally say, \"I'm scared of the storm!\" What might Max think she feels?",
+      "rubric": [
+        "3 - Max thinks Sally feels afraid of the storm.",
+        "2 - Max thinks Sally is just being silly.",
+        "1 - Max doesn't care what Sally feels.",
+        "0 - Max thinks Sally likes the storm."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Afraid of the storm."
+        },
+        {
+          "key": "b",
+          "text": "Just being silly."
+        },
+        {
+          "key": "c",
+          "text": "Likes the storm."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing emotional expression",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "identifies Max's understanding of Sally's fear based on her words",
+      "alignmentRationale": "This item tests the ability to interpret feelings based on verbal cues."
+    },
+    {
+      "id": "3fbb0a10-e5c3-4299-a903-174a3d9e6778",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Ella told her friend, \"I wish I could go to the park too!\" What can we guess Ella feels?",
+      "rubric": [
+        "3 - Ella feels sad about not going to the park.",
+        "2 - Ella is happy to stay home.",
+        "1 - Ella wants nothing to change.",
+        "0 - Ella doesn’t really care."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Sad about not going."
+        },
+        {
+          "key": "b",
+          "text": "Happy to stay home."
+        },
+        {
+          "key": "c",
+          "text": "Wants nothing to change."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring feelings from expressed wants",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "identifies Ella's feeling of sadness based on her wish",
+      "alignmentRationale": "This question assesses the ability to link expressed desires to emotional states."
+    },
+    {
+      "id": "7a5cf263-3f30-49cd-a7bf-56d2c82632fc",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Nina saw her brother playing alone and said, \"Do you want to join me?\" What might Nina intend to do?",
+      "rubric": [
+        "3 - Nina wants to include her brother in the game.",
+        "2 - Nina wants to play alone.",
+        "1 - Nina wants her brother to feel sad.",
+        "0 - Nina doesn’t care about her brother."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Include her brother."
+        },
+        {
+          "key": "b",
+          "text": "Play alone."
+        },
+        {
+          "key": "c",
+          "text": "Make him feel sad."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring intention from inclusive speech",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "identifies intent to include her brother based on her invitation",
+      "alignmentRationale": "This question evaluates understanding of inclusive language and its social intent."
+    },
+    {
+      "id": "f456aee7-14d3-4029-8022-9bc3c330ad0a",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Bella forgot her friend's name during a game. What could she say to make it better?",
+      "rubric": [
+        "3 - Bella could nicely apologize and ask for her name again.",
+        "2 - Bella might laugh it off and keep playing.",
+        "1 - Bella could ignore it and move on.",
+        "0 - Bella doesn’t say anything further."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for a helpful action",
+      "targetEvidence": "Identifies a constructive approach to repair a social mistake.",
+      "alignmentRationale": "This encourages thinking about social navigation and repair in context."
+    },
+    {
+      "id": "99cfe799-8e03-46dc-9b15-2617aff4d75a",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Max watched his sister, Lily, win the game and said, \"You always win!\" What might Max feel?",
+      "rubric": [
+        "3 - Max feels upset and maybe jealous because he didn't win.",
+        "2 - Max feels frustrated, but he might also think Lily is good at the game.",
+        "1 - Max feels happy for Lily winning; he just likes to joke.",
+        "0 - Max is indifferent and feels nothing about Lily's win."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Upset"
+        },
+        {
+          "key": "b",
+          "text": "Frustrated"
+        },
+        {
+          "key": "c",
+          "text": "Happy"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies Max's likely emotional response to the situation.",
+      "alignmentRationale": "This tests the ability to infer feelings based on character interactions and words."
+    },
+    {
+      "id": "ca9438fd-fd40-435e-8402-d35dc4a58063",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Tina saw her friend looking sad after a game. What do you think she could say to help her feel better?",
+      "rubric": [
+        "3 - Tina could say something kind and understanding to help her friend.",
+        "2 - Tina might talk to her friend or offer to cheer her up.",
+        "1 - Tina could ignore her friend’s feelings.",
+        "0 - Tina doesn’t say anything at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for a helpful action",
+      "targetEvidence": "Describes a supportive action based on social understanding.",
+      "alignmentRationale": "This prompts the child to think about actions that reflect empathy in social situations."
+    },
+    {
+      "id": "e3a20654-2f24-417f-82ed-967c521e0a74",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Ben looks at the playground and tells his friend, \"Look at everyone having so much fun!\" What does Ben likely think?",
+      "rubric": [
+        "3 - Ben thinks playing is joyful and interesting to watch.",
+        "2 - Ben finds the playground lively without strong feeling.",
+        "1 - Ben thinks it’s just okay, and doesn't care much.",
+        "0 - Ben doesn’t have any particular thoughts about it."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It is fun"
+        },
+        {
+          "key": "b",
+          "text": "It is lively"
+        },
+        {
+          "key": "c",
+          "text": "It is okay"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a viewpoint",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies Ben's perspective on the scene based on his words.",
+      "alignmentRationale": "This tests the ability to infer a character's viewpoint from explicit observations."
+    },
+    {
+      "id": "19d72bf9-372b-481a-aafc-5d7cc4573f23",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Sara felt nervous when she got on stage for her school play. What can you guess she wanted to happen?",
+      "rubric": [
+        "3 - Sara wanted to do well and not mess up, feeling better afterward.",
+        "2 - Sara wanted people to like her performance.",
+        "1 - Sara wanted to leave the stage quickly.",
+        "0 - Sara didn’t want to perform at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for an intention",
+      "targetEvidence": "Expresses what Sara aimed to achieve through her actions.",
+      "alignmentRationale": "This identifies Sara's intentions based on her emotional state in a specific context."
+    },
+    {
+      "id": "ec10f016-56fd-4780-ae51-a1d6c4e768b0",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Emily heard someone say, \"You’re the best!\" What might she feel after hearing that?",
+      "rubric": [
+        "3 - Emily feels happy and appreciated by this kind comment.",
+        "2 - Emily feels a little proud but isn't very moved.",
+        "1 - Emily feels confused about the compliment.",
+        "0 - Emily doesn't care about what was said."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Happy"
+        },
+        {
+          "key": "b",
+          "text": "Proud"
+        },
+        {
+          "key": "c",
+          "text": "Confused"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies Emily's emotional response to positive feedback.",
+      "alignmentRationale": "This tests interpreting emotions from spoken words."
+    },
+    {
+      "id": "c502eb92-a414-4a0e-b84c-72b63bcf00b2",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Jack says, \"I’m sorry I forgot your birthday!\" What do you think he wants to say next to make his friend happy?",
+      "rubric": [
+        "3 - Jack wants to apologize properly and make it up to his friend.",
+        "2 - Jack wants to explain what happened.",
+        "1 - Jack doesn’t know what to say next.",
+        "0 - Jack has nothing else to say."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for an intention",
+      "targetEvidence": "Describes Jack's desire to improve the situation after forgetting.",
+      "alignmentRationale": "This prompts inference of intentions based on interpersonal scenarios."
+    },
+    {
+      "id": "859f0017-bf88-4fcf-b758-54f44bacc812",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Leo and Mia both see a friendly dog. Leo says, \"I want to pet him,\" and Mia says, \"I think he’s scary.\" How might they feel about the dog?",
+      "rubric": [
+        "3 - Leo feels excited, while Mia feels afraid of the dog.",
+        "2 - Leo likes dogs, but Mia isn’t sure.",
+        "1 - They both feel neutral about the dog.",
+        "0 - They have no feelings about the dog."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Excited vs. afraid"
+        },
+        {
+          "key": "b",
+          "text": "Like vs. unsure"
+        },
+        {
+          "key": "c",
+          "text": "Neutral vs. neutral"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies contrasting emotions from differing viewpoints of the characters.",
+      "alignmentRationale": "This assesses feelings based on explicit opinions expressed in dialogue."
+    },
+    {
+      "id": "ab56e50c-bbf2-4469-8abe-4a051da6ce16",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Sophie is excited because her birthday party starts soon. What mood is she in?",
+      "rubric": [
+        "3 - She understands that excited means happy and looks forward to something fun.",
+        "2 - She knows excited is a good feeling but doesn't connect it well to the party.",
+        "1 - She understands excited but confuses it with sad or angry.",
+        "0 - She doesn't know what excited means."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Excited"
+        },
+        {
+          "key": "b",
+          "text": "Sad"
+        },
+        {
+          "key": "c",
+          "text": "Angry"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring mood",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "recognizes excitement as a positive feeling in context",
+      "alignmentRationale": "This tests emotion recognition based on explicit context rather than an abstract concept."
+    },
+    {
+      "id": "e9f77e14-496f-4725-9c29-ef1bc8a9c1dc",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Liam saw his friend Sam playing alone. What can he do to cheer up Sam?",
+      "rubric": [
+        "3 - Suggestions show kindness or ways to include Sam in play.",
+        "2 - Ideas mostly focus on making Sam feel better without specifics.",
+        "1 - He states actions but is unclear about helping.",
+        "0 - No helpful actions are suggested."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "suggesting intentions",
+      "targetEvidence": "offers a reasonable action to help a friend",
+      "alignmentRationale": "This evaluates the ability to convey helpful intentions based on context."
+    },
+    {
+      "id": "83f36539-dee4-4ab3-8377-5f5e18cb48e6",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Emma sees a puppy and says, \"Aww, so cute!\" What does she likely feel?",
+      "rubric": [
+        "3 - She recognizes that Emma feels happy or loves puppies based on her words.",
+        "2 - She knows it sounds nice but isn't clear about the feeling behind it.",
+        "1 - She thinks Emma is just talking without understanding the mood.",
+        "0 - She doesn't know what the words mean."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Happy"
+        },
+        {
+          "key": "b",
+          "text": "Angry"
+        },
+        {
+          "key": "c",
+          "text": "Tired"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring mood",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "understands the connection between words and positive feelings",
+      "alignmentRationale": "This prompts recognition of emotion through verbal cues."
+    },
+    {
+      "id": "03c4c60a-1ca6-4fa4-b9ec-530baa63f08b",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "viewpoint_mood_intention",
+      "format": "explanation",
+      "prompt": "Alex told his brother, \"It's okay. You can try again!\" What do you think Alex wants his brother to feel?",
+      "rubric": [
+        "3 - Correctly identifies that Alex wants his brother to feel supported and encouraged.",
+        "2 - Suggests that Alex is trying to help but without clarity on feelings.",
+        "1 - General ideas about positivity but lacks connection to the brother's feelings.",
+        "0 - No clear understanding of Alex's intention."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "inferring intention",
+      "targetEvidence": "identifies support or encouragement towards a sibling",
+      "alignmentRationale": "This tests the child's ability to discern supportive intentions from contextual statements."
+    }
+  ]
+}

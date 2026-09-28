@@ -15,6 +15,7 @@ import Button from '../components/Button';
 import SocialButton from '../components/SocialButton';
 import { useAuth } from '../auth/AuthContext';
 import { idleMinutes, takeIdleSignOutNotice } from '../auth/idle';
+import { PRIVACY_PATH, openPublicPage } from '../legal';
 import { colors, spacing, type, column, GUTTER } from '../theme';
 
 export default function LoginScreen() {
@@ -225,6 +226,9 @@ export default function LoginScreen() {
             </>
           )}
           <Text style={[type.soft, styles.note]}>This account belongs to the parent or guardian. Children do not sign in.</Text>
+          <Pressable onPress={() => openPublicPage(PRIVACY_PATH)} accessibilityRole="link" style={styles.privacyLink}>
+            <Text style={styles.privacyText}>Privacy policy</Text>
+          </Pressable>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -249,6 +253,8 @@ const styles = StyleSheet.create({
   helper: { ...type.soft, marginTop: -spacing(1), marginBottom: spacing(2) },
   signInHint: { ...type.soft, textAlign: 'center', marginTop: spacing(2) },
   error: { color: colors.danger, backgroundColor: '#FBE9E7', padding: spacing(2), borderRadius: 12, marginBottom: spacing(2) },
+  privacyLink: { alignSelf: 'center', minHeight: 40, justifyContent: 'center', paddingHorizontal: spacing(2) },
+  privacyText: { fontSize: 14, fontWeight: '800', color: colors.inkSoft, textDecorationLine: 'underline' },
   notice: { color: colors.accent, backgroundColor: colors.accentSoft, padding: spacing(2), borderRadius: 12, marginBottom: spacing(2) },
   divider: { flexDirection: 'row', alignItems: 'center', marginVertical: spacing(3) },
   rule: { flex: 1, height: 1, backgroundColor: colors.line },

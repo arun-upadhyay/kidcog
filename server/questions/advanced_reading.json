@@ -1,0 +1,2705 @@
+{
+  "category": "advanced_reading",
+  "questions": [
+    {
+      "id": "8f7f0373-3163-44e4-b83f-1195f64f94af",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A kitten sees a string. What does it likely do?  \nA. Run away\nB. Play with it\nC. Sleep",
+      "rubric": [
+        "3 - The answer accurately predicts an action cats often take with strings.",
+        "2 - The answer offers a somewhat related but less likely action.",
+        "1 - The answer provides an unrelated action.",
+        "0 - The answer does not relate to the kitten's actions."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Run away"
+        },
+        {
+          "key": "b",
+          "text": "Play with it"
+        },
+        {
+          "key": "c",
+          "text": "Sleep"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "predicting character actions",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "selecting the most likely action the kitten would take with the string",
+      "alignmentRationale": "This question challenges the child's ability to infer the kitten's behavior based on common experiences or known actions."
+    },
+    {
+      "id": "03b7b21a-ef5f-4506-accb-c1d98b13e92d",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A girl sees a cake on the table. What will she do with it?",
+      "rubric": [
+        "3 - The response gives a clear action she would take with the cake.",
+        "2 - The response suggests a somewhat related action regarding the cake.",
+        "1 - The response is unrelated to what she would do with the cake.",
+        "0 - The response does not provide a plausible action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inferring actions from context",
+      "targetEvidence": "describing an action the girl might take with the cake",
+      "alignmentRationale": "This question assesses the child's ability to connect actions and objects within a narrative scenario."
+    },
+    {
+      "id": "6d62be4c-d041-49dc-b327-6773b1cbeca0",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "If a puppy finds a ball, what do you think it will do?  \nA. Bark at it  \nB. Ignore it  \nC. Play with it",
+      "rubric": [
+        "3 - The answer shows clear understanding of what puppies enjoy doing.",
+        "2 - The answer shows some understanding but a less likely action.",
+        "1 - The answer relates to the puppy but is not likely.",
+        "0 - The answer does not relate to the puppy's actions."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Bark at it"
+        },
+        {
+          "key": "b",
+          "text": "Ignore it"
+        },
+        {
+          "key": "c",
+          "text": "Play with it"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "predicting character actions",
+      "optionScores": {
+        "a": 1,
+        "b": 2,
+        "c": 3
+      },
+      "targetEvidence": "choosing a likely action the puppy would take when seeing a ball",
+      "alignmentRationale": "This question tests the child’s ability to predict a common behavior of a puppy."
+    },
+    {
+      "id": "d0e40244-a81a-40e4-b229-8f3204422154",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A boy finds a colorful kite. What do you think he will do with it?",
+      "rubric": [
+        "3 - The response describes a likely action the boy would take with the kite.",
+        "2 - The response gives a somewhat related response about the kite.",
+        "1 - The response is unrelated to the kite.",
+        "0 - The response does not provide an action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inferring actions from context",
+      "targetEvidence": "an action regarding what the boy might do with the kite",
+      "alignmentRationale": "This open question allows for various possible actions while focusing on the story context."
+    },
+    {
+      "id": "a666a326-ba11-4c40-ab05-fde21d239fe1",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A girl sees a bird in a tree. What do you think she will do?  \nA. Run away\nB. Try to catch it\nC. Watch it sing",
+      "rubric": [
+        "3 - The answer shows clear understanding of the girl's actions toward the bird.",
+        "2 - The answer shows some understanding but has a less likely action.",
+        "1 - The answer provides an unrelated action.",
+        "0 - The answer does not provide any action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Run away"
+        },
+        {
+          "key": "b",
+          "text": "Try to catch it"
+        },
+        {
+          "key": "c",
+          "text": "Watch it sing"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "predicting character actions",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "picking a plausible action from the options related to the girl and the bird",
+      "alignmentRationale": "This question allows the child to predict a character's action based on a story scenario, emphasizing comprehension and inference."
+    },
+    {
+      "id": "c8733f55-0fb2-45cc-9067-b4a47b1f820d",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A child sees a birthday present. What do you think they will do with it?",
+      "rubric": [
+        "3 - The response describes a likely action with the present.",
+        "2 - The response gives a somewhat related idea about the present.",
+        "1 - The response is unrelated to a present.",
+        "0 - The response does not provide a plausible action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "inferring actions from context",
+      "targetEvidence": "an action related to what the child might do with the present",
+      "alignmentRationale": "This open question focuses on the child's understanding of presents in a social context."
+    },
+    {
+      "id": "7665272f-f305-41c3-b252-80451b8250d4",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "When a rabbit sees a basket of carrots, what might it do?  \nA. Dance\nB. Eat a carrot\nC. Jump away",
+      "rubric": [
+        "3 - The answer correctly identifies what rabbits typically do with food.",
+        "2 - The answer is somewhat related but less common for a rabbit.",
+        "1 - The answer suggests an unrelated action.",
+        "0 - The answer does not relate at all to the situation."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Dance"
+        },
+        {
+          "key": "b",
+          "text": "Eat a carrot"
+        },
+        {
+          "key": "c",
+          "text": "Jump away"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "predicting character actions",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "selecting a plausible action of the rabbit with food",
+      "alignmentRationale": "This question assesses the child's capacity to predict behaviors related to familiar scenarios."
+    },
+    {
+      "id": "71aae661-bbbe-4bbd-9b28-8bb4aa211f20",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Tell me what you think will happen if the dog finds the ball in the park.",
+      "rubric": [
+        "3 - Makes a clear and imaginative prediction about the dog's action with details.",
+        "2 - Makes a reasonable prediction about the dog's action, but lacks some detail.",
+        "1 - Makes an unclear or very basic prediction with little relation to the story.",
+        "0 - Does not give a prediction or answer is not related."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "predicting from character actions",
+      "targetEvidence": "The child predicts what happens next in the story based on the dog's behavior.",
+      "alignmentRationale": "This task isolates prediction skills by requiring the child to think about what a dog finding a ball might lead to."
+    },
+    {
+      "id": "d4dff50b-87dd-4d3f-95ab-f7b711fba25f",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "If a monkey sees a banana, what do you think it will do?",
+      "rubric": [
+        "3 - Provides a thoughtful and detailed action a monkey might take.",
+        "2 - Gives a reasonable guess about the monkey's action with some detail.",
+        "1 - Offers a very general or vague idea about what the monkey could do.",
+        "0 - Does not respond or answer is unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "predicting from character actions",
+      "targetEvidence": "The child predicts what happens based on the monkey's desire for a banana.",
+      "alignmentRationale": "This prompts imaginative thinking about what actions a character may take in a story context."
+    },
+    {
+      "id": "076972b0-da3e-4b3b-8d1d-8085607fa181",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "If a penguin finds fish, what do you think it will do next?",
+      "rubric": [
+        "3 - Provides a logical and imaginative scenario about the penguin.",
+        "2 - Gives a reasonable idea about the penguin's actions with some details.",
+        "1 - Offers a vague idea, without connection to the penguin's behavior.",
+        "0 - Does not respond to the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "connecting ideas in a story",
+      "targetEvidence": "The child connects the action of the penguin finding fish to potential outcomes.",
+      "alignmentRationale": "This explores a child's ability to connect narrative actions to possible next events, demonstrating comprehension of story flow."
+    },
+    {
+      "id": "6e433c6a-ccf9-4ec0-99e0-9dac0ad33268",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "I will tell you a short story. A little girl sees a big frog. The frog jumps into a pond. What do you think the girl will do next?",
+      "rubric": [
+        "3 - The child provides an imaginative action the girl might take, connecting well to the story.",
+        "2 - The child suggests a logical action but lacks details or creativity.",
+        "1 - The child makes a vague answer related to the girl but not specific.",
+        "0 - The child does not respond or indicates uncertainty."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "predicting story actions",
+      "targetEvidence": "The child suggests possible actions relating to the girl after an event in the story.",
+      "alignmentRationale": "This item assesses the ability to predict actions based on simple narrative events."
+    },
+    {
+      "id": "2d8fa26a-3acd-4ab2-ad01-cd5c77f98c72",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "In a tale, a turtle sees a bright sun. What do you think the turtle will do?  \nA. Hide in its shell  \nB. Try to climb the tallest tree  \nC. Go swimming in the water",
+      "rubric": [
+        "3 - The child selects 'C. Go swimming in the water,' which fits a turtle's behavior on a sunny day.",
+        "2 - The child selects 'A. Hide in its shell,' showing some understanding of safety but not the turtle's usual choice.",
+        "1 - The child selects 'B. Try to climb the tallest tree,' which is not typical for turtles.",
+        "0 - The child does not answer or chooses an unrelated option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Hide in its shell"
+        },
+        {
+          "key": "b",
+          "text": "Try to climb the tallest tree"
+        },
+        {
+          "key": "c",
+          "text": "Go swimming in the water"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "understanding character actions",
+      "optionScores": {
+        "a": 1,
+        "b": 0,
+        "c": 3
+      },
+      "targetEvidence": "The child connects a turtle's actions to the environment and behavior expectations.",
+      "alignmentRationale": "This question assesses how well children grasp character behavior in relation to their surroundings."
+    },
+    {
+      "id": "8dca914f-0ad1-4afc-8c73-262194528a75",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A boy finds a strange rock on the beach. He shows it to his friend. What do you think they will do with the rock?",
+      "rubric": [
+        "3 - The child gives a creative idea about what they might do with the rock.",
+        "2 - The child makes a reasonable suggestion but lacks some detail.",
+        "1 - The child suggests a vague action but lacks specificity about the rock.",
+        "0 - The child does not respond or gives an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "predicting actions in a story",
+      "targetEvidence": "The child predicts possible actions based on the scenario with the boy and his friend.",
+      "alignmentRationale": "The question assesses the child's ability to think creatively about a short narrative situation."
+    },
+    {
+      "id": "5581a3de-6671-4648-b526-d591bc6a80b4",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Here's a story: A girl finds a lost puppy. The puppy is very happy. What do you think happens when the girl takes the puppy home?",
+      "rubric": [
+        "3 - The child describes a happy and engaging scenario of what happens next.",
+        "2 - The child provides a reasonable idea but lacks details of events with the puppy.",
+        "1 - The child offers a vague answer about the puppy but does not connect it with home.",
+        "0 - The child does not respond or gives an unrelated idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "expanding on story events",
+      "targetEvidence": "The child extends the story logically with possible outcomes from the narrative.",
+      "alignmentRationale": "This task assesses the child's ability to build on a narrative with a continuation of events."
+    },
+    {
+      "id": "e78ada59-395d-48ce-a12d-3418d466ed19",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A rabbit sees a carrot on the ground. What will the rabbit most likely do?  \nA. Jump over it  \nB. Eat it  \nC. Leave it there",
+      "rubric": [
+        "3 - The child selects 'B. Eat it,' correctly identifying a rabbit's action toward food.",
+        "2 - The child selects 'A. Jump over it,' which shows some action but not the most logical one.",
+        "1 - The child selects 'C. Leave it there,' which does not show understanding of the rabbit's desire.",
+        "0 - The child does not answer or chooses an unrelated option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Jump over it"
+        },
+        {
+          "key": "b",
+          "text": "Eat it"
+        },
+        {
+          "key": "c",
+          "text": "Leave it there"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "understanding character behavior",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "The child uses knowledge about rabbits to infer their likely actions.",
+      "alignmentRationale": "This question focuses on understanding actions based on characters and common behaviors in a story context."
+    },
+    {
+      "id": "d80b72ce-0154-4725-b31d-ce4d7b8315af",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "In a story, a bear finds honey in a tree. What do you think he will do with it?  \nA. Ignore it  \nB. Share it with friends  \nC. Eat it",
+      "rubric": [
+        "3 - The child selects 'C. Eat it,' showing understanding of a bear's desire for honey.",
+        "2 - The child selects 'B. Share it with friends,' showing a slight understanding of sharing but lacking the main action.",
+        "1 - The child selects 'A. Ignore it,' which does not fit with what bears usually do.",
+        "0 - The child does not answer or chooses an unrelated action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ignore it"
+        },
+        {
+          "key": "b",
+          "text": "Share it with friends"
+        },
+        {
+          "key": "c",
+          "text": "Eat it"
+        }
+      ],
+      "answerKey": "c",
+      "skillFacet": "connecting character motivations",
+      "optionScores": {
+        "a": 0,
+        "b": 1,
+        "c": 3
+      },
+      "targetEvidence": "The child connects character actions with what they know about bears and honey.",
+      "alignmentRationale": "The question focuses on understanding a character's motivation in a narrative, assessing comprehension rather than literary habits."
+    },
+    {
+      "id": "b2ee575c-a9b1-42cf-9a5e-bd37df04d2e3",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Listen carefully to this story: A cat and a dog are friends. One day, they want to play with a ball. What do you think they will do with the ball?",
+      "rubric": [
+        "3 - The child gives a creative idea about playing with the ball, showing good prediction skills.",
+        "2 - The child provides a reasonable idea but lacks creativity or detail about the ball play.",
+        "1 - The child mentions the ball but does not explain what they will do with it.",
+        "0 - The child does not respond or makes an unrelated comment."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "predicting story actions",
+      "targetEvidence": "The child predicts actions based on the context of the characters and their friendship.",
+      "alignmentRationale": "This item assesses the ability to infer future actions based on a simple narrative context."
+    },
+    {
+      "id": "7f82ad01-f880-4b68-8d4c-2f3fb69a873a",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "What do you think happens next when the cat sees a butterfly?",
+      "rubric": [
+        "3 - Gives a creative and logical continuation of the story with details.",
+        "2 - Provides a reasonable guess about what comes next, with some detail.",
+        "1 - Gives a very vague answer with little connection to the story.",
+        "0 - Does not offer a continuation or related idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "connecting ideas in a story",
+      "targetEvidence": "The child connects the event of the cat seeing the butterfly to a possible outcome.",
+      "alignmentRationale": "Connecting story events demonstrates comprehension of narrative progression."
+    },
+    {
+      "id": "2bdadeba-8d03-455c-a369-8d08032f9f07",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A girl sees a butterfly land near her. What do you think she will do?",
+      "rubric": [
+        "3 - Try to catch it gently.",
+        "2 - Watch it fly away.",
+        "1 - Scream and run away.",
+        "0 - Ignore it."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Try to catch it gently."
+        },
+        {
+          "key": "b",
+          "text": "Watch it fly away."
+        },
+        {
+          "key": "c",
+          "text": "Scream and run away."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predict from character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child anticipates the girl's reaction based on the attraction of the butterfly.",
+      "alignmentRationale": "This question assesses the child's understanding of common reactions to gentle and interesting stimuli."
+    },
+    {
+      "id": "524eb440-ec90-4413-919b-edfa64b1164f",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A dog hears a loud noise. What might it do?",
+      "rubric": [
+        "3 - Bark and run to its owner.",
+        "2 - Sit quietly and listen.",
+        "1 - Run away from the noise.",
+        "0 - Ignore it."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Bark and run to its owner."
+        },
+        {
+          "key": "b",
+          "text": "Sit quietly and listen."
+        },
+        {
+          "key": "c",
+          "text": "Run away from the noise."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predict from character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child interprets the dog's reaction based on context clues.",
+      "alignmentRationale": "The task evaluates the child's ability to connect sound stimuli to a character's potential behavior."
+    },
+    {
+      "id": "befd0145-28df-4c78-9375-40a452ec6baf",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "If a cat sees a butterfly, what do you think it will do next?",
+      "rubric": [
+        "3 - The cat will try to catch it!",
+        "2 - The cat might watch it.",
+        "1 - The cat could ignore it.",
+        "0 - The cat is distracted."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "predicting an action",
+      "targetEvidence": "child predicts what the cat will do based on a scenario",
+      "alignmentRationale": "This prompt helps gauge a child's ability to predict behavior in an imaginative context."
+    },
+    {
+      "id": "e4955792-769c-4891-8de9-5e3538e6b09b",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A girl sees a friend fall down. What should she do?",
+      "rubric": [
+        "3 - Help her get up and ask if she's okay.",
+        "2 - Look at her but not help.",
+        "1 - Walk away and ignore her.",
+        "0 - Just laugh at her."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help her get up"
+        },
+        {
+          "key": "b",
+          "text": "Just look at her"
+        },
+        {
+          "key": "c",
+          "text": "Walk away"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "deciding on a helpful action",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child can select a socially appropriate response in a situation",
+      "alignmentRationale": "This question tests social understanding and appropriate behavior in a caring scenario."
+    },
+    {
+      "id": "e447fe2d-9736-436c-9bd0-3468b6878fdb",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "What happens when a bird finds a worm in the ground?",
+      "rubric": [
+        "3 - The bird eats the worm!",
+        "2 - It might pick up the worm.",
+        "1 - The bird sees the worm.",
+        "0 - The bird flies away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "connecting events in nature",
+      "targetEvidence": "child explains the relationship between a bird and a worm",
+      "alignmentRationale": "This task assesses the child's ability to connect actions and outcomes in nature."
+    },
+    {
+      "id": "674295f9-b0c8-42a1-bb19-bd06b267af91",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A boy sees ice cream on a table. What do you think he will do?",
+      "rubric": [
+        "3 - He will want to eat it!",
+        "2 - He might look at it.",
+        "1 - He could ignore it.",
+        "0 - He is busy with a toy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Want to eat it!"
+        },
+        {
+          "key": "b",
+          "text": "Look at it"
+        },
+        {
+          "key": "c",
+          "text": "Ignore it"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring a desire",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child can infer the boy's likely desire based on situational cues",
+      "alignmentRationale": "The question encourages the child to make logical inferences based on observable desires."
+    },
+    {
+      "id": "b2e38e91-de66-4698-91c6-4b626194c18f",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Tell me your favorite part of a fun day!",
+      "rubric": [
+        "3 - I had fun playing with friends!",
+        "2 - I liked eating snacks.",
+        "1 - I just saw some things.",
+        "0 - It was boring."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "personal narrative expression",
+      "targetEvidence": "child shares personal experiences in a fun context",
+      "alignmentRationale": "This question allows for personal expression and sharing of enjoyable experiences."
+    },
+    {
+      "id": "27d8fcf3-4e5b-4aaf-9626-275f6a06cb07",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A dog sees a child holding a stick. What do you think the dog will do?",
+      "rubric": [
+        "3 - The dog would likely run to the child to play with the stick.",
+        "2 - The dog might watch the child or bark, but not play.",
+        "1 - The dog might ignore the child or walk away.",
+        "0 - The dog would just sit down."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Run to play with the stick"
+        },
+        {
+          "key": "b",
+          "text": "Bark at the child"
+        },
+        {
+          "key": "c",
+          "text": "Ignore the child"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting an action",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child can predict the dog's likely behavior based on context",
+      "alignmentRationale": "This question requires the child to infer an action from a situation involving a familiar animal and a common object."
+    },
+    {
+      "id": "42125728-5715-4795-859c-064f913aacac",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Imagine you have a toy robot. What kind of things does it do?",
+      "rubric": [
+        "3 - The robot can walk and dance!",
+        "2 - It might move and make sounds.",
+        "1 - It can do one thing.",
+        "0 - The robot does nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "connecting ideas about toys",
+      "targetEvidence": "child describes actions of a toy robot",
+      "alignmentRationale": "This prompt asks the child to engage creatively, revealing their understanding of a toy's features."
+    },
+    {
+      "id": "8c89cde7-69df-4847-b0b5-eaefc8a433b0",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A fish swims to the top of the water. What do you think it wants?",
+      "rubric": [
+        "3 - The fish wants to breathe air at the surface.",
+        "2 - The fish may be looking for food.",
+        "1 - The fish could be playing.",
+        "0 - The fish is just swimming."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Breathe air at the surface"
+        },
+        {
+          "key": "b",
+          "text": "Looking for food"
+        },
+        {
+          "key": "c",
+          "text": "Just swimming"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring an intention",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "child can infer the fish's possible intentions based on its action",
+      "alignmentRationale": "This question prompts children to think critically about the behavior of a familiar animal in relation to its needs."
+    },
+    {
+      "id": "ba4b4612-2100-4d9f-a8b7-35cbcbf1242a",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Imagine a bird is building a nest. Tell me what it puts in the nest!",
+      "rubric": [
+        "3 - Describes specific items like twigs, leaves, or feathers.",
+        "2 - Mentions some things but not too specific.",
+        "1 - Says something very general, like 'stuff'.",
+        "0 - Does not mention anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "uses details from a story",
+      "targetEvidence": "describes objects the bird might use for its nest",
+      "alignmentRationale": "It tests the ability to generate contextually relevant details about the story without needing to read."
+    },
+    {
+      "id": "bffc6136-fc00-4c47-898e-f790bd8ecf6d",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A child finds a lost puppy. What should the child do first?",
+      "rubric": [
+        "3 - Take the puppy home to help it.",
+        "2 - Ignore the puppy and keep playing.",
+        "1 - Call for someone to look.",
+        "0 - Run away from the puppy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Take the puppy home"
+        },
+        {
+          "key": "b",
+          "text": "Ignore the puppy"
+        },
+        {
+          "key": "c",
+          "text": "Call for someone"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "social situation response",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects the most helpful action for the puppy",
+      "alignmentRationale": "This question encourages an understanding of helpful actions in social contexts."
+    },
+    {
+      "id": "1de97d77-8c13-492d-9527-63687d69b392",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A girl finds some crayons. What does she want to do?",
+      "rubric": [
+        "3 - She wants to draw a picture.",
+        "2 - She might just look at them.",
+        "1 - She wants to eat them.",
+        "0 - She will put them away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Draw a picture"
+        },
+        {
+          "key": "b",
+          "text": "Just look at them"
+        },
+        {
+          "key": "c",
+          "text": "Eat the crayons"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predict from character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses an action related to drawing with crayons",
+      "alignmentRationale": "This question gauges comprehension of the character's likely action regarding crayons."
+    },
+    {
+      "id": "424dd4a3-6cbb-49ba-a42e-7ce8665b1a6a",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A kitten sees a ball of yarn. What is the kitten doing next? Tell me!",
+      "rubric": [
+        "3 - Describes playing with or catching the yarn.",
+        "2 - Mentions looking at the yarn.",
+        "1 - Says something general like 'sitting'.",
+        "0 - Does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "uses details from a story",
+      "targetEvidence": "describes an action related to the yarn and kitten",
+      "alignmentRationale": "This assesses the child’s ability to creatively connect a scenario with potential actions based on the narrative."
+    },
+    {
+      "id": "ff48e91b-ede2-4a43-bd30-d711e12f30d2",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A bear is hungry. It sees a honey jar on a tree. What will the bear do?",
+      "rubric": [
+        "3 - The bear will try to get the honey from the tree.",
+        "2 - The bear might look for something else to eat.",
+        "1 - The bear will go for a walk.",
+        "0 - The bear will ignore the honey."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Climb the tree for honey"
+        },
+        {
+          "key": "b",
+          "text": "Look for something else"
+        },
+        {
+          "key": "c",
+          "text": "Go for a walk"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predict from character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses an action that demonstrates understanding of the bear's need for food",
+      "alignmentRationale": "The task tests the ability to infer actions based on character's needs rather than looking for factual recall."
+    },
+    {
+      "id": "fd5fdab1-eb81-42f5-993c-db07f046511e",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "If you have a magic pet, what can it do? Tell me your idea!",
+      "rubric": [
+        "3 - The idea is imaginative and detailed.",
+        "2 - The idea is imaginative but not detailed.",
+        "1 - The idea is vague and unclear.",
+        "0 - The idea is missing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "invent imaginative concepts",
+      "targetEvidence": "child invents a creative and specific idea for a magic pet",
+      "alignmentRationale": "This prompt invites creative thought without requiring any reading or writing."
+    },
+    {
+      "id": "b638ee9f-e04e-486c-88d7-d44c81a9a2bc",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A rabbit sees a carrot in the garden. What will the rabbit do next?",
+      "rubric": [
+        "3 - The rabbit will eat the carrot.",
+        "2 - The rabbit will hop to it.",
+        "1 - The rabbit might just look at it.",
+        "0 - The rabbit will ignore it."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Eat the carrot"
+        },
+        {
+          "key": "b",
+          "text": "Hop to it"
+        },
+        {
+          "key": "c",
+          "text": "Just look at it"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predict animal behavior",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child predicts the logical next action of an animal based on current context",
+      "alignmentRationale": "This tests understanding of animal actions based on their situation."
+    },
+    {
+      "id": "3d15a3df-887a-4a51-89dc-bb734f56d337",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "What do you think would happen if animals could talk?",
+      "rubric": [
+        "3 - The response includes creative examples.",
+        "2 - The response is imaginative but not clear.",
+        "1 - The response is vague and unfocused.",
+        "0 - The response doesn't answer the question."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "generate creative thinking",
+      "targetEvidence": "child presents imaginative ideas about animals talking",
+      "alignmentRationale": "Engages imagination and creativity without reliance on reading/writing."
+    },
+    {
+      "id": "ae851bed-a776-40bc-b220-8c4ae35674bf",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A frog sees a big puddle. It jumps towards it. What do you think the frog wants to do?",
+      "rubric": [
+        "3 - The frog wants to play in the puddle.",
+        "2 - The frog might just look at the puddle.",
+        "1 - The frog wants to jump over it.",
+        "0 - The frog will sit away from the puddle."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Play in the puddle"
+        },
+        {
+          "key": "b",
+          "text": "Just look at it"
+        },
+        {
+          "key": "c",
+          "text": "Jump over it"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predict from character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "infers the frog's intention based on its jumping behavior",
+      "alignmentRationale": "This question gauges the understanding of probable actions by connecting them to the character’s motivations."
+    },
+    {
+      "id": "42e26350-68d0-41d4-8712-80034973baf6",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "If a squirrel sees an acorn on the ground, what do you think it will do with it?",
+      "rubric": [
+        "3 - Describes the squirrel taking or eating the acorn.",
+        "2 - Mentions something about looking at it.",
+        "1 - Says something very general like 'do something'.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "uses details from a story",
+      "targetEvidence": "provides details about what the squirrel might do with the acorn",
+      "alignmentRationale": "It assesses the ability to infer actions that connect to the narrative context."
+    },
+    {
+      "id": "1cee3397-053e-4e5d-80f7-30bf354768ae",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A rabbit sees a big field of grass. What will the rabbit likely do?",
+      "rubric": [
+        "3 - The rabbit will hop over and eat the grass.",
+        "2 - The rabbit might look around.",
+        "1 - The rabbit will sit and wait.",
+        "0 - The rabbit will run away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Hurry over to eat the grass"
+        },
+        {
+          "key": "b",
+          "text": "Look around"
+        },
+        {
+          "key": "c",
+          "text": "Sit and wait"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predict from character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "infers the rabbit's likely actions based on the situation",
+      "alignmentRationale": "The question evaluates understanding of how the environment influences a character's choices."
+    },
+    {
+      "id": "da679096-0869-4577-92e7-c33946eaea19",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A girl sees a big cake and is very excited! What do you think she will do first?",
+      "rubric": [
+        "3 - She will want to eat it.",
+        "2 - She might take a picture.",
+        "1 - She might just smile at it.",
+        "0 - She will walk away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Want to eat it"
+        },
+        {
+          "key": "b",
+          "text": "Take a picture"
+        },
+        {
+          "key": "c",
+          "text": "Just smile at it"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predict an action based on excitement",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child predicts an appropriate first action from the character's feelings",
+      "alignmentRationale": "This task focuses on prediction from emotional cues."
+    },
+    {
+      "id": "1755a493-9928-41e9-a0db-d4411425c7c1",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Tommy saw a shiny new bike outside. What do you think he would feel?",
+      "rubric": [
+        "3 - Tommy would feel excited to ride it.",
+        "2 - Tommy would feel happy to see it.",
+        "1 - Tommy might feel confused about the bike.",
+        "0 - Tommy would not care about the bike."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Excited to ride it"
+        },
+        {
+          "key": "b",
+          "text": "Happy to see it"
+        },
+        {
+          "key": "c",
+          "text": "Confused about the bike"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring feelings",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "identifies an emotion Tommy may feel about the bike",
+      "alignmentRationale": "This question tests the ability to connect the situation with feelings a character might have."
+    },
+    {
+      "id": "28ccb3eb-a1f9-4c77-858e-bbb040a8b49b",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Mia saw a big cake at the party. What do you think she would want to do?",
+      "rubric": [
+        "3 - Mia might want to eat a piece of cake.",
+        "2 - Mia might want to help cut the cake.",
+        "1 - Mia might just look at the cake.",
+        "0 - Mia might run away from the cake."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Eat a piece of cake"
+        },
+        {
+          "key": "b",
+          "text": "Help cut the cake"
+        },
+        {
+          "key": "c",
+          "text": "Just look at the cake"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting from character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses an action Mia might take regarding the cake",
+      "alignmentRationale": "This question requires predicting a logical action based on the character's experience."
+    },
+    {
+      "id": "7c8e5ff7-c83f-42a0-9c69-b5d072d7d034",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Emma found an old book with pictures. What do you think she might do with it?",
+      "rubric": [
+        "3 - Emma would look at the pictures and read the book.",
+        "2 - Emma might show it to her friend.",
+        "1 - Emma could put it back on the shelf.",
+        "0 - Emma would ignore the book."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "connecting ideas",
+      "targetEvidence": "suggests a meaningful action or thought related to finding the book",
+      "alignmentRationale": "This question encourages making connections between an action and its significance."
+    },
+    {
+      "id": "41251649-2da8-4936-afae-c1451efae70f",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Alex saw his friend fall while playing. What do you think he would do?",
+      "rubric": [
+        "3 - Alex would help his friend get up.",
+        "2 - Alex might laugh at what happened.",
+        "1 - Alex would just keep playing.",
+        "0 - Alex would run away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Help his friend get up"
+        },
+        {
+          "key": "b",
+          "text": "Laugh at what happened"
+        },
+        {
+          "key": "c",
+          "text": "Just keep playing"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting helpful actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a thoughtful response to a friend's fall",
+      "alignmentRationale": "This question assesses the prediction of an action based on social cues."
+    },
+    {
+      "id": "293852a8-2eda-4bdd-b1ff-a238b35e9620",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A girl saw a big, colorful kite flying in the sky. What do you think she felt when she saw it?",
+      "rubric": [
+        "3 - She felt happy and wanted to fly a kite.",
+        "2 - She felt surprised and curious.",
+        "1 - She felt nothing special.",
+        "0 - She felt scared of the kite."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "inferring feelings",
+      "targetEvidence": "suggests a feeling the girl might have about the kite",
+      "alignmentRationale": "This question prompts imaginative thinking about emotions connected to an event."
+    },
+    {
+      "id": "079070cc-a15f-4621-ad31-339d8453d0e9",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Ben saw a puppy playing with a ball. What do you think Ben would do?",
+      "rubric": [
+        "3 - Ben might play with the puppy and the ball.",
+        "2 - Ben could just watch the puppy.",
+        "1 - Ben would walk away.",
+        "0 - Ben would get upset."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Play with the puppy and the ball"
+        },
+        {
+          "key": "b",
+          "text": "Just watch the puppy"
+        },
+        {
+          "key": "c",
+          "text": "Walk away"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "gives a logical action Ben may take regarding the puppy",
+      "alignmentRationale": "This question engages children in inferring what the character is likely to do next."
+    },
+    {
+      "id": "6b78bb84-2944-4615-9dea-7161a1ae6bd4",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Lucy discovered a treasure map in her attic. What do you think she could do with it?",
+      "rubric": [
+        "3 - She might go look for the treasure.",
+        "2 - She could show it to her family.",
+        "1 - She might put it back in the attic.",
+        "0 - She would ignore the map."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "connecting ideas",
+      "targetEvidence": "provides a logical action related to finding a treasure map",
+      "alignmentRationale": "This question allows children to generate ideas related to the scenario."
+    },
+    {
+      "id": "87aae892-6bb9-4cae-96ec-dc344e53a24d",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A boy saw a painting of a big, green dinosaur. What do you think he would say?",
+      "rubric": [
+        "3 - He might say it's so cool!",
+        "2 - He would say it's scary.",
+        "1 - He might say nothing at all.",
+        "0 - He could say he doesn't like dinosaurs."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It's so cool!"
+        },
+        {
+          "key": "b",
+          "text": "It's scary."
+        },
+        {
+          "key": "c",
+          "text": "I don't like dinosaurs."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting responses",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "picks a reaction the boy may express towards the painting",
+      "alignmentRationale": "This question engages children in imagining an appropriate response to the artwork."
+    },
+    {
+      "id": "f94fb238-57ba-45a8-881b-9283b91fc0ee",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A curious cat saw an open window. What do you think the cat would want to do?",
+      "rubric": [
+        "3 - The cat wants to explore outside.",
+        "2 - The cat is interested but stays cautious.",
+        "1 - The cat doesn’t care about the window.",
+        "0 - The cat is afraid of the window."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "connecting ideas",
+      "targetEvidence": "describes what the cat might find interesting about the window being open.",
+      "alignmentRationale": "This task helps assess children's understanding of a cat's curious nature in relation to an open window."
+    },
+    {
+      "id": "5521ad46-6fa1-424b-9b2e-9e26e4fbe5b1",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Katie saw some colorful balloons floating away. What do you think she might do next?",
+      "rubric": [
+        "3 - Katie might try to grab the balloons or watch them go up high.",
+        "2 - Katie could yell for someone to help her get the balloons.",
+        "1 - Katie might just look at the balloons.",
+        "0 - Katie would probably ignore the balloons."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Try to grab the balloons"
+        },
+        {
+          "key": "b",
+          "text": "Yell for help"
+        },
+        {
+          "key": "c",
+          "text": "Look at the balloons"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "uses information from the scenario to predict Katie's possible action.",
+      "alignmentRationale": "This task tests the ability to forecast based on a character's interest in an event."
+    },
+    {
+      "id": "4fb442f4-17f6-4651-975f-40a2bb0d1590",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Sam found a treasure map hidden in a book. What do you think he will do with the map?",
+      "rubric": [
+        "3 - Sam will follow the map to find the treasure.",
+        "2 - Sam might show the map to a friend.",
+        "1 - Sam could just keep it in his room.",
+        "0 - Sam won't do anything with the map."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Follow the map to find treasure"
+        },
+        {
+          "key": "b",
+          "text": "Show it to a friend"
+        },
+        {
+          "key": "c",
+          "text": "Just keep it in his room"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "will predict Sam's action based on his discovery.",
+      "alignmentRationale": "This task tests the ability to make predictions based on a new and exciting discovery."
+    },
+    {
+      "id": "3ba02735-db68-4d6a-8ce3-763334cf8dc6",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Liam saw a puppy wagging its tail at him. How do you think Liam felt?",
+      "rubric": [
+        "3 - Liam was happy and excited to see the puppy.",
+        "2 - Liam might feel curious about the puppy.",
+        "1 - Liam could feel nothing special about it.",
+        "0 - Liam might feel scared of the puppy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Happy and excited"
+        },
+        {
+          "key": "b",
+          "text": "Curious about the puppy"
+        },
+        {
+          "key": "c",
+          "text": "Nothing special"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring feelings",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "infers Liam's feelings based on the puppy's friendly behavior.",
+      "alignmentRationale": "This task tests the ability to connect emotions with friendly interactions."
+    },
+    {
+      "id": "433c5a4b-35af-47cc-a730-328daba04065",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Nina saw a rainbow after the rain. What do you think she would do?",
+      "rubric": [
+        "3 - Nina might run outside to see the rainbow better.",
+        "2 - Nina could take a picture of it.",
+        "1 - Nina might just stare at it.",
+        "0 - Nina would ignore the rainbow."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Run outside to see the rainbow"
+        },
+        {
+          "key": "b",
+          "text": "Take a picture"
+        },
+        {
+          "key": "c",
+          "text": "Just stare at it"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "predicts Nina's likely reaction to the rainbow.",
+      "alignmentRationale": "This task assesses how children can imagine a character's response to a beautiful scene."
+    },
+    {
+      "id": "4a70360c-2caf-482a-ad5a-8c0789174b0a",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Once upon a time, a young fox saw its shadow. What do you think the fox would think about its shadow?",
+      "rubric": [
+        "3 - The fox thinks it is a friend or tries to play with it.",
+        "2 - The fox feels curious but a little scared.",
+        "1 - The fox is confused and doesn't understand.",
+        "0 - The fox doesn't think about it at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "connecting ideas",
+      "targetEvidence": "offers an idea about the fox's perspective on seeing its shadow.",
+      "alignmentRationale": "This task encourages children to use their imagination to connect a character's experience with a common event."
+    },
+    {
+      "id": "5845ae66-61ac-4779-ae71-36ee56bc8541",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A little bird saw a shiny object on the ground. What do you think the bird would do with it?",
+      "rubric": [
+        "3 - The bird might try to pick it up or get closer.",
+        "2 - The bird could be curious about it from afar.",
+        "1 - The bird may ignore it completely.",
+        "0 - The bird gets scared and flies away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "connecting ideas",
+      "targetEvidence": "provides an idea about how the bird might interact with the shiny object.",
+      "alignmentRationale": "This task taps into children's ability to imagine how animals might behave in everyday situations."
+    },
+    {
+      "id": "de43614a-6739-40f2-ae99-e70ad1d3f913",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A kid sees a big pile of blocks and wants to build something. What do you think they would imagine building?",
+      "rubric": [
+        "3 - The kid imagines building a tall tower or a castle.",
+        "2 - The kid thinks of a simple house.",
+        "1 - The kid might not think of anything special to build.",
+        "0 - The kid ignores the blocks."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "connecting ideas",
+      "targetEvidence": "shares a creative idea related to building with blocks.",
+      "alignmentRationale": "This task encourages children to express their thoughts creatively about construction."
+    },
+    {
+      "id": "7058967c-1545-44f9-a0f6-6167563fb499",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Imagine a cat found a new toy in the house. What do you think the cat would do with the toy?",
+      "rubric": [
+        "3 - Explains a fun action the cat might do, like play or pounce.",
+        "2 - Describes a simple action, like looking at or nudging the toy.",
+        "1 - Mentions the toy without an action.",
+        "0 - Says nothing about the cat or the toy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "put story events together",
+      "targetEvidence": "Describes a series of actions that the cat could take with the toy.",
+      "alignmentRationale": "This question requires children to create a narrative as they consider character actions and events."
+    },
+    {
+      "id": "6b53f5ec-5495-494f-8f4e-440e5e6f312c",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Once upon a time, a little turtle saw a butterfly in the park. The turtle wanted to be like the butterfly and fly high in the sky. What do you think the turtle could do next?",
+      "rubric": [
+        "3 - The turtle could ask the butterfly for help to fly.",
+        "2 - The turtle could try jumping really high.",
+        "1 - The turtle could just wish to fly.",
+        "0 - The turtle could swim in the water."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask the butterfly for help."
+        },
+        {
+          "key": "b",
+          "text": "Try jumping really high."
+        },
+        {
+          "key": "c",
+          "text": "Wish to fly."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predict from character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies a reasonable action the turtle might take to fly.",
+      "alignmentRationale": "This question assesses the child's ability to predict actions based on story details."
+    },
+    {
+      "id": "f88e2128-4db5-4447-a55a-68fb58f292ab",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Lily found a sparkling rock in the garden. She thought it might be a treasure. What do you think she would do with it?",
+      "rubric": [
+        "3 - Show it to her friends and tell them about it.",
+        "2 - Keep it for herself because it’s special.",
+        "1 - Put it back on the ground.",
+        "0 - Forget about it right away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Show it to her friends."
+        },
+        {
+          "key": "b",
+          "text": "Keep it for herself."
+        },
+        {
+          "key": "c",
+          "text": "Put it back on the ground."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "infer based on character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies a logical action Lily might take regarding the rock.",
+      "alignmentRationale": "This question assesses children's ability to infer potential actions based on character emotions."
+    },
+    {
+      "id": "63320acb-2935-4dbf-ab46-03ba428356aa",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Once a rabbit discovered a garden full of carrots. How do you think the rabbit felt about the garden?",
+      "rubric": [
+        "3 - Happy because it loves carrots!",
+        "2 - Surprised to find so many carrots.",
+        "1 - Curious about the garden.",
+        "0 - Sad because it wants other food."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Happy because it loves carrots!"
+        },
+        {
+          "key": "b",
+          "text": "Surprised to find so many carrots."
+        },
+        {
+          "key": "c",
+          "text": "Curious about the garden."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "comprehending character feelings",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies a feeling that the rabbit would have upon discovering the garden.",
+      "alignmentRationale": "This assesses the ability to connect a character's feelings to a narrative context."
+    },
+    {
+      "id": "e260d019-a995-4a64-ae10-3656b52bf3ac",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Think about a fairy who grants one wish. What would be a wise wish for someone to make?",
+      "rubric": [
+        "3 - The wish is thoughtful and shows understanding of consequences, like 'wishing for friendship or kindness.'",
+        "2 - The wish is okay but lacks depth, like 'wishing for a puppy.'",
+        "1 - The wish is unclear or not well thought out.",
+        "0 - The answer does not relate to making a wish."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "critical thinking about wishes",
+      "targetEvidence": "offers a reasonable wish considering its impact",
+      "alignmentRationale": "This task challenges the child to think deeply about the implications of making a wish."
+    },
+    {
+      "id": "a511152c-5db7-4211-b449-4820a1af664f",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A boy sees a spaceship land in his yard. What could he do next?",
+      "rubric": [
+        "3 - The answer reflects curiosity and excitement, like 'go to see if anyone is inside.'",
+        "2 - The answer shows some interest, like 'watch from a distance.'",
+        "1 - The answer is unrealistic or vague, like 'run away.'",
+        "0 - The answer doesn’t relate to responding to a spaceship."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Go to see if anyone is inside"
+        },
+        {
+          "key": "b",
+          "text": "Stay inside the house"
+        },
+        {
+          "key": "c",
+          "text": "Call the police"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring character motivation",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "selects a plausible action based on a surprising event",
+      "alignmentRationale": "This question measures the ability to connect surprising events to character actions."
+    },
+    {
+      "id": "d0b58262-5593-4b29-bfc1-1022eec22714",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Imagine a girl receives a magic gift that makes her fly. What would she do with it?",
+      "rubric": [
+        "3 - The answer includes creative ideas about flying, such as exploring or helping others.",
+        "2 - The answer is clear, mentioning one or two actions related to flying.",
+        "1 - The response is too vague with little connection to flying.",
+        "0 - The answer does not match the prompt about flying."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "imaginative prediction of character actions",
+      "targetEvidence": "provides an engaging idea for using a magic gift",
+      "alignmentRationale": "This prompt encourages creative thinking about what one would do with a magical ability."
+    },
+    {
+      "id": "96f77ca9-ec3e-4d37-89ad-b6c2423eb042",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A cat hears a strange noise outside. What might she do?",
+      "rubric": [
+        "3 - The answer shows understanding of curiosity, like 'investigate the sound cautiously.'",
+        "2 - The answer is a reasonable response, such as 'run outside.'",
+        "1 - The answer is too vague or unrealistic, like 'ignore it.'",
+        "0 - The answer does not connect to the situation at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Investigate the noise cautiously"
+        },
+        {
+          "key": "b",
+          "text": "Run away scared"
+        },
+        {
+          "key": "c",
+          "text": "Fall asleep"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting a character's reaction to a stimulus",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a plausible action based on a noise",
+      "alignmentRationale": "This item requires understanding how a character might respond to environmental cues."
+    },
+    {
+      "id": "54957c72-208c-4a28-856a-5e14294f0e0d",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "A boy finds a magic box that makes wishes come true. What might he wish for first?",
+      "rubric": [
+        "3 - The answer is a thoughtful wish that shows creativity, like for family happiness or adventure.",
+        "2 - The answer is a common wish, such as toys or candy, indicating some creativity.",
+        "1 - The wish is silly or unclear, showing little understanding of wishes.",
+        "0 - The answer does not relate to the story at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A happy family"
+        },
+        {
+          "key": "b",
+          "text": "A new toy"
+        },
+        {
+          "key": "c",
+          "text": "A pizza"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting a character's desire",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a plausible wish that fits the context of a magic box",
+      "alignmentRationale": "This task requires connecting character actions to possible wishes in a story context."
+    },
+    {
+      "id": "255999b2-faa8-4b3a-a444-a41e98b50e05",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Think of a boy who finds an old map. What adventure could he go on with it?",
+      "rubric": [
+        "3 - The adventure is exciting and includes details about destinations or challenges.",
+        "2 - The adventure is somewhat clear but lacks detail.",
+        "1 - The adventure is vague or unclear.",
+        "0 - The answer does not relate to using a map for adventure."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "creative linking of story elements",
+      "targetEvidence": "articulates a plausible adventure from the map",
+      "alignmentRationale": "This task tests the ability to connect the idea of a map to a storyline."
+    },
+    {
+      "id": "606a7ba6-1db8-4bda-adf0-094b7d04c855",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "In a story, a girl finds a secret garden. What might she do when she enters?",
+      "rubric": [
+        "3 - The answer shows understanding of exploration and discovery, like 'she'll feel happy and explore it.'",
+        "2 - The answer indicates some activity, like 'she might smell flowers.'",
+        "1 - The answer is vague or unhelpful, like 'she goes inside.'",
+        "0 - The answer does not relate to the secret garden."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Explore and pick flowers"
+        },
+        {
+          "key": "b",
+          "text": "Just stand there"
+        },
+        {
+          "key": "c",
+          "text": "Go back home"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting a character's action in a setting",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects an action fitting a secret garden context",
+      "alignmentRationale": "This task asks the child to connect a character's location to possible actions."
+    },
+    {
+      "id": "9296f22c-c5ef-4df6-ba83-a843e8ac9ec8",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Imagine a girl found a book that glows when opened. What do you think she would see inside?",
+      "rubric": [
+        "3 - The idea is creative and detailed, describing interesting images or events.",
+        "2 - The answer has some detail but might be a bit simple or vague.",
+        "1 - The answer is unclear or does not describe what she might see.",
+        "0 - The answer does not relate to the scenario at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "creative inference from a story element",
+      "targetEvidence": "provides a creative description of what might be inside the book",
+      "alignmentRationale": "This task measures the ability to connect story magic with imaginative outcomes."
+    },
+    {
+      "id": "8234fb5a-5d39-4eb6-9534-ddcf071f87a0",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Lily read about a girl who finds a magic wand. What do you think she will do with it?",
+      "rubric": [
+        "3 - She will use it to do magic.",
+        "2 - She will hide it.",
+        "1 - She could look at it.",
+        "0 - She does nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "She will use it to do magic."
+        },
+        {
+          "key": "b",
+          "text": "She will hide it."
+        },
+        {
+          "key": "c",
+          "text": "She could look at it."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring story details",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "the child connects the magic wand with action",
+      "alignmentRationale": "Children need to infer probable actions based on the context of the story to answer this."
+    },
+    {
+      "id": "85507992-1138-4f1b-9e67-5fd0832915b4",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Tim saw the rain stopped and the sun came out. What do you think he will do?",
+      "rubric": [
+        "3 - He will go outside to play.",
+        "2 - He might look out the window.",
+        "1 - He could stay inside.",
+        "0 - He won't do anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "He will go outside to play."
+        },
+        {
+          "key": "b",
+          "text": "He might look out the window."
+        },
+        {
+          "key": "c",
+          "text": "He could stay inside."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "the child connects rain stopping with playing outside",
+      "alignmentRationale": "This question tests the child's ability to predict future actions based on story context."
+    },
+    {
+      "id": "b6fd7295-f956-4b5e-a3cf-97751d500228",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Sophie is reading about a fairy who grants wishes. What might happen next?",
+      "rubric": [
+        "3 - The fairy grants a wish.",
+        "2 - Someone might be surprised.",
+        "1 - The fairy might fly away.",
+        "0 - Nothing happens."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The fairy grants a wish."
+        },
+        {
+          "key": "b",
+          "text": "Someone might be surprised."
+        },
+        {
+          "key": "c",
+          "text": "The fairy might fly away."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring story details",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "the child infers potential outcomes from a narrative element",
+      "alignmentRationale": "This question asks children to think about typical story progression to infer possible events."
+    },
+    {
+      "id": "c80356ca-ee84-4fb0-a95a-0fd1ce77d896",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Max read a story where a dinosaur got lost. What do you think the dinosaur will do next?",
+      "rubric": [
+        "3 - He will look for his friends.",
+        "2 - He might sit down.",
+        "1 - He could make a noise.",
+        "0 - He does nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "He will look for his friends."
+        },
+        {
+          "key": "b",
+          "text": "He might sit down."
+        },
+        {
+          "key": "c",
+          "text": "He could make a noise."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child predicts logical next steps for the character",
+      "alignmentRationale": "This task evaluates the child's ability to predict what a character will do based on the storyline."
+    },
+    {
+      "id": "e35d58e6-1afa-4b27-b4da-b08c7d9325d3",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Imagine a character in a story who is ready to go on an adventure. What do you think they might see on their journey?",
+      "rubric": [
+        "3 - Describes exciting things they might encounter.",
+        "2 - Mentions some ideas but is unclear.",
+        "1 - Offers one simple idea.",
+        "0 - No idea shared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "engaging with story elements",
+      "targetEvidence": "child provides imaginative ideas related to a narrative context",
+      "alignmentRationale": "This item captures the child’s ability to creatively engage with potential adventures in storytelling."
+    },
+    {
+      "id": "74376a2c-2e64-473d-8f17-c93cad7e5103",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Jack heard a strange noise in the story. What might he do?",
+      "rubric": [
+        "3 - He will investigate the noise.",
+        "2 - He might ignore it.",
+        "1 - He could cover his ears.",
+        "0 - He does nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "He will investigate the noise."
+        },
+        {
+          "key": "b",
+          "text": "He might ignore it."
+        },
+        {
+          "key": "c",
+          "text": "He could cover his ears."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "the child logically predicts how the character might react to a situation",
+      "alignmentRationale": "This question tests if the child can predict responses based on the character's situation."
+    },
+    {
+      "id": "b35ed5f4-ad82-40a7-87c8-3853ad120c7c",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Think about a character who feels happy at a party. What do you think they might do at the party?",
+      "rubric": [
+        "3 - Lists enjoyable activities at the party.",
+        "2 - Suggests activities but not clear.",
+        "1 - Shares one activity.",
+        "0 - No activity shared."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "engaging with story elements",
+      "targetEvidence": "child creatively articulates party experiences related to feelings",
+      "alignmentRationale": "This item assesses the child’s ability to relate emotions to expected behavior in a narrative setting."
+    },
+    {
+      "id": "db707c75-f4a8-474c-98fe-47f1b5fe0bb6",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Emma discovers a secret door in her house. What could she do next?",
+      "rubric": [
+        "3 - She will open it to see what's inside.",
+        "2 - She might walk away.",
+        "1 - She could knock on it.",
+        "0 - She does nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "She will open it to see what's inside."
+        },
+        {
+          "key": "b",
+          "text": "She might walk away."
+        },
+        {
+          "key": "c",
+          "text": "She could knock on it."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting character actions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "the child connects discovery with possible reactions",
+      "alignmentRationale": "This question reveals children's abilities to link discoveries with logical subsequent actions."
+    },
+    {
+      "id": "be3404cc-2c6a-4b7f-a431-f9657dafc146",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Maya saw her friend Jack looking sad. Maya remembered he likes playing outside. What could she do?",
+      "rubric": [
+        "3 - She invites him to play outside together.",
+        "2 - She asks if he wants to talk.",
+        "1 - She ignores him.",
+        "0 - She gets a toy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Invite him to play outside"
+        },
+        {
+          "key": "b",
+          "text": "Ask if he wants to talk"
+        },
+        {
+          "key": "c",
+          "text": "Ignore him"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "inferring a helpful action",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child selects an action that helps Jack feel better based on his liking.",
+      "alignmentRationale": "This question uses Maya's observation to emphasize the inference skill needed to connect feelings with actions."
+    },
+    {
+      "id": "2bbee03f-ece4-40f2-a5d1-fedb4b939cd8",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "What might a girl do if she sees a rainbow after the rain?",
+      "rubric": [
+        "3 - She might feel happy and go outside.",
+        "2 - She just looks at it.",
+        "1 - She feels scared.",
+        "0 - She doesn't care."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "inferring character reactions",
+      "targetEvidence": "The child describes an emotional reaction based on a common experience related to rainbows.",
+      "alignmentRationale": "This prompt asks for a personal connection, showing how common experiences can lead to various emotional responses."
+    },
+    {
+      "id": "1f42b343-f744-4ef6-a1d7-c90b3bcbf3fa",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "If a character in a story is sad because they lost a pet, what could make them feel better?",
+      "rubric": [
+        "3 - Finding the pet or getting a new one.",
+        "2 - Talking to a friend.",
+        "1 - Eating their favorite food.",
+        "0 - Nothing will help."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "connecting feelings to solutions",
+      "targetEvidence": "The child offers a practical solution that relates to the emotional situation.",
+      "alignmentRationale": "This question tests the ability to connect emotions with ideas for comfort and resolution in stories."
+    },
+    {
+      "id": "36282380-de21-469e-bc84-4bda723fad99",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "advanced_reading",
+      "format": "explanation",
+      "prompt": "Imagine a story where a boy discovers a treasure map. What do you think he might do next?",
+      "rubric": [
+        "3 - He starts looking for treasure.",
+        "2 - He shows it to a friend.",
+        "1 - He hides it.",
+        "0 - He ignores it."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "predicting story sequence",
+      "targetEvidence": "The child creates a plausible next step in the plot.",
+      "alignmentRationale": "This question encourages creative thinking about narrative progression in a familiar scenario."
+    }
+  ]
+}

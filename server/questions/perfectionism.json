@@ -1,0 +1,2645 @@
+{
+  "category": "perfectionism",
+  "questions": [
+    {
+      "id": "65685c3d-3344-4045-9b05-8a48957ff812",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "Your friend gave you clay, but it’s hard to make what you want. What can you do?",
+      "rubric": [
+        "3 - Talk about trying a different shape or animal.",
+        "2 - Say you want to keep working on it until it's good.",
+        "1 - Say you can’t make anything with it.",
+        "0 - Say nothing about what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "navigating difficulties with materials",
+      "targetEvidence": "shares ideas for using the clay differently or solutions to continue",
+      "alignmentRationale": "This prompts the child to think creatively about a challenge with a material and how to overcome it."
+    },
+    {
+      "id": "886336ee-8a1d-456a-ba54-99fd4e3aa0d9",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You got some paint on your hands. What should you do?",
+      "rubric": [
+        "3 - You wash your hands so you can keep painting.",
+        "2 - You ignore it and keep painting with messy hands.",
+        "1 - You get upset and stop painting.",
+        "0 - You decide painting is too hard."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Wash your hands first"
+        },
+        {
+          "key": "b",
+          "text": "Keep painting messily"
+        },
+        {
+          "key": "c",
+          "text": "Stop painting and get upset"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing a healthy response to a minor mess",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "picks a positive action after making a mess",
+      "alignmentRationale": "This question measures the ability to handle minor setbacks without frustration."
+    },
+    {
+      "id": "0f8c83aa-36b5-4c75-b4b8-7e4a7f2c23f5",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You were drawing, but your pencil broke. What will you do next?",
+      "rubric": [
+        "3 - You get a new pencil to keep drawing.",
+        "2 - You keep tapping it against the table.",
+        "1 - You just leave it and stop drawing.",
+        "0 - You don’t want to draw anymore."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Get a new pencil"
+        },
+        {
+          "key": "b",
+          "text": "Keep tapping on the table"
+        },
+        {
+          "key": "c",
+          "text": "Leave it and stop drawing"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "deciding on actions after something goes wrong",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a practical response to a minor issue",
+      "alignmentRationale": "This question tests the ability to consider next steps in the face of an unexpected problem."
+    },
+    {
+      "id": "1651b87e-56c5-487f-8be1-392bc5957ba2",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You want to bake cookies, but you ran out of chocolate chips. What can you do?",
+      "rubric": [
+        "3 - Suggest an alternative like using nuts or raisins.",
+        "2 - Say you will just wait until you have more.",
+        "1 - Say you can't make cookies anymore.",
+        "0 - Say nothing about the cookies."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "finding alternatives in cooking",
+      "targetEvidence": "offers a practical next step when an ingredient is missing",
+      "alignmentRationale": "This question prompts the child to think creatively about problem-solving in a cooking context."
+    },
+    {
+      "id": "2bfece81-15cb-4721-8266-e3074edffec4",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You made a snowman, but it fell over. What can you do now?",
+      "rubric": [
+        "3 - Explain how to start again or fix it.",
+        "2 - Share you want to build again quickly.",
+        "1 - Say you don’t want to try again.",
+        "0 - Say nothing at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "offering a solution after a setback",
+      "targetEvidence": "states a possible action or plan to rebuild or change",
+      "alignmentRationale": "This task evaluates flexibility and problem-solving approach after experiencing a setback."
+    },
+    {
+      "id": "f53a48ae-ccbf-432a-985b-d1562f9a3299",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You were coloring a picture, but some lines are outside the shapes. What will you do?",
+      "rubric": [
+        "3 - You can use a dark marker to outline the shapes again.",
+        "2 - You decide to ignore it and just finish the picture.",
+        "1 - You tear up the picture and start over.",
+        "0 - You refuse to ever color again."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Outline with a dark marker"
+        },
+        {
+          "key": "b",
+          "text": "Just finish the picture"
+        },
+        {
+          "key": "c",
+          "text": "Tear it up and start new"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "adapting work to look better",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "suggests a valid way to fix or adapt the coloring",
+      "alignmentRationale": "This question encourages children to think about improvement strategies instead of giving up when something isn't perfect."
+    },
+    {
+      "id": "47e65cd0-ccfd-415d-b807-c7da3157e95d",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You built a tower, but it's a little wobbly. What should you do?",
+      "rubric": [
+        "3 - You fix it by adding more blocks to make it stronger.",
+        "2 - You smile and say, 'It's okay, I like it like that.'",
+        "1 - You get mad and knock it down.",
+        "0 - You refuse to play with blocks anymore."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Add more blocks to fix it"
+        },
+        {
+          "key": "b",
+          "text": "Say it's fine as it is"
+        },
+        {
+          "key": "c",
+          "text": "Knock it down and stop building"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "determining a way to finish well despite a problem",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "picks an action that helps improve or accept the current project",
+      "alignmentRationale": "The question helps assess how the child decides to improve or adapt to a project that is not perfect."
+    },
+    {
+      "id": "b54d9c41-0166-409e-a6db-48279079041f",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You want to build a fort, but you don’t have enough blankets. What can you do?",
+      "rubric": [
+        "3 - You say you'll use pillows and chairs too.",
+        "2 - You might wait for more blankets.",
+        "1 - You decide not to build a fort.",
+        "0 - You don't know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Use pillows and chairs too."
+        },
+        {
+          "key": "b",
+          "text": "Wait for more blankets."
+        },
+        {
+          "key": "c",
+          "text": "Not build a fort."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a creative solution",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "suggests alternative materials for building",
+      "alignmentRationale": "This question examines how a child can creatively solve a problem with limited resources."
+    },
+    {
+      "id": "8ecdbf56-0ec3-40b8-bf72-068b31142cd2",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You were planting seeds, but some fell out. What can you do now?",
+      "rubric": [
+        "3 - You say you'll plant the seeds again.",
+        "2 - You think about just leaving them.",
+        "1 - You don't want to do anything.",
+        "0 - You are unsure."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Plant the seeds again."
+        },
+        {
+          "key": "b",
+          "text": "Leave them."
+        },
+        {
+          "key": "c",
+          "text": "Not do anything."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a helpful next step",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses to replant seeds instead of giving up",
+      "alignmentRationale": "This question assesses children's ability to recover from small setbacks in gardening."
+    },
+    {
+      "id": "5e0c203a-32f2-4317-8f05-a56bd18772d9",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You made a friendship bracelet, but it's too loose. How can you fix it?",
+      "rubric": [
+        "3 - You say you will tighten it or add more beads.",
+        "2 - You might try to tie it tighter.",
+        "1 - You think it's fine as it is.",
+        "0 - You don't know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "describe a manageable fix",
+      "targetEvidence": "suggests ways to improve the bracelet's fit",
+      "alignmentRationale": "This task tests creative problem-solving and adaptability in crafting."
+    },
+    {
+      "id": "dce7ab7f-5664-4950-9702-37be0fbe2ebf",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You painted a picture, but it got some dirt on it. What can you do?",
+      "rubric": [
+        "3 - You say you will clean it up or cover it.",
+        "2 - You might wait and see.",
+        "1 - You think it's okay as it is.",
+        "0 - You don't know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "describe a flexible change",
+      "targetEvidence": "suggests a way to manage the dirty painting",
+      "alignmentRationale": "This task encourages problem-solving after a mistake in creative work."
+    },
+    {
+      "id": "e3521a05-9fdc-4d03-a5a2-3d63b9b82e30",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You made a drawing, but it isn't colored in. What can you do?",
+      "rubric": [
+        "3 - You say you'll color it now.",
+        "2 - You want to wait to color it.",
+        "1 - You think it’s okay without color.",
+        "0 - You don't know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Color it now."
+        },
+        {
+          "key": "b",
+          "text": "Wait to color it."
+        },
+        {
+          "key": "c",
+          "text": "Leave it without color."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a next step",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses to color the drawing to improve it",
+      "alignmentRationale": "This question examines the willingness to complete a task after realizing something is missing."
+    },
+    {
+      "id": "5a19f42c-64f5-453b-b878-d4c30310caae",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You want to play outside, but it's raining. What could you do instead?",
+      "rubric": [
+        "3 - You suggest playing a game inside.",
+        "2 - You think about waiting until it stops raining.",
+        "1 - You feel sad about it.",
+        "0 - You want to do nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Play a game inside."
+        },
+        {
+          "key": "b",
+          "text": "Wait until it stops raining."
+        },
+        {
+          "key": "c",
+          "text": "Feel sad about it."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for finding options when plans change",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child offers an alternative activity due to the rain.",
+      "alignmentRationale": "This task explores adaptability to changing situations."
+    },
+    {
+      "id": "b51e01a9-0bb8-495d-b314-f00267525bd5",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You built a tower, but it fell over. What can you do now?",
+      "rubric": [
+        "3 - You say you'll try building it again carefully.",
+        "2 - You think about fixing it somehow.",
+        "1 - You say you'll leave it like that.",
+        "0 - You say you can't do anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Try building it again carefully."
+        },
+        {
+          "key": "b",
+          "text": "Think about fixing it somehow."
+        },
+        {
+          "key": "c",
+          "text": "Leave it like that."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a next step after a mistake",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child proposes a solution to rebuild the tower.",
+      "alignmentRationale": "This task explores coping with a mistake by suggesting a constructive next step."
+    },
+    {
+      "id": "441d3e06-51a8-4590-ad00-f5099750bf29",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You were drawing, but your crayon broke. What will you do?",
+      "rubric": [
+        "3 - You suggest getting a new crayon or fixing it.",
+        "2 - You say you'll keep trying with it.",
+        "1 - You get upset about it.",
+        "0 - You don’t know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for handling broken tools",
+      "targetEvidence": "The child offers a way to deal with the broken crayon.",
+      "alignmentRationale": "This task assesses how the child adapts to a challenge with tools."
+    },
+    {
+      "id": "4d9fdc2d-8e79-40fd-b46a-69f8cd3e1e89",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You have some stickers, but you ran out of the red ones. What will you do now?",
+      "rubric": [
+        "3 - You say you can use a different color or share.",
+        "2 - You think about saving the project until you find red.",
+        "1 - You get upset about it.",
+        "0 - You don't want to do it anymore."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for adapting to limited choices",
+      "targetEvidence": "The child identifies a way to continue despite missing a color.",
+      "alignmentRationale": "This task assesses adaptability and creativity with available resources."
+    },
+    {
+      "id": "950d7acc-5aa8-495a-83c7-8af138c08877",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You made a cake, but it didn't rise well. What can you do next?",
+      "rubric": [
+        "3 - You suggest eating it anyway or trying again.",
+        "2 - You think it could taste good as is.",
+        "1 - You get upset that it didn't rise.",
+        "0 - You say it's a bad cake."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Eat it anyway or try again."
+        },
+        {
+          "key": "b",
+          "text": "It could taste good as is."
+        },
+        {
+          "key": "c",
+          "text": "Feel upset about it."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for dealing with imperfect results",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child finds a possible solution regardless of the outcome.",
+      "alignmentRationale": "This task looks at resilience and willingness to try again despite challenges."
+    },
+    {
+      "id": "b369489b-2705-4134-8a43-cd5f0a57e6ca",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are making a drawing, and the colors are all mixed up. What will you do?",
+      "rubric": [
+        "3 - You decide to keep going and make it fun.",
+        "2 - You think about trying again later.",
+        "1 - You feel mad about it.",
+        "0 - You want to throw it away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Keep going and make it fun."
+        },
+        {
+          "key": "b",
+          "text": "Try again later."
+        },
+        {
+          "key": "c",
+          "text": "Feel mad about it."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for enjoying the process despite mistakes",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child expresses a positive or proactive stance on the mixed-up drawing.",
+      "alignmentRationale": "This task assesses maintaining enjoyment despite imperfections in work."
+    },
+    {
+      "id": "75b0589d-6fe1-491f-9964-adc6346e751a",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are playing a game, but you forgot the rules. What will you do?",
+      "rubric": [
+        "3 - You say you can ask someone or make up new rules.",
+        "2 - You think about remembering the rules better next time.",
+        "1 - You feel confused about the game.",
+        "0 - You don’t want to play anymore."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for seeking help or new instructions",
+      "targetEvidence": "The child identifies a helpful action to take after forgetting rules.",
+      "alignmentRationale": "This task measures the ability to seek help or adapt in play scenarios."
+    },
+    {
+      "id": "355dcfe1-f7b1-4667-b4dc-1d977d28f33e",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You drew a picture, but you used the wrong color for the sky. What should you do?",
+      "rubric": [
+        "3 - Change it to the right color!",
+        "2 - Just leave it like that.",
+        "1 - You could give up drawing.",
+        "0 - It doesn't matter to me."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Change it to the right color!"
+        },
+        {
+          "key": "b",
+          "text": "Just leave it like that."
+        },
+        {
+          "key": "c",
+          "text": "You could give up drawing."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing to adapt after a mistake",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Selecting a positive action after noticing a mistake",
+      "alignmentRationale": "This tests the child's ability to respond positively to a mistake, showing care without anxiety."
+    },
+    {
+      "id": "3be9203e-f4d0-40bb-868d-ac2963abc56d",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are coloring and go outside the lines. What do you want to do now?",
+      "rubric": [
+        "3 - You suggest starting again, try to fix it, or just keep coloring in the lines.",
+        "2 - You say to keep coloring but don’t think about fixing it.",
+        "1 - You say you don’t want to color anymore after the mistake.",
+        "0 - You don’t know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "choosing how to fix a mistake",
+      "targetEvidence": "The child suggests a way to respond after making a mistake when coloring.",
+      "alignmentRationale": "This question directly assesses the capability to choose a positive action after an error in a creative task, important for handling imperfection."
+    },
+    {
+      "id": "236c7270-663b-4dc9-9611-4ab3ea1795fe",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are putting together a jigsaw puzzle and realize a piece is missing. What do you want to do?",
+      "rubric": [
+        "3 - Find another piece or keep working on the puzzle.",
+        "2 - Look for the missing piece.",
+        "1 - Stop doing the puzzle.",
+        "0 - You don't know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Find another piece"
+        },
+        {
+          "key": "b",
+          "text": "Look for the missing piece"
+        },
+        {
+          "key": "c",
+          "text": "Stop doing the puzzle"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "persistence after a problem",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child chooses how to respond after discovering a missing puzzle piece.",
+      "alignmentRationale": "This question reflects persistence and coping skills in response to bumps while engaging in a puzzle, showing the ability to continue despite challenges."
+    },
+    {
+      "id": "2f88ea62-b349-4c4b-87fd-b580126019e4",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are decorating cookies, but one cookie breaks. What can you do?",
+      "rubric": [
+        "3 - You can decorate the broken cookie anyway.",
+        "2 - You might want to eat the broken cookie.",
+        "1 - You decide to stop decorating.",
+        "0 - You don't know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Decorate it anyway"
+        },
+        {
+          "key": "b",
+          "text": "Eat the broken cookie"
+        },
+        {
+          "key": "c",
+          "text": "Stop decorating"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "coping with imperfections",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child evaluates options for a broken cookie situation.",
+      "alignmentRationale": "This prompt focuses on how a child reacts to a setback in a food-related task that tests their ability to cope with imperfections."
+    },
+    {
+      "id": "1a0a07b7-e17a-4b10-ac5f-05a0983d3140",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are making a craft and accidentally tear the paper. What can you do now?",
+      "rubric": [
+        "3 - You decide to tape it or use a new piece of paper.",
+        "2 - You think about hiding the tear.",
+        "1 - You want to stop the craft.",
+        "0 - You don’t know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Tape it or use new paper"
+        },
+        {
+          "key": "b",
+          "text": "Hide the tear"
+        },
+        {
+          "key": "c",
+          "text": "Stop the craft"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "fixing a mistake",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child considers options after tearing paper while crafting.",
+      "alignmentRationale": "The task engages a child's response to a mistake in a task and encourages constructive solutions."
+    },
+    {
+      "id": "2e7b9893-9515-4b21-87e5-d4cde36541a2",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are using stickers, but some don’t stick well. What can you try to fix it?",
+      "rubric": [
+        "3 - You think of using a different sticker or some tape.",
+        "2 - You say to use the stickers anyway.",
+        "1 - You want to stop using stickers.",
+        "0 - You don't know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "ideas for material issues",
+      "targetEvidence": "The child generates solutions for when materials do not work as expected.",
+      "alignmentRationale": "This question tests the ability to think through problems related to materials creatively."
+    },
+    {
+      "id": "6c8e5cc1-afaa-45e3-bb88-d2b63e07f3b7",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You were building a tower with blocks, but it falls down. What do you want to do?",
+      "rubric": [
+        "3 - You say to rebuild it or try a different way.",
+        "2 - You think about leaving it and moving to something else.",
+        "1 - You want to give up building altogether.",
+        "0 - You don't say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "choosing how to handle a lost creation",
+      "targetEvidence": "The child expresses thoughts on what to do after the tower falls.",
+      "alignmentRationale": "This prompt focuses on the response to a setback during play, showing how a child can cope with failure productively."
+    },
+    {
+      "id": "cac33a6f-00b3-42d9-a043-58aa25832490",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are playing with play dough, but it gets stuck to your hands. What should you do?",
+      "rubric": [
+        "3 - You wash your hands or use a tool to help.",
+        "2 - You try to push the dough off with your other hand.",
+        "1 - You stop playing with the dough.",
+        "0 - You don’t know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Wash your hands"
+        },
+        {
+          "key": "b",
+          "text": "Try to push it off"
+        },
+        {
+          "key": "c",
+          "text": "Stop playing"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "adapt when materials differ",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child picks a helpful next step after the dough becomes sticky.",
+      "alignmentRationale": "This question evaluates the ability to adapt while facing a situation not going as planned, which is essential for learning flexibility."
+    },
+    {
+      "id": "c22b248a-9e57-42e4-8925-70ebafffdcc4",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are drawing a picture, but you think it’s not finished. What can you do?",
+      "rubric": [
+        "3 - You decide to add more to the picture or improve it.",
+        "2 - You think about putting it away and leaving it like that.",
+        "1 - You want to give up on the picture.",
+        "0 - You don’t know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Add more to the picture"
+        },
+        {
+          "key": "b",
+          "text": "Put it away"
+        },
+        {
+          "key": "c",
+          "text": "Give up"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "deciding work completion",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child weighs options to determine if the drawing is complete.",
+      "alignmentRationale": "The task examines a child’s ability to assess whether their work is at a stopping point or needs more effort, central to understanding perfectionism."
+    },
+    {
+      "id": "7712cebe-ccd7-4cb2-97ad-2e4e27c26393",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are using blocks to make a house, but it falls down. What do you want to do?",
+      "rubric": [
+        "3 - Suggests trying again or looking for a better way.",
+        "2 - Suggests giving up.",
+        "1 - Talks about feeling sad.",
+        "0 - Does not say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for what to do next",
+      "targetEvidence": "offers a way to continue building after a fall",
+      "alignmentRationale": "This question assesses the ability to respond to setbacks actively rather than simply expressing a feeling."
+    },
+    {
+      "id": "abf55f36-542e-4a0e-9af1-c0785108a152",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are making a necklace with beads, but you drop some on the floor. What do you do?",
+      "rubric": [
+        "3 - Says to pick them up or find another way.",
+        "2 - Says to leave them there.",
+        "1 - Talks about feeling upset.",
+        "0 - Does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for handling a mistake",
+      "targetEvidence": "provides a practical next step for dealing with the dropped beads",
+      "alignmentRationale": "This task measures how children handle small accidents or mistakes."
+    },
+    {
+      "id": "26f5e15c-4d1c-4b98-af2e-260b55a190a9",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are painting a picture, but your brush gets messy. What can you do now?",
+      "rubric": [
+        "3 - You can rinse the brush and keep going!",
+        "2 - You can try to fix it while painting.",
+        "1 - You can stop painting.",
+        "0 - You can blame the paint."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Rinse the brush and keep going!"
+        },
+        {
+          "key": "b",
+          "text": "Try to fix it while painting."
+        },
+        {
+          "key": "c",
+          "text": "Stop painting."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for managing materials",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "suggests a practical next step for a messy situation",
+      "alignmentRationale": "This question evaluates the ability to manage materials and keep creating."
+    },
+    {
+      "id": "4a96a867-0bc2-470a-ab93-df6a17de1209",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are planting seeds, but some seeds don't sprout. What could you try next?",
+      "rubric": [
+        "3 - Suggests watering them more or waiting longer.",
+        "2 - Suggests doing nothing.",
+        "1 - Talks about feeling disappointed.",
+        "0 - Does not say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for what to change",
+      "targetEvidence": "provides a helpful idea for seeds not sprouting",
+      "alignmentRationale": "This open task checks for flexible thinking in a gardening scenario."
+    },
+    {
+      "id": "191a5a52-6b42-4d2d-bc83-b00134c8eaa6",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are making a craft, but you find you are out of glue. What could you do next?",
+      "rubric": [
+        "3 - Says to use tape or find new glue.",
+        "2 - Says to wait for glue.",
+        "1 - Talks about being frustrated.",
+        "0 - Does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for finding alternatives",
+      "targetEvidence": "offers an alternative solution for a craft shortage",
+      "alignmentRationale": "This open-ended question assesses the ability to find solutions when resources are limited."
+    },
+    {
+      "id": "57855eca-b723-4ff5-98c6-db2941840d6b",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are trying to stack some cups, but one cup falls. What can you do now?",
+      "rubric": [
+        "3 - You suggest stacking the cups again carefully or getting help.",
+        "2 - You say to try stacking again.",
+        "1 - You say to stop.",
+        "0 - You don't say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "choosing a response to a mistake",
+      "targetEvidence": "The child suggests continuing to work with an adjustment based on the mistake.",
+      "alignmentRationale": "This task assesses the child's ability to respond positively to a small mistake without implying rigid behavior."
+    },
+    {
+      "id": "39c9d92d-a312-462d-bdcb-16910fd16536",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are playing with clay, but it gets too sticky. What can you do next?",
+      "rubric": [
+        "3 - You say to add flour or take a break.",
+        "2 - You say to keep trying.",
+        "1 - You say to stop.",
+        "0 - You don't say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "choosing a response to a problem",
+      "targetEvidence": "The child suggests a specific action to help fix the clay issue.",
+      "alignmentRationale": "This prompt evaluates how the child addresses the situation when materials do not behave as expected."
+    },
+    {
+      "id": "de77f3ba-ce37-4964-b650-6cddbdcfcc0c",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You accidentally spill juice while pouring. What should you do?",
+      "rubric": [
+        "3 - You could clean it up or get help.",
+        "2 - You say to leave it.",
+        "1 - You say it's no big deal.",
+        "0 - You say nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Clean it up or get help."
+        },
+        {
+          "key": "b",
+          "text": "Leave it."
+        },
+        {
+          "key": "c",
+          "text": "It's no big deal."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing a reaction to a spill",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child identifies an appropriate action after a spill occurs.",
+      "alignmentRationale": "This task targets the ability to decide on a next step after an accidental spill during a common activity."
+    },
+    {
+      "id": "6e8d22d9-fda1-4ea2-b216-81e6de4adb89",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are drawing, and the paper rips. What do you want to do now?",
+      "rubric": [
+        "3 - You say to tape it or use another paper.",
+        "2 - You say to keep drawing.",
+        "1 - You say to stop drawing.",
+        "0 - You don't say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "choosing a response to an accident",
+      "targetEvidence": "The child offers a way to fix or continue after the paper rips.",
+      "alignmentRationale": "This question assesses decision-making skills after an accidental rip, reflecting a balanced approach."
+    },
+    {
+      "id": "a53118bd-3b8b-48b9-b8de-8162195a18f1",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You tried to bake a cake, but it didn't rise. What do you want to do now?",
+      "rubric": [
+        "3 - You say to try again or use a different recipe.",
+        "2 - You say it’s okay.",
+        "1 - You say to stop baking.",
+        "0 - You don’t say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "choosing a response to an unsuccessful outcome",
+      "targetEvidence": "The child proposes a corrective action or adjustment after the cake fails to rise.",
+      "alignmentRationale": "This prompt assesses creative problem-solving after a baking challenge fails, focusing on constructive responses."
+    },
+    {
+      "id": "2886eecd-991f-4a61-ae8c-f0892ff810d8",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are building a tower with blocks. One falls over! What could you do next?",
+      "rubric": [
+        "3 - Suggests fixing it, starting over, or not worrying; shows acceptance of the mistake.",
+        "2 - Suggests fixing it without other options; shows some acceptance of the mistake.",
+        "1 - Suggests being sad or giving up; shows worry but not how to move on.",
+        "0 - Doesn’t suggest anything or seems confused about the mistake."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "responding to a mistake",
+      "targetEvidence": "The child suggests a positive action after a mistake.",
+      "alignmentRationale": "This question invites children to consider options after making a mistake, isolating the skill of responding to errors."
+    },
+    {
+      "id": "9db71778-392b-40c3-b4fa-cef01305223c",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are building a puzzle and realize a piece does not fit. What should you do?",
+      "rubric": [
+        "3 - Find a different piece or try again.",
+        "2 - Leave it and quit.",
+        "1 - Feel upset and cry.",
+        "0 - Doesn't respond or says nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Find a different piece."
+        },
+        {
+          "key": "b",
+          "text": "Leave it and quit."
+        },
+        {
+          "key": "c",
+          "text": "Feel upset."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "problem-solving with projects",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child chooses a productive way to handle a fitting issue in a project.",
+      "alignmentRationale": "This question examines the ability to solve a problem related to completing a task, isolating innovative positive responses."
+    },
+    {
+      "id": "cf8d6d2d-8ab2-43ab-a84a-a198329f8eff",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are baking cookies, but one batch burned. What is the best choice?",
+      "rubric": [
+        "3 - You can try again with a new batch!",
+        "2 - You might just eat the burnt ones anyway.",
+        "1 - You feel like you can't bake anymore.",
+        "0 - You don't know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Try again with a new batch!"
+        },
+        {
+          "key": "b",
+          "text": "Eat the burnt ones anyway."
+        },
+        {
+          "key": "c",
+          "text": "Stop baking because I failed."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "responding to setbacks",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects to try again rather than giving up",
+      "alignmentRationale": "This question tests the ability to bounce back from a setback in an enjoyable activity."
+    },
+    {
+      "id": "72e4bed9-f1fa-4cf4-96ba-743a81b7a3d2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are practicing a dance, but you miss a step! What is the best thing to do?",
+      "rubric": [
+        "3 - You can keep practicing and have fun, it’s okay to make mistakes!",
+        "2 - You can ask a friend for help but get too worried about it.",
+        "1 - You feel you should stop because you messed up.",
+        "0 - You don't know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Keep practicing and have fun!"
+        },
+        {
+          "key": "b",
+          "text": "Ask a friend to help me."
+        },
+        {
+          "key": "c",
+          "text": "Stop dancing and try again later."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "balancing care and flexibility",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses to keep practicing after a mistake",
+      "alignmentRationale": "This question tests the ability to balance care in performance with flexibility after an error."
+    },
+    {
+      "id": "d500a310-aa73-47a1-8c1e-8425b1ad3501",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are making a toy with clay, but you drop it and it breaks. What should you do?",
+      "rubric": [
+        "3 - You can fix it and make it even better than before!",
+        "2 - You can pick it up and try to fix it but you might feel upset.",
+        "1 - You think it’s ruined and you want to give up.",
+        "0 - You don't know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Fix it and make it better!"
+        },
+        {
+          "key": "b",
+          "text": "Try to fix it but feel sad."
+        },
+        {
+          "key": "c",
+          "text": "Give up on it because it’s broken."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "responding to mistakes",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses to fix the toy rather than give up",
+      "alignmentRationale": "This question focuses on how a child might handle breaking a creation and valuing the effort put in."
+    },
+    {
+      "id": "de2d5219-ef34-469b-a9dd-790d17236e80",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are playing a game and one piece gets lost. What can you do to keep having fun?",
+      "rubric": [
+        "3 - You come up with a fun idea to keep playing!",
+        "2 - You think about playing something else but aren't sure.",
+        "1 - You feel like the game is ruined now.",
+        "0 - You don't know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "adapting when things change",
+      "targetEvidence": "generates an alternative way to continue the game",
+      "alignmentRationale": "This question assesses adaptability in a game context when faced with a small setback."
+    },
+    {
+      "id": "62920fa7-40af-44dc-bf8b-cd0e6391ff26",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are helping in the kitchen, but you accidentally spill some flour. What can you do to fix it?",
+      "rubric": [
+        "3 - You clean it up and keep helping!",
+        "2 - You might stop and feel bad about it.",
+        "1 - You think you shouldn't have helped at all.",
+        "0 - You don't know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "handling small accidents",
+      "targetEvidence": "demonstrates a proactive approach to cleaning up",
+      "alignmentRationale": "This question focuses on personal responsibility and correcting a small error."
+    },
+    {
+      "id": "5a36b27b-1d90-4e6d-a5b3-ac3c5364bb07",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are setting up a game, but one rule doesn’t seem fair. What is a good way to handle it?",
+      "rubric": [
+        "3 - Suggest a better rule to make the game fair for everyone!",
+        "2 - Just play it anyway but feel unhappy.",
+        "1 - Think you should just follow the unfair rule.",
+        "0 - You don’t know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Suggest a better rule!"
+        },
+        {
+          "key": "b",
+          "text": "Play it anyway but feel unhappy."
+        },
+        {
+          "key": "c",
+          "text": "Just follow the unfair rule."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "deciding when to speak up",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "actively seeks to improve the situation rather than accepting it",
+      "alignmentRationale": "This question measures the ability to voice a concern in a social situation."
+    },
+    {
+      "id": "2fffc731-d821-48f8-826d-c34ac8502f1e",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are drawing, but you don’t like what you made. What can you do next?",
+      "rubric": [
+        "3 - You can make changes to improve your drawing!",
+        "2 - You might want to just leave it as is.",
+        "1 - You feel like you should start all over.",
+        "0 - You don't know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Make changes to improve it!"
+        },
+        {
+          "key": "b",
+          "text": "Leave it as is."
+        },
+        {
+          "key": "c",
+          "text": "Start all over."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "knowing when to keep working",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses to revise rather than abandon their work",
+      "alignmentRationale": "This question assesses the understanding of when to continue improving a task."
+    },
+    {
+      "id": "52c1dd6a-3014-40f7-bdd9-4f850ca28800",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You want to finish a project, but you are tired. What can you do to keep going?",
+      "rubric": [
+        "3 - You find a way to take a short break and then continue!",
+        "2 - You think about giving up but want to finish it.",
+        "1 - You just stop and leave it unfinished.",
+        "0 - You don't know what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "balancing care with completion",
+      "targetEvidence": "demonstrates a strategy for managing fatigue while working",
+      "alignmentRationale": "This question evaluates the ability to balance completing a task with recognizing fatigue."
+    },
+    {
+      "id": "aae1a01b-6cbb-4b47-84de-6371e3b88caf",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are making a friendship bracelet, but you run out of beads. What can you do?",
+      "rubric": [
+        "3 - You can use different beads or colors.",
+        "2 - You can stop making it.",
+        "1 - You can feel really upset about it.",
+        "0 - You can throw everything away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "adapting plans",
+      "targetEvidence": "The child proposes a solution to adapt their project.",
+      "alignmentRationale": "This task tests the child's ability to adapt their plans based on material availability."
+    },
+    {
+      "id": "02d0d57d-514d-48ea-a87b-0d1c32865063",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You finished a puzzle, but one piece is flipped over. What would be the best thing to do?",
+      "rubric": [
+        "3 - You turn the piece around to see it properly.",
+        "2 - You leave it flipped and walk away.",
+        "1 - You take all the pieces apart again.",
+        "0 - You don’t finish the puzzle."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I turn the piece around to see it."
+        },
+        {
+          "key": "b",
+          "text": "I leave it flipped and walk away."
+        },
+        {
+          "key": "c",
+          "text": "I take all the pieces apart again."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "deciding completion",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child evaluates what completion means based on a minor detail.",
+      "alignmentRationale": "This task tests the child's understanding of the idea of completion based on a small oversight."
+    },
+    {
+      "id": "59165a32-a8db-4535-96ea-f339b6c94d1b",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "While playing with clay, it accidentally gets mixed with another color. What should you do?",
+      "rubric": [
+        "3 - You continue making something new with it.",
+        "2 - You try to separate the colors back.",
+        "1 - You complain and stop playing.",
+        "0 - You throw the clay away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I keep making something new."
+        },
+        {
+          "key": "b",
+          "text": "I try to separate the colors back."
+        },
+        {
+          "key": "c",
+          "text": "I complain and stop playing."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "adapting to changes",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child suggests a constructive way to keep using the altered material.",
+      "alignmentRationale": "This task illustrates how the child can embrace unexpected changes in their play."
+    },
+    {
+      "id": "c2590cdf-9277-4d0a-a7b8-375e084d94e2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are painting, but you spill some paint. How can you keep painting?",
+      "rubric": [
+        "3 - You can wipe it up and keep going.",
+        "2 - You can stop painting for a while.",
+        "1 - You can get mad and leave.",
+        "0 - You can just give up completely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I wipe it up and keep going."
+        },
+        {
+          "key": "b",
+          "text": "I stop painting for a while."
+        },
+        {
+          "key": "c",
+          "text": "I get mad and leave."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "moving on from spills",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child finds a way to continue despite a mistake with paint.",
+      "alignmentRationale": "This task assesses the child's problem-solving after a project has an unexpected event."
+    },
+    {
+      "id": "fb5e8d1c-685c-4382-8e6b-13a6beca5718",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are drawing a picture and you make a small mistake. What do you do?",
+      "rubric": [
+        "3 - You choose to fix it and feel okay about it.",
+        "2 - You fix it but feel really upset.",
+        "1 - You ignore the mistake and say it's fine.",
+        "0 - You give up the drawing completely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I fix it and keep going."
+        },
+        {
+          "key": "b",
+          "text": "I fix it but feel really upset."
+        },
+        {
+          "key": "c",
+          "text": "I ignore the mistake."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing a mistake",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child identifies a healthy way to respond to an error in their drawing.",
+      "alignmentRationale": "This task isolates the child's ability to handle minor mistakes and evaluate their response."
+    },
+    {
+      "id": "67baa99b-8049-4a5f-8f01-af6b0b680cfe",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are building with blocks and the tower falls down. What can you do next?",
+      "rubric": [
+        "3 - You can rebuild it again.",
+        "2 - You can leave it and play with something else.",
+        "1 - You can cry and not play anymore.",
+        "0 - You can give up on building."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "flexibility after a mistake",
+      "targetEvidence": "The child suggests a positive action after the tower falls.",
+      "alignmentRationale": "This task focuses on the child's ability to adapt after a setback, a key aspect of flexibility."
+    },
+    {
+      "id": "c39be76c-7ce5-4d1e-988d-c9896e278881",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are coloring and you accidentally color outside the lines. What should you do next?",
+      "rubric": [
+        "3 - You keep coloring and enjoy the process.",
+        "2 - You try to erase it and fix it.",
+        "1 - You stop coloring completely.",
+        "0 - You throw the page away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I keep coloring and enjoy it."
+        },
+        {
+          "key": "b",
+          "text": "I try to erase and fix it."
+        },
+        {
+          "key": "c",
+          "text": "I stop coloring completely."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "handling unexpected results",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child identifies a positive action when art does not meet expectations.",
+      "alignmentRationale": "This task isolates the child's response to an unexpected result and emphasizes enjoyment over perfection."
+    },
+    {
+      "id": "48e924cf-cda9-4e22-a1bd-a917892910e6",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are building a sandcastle, but it collapses a little. What can you do?",
+      "rubric": [
+        "3 - Rebuild it and keep having fun!",
+        "2 - Fix only the collapsed parts.",
+        "1 - Leave it and walk away.",
+        "0 - Feel upset and do nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Rebuild it and keep having fun!"
+        },
+        {
+          "key": "b",
+          "text": "Fix only the collapsed parts."
+        },
+        {
+          "key": "c",
+          "text": "Leave it and walk away."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "finding solutions after a mistake",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses to rebuild or continue playing in a positive way",
+      "alignmentRationale": "This question isolates the choice of action after a mistake, emphasizing resilience and creativity."
+    },
+    {
+      "id": "de2782e0-275f-47a2-8aed-ee33c55c7028",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are painting, but you spill water on your picture. What is a good next step?",
+      "rubric": [
+        "3 - Use a paper towel to clean it up and keep painting!",
+        "2 - Try to cover it up with more paint.",
+        "1 - Give up and stop painting.",
+        "0 - Get really upset about the mistake."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Use a paper towel to clean it up!"
+        },
+        {
+          "key": "b",
+          "text": "Try to cover it up with more paint."
+        },
+        {
+          "key": "c",
+          "text": "Give up and stop painting."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recovery from errors",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "identifies a constructive way to address the spill and continue work",
+      "alignmentRationale": "This question tests the ability to recover from mistakes and keep trying."
+    },
+    {
+      "id": "02d59f3b-83af-4c31-8c51-3e995ef569ec",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You're making a card for a friend, but you accidentally smudge it. What can you choose to do?",
+      "rubric": [
+        "3 - Shares a good plan to fix or finish the card.",
+        "2 - Mentions thinking of a way to make it work.",
+        "1 - Says not much can be done.",
+        "0 - Expresses that it's ruined and gives up."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "adapting after a mistake",
+      "targetEvidence": "verbalizes an action plan to adapt to the smudge",
+      "alignmentRationale": "This open question allows for varied responses on how to deal with making a mistake."
+    },
+    {
+      "id": "695acac9-fd6f-41de-a520-5b867be95265",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You're building with blocks, but the tower keeps falling down. What can you do?",
+      "rubric": [
+        "3 - Suggests different ways to make it stronger or try again.",
+        "2 - Talks about how to build it differently.",
+        "1 - Says it can't be done.",
+        "0 - Gives up building altogether."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "problem solving with persistence",
+      "targetEvidence": "provides a solution or change in approach to building.",
+      "alignmentRationale": "Focuses on problem-solving strategies for ongoing challenges."
+    },
+    {
+      "id": "5a82121d-0c59-4748-98bd-da260e341101",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You're baking cookies, but you ran out of sugar. What could you decide to do?",
+      "rubric": [
+        "3 - Suggests a different sweetener or a new recipe.",
+        "2 - Thinks of making something else.",
+        "1 - Talks about how the cookies won't work without it.",
+        "0 - Says to stop baking completely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "adapting plans",
+      "targetEvidence": "identifies how to adjust the baking process or recipe",
+      "alignmentRationale": "Tests adaptability in culinary challenges."
+    },
+    {
+      "id": "8208f48d-3c2f-470c-9952-1df1815366c2",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "If you forgot how to finish your craft project, what would you do?",
+      "rubric": [
+        "3 - You ask someone for help or tips.",
+        "2 - You think of trying one more time.",
+        "1 - You feel stuck and don’t know what to do.",
+        "0 - You stop and leave it unfinished."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "seeking help",
+      "targetEvidence": "demonstrates willingness to ask for assistance or think through solutions",
+      "alignmentRationale": "This explores how the child responds when facing a completed task."
+    },
+    {
+      "id": "2a3dc46e-c703-4336-aff6-e4b5abe97b8e",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "Your painting isn’t as good as you hoped. What will you do next?",
+      "rubric": [
+        "3 - You try adding more colors to fix it.",
+        "2 - You stop and decide not to change it.",
+        "1 - You feel frustrated but keep it how it is.",
+        "0 - You tear it up because you don't like it."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Add more colors to make it better."
+        },
+        {
+          "key": "b",
+          "text": "Stop and don’t change it at all."
+        },
+        {
+          "key": "c",
+          "text": "Tear it up because it isn’t good enough."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "flexibility with effort",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "shows willingness to adjust the work instead of abandoning it",
+      "alignmentRationale": "This tests how children handle their own disappointment and still value their work."
+    },
+    {
+      "id": "4832457a-903f-4e7a-9d63-19e042592f96",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You made a clay figure, but it fell apart. What will you do now?",
+      "rubric": [
+        "3 - You try to put it back together or start a new one.",
+        "2 - You feel sad and take a break.",
+        "1 - You just leave it and walk away.",
+        "0 - You don't want to try working with clay again."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "adaptation after failure",
+      "targetEvidence": "demonstrates a willingness to rebuild or restart the project",
+      "alignmentRationale": "This question elicits responses about adapting after an unexpected issue."
+    },
+    {
+      "id": "b44cecea-44ff-4feb-8b91-6e4afaaf302f",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "Your story is finished, but you think it could be better. What do you do?",
+      "rubric": [
+        "3 - You read it again and add more ideas!",
+        "2 - You leave it as it is and feel okay about it.",
+        "1 - You feel bad that it’s not better and don’t know what to change.",
+        "0 - You want to start over completely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "You add more ideas to make it better."
+        },
+        {
+          "key": "b",
+          "text": "You leave it as is and feel okay."
+        },
+        {
+          "key": "c",
+          "text": "You just want to start over."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "deciding when work is ready",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "recognizes the value in editing and improving work",
+      "alignmentRationale": "This tests the ability to recognize when a task can be considered complete or needs changes."
+    },
+    {
+      "id": "4d8d3f78-936d-4b29-b8ab-3eded668c177",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are putting stickers on your art, but one falls off. What do you do?",
+      "rubric": [
+        "3 - You pick up the sticker and carefully put it back on. You keep going!",
+        "2 - You pick up the sticker but don’t put it back on. You try again later.",
+        "1 - You leave it off but wish you could fix it. You stop for a while.",
+        "0 - You ignore it and do something else completely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Pick it up and stick it back on."
+        },
+        {
+          "key": "b",
+          "text": "Leave it off and try later."
+        },
+        {
+          "key": "c",
+          "text": "Ignore it completely."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "care for work",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "rearranges the sticker and continues the activity",
+      "alignmentRationale": "This question tests how a child values effort when something goes wrong."
+    },
+    {
+      "id": "225a6922-8c5d-48e5-9bfe-c0cb87512071",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You made a drawing, but it has a mistake. What will you do next?",
+      "rubric": [
+        "3 - You find a way to fix it or make it better.",
+        "2 - You think about fixing it but might leave it as is.",
+        "1 - You feel annoyed, but stay calm",
+        "0 - You want to erase it but don't know how."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "handling mistakes",
+      "targetEvidence": "offers strategies to improve the drawing",
+      "alignmentRationale": "This question elicits responses about how to deal with imperfection in creative work."
+    },
+    {
+      "id": "5bdb27d1-54d6-40be-a52a-3459d1611447",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You did a fun science experiment, but it didn't work out as planned. What will you do?",
+      "rubric": [
+        "3 - You think about what went wrong and want to try again.",
+        "2 - You feel disappointed but might try another way.",
+        "1 - You give up and don't want to talk about it.",
+        "0 - You think science is boring now."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "learning from mistakes",
+      "targetEvidence": "indicates a desire to understand and experiment again",
+      "alignmentRationale": "This prompt elicits whether children learn from setbacks rather than avoid the activity."
+    },
+    {
+      "id": "bc89c18a-f96f-4648-a712-b152083762eb",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are putting together a puzzle, but one piece doesn't fit. What will you do next?",
+      "rubric": [
+        "3 - Thoughtfully explains moving to another piece or checking the picture again. Considered response to the mistake.",
+        "2 - Mentions looking for another piece or trying a different approach, showing flexibility.",
+        "1 - Gives a vague answer like 'try again' without detail.",
+        "0 - No response or not related to the situation."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "decide when work is ready",
+      "targetEvidence": "the child suggests a plan to continue or change approach after a mistake",
+      "alignmentRationale": "Encourages reflection on the readiness of work after encountering an issue."
+    },
+    {
+      "id": "aec010cc-491f-4e5c-822f-66aa6b290919",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You finish your homework, but you see a few scribbles on it. What should you do?",
+      "rubric": [
+        "3 - Carefully check the work for accuracy and decide if it needs fixing or is done.",
+        "2 - Mention fixing it but also say it's mostly fine, showing some awareness.",
+        "1 - Suggest turning it in anyway without consideration for correction.",
+        "0 - No practical response or an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Check it and fix the scribbles."
+        },
+        {
+          "key": "b",
+          "text": "Turn it in as it is."
+        },
+        {
+          "key": "c",
+          "text": "Pretend the scribbles aren't there."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "balancing care and completion",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child evaluates whether to fix errors or accept their work as complete",
+      "alignmentRationale": "Directly tests the ability to balance perfectionism with task completion."
+    },
+    {
+      "id": "909f31f3-56b6-4bd0-b3b1-e3cc77fa189e",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are making a video for fun but it doesn't turn out how you wanted. What do you do now?",
+      "rubric": [
+        "3 - Describe a plan to edit it or try again, showing flexibility.",
+        "2 - Mention redoing it but not clearly explaining how.",
+        "1 - Give up on making videos altogether.",
+        "0 - No relevant answer or response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "handling mistakes",
+      "targetEvidence": "the child considers what to do after a disappointing result",
+      "alignmentRationale": "Evaluates the child's mindset towards mistakes in personal projects."
+    },
+    {
+      "id": "3b11fbaf-a8d4-4e1e-93b0-111efd9112b9",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "While building with clay, your sculpture falls apart. What should you do next?",
+      "rubric": [
+        "3 - Assess what fell and rebuild it, considering how to improve it this time.",
+        "2 - Try to piece it back together without thinking about how to fix it.",
+        "1 - Walk away and not try to fix it at all.",
+        "0 - Get upset and refuse to work with it anymore."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Rebuild it considering what went wrong."
+        },
+        {
+          "key": "b",
+          "text": "Just try to put it back together."
+        },
+        {
+          "key": "c",
+          "text": "Leave it and don't try again."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "adapt when materials differ",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "the child suggests a solution after a completion issue arises",
+      "alignmentRationale": "Focuses on responding to setbacks in a creative process."
+    },
+    {
+      "id": "6cd8b95b-a81f-417e-baf2-b74b5ec85a55",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You try to solve a riddle, but you don’t get the answer. What will you do next?",
+      "rubric": [
+        "3 - Explain asking someone for help or trying to figure it out another way.",
+        "2 - Say you'll just forget about it.",
+        "1 - Mention giving up without trying.",
+        "0 - No clear idea of what to do after."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "handling mistakes",
+      "targetEvidence": "the child describes a constructive next step after failing to solve a challenge",
+      "alignmentRationale": "Encourages a positive response to misunderstanding or incorrectness."
+    },
+    {
+      "id": "b2816327-deed-483c-8113-af3240eaba1a",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are drawing and no colors match what you want. What do you do?",
+      "rubric": [
+        "3 - You mix colors or use what you have to make it look nice.",
+        "2 - You try to use the closest thing you have.",
+        "1 - You say it’s not what you wanted and stop working.",
+        "0 - You don’t answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "creatively adapting to limited resources",
+      "targetEvidence": "finds alternative solutions when facing material challenges",
+      "alignmentRationale": "This question explores how children respond flexibly to varying resources while valuing their effort."
+    },
+    {
+      "id": "4863bf6a-4dc7-4bbd-a8aa-2bdaf8ec8160",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are baking with a friend and the cookies burn. What will you do next?",
+      "rubric": [
+        "3 - You suggest making a new batch or eating them anyway. You value the fun of baking.",
+        "2 - You decide to make a new batch but say you did it wrong. You still care about finishing.",
+        "1 - You say you will just eat the burnt cookies and don't suggest anything mainly.",
+        "0 - You don't suggest what to do or seem upset about the cookies."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "choosing a next step after a mistake",
+      "targetEvidence": "chooses a constructive action or attitude after an imperfection",
+      "alignmentRationale": "The question asks the child to propose a next step after a tangible error while recognizing the effort in baking."
+    },
+    {
+      "id": "506116d8-b017-4507-a775-d48d6b6b1670",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are trying to make a craft, but the glue isn't working. What could you do?",
+      "rubric": [
+        "3 - You find something else to hold it together.",
+        "2 - You try to use the glue anyway.",
+        "1 - You say it won't work and stop trying.",
+        "0 - You don't suggest a solution."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Find something else to hold it together."
+        },
+        {
+          "key": "b",
+          "text": "Try to use the glue anyway."
+        },
+        {
+          "key": "c",
+          "text": "Say it won't work and stop trying."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "adaptation when materials are uncooperative",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a creative solution to an unexpected challenge",
+      "alignmentRationale": "This question evaluates how children adapt their materials to achieve their craft goals, emphasizing problem-solving."
+    },
+    {
+      "id": "467bee3a-62c8-48f4-9be4-1343fbbcaf49",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You finish building a model, but it's different from what you wanted. What will you do?",
+      "rubric": [
+        "3 - You admire what you made and see what you can change.",
+        "2 - You think about starting over, but keep it for now.",
+        "1 - You say it’s not what you wanted and leave it alone.",
+        "0 - You don’t give any answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "evaluating completed work",
+      "targetEvidence": "considers how to appreciate or adapt a finished project with imperfections",
+      "alignmentRationale": "This question encourages the child to think about how to react to a finished product even if it's not perfect."
+    },
+    {
+      "id": "22fa1ea3-f938-4e00-bbcb-dd10a2799835",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are sewing, but the thread breaks. What will you do next?",
+      "rubric": [
+        "3 - You fix the thread and keep going or change your plan.",
+        "2 - You wonder if you should stop and think about what to do.",
+        "1 - You think it’s ruined and don’t fix it.",
+        "0 - You don’t say what to do."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "next steps after a minor issue",
+      "targetEvidence": "proposes positive next steps after a minor interrupting issue",
+      "alignmentRationale": "This question examines how children handle small interruptions to their tasks."
+    },
+    {
+      "id": "f66f6b50-3644-447c-8d7d-41773501918a",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "If you are making a craft and it doesn't look right, what will you do?",
+      "rubric": [
+        "3 - You change it or add something new.",
+        "2 - You try to fix it but feel frustrated.",
+        "1 - You just stop working on it.",
+        "0 - You feel sad and give up."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "responding to craft mistakes",
+      "targetEvidence": "describes an action taken to adjust or improve a craft",
+      "alignmentRationale": "This prompt allows children to express their willingness to adapt in crafting, revealing resilience and creativity."
+    },
+    {
+      "id": "5bba7c0b-c422-47f2-bf9b-f37db461f9bb",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "During a team game, you miss the ball. What do you do next?",
+      "rubric": [
+        "3 - You smile and get ready for the next play.",
+        "2 - You feel bad but keep playing.",
+        "1 - You sit out and don’t try again.",
+        "0 - You get upset and leave the game."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Get ready for another try!"
+        },
+        {
+          "key": "b",
+          "text": "Keep playing but feel bad."
+        },
+        {
+          "key": "c",
+          "text": "Sit out of the game."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "staying positive after a mistake",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "makes a choice to stay engaged positively after a mistake",
+      "alignmentRationale": "This item measures how a child maintains a positive attitude during teamwork after a small failure."
+    },
+    {
+      "id": "f1498dc0-ef23-442a-978c-124fae20eeb1",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "perfectionism",
+      "format": "explanation",
+      "prompt": "You are writing a story, but you don't know what to say next. What should you do?",
+      "rubric": [
+        "3 - Take a break and think, then write more.",
+        "2 - Just stop writing for now.",
+        "1 - Erase everything and start again.",
+        "0 - Give up on the story."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Take a break and think."
+        },
+        {
+          "key": "b",
+          "text": "Stop writing for now."
+        },
+        {
+          "key": "c",
+          "text": "Erase it all."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "deciding on next steps when stuck",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a constructive action when unsure in writing",
+      "alignmentRationale": "This question focuses on how a child approaches a creative block, encouraging productive coping strategies."
+    }
+  ]
+}

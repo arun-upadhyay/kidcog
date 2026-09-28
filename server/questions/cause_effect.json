@@ -1,0 +1,2705 @@
+{
+  "category": "cause_effect",
+  "questions": [
+    {
+      "id": "9669f686-94e4-4e0e-91e3-3b2afd0199d2",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What do you think happens if a flower doesn't get water?",
+      "rubric": [
+        "3 - The flower wilts or dies because it needs water.",
+        "2 - It changes in some way.",
+        "1 - It might not grow.",
+        "0 - It stays the same."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "predicting an effect of a lack",
+      "targetEvidence": "provides a plausible outcome based on the flower not receiving water",
+      "alignmentRationale": "The question encourages exploration of consequences stemming from a missing condition."
+    },
+    {
+      "id": "a55f8bb4-5564-4165-bb20-a292e991ae33",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you turn off a fan, what happens in the room?",
+      "rubric": [
+        "3 - It gets warmer without the fan.",
+        "2 - It stays the same for a little.",
+        "1 - The fan will break.",
+        "0 - The fan spins slowly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It gets warmer without the fan."
+        },
+        {
+          "key": "b",
+          "text": "It cools down for a while."
+        },
+        {
+          "key": "c",
+          "text": "The light turns off."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting temperature changes",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies a clear consequence of the fan being turned off",
+      "alignmentRationale": "The question focuses on identifying how the temperature will change based on the operation of the fan."
+    },
+    {
+      "id": "2368b9ca-491a-44cc-82d8-59d1fe78515e",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens when a balloon is popped?",
+      "rubric": [
+        "3 - It makes a loud noise and goes flat.",
+        "2 - It might fly around.",
+        "1 - It can still be seen.",
+        "0 - Nothing happens."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "describing an outcome from an action",
+      "targetEvidence": "describes a plausible outcome when a balloon is popped",
+      "alignmentRationale": "The question focuses on the cause and effect of an action in a clear scenario."
+    },
+    {
+      "id": "ba32e2d8-9775-452d-854c-0233579ee6e4",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you press a button on a toy, what happens to the toy?",
+      "rubric": [
+        "3 - The toy starts making noise or moves because of the button.",
+        "2 - The toy might light up or do something but not clearly off the button.",
+        "1 - The toy does nothing at all.",
+        "0 - The toy breaks."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It makes noise."
+        },
+        {
+          "key": "b",
+          "text": "It might fall down."
+        },
+        {
+          "key": "c",
+          "text": "It can be carried."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting an effect of a change",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "identifies a clear action of the toy responding to pressing the button",
+      "alignmentRationale": "The question isolates the cause-and-effect relationship between pressing the button and the toy's action."
+    },
+    {
+      "id": "82dd6a85-5980-41cf-9a0c-e13f4342ddb1",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you mix soap with water, what happens?",
+      "rubric": [
+        "3 - It makes bubbles.",
+        "2 - It changes the water color.",
+        "1 - It can float things.",
+        "0 - It makes the water heavy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It makes bubbles."
+        },
+        {
+          "key": "b",
+          "text": "It changes the taste."
+        },
+        {
+          "key": "c",
+          "text": "It creates a mess."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting the result of mixing",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies the result of mixing soap and water clearly",
+      "alignmentRationale": "The task requires connecting the action of mixing and the specific outcome it creates."
+    },
+    {
+      "id": "74d7fd75-7bca-4798-a534-c4ee70d8ba7d",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you throw a rock in the water, what happens?",
+      "rubric": [
+        "3 - It makes splashes in the water.",
+        "2 - It might sink.",
+        "1 - It could float.",
+        "0 - Nothing happens."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "describing an outcome from an action",
+      "targetEvidence": "describes an observable result of the rock being thrown into water",
+      "alignmentRationale": "Children connect the action of throwing the rock and the response of the water."
+    },
+    {
+      "id": "b3a7f2da-fd4a-404e-b5f6-06d5ad445bf4",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you open a door, what happens next?",
+      "rubric": [
+        "3 - You can walk through the door.",
+        "2 - You might see something different.",
+        "1 - It might not open all the way.",
+        "0 - The door stays closed."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "You can walk through the door."
+        },
+        {
+          "key": "b",
+          "text": "You might break the door."
+        },
+        {
+          "key": "c",
+          "text": "You can touch the door."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting the outcome of opening something",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies an action that follows correctly from opening the door",
+      "alignmentRationale": "The question tests the direct consequence of opening a door."
+    },
+    {
+      "id": "026b1b76-ce6c-438f-a57e-d7e6fee04665",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you push a toy car, what happens to the car?",
+      "rubric": [
+        "3 - The toy car rolls away when pushed.",
+        "2 - The toy car moves a little.",
+        "1 - The toy car stays still.",
+        "0 - I don’t know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The toy car rolls away."
+        },
+        {
+          "key": "b",
+          "text": "The toy car moves a bit."
+        },
+        {
+          "key": "c",
+          "text": "The toy car doesn't move."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "observing movement caused by force",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "understands that pushing causes movement",
+      "alignmentRationale": "This question evaluates the connection between an action (pushing) and its effect (movement), illustrating cause and effect."
+    },
+    {
+      "id": "c8e8ca2c-0885-4103-ac0c-aecac4658734",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If it rains, what happens to the ground?",
+      "rubric": [
+        "3 - The ground gets wet.",
+        "2 - The ground has some water on it.",
+        "1 - The ground might dry.",
+        "0 - I don’t know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The ground gets wet."
+        },
+        {
+          "key": "b",
+          "text": "The ground gets dry."
+        },
+        {
+          "key": "c",
+          "text": "The ground changes color."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "detecting environmental change from weather",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "understands that rain causes wet ground",
+      "alignmentRationale": "This item tests the child's understanding of weather effects on the environment, linking the cause to an observable outcome."
+    },
+    {
+      "id": "0f5ed164-8afc-4efc-9beb-8b09c31ba16c",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you turn on a light, what happens in the room?",
+      "rubric": [
+        "3 - The room gets bright because the light is on.",
+        "2 - The room is a little brighter in some places.",
+        "1 - It might change a bit, but not much.",
+        "0 - I don’t know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The room gets bright."
+        },
+        {
+          "key": "b",
+          "text": "The room is darker."
+        },
+        {
+          "key": "c",
+          "text": "Nothing happens at all."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting the result of an action",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies the outcome of turning on a light",
+      "alignmentRationale": "This task assesses the ability to predict the effect of an action, demonstrating cause and effect."
+    },
+    {
+      "id": "91a2386e-ed0b-4a58-8ca3-63bea8406bce",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you throw a ball, what happens to the ball?",
+      "rubric": [
+        "3 - The ball goes up or far away when thrown.",
+        "2 - The ball moves a little bit.",
+        "1 - The ball might stay still.",
+        "0 - I don’t know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The ball goes far away."
+        },
+        {
+          "key": "b",
+          "text": "The ball moves a little."
+        },
+        {
+          "key": "c",
+          "text": "The ball does nothing."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "anticipating the motion from an action",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "understands that throwing causes motion",
+      "alignmentRationale": "This question measures the ability to connect the action of throwing to the ball's movement, highlighting cause and effect."
+    },
+    {
+      "id": "b278cb7d-37a5-4dbc-af90-8d2e2dcd7918",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you put a seed in the soil?",
+      "rubric": [
+        "3 - The seed will grow into a plant.",
+        "2 - It might do something later.",
+        "1 - I don’t know what happens.",
+        "0 - I can’t say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "linking action to growth outcome",
+      "targetEvidence": "describes an outcome of planting a seed",
+      "alignmentRationale": "This item evaluates the ability to connect an action with its growth result, thus testing understanding of cause and consequence."
+    },
+    {
+      "id": "ef1484a2-1e6b-4ab4-a8df-d065db64fa5b",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you spill water on the floor, what happens?",
+      "rubric": [
+        "3 - The floor gets wet.",
+        "2 - The floor has some water.",
+        "1 - The floor might dry a bit.",
+        "0 - I don’t know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The floor gets wet."
+        },
+        {
+          "key": "b",
+          "text": "The floor has no water."
+        },
+        {
+          "key": "c",
+          "text": "The floor stays the same."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing a simple cause and effect action",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies that spilling leads to wetness",
+      "alignmentRationale": "This question assesses the child's understanding of cause and effect by requiring them to predict the result of spilling water."
+    },
+    {
+      "id": "ef66e0b4-e6e9-434c-bdc3-1b9b688c24e7",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you eat a yummy fruit, what might you feel?",
+      "rubric": [
+        "3 - You feel happy or good.",
+        "2 - You might feel something nice.",
+        "1 - You feel nothing special.",
+        "0 - I don’t know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "You feel happy."
+        },
+        {
+          "key": "b",
+          "text": "You feel sad."
+        },
+        {
+          "key": "c",
+          "text": "You feel nothing at all."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "relating actions to emotional outcomes",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "connects eating fruit to a positive feeling",
+      "alignmentRationale": "This task examines the ability to associate an action (eating fruit) with an emotional outcome (happiness), thus exploring cause and effect."
+    },
+    {
+      "id": "a2d88b12-c265-4058-8408-9dce45dcbc58",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you freeze water in a cup?",
+      "rubric": [
+        "3 - The water turns into ice.",
+        "2 - Something changes with the water.",
+        "1 - I don’t know what happens.",
+        "0 - I can’t say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "associating temperature change with state change",
+      "targetEvidence": "describes the outcome of freezing water",
+      "alignmentRationale": "This item tests the child's understanding of how temperature affects water, linking it to cause and effect in different states."
+    },
+    {
+      "id": "60d3a688-c2d3-428b-9fc6-b2da47dd7d5b",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens when it gets cold?",
+      "rubric": [
+        "3 - You say it snows or gets chilly.",
+        "2 - You say something about being cold.",
+        "1 - You mention something not related to cold weather.",
+        "0 - You don’t answer or say nothing relevant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "connect temperature change to result",
+      "targetEvidence": "Describes an effect of lower temperatures, like snow.",
+      "alignmentRationale": "Encourages observations of how temperature changes affect the environment."
+    },
+    {
+      "id": "75c9b723-ca7f-43f6-82c6-9840107dc7c4",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What do you feel when you hug someone?",
+      "rubric": [
+        "3 - You say happy or warm.",
+        "2 - You say good or nice.",
+        "1 - You mention something not related to hugging.",
+        "0 - You don’t answer or say nothing relevant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "recognize feelings from actions",
+      "targetEvidence": "Describes a positive feeling associated with hugging.",
+      "alignmentRationale": "Links a positive social action (hugging) to an emotion."
+    },
+    {
+      "id": "d9ed1379-5d68-4440-b241-b03aa95bf6ab",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If a toy is wet from the rain, what will happen if you dry it?",
+      "rubric": [
+        "3 - You correctly say it will be dry or ready to play with.",
+        "2 - You mention something about it getting better but not fully clear.",
+        "1 - You say something unrelated to drying.",
+        "0 - You don’t answer or answer nothing relevant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It will be dry."
+        },
+        {
+          "key": "b",
+          "text": "It will be heavy."
+        },
+        {
+          "key": "c",
+          "text": "It will break."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "connect change to outcome",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies drying as a way to change the toy's wet condition.",
+      "alignmentRationale": "Tests understanding of how drying changes the state of a wet object."
+    },
+    {
+      "id": "8b835672-d55a-4db0-8cf0-e44d90988efd",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens when you water a plant?",
+      "rubric": [
+        "3 - You say it will grow or be healthy.",
+        "2 - You say something positive like better or nice.",
+        "1 - You mention something unrelated to watering a plant.",
+        "0 - You don’t answer or say nothing relevant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "link action to result",
+      "targetEvidence": "Describes a positive result of watering a plant.",
+      "alignmentRationale": "Encourages linking a specific action (watering) to a clear outcome (growth)."
+    },
+    {
+      "id": "13b7a6d8-5ba8-4279-961b-d81c38e2035f",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you drop an ice cream on the ground, what will happen?",
+      "rubric": [
+        "3 - You say it will melt or get dirty.",
+        "2 - You mention something negative about the ice cream.",
+        "1 - You say it will be fine or do nothing.",
+        "0 - You don’t answer or answer nothing relevant."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It will melt on the ground."
+        },
+        {
+          "key": "b",
+          "text": "It will stay cold."
+        },
+        {
+          "key": "c",
+          "text": "It will be fine."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identify outcome from an event",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies dropping as causing a negative change (melting or dirtiness).",
+      "alignmentRationale": "Tests ability to see the direct effect of a specific action (dropping ice cream)."
+    },
+    {
+      "id": "33e10936-6802-4257-9e8b-4f107c19e69f",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If it starts to rain, what will happen to the ground?",
+      "rubric": [
+        "3 - The ground will get wet or muddy.",
+        "2 - The child mentions it might splash or change.",
+        "1 - The child gives unrelated response.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It will get wet."
+        },
+        {
+          "key": "b",
+          "text": "It might disappear."
+        },
+        {
+          "key": "c",
+          "text": "It will start to snow."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "connecting action to effect",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child links rain to the wet ground outcome",
+      "alignmentRationale": "The task isolates the cause of rain affecting the ground."
+    },
+    {
+      "id": "589a52c3-69f2-4668-8a68-1977377ba874",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you close a window on a hot day, what happens inside the room?",
+      "rubric": [
+        "3 - It gets cooler or keeps cool air in.",
+        "2 - The child mentions something but not cooling clearly.",
+        "1 - The child gives an unrelated response.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It gets cooler."
+        },
+        {
+          "key": "b",
+          "text": "It gets brighter."
+        },
+        {
+          "key": "c",
+          "text": "It feels humid."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "connecting action to effect",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child associates closing the window with the temperature change",
+      "alignmentRationale": "This is a clear cause-effect link based on action and feeling."
+    },
+    {
+      "id": "e1d44c14-c815-4b7a-b015-cfe1a8b0931d",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you blow up a balloon?",
+      "rubric": [
+        "3 - The child describes the balloon getting bigger or filling with air.",
+        "2 - The child mentions something happening to the balloon but not clearly.",
+        "1 - The child provides an unrelated response.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "describing change",
+      "targetEvidence": "the child notes the change in the balloon as it inflates",
+      "alignmentRationale": "The task assesses the child's ability to identify a change caused by a specific action."
+    },
+    {
+      "id": "95d6ed36-2c22-4522-9625-3ffe51611aad",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you give a dog a bone?",
+      "rubric": [
+        "3 - The child identifies that the dog will chew or eat the bone.",
+        "2 - The child says the dog enjoys it without clear action.",
+        "1 - The child gives an unrelated response.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "predicting behavior",
+      "targetEvidence": "the child connects giving the bone to the dog's action",
+      "alignmentRationale": "The task assesses behavior prediction based on previous experience with dogs."
+    },
+    {
+      "id": "960bdca5-db73-469e-978b-d89402605aa6",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you take a toy away from your friend, how will they feel?",
+      "rubric": [
+        "3 - They may feel sad or upset because they want to play with it.",
+        "2 - They might be surprised or confused, but not upset.",
+        "1 - They might not care at all.",
+        "0 - They will definitely be happy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "sad"
+        },
+        {
+          "key": "b",
+          "text": "surprised"
+        },
+        {
+          "key": "c",
+          "text": "happy"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "identifies the emotional response to the action of taking a toy.",
+      "alignmentRationale": "This focuses on connecting an action to its emotional outcome."
+    },
+    {
+      "id": "1a32463e-37c0-4649-9f43-718893889294",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you squeeze a sponge?",
+      "rubric": [
+        "3 - It lets out water when you squeeze.",
+        "2 - It changes shape a little.",
+        "1 - It feels soft.",
+        "0 - It does nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "simple mechanism prediction",
+      "targetEvidence": "describes the action and its effect on the sponge.",
+      "alignmentRationale": "This tests understanding of the direct consequences of squeezing a sponge."
+    },
+    {
+      "id": "9dc7352b-3e81-4892-be5b-fb43bd0fdc7c",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you put a flower in water, what happens to it?",
+      "rubric": [
+        "3 - The flower stays alive and looks nice.",
+        "2 - The flower will grow bigger.",
+        "1 - The flower will get wet.",
+        "0 - The flower will die."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "stays alive"
+        },
+        {
+          "key": "b",
+          "text": "grows bigger"
+        },
+        {
+          "key": "c",
+          "text": "gets wet"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "connecting a change to an outcome",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "describes a positive outcome of putting a flower in water.",
+      "alignmentRationale": "This measures understanding the effect of adding water to a flower."
+    },
+    {
+      "id": "45011d05-ab02-4ed1-b2df-76d61f370ece",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you knock over a cup of juice, what happens?",
+      "rubric": [
+        "3 - The juice spills everywhere.",
+        "2 - The cup might just move a little.",
+        "1 - The cup falls but does not spill.",
+        "0 - The juice is still in the cup."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "spills everywhere"
+        },
+        {
+          "key": "b",
+          "text": "moves a little"
+        },
+        {
+          "key": "c",
+          "text": "stays in"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting consequences from an action",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "identifies that knocking over a cup leads to spilling juice.",
+      "alignmentRationale": "This captures the consequence of an action clearly and directly."
+    },
+    {
+      "id": "279aaf58-3d0d-4668-bb6c-77a70064b791",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you open a window?",
+      "rubric": [
+        "3 - Fresh air comes in.",
+        "2 - It gets louder outside.",
+        "1 - You can see the outside.",
+        "0 - The window stays closed."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "fresh air comes in"
+        },
+        {
+          "key": "b",
+          "text": "gets louder"
+        },
+        {
+          "key": "c",
+          "text": "window stays closed"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "observing change due to an action",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "recognizes the airflow that results from opening a window.",
+      "alignmentRationale": "This checks for understanding how opening a window changes the room's environment."
+    },
+    {
+      "id": "d2a85375-2c48-401a-b198-392813c25426",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What will happen if it rains?",
+      "rubric": [
+        "3 - The ground gets wet or plants drink water.",
+        "2 - It might get muddy.",
+        "1 - It makes some sounds.",
+        "0 - Nothing changes."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "predicting outcomes from a weather change",
+      "targetEvidence": "describes an effect of rain on the environment.",
+      "alignmentRationale": "This evaluates understanding of weather changes and their impact."
+    },
+    {
+      "id": "75924f29-91df-45ef-8b46-fe0af785270b",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If the sun shines, what will happen to the ice cream?",
+      "rubric": [
+        "3 - Ice cream will melt because the sun is warm.",
+        "2 - The ice cream might stay the same.",
+        "1 - The ice cream will be cold still.",
+        "0 - Nothing will happen."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It will melt."
+        },
+        {
+          "key": "b",
+          "text": "It might stay the same."
+        },
+        {
+          "key": "c",
+          "text": "It will be cold still."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identifying a simple cause",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Recognizes that the sun melting ice cream is a cause/effect relationship.",
+      "alignmentRationale": "This task isolates the ability to see a direct cause and effect involving temperature change."
+    },
+    {
+      "id": "2bd3b051-343c-4250-91be-0cfbfd914228",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you drop a toy, what happens to it?",
+      "rubric": [
+        "3 - It falls to the ground.",
+        "2 - It might stay in the air.",
+        "1 - It will float.",
+        "0 - Nothing will happen."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It falls to the ground."
+        },
+        {
+          "key": "b",
+          "text": "It might stay in the air."
+        },
+        {
+          "key": "c",
+          "text": "It will float."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identifying an action's result",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Recognizes that dropping a toy causes it to fall.",
+      "alignmentRationale": "This task isolates the child's understanding of the action leading to falling."
+    },
+    {
+      "id": "cd3665b5-1434-4d2a-bcb5-59069f3afe9d",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you close the door?",
+      "rubric": [
+        "3 - It makes the room quiet.",
+        "2 - It changes the air.",
+        "1 - It might be darker.",
+        "0 - Nothing happens."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "predicting an outcome from an action",
+      "targetEvidence": "Child explains the change due to closing a door.",
+      "alignmentRationale": "This task checks understanding of cause and effect in a simple context."
+    },
+    {
+      "id": "8aa36e8b-bdb1-42b1-a920-97933e1d06bc",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if a cat sees a mouse?",
+      "rubric": [
+        "3 - The child identifies an action the cat might take, like chasing or pouncing on the mouse.",
+        "2 - The child mentions a general desire of the cat but not a clear action, like 'the cat wants to catch'.",
+        "1 - The child makes an unrelated guess or does not connect cat and mouse.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "predicting behavior",
+      "targetEvidence": "the child connects the cat's action with seeing the mouse",
+      "alignmentRationale": "The task tests the ability to predict behavior based on a scenario."
+    },
+    {
+      "id": "49503765-1546-41e7-9a76-e64a14da325c",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you drop a toy in water?",
+      "rubric": [
+        "3 - The toy sinks or floats in the water.",
+        "2 - The child mentions the toy might get wet without clarity on what happens.",
+        "1 - The child gives an unrelated response.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It sinks or floats."
+        },
+        {
+          "key": "b",
+          "text": "It disappears in the air."
+        },
+        {
+          "key": "c",
+          "text": "It makes a sound."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "connecting action to effect",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child connects dropping a toy with its state in water",
+      "alignmentRationale": "This shows the child's understanding of cause and effect through a direct action."
+    },
+    {
+      "id": "cfb5a509-b25b-4988-8aba-2e51ee1a25ca",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you mix yellow and blue paint, what happens?",
+      "rubric": [
+        "3 - You get green paint.",
+        "2 - The child mentions something else would happen.",
+        "1 - The child gives an unrelated response.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "You get green."
+        },
+        {
+          "key": "b",
+          "text": "It will stay the same."
+        },
+        {
+          "key": "c",
+          "text": "It will turn brown."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting outcome",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "the child predicts the color change resulting from mixing",
+      "alignmentRationale": "This is a clear cause-effect scenario involving color mixing."
+    },
+    {
+      "id": "c3361fae-2c41-47e8-8a8d-fda6bcfeda23",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you drop an ice cube in water?",
+      "rubric": [
+        "3 - The child states that the ice cube will melt or float.",
+        "2 - The child mentions it changing without clarity.",
+        "1 - The child gives an unrelated response.",
+        "0 - The child does not respond."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "noticing effects of conditions",
+      "targetEvidence": "the child identifies the effect of the ice cube in water",
+      "alignmentRationale": "This task explores the understanding of temperature and state change."
+    },
+    {
+      "id": "dc3bded7-e797-4ad5-ada9-f6feb86349d7",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you freeze water?",
+      "rubric": [
+        "3 - It turns into ice.",
+        "2 - It gets cold.",
+        "1 - It takes a long time.",
+        "0 - It melts."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "cause and effect of applying temperature change",
+      "targetEvidence": "describes the change water undergoes when frozen.",
+      "alignmentRationale": "This assesses the understanding of how temperature affects the state of water."
+    },
+    {
+      "id": "c2cfc5df-15db-4067-a8ab-edfe0525cfd0",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you mix two colors of play dough together, what happens?",
+      "rubric": [
+        "3 - The colors make a new color.",
+        "2 - They stay separate.",
+        "1 - They look the same.",
+        "0 - The play dough disappears."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "make a new color"
+        },
+        {
+          "key": "b",
+          "text": "stay separate"
+        },
+        {
+          "key": "c",
+          "text": "look the same"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "observing change from an action",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "identifies that mixing colors causes a new color to appear.",
+      "alignmentRationale": "This emphasizes the transformation resulting from combining two items."
+    },
+    {
+      "id": "3a0bd36b-bb22-4449-8967-7c08dea979bd",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you turn off the lights in a room?",
+      "rubric": [
+        "3 - It will be dark.",
+        "2 - Some things will change.",
+        "1 - The room will be different.",
+        "0 - Nothing will happen."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "predicting an outcome from an action",
+      "targetEvidence": "Child explains what happens in a dark room.",
+      "alignmentRationale": "This task tests the ability to predict a clear cause and effect involving lights."
+    },
+    {
+      "id": "9ea9ba64-bdf2-4832-9278-3438c052a55c",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you make a loud noise, what might you see happen next?",
+      "rubric": [
+        "3 - You choose that nearby animals might get scared and run away.",
+        "2 - You choose that some people might cover their ears.",
+        "1 - You say a noise is just loud.",
+        "0 - You do not connect any ideas."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Animals might run away"
+        },
+        {
+          "key": "b",
+          "text": "It will get dark"
+        },
+        {
+          "key": "c",
+          "text": "It will just be a noise"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting consequences of a sound",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "identifies a plausible outcome based on noise made",
+      "alignmentRationale": "The prompt asks for a prediction about the effects of a loud noise, showing understanding of cause and effect."
+    },
+    {
+      "id": "f11fd413-f125-4e90-85c1-4f9a3c07e446",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If a plant is not watered, what do you think will happen to it?",
+      "rubric": [
+        "3 - You explain that it will wilt and not grow well.",
+        "2 - You say it might not grow very much.",
+        "1 - You say it does not need anything.",
+        "0 - You do not provide an idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "connecting lack of care to consequences",
+      "targetEvidence": "describes what happens to a plant without water",
+      "alignmentRationale": "The task requires a child to relate a lack of care to a specific result, showing understanding of cause and effect."
+    },
+    {
+      "id": "d00672e2-79c7-41e7-885a-5c1811afca9f",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If it starts to snow, what will happen to the ground?",
+      "rubric": [
+        "3 - You choose that the ground will be covered in snow.",
+        "2 - You choose that it might be cold.",
+        "1 - You say it will look different without explaining.",
+        "0 - You do not connect any ideas."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The ground will be covered in snow"
+        },
+        {
+          "key": "b",
+          "text": "It might be cold outside"
+        },
+        {
+          "key": "c",
+          "text": "The grass will look funny"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting weather effects",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "identifies a consequence of snow",
+      "alignmentRationale": "This question links a weather change to its impact on the environment, emphasizing the cause-effect relationship."
+    },
+    {
+      "id": "9abaad3e-4390-4ceb-9685-e59617b10bf6",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What do you think happens if you touch something hot?",
+      "rubric": [
+        "3 - You explain you might get burned and pull your hand away.",
+        "2 - You say something bad might happen.",
+        "1 - You say you can touch anything.",
+        "0 - You do not provide an idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "understanding the result of touching heat",
+      "targetEvidence": "explains the consequences of touching hot objects",
+      "alignmentRationale": "The question tests understanding of the negative effects of heat, linking actions to outcomes."
+    },
+    {
+      "id": "6f889345-c5d0-4d9a-9d06-6dca50ef7457",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If the sun comes out after the rain, what might you see?",
+      "rubric": [
+        "3 - You choose that a rainbow could appear.",
+        "2 - You choose that it will be sunny.",
+        "1 - You say the ground is still wet.",
+        "0 - You do not connect any ideas."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A rainbow could appear"
+        },
+        {
+          "key": "b",
+          "text": "It will be sunny"
+        },
+        {
+          "key": "c",
+          "text": "The trees might sway"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting visual changes after weather",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "connects a weather pattern with a potential visual outcome",
+      "alignmentRationale": "This question connects the change in weather to its visual effect, revealing comprehension of cause and effect."
+    },
+    {
+      "id": "eaf1b79d-fd35-4f89-8ab4-08df1bec3062",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you forget to turn off the light?",
+      "rubric": [
+        "3 - You explain it will waste electricity and get hot.",
+        "2 - You say the light will stay on.",
+        "1 - You say nothing will happen.",
+        "0 - You do not provide an idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "recognizing the effects of leaving something on",
+      "targetEvidence": "describes the consequence of forgetting to turn off a light",
+      "alignmentRationale": "The prompt tests the understanding of the ongoing effects of inaction, emphasizing the cause and effect relationship."
+    },
+    {
+      "id": "f5d82c08-eb35-4ce6-9d7f-c8fae707cbc6",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If a kid eats too much ice cream, what could happen?",
+      "rubric": [
+        "3 - You choose that the kid might get a stomachache.",
+        "2 - You choose that the kid will be happy.",
+        "1 - You say nothing will change.",
+        "0 - You do not connect any ideas."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The kid might get a stomachache"
+        },
+        {
+          "key": "b",
+          "text": "The kid will be happy"
+        },
+        {
+          "key": "c",
+          "text": "The kid will feel tired"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting health effects from eating",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "identifies a cause related to feelings or health after eating",
+      "alignmentRationale": "This question connects eating a specific amount to health outcomes, demonstrating an understanding of cause and effect."
+    },
+    {
+      "id": "dfa94dfc-3a14-4f11-b322-982401be233c",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you leave a toy outside, what might happen to it?",
+      "rubric": [
+        "3 - You explain it could break or get dirty.",
+        "2 - You say it might get left behind.",
+        "1 - You say nothing will happen to it.",
+        "0 - You do not provide an idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "foreshadowing effects of weather on objects",
+      "targetEvidence": "describes what might happen to an unattended object outside",
+      "alignmentRationale": "This question tests the foresight regarding the impact of external conditions on objects, relating to cause and effect."
+    },
+    {
+      "id": "c75d29d8-7c28-4efc-a08d-27f6424178ba",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If your ice cream starts to melt in the sun, what do you think will happen?",
+      "rubric": [
+        "3 - The response connects the heat to the ice cream melting clearly.",
+        "2 - The response suggests something may happen but isn't quite clear.",
+        "1 - The response is vague or does not logically connect to melting ice cream.",
+        "0 - The response is unrelated to the melting scenario."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "connect an event to its effect",
+      "targetEvidence": "Child connects the heat from the sun with the ice cream melting.",
+      "alignmentRationale": "This assesses understanding the impact of temperature on ice cream melting."
+    },
+    {
+      "id": "fb3baf1e-499d-4fd8-90ae-f3148526cc0b",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "A cat chased a mouse. The mouse ran into a hole. What caused the mouse to run into the hole?",
+      "rubric": [
+        "3 - The explanation correctly identifies the cat chasing as the cause.",
+        "2 - The explanation suggests the chase without clearly saying it's the cause.",
+        "1 - The explanation is vague or partly correct about the situation.",
+        "0 - The explanation is incorrect or unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The cat chased the mouse."
+        },
+        {
+          "key": "b",
+          "text": "The hole was too small."
+        },
+        {
+          "key": "c",
+          "text": "The mouse was hungry."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identify cause of a reaction",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "Child explains that the cat chasing the mouse made it run into the hole.",
+      "alignmentRationale": "This prompts the child to connect an action to its direct consequence."
+    },
+    {
+      "id": "43de98fd-b638-4668-a027-f1886199c74e",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "It was sunny outside. A child went out to play with a ball. What could happen next?",
+      "rubric": [
+        "3 - The response suggests playing happily outside as a direct outcome.",
+        "2 - The response hints at activities but is less clear.",
+        "1 - The response is somewhat off-topic or unclear.",
+        "0 - The response doesn't relate to playing outside at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The child plays with the ball."
+        },
+        {
+          "key": "b",
+          "text": "The sun gets hotter."
+        },
+        {
+          "key": "c",
+          "text": "The child takes a nap."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predict outcome from a situation",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "Child predicts a happy playtime outside due to the sunny weather.",
+      "alignmentRationale": "This checks if the child can see a likely result of the sunny weather."
+    },
+    {
+      "id": "6e18ae18-d542-4aeb-9001-a769b4a1d55d",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you see smoke coming from the kitchen, what do you think happened?",
+      "rubric": [
+        "3 - The response clearly explains a logical situation leading to smoke.",
+        "2 - The response suggests something reasonable about smoke but lacks clarity.",
+        "1 - The response is vague or confusing about the situation.",
+        "0 - The response does not connect logically to smoke."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "connect an event to its cause",
+      "targetEvidence": "Child relates the smoke to a possible cause like burning food.",
+      "alignmentRationale": "This addresses the child's ability to identify sensible causes of observed events."
+    },
+    {
+      "id": "83c83801-b17b-4d7c-ae9e-0085d2670b2b",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "A child forgot their umbrella on a rainy day. What is likely to happen next?",
+      "rubric": [
+        "3 - The response indicates the child will get wet without the umbrella.",
+        "2 - The response guesses something about rain but isn't clear.",
+        "1 - The response is vague about getting wet or staying dry.",
+        "0 - The response is irrelevant to the situation of rain."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The child will get wet."
+        },
+        {
+          "key": "b",
+          "text": "It will stop raining."
+        },
+        {
+          "key": "c",
+          "text": "The child will see a rainbow."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predict outcome from a situation",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "Child predicts the child getting wet due to forgetting the umbrella.",
+      "alignmentRationale": "This prompts a response that recognizes consequences of an overlooked action."
+    },
+    {
+      "id": "2b92c859-a46a-42e7-98cf-0048ce69dec2",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you dropped an ice cream cone, what do you think would happen to it?",
+      "rubric": [
+        "3 - The response connects dropping to ice cream falling and melting.",
+        "2 - The response suggests an outcome but is unclear about what happens.",
+        "1 - The response is vague with no clear connection to the drop.",
+        "0 - The response is unrelated to the scenario."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "connect an event to its effect",
+      "targetEvidence": "Child relates the drop of the ice cream to it falling and getting messy.",
+      "alignmentRationale": "This assesses how well children understand the effects of accidental actions."
+    },
+    {
+      "id": "e54c5ee1-af2e-4c79-a2f9-6741737bb601",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "You turn off a TV. What happens next?",
+      "rubric": [
+        "3 - The response shows the TV no longer works or is quiet.",
+        "2 - The response suggests some outcome but isn't direct about it.",
+        "1 - The response is unclear or partly related to the TV.",
+        "0 - The response is irrelevant to the TV being off."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The TV turns off and becomes quiet."
+        },
+        {
+          "key": "b",
+          "text": "The TV will still be on."
+        },
+        {
+          "key": "c",
+          "text": "The TV will change channels."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predict outcome from an action",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Child sees that turning off the TV leads to silence or no picture.",
+      "alignmentRationale": "Asks for a logical connection between an action and its immediate result."
+    },
+    {
+      "id": "e566bb1f-85af-479a-bdf2-8b2226000c92",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "A puppy hears a bell and runs to the door. What caused the puppy to run to the door?",
+      "rubric": [
+        "3 - The response identifies the bell sound as the cause.",
+        "2 - The response suggests a connection to the sound but isn't clear.",
+        "1 - The response is vague about why the puppy ran.",
+        "0 - The response does not link the bell to the puppy's action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The bell made the puppy run."
+        },
+        {
+          "key": "b",
+          "text": "The door was open."
+        },
+        {
+          "key": "c",
+          "text": "The puppy was hungry."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identify cause of a reaction",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Child recognizes that the bell sound made the puppy go to the door.",
+      "alignmentRationale": "It measures the ability to see sound as a cause for the puppy's behavior."
+    },
+    {
+      "id": "21374f58-5e70-4610-b3e5-66825554fe65",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "It started to rain. The ground got wet. What caused the ground to be wet?",
+      "rubric": [
+        "3 - Correctly identifies that rain caused the wet ground.",
+        "2 - Provides a somewhat relevant cause but is not clear.",
+        "1 - Gives a vague answer not related to rain.",
+        "0 - Provides an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Rain"
+        },
+        {
+          "key": "b",
+          "text": "Sunshine"
+        },
+        {
+          "key": "c",
+          "text": "People walking"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "connect event to outcome",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "child identifies rain as the cause for the wet ground",
+      "alignmentRationale": "This tests the child's ability to connect an event (rain) to an effect (wet ground)."
+    },
+    {
+      "id": "34b3d49f-4abf-4ee6-a311-43583655e5b5",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you make a cake and forget to add sugar, how do you think it will taste?",
+      "rubric": [
+        "3 - Gives a clear reason the cake will taste bad.",
+        "2 - Suggests it might not taste good but is unclear.",
+        "1 - Mentions taste without clear reasoning.",
+        "0 - Fails to connect taste to missing sugar."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "predict outcome based on change",
+      "targetEvidence": "child describes the effect of the missing sugar on cake taste",
+      "alignmentRationale": "This explores the child's prediction about altering an ingredient's presence in a simple mechanism (cake)."
+    },
+    {
+      "id": "73986d73-ca0e-4333-838e-3d10b1f79c04",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "A bee buzzed near a flower, and then the flower opened up. What caused the flower to open?",
+      "rubric": [
+        "3 - Identifies the bee as the cause of the flower opening.",
+        "2 - Suggests something related to flowers or bees, but not precise.",
+        "1 - Gives a vague response like 'nature.'",
+        "0 - States something unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The bee buzzing"
+        },
+        {
+          "key": "b",
+          "text": "The sun shining"
+        },
+        {
+          "key": "c",
+          "text": "The wind blowing"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "connect event to outcome",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "child identifies bee as the cause for the flower opening",
+      "alignmentRationale": "This tests the ability to connect an action (bee buzzing) to a result (flower opening)."
+    },
+    {
+      "id": "026b36e4-48e2-4929-86fa-e130283145c7",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you drop a ball, what do you think will happen?",
+      "rubric": [
+        "3 - Clearly describes that the ball will fall down.",
+        "2 - Mentions the ball will move but isn't clear.",
+        "1 - Says something general like 'it will change.'",
+        "0 - Fails to explain what will happen."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "predict outcome based on change",
+      "targetEvidence": "child describes the falling action of the ball",
+      "alignmentRationale": "This examines the child's understanding of gravity in a simple scenario."
+    },
+    {
+      "id": "7cbbb001-3019-44c7-a011-330bdf472a60",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you put a paper boat on water, what will happen?",
+      "rubric": [
+        "3 - The boat floats on the water because it is light and makes a shape that helps it stay on top.",
+        "2 - The boat might get wet or sink because of the water.",
+        "1 - The boat will do something with the water.",
+        "0 - The boat will stay dry."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The boat floats on the water."
+        },
+        {
+          "key": "b",
+          "text": "The boat might get wet."
+        },
+        {
+          "key": "c",
+          "text": "The boat will be sad."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identify an outcome of a scenario",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Recognizes that the boat floats due to its design.",
+      "alignmentRationale": "This question connects the scenario of a boat on water to its outcome, helping assess understanding of cause and effect."
+    },
+    {
+      "id": "3dfeb3d3-c7c6-45de-8c4a-4fd44a7de5e4",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you wet a paper towel, what do you think will happen to it?",
+      "rubric": [
+        "3 - The towel will get soggy and heavy.",
+        "2 - The towel might stay the same.",
+        "1 - The towel changes color.",
+        "0 - The towel will fly away."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "identify the effect of a condition change",
+      "targetEvidence": "Recognizes that moisture affects a paper towel.",
+      "alignmentRationale": "This question assesses the understanding of how changing the condition of an object leads to a tangible outcome."
+    },
+    {
+      "id": "20e3afac-72e8-476d-a613-d0c1d65a515a",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you shake a bottle of soda, what do you think will happen when you open it?",
+      "rubric": [
+        "3 - The soda will fizz and spill out.",
+        "2 - The soda might not be fizzy anymore.",
+        "1 - The bottle makes a sound.",
+        "0 - The soda will stay still."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "predict an outcome based on an action",
+      "targetEvidence": "Predicts a specific result of shaking a soda bottle.",
+      "alignmentRationale": "This question evaluates the ability to understand physical reactions and cause and effect from shaking an object."
+    },
+    {
+      "id": "bac3853d-88a3-4585-9376-48644e66aa3e",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you throw a ball up in the air, what do you think it will do?",
+      "rubric": [
+        "3 - The ball will go up and then come back down.",
+        "2 - The ball might float in the air.",
+        "1 - The ball moves in the air.",
+        "0 - The ball will stop moving."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "identify an outcome of a scenario",
+      "targetEvidence": "Understands the motion of an object when thrown into the air.",
+      "alignmentRationale": "This question checks the understanding of gravity and the actions of objects, which are basic cause and effect."
+    },
+    {
+      "id": "a98b863d-85d5-4e22-aad6-4e80aac4c9a0",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If the sun sets, what do you think will happen next?",
+      "rubric": [
+        "3 - The sky will change color, and it will get dark.",
+        "2 - There will be stars in the sky soon.",
+        "1 - It will be nighttime.",
+        "0 - The sun will stay up."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "predict following events",
+      "targetEvidence": "Expresses an understanding of what happens after sunset.",
+      "alignmentRationale": "This question assesses the ability to predict a natural sequence of events in an everyday context."
+    },
+    {
+      "id": "19a54c5f-d611-4030-9480-e8836d9b041c",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you pour water on a dry sponge, what will happen?",
+      "rubric": [
+        "3 - The sponge will soak up the water and get heavy.",
+        "2 - The sponge might stay the same.",
+        "1 - The sponge looks wet.",
+        "0 - The sponge will not hold water."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The sponge will soak up the water."
+        },
+        {
+          "key": "b",
+          "text": "The sponge might stay the same."
+        },
+        {
+          "key": "c",
+          "text": "The sponge will not hold water."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identify an outcome of a scenario",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Recognizes that a sponge absorbs water.",
+      "alignmentRationale": "This question examines the understanding of absorption and its effects on materials when conditions change."
+    },
+    {
+      "id": "1e697d4d-4d9e-406e-a98e-8f7cab5a81d6",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you change the weather from sunny to rainy, what will happen?",
+      "rubric": [
+        "3 - People might use umbrellas and wear raincoats to stay dry.",
+        "2 - It could get colder outside.",
+        "1 - The sun will hide.",
+        "0 - Nothing will change."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "People might use umbrellas."
+        },
+        {
+          "key": "b",
+          "text": "It could get colder."
+        },
+        {
+          "key": "c",
+          "text": "Nothing will change."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "identify the effect of a condition change",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Recognizes that changing from sunny to rainy affects how people dress.",
+      "alignmentRationale": "This question evaluates the understanding of how a change in weather conditions leads to specific human responses."
+    },
+    {
+      "id": "c0a465ec-efe1-4893-ad4e-c398d1d2d717",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you drop a ball?",
+      "rubric": [
+        "3 - The ball will fall to the ground, showing understanding of cause.",
+        "2 - The ball might bounce, recognizing some effect.",
+        "1 - The ball does nothing, showing confusion.",
+        "0 - The answer does not relate to the ball or dropping it."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "linking actions to outcomes",
+      "targetEvidence": "child connects the action (dropping) to the effect (falling)",
+      "alignmentRationale": "This question tests the ability to connect a simple action to its immediate consequence, linked through cause and effect."
+    },
+    {
+      "id": "e2578211-8280-46fe-8698-b1dc9b4ca8aa",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you add sugar to water, what will the water taste like?",
+      "rubric": [
+        "3 - The water will taste sweet, showing understanding of cause and effect.",
+        "2 - The water will taste a little different, recognizing a change but not fully clear.",
+        "1 - The water may taste the same, showing some confusion about the effect.",
+        "0 - The answer does not relate to taste or changes in water."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Sweet"
+        },
+        {
+          "key": "b",
+          "text": "Bitter"
+        },
+        {
+          "key": "c",
+          "text": "Salty"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting taste changes",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "child identifies the cause (sugar is added) and the clear effect (taste becomes sweet)",
+      "alignmentRationale": "This isolates cause and effect by directly linking a specific change (adding sugar) to a clear expected outcome (taste)."
+    },
+    {
+      "id": "645ba639-90ed-4b0a-88b3-9ee1dbf4451c",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens to a plant if someone forgets to water it?",
+      "rubric": [
+        "3 - The plant will start to wilt or die from lack of water, showing understanding of cause.",
+        "2 - The plant might not grow, recognizing some effect of not being watered.",
+        "1 - The plant stays the same, not clearly connecting actions and effects.",
+        "0 - The answer does not show any relation between watering and the plant's health."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "linking care to plant health",
+      "targetEvidence": "child expresses understanding that a lack of water negatively impacts plant health",
+      "alignmentRationale": "This assesses understanding of cause and effect by connecting care (watering) to the plant's outcome (health)."
+    },
+    {
+      "id": "981e7ecb-5193-40e0-b2eb-961ff51a3d8b",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you jump on a trampoline, what happens to you?",
+      "rubric": [
+        "3 - You bounce up in the air, clearly linking action to outcome.",
+        "2 - You get a little higher, recognizing some bounce but not fully clear.",
+        "1 - You just stand there, showing confusion or unclear understanding.",
+        "0 - The answer does not relate to jumping or bouncing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "You bounce up in the air"
+        },
+        {
+          "key": "b",
+          "text": "You fall down"
+        },
+        {
+          "key": "c",
+          "text": "You stay still"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "understanding physical reactions",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "child connects the action (jumping) with the outcome (bouncing)",
+      "alignmentRationale": "This task directly connects a physical action to a clear outcome, testing understanding of cause and effect."
+    },
+    {
+      "id": "c35f7a63-3112-41b7-8776-43bafb7fa13a",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you eat breakfast in the morning, what do you feel like later?",
+      "rubric": [
+        "3 - You feel energetic, linking cause (eating) and effect (energy).",
+        "2 - You might be a little hungry later, noting some cause-effect relationship.",
+        "1 - You feel the same, showing unclear understanding of impacts.",
+        "0 - The answer does not relate to eating breakfast."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Energetic"
+        },
+        {
+          "key": "b",
+          "text": "Sleepy"
+        },
+        {
+          "key": "c",
+          "text": "Sick"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "recognizing effects of healthy choices",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "child identifies the relationship between a healthy action (eating) and its positive outcome (energy)",
+      "alignmentRationale": "This task tests the child’s understanding of causation in daily life, linking a common activity with its expected benefit."
+    },
+    {
+      "id": "d1e9f199-ae3f-4b20-90f1-cd89d5bbe964",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you hold a cold drink on a hot day?",
+      "rubric": [
+        "3 - The drink may sweat (water drops) from the heat, showing understanding of the effect.",
+        "2 - The drink might get warm, linking some cause and effect.",
+        "1 - The drink stays the same, showing confusion about changes.",
+        "0 - The answer does not relate to holding the drink."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "understanding temperature effects",
+      "targetEvidence": "child describes the response (condensation) that results from temperature changes",
+      "alignmentRationale": "This question assesses understanding of how temperature affects objects, linking an action to its observable effect."
+    },
+    {
+      "id": "922e8acb-ad9e-49a6-8955-b3a40e799f53",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you place a toy in water, what might happen to it?",
+      "rubric": [
+        "3 - The toy might sink or float, showing understanding of material interaction.",
+        "2 - The toy may change color, recognizing some effect but it's not precise.",
+        "1 - The toy stays there, showing unclear understanding of the effect.",
+        "0 - The answer does not connect the toy and water."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "It might sink or float"
+        },
+        {
+          "key": "b",
+          "text": "It changes color"
+        },
+        {
+          "key": "c",
+          "text": "It stays the same"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "predicting interactions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "child recognizes the relationship between an object and the environment (presence in water)",
+      "alignmentRationale": "The task tests the child’s understanding of how different contexts affect objects, emphasizing cause and effect."
+    },
+    {
+      "id": "a88064e6-39b7-4449-b6ba-af65f533a145",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if a bike stops going downhill?",
+      "rubric": [
+        "3 - The bike will slow down or stop, showing understanding of the effect.",
+        "2 - The bike might go slower, linking some changes.",
+        "1 - The bike keeps going, showing unclear understanding.",
+        "0 - The answer does not relate to the action of the bike."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "linking movement to forces",
+      "targetEvidence": "child connects the action (stopping going downhill) to the effect (slowing down or stopping)",
+      "alignmentRationale": "This question tests understanding of how movements are affected by changes in the environment, linking cause and effect."
+    },
+    {
+      "id": "14e9efa0-1c79-4418-a1e3-3c8a21e71877",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you water a plant every day?",
+      "rubric": [
+        "3 - It grows better because it gets enough water.",
+        "2 - It might grow a little.",
+        "1 - It does not change at all.",
+        "0 - I don't know what happens."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "predicting outcomes",
+      "targetEvidence": "explaining that regular watering helps the plant grow",
+      "alignmentRationale": "This item asks the child to predict outcomes based on consistent care, isolating the cause of growth."
+    },
+    {
+      "id": "f7c9f5bb-ca60-4343-b79e-10500aaddeec",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you let a balloon go?",
+      "rubric": [
+        "3 - It will float away.",
+        "2 - It might stay in one place awhile.",
+        "1 - It won't change at all.",
+        "0 - I don't know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "predicting outcomes",
+      "targetEvidence": "predicting that a released balloon will rise",
+      "alignmentRationale": "Asking about balloons isolates understanding of how air and buoyancy work together in simple terms."
+    },
+    {
+      "id": "5d9bfc86-2387-49d6-ae12-0d71ece78dd2",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If you put ice in the sun, what will happen to the ice?",
+      "rubric": [
+        "3 - The ice will melt.",
+        "2 - The ice might stay the same.",
+        "1 - The ice will freeze more.",
+        "0 - I don't know what will happen."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The ice will melt."
+        },
+        {
+          "key": "b",
+          "text": "The ice might stay the same."
+        },
+        {
+          "key": "c",
+          "text": "The ice will freeze more."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "cause and effect reasoning",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "identifying the melting of ice as a result of heat",
+      "alignmentRationale": "Tests knowledge of how temperature affects states of matter, illustrating cause and effect."
+    },
+    {
+      "id": "c2ca0b7a-8e6a-4f52-bfae-1aff0740d462",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "What happens if you mix blue and yellow paint?",
+      "rubric": [
+        "3 - You get green paint.",
+        "2 - It might change the color a bit.",
+        "1 - It stays the same color.",
+        "0 - I don't know."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "predicting outcomes",
+      "targetEvidence": "linking colors to the outcome of mixing",
+      "alignmentRationale": "The task tests understanding of transformation through mixing, a cause-effect principle in art."
+    },
+    {
+      "id": "0d68b89c-c9c0-4ac3-998d-a158ae86a373",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "cause_effect",
+      "format": "explanation",
+      "prompt": "If it starts to rain, what happens to the ground?",
+      "rubric": [
+        "3 - The ground gets wet because of the rain.",
+        "2 - The ground might get damp but not too wet.",
+        "1 - The ground doesn't change at all.",
+        "0 - I don't know what happens."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The ground gets wet."
+        },
+        {
+          "key": "b",
+          "text": "The ground might get damp."
+        },
+        {
+          "key": "c",
+          "text": "The ground doesn't change."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "cause and effect reasoning",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "identifying that rain causes the ground to get wet",
+      "alignmentRationale": "This question isolates understanding of cause and effect by linking rain directly to ground wetness."
+    }
+  ]
+}

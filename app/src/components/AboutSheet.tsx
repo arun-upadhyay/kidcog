@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import Sheet from './Sheet';
 import Button from './Button';
 import { colors, spacing } from '../theme';
+import { DELETE_ACCOUNT_PATH, PRIVACY_PATH, openPublicPage } from '../legal';
 
 /**
  * "About KidCog": everything a parent should know, kept off the main screens so
@@ -42,7 +43,12 @@ export default function AboutSheet({ visible, onClose }: { visible: boolean; onC
                 </View>
               </View>
             ))}
-            <View style={{ marginTop: spacing(2.5) }}>
+            <View style={styles.links}>
+              <Pressable onPress={() => openPublicPage(PRIVACY_PATH)} accessibilityRole="link" hitSlop={6}><Text style={styles.link}>Privacy policy</Text></Pressable>
+              <Text style={styles.dot}>·</Text>
+              <Pressable onPress={() => openPublicPage(DELETE_ACCOUNT_PATH)} accessibilityRole="link" hitSlop={6}><Text style={styles.link}>Deleting your data</Text></Pressable>
+            </View>
+            <View style={{ marginTop: spacing(2) }}>
               <Button title="Got it" onPress={onClose} />
             </View>
           </ScrollView>
@@ -52,6 +58,9 @@ export default function AboutSheet({ visible, onClose }: { visible: boolean; onC
 
 const styles = StyleSheet.create({
   content: { paddingBottom: spacing(1) },
+  links: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: spacing(1), marginTop: spacing(2), flexWrap: 'wrap' },
+  link: { fontSize: 14, fontWeight: '800', color: colors.primary, textDecorationLine: 'underline' },
+  dot: { color: colors.inkSoft },
   owl: { fontSize: 40, textAlign: 'center' },
   title: { fontSize: 24, fontWeight: '900', color: '#6B4BB0', textAlign: 'center', marginBottom: spacing(1.5) },
   section: { flexDirection: 'row', gap: spacing(1.5), paddingVertical: spacing(1.5), borderTopWidth: 1, borderTopColor: colors.line },

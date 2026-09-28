@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable, ActivityIndicator, type TextStyle } from 'react-native';
 import { CATEGORY_GROUPS } from '../categoryGroups';
 import RewardCard from '../components/RewardCard';
+import ReportSheet, { ReportLink } from '../components/ReportSheet';
 import type { RoundReward } from '../progress';
 import { CATEGORY_NAMES, CATEGORY_VISUALS, GROUP_NAMES, GROUP_VISUALS } from '../categoryVisuals';
 import Owl from '../components/Owl';
@@ -34,6 +35,8 @@ export interface ResultsScreenProps {
   roundLength?: number;
   /** Stars and a sticker won this round, for children who see their own results. */
   reward?: RoundReward | null;
+  /** This result's session, so the AI-written note can be reported. */
+  sessionId?: string | null;
 }
 
 function Bar({ percent, color }: { percent: number; color: string }) {
@@ -74,7 +77,7 @@ function reportAsSpeech(r: ParentReportType): string {
     .join(' ');
 }
 
-function ParentReportCard({ report }: { report: ParentReportType }) {
+function ParentReportCard({ report, onReport }: { report: ParentReportType; onReport?: () => void }) {
   const speechState = useSpeechState();
   const speechBusy = speechState !== 'idle';
   useEffect(() => () => stopSpeaking(), []);
@@ -118,6 +121,13 @@ function ParentReportCard({ report }: { report: ParentReportType }) {
 
       {report.closing ? (
         <Text style={[type.soft, styles.closing]}>{report.closing}</Text>
+      ) : null}
+      {/* Written by AI, so it can be reported (Google Play AI-content policy). */}
+      {onReport ? (
+        <View style={styles.reportRow}>
+          <Text style={styles.smallNote}>Written with AI.</Text>
+          <ReportLink onPress={onReport} label="Report this note" accessibilityLabel="Report this note" />
+        </View>
       ) : null}
     </View>
   );
@@ -265,7 +275,10 @@ export default function ResultsScreen({
   onTryCategory,
   roundLength = 2,
   reward,
+  sessionId,
 }: ResultsScreenProps) {
+  // The grown-up "Report this note" sheet (the note is written by AI).
+  const [reportingNote, setReportingNote] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
   const [showAll, setShowAll] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
@@ -308,7 +321,7 @@ export default function ResultsScreen({
       </View>
 
       {report.parentReport ? (
-        <ParentReportCard report={report.parentReport} />
+        <ParentReportCard report={report.parentReport} onReport={sessionId ? () => setReportingNote(true) : undefined} />
       ) : report.parentReportPending ? (
         <View style={styles.noteCard} accessibilityLiveRegion="polite">
           <ActivityIndicator color={colors.primary} />
@@ -435,6 +448,7 @@ export default function ResultsScreen({
           disabled={busy}
         />
       </View>
+      <ReportSheet visible={reportingNote} onClose={() => setReportingNote(false)} kind="note" sessionId={sessionId} />
     </ScrollView>
   );
 }
@@ -544,4 +558,5 @@ const styles = StyleSheet.create({
 
   aboutCard: { backgroundColor: '#F3EEE7', borderRadius: 18, padding: spacing(1.75) },
   aboutText: { fontSize: 13, lineHeight: 19, color: '#6B6259' },
+  reportRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1), marginTop: spacing(2), paddingTop: spacing(1.5), borderTopWidth: 1, borderTopColor: colors.line },
 });

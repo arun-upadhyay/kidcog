@@ -1,0 +1,2845 @@
+{
+  "category": "extensive_vocabulary",
+  "questions": [
+    {
+      "id": "c15880cb-fbb4-4fdf-afd7-547c87708023",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is the best word to describe a happy birthday party?",
+      "rubric": [
+        "3 - The answer is a word like 'joyful' that captures the vibe of the party.",
+        "2 - The answer is a general positive word, such as 'fun'.",
+        "1 - The answer is a vague term like 'good'.",
+        "0 - The answer is unrelated or does not describe a party."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "joyful"
+        },
+        {
+          "key": "b",
+          "text": "fun"
+        },
+        {
+          "key": "c",
+          "text": "good"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "precise word choice",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child chooses a specific word that accurately describes a joyful party atmosphere.",
+      "alignmentRationale": "This item assesses precise vocabulary related to feelings and emotions in social settings."
+    },
+    {
+      "id": "897723f6-cb2b-45d1-8348-87fbc056efa8",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Can you tell me a word that describes a tall tree?",
+      "rubric": [
+        "3 - The answer is a specific word like 'towering' or 'gigantic'.",
+        "2 - The answer is a descriptive word like 'big' or 'high'.",
+        "1 - The answer is very general or vague like 'tall'.",
+        "0 - The answer does not relate to tree descriptions."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a size",
+      "targetEvidence": "child describes a tree's height with an appropriate word",
+      "alignmentRationale": "This task focuses on size to encourage precise vocabulary related to measurement and comparison."
+    },
+    {
+      "id": "5f15e4d8-8970-43fe-870e-9e3d84da45b5",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is a good word to describe a shiny star?",
+      "rubric": [
+        "3 - The answer is a vivid word like 'sparkling' or 'brilliant'.",
+        "2 - The answer is a descriptive term like 'bright'.",
+        "1 - The answer is a vague term like 'good' or 'nice'.",
+        "0 - The answer does not relate to stars at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for brightness",
+      "targetEvidence": "child uses a word that accurately describes a star's appearance",
+      "alignmentRationale": "This task encourages the use of specific vocabulary for light and brightness characteristics."
+    },
+    {
+      "id": "d1671067-66b5-4b56-bd8d-6470247c0e5f",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Describe something fun you do outside. What is a good word for it?",
+      "rubric": [
+        "3 - The answer is a specific term like 'exciting' or 'adventurous'.",
+        "2 - The answer is a general positive term like 'fun'.",
+        "1 - The answer is vague or lacks clarity related to the activity.",
+        "0 - The answer does not relate to outdoor activities."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for enjoyment",
+      "targetEvidence": "child shares an appropriate word that captures the enjoyment of the outdoor activity",
+      "alignmentRationale": "This activity prompts children to articulate feelings associated with play, allowing for precise vocabulary about enjoyment."
+    },
+    {
+      "id": "d0453473-b423-4bb3-8a0a-d0e6639bd24b",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is a good word for a sad puppy?",
+      "rubric": [
+        "3 - The answer is a specific word like 'lonely' or 'downcast'.",
+        "2 - The answer is a word that relates to sadness like 'sad'.",
+        "1 - The answer is very vague and does not connect to the feeling.",
+        "0 - The answer does not relate to puppies at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "child describes a sad feeling with a specific word related to the puppy",
+      "alignmentRationale": "This task assesses the ability to connect emotions with specific vocabulary in a relatable context."
+    },
+    {
+      "id": "78d464ee-c6cb-47a5-8eca-8858b04169aa",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is the best word to describe a cold ice cube?",
+      "rubric": [
+        "3 - The answer is 'frozen' or a closely related word that captures the state of the ice.",
+        "2 - The answer is a word that somewhat relates, like 'frosty'.",
+        "1 - The answer is a vague or general word, like 'ice'.",
+        "0 - The answer is unrelated or does not mention ice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "frozen"
+        },
+        {
+          "key": "b",
+          "text": "frosty"
+        },
+        {
+          "key": "c",
+          "text": "ice"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "precise word choice",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child selects a specific and clear word for describing cold ice cubes",
+      "alignmentRationale": "This question isolates precise word choice by focusing on a specific adjective appropriate to the context."
+    },
+    {
+      "id": "13be24b8-4a3d-49e8-9c4f-4c43af6fcd9c",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is a word that describes how you feel when you hug someone?",
+      "rubric": [
+        "3 - Provides a specific word indicating a positive feeling when hugging.",
+        "2 - Offers a related word but not strong enough to convey the feeling.",
+        "1 - States a vague or unrelated term that does not capture the emotion of hugging.",
+        "0 - Does not provide any answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "states a word that demonstrates feelings when hugging",
+      "alignmentRationale": "Encourages the child to express emotions and feelings in a common social context."
+    },
+    {
+      "id": "fa477521-ad7c-4d7b-859b-fd7222b6bd4f",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Tell me a word that describes how a cat feels when it gets petted.",
+      "rubric": [
+        "3 - Provides a specific word that accurately describes the feeling of a cat when petted.",
+        "2 - Gives a somewhat relevant word but not quite right for the feeling.",
+        "1 - Offers a vague or unrelated term that does not fit the cat’s emotions.",
+        "0 - Does not provide any answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "states a word explaining how a cat feels",
+      "alignmentRationale": "Elicits the child's response to feelings in a relatable context."
+    },
+    {
+      "id": "554afc9f-5833-41c0-a313-ee6ca0f45181",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is the best word to describe a very fluffy cloud?",
+      "rubric": [
+        "3 - Correctly identifies the most precise word for the fluffy cloud.",
+        "2 - Chooses a word that somewhat describes the cloud but is not the best fit.",
+        "1 - Selects a vague or unrelated word that does not fit the cloud.",
+        "0 - Does not choose any answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "fluffy"
+        },
+        {
+          "key": "b",
+          "text": "big"
+        },
+        {
+          "key": "c",
+          "text": "white"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "targetEvidence": "chooses a word that accurately expresses the cloud’s fluffiness",
+      "alignmentRationale": "This question isolates the skill of selecting precise vocabulary related to familiar objects."
+    },
+    {
+      "id": "e2c03df8-876d-429b-82f1-ecab46a3edc5",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is the best word to describe a very happy puppy?",
+      "rubric": [
+        "3 - Correctly identifies an exact, age-appropriate word such as 'joyful' or 'excited'.",
+        "2 - Chooses a somewhat accurate word like 'glad' or 'cheerful' though less precise.",
+        "1 - Uses a general feeling word such as 'good' or 'nice'.",
+        "0 - Provides an unrelated or incorrect word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "joyful"
+        },
+        {
+          "key": "b",
+          "text": "glad"
+        },
+        {
+          "key": "c",
+          "text": "good"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a precise word that describes the puppy's happiness",
+      "alignmentRationale": "The task isolates the skill of selecting a word that accurately conveys the specific emotion."
+    },
+    {
+      "id": "435e6287-2d4b-4ba4-a49d-7e999f8ac419",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What does a butterfly do?",
+      "rubric": [
+        "3 - Provides a detailed action such as 'flies around and lands on flowers'.",
+        "2 - Mentions some action like 'flies' or 'sits'.",
+        "1 - Gives a very vague response such as 'does something'.",
+        "0 - Offers an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "describe an action",
+      "targetEvidence": "responds with a specific action of a butterfly",
+      "alignmentRationale": "The task requires describing a specific action, testing knowledge of butterflies instead of generalities."
+    },
+    {
+      "id": "d27c2cf8-fc2d-4c2b-ab98-6fb29974c860",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is a good word to describe a loud fire truck?",
+      "rubric": [
+        "3 - Correctly identifies a precise word like 'noisy' or 'blaring'.",
+        "2 - Chooses a general word like 'big' or 'bright' that is less linked to sound.",
+        "1 - Uses a vague word like 'loud' without more detail.",
+        "0 - Provides an unrelated or incorrect word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "noisy"
+        },
+        {
+          "key": "b",
+          "text": "big"
+        },
+        {
+          "key": "c",
+          "text": "loud"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a sound",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a precise word that describes the sound of the fire truck",
+      "alignmentRationale": "The focus is on selecting a word that accurately conveys the specific sound characteristic."
+    },
+    {
+      "id": "041b928f-0187-44de-b2c3-5119532422e9",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What can you see in a garden?",
+      "rubric": [
+        "3 - Lists specific plants or items like 'flowers, butterflies, and trees'.",
+        "2 - Mentions some things like 'something green'.",
+        "1 - Gives a very vague answer like 'stuff'.",
+        "0 - Provides an unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "identifies items commonly found in a garden",
+      "alignmentRationale": "The task focuses on the ability to name specific objects that fit the context of a garden."
+    },
+    {
+      "id": "04b14d78-4bc8-42cb-b733-32bf51391049",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is the best word to describe a sweet strawberry?",
+      "rubric": [
+        "3 - Correctly identifies 'tasty' or 'juicy' as an exact descriptor.",
+        "2 - Chooses a general word like 'nice', although related.",
+        "1 - Uses a vague word like 'good'.",
+        "0 - Provides an unrelated or incorrect word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "tasty"
+        },
+        {
+          "key": "b",
+          "text": "nice"
+        },
+        {
+          "key": "c",
+          "text": "good"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a flavor",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a precise word that describes the taste of the strawberry",
+      "alignmentRationale": "The task isolates the skill of selecting a word to describe specific taste characteristics."
+    },
+    {
+      "id": "45ee4ebd-8971-40fc-860c-ca196b48f1e0",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "How does a dog feel when it sees you?",
+      "rubric": [
+        "3 - Describes a specific emotion like 'happy' or 'excited'.",
+        "2 - Mentions a general feeling like 'feels good'.",
+        "1 - Gives an unclear response like 'feels'.",
+        "0 - Offers an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "explains how a dog feels in a specific situation",
+      "alignmentRationale": "The focus is on identifying and articulating specific emotions in a relatable way."
+    },
+    {
+      "id": "00c82e18-5c05-4c2b-92dc-64b4d5fa3d84",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is the best word to describe a bright sun?",
+      "rubric": [
+        "3 - Correctly identifies a precise word like 'shiny' or 'glowing'.",
+        "2 - Chooses a somewhat accurate word like 'big' or 'warm' though less precise.",
+        "1 - Uses a vague descriptor like 'good'.",
+        "0 - Provides an unrelated or incorrect word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "shiny"
+        },
+        {
+          "key": "b",
+          "text": "big"
+        },
+        {
+          "key": "c",
+          "text": "good"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a light",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects a precise word that describes the sun's brightness",
+      "alignmentRationale": "The task isolates the skill of selecting a descriptor that accurately conveys characteristics of sunlight."
+    },
+    {
+      "id": "b362df51-2bd3-4484-9cbe-8ffeb2b354f3",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is the best word to describe a fast cheetah?",
+      "rubric": [
+        "3 - Correctly identifies 'quick' or 'speedy' as the best description.",
+        "2 - Chooses a more general word like 'strong'.",
+        "1 - Uses a vague term like 'good'.",
+        "0 - Provides an unrelated or incorrect word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "quick"
+        },
+        {
+          "key": "b",
+          "text": "strong"
+        },
+        {
+          "key": "c",
+          "text": "good"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for speed",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects a precise word that summarizes the cheetah's speed",
+      "alignmentRationale": "The task focuses on identifying a precise term that describes the underlying quality of speed."
+    },
+    {
+      "id": "6a6ec6bd-e3ed-4a57-aaf5-8dd5ed322672",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Tell me what a cat can do. What action does a cat do?",
+      "rubric": [
+        "3 - The answer includes a clear action, like 'jump' or 'sleep.'",
+        "2 - The answer describes something but is vague, like 'doing stuff.'",
+        "1 - The answer is unclear, like 'big cat.'",
+        "0 - The answer does not describe an action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for an action",
+      "targetEvidence": "Describes a specific action the cat can perform.",
+      "alignmentRationale": "This task engages the child in identifying an action verb related to a common animal."
+    },
+    {
+      "id": "54f547bd-1715-4921-b833-522571548b1c",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "A bear and a rabbit are friends. Which word is best to describe their friendship?",
+      "rubric": [
+        "3 - The answer is 'friendly' or 'kind.'",
+        "2 - The answer is a related word, like 'happy,' but less specific.",
+        "1 - The answer is 'fighting,' which does not fit.",
+        "0 - The answer is unclear or not related to friendship."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "friendly"
+        },
+        {
+          "key": "b",
+          "text": "happy"
+        },
+        {
+          "key": "c",
+          "text": "fighting"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Identifies a word that describes the nature of a friendship.",
+      "alignmentRationale": "The task focuses on selecting a word that conveys a clear feeling or nature of the relationship."
+    },
+    {
+      "id": "d78148b5-6452-465f-a76a-dc563ce13fc5",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What do you see at the park? Tell me something you can do there.",
+      "rubric": [
+        "3 - The answer is a clear action like 'play on the swings.'",
+        "2 - The answer describes something done at the park but is vague, like 'fun things.'",
+        "1 - The answer is unclear, like 'blue.'",
+        "0 - The answer does not describe an action."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for an action",
+      "targetEvidence": "Describes a specific action that can be done at a park.",
+      "alignmentRationale": "This task calls for a specific action verb related to a familiar location, emphasizing vocabulary precision."
+    },
+    {
+      "id": "4dd966a5-752b-49df-838c-74f8621664fc",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word fits best to describe a friendly dog?",
+      "rubric": [
+        "3 - The selected word clearly describes a friendly dog, showing understanding of the word's meaning.",
+        "2 - The selected word partly describes a friendly dog but isn't the best choice.",
+        "1 - The selected word does not describe the dog well and shows misunderstanding.",
+        "0 - No answer or an unrelated word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "playful"
+        },
+        {
+          "key": "b",
+          "text": "angry"
+        },
+        {
+          "key": "c",
+          "text": "loud"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "chooses a descriptive word that accurately captures the dog's friendly nature",
+      "alignmentRationale": "This task isolates the precise vocabulary necessary to describe a feeling or characteristic."
+    },
+    {
+      "id": "72271c48-58d9-4b84-9959-d9f7ba412a76",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is the best word to describe a smooth ball?",
+      "rubric": [
+        "3 - The word chosen accurately captures the quality of being smooth.",
+        "2 - The word chosen somewhat describes the ball but is not the best fit.",
+        "1 - The word chosen provides a vague description and is unclear.",
+        "0 - No answer or an unrelated word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "shiny"
+        },
+        {
+          "key": "b",
+          "text": "rough"
+        },
+        {
+          "key": "c",
+          "text": "big"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a texture",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "selects a word that clearly indicates smoothness",
+      "alignmentRationale": "This prompts recognition and selection of precise vocabulary regarding characteristics."
+    },
+    {
+      "id": "60b867fb-ba5f-4882-91e5-695c0fa96d3b",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Can you tell me about a funny animal?",
+      "rubric": [
+        "3 - Describes a funny animal with a clear idea and some interesting details.",
+        "2 - Provides an idea about a funny animal with some description but lacks details.",
+        "1 - Mentions an animal but does not connect it to being funny or provides unclear details.",
+        "0 - No relevant answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "builds a description of a chosen funny animal and its qualities",
+      "alignmentRationale": "This task facilitates expression of vivid imagery through descriptive language."
+    },
+    {
+      "id": "81bc3715-3539-4a8d-84a2-53a346915049",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word fits best to describe a delicious cake?",
+      "rubric": [
+        "3 - The selected word closely matches the idea of something delicious like cake.",
+        "2 - The selected word somewhat connects to the idea of being delicious but isn't precise.",
+        "1 - The selected word is unclear or does not work well for a cake.",
+        "0 - No answer or an unrelated word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "yummy"
+        },
+        {
+          "key": "b",
+          "text": "dry"
+        },
+        {
+          "key": "c",
+          "text": "tiny"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a taste",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "picks a word that enhances the description of a cake's taste",
+      "alignmentRationale": "This question focuses on selecting precise vocabulary regarding positive experiences."
+    },
+    {
+      "id": "23f98930-6be2-40d5-9473-788a5d28636b",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Describe your favorite snack. What do you like about it?",
+      "rubric": [
+        "3 - Clearly explains favorite snack with specific details about what makes it liked.",
+        "2 - Provides a basic idea of the snack and some reasons for liking it but lacks depth.",
+        "1 - Mentions a snack but has few details or makes vague statements.",
+        "0 - No relevant answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "articulates a clear description of a favorite snack and its appealing qualities",
+      "alignmentRationale": "Focuses on the ability to express thoughts and descriptions effectively."
+    },
+    {
+      "id": "0a4cf4a8-52f7-4d92-9c4c-ce46337b6694",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What word is best to describe a sparkling star?",
+      "rubric": [
+        "3 - The selected word precisely describes the quality of the star's sparkle.",
+        "2 - The selected word somewhat relates to the star but is not the best fit.",
+        "1 - The selected word is unclear or inappropriate for describing a star.",
+        "0 - No answer or unrelated word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "twinkling"
+        },
+        {
+          "key": "b",
+          "text": "dull"
+        },
+        {
+          "key": "c",
+          "text": "large"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a brightness",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "chooses an effective word that reflects the star's brightness or sparkle",
+      "alignmentRationale": "This task helps to identify specific vocabulary related to a visual quality."
+    },
+    {
+      "id": "9a90b206-ba8d-473d-9c49-833c6818c427",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Tell me about a funny story that happened to you.",
+      "rubric": [
+        "3 - Describes a funny story in a clear way with details that show what happened.",
+        "2 - Mentions a funny story but lacks details about the events or characters.",
+        "1 - Provides a very vague account or has no clear story.",
+        "0 - No relevant answer given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "shares a narrative with elements of humor and characterizes the happenings",
+      "alignmentRationale": "Encourages clear expression of personal experiences with vivid language."
+    },
+    {
+      "id": "b2050578-9c40-4d02-9604-d2e6d34ad93a",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is the best word to describe a fast car?",
+      "rubric": [
+        "3 - The selected word accurately captures the quality of being fast.",
+        "2 - The selected word somewhat describes fast but isn’t precise.",
+        "1 - The selected word provides unclear meaning.",
+        "0 - No answer or unrelated word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "speedy"
+        },
+        {
+          "key": "b",
+          "text": "slow"
+        },
+        {
+          "key": "c",
+          "text": "small"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a speed",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "chooses a word that enhances the description of speed",
+      "alignmentRationale": "This prompts selection of specific vocabulary regarding speed or performance."
+    },
+    {
+      "id": "83f9682a-3c5b-410f-9bc1-e6b1df12e25e",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Tell me about a favorite color and why you like it.",
+      "rubric": [
+        "3 - A clear reason for liking the color",
+        "2 - Just the name of the color",
+        "1 - An unclear or silly reason",
+        "0 - No answer"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for a preference",
+      "targetEvidence": "The child expresses a thought about their favorite color and the reasoning behind it.",
+      "alignmentRationale": "This allows the child to articulate their feelings towards a color, promoting use of vocabulary and personal expression."
+    },
+    {
+      "id": "b2faef39-ae65-40e0-8eb6-70773eda063c",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What would you say to describe your favorite toy?",
+      "rubric": [
+        "3 - A specific feature or quality of the toy",
+        "2 - A more general idea about the toy",
+        "1 - A vague word or name of the toy",
+        "0 - No answer"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "The child provides a specific description that gives an idea of the toy.",
+      "alignmentRationale": "This prompt encourages the child to articulate a precise quality about their favorite toy, showcasing vocabulary and creativity."
+    },
+    {
+      "id": "115ecfb3-fa3a-4abc-8848-22ca6e17e6f8",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word is best for a quiet mouse?",
+      "rubric": [
+        "3 - Quiet",
+        "2 - Small",
+        "1 - Cute",
+        "0 - Scary"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Quiet"
+        },
+        {
+          "key": "b",
+          "text": "Small"
+        },
+        {
+          "key": "c",
+          "text": "Cute"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a sound",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child picks a word that accurately describes the sound level of the mouse.",
+      "alignmentRationale": "This asks the child to choose a precise term for the sound, focusing on its quiet nature and contextually appropriate vocabulary."
+    },
+    {
+      "id": "164ce876-d70f-4c30-958e-19fe054507dc",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Can you tell me about a fun game you like to play?",
+      "rubric": [
+        "3 - Detailed description of the game",
+        "2 - General idea of the game",
+        "1 - Just the name of the game",
+        "0 - No answer"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "The child shares specific details about the game they enjoy.",
+      "alignmentRationale": "This encourages the child to articulate what makes the game fun, demonstrating their vocabulary and ability to express ideas clearly."
+    },
+    {
+      "id": "2c9e70bb-ee47-449e-a9bc-98be5ba09d72",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What word is best for a cheerful child?",
+      "rubric": [
+        "3 - Cheerful",
+        "2 - Happy",
+        "1 - Playful",
+        "0 - Boring"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Cheerful"
+        },
+        {
+          "key": "b",
+          "text": "Happy"
+        },
+        {
+          "key": "c",
+          "text": "Playful"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child selects the most precise word relating to a positive emotion.",
+      "alignmentRationale": "This item asks for a word choice that showcases clarity and precision in emotional vocabulary."
+    },
+    {
+      "id": "7d1d5f20-871e-4f36-907d-9c91f4c8a040",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word describes a tall giraffe well?",
+      "rubric": [
+        "3 - Tall",
+        "2 - Long",
+        "1 - Cool",
+        "0 - Small"
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Tall"
+        },
+        {
+          "key": "b",
+          "text": "Long"
+        },
+        {
+          "key": "c",
+          "text": "Cool"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a size",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "The child picks the word that best describes the giraffe's height.",
+      "alignmentRationale": "This question engages the child's ability to choose precise vocabulary related to size, emphasizing contextual understanding."
+    },
+    {
+      "id": "aa2d8ea3-f61b-4e49-ac76-8c8cd312ea1c",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word best describes a big dog?",
+      "rubric": [
+        "3 - You choose 'huge' as the best word.",
+        "2 - You say 'big' or another good choice.",
+        "1 - You say something like 'nice' that doesn't fit.",
+        "0 - You pick a word that doesn't fit at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "huge"
+        },
+        {
+          "key": "b",
+          "text": "big"
+        },
+        {
+          "key": "c",
+          "text": "nice"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a size",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selecting the most appropriate size word",
+      "alignmentRationale": "This tests the ability to identify and use precise descriptive vocabulary about size."
+    },
+    {
+      "id": "47d2bc66-58fc-4a9d-aa9d-1159db2184ac",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Tell me about your favorite food.",
+      "rubric": [
+        "3 - You share a food and explain why you like it.",
+        "2 - You say a food without detail.",
+        "1 - You just mention a food name.",
+        "0 - You don’t answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for a food",
+      "targetEvidence": "naming a food with a possible reason",
+      "alignmentRationale": "This encourages children to use vocabulary to communicate their preferences effectively, showing their understanding of context."
+    },
+    {
+      "id": "ec6ee6da-56eb-4f6f-a3d3-9235e83db0b5",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is the best word for a furry cat?",
+      "rubric": [
+        "3 - You choose 'fluffy' as the best word.",
+        "2 - You say 'soft' which is related.",
+        "1 - You use a word like 'pink' that doesn’t fit.",
+        "0 - You choose a word unrelated to cats."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "fluffy"
+        },
+        {
+          "key": "b",
+          "text": "soft"
+        },
+        {
+          "key": "c",
+          "text": "pink"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a texture",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selecting the most precise word describing texture",
+      "alignmentRationale": "This assesses the ability to use vocabulary accurately to describe characteristics like texture in a clear context."
+    },
+    {
+      "id": "fc83957c-dab2-446f-ba5d-fa0f476100ca",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word fits best to describe a quiet library?",
+      "rubric": [
+        "3 - 'silent' is the best choice.",
+        "2 - 'calm' is okay but not as precise.",
+        "1 - 'fun' doesn't match well.",
+        "0 - 'loud' is completely wrong."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "silent"
+        },
+        {
+          "key": "b",
+          "text": "calm"
+        },
+        {
+          "key": "c",
+          "text": "fun"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a sound",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "words that accurately describe sound in context",
+      "alignmentRationale": "This task tests the ability to use vocabulary to accurately describe sound, enhancing precise communication."
+    },
+    {
+      "id": "c8165f71-fc6e-45f8-995d-a1c6378d60bc",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What do you like to do with your friends?",
+      "rubric": [
+        "3 - You explain a fun activity together.",
+        "2 - You share an activity name only.",
+        "1 - You just say 'play'.",
+        "0 - You do not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "word for an action",
+      "targetEvidence": "communicating an action with friends",
+      "alignmentRationale": "This encourages children to articulate their social interactions and use action words, enhancing vocabulary expression."
+    },
+    {
+      "id": "0b899c9b-6c09-4678-814f-23bd7576d2ee",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "How would you describe a sunny day?",
+      "rubric": [
+        "3 - You say 'bright' as the best word.",
+        "2 - You say 'cheerful' which is related.",
+        "1 - You mention 'cloudy' which isn't correct.",
+        "0 - You choose a word that doesn't fit at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "bright"
+        },
+        {
+          "key": "b",
+          "text": "cheerful"
+        },
+        {
+          "key": "c",
+          "text": "cloudy"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for brightness",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "correctly identifying a brightness-related adjective",
+      "alignmentRationale": "This tests the child’s ability to choose descriptive language related to brightness and visual clarity."
+    },
+    {
+      "id": "f071496b-1470-466d-b883-ce4debaa1bfb",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word would you use instead of 'good' in this sentence: 'This is a good story'?",
+      "rubric": [
+        "3 - 'great', well chosen word for a story.",
+        "2 - 'okay', a vague but somewhat useful choice.",
+        "1 - 'nice', somewhat fitting but common word.",
+        "0 - 'bad', does not fit well."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "great"
+        },
+        {
+          "key": "b",
+          "text": "okay"
+        },
+        {
+          "key": "c",
+          "text": "nice"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Selects a word that enhances the description of the story.",
+      "alignmentRationale": "This question tests the ability to choose a specific, fitting synonym that improves clarity."
+    },
+    {
+      "id": "81152788-950f-4f5c-8f0f-84385b62ce79",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "In the sentence: 'The cake smells good,' what word can we replace to make it more interesting?",
+      "rubric": [
+        "3 - 'delicious', greatly enhances the description.",
+        "2 - 'okay', adds some meaning but not specific.",
+        "1 - 'nice', common and vague.",
+        "0 - 'bad', a negative word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "delicious"
+        },
+        {
+          "key": "b",
+          "text": "okay"
+        },
+        {
+          "key": "c",
+          "text": "nice"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Selects a word that makes the description more enticing.",
+      "alignmentRationale": "This question assesses the child's ability to enhance sensory language."
+    },
+    {
+      "id": "30917a65-7be8-44a3-925a-a0578451a97d",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word can replace 'funny' to make it sound better: 'That is a funny movie'?",
+      "rubric": [
+        "3 - 'hilarious', perfect replacement with more impact.",
+        "2 - 'entertaining', a suitable word but less precise.",
+        "1 - 'strange', changes the meaning.",
+        "0 - 'boring', completely the opposite."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "hilarious"
+        },
+        {
+          "key": "b",
+          "text": "entertaining"
+        },
+        {
+          "key": "c",
+          "text": "strange"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Chooses a word that enhances the movie's description.",
+      "alignmentRationale": "This question tests the ability to find a more precise adjective."
+    },
+    {
+      "id": "0d2ec92d-3820-4fd9-82ba-9db59f9240e9",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word can replace 'good' to describe the meal in this sentence: 'That was a good dinner'?",
+      "rubric": [
+        "3 - 'delicious', perfectly fits the context.",
+        "2 - 'nice', somewhat suitable but common.",
+        "1 - 'fine', a vague choice here.",
+        "0 - 'bad', does not work."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "delicious"
+        },
+        {
+          "key": "b",
+          "text": "nice"
+        },
+        {
+          "key": "c",
+          "text": "fine"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Selects a word that enhances the meal's description.",
+      "alignmentRationale": "This question tests the child's ability to select an appropriate adjective."
+    },
+    {
+      "id": "c649e8a2-9661-457e-8546-73fb63893972",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Describe a colorful sunset using interesting words!",
+      "rubric": [
+        "3 - Uses vivid and precise language to convey beauty.",
+        "2 - Includes some descriptive words but lacks clarity.",
+        "1 - Very few descriptors, vague ideas.",
+        "0 - Does not describe a sunset at all."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "Describes the sunset in an engaging way with vivid vocabulary.",
+      "alignmentRationale": "This item invites the child to use their vocabulary to clearly portray an image."
+    },
+    {
+      "id": "28b344fb-7323-4e64-aaa8-f30609b2fe05",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word would you use instead of 'bad' in this sentence: 'That was a bad movie'?",
+      "rubric": [
+        "3 - Chose 'terrible' which is strong and clear.",
+        "2 - Chose 'poor' which works but is less expressive.",
+        "1 - Chose 'sad' which doesn’t fit the movie context.",
+        "0 - Gave an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "terrible"
+        },
+        {
+          "key": "b",
+          "text": "poor"
+        },
+        {
+          "key": "c",
+          "text": "sad"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for quality",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects 'terrible' as a strong word describing quality",
+      "alignmentRationale": "The question assesses understanding of quality in an entertainment context by choosing a stronger word."
+    },
+    {
+      "id": "c3d02b67-d27f-413d-91ad-cdd125b415d6",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is a better word to use instead of 'small' to describe a mouse?",
+      "rubric": [
+        "3 - Chose 'tiny' which is precise and fitting.",
+        "2 - Chose 'little' which is similar but not as specific.",
+        "1 - Chose 'short' which is not the best choice.",
+        "0 - Gave an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "tiny"
+        },
+        {
+          "key": "b",
+          "text": "little"
+        },
+        {
+          "key": "c",
+          "text": "short"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a size",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses 'tiny' as a precise word for size",
+      "alignmentRationale": "This question tests the ability to choose a more specific word related to size contextually."
+    },
+    {
+      "id": "971b8a37-15d7-42c7-9d77-ba62d5fcc278",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word can replace 'nice' to make your description better: 'He is a nice friend'?",
+      "rubric": [
+        "3 - Chose 'kind' which is more descriptive and fitting.",
+        "2 - Chose 'good' which has a similar meaning.",
+        "1 - Chose 'friendly' which is okay but not as specific.",
+        "0 - Gave an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "kind"
+        },
+        {
+          "key": "b",
+          "text": "good"
+        },
+        {
+          "key": "c",
+          "text": "friendly"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a feeling",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses 'kind' as a more precise word for feeling",
+      "alignmentRationale": "This item evaluates selecting a more descriptive emotion word in a social context."
+    },
+    {
+      "id": "56b36516-6748-4c68-ab98-d80c0be30fc7",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is a better word to use instead of 'fun' to describe a game?",
+      "rubric": [
+        "3 - Chose 'exciting' which enhances meaning clearly.",
+        "2 - Chose 'enjoyable' which is okay but less vivid.",
+        "1 - Chose 'good' which is too vague for description.",
+        "0 - Gave an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "exciting"
+        },
+        {
+          "key": "b",
+          "text": "enjoyable"
+        },
+        {
+          "key": "c",
+          "text": "good"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for enjoyment",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects 'exciting' as a word for enjoyment",
+      "alignmentRationale": "Assesses selection of a more vivid word to express enjoyment in a game context."
+    },
+    {
+      "id": "201ce4a9-e5a1-4ff8-9315-a0246e75aaca",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word would you use instead of 'silly' to describe a funny joke?",
+      "rubric": [
+        "3 - Chose 'hilarious' which is very descriptive and fitting.",
+        "2 - Chose 'amusing' which works but is less strong.",
+        "1 - Chose 'weird' which doesn’t fit the joke's humor.",
+        "0 - Gave an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "hilarious"
+        },
+        {
+          "key": "b",
+          "text": "amusing"
+        },
+        {
+          "key": "c",
+          "text": "weird"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for humor",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects 'hilarious' as the best word for humor",
+      "alignmentRationale": "This question tests the ability to select a precise descriptive word to enhance humor."
+    },
+    {
+      "id": "9ec9a0aa-b9eb-4e73-9eed-742c7cf6c660",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is your most special memory? Use interesting words to tell about it!",
+      "rubric": [
+        "3 - Provided a detailed and imaginative memory.",
+        "2 - Provided a good memory but with less descriptive language.",
+        "1 - Shared a simple memory with basic details.",
+        "0 - Gave an unrelated or no answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "provides an interesting and detailed memory with vivid language",
+      "alignmentRationale": "This task evaluates memory narration in a descriptive and engaging way."
+    },
+    {
+      "id": "bd84ac53-8060-455a-b20a-98937f9c9893",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is a better word to replace 'sad' to make it sound better: 'I feel sad after that'?",
+      "rubric": [
+        "3 - Chose 'disappointed' which is clear and precise.",
+        "2 - Chose 'upset' which is okay but less precise.",
+        "1 - Chose 'bad' which does not describe feeling.",
+        "0 - Gave an unrelated answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "disappointed"
+        },
+        {
+          "key": "b",
+          "text": "upset"
+        },
+        {
+          "key": "c",
+          "text": "bad"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for feelings",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses 'disappointed' to accurately express a feeling",
+      "alignmentRationale": "This question gauges understanding of emotions by prompting for a specific feeling-relevant word."
+    },
+    {
+      "id": "a8f0671d-d5f5-4b3b-85a6-693f881eace5",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What word can replace 'said' to make your sentence stronger: 'She said something'?",
+      "rubric": [
+        "3 - 'exclaimed' makes the sentence stronger and clearer.",
+        "2 - 'asked' is okay, but it only works in some contexts.",
+        "1 - 'spoke' is too general and not specific enough.",
+        "0 - 'talked' is vague and not a better choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "exclaimed"
+        },
+        {
+          "key": "b",
+          "text": "asked"
+        },
+        {
+          "key": "c",
+          "text": "spoke"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects a more specific verb than 'said'",
+      "alignmentRationale": "This tests discernment in enhancing verb choice for clarity."
+    },
+    {
+      "id": "bc231fa0-29d3-4708-90e5-e272b4815373",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Describe your favorite animal. Use special words to make it sound interesting!",
+      "rubric": [
+        "3 - Clear and interesting description with precise language.",
+        "2 - Description is clear, but some words are not specific.",
+        "1 - Description is unclear or uses very simple words.",
+        "0 - No description given or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "presents a clear, descriptive idea about an animal",
+      "alignmentRationale": "This question encourages the use of language that accurately conveys a vivid image."
+    },
+    {
+      "id": "2df6c743-b591-4a27-bca6-9badc2ed5186",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word can replace 'look' to make your sentence better: 'I look at the birds'?",
+      "rubric": [
+        "3 - 'gaze' adds a stronger image of looking closely.",
+        "2 - 'glance' is okay, but it's quick and less detailed.",
+        "1 - 'watch' is too general for this context.",
+        "0 - 'see' does not improve the description of looking."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "gaze"
+        },
+        {
+          "key": "b",
+          "text": "glance"
+        },
+        {
+          "key": "c",
+          "text": "watch"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects a more descriptive action than 'look'",
+      "alignmentRationale": "This asks for a more vivid verb to enhance the sentence."
+    },
+    {
+      "id": "ed76d46a-3f8d-41d9-979b-61a150c36a08",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is your favorite food? Describe it with tasty words!",
+      "rubric": [
+        "3 - Enthusiastic and precise description that makes it sound delicious.",
+        "2 - Good description but could be more detailed or vivid.",
+        "1 - Simple description with few details.",
+        "0 - No description or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "articulates a clear, appealing description of food",
+      "alignmentRationale": "This item encourages vivid language to express culinary preference."
+    },
+    {
+      "id": "0ae0ac7c-f696-4a0d-b97d-4bc034bec016",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "In this sentence: 'The dog ran quickly,' which word can we replace to make it more interesting?",
+      "rubric": [
+        "3 - 'quickly' can be replaced by 'speedily' for more interest.",
+        "2 - 'ran' can be replaced by 'went', but it is less specific.",
+        "1 - 'the' cannot be replaced to make it interesting.",
+        "0 - 'dog' is a common word and cannot be improved here."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "speedily"
+        },
+        {
+          "key": "b",
+          "text": "went"
+        },
+        {
+          "key": "c",
+          "text": "the"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "replace a vague word from context",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "chooses a more interesting synonym for 'quickly'",
+      "alignmentRationale": "This item assesses ability to enhance language by replacing vague terms."
+    },
+    {
+      "id": "58f7f13f-5faa-4fda-95b8-8bbad39231ab",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Think of a place you like. Describe it using interesting words!",
+      "rubric": [
+        "3 - Description paints a vivid picture with good detail and variety.",
+        "2 - Description is clear but could be more imaginative.",
+        "1 - Description lacks details or clarity.",
+        "0 - No relevant description given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "articulates a clear and descriptive portrayal of a chosen place",
+      "alignmentRationale": "This item encourages creative and vivid language choice when describing a setting."
+    },
+    {
+      "id": "fa1245bb-5ffb-4a6c-88de-2464d60c9fb8",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is a better word to use instead of 'big' to describe an elephant?",
+      "rubric": [
+        "3 - 'huge' is the best choice because it gives a clearer idea of the elephant's size.",
+        "2 - 'large' is acceptable, but 'big' is still common and less precise.",
+        "1 - 'nice' does not describe size and is not a good choice.",
+        "0 - 'small' is the opposite of what an elephant is."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "huge"
+        },
+        {
+          "key": "b",
+          "text": "large"
+        },
+        {
+          "key": "c",
+          "text": "nice"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "chooses 'huge' for size description",
+      "alignmentRationale": "This question tests ability to select a more precise synonym for 'big'."
+    },
+    {
+      "id": "0b4b27ab-05eb-4282-ab56-396de984ea65",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word is a better choice than 'happy' to describe a joyful moment?",
+      "rubric": [
+        "3 - 'delighted' describes a joyful moment more clearly.",
+        "2 - 'cheerful' is close but not as vivid as 'delighted'.",
+        "1 - 'excited' is good but not exactly joyful.",
+        "0 - 'fun' does not describe the feeling."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "delighted"
+        },
+        {
+          "key": "b",
+          "text": "cheerful"
+        },
+        {
+          "key": "c",
+          "text": "fun"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "picks 'delighted' to express joy accurately",
+      "alignmentRationale": "This evaluates ability to select a precise emotional descriptor."
+    },
+    {
+      "id": "223743e6-c433-41bc-8fd0-51589195f4cf",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Describe your favorite meal. What does it look like and how does it taste?",
+      "rubric": [
+        "3 - Offers a detailed and descriptive account of the meal.",
+        "2 - Mentions some aspects but lacks detailed description.",
+        "1 - Provides a vague idea of a meal.",
+        "0 - Offers no relevant description."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "gives a detailed description of the meal",
+      "alignmentRationale": "This prompt focuses on providing precise descriptions about a meal using vibrant vocabulary."
+    },
+    {
+      "id": "a0319f97-b25b-423e-9d0d-52a4d78ae50c",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Describe a magical forest. What kinds of trees and animals are there?",
+      "rubric": [
+        "3 - Vividly describes various enchanting elements.",
+        "2 - Mentions some magical features, but lacks detail.",
+        "1 - Provides a few vague ideas or items.",
+        "0 - Offers no relevant information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "details various magical aspects of the forest",
+      "alignmentRationale": "The task requires elaboration on an imaginative scene, demonstrating use of descriptive vocabulary."
+    },
+    {
+      "id": "4acd9db0-4989-4e1c-af61-4bbcfc6dc42d",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What is a better word to describe a puppy that is very playful?",
+      "rubric": [
+        "3 - Accurately identifies 'frisky' as the best choice.",
+        "2 - Identifies 'happy' which is related but less specific.",
+        "1 - Chooses a word that is somewhat vague.",
+        "0 - Chooses an unrelated word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "frisky"
+        },
+        {
+          "key": "b",
+          "text": "happy"
+        },
+        {
+          "key": "c",
+          "text": "cute"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects the word 'frisky' for accuracy",
+      "alignmentRationale": "This question challenges the child to find a precise word to convey playfulness of a puppy."
+    },
+    {
+      "id": "62627b8a-e72d-40cd-b301-9ea160aa70a2",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What word best describes a large and powerful ocean wave?",
+      "rubric": [
+        "3 - Correctly identifies 'huge' as the best choice.",
+        "2 - Identifies a related word like 'big' but not as precise.",
+        "1 - Chooses a word that is somewhat related but vague.",
+        "0 - Chooses an unrelated word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "huge"
+        },
+        {
+          "key": "b",
+          "text": "big"
+        },
+        {
+          "key": "c",
+          "text": "swell"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects the word 'huge' for accuracy",
+      "alignmentRationale": "This question requires use of a precise adjective to describe the ocean wave accurately."
+    },
+    {
+      "id": "421a5ade-cf0e-4855-9d92-77bb50ecc263",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "If a cake is ‘delicious’, which word here is a better choice?",
+      "rubric": [
+        "3 - Correctly identifies 'tasty' as the best choice.",
+        "2 - Identifies 'sweet' which is related but not as precise.",
+        "1 - Chooses a vague word that does not fit precisely.",
+        "0 - Chooses an unrelated word."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "tasty"
+        },
+        {
+          "key": "b",
+          "text": "sweet"
+        },
+        {
+          "key": "c",
+          "text": "good"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects the word 'tasty' for clarity",
+      "alignmentRationale": "The question assesses the ability to select a precise synonym for 'delicious'."
+    },
+    {
+      "id": "55a2f61d-529c-41a8-acff-7034d7ff5624",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word best describes a park that is very peaceful?",
+      "rubric": [
+        "3 - The option is 'quiet' or another perfect synonym, showing excellent understanding.",
+        "2 - The option is a relevant but less precise choice, showing good vocabulary use.",
+        "1 - The option is vague or off-topic but related to calmness, showing partial understanding.",
+        "0 - The option is unrelated to peacefulness, showing no understanding."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "quiet"
+        },
+        {
+          "key": "b",
+          "text": "slow"
+        },
+        {
+          "key": "c",
+          "text": "fun"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "chooses a word that communicates peace clearly and accurately",
+      "alignmentRationale": "This task focuses on identifying the most appropriate word to describe peacefulness."
+    },
+    {
+      "id": "e63917b9-92ea-40ff-98bb-f3e088821457",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What word best describes a cheerful song?",
+      "rubric": [
+        "3 - The option is 'uplifting' or another perfect synonym, showing excellent understanding.",
+        "2 - The option is 'happy' or similar, showing good vocabulary use.",
+        "1 - The option is 'loud', which describes volume but not emotion, showing partial understanding.",
+        "0 - The option is unrelated like 'sad', showing no understanding."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "uplifting"
+        },
+        {
+          "key": "b",
+          "text": "happy"
+        },
+        {
+          "key": "c",
+          "text": "loud"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a word that accurately describes the positive nature of the song",
+      "alignmentRationale": "This task focuses on accurately pairing an emotional state with the correct word."
+    },
+    {
+      "id": "6a1abf1b-8063-4290-b3d4-8c8833f9cbb8",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What word best describes a very bright star in the sky?",
+      "rubric": [
+        "3 - The option is 'shiny' or another perfect synonym, showing excellent understanding.",
+        "2 - The option is 'bright' which is relevant but less specific, showing good vocabulary use.",
+        "1 - The option is 'big', which describes size not brightness, showing partial understanding.",
+        "0 - The option is unrelated like 'dark', showing no understanding."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "shiny"
+        },
+        {
+          "key": "b",
+          "text": "bright"
+        },
+        {
+          "key": "c",
+          "text": "big"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses a word that accurately conveys brightness",
+      "alignmentRationale": "This task focuses on identifying the most appropriate word related to brightness."
+    },
+    {
+      "id": "ca6db9cf-6c02-45ba-8fef-985a417faaa8",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Describe a beautiful garden. What colors and flowers do you see?",
+      "rubric": [
+        "3 - The description includes vibrant details about colors and types of flowers.",
+        "2 - The description includes some details but lacks variety or vivid imagery.",
+        "1 - The description is very vague and has no clear image of a garden.",
+        "0 - The description does not connect to a garden."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "provides specific details that convey a clear image of a garden",
+      "alignmentRationale": "This task focuses on the ability to describe a garden scene in detail."
+    },
+    {
+      "id": "fff21556-c135-4b4d-a019-4b719d5d21ba",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word best describes the sound of a gentle breeze?",
+      "rubric": [
+        "3 - The answer captures the soft and pleasing sound precisely.",
+        "2 - The answer suggests sound but lacks specificity.",
+        "1 - The answer is vague or irrelevant to the sound of a breeze.",
+        "0 - The answer does not relate to sounds."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "whispering"
+        },
+        {
+          "key": "b",
+          "text": "loud"
+        },
+        {
+          "key": "c",
+          "text": "rushing"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "precise word for sound",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "chooses a word that accurately reflects the gentle sound of a breeze",
+      "alignmentRationale": "This task tests the ability to select a precise descriptor for a sound."
+    },
+    {
+      "id": "bafffd24-1d68-4000-9eef-45159ccf7485",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word best describes a birthday party that is very exciting?",
+      "rubric": [
+        "3 - The answer is the most precise word indicating excitement and fun.",
+        "2 - The answer is a suitable word, but less precise than the best choice.",
+        "1 - The answer is somewhat related but does not accurately describe excitement.",
+        "0 - The answer is irrelevant or incorrect."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "fun"
+        },
+        {
+          "key": "b",
+          "text": "thrilling"
+        },
+        {
+          "key": "c",
+          "text": "plain"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "precise word for excitement",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "chooses a word that specifically conveys excitement at a birthday party",
+      "alignmentRationale": "This task requires choosing the most precise word to express the excitement of a given context."
+    },
+    {
+      "id": "db3ee081-d512-4ec8-b1f6-393b469d3265",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What word is best to describe a delicious pizza?",
+      "rubric": [
+        "3 - The answer clearly suggests strong positive taste and quality.",
+        "2 - The answer is appropriate but not as strong in flavor description.",
+        "1 - The answer is vague or does not correctly describe taste.",
+        "0 - The answer does not relate to pizza taste."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "tasty"
+        },
+        {
+          "key": "b",
+          "text": "sour"
+        },
+        {
+          "key": "c",
+          "text": "bad"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "precise word for taste",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "chooses a word that exactly conveys deliciousness in the context of pizza",
+      "alignmentRationale": "This task assesses the ability to select a word that accurately describes flavor."
+    },
+    {
+      "id": "1604ea6e-2a38-4a7c-b6d3-dff642ae3b26",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word best describes a very tall building?",
+      "rubric": [
+        "3 - The answer perfectly captures the idea of great height.",
+        "2 - The answer suggests height, but is less precise than the best choice.",
+        "1 - The answer is somewhat appropriate but vague on height.",
+        "0 - The answer is irrelevant or incorrect."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "tall"
+        },
+        {
+          "key": "b",
+          "text": "towering"
+        },
+        {
+          "key": "c",
+          "text": "small"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "precise word for height",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "chooses a word that accurately reflects great height in the context",
+      "alignmentRationale": "This task looks for the most precise descriptor of height."
+    },
+    {
+      "id": "76826713-2ce3-4972-a003-dd362bae9d25",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Describe what a birthday cake looks like. What colors and decorations are there?",
+      "rubric": [
+        "3 - The description is rich in detail about colors and decorations.",
+        "2 - The description is good but could use more details.",
+        "1 - The description is vague with little specific detail.",
+        "0 - The description does not relate to a birthday cake."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "provides a clear and vivid description of a birthday cake",
+      "alignmentRationale": "This task encourages children to use precise vocabulary to describe an object."
+    },
+    {
+      "id": "5d56f7d6-0148-4a95-ae37-9d456239b942",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What word is best to describe the warmth of a sunny day?",
+      "rubric": [
+        "3 - The answer captures the pleasant feeling of warmth precisely.",
+        "2 - The answer is suitable but less descriptive of warmth than best choice.",
+        "1 - The answer is vague or not directly connected to warmth.",
+        "0 - The answer is irrelevant or incorrect."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "balmy"
+        },
+        {
+          "key": "b",
+          "text": "cold"
+        },
+        {
+          "key": "c",
+          "text": "neutral"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "precise word for warmth",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "chooses a word that accurately reflects pleasant warmth in the context",
+      "alignmentRationale": "This task looks for the most precise descriptor of warmth."
+    },
+    {
+      "id": "d058b71b-1cf8-4063-b73c-72a07cfea266",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which of these words best describes a cat that is very friendly?",
+      "rubric": [
+        "3 - 'kind' nicely matches the meaning.",
+        "2 - 'funny' is related but not exact.",
+        "1 - 'lazy' is the opposite idea.",
+        "0 - 'fast' does not describe friendly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "kind"
+        },
+        {
+          "key": "b",
+          "text": "funny"
+        },
+        {
+          "key": "c",
+          "text": "lazy"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Selecting the word that expresses friendliness clearly.",
+      "alignmentRationale": "This task isolates the skill of choosing the most precise word for a specific meaning."
+    },
+    {
+      "id": "c79a8ed3-4017-41ae-b12b-3520e516fa2a",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Think of a loud thunderstorm. Describe what you see and hear during it.",
+      "rubric": [
+        "3 - Describes many details of sights and sounds.",
+        "2 - Describes at least one thing seen or heard.",
+        "1 - Gives a vague idea of a storm.",
+        "0 - Does not describe anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "Providing concrete descriptions related to a thunderstorm.",
+      "alignmentRationale": "This task isolates the skill of accurate scene description."
+    },
+    {
+      "id": "3e85b81d-beda-46e6-ba10-1b1c8c9b1dc5",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Which word matches best with a beautiful sunset?",
+      "rubric": [
+        "3 - 'glorious' perfectly fits the sunset.",
+        "2 - 'nice' is okay but not very descriptive.",
+        "1 - 'dark' does not match a beautiful sunset.",
+        "0 - 'rainy' is completely different."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "glorious"
+        },
+        {
+          "key": "b",
+          "text": "nice"
+        },
+        {
+          "key": "c",
+          "text": "dark"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Selecting a precise adjective that describes a sunset's beauty.",
+      "alignmentRationale": "This element assesses the skill of selecting vivid adjectives based on context."
+    },
+    {
+      "id": "2de97559-c5e0-4f73-ae03-fd174d92d970",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "What word best describes a dog that runs really fast?",
+      "rubric": [
+        "3 - 'swift' is exactly right for fast.",
+        "2 - 'playful' is related but not exact.",
+        "1 - 'lazy' is the opposite meaning.",
+        "0 - 'calm' does not fit with fast."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "swift"
+        },
+        {
+          "key": "b",
+          "text": "playful"
+        },
+        {
+          "key": "c",
+          "text": "lazy"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose the most precise familiar word",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Choosing a word that accurately describes speed.",
+      "alignmentRationale": "This task targets the specific vocabulary used to describe speed."
+    },
+    {
+      "id": "d7a9be16-ca6f-4a14-84c2-60d3503f4602",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "extensive_vocabulary",
+      "format": "explanation",
+      "prompt": "Imagine a magical garden. Describe what you see and smell there.",
+      "rubric": [
+        "3 - Includes many vivid details of sights and smells.",
+        "2 - Mentions at least one detail of sight or smell.",
+        "1 - Describes just a vague idea.",
+        "0 - Does not describe anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "describe a scene accurately",
+      "targetEvidence": "Giving imagery that paints a clear picture of a magical garden.",
+      "alignmentRationale": "This task assesses the ability to convey vivid descriptions."
+    }
+  ]
+}

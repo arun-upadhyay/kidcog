@@ -1,0 +1,2525 @@
+{
+  "category": "motivation_focus",
+  "questions": [
+    {
+      "id": "381d4e2e-ece1-4660-88aa-f890e0e46673",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "What can you do if you have to stop playing but want to keep going?",
+      "rubric": [
+        "3 - Suggests an encouraging phrase or action to motivate continuing, like \"I will play after lunch!\".",
+        "2 - Talks about why it's nice to play, but doesn't offer a strong action.",
+        "1 - Says to just stop playing without any reasoning.",
+        "0 - Doesn't answer or is confused."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "overcome a desire to quit",
+      "targetEvidence": "Articulating a strategy or reasoning to continue the activity.",
+      "alignmentRationale": "This item focuses on the child's ability to express a thought or strategy about staying engaged."
+    },
+    {
+      "id": "d2f30acf-7766-43af-98e2-9b36b9583117",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you feel tired while playing with your toys, what can you say to help you keep playing?",
+      "rubric": [
+        "3 - Suggests a specific encouraging phrase for continuing, like \"I want to keep having fun!\".",
+        "2 - Gives a general idea like \"I like playing games.\"",
+        "1 - Offers something off-topic like \"I should eat now.\"",
+        "0 - Doesn't provide anything or is confused."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "overcome a desire to quit",
+      "targetEvidence": "Articulating a strategy or reasoning to continue the activity.",
+      "alignmentRationale": "This item focuses on the child's ability to express a thought or strategy about staying engaged."
+    },
+    {
+      "id": "73eeccc9-24a1-4b73-bace-52dc90186277",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You are playing with blocks and want to build something big. What can you do to start building?",
+      "rubric": [
+        "3 - Provides a clear and organized starting action, like gathering blocks first.",
+        "2 - Gives a useful but simple action, like stacking a few blocks without a plan.",
+        "1 - Offers unrelated ideas, like asking a friend to play.",
+        "0 - Doesn't answer or is confused."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "begin with a plan",
+      "targetEvidence": "Identifying an action to start a new project with blocks.",
+      "alignmentRationale": "This question assesses the ability to articulate a clear plan for beginning a task."
+    },
+    {
+      "id": "cac5ede7-a941-48e6-add6-defc7b0f4e61",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you take a break from your drawing, what could you say to help you go back to it?",
+      "rubric": [
+        "3 - Suggests a specific encouraging phrase for returning, like \"I want to finish this!\".",
+        "2 - Gives a general positive idea, like \"Drawing is fun.\"",
+        "1 - Offers something off-topic like \"I should play outside.\"",
+        "0 - Doesn’t respond or is unsure what to say."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "return after a break",
+      "targetEvidence": "Proposing a specific statement to prompt returning to the activity.",
+      "alignmentRationale": "This explores the child's ability to verbalize a positive strategy for returning to a task."
+    },
+    {
+      "id": "3a5dc2ce-4137-4ed0-a1f2-234ffed5512d",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you are cutting paper for an art project and someone interrupts you, what can you do to get back to your art?",
+      "rubric": [
+        "3 - You suggest a way to return to your project calmly and easily.",
+        "2 - You mention a tool or idea for getting back to work, but it's less clear.",
+        "1 - You say you'll try to remember to return, but no clear plan.",
+        "0 - You don't mention anything about returning to your art."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "explain a return strategy",
+      "targetEvidence": "the child suggests a practical way to return to the task after a distraction",
+      "alignmentRationale": "This question focuses on the ability to explain how to get back to a chosen task after an interruption."
+    },
+    {
+      "id": "d169f233-08f3-4d0b-b1bb-6790f79f215f",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you are stacking blocks and they fall, what could you do to stay focused and try again?",
+      "rubric": [
+        "3 - You explain a way to lift them up and stack again.",
+        "2 - You mention trying again but not clearly.",
+        "1 - You say you might stack them again.",
+        "0 - You don’t say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "explain a return strategy",
+      "targetEvidence": "the child provides a strategy for retrying a task after a setback",
+      "alignmentRationale": "This question focuses on the child’s ability to articulate a plan to return to a task after a failure."
+    },
+    {
+      "id": "fad60a25-f0c7-4b47-9751-8d00eb712ed2",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "What can you do to make your drawing area nice so you can focus while working?",
+      "rubric": [
+        "3 - You explain how to organize or decorate the space.",
+        "2 - You mention something to help focus but it's vague.",
+        "1 - You just say it should be nice without details.",
+        "0 - You don’t say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "explain a workspace preparation strategy",
+      "targetEvidence": "the child suggests an idea for preparing a workspace to promote focus",
+      "alignmentRationale": "This question focuses on the child's ability to explain how to prepare a workspace for better focus."
+    },
+    {
+      "id": "22b021df-4936-4d68-b94f-75a23fc0a68d",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you want to play but need to clean up your toys first, what would you do to start cleaning up?",
+      "rubric": [
+        "3 - You describe a way to start cleaning up that sounds fun or simple.",
+        "2 - You say a task to do but it’s not very specific.",
+        "1 - You mention cleaning, but with no steps.",
+        "0 - You don’t talk about cleaning up."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "explain a beginning strategy",
+      "targetEvidence": "the child describes a strategy for starting a task after a distraction",
+      "alignmentRationale": "This question focuses on the ability to articulate how to begin a task that requires preparation."
+    },
+    {
+      "id": "94a66bcf-ba13-4f29-86cf-f29d91c10ba7",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You are coloring and get distracted; what can you say to help you stay focused?",
+      "rubric": [
+        "3 - You say something fun to remind yourself to keep coloring.",
+        "2 - You say you want to finish this page.",
+        "1 - You say you'll come back later.",
+        "0 - You don't say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "\"I love coloring!\""
+        },
+        {
+          "key": "b",
+          "text": "\"I want to finish this one.\""
+        },
+        {
+          "key": "c",
+          "text": "\"I'll come back later.\""
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a focus strategy",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "the child identifies a verbal cue to maintain focus on coloring",
+      "alignmentRationale": "This question evaluates the ability to articulate a self-motivating statement to keep on task."
+    },
+    {
+      "id": "4e109749-1a2c-452b-a083-5a94c8b0d193",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You are building with blocks. If the blocks keep falling, what can you do to keep building?",
+      "rubric": [
+        "3 - You change how you stack the blocks to keep them steady.",
+        "2 - You ask for help but keep trying to build.",
+        "1 - You stop building because it’s hard.",
+        "0 - You just get upset and do nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "\"Stack them a different way.\""
+        },
+        {
+          "key": "b",
+          "text": "\"I can't build anymore.\""
+        },
+        {
+          "key": "c",
+          "text": "\"I will just ask for help.\""
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a focus strategy",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 2
+      },
+      "targetEvidence": "the child identifies a helpful strategy to continue building despite challenges",
+      "alignmentRationale": "This question evaluates the ability to articulate a strategy for continuing a task even when facing difficulties."
+    },
+    {
+      "id": "55bb069f-d74a-4ada-ab82-7f8461289208",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you feel tired while playing, what can you say to keep playing a little longer?",
+      "rubric": [
+        "3 - Offer a way to keep playing despite being tired.",
+        "2 - Talk about being tired and take a break.",
+        "1 - Just stop playing because you are tired.",
+        "0 - Leave and do something else entirely."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "strategy to manage tiredness",
+      "targetEvidence": "the child provides a verbal response indicating a desire to persist through tiredness",
+      "alignmentRationale": "This assesses how the child suggests staying engaged despite physical feelings of tiredness."
+    },
+    {
+      "id": "aa4e3649-77a2-4b07-a167-9e8db8fed93a",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You're building blocks, and your friend wants to talk. What can you do to keep building?",
+      "rubric": [
+        "3 - Suggest a way to keep building while talking.",
+        "2 - Talk for a while but then forget about building.",
+        "1 - Stop building and just talk.",
+        "0 - Ignore your friend altogether."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "strategy to keep focus during conversation",
+      "targetEvidence": "the child describes how to manage building and talking simultaneously",
+      "alignmentRationale": "This assesses the child's ability to suggest a strategy to maintain focus while engaged in a conversation."
+    },
+    {
+      "id": "99b67a0c-fa1f-4258-946f-ed0fa1b192d4",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "What can you do if you see something fun outside while you are playing?",
+      "rubric": [
+        "3 - Explain how to keep playing and also look outside.",
+        "2 - Mention the fun thing but stop playing.",
+        "1 - Just stop playing and go outside.",
+        "0 - Ignore the fun thing and stay focused inside."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "strategy to maintain focus despite distraction",
+      "targetEvidence": "the child provides a suggestion for managing attention between two activities",
+      "alignmentRationale": "This question tests the child's ability to suggest a way to focus on a task even when there is something else interesting happening nearby."
+    },
+    {
+      "id": "be29be42-fcd3-4665-9107-5a32df60c69e",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you are excited to build something but get distracted, what can help you keep building?",
+      "rubric": [
+        "3 - Describe something to help you stay focused on building.",
+        "2 - Mention the distraction and not building.",
+        "1 - Start thinking of something else to build instead.",
+        "0 - Say you want to stop building altogether."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "strategy to refocus after distraction",
+      "targetEvidence": "the child gives a suggestion for focusing again after being distracted",
+      "alignmentRationale": "This question assesses the child's ability to articulate a method for regaining focus after being distracted."
+    },
+    {
+      "id": "22e75a23-7e11-44a1-b952-6c475f30b47c",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "After playing, you’re ready for a fun new task. What will you do first?",
+      "rubric": [
+        "3 - You explain a clear first step, like getting supplies or choosing an activity.",
+        "2 - You mention a related action, but it's not a clear first step.",
+        "1 - You say something related to playing, but it’s not focused.",
+        "0 - Your answer does not relate to starting a new task."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for a first step",
+      "targetEvidence": "Child explains a practical way to start a new task after play.",
+      "alignmentRationale": "This item measures the ability to identify a practical first step for beginning a new activity, isolating initial action strategies."
+    },
+    {
+      "id": "4c7e5b4e-c433-4756-a7a4-17e49e5a64bb",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you finish a puzzle but lose a piece, what can you do to keep playing?",
+      "rubric": [
+        "3 - You provide a clear action to solve the problem responsibly.",
+        "2 - You suggest something related to the piece but not really actionable.",
+        "1 - You mention just stopping because it's broken.",
+        "0 - Your answer doesn’t relate to the puzzle or the piece."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for problem-solving",
+      "targetEvidence": "Child identifies an action to take to remain engaged despite an incomplete puzzle.",
+      "alignmentRationale": "This assesses problem-solving skills when faced with setback and encourages children to remain focused on their tasks."
+    },
+    {
+      "id": "5c290a7f-3c55-4a6a-b130-34cdc59a4357",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "What is one thing you can do to help your Lego tower stand tall when it wobbles?",
+      "rubric": [
+        "3 - You give a specific method to make the tower stronger, like adding pieces.",
+        "2 - You suggest something related to making it better but less specific.",
+        "1 - You mention giving up or stopping the tower.",
+        "0 - Your answer doesn’t match the question about the tower."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for improving stability",
+      "targetEvidence": "Child suggests a method for improving the stability of a structure.",
+      "alignmentRationale": "This question assesses a child's ability to think of practical strategies for improving their work product."
+    },
+    {
+      "id": "8e008610-10b5-4327-8b53-31978be4880e",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you are drawing, and your friend comes to play, what can you say to keep going with your drawing?",
+      "rubric": [
+        "3 - You give a good response about how to tell your friend you want to keep drawing.",
+        "2 - You mention talking to your friend, but it’s not quite helpful.",
+        "1 - You suggest just stopping and playing with your friend.",
+        "0 - Your response doesn’t match the situation."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "word for communicating needs",
+      "targetEvidence": "Child suggests a way to communicate their desire to continue an activity.",
+      "alignmentRationale": "This tests the child's ability to articulate a communicative strategy that supports staying focused on their task despite social urges."
+    },
+    {
+      "id": "fa0b5f19-0893-483a-b0a2-b610296534ec",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "How can you make your drawing area fun and ready to help you focus?",
+      "rubric": [
+        "3 - You explain adding things like a favorite toy or a nice blanket to help focus.",
+        "2 - You suggest making it cozy, which is a good idea!",
+        "1 - You say to change colors of crayons, but that doesn’t help the area.",
+        "0 - You don’t say anything helpful about the drawing area."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "preparing workspace",
+      "targetEvidence": "The child offers creative ways to organize or enhance their drawing space.",
+      "alignmentRationale": "This prompt tests the child's ability to strategize about their workspace, which can help maintain focus on tasks."
+    },
+    {
+      "id": "5d86da90-dd35-431d-ae3c-5b6d3eb8eb93",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "What can you do if your crayons break to keep drawing?",
+      "rubric": [
+        "3 - You explain getting more crayons to keep drawing right away.",
+        "2 - You suggest keeping drawing even with a broken crayon. That's alright!",
+        "1 - You say to stop drawing completely. That's not helpful.",
+        "0 - You don’t say anything regarding the situation."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "continuing a task",
+      "targetEvidence": "The child provides a strategy for maintaining engagement after a setback.",
+      "alignmentRationale": "This prompt explores how children navigate setbacks in tasks, assessing their ability to focus on ongoing activities."
+    },
+    {
+      "id": "6e9a722f-2f09-47e0-98b7-4c3da8942d16",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You want to build a tower with blocks. What is the first thing you do to get ready?",
+      "rubric": [
+        "3 - Explains a clear first step to start building, like finding blocks.",
+        "2 - Mentions a step but is unclear, like just saying 'get stuff.'",
+        "1 - Says something unrelated to starting the activity.",
+        "0 - Does not respond clearly or says nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "preparing a workspace",
+      "targetEvidence": "describes a practical action to set up for the building task.",
+      "alignmentRationale": "This item assesses the pre-action strategy involved in preparing a workspace."
+    },
+    {
+      "id": "20aa645d-c1de-4e74-a44c-b0b99f15c765",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you want to finish your drawing but need a break, what would you do?",
+      "rubric": [
+        "3 - Explains a clear step to take a break and come back.",
+        "2 - Mentions a break but isn't clear about the next step.",
+        "1 - Says something unrelated to breaks or finishing work.",
+        "0 - Does not respond clearly or says nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "strategy for returning after setback",
+      "targetEvidence": "describes a practical step to take a break and return to the task.",
+      "alignmentRationale": "This question focuses on managing breaks while maintaining task continuity."
+    },
+    {
+      "id": "2f4d2ebf-c4b0-47f7-971e-34b6534165ef",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you start a project but don't feel like finishing, what can help you?",
+      "rubric": [
+        "3 - Suggests a way to get back to work.",
+        "2 - Talks about taking a break first.",
+        "1 - Mentions feeling tired without a plan.",
+        "0 - Doesn’t suggest any idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "strategies for beginning a task",
+      "targetEvidence": "Describes an approach to resume work on a project.",
+      "alignmentRationale": "This focuses on exploring motivation to re-engage with a task."
+    },
+    {
+      "id": "4709ed30-0320-45fd-8bf2-3c8c166696e0",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You want to build a Lego set, but you can't find all the pieces. What should you do?",
+      "rubric": [
+        "3 - You can look for the missing Lego pieces before starting.",
+        "2 - You could try to use other blocks instead.",
+        "1 - You might ask a friend for help to find them.",
+        "0 - You could just leave the Legos alone."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Look for the missing pieces"
+        },
+        {
+          "key": "b",
+          "text": "Try using other blocks"
+        },
+        {
+          "key": "c",
+          "text": "Leave the Legos alone"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "returning after interruption",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Identifies a clear action to resume building after a setback.",
+      "alignmentRationale": "This task focuses on strategies to return to a task after a disturbance."
+    },
+    {
+      "id": "53dae813-c281-469b-9235-7d4bebd60923",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "What is one thing you can do if you want to keep working on your art but get distracted?",
+      "rubric": [
+        "3 - Describes a specific way to stay focused.",
+        "2 - Mentions a general idea for helping focus.",
+        "1 - Talks about being distracted without a plan.",
+        "0 - Doesn’t explain anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "strategies for continuing a task",
+      "targetEvidence": "Describes a method to remain focused on an artistic activity.",
+      "alignmentRationale": "This activity targets expressing a practical strategy for staying focused."
+    },
+    {
+      "id": "21c4a26f-1691-4e57-ba72-cfe5292d2d8c",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You're coloring, and you spill your markers. What can you do to continue?",
+      "rubric": [
+        "3 - You can clean up the markers and keep coloring.",
+        "2 - You might try using crayons instead.",
+        "1 - You could stop coloring now.",
+        "0 - You can just leave it messy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Clean up and keep coloring"
+        },
+        {
+          "key": "b",
+          "text": "Try using crayons instead"
+        },
+        {
+          "key": "c",
+          "text": "Stop coloring now"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "returning after interruption",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Selects an idea that helps return to coloring after a spill.",
+      "alignmentRationale": "This scenario focuses on overcoming a minor setback and continuing a task."
+    },
+    {
+      "id": "d9c2bb2d-42e9-4d14-94bd-900f248cfe90",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you want to play with a toy but it's broken, what could you do to fix that?",
+      "rubric": [
+        "3 - Suggests a clear way to fix or work around the toy.",
+        "2 - Might suggest asking for help or finding a similar toy.",
+        "1 - Talks about having fun without a toy.",
+        "0 - Doesn’t suggest anything fitting."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "strategies for beginning a task",
+      "targetEvidence": "Explains an action related to starting to play despite a setback.",
+      "alignmentRationale": "This task assesses how kids initiate play when faced with challenges."
+    },
+    {
+      "id": "80655c1c-f74c-42f2-bb0b-29c83590062b",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You’re building with blocks, and it keeps falling down. What can you do?",
+      "rubric": [
+        "3 - You could change how you stack the blocks.",
+        "2 - You might just try again the same way.",
+        "1 - You can ask someone to help you.",
+        "0 - You should stop building."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Change how you stack them"
+        },
+        {
+          "key": "b",
+          "text": "Try again the same way"
+        },
+        {
+          "key": "c",
+          "text": "Ask someone for help"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategies for continuing a task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Identifies an approach to keep trying with the blocks.",
+      "alignmentRationale": "This question focuses on persistence in a hands-on activity."
+    },
+    {
+      "id": "d590fe73-fbc8-432d-86db-17fc54ccbfd1",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "What do you do when you want to finish a game but someone calls you for a snack?",
+      "rubric": [
+        "3 - Explains a way to finish the game later.",
+        "2 - Might say to pause and eat first.",
+        "1 - Says it’s hard to leave the game.",
+        "0 - Doesn't mention finishing the game."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "returning after interruption",
+      "targetEvidence": "Describes how to balance game time with other activities.",
+      "alignmentRationale": "This task captures the balance of activities and the strategy to resume play."
+    },
+    {
+      "id": "cd9e7211-b52b-451d-ac96-833251f28ce1",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You want to finish your puzzle, but you can’t find a piece. What can you do next?",
+      "rubric": [
+        "3 - Suggest a way to search for the piece.",
+        "2 - Say you need help to finish.",
+        "1 - Keep looking without a plan.",
+        "0 - Give up on the puzzle."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "return after interruption",
+      "targetEvidence": "Child describes a strategy to continue working on the task despite a challenge.",
+      "alignmentRationale": "Assesses practical strategies for overcoming obstacles in tasks."
+    },
+    {
+      "id": "ce820c89-6594-4391-83db-8ef468243f3d",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You started a craft but can’t find markers. What can you do?",
+      "rubric": [
+        "3 - Explain how to find more markers.",
+        "2 - Suggest a different material to use.",
+        "1 - Keep working without markers.",
+        "0 - Stop the craft."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "prepare a workspace",
+      "targetEvidence": "Child provides suggestions for managing materials needed for a project.",
+      "alignmentRationale": "Focuses on strategies for resource management in completing a task."
+    },
+    {
+      "id": "20a76077-1944-442d-8a45-fee8b434e49b",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You want to clean up your toys, but your friend wants to play. What can you do?",
+      "rubric": [
+        "3 - Explain a way to finish cleaning later.",
+        "2 - Say you need to clean up now.",
+        "1 - Just keep playing.",
+        "0 - Ignore the friend."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "prepare a workspace",
+      "targetEvidence": "Child describes a strategy to manage cleaning up and playing.",
+      "alignmentRationale": "Assesses ability to navigate competing interests when focusing on tasks."
+    },
+    {
+      "id": "58996318-074f-4610-9271-168c8cc71ece",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You are making a craft. What will you do first to get ready?",
+      "rubric": [
+        "3 - The child names a clear first step, like gathering materials.",
+        "2 - The child mentions something related to preparing or starting.",
+        "1 - The child struggles to answer or is unsure.",
+        "0 - The child does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "preparing a workspace",
+      "targetEvidence": "The child identifies an initial action associated with starting a craft project.",
+      "alignmentRationale": "This allows the child to express an understanding of preparation in task engagement."
+    },
+    {
+      "id": "96f12595-754a-42d5-bab6-be7fdad2f67f",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You want to play with a new toy, but it’s hard to use. What should you do?",
+      "rubric": [
+        "3 - Say to keep trying or ask someone for help.",
+        "2 - Just play with another toy instead.",
+        "1 - Get frustrated and stop using the toy.",
+        "0 - Say it’s too hard and leave it alone."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Keep trying or ask for help"
+        },
+        {
+          "key": "b",
+          "text": "Play with another toy"
+        },
+        {
+          "key": "c",
+          "text": "Stop using the toy"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for starting a new task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child shows initiative in trying to overcome difficulty with new activities.",
+      "alignmentRationale": "This assesses the child's willingness to engage with challenging or unfamiliar tasks."
+    },
+    {
+      "id": "6418824d-c715-490f-b418-17874f2a2e96",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You’re in the middle of coloring, and your friend talks to you. What will you do?",
+      "rubric": [
+        "3 - The child explains a way to keep coloring or how to listen to their friend.",
+        "2 - The child talks about listening but may not detail a plan.",
+        "1 - The child gets confused or gives a simple response.",
+        "0 - The child does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "balancing focus between tasks",
+      "targetEvidence": "The child suggests a method for managing attention between interacting with a friend and continuing to color.",
+      "alignmentRationale": "This helps evaluate how children think through distractions while working on a task."
+    },
+    {
+      "id": "86a7f818-f048-481f-b2f8-0e64af80d2f8",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You have a puzzle but it's missing a piece. What can you do?",
+      "rubric": [
+        "3 - Say to look for the missing piece or try a different puzzle.",
+        "2 - Put the puzzle away and do something else.",
+        "1 - Get very upset about the missing piece.",
+        "0 - Not say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Look for the missing piece"
+        },
+        {
+          "key": "b",
+          "text": "Do something else"
+        },
+        {
+          "key": "c",
+          "text": "Get upset"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for handling interruptions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child can suggest either finding a solution or moving to another activity when faced with a challenge.",
+      "alignmentRationale": "This question tests how well the child manages interruptions or setbacks by suggesting solutions."
+    },
+    {
+      "id": "85c780e5-6508-4f79-93df-c5214a5ba2db",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "What do you enjoy doing when you get stuck on something?",
+      "rubric": [
+        "3 - The child shares a way to move forward, like asking for help or trying harder.",
+        "2 - The child gives a related answer but may lack detail.",
+        "1 - The child seems unsure or gives a general answer.",
+        "0 - The child does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "strategy for regaining focus",
+      "targetEvidence": "The child describes actions to take when encountering a challenge in a task.",
+      "alignmentRationale": "This allows children to express their understanding of strategies for tackling difficult situations during activities."
+    },
+    {
+      "id": "9a2e2cc8-b64c-4a23-ac93-2f3fed71ddc0",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You’re doing a fun game, but it gets really tricky. What can you do to continue?",
+      "rubric": [
+        "3 - Say to take a break and then try again later.",
+        "2 - Keep playing even if it's hard.",
+        "1 - Say it’s too hard and give up.",
+        "0 - Stop playing altogether without saying anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Take a break and try again"
+        },
+        {
+          "key": "b",
+          "text": "Keep playing it"
+        },
+        {
+          "key": "c",
+          "text": "Give up on it"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for handling difficulties",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child recognizes the need for breaks or adjustments when facing challenges in activities.",
+      "alignmentRationale": "This assesses the child's ability to navigate difficulties in engaged tasks."
+    },
+    {
+      "id": "56e7e30a-b730-440d-860a-5d64bbeb861b",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You want to draw a picture. First, you need to get your crayons. What should you do if you can’t find them?",
+      "rubric": [
+        "3 - Say to ask a grown-up for help finding the crayons.",
+        "2 - Look in a few places, like under the table or on the shelf.",
+        "1 - Say to just give up drawing.",
+        "0 - Don't say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask a grown-up for help"
+        },
+        {
+          "key": "b",
+          "text": "Look under the table"
+        },
+        {
+          "key": "c",
+          "text": "Just give up"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for finding tools",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child can suggest asking for help or looking in specific places to find necessary supplies.",
+      "alignmentRationale": "This question tests the child's ability to find solutions by suggesting practical strategies when facing a challenge."
+    },
+    {
+      "id": "c7988558-45f6-46b3-9827-55d07b6d2021",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You start building a tower with blocks, but it falls down. What can you do next?",
+      "rubric": [
+        "3 - Say to try building it a different way or ask for help.",
+        "2 - Keep trying to build it the same way again.",
+        "1 - Stop playing with the blocks.",
+        "0 - Just walk away from the blocks."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Try building in a new way"
+        },
+        {
+          "key": "b",
+          "text": "Keep building it the same way"
+        },
+        {
+          "key": "c",
+          "text": "Stop playing with the blocks"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for returning to a task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child shows understanding of taking different approaches or seeking assistance after a setback.",
+      "alignmentRationale": "This encourages the child to think about how to adjust or persist after a failure."
+    },
+    {
+      "id": "d37d962a-5eb3-4447-bce5-926373b53177",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You're trying to finish a drawing, but your markers aren’t working well. What can you do to keep drawing?",
+      "rubric": [
+        "3 - Use a different marker or ask for help with new ones.",
+        "2 - Try to press harder on the marker to see if it works.",
+        "1 - Give up on the drawing because of the markers.",
+        "0 - Say you can’t draw anymore."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Use a different marker or ask for help."
+        },
+        {
+          "key": "b",
+          "text": "Try to press harder on the marker."
+        },
+        {
+          "key": "c",
+          "text": "Give up on the drawing."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "finding an alternative tool",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child suggests using a different drawing tool or seeking help.",
+      "alignmentRationale": "This question assesses the ability to find alternatives when faced with a problem."
+    },
+    {
+      "id": "03af417f-1876-4131-be74-a2ea5dea99ca",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You're building with blocks but they keep falling down. What can you do to keep building?",
+      "rubric": [
+        "3 - Suggest changing the way the blocks are stacked or asking for a flat surface.",
+        "2 - Try to hold the blocks together in a different way.",
+        "1 - Get frustrated and stop building.",
+        "0 - Say you can’t build anymore."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "adjusting building strategies",
+      "targetEvidence": "The child offers a way to improve building techniques after setbacks.",
+      "alignmentRationale": "This question assesses how well the child adapts their strategies when facing challenges in building."
+    },
+    {
+      "id": "18339b24-005b-4ec1-a77c-759610a632ce",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You want to build a fort, but you can't find enough blankets. What can you do to keep building?",
+      "rubric": [
+        "3 - Look for other items to use or ask someone for more blankets.",
+        "2 - Try to use the blankets you have in a different way.",
+        "1 - Stop building because of not having enough blankets.",
+        "0 - Say you can't build the fort anymore."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Look for other items or ask for blankets."
+        },
+        {
+          "key": "b",
+          "text": "Try to use the blankets you have differently."
+        },
+        {
+          "key": "c",
+          "text": "Stop building the fort."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "adaptation when resources are limited",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child suggests alternatives to continue building despite a lack of resources.",
+      "alignmentRationale": "This question assesses the ability to improvise with available materials."
+    },
+    {
+      "id": "a04b689c-3be7-4454-b5eb-81ac665f0fb6",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You want to make a craft, but you don’t have enough materials. What can you do to keep crafting?",
+      "rubric": [
+        "3 - Find something else to use or ask for more materials.",
+        "2 - Try to use what you have in a different way.",
+        "1 - Get frustrated and stop crafting.",
+        "0 - Say you can't craft anymore."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "resourcefulness in crafting",
+      "targetEvidence": "The child presents an idea to continue crafting despite limited supplies.",
+      "alignmentRationale": "This question explores innovative thinking in creating with available resources."
+    },
+    {
+      "id": "0bf1a6a4-5431-4152-beaf-e064a2dd7ae7",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You are playing outside but it starts to rain. What can you do to keep playing?",
+      "rubric": [
+        "3 - Suggest moving to a sheltered area to play, or bringing a toy inside.",
+        "2 - Change activities to something you can do in the rain.",
+        "1 - Complain about the rain.",
+        "0 - Stop playing without a solution."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "finding a new location to play",
+      "targetEvidence": "The child provides a way to continue playing despite the rain.",
+      "alignmentRationale": "This question examines the ability to adapt the environment for continued engagement."
+    },
+    {
+      "id": "d568fc0a-a03a-49a0-b960-43fb80f283dc",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You're helping a friend with a puzzle, but you can’t find one piece. What can you do to keep looking?",
+      "rubric": [
+        "3 - Look in the box or ask your friend for help.",
+        "2 - Search around the table to see if it's nearby.",
+        "1 - Just wait and see if it turns up by itself.",
+        "0 - Say you can't find it and stop helping."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Look in the box or ask for help."
+        },
+        {
+          "key": "b",
+          "text": "Search around the table."
+        },
+        {
+          "key": "c",
+          "text": "Just wait and do nothing."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "seeking help or solutions",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The child actively looks for the missing piece or seeks assistance.",
+      "alignmentRationale": "This question evaluates strategies for continuing a task despite a setback."
+    },
+    {
+      "id": "8ae95bc3-21c6-419c-a7f8-f2a92d3cf894",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You're working on a puzzle, but you lose one piece. What can you do to keep working on it?",
+      "rubric": [
+        "3 - Keep working on the puzzle with the pieces you have and find the missing one later.",
+        "2 - Search for the piece while working on the puzzle.",
+        "1 - Stop working on the puzzle entirely.",
+        "0 - Say you can only do the puzzle with all pieces."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Keep working without it"
+        },
+        {
+          "key": "b",
+          "text": "Search for the piece"
+        },
+        {
+          "key": "c",
+          "text": "Stop the puzzle"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for continuing a task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "selects a method for effective problem-solving during a task",
+      "alignmentRationale": "Selecting a positive approach to the task showcases problem-solving skills."
+    },
+    {
+      "id": "3c81ab81-ad2c-4246-bcba-f9901b9fd934",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You want to finish a drawing, but your pencil breaks. What can you do to keep drawing?",
+      "rubric": [
+        "3 - Using a new pencil to continue drawing effectively.",
+        "2 - Sharpening the broken pencil so you can keep drawing.",
+        "1 - Putting away your drawing until the pencil is fixed.",
+        "0 - Stopping all drawing and not planning anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Find a new pencil"
+        },
+        {
+          "key": "b",
+          "text": "Draw with a different color"
+        },
+        {
+          "key": "c",
+          "text": "Give up drawing"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for continuing a task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "chooses a way to keep drawing after a disruption",
+      "alignmentRationale": "Choosing a method for continuing shows understanding of task focus strategies."
+    },
+    {
+      "id": "2d64b169-639b-475a-bb78-8c720046490c",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You're writing a story, but you can't think of what happens next. What should you do?",
+      "rubric": [
+        "3 - Take a break then come back with fresh ideas.",
+        "2 - Ask a friend for help on what to write.",
+        "1 - Decide to stop writing because I can't think of more.",
+        "0 - Leave the story forever."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Take a break"
+        },
+        {
+          "key": "b",
+          "text": "Ask a friend"
+        },
+        {
+          "key": "c",
+          "text": "Stop writing"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for returning to a task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "eligible to select a method returning to creativity",
+      "alignmentRationale": "This tests their ability to recognize a setback in writing and how to approach it."
+    },
+    {
+      "id": "a183332f-9abf-4b64-8bfb-a10962ec4ac2",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You are playing with your toys, but you can't find your favorite one. What will you do to keep playing?",
+      "rubric": [
+        "3 - You suggest searching for the toy or finding something else to play with.",
+        "2 - You suggest waiting for someone to help you.",
+        "1 - You say you can’t play without it.",
+        "0 - You don’t want to play anymore."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "strategy for continuing a task",
+      "targetEvidence": "provides a method to engage with play despite a setback",
+      "alignmentRationale": "This explores how children adapt to obstacles and continue their activity."
+    },
+    {
+      "id": "96156453-71f4-4bf8-8c7c-a843673506f8",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You’re solving a maze, but you keep hitting dead ends. How can you keep trying to get to the finish?",
+      "rubric": [
+        "3 - You share a simple way to rethink your path or start over.",
+        "2 - You mention asking someone for help on the maze.",
+        "1 - You say it’s too hard and give up.",
+        "0 - You don’t care about the maze anymore."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "strategy for continuing a task",
+      "targetEvidence": "explains a strategy to overcome challenges while solving",
+      "alignmentRationale": "This prompts reflection on persistence strategies when faced with challenges."
+    },
+    {
+      "id": "087940f5-135a-4e1a-8678-5c3be7837ade",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You are building with blocks, but one block is the wrong size. What should you do to keep building?",
+      "rubric": [
+        "3 - Look for a block that fits better and continue building.",
+        "2 - Try to fix the wrong block to make it fit.",
+        "1 - Leave the blocks alone for now.",
+        "0 - Stop building because of one block."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Find a right-sized block"
+        },
+        {
+          "key": "b",
+          "text": "Make it fit by pushing harder"
+        },
+        {
+          "key": "c",
+          "text": "Stop building for now"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for continuing a task",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects a constructive approach to a building problem",
+      "alignmentRationale": "Selecting a practical solution shows active engagement with the task."
+    },
+    {
+      "id": "78e91d52-e14a-4994-bf6e-dbc1178cbacc",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You're coloring a picture, but you run out of your favorite crayon. What can you do to keep coloring?",
+      "rubric": [
+        "3 - You can find another crayon that you like.",
+        "2 - You could color with a pencil instead.",
+        "1 - You might decide to stop coloring.",
+        "0 - You could ask someone else for their crayons."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Find another crayon"
+        },
+        {
+          "key": "b",
+          "text": "Use a pencil instead"
+        },
+        {
+          "key": "c",
+          "text": "Stop coloring"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for continuing a task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects a strategy to adapt when supplies are missing",
+      "alignmentRationale": "This question tests the ability to continue a task by adapting to missing tools."
+    },
+    {
+      "id": "361b22aa-4ad7-4576-8b02-7c8966dc0df9",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You want to make a sandwich, but you can’t find the bread. What should you do to keep making your lunch?",
+      "rubric": [
+        "3 - You could look in the fridge or cupboard to find the bread.",
+        "2 - You could change to making a salad instead.",
+        "1 - You might just wait and not eat anything.",
+        "0 - You could ask someone else to make the sandwich for you."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Look in the fridge for the bread"
+        },
+        {
+          "key": "b",
+          "text": "Make a salad instead"
+        },
+        {
+          "key": "c",
+          "text": "Wait and not eat anything"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for returning to a task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects a method to find missing items for a task",
+      "alignmentRationale": "This question explores the strategy of returning to a task after encountering a setback."
+    },
+    {
+      "id": "fbeff33e-e2db-460a-b7b4-823fd2874b63",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You want to finish a puzzle, but your friend keeps talking loudly. What can you do to stay focused on your puzzle?",
+      "rubric": [
+        "3 - You could ask your friend to lower their voice or suggest playing quietly together.",
+        "2 - You could try to ignore your friend and keep working on the puzzle.",
+        "1 - You might give up and stop working on the puzzle.",
+        "0 - You could start a new game instead."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ask your friend to lower their voice"
+        },
+        {
+          "key": "b",
+          "text": "Try to ignore your friend"
+        },
+        {
+          "key": "c",
+          "text": "Give up on the puzzle"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for continuing a task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects a strategy to manage noise while working on a puzzle",
+      "alignmentRationale": "This question targets the specific strategy of continuing a task despite distractions."
+    },
+    {
+      "id": "a0d6388e-b018-4ca9-b5ab-614f0b75d331",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You are building with blocks, and they keep falling down. What can you do to keep building your tower?",
+      "rubric": [
+        "3 - You might try to build a wider base or stack them differently.",
+        "2 - You could ask someone for help.",
+        "1 - You might give up building.",
+        "0 - You could start playing with something else."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "strategy for continuing a task",
+      "targetEvidence": "explains a strategy to address setbacks while building",
+      "alignmentRationale": "This open-ended task allows for exploration of strategies in response to setbacks."
+    },
+    {
+      "id": "2f4ef1b5-59d6-4ad6-914f-e22d5ff22ad7",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You are crafting a necklace, but you ran out of beads. What should you do next?",
+      "rubric": [
+        "3 - You could look for more beads or find different materials.",
+        "2 - You might use only the beads you have left and make it smaller.",
+        "1 - You might stop crafting and do something else.",
+        "0 - You could ask someone else to give you their beads."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Look for more beads"
+        },
+        {
+          "key": "b",
+          "text": "Make it smaller with fewer beads"
+        },
+        {
+          "key": "c",
+          "text": "Stop crafting"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for returning to a task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "chooses an option to continue crafting after running out of resources",
+      "alignmentRationale": "This question explores strategies for returning to a task after running into limitations."
+    },
+    {
+      "id": "b557ec8f-f74b-4e8a-bb1b-03c9fbf0543d",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You're putting together a LEGO set, but you can’t find the instruction manual. What can you do to keep building?",
+      "rubric": [
+        "3 - You could look online for the instructions or guess based on the pieces.",
+        "2 - You might try to build without instructions.",
+        "1 - You could stop building altogether.",
+        "0 - You might ask someone else to find the manual."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Look online for instructions"
+        },
+        {
+          "key": "b",
+          "text": "Build without instructions"
+        },
+        {
+          "key": "c",
+          "text": "Stop building"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for continuing a task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects a way to continue building despite losing instructions",
+      "alignmentRationale": "This response tests the ability to adapt strategy when information is missing."
+    },
+    {
+      "id": "1415475a-351c-49fb-bd89-8f71f82f99a4",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "After playing outside, you want to finish a story you started writing. What can you do to get ready to write again?",
+      "rubric": [
+        "3 - You could find your notes or think about what you want to write next.",
+        "2 - You might organize your workspace.",
+        "1 - You could decide to stop writing.",
+        "0 - You might ask someone to help you remember."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "strategy for returning to a task",
+      "targetEvidence": "describes how to prepare for continuing a story after a break",
+      "alignmentRationale": "This open question allows children to show their thinking about starting up a task after a distraction."
+    },
+    {
+      "id": "6970725d-1f44-45f4-ba98-ef8558cbabd2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You are painting a picture, but you spilled some paint. What can you do to keep going with your art?",
+      "rubric": [
+        "3 - You could clean it up and continue painting.",
+        "2 - You might try to work around the spill.",
+        "1 - You could decide to stop painting.",
+        "0 - You could ask someone to fix it for you."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Clean it up and continue painting"
+        },
+        {
+          "key": "b",
+          "text": "Work around the spill"
+        },
+        {
+          "key": "c",
+          "text": "Decide to stop painting"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for continuing a task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects a way to adapt after making a mistake while painting",
+      "alignmentRationale": "This question tests the ability to continue working despite setbacks in the creative process."
+    },
+    {
+      "id": "35969848-2e55-4a5c-8891-3711f24252c0",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You are coloring, but the room is too noisy. What could you do to help you focus better?",
+      "rubric": [
+        "3 - You suggest going to a quieter room.",
+        "2 - You tell someone to lower the noise.",
+        "1 - You say you can color anyway.",
+        "0 - You don’t have an idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Go to a quieter room"
+        },
+        {
+          "key": "b",
+          "text": "Tell someone to lower the noise"
+        },
+        {
+          "key": "c",
+          "text": "Color anyway"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "preparing environment for focus",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "choice of a suitable action to reduce noise distractions",
+      "alignmentRationale": "This task isolates the skill of choosing strategies to adjust the workspace based on external factors."
+    },
+    {
+      "id": "198626cc-5fdc-4792-a262-c874b73443f7",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "Describe how you can break a design project into smaller steps. What is the first step you will take?",
+      "rubric": [
+        "3 - You provide a clear step to start the project.",
+        "2 - You mention a general idea of steps.",
+        "1 - You don't give a specific first step.",
+        "0 - You say nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "breaking down a project into steps",
+      "targetEvidence": "identifying a clear first step in a process",
+      "alignmentRationale": "This question tests the child's ability to plan by breaking down tasks into manageable steps."
+    },
+    {
+      "id": "fff75373-7544-4d3b-a35f-b14ea69384a7",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you want to finish a puzzle but keep getting distracted, what is the best thing to do?",
+      "rubric": [
+        "3 - You find a quiet, comfortable spot to work.",
+        "2 - You ask others to stop talking.",
+        "1 - You try to finish it while being distracted.",
+        "0 - You stop working on the puzzle altogether."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Find a quiet spot"
+        },
+        {
+          "key": "b",
+          "text": "Ask others to stop talking"
+        },
+        {
+          "key": "c",
+          "text": "Try to finish it while distracted"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategies for maintaining focus",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "choice of the most effective solution to manage distractions",
+      "alignmentRationale": "This isolates the skill of identifying effective strategies to keep focus when distractions arise."
+    },
+    {
+      "id": "82c6a654-e85c-4f0c-8cad-e632ea179581",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "What is one way you can prepare your workspace before starting a project to help you focus better?",
+      "rubric": [
+        "3 - You give a clear plan for preparing the area.",
+        "2 - You mention a bit about organizing.",
+        "1 - You don't say how to prepare the area.",
+        "0 - You say nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "preparing workspace for focus",
+      "targetEvidence": "providing a useful workspace strategy",
+      "alignmentRationale": "This question assesses the skill of creating an environment conducive to focus before starting a task."
+    },
+    {
+      "id": "a7818c95-0999-4903-85c3-35fe449cb836",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you feel tired while working on a project, what is a good strategy to help you keep going?",
+      "rubric": [
+        "3 - You take a short break and then return.",
+        "2 - You drink some water to wake up.",
+        "1 - You keep working even if you're tired.",
+        "0 - You give up on the project."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Take a short break"
+        },
+        {
+          "key": "b",
+          "text": "Drink some water"
+        },
+        {
+          "key": "c",
+          "text": "Keep working"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategies for continuing when tired",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "choosing a helpful strategy to overcome fatigue",
+      "alignmentRationale": "This task focuses on the specific skill of recognizing and choosing strategies to maintain productivity during energy dips."
+    },
+    {
+      "id": "bd776491-6c64-4407-b68a-a0284d35aef3",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You are working on a drawing, but it's hard to concentrate because your little brother is making noise. What can you do to help you focus?",
+      "rubric": [
+        "3 - You suggest wearing headphones to block the noise.",
+        "2 - You mention asking your brother to be quiet.",
+        "1 - You say you ignore the noise.",
+        "0 - You don’t say anything."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Wear headphones 🎧"
+        },
+        {
+          "key": "b",
+          "text": "Ask him to be quiet"
+        },
+        {
+          "key": "c",
+          "text": "Ignore the noise"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategy for focusing despite distraction",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "choice of a practical strategy to minimize distraction",
+      "alignmentRationale": "This task isolates the specific skill of choosing a focus strategy while addressing distractions."
+    },
+    {
+      "id": "434a9da3-e39a-4a57-aa22-eafc11e58d7d",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You started a project but got distracted by a game. What should you do next to get back to your project?",
+      "rubric": [
+        "3 - You set a timer for your game to finish quickly.",
+        "2 - You put away the game and take a break.",
+        "1 - You leave the game on and try to work.",
+        "0 - You don’t return to working."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Set a timer for the game ⏱️"
+        },
+        {
+          "key": "b",
+          "text": "Put away the game"
+        },
+        {
+          "key": "c",
+          "text": "Leave the game on"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "returning to task after distraction",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "choice of an effective action to resume the project",
+      "alignmentRationale": "This question isolates the skill of choosing a strategy to return to a task after being distracted."
+    },
+    {
+      "id": "6aa0ef14-eba9-43e1-a6a2-d9aa0fd1c49b",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "Think about a time you were busy building something, but had to stop. What is one way you could come back and finish your building later?",
+      "rubric": [
+        "3 - You clearly describe a method to return to the task.",
+        "2 - You mention a rough idea but it's not clear.",
+        "1 - You don't give a specific way to come back.",
+        "0 - You say nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "strategies for returning to a task",
+      "targetEvidence": "providing a clear method to resume after a stop",
+      "alignmentRationale": "This question tests the child's ability to explain a strategy for returning to a task after an interruption."
+    },
+    {
+      "id": "95886fe4-0065-4384-9d76-7abad73c05cc",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "You want to finish your art project but your friend wants to play. What can you say to help you focus on your project?",
+      "rubric": [
+        "3 - You choose to politely say you need to finish your project now.",
+        "2 - You tell your friend you will play later, but it’s still not clear you can focus.",
+        "1 - You agree to play now and forget about your project.",
+        "0 - You say nothing and just keep working on the project."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I need to finish this project first."
+        },
+        {
+          "key": "b",
+          "text": "Let’s play for a bit."
+        },
+        {
+          "key": "c",
+          "text": "I don’t want to play now."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for a helpful action",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects a social response that helps maintain focus on a task",
+      "alignmentRationale": "This tests the ability to articulate a helpful social strategy for avoiding distraction."
+    },
+    {
+      "id": "9711de85-5eb3-4d1c-93ee-9d78aaf8afb1",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "Think of a time you got distracted when drawing. How could you return to your drawing afterward?",
+      "rubric": [
+        "3 - Response includes a clear plan to refocus after a distraction.",
+        "2 - Response mentions a general idea, but lacks specific steps.",
+        "1 - Response is incomplete or unclear regarding how to return.",
+        "0 - No relevant ideas provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for returning after a distraction",
+      "targetEvidence": "explains a strategy for coming back to a task after distraction",
+      "alignmentRationale": "This assesses the ability to articulate a method for regaining focus after a distraction."
+    },
+    {
+      "id": "0d63152c-287c-4756-941f-569f236bde99",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "What helps you stay focused when doing a fun project? Describe at least one good thing to do.",
+      "rubric": [
+        "3 - Response includes a detailed strategy for staying focused.",
+        "2 - Response mentions a strategy but lacks detail.",
+        "1 - Response is vague regarding focus strategies.",
+        "0 - No relevant ideas provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for a helpful practice",
+      "targetEvidence": "explains a specific strategy to remain focused on a task",
+      "alignmentRationale": "This measures the ability to describe a strategy for maintaining focus."
+    },
+    {
+      "id": "705b1f22-8b4e-4e31-967d-3ee1b544500e",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "Describe how you can change your workspace to help you focus on drawing better. What will you do?",
+      "rubric": [
+        "3 - Response includes specific changes made to the workspace to aid focus.",
+        "2 - Response talks about changing, but lacks details.",
+        "1 - Response is unclear about workspace changes.",
+        "0 - No relevant ideas provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "word for preparing a workspace",
+      "targetEvidence": "discusses a specific adjustment in the workspace for improved focus",
+      "alignmentRationale": "This assesses the ability to identify workspace changes that aid concentration."
+    },
+    {
+      "id": "41babcf4-f470-4dc8-983d-a20855e79bb3",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you are reading and the TV is loud, what should you do to keep focusing on the book?",
+      "rubric": [
+        "3 - You ask to turn down the TV or move to a quieter place.",
+        "2 - You keep reading without addressing the noise.",
+        "1 - You turn off the book and watch TV instead.",
+        "0 - You just ignore the distraction."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I will ask to turn down the TV."
+        },
+        {
+          "key": "b",
+          "text": "I will keep reading with the noise."
+        },
+        {
+          "key": "c",
+          "text": "I will watch TV instead of reading."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "word for addressing a distraction",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects a proactive action to minimize a distraction while reading",
+      "alignmentRationale": "This question evaluates the ability to strategize against an external distraction while focusing on a task."
+    },
+    {
+      "id": "f35bec68-1d35-4c0b-955a-e8be57aeaf43",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "Think of a time when something made it hard for you to finish your drawing. What can you do to help yourself get back to it?",
+      "rubric": [
+        "3 - You give a clear way to return to your work after a break.",
+        "2 - You suggest a way but it's not very clear.",
+        "1 - You mention you got distracted but don’t explain how to continue.",
+        "0 - You don’t say anything about returning to work."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "returning to a task after a setback",
+      "targetEvidence": "Child explains a method to restart after a distraction.",
+      "alignmentRationale": "The prompt directly assesses problem-solving after a break, without assuming prior knowledge."
+    },
+    {
+      "id": "51809655-8cb7-485e-aad4-c22dd57434b4",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If your room is messy, how can you prepare it to help you focus?",
+      "rubric": [
+        "3 - You suggest cleaning up or organizing your desk.",
+        "2 - You mention working somewhere else.",
+        "1 - You say it’s messy but don’t change it.",
+        "0 - You don’t offer a practical idea to help."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "I will clean my desk before I start."
+        },
+        {
+          "key": "b",
+          "text": "I could go to a library instead."
+        },
+        {
+          "key": "c",
+          "text": "I will just study anyway in the mess."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "preparing workspace for focus",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child names an action to prepare their workspace for studying.",
+      "alignmentRationale": "This item requires a practical suggestion for workspace preparation."
+    },
+    {
+      "id": "edfe49ea-5482-4a57-a97d-bf6a8836b3ba",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "Describe how you can break a big project into smaller steps to help you finish it. What will you do first?",
+      "rubric": [
+        "3 - You explain steps you will take to start the project.",
+        "2 - You mention a step, but it lacks clarity.",
+        "1 - You say just to finish the project without dividing it.",
+        "0 - You don’t give any helpful steps."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "breaking a project into steps",
+      "targetEvidence": "Child outlines steps for completing a project gradually.",
+      "alignmentRationale": "This task aims to explore project management strategies without reliance on complex vocabulary."
+    },
+    {
+      "id": "89989f64-61d2-44f3-82de-5360eef17959",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you start a book and then get distracted by a game, what should you do next to come back to the book?",
+      "rubric": [
+        "3 - You say to put the game away and read the book.",
+        "2 - You mention taking a break before reading again.",
+        "1 - You say you will read later without a plan.",
+        "0 - You don’t have a plan to return to the book."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Put the game away and read the book."
+        },
+        {
+          "key": "b",
+          "text": "Take a break and come back later."
+        },
+        {
+          "key": "c",
+          "text": "Just say I’ll read more another day."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "returning to a chosen task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child explains an action for returning to reading after distraction.",
+      "alignmentRationale": "The question requires a specific strategy for returning to a task after a distraction."
+    },
+    {
+      "id": "2a8807c3-b460-4833-b531-0c8cee71589e",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "What is something you really want to do but it seems hard? What will you try to make it easier?",
+      "rubric": [
+        "3 - You explain a way to make your goal easier to reach.",
+        "2 - You mention something you want, but not how to make it easier.",
+        "1 - You say it’s hard but don’t suggest anything.",
+        "0 - You don’t give any ideas."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "strategies for overcoming challenges",
+      "targetEvidence": "Child identifies methods to simplify a difficult task.",
+      "alignmentRationale": "The question focuses on strategizing around a challenge, encouraging a solutions-based approach."
+    },
+    {
+      "id": "6f87e83d-adb5-4f63-b32c-a85a028610c2",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "When working on a puzzle, if you can’t find a piece, what is a good thing to do?",
+      "rubric": [
+        "3 - You take a break and come back later with fresh eyes.",
+        "2 - You keep trying to find the piece without stopping.",
+        "1 - You say it’s too hard and give up.",
+        "0 - You don’t provide a helpful strategy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Take a break and come back later."
+        },
+        {
+          "key": "b",
+          "text": "Keep trying to find the piece nonstop."
+        },
+        {
+          "key": "c",
+          "text": "It’s too hard, I will give up now."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategies for problem-solving",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child suggests returning with a fresh perspective after a break.",
+      "alignmentRationale": "This question encourages problem-solving tactics related to persistence."
+    },
+    {
+      "id": "8c42dab1-3c5b-4edb-ab4e-919fcd5e2c7f",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "motivation_focus",
+      "format": "explanation",
+      "prompt": "If you feel tired while drawing, what can help you keep going?",
+      "rubric": [
+        "3 - You could take a short break and then continue.",
+        "2 - You might decide to switch to a different activity.",
+        "1 - You say to just keep drawing anyway.",
+        "0 - You don’t give any helpful idea."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Take a short break and then continue."
+        },
+        {
+          "key": "b",
+          "text": "Switch to a different activity for fun."
+        },
+        {
+          "key": "c",
+          "text": "Just keep drawing even if I’m tired."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "managing fatigue during a task",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child suggests an action to manage tiredness while working.",
+      "alignmentRationale": "This prompt connects fatigue management with strategies for staying engaged in a task."
+    }
+  ]
+}

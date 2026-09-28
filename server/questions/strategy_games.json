@@ -1,0 +1,2845 @@
+{
+  "category": "strategy_games",
+  "questions": [
+    {
+      "id": "fd703a28-ac35-4428-b1bb-d8248158f86a",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a toy dog and a toy cat. Which one would you take on a trip?",
+      "rubric": [
+        "3 - Chooses toy dog showing preference.",
+        "2 - Selects toy cat but less preferred.",
+        "1 - Picks one but isn’t specific.",
+        "0 - Doesn't choose a toy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Toy dog"
+        },
+        {
+          "key": "b",
+          "text": "Toy cat"
+        },
+        {
+          "key": "c",
+          "text": "Both"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "expressing preference",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "selects a toy for a trip",
+      "alignmentRationale": "The child must express a preference based on the context of a trip."
+    },
+    {
+      "id": "5a6812c6-e524-4e9f-88dc-4e7bbd860161",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a paper airplane and a balloon. Which one will move through the air better?",
+      "rubric": [
+        "3 - Paper airplane will move better in the air.",
+        "2 - Balloon might float but not fly.",
+        "1 - Both are fun for play.",
+        "0 - Doesn't answer correctly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Paper airplane"
+        },
+        {
+          "key": "b",
+          "text": "Balloon"
+        },
+        {
+          "key": "c",
+          "text": "Both"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing based on movement",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "selects the paper airplane for air movement",
+      "alignmentRationale": "This tests understanding of how different objects move in air."
+    },
+    {
+      "id": "317c3def-8d88-4ff6-9977-d7703952f028",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a red block, a blue block, and a green block. Which block do you pick first for building?",
+      "rubric": [
+        "3 - Chooses blue block for creativity.",
+        "2 - Selects red block but less preferred.",
+        "1 - Green block is okay but not best.",
+        "0 - Doesn't choose a block."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Blue block"
+        },
+        {
+          "key": "b",
+          "text": "Red block"
+        },
+        {
+          "key": "c",
+          "text": "Green block"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing based on creativity",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "selects a block for a creative purpose",
+      "alignmentRationale": "This item assesses a child's creative preference in selecting building blocks."
+    },
+    {
+      "id": "dcfd6d47-40e7-46ed-9c19-365ecdc4acce",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have two toy animals: a lion and a rabbit. Which one do you like more for pretend play?",
+      "rubric": [
+        "3 - Chooses lion showing preference.",
+        "2 - Chooses rabbit showing preference.",
+        "1 - Picks a toy but not specific.",
+        "0 - Doesn't choose an animal."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "expressing preference",
+      "targetEvidence": "selects an animal for pretend play",
+      "alignmentRationale": "The child must express a preference from two given options."
+    },
+    {
+      "id": "0fe2e47e-19e5-4def-8ee8-e5b97af038e8",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a triangle and a square. You want to stack them. Which one goes on top?",
+      "rubric": [
+        "3 - Triangle goes on top because it's smaller.",
+        "2 - Square goes on top but not as good.",
+        "1 - Both shapes are fine for stacking.",
+        "0 - Doesn't answer correctly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Triangle"
+        },
+        {
+          "key": "b",
+          "text": "Square"
+        },
+        {
+          "key": "c",
+          "text": "Both"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing based on size",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects the triangle for stacking",
+      "alignmentRationale": "The question requires choosing the best shape based on size for stacking."
+    },
+    {
+      "id": "185ad466-716c-430f-bade-e68eb6de2908",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have three fruit: an apple, a banana, and a grape. Which one would you like to eat?",
+      "rubric": [
+        "3 - Answers with apple.",
+        "2 - Chooses banana or grape.",
+        "1 - Picks a fruit but not specific.",
+        "0 - Doesn't choose a fruit."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "expressing preference",
+      "targetEvidence": "selects a fruit to eat",
+      "alignmentRationale": "This task tests the ability to express personal choice among fruit options."
+    },
+    {
+      "id": "6d037df6-9b26-4d0d-a352-7b4d8c0dc8ac",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a toy car and a toy train. You want to race. Which one is best for fast speeds?",
+      "rubric": [
+        "3 - Toy car is best for racing quickly.",
+        "2 - Toy train could work but is slower.",
+        "1 - Both can be fun toys for racing.",
+        "0 - Doesn't answer correctly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Toy car"
+        },
+        {
+          "key": "b",
+          "text": "Toy train"
+        },
+        {
+          "key": "c",
+          "text": "Both"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing based on speed",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects the toy car for racing",
+      "alignmentRationale": "The child compares toys based on speed to select the fastest option."
+    },
+    {
+      "id": "2629efb6-afc1-4862-be01-4cabfa029126",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a ball and a doll. You want to play a game. Which one is better for throwing?",
+      "rubric": [
+        "3 - Ball is best for throwing.",
+        "2 - Doll is okay but not meant for throwing.",
+        "1 - Both are nice toys.",
+        "0 - Doesn't answer correctly."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Ball"
+        },
+        {
+          "key": "b",
+          "text": "Doll"
+        },
+        {
+          "key": "c",
+          "text": "Both"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing based on function",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects the ball for throwing",
+      "alignmentRationale": "The child must choose based on the function of an object for a specific activity."
+    },
+    {
+      "id": "d1f66785-cb3e-4dd2-a094-53d3f5e93122",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have 1 blue ball and 3 yellow balls. You want to play a game. Which ball do you choose for more fun?",
+      "rubric": [
+        "3 - You select the ball that is more (or most) fun based on its quantity.",
+        "2 - You consider a ball but your choice shows some confusion about fun.",
+        "1 - You select a ball with no clear reasoning.",
+        "0 - No response or irrelevant choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "yellow ball"
+        },
+        {
+          "key": "b",
+          "text": "blue ball"
+        },
+        {
+          "key": "c",
+          "text": "another yellow ball"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "select for preference",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "child picks a ball based on a preference that relates to fun or engagement.",
+      "alignmentRationale": "This item isolates the child's preference-based decision-making under simple comparative contexts."
+    },
+    {
+      "id": "c0637b3b-a8bf-4859-9334-958aee7db558",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have 2 blue circles and 1 red triangle. You want to make a pattern. Which shape should you place next?",
+      "rubric": [
+        "3 - You choose the correct shape to continue the pattern.",
+        "2 - You make a choice that partially continues the pattern.",
+        "1 - You choose a shape not related to the pattern at all.",
+        "0 - No response or irrelevant choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "blue circle"
+        },
+        {
+          "key": "b",
+          "text": "red triangle"
+        },
+        {
+          "key": "c",
+          "text": "green square"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "compare options for patterns",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "child selects a shape that logically continues a pattern sequence.",
+      "alignmentRationale": "This task isolates the skill of pattern recognition by directly asking about continuation, focusing on the child's ability to compare choices based on established shapes."
+    },
+    {
+      "id": "f466049a-813d-42cb-b345-d126e3c795e2",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have 3 red apples and 1 green apple. You want to share with a friend. Which apple will you give first?",
+      "rubric": [
+        "3 - You choose the apple that is different from the others.",
+        "2 - You choose one of the red apples but not the right reason.",
+        "1 - You choose an apple without thinking.",
+        "0 - No response or irrelevant choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "green apple"
+        },
+        {
+          "key": "b",
+          "text": "red apple"
+        },
+        {
+          "key": "c",
+          "text": "another red apple"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "decide based on differences",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "child identifies and shares an apple based on its unique color.",
+      "alignmentRationale": "This focuses on the ability to compare objects and make a selection based on distinguishing features, thus tracing the logic behind their decision."
+    },
+    {
+      "id": "bb25ad20-68b5-4c2b-90cf-17c90ecd9f1d",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have 2 small toys: a car and a robot. You want to drive the toy that goes faster. Which toy do you pick?",
+      "rubric": [
+        "3 - You choose the toy associated with fast movement.",
+        "2 - You pick the other toy but provide a reason related to movement.",
+        "1 - You choose a toy without any clear reasoning.",
+        "0 - No response or irrelevant choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "car"
+        },
+        {
+          "key": "b",
+          "text": "robot"
+        },
+        {
+          "key": "c",
+          "text": "whistle"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "select for speed",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "child picks a toy based on a characteristic attribute (speed).",
+      "alignmentRationale": "This task evaluates the child's ability to compare the properties of toys and make a choice based on a clearly defined goal of speed."
+    },
+    {
+      "id": "e8f3843a-7c89-44f3-b25e-a606bff53981",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a green turtle and a red fish. Which one would you pick for fun?",
+      "rubric": [
+        "3 - You choose the better pet for fun with a clear reason.",
+        "2 - You pick one but don't explain.",
+        "1 - You give a general reason not related to fun.",
+        "0 - No response or irrelevant information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "evaluate for fun",
+      "targetEvidence": "child selects a toy or pet and provides reasoning for fun.",
+      "alignmentRationale": "The prompt asks for an evaluation based on a subjective measure (fun) without relying on specific knowledge, giving insight into preferences."
+    },
+    {
+      "id": "2141df19-8e49-46f8-a6c5-5daf58096330",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a stuffed monkey and a bear. Which one would you take to hug?",
+      "rubric": [
+        "3 - You choose the better one with a clear reason.",
+        "2 - You pick one but don’t explain why.",
+        "1 - You give a general reason not related to hugging.",
+        "0 - No response or irrelevant information."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "choose for comfort",
+      "targetEvidence": "child chooses animal and explains choice centered on comfort or hugging.",
+      "alignmentRationale": "This task allows children to express their preferences for comfort, fostering subjective evaluation that is not based on factual knowledge."
+    },
+    {
+      "id": "942012d4-ebbf-4b8a-a012-9be3fdd856d3",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a shiny star and a dull moon. Which one would you pick to put in your room?",
+      "rubric": [
+        "3 - You select the item based on brightness, which is more visually appealing.",
+        "2 - You pick one but show confusion about choice criteria.",
+        "1 - You choose without thinking it through clearly.",
+        "0 - No response or irrelevant choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "shiny star"
+        },
+        {
+          "key": "b",
+          "text": "dull moon"
+        },
+        {
+          "key": "c",
+          "text": "star print"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "evaluate for aesthetics",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "child selects decoration based on visual qualities.",
+      "alignmentRationale": "This evaluates the child's ability to assess items based on aesthetic appeal, comparing different visual characteristics to support their choice."
+    },
+    {
+      "id": "e82b56dd-fd33-443d-a9e2-474fbd4122b8",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a big bunny and a small turtle. You want to play. Which one do you pick for more fun?",
+      "rubric": [
+        "3 - You choose the bunny, likely considering size and playfulness.",
+        "2 - You choose turtle but explain fun in a different way.",
+        "1 - Your choice is unclear without clear reasons.",
+        "0 - No response or irrelevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "bunny"
+        },
+        {
+          "key": "b",
+          "text": "turtle"
+        },
+        {
+          "key": "c",
+          "text": "other small bunny"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "select for engagement",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 2
+      },
+      "targetEvidence": "child picks based on presumed fun attributes.",
+      "alignmentRationale": "This task asks children to consider size and perceived playfulness without relying on factual or learned comparison strategies."
+    },
+    {
+      "id": "27f3f630-5a31-4ae3-a9ef-0f6a10b933cf",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have 2 red blocks and 1 blue block. You want to make a tower. Which block makes it tallest?",
+      "rubric": [
+        "3 - Choose the blue block to make it taller. It will be the highest block.",
+        "2 - Choose any red block, which makes the tower almost as tall but not highest.",
+        "1 - Choose the blue block but say something else that doesn't help the answer.",
+        "0 - Choose incorrect blocks or guess without understanding."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Red block"
+        },
+        {
+          "key": "b",
+          "text": "Blue block"
+        },
+        {
+          "key": "c",
+          "text": "Both red blocks"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "choose the best block for height",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "targetEvidence": "Child selects the blue block as it makes the tower tallest.",
+      "alignmentRationale": "This question isolates the ability to plan ahead for height by considering the visible blocks."
+    },
+    {
+      "id": "14f07947-88f1-46d9-aab8-49453a67c027",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You want to make a sandwich. Which toppings do you want?",
+      "rubric": [
+        "3 - Pick specific toppings and a clear reason for each.",
+        "2 - Pick toppings but fumble on some reasons.",
+        "1 - Choose random things or pick none.",
+        "0 - Don't answer or say you don't want sandwiches."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "deciding on food combinations",
+      "targetEvidence": "Child selects toppings with reasoning for the combination.",
+      "alignmentRationale": "This isolates the ability to select and justify choices of food."
+    },
+    {
+      "id": "bbb991d2-ba7a-4fa7-bd0d-1b53f4eb83dc",
+      "age": 4,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You can choose a pet: a kitten or a puppy. Which one would you choose?",
+      "rubric": [
+        "3 - Clearly state a choice with a good reason.",
+        "2 - Choose one but the reason is not clear.",
+        "1 - Choose either but say you might want something else.",
+        "0 - Don't choose or say you can't have pets."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "skillFacet": "choosing a pet based on preference",
+      "targetEvidence": "Child makes a choice and explains why they chose it.",
+      "alignmentRationale": "This determines the ability to articulate preferences in choices."
+    },
+    {
+      "id": "bda7d773-aac1-40ba-a3df-090dc5ac48c2",
+      "age": 4,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have 2 teddy bears and 1 robot. You can only take one toy to play. Which one is cuddly?",
+      "rubric": [
+        "3 - Choose a teddy bear, as they are cuddly friends.",
+        "2 - Choose the robot but say why it can also play.",
+        "1 - Choose any toy, but give an unclear reason.",
+        "0 - Choose none or say you want something else."
+      ],
+      "weight": 1,
+      "ageBand": [
+        4,
+        4
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "A teddy bear"
+        },
+        {
+          "key": "b",
+          "text": "The robot"
+        },
+        {
+          "key": "c",
+          "text": "Both teddy bears"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing a companion toy",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "Child selects a teddy bear for the friendly quality.",
+      "alignmentRationale": "This examines the ability to assess qualities of companionship in toys."
+    },
+    {
+      "id": "b16e89fc-c138-4ed4-8a9d-1b92f2b5b05a",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a toy bird and a toy fish. You can move the bird 2 spaces or the fish 3 spaces. Which one helps you reach the nest faster?",
+      "rubric": [
+        "3 - Correctly selects moving fish 3 spaces as the best choice.",
+        "2 - Chooses bird but shows some understanding of movement.",
+        "1 - Makes an incorrect choice or vague answer.",
+        "0 - Does not answer or gives an unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move bird 2 spaces"
+        },
+        {
+          "key": "b",
+          "text": "Move fish 3 spaces"
+        },
+        {
+          "key": "c",
+          "text": "Don't move"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "analyzing move choices",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "chooses the option that helps the bird reach the nest faster",
+      "alignmentRationale": "This question is designed to analyze the understanding of moving strategies towards a goal."
+    },
+    {
+      "id": "3d7a7889-bfa7-4ae6-b2ab-ba8f9196747e",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "If you have a toy ball and you can roll it quickly or throw it gently, which would you choose to reach the playground faster?",
+      "rubric": [
+        "3 - Clearly identifies the method that gets to the playground fast.",
+        "2 - Gives a valid choice but doesn't explain well.",
+        "1 - Makes a confusing or unrelated choice.",
+        "0 - Does not answer or is off-topic."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "evaluating movement methods",
+      "targetEvidence": "states a choice aimed at reaching a destination quickly",
+      "alignmentRationale": "This question investigates how well the child can judge actions in terms of achieving a goal."
+    },
+    {
+      "id": "0cbb75be-5730-47d3-82e6-f5a2c93a163d",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a toy rocket and a toy car. You can move the rocket 4 spaces or the car 2 spaces. Which move helps you go farther?",
+      "rubric": [
+        "3 - Correctly identifies moving the rocket 4 spaces as the better move.",
+        "2 - Chooses the car but recognizes movement is needed.",
+        "1 - Chooses a random option without reasoning.",
+        "0 - Does not answer or gives an irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move rocket 4 spaces"
+        },
+        {
+          "key": "b",
+          "text": "Move car 2 spaces"
+        },
+        {
+          "key": "c",
+          "text": "Don’t move"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "comparing distances of moves",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects the move that covers the greater distance toward the goal",
+      "alignmentRationale": "The task directly measures the child’s ability to evaluate the distance of different moves."
+    },
+    {
+      "id": "8d532521-d5ca-400a-87a9-5792359e107a",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a toy elephant and a toy zebra. You can move the elephant 1 space or the zebra 4 spaces. Which move gets you closer to your friend?",
+      "rubric": [
+        "3 - Correctly chooses to move zebra 4 spaces as the better option.",
+        "2 - Chooses elephant but recognizes a need to move.",
+        "1 - Chooses a random option without reasoning.",
+        "0 - Does not answer or gives an irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move elephant 1 space"
+        },
+        {
+          "key": "b",
+          "text": "Move zebra 4 spaces"
+        },
+        {
+          "key": "c",
+          "text": "Don't move"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "choosing optimal moves",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects the move that results in getting closer to a friend",
+      "alignmentRationale": "The task tests the ability to evaluate which option effectively gets closer to a target."
+    },
+    {
+      "id": "200013d0-8559-401f-973a-2be2e133b584",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "Imagine you can move your toy bear 2 spaces or your toy bunny 3 spaces. What would you choose to help them reach the picnic first?",
+      "rubric": [
+        "3 - Clearly explains which toy and move will help reach the picnic first.",
+        "2 - Gives a valid response but may confuse the two toys or moves.",
+        "1 - Makes a vague or unclear choice.",
+        "0 - Does not answer or gives an irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "choosing moves for a goal",
+      "targetEvidence": "states a choice that promotes reaching the picnic goal",
+      "alignmentRationale": "This question tests the child's understanding of making a strategic choice in a direct context."
+    },
+    {
+      "id": "f7057fbb-d25f-455e-8e23-24882bcb49ad",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You can move your toy cat 1 space or your toy dog 3 spaces. Which move helps you get to the ball faster?",
+      "rubric": [
+        "3 - Correctly identifies the move that gets to the ball faster (move dog 3 spaces).",
+        "2 - Chooses a valid option but not the best (move cat 1 space).",
+        "1 - Makes an incorrect choice or gives a reasonable but mistaken answer.",
+        "0 - Does not answer or gives an unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move dog 3 spaces"
+        },
+        {
+          "key": "b",
+          "text": "Move cat 1 space"
+        },
+        {
+          "key": "c",
+          "text": "Don't move"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "comparing moves for a goal",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects the option that clearly helps achieve the goal (getting to the ball faster)",
+      "alignmentRationale": "The task explicitly measures the ability to compare possible moves to select one that supports a clear outcome."
+    },
+    {
+      "id": "750fb69b-982b-46c1-b9d7-fe197de28b8d",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "If you can move your toy train by rolling it or sliding it, which method would you choose to get to the station faster?",
+      "rubric": [
+        "3 - Clearly indicates the method that supports reaching the station fast.",
+        "2 - Explains a choice but lacks clarity on speed.",
+        "1 - Gives a confusing or unrelated choice.",
+        "0 - Does not answer or is off-topic."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "thinking about move effectiveness",
+      "targetEvidence": "provides reasoning for the choice in relation to the goal",
+      "alignmentRationale": "This question assesses the child's reasoning in selecting the most effective action toward the goal."
+    },
+    {
+      "id": "d8ca58cc-8e81-4b52-b885-f82eca6acb9e",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "If you're playing with a toy robot and you can move it forward or backward, which direction would you choose to make your game more fun?",
+      "rubric": [
+        "3 - Clearly explains a choice that will make the game fun.",
+        "2 - Gives a valid response but lacks detail.",
+        "1 - Makes a vague or unclear choice.",
+        "0 - Does not answer or gives an irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "selecting fun actions",
+      "targetEvidence": "states a fun action that boosts the toy's game experience",
+      "alignmentRationale": "This question tests the ability to reflect on actions contributing to enjoyment in gameplay."
+    },
+    {
+      "id": "7776662f-7aa8-4808-a177-e10d11afb000",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "If you are playing a simple game with your friends, what will you do to make your turn count? Just tell me in one sentence!",
+      "rubric": [
+        "3 - Shares a good strategy for making a move.",
+        "2 - Offers a reasonable idea without clear strategy.",
+        "1 - Mentions an action but does not explain well.",
+        "0 - Says something unrelated or does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "strategizing move selection",
+      "targetEvidence": "describes an effective way to make a game turn work",
+      "alignmentRationale": "This allows children to express strategic thinking for their moves without structured options."
+    },
+    {
+      "id": "0d9e8731-78eb-4443-9992-fa450db42915",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "If you can move your toy train forward or backward in a game, which direction would you choose and why?",
+      "rubric": [
+        "3 - Gives a clear reason for the direction.",
+        "2 - States a direction without a clear reason.",
+        "1 - Mentions movement but lacks explanation.",
+        "0 - Does not provide an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "direction decision-making",
+      "targetEvidence": "articulates a choice of movement direction",
+      "alignmentRationale": "This allows expression of strategy regarding the direction of movement."
+    },
+    {
+      "id": "4e2946d8-8d66-4c24-844e-0dacc67b61f8",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You can move your blue fish ahead 1 space or your green fish ahead 3 spaces. Which move helps you swim faster?",
+      "rubric": [
+        "3 - Chooses the green fish (3 spaces).",
+        "2 - Chooses the blue fish (1 space) but understands the goal.",
+        "1 - Makes a random guess without reasoning.",
+        "0 - Does not choose or answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move the blue fish 1 space"
+        },
+        {
+          "key": "b",
+          "text": "Move the green fish 3 spaces"
+        },
+        {
+          "key": "c",
+          "text": "Do not move any fish"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "compare move distances",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects the best move to reach a goal",
+      "alignmentRationale": "This tests the ability to compare distances and choose an optimal move."
+    },
+    {
+      "id": "3617cb8d-eb60-4c92-8761-d8e2f8f2bba5",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have two toy robots. You can move one robot to the left 2 spaces or the other robot to the right 1 space. Which move helps you reach the wall faster?",
+      "rubric": [
+        "3 - Chooses left 2 spaces toward the wall.",
+        "2 - Chooses right 1 space, showing some understanding.",
+        "1 - Gives an unrelated answer like saying to not move.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move left 2 spaces"
+        },
+        {
+          "key": "b",
+          "text": "Move right 1 space"
+        },
+        {
+          "key": "c",
+          "text": "Do not move any robots"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "distance comparison for movement",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "chooses a move that brings a toy closer to a location",
+      "alignmentRationale": "This helps assess understanding of moving towards a goal based on distance."
+    },
+    {
+      "id": "ff83283e-8ceb-4a4d-944a-c62777c03221",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "In a game, you can move your dog toy 1 space or your cat toy 4 spaces. Which move gets your toy to the finish first?",
+      "rubric": [
+        "3 - Chooses the cat toy (4 spaces).",
+        "2 - Chooses the dog toy (1 space) but understands the goal.",
+        "1 - Makes an unrelated choice.",
+        "0 - Does not give an answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move the dog toy 1 space"
+        },
+        {
+          "key": "b",
+          "text": "Move the cat toy 4 spaces"
+        },
+        {
+          "key": "c",
+          "text": "Leave the toys alone"
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "planning for movement",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "selects the optimal toy based on the goal",
+      "alignmentRationale": "This demonstrates the ability to plan moves towards a goal effectively."
+    },
+    {
+      "id": "42c73e7d-51a4-4ff9-a97a-383f4bd28752",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a toy truck and a toy dinosaur. You can move the truck forward 3 spaces or the dinosaur forward 2 spaces. Which move helps you go farther?",
+      "rubric": [
+        "3 - Chooses to move the truck forward 3 spaces.",
+        "2 - Chooses to move the dinosaur, showing basic understanding.",
+        "1 - Says an unrelated action.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move the truck forward 3 spaces"
+        },
+        {
+          "key": "b",
+          "text": "Move the dinosaur forward 2 spaces"
+        },
+        {
+          "key": "c",
+          "text": "Do nothing"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "distance choice",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "selects the move that maximizes distance",
+      "alignmentRationale": "This tests their ability to compare distances and choose the farthest option."
+    },
+    {
+      "id": "8bab5cef-db6f-43a4-ac5d-bb14398952a0",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "If you have a toy robot and a toy airplane, how would you make up a story about them?",
+      "rubric": [
+        "3 - A clear story with both toys included.",
+        "2 - A story using just one toy or idea.",
+        "1 - Just names toys without a story.",
+        "0 - No answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "create a narrative",
+      "targetEvidence": "Creates a story involving both toys.",
+      "alignmentRationale": "This question encourages children to use their imagination and narrative skills to build a playful story."
+    },
+    {
+      "id": "fa2a82fe-ca1c-4e09-ae7a-5a16e79a2dde",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "If you can jump or walk to catch a butterfly, which is better for getting closer?",
+      "rubric": [
+        "3 - Choose to jump as it's faster.",
+        "2 - Choose to walk but mention jumping.",
+        "1 - Say both but choose one without reason.",
+        "0 - No answer or choose something unrelated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Jump to get closer"
+        },
+        {
+          "key": "b",
+          "text": "Walk to get closer"
+        },
+        {
+          "key": "c",
+          "text": "Stay still"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose best action for the objective",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "Selects jumping as the faster action to catch a butterfly.",
+      "alignmentRationale": "This task assesses the child's ability to decide on the most effective movement to achieve an objective."
+    },
+    {
+      "id": "fde62995-bfae-48a7-b29e-88239463ea79",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "During a board game, if you can move 3 spaces or 1 space, which move can help you reach the finish faster?",
+      "rubric": [
+        "3 - Choose to move 3 spaces to go faster.",
+        "2 - Choose to move 1 space and explain why.",
+        "1 - Discuss both moves but say nothing right.",
+        "0 - No answer or irrelevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move 3 spaces"
+        },
+        {
+          "key": "b",
+          "text": "Move 1 space"
+        },
+        {
+          "key": "c",
+          "text": "Stay where I am"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "evaluate moves for efficiency",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Chooses the fastest move to reach the finish.",
+      "alignmentRationale": "This task evaluates how well children can assess the efficiency of different moves in a game setting."
+    },
+    {
+      "id": "4a142830-0f39-4739-8757-587170918618",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "If you have a choice to play soccer or tag, what would you choose to play and why?",
+      "rubric": [
+        "3 - Clearly describes a reason to choose one game.",
+        "2 - States a choice but does not explain well.",
+        "1 - Gives an unrelated answer.",
+        "0 - Does not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "game preference reasoning",
+      "targetEvidence": "expresses a personal choice with a reason",
+      "alignmentRationale": "This invites children to share their thoughts on games and choices in play."
+    },
+    {
+      "id": "2bb2f041-503a-459a-b840-c002f4a75514",
+      "age": 5,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a toy train and a toy car. Describe how you would play a game with them!",
+      "rubric": [
+        "3 - Clear game idea with both toys included.",
+        "2 - Mention one toy and some play idea.",
+        "1 - Describe only the toys without a game.",
+        "0 - No answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "skillFacet": "design a game",
+      "targetEvidence": "Describes a game idea using both toys.",
+      "alignmentRationale": "This question prompts children to demonstrate their ability to create a simple game using familiar toys, showing planning skills."
+    },
+    {
+      "id": "0c099670-adbf-483c-8e0e-c28e29df3005",
+      "age": 5,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You can move your red car forward 2 spaces or backward 1 space. Which move helps you get closer to the finish line?",
+      "rubric": [
+        "3 - Move forward 2 spaces which is better.",
+        "2 - Move backward and mention moving forward.",
+        "1 - Move forward but say nothing about the goal.",
+        "0 - Move to a different space or not answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        5,
+        5
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move forward 2 spaces"
+        },
+        {
+          "key": "b",
+          "text": "Move backward 1 space"
+        },
+        {
+          "key": "c",
+          "text": "Stay in place"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "decide on moves for better position",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "Chooses to move the car forward to improve position.",
+      "alignmentRationale": "This question assesses the child's ability to plan their move to reach a goal based on spatial reasoning."
+    },
+    {
+      "id": "ea92138c-f45f-4f0d-a00f-1e53a85584be",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You can move two of your pieces forward or one piece sideways. Which helps you to play better?",
+      "rubric": [
+        "3 - You choose to move both pieces forward for a strong move.",
+        "2 - You choose to move one piece sideways for a safe move.",
+        "1 - You make a choice but it does not help your position at all.",
+        "0 - You don't say anything or choose a move that doesn't make sense."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move both pieces forward"
+        },
+        {
+          "key": "b",
+          "text": "Move one piece sideways"
+        },
+        {
+          "key": "c",
+          "text": "Stay in place"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategic movement",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "chooses a move that improves game position",
+      "alignmentRationale": "This question examines the skill of assessing and optimizing movements."
+    },
+    {
+      "id": "3c2646ad-2df3-4a36-a3b4-bc59c8fe7de2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a pawn at square 3. You can move it to square 4 or jump over your friend's piece at square 5. What should you do to get closer to winning?",
+      "rubric": [
+        "3 - You choose to jump the friend's piece, showing a good strategic move.",
+        "2 - You choose to move to square 4, understanding that helps, but not as well.",
+        "1 - You pick a move and explain it, but it isn't the best choice.",
+        "0 - You don't choose a move or give an answer that does not help."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Jump to square 5"
+        },
+        {
+          "key": "b",
+          "text": "Move to square 4"
+        },
+        {
+          "key": "c",
+          "text": "Do nothing"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choosing the best move",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "chooses the best move that helps reach a goal",
+      "alignmentRationale": "This question isolates the skill of planning ahead by requiring a choice between different moves."
+    },
+    {
+      "id": "bd1fd984-20b2-4c78-9ef2-cd040e242662",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a red and a blue checker. You can move the red checker forward or the blue checker to the side. Which move keeps you safe?",
+      "rubric": [
+        "3 - You choose to move the red checker, showing good understanding of safety.",
+        "2 - You move the blue checker, which is safer than no move but not best.",
+        "1 - You move a checker but without explaining why it's a good move.",
+        "0 - You don't choose a move or the move doesn't improve safety."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move the red checker"
+        },
+        {
+          "key": "b",
+          "text": "Move the blue checker"
+        },
+        {
+          "key": "c",
+          "text": "Don't move anything"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "protecting your pieces",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "chooses a move that keeps their pieces safe",
+      "alignmentRationale": "This question asks the child to consider the safety of their pieces and make a strategic move."
+    },
+    {
+      "id": "1a81ecfb-c4b3-4f74-8fd8-2a81a6c35617",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You are playing a game. Your friend can jump over your piece. What will you do to protect your piece?",
+      "rubric": [
+        "3 - You explain a clear action to protect your piece effectively.",
+        "2 - You suggest an action but it's not the best to protect.",
+        "1 - You say something but it's not a helpful way to protect.",
+        "0 - You don't provide a plan or your idea isn't related to protecting your piece."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "anticipating opponent's move",
+      "targetEvidence": "describes an action to prevent an opponent's move",
+      "alignmentRationale": "This open question tests planning by asking for a response to an opponent's potential action."
+    },
+    {
+      "id": "1170942f-63e1-48d0-ae82-c5155114368e",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a piece that can move two places forward or one place sideways. Which move might help you to win?",
+      "rubric": [
+        "3 - You choose to move two places forward, showing it's the best strategy.",
+        "2 - You choose to move one place sideways, which is safe but not winning.",
+        "1 - You say a move but it doesn't lead to winning or protect your piece.",
+        "0 - You don't choose a move or it doesn't make sense in this game."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move two places forward"
+        },
+        {
+          "key": "b",
+          "text": "Move one place sideways"
+        },
+        {
+          "key": "c",
+          "text": "Do nothing"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "deciding winning moves",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "selects a move that moves closer to winning",
+      "alignmentRationale": "This question assesses the ability to decide on moves that enhance chances of winning in a strategic context."
+    },
+    {
+      "id": "1a091f35-5927-4c88-ab1b-02af327e5c0f",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "Imagine you play a game and can only move pieces one space. How can you still win?",
+      "rubric": [
+        "3 - You give a great plan for winning with one space moves.",
+        "2 - You suggest a plan that could work but isn't clear or strong.",
+        "1 - You give an idea but it doesn't help winning at all.",
+        "0 - You say nothing or your idea doesn't relate to winning."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "planning with limitations",
+      "targetEvidence": "describes a strategy for winning under limited movement rules",
+      "alignmentRationale": "This open-ended question requires the child to think creatively about strategy under constraints."
+    },
+    {
+      "id": "de6aed9f-e0dd-4cb3-9b4f-6c4209a34d9e",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You can jump over your friend's checker or move around it. Which helps you win more?",
+      "rubric": [
+        "3 - You choose to jump over your friend's checker for a strong play.",
+        "2 - You choose to move around it, which is safer but less effective.",
+        "1 - You suggest a move that doesn’t contribute to winning.",
+        "0 - You don't give a relevant answer or choose a poor option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Jump over their checker"
+        },
+        {
+          "key": "b",
+          "text": "Move around it"
+        },
+        {
+          "key": "c",
+          "text": "Stay put"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "evaluating moves",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "selects a move that advances their winning strategy",
+      "alignmentRationale": "This question focuses on evaluating the effectiveness of different moves within the game."
+    },
+    {
+      "id": "779b8e9a-46ae-4c29-803e-c2440b601689",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "If you see your friend will win soon, what can you do to stop them?",
+      "rubric": [
+        "3 - You describe a specific move to stop your friend from winning.",
+        "2 - You suggest a possible action that might help, but is less effective.",
+        "1 - You mention an idea that doesn't really help stop them.",
+        "0 - You don't respond or your answer isn't related."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "preventing opponent's win",
+      "targetEvidence": "provides a plan to prevent the opponent from winning",
+      "alignmentRationale": "This question tests strategic planning in the context of preventing an opponent’s win."
+    },
+    {
+      "id": "d7eda2db-966f-48c4-8355-78c4ef024713",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "If your friend has 2 pieces near the finish, what can you do to stop them?",
+      "rubric": [
+        "3 - Suggest a move that blocks or captures the pieces.",
+        "2 - Suggest a move related but not a block.",
+        "1 - Suggest an unrelated action.",
+        "0 - No suggestion made."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "anticipate another player’s next option",
+      "targetEvidence": "child identifies strategies to obstruct or capture.",
+      "alignmentRationale": "Evaluating opponents' positions boosts strategic thinking."
+    },
+    {
+      "id": "364da194-b3ed-4646-abcd-f999696628e8",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have 2 red and 1 blue checker. You want to jump an opponent’s checker. Which of these moves can you make?",
+      "rubric": [
+        "3 - This move uses the red checker to jump.",
+        "2 - This move uses the blue checker only.",
+        "1 - This move does not jump any checker.",
+        "0 - This move is not a valid option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Jump the opponent’s checker with the red checker."
+        },
+        {
+          "key": "b",
+          "text": "Move the blue checker forward."
+        },
+        {
+          "key": "c",
+          "text": "Do nothing."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose a move under a simple rule",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "child identifies a jump move correctly based on color and number of checkers.",
+      "alignmentRationale": "This task requires understanding the basic rules of jumping in checkers, which is planned strategy."
+    },
+    {
+      "id": "1e3570b2-5ae0-46f8-953d-f9b560efc4f9",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You are playing a game with 3 pawns. You can move 1 space or jump over. Which way helps you move closer to the finish?",
+      "rubric": [
+        "3 - Choose to jump and move ahead.",
+        "2 - Choose moving 1 space forward, still okay.",
+        "1 - Choose jumping but go backward.",
+        "0 - Choose not to move."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Jump over another pawn forward."
+        },
+        {
+          "key": "b",
+          "text": "Move 1 space forward."
+        },
+        {
+          "key": "c",
+          "text": "Move 1 space backward."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "compare possible moves and choose one that improves a stated goal",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child evaluates potential moves correctly for getting closer to the finish.",
+      "alignmentRationale": "This question tests ability to plan for progress in a game context."
+    },
+    {
+      "id": "60742ddc-dcc8-447b-8d00-cd1cdf759d1d",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have 1 horse and want to get to the end of the board. Which is a good plan?",
+      "rubric": [
+        "3 - Move the horse in a way that gets closer to the end.",
+        "2 - Move the horse but still far from end.",
+        "1 - Move in the opposite direction.",
+        "0 - No moves indicated."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move the horse forward toward the end."
+        },
+        {
+          "key": "b",
+          "text": "Move backward away from the end."
+        },
+        {
+          "key": "c",
+          "text": "Do nothing."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "choose a move under a simple rule",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "child selects the best move toward the goal.",
+      "alignmentRationale": "The task requires evaluating options to reach the game goal."
+    },
+    {
+      "id": "2c463a44-df56-4a1c-af66-a448fc05c5b2",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You want to win the game. Your friend has a chance to jump you. What should you do next?",
+      "rubric": [
+        "3 - Block your friend to prevent their jump.",
+        "2 - Move away from danger, but not block.",
+        "1 - Don’t move at all.",
+        "0 - Make a move that helps your friend."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Block your friend’s jump."
+        },
+        {
+          "key": "b",
+          "text": "Move your piece back, away but not block."
+        },
+        {
+          "key": "c",
+          "text": "Do nothing, stay still."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "anticipate another player’s next option",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child identifies defensive strategy to prevent opponent's move.",
+      "alignmentRationale": "This tests the ability to think ahead defensively in the game."
+    },
+    {
+      "id": "028de845-f679-4a61-95b9-d0c964945be5",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have a lot of pieces left. How can you use them to secure a win?",
+      "rubric": [
+        "3 - Explain a move that uses your pieces wisely.",
+        "2 - Mention moving pieces, but unclear on the reason.",
+        "1 - State a return to base, unclear of purpose.",
+        "0 - No reasoning or idea given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "anticipate another player’s next option",
+      "targetEvidence": "child discusses how to strategically use remaining pieces.",
+      "alignmentRationale": "This question assesses strategic planning in using game spaces."
+    },
+    {
+      "id": "af5d0ac2-f424-457b-9e79-0d99701df5fa",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "Your pieces are lined up. What move can you make to get closer to winning?",
+      "rubric": [
+        "3 - Move to capture an opponent's piece or advance.",
+        "2 - Move to a space that doesn’t help much.",
+        "1 - Move that doesn't help your position.",
+        "0 - No move suggested."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Capture the opponent's piece."
+        },
+        {
+          "key": "b",
+          "text": "Move to an empty space."
+        },
+        {
+          "key": "c",
+          "text": "Move backwards."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "compare possible moves and choose one that improves a stated goal",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "targetEvidence": "child identifies an effective move for advancing in the game.",
+      "alignmentRationale": "This tests decision-making to achieve goals in the game."
+    },
+    {
+      "id": "0e044b84-3b2e-4308-a8cf-17c14b5a1999",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "If you can move your knight to 2 spaces or jump, what would you do? Why?",
+      "rubric": [
+        "3 - Clear, strategic reasoning for chosen move.",
+        "2 - Reasoning has some understanding of rules.",
+        "1 - Limited reasoning, unclear about strategy.",
+        "0 - No reasoning provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "anticipate another player’s next option",
+      "targetEvidence": "child explains reasoning for knight's movement effectively.",
+      "alignmentRationale": "This question encourages thinking ahead based on one’s move in the context of the game."
+    },
+    {
+      "id": "3bdadc87-6689-4010-a6e3-049a7d2a350c",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You can move a checker one space forward or jump over your friend's piece. What helps you win more?",
+      "rubric": [
+        "3 - Jumping over the friend's piece to capture it can give a winning advantage.",
+        "2 - Moving one space forward might keep your piece safe but doesn’t help you win.",
+        "1 - Moving your piece may not help win right away, just staying safe.",
+        "0 - Not answering or suggesting to do nothing."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Jump over your friend's piece"
+        },
+        {
+          "key": "b",
+          "text": "Move one space forward"
+        },
+        {
+          "key": "c",
+          "text": "Do nothing"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "compare moves for advantage",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "chooses the jump as the better move",
+      "alignmentRationale": "This tests the ability to compare moves by weighing options based on their outcomes."
+    },
+    {
+      "id": "14f73851-1713-4e84-9f61-26d4d14d0214",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You have two pieces. You can move one piece two spaces or both pieces one space. What move might help you win?",
+      "rubric": [
+        "3 - Moving one piece two spaces can help get closer to the finish quicker.",
+        "2 - Moving both pieces one space may keep them both safe but doesn’t progress as fast.",
+        "1 - Moving one piece at random might not help your strategy.",
+        "0 - Not answering or saying to wait."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move one piece two spaces"
+        },
+        {
+          "key": "b",
+          "text": "Move both pieces one space"
+        },
+        {
+          "key": "c",
+          "text": "Don't move any pieces"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "evaluate multiple move strategies",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "selects the move that advances the game",
+      "alignmentRationale": "This question measures ability to evaluate options and choose the one that is strategically better."
+    },
+    {
+      "id": "4838fa00-704d-45a1-8efe-a9d08ae4cb8a",
+      "age": 6,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You are playing a game. Your friend can jump over your piece next turn. What is a smart move to protect your piece?",
+      "rubric": [
+        "3 - Move your piece to a safe spot that can't be jumped over.",
+        "2 - Keep your piece where it is to see what happens next.",
+        "1 - Move your piece randomly without thinking.",
+        "0 - Not answering or not offering a move."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move your piece to a safe spot"
+        },
+        {
+          "key": "b",
+          "text": "Leave it where it is"
+        },
+        {
+          "key": "c",
+          "text": "Do nothing, just wait"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "anticipate opponent's next move",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "identifies a protective action against an attack",
+      "alignmentRationale": "This task evaluates the player's ability to think ahead about the opponent’s actions and choose wisely."
+    },
+    {
+      "id": "dfaf26bb-f929-488c-b2b8-d6b0f8aa83e1",
+      "age": 6,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "Imagine you have a chance to jump your friend's piece. Why might this be a good choice?",
+      "rubric": [
+        "3 - Answers with reasons like it gains an extra piece or puts me closer to winning.",
+        "2 - Gives a partial answer about it being a good move.",
+        "1 - Mentions it could be helpful but doesn't explain.",
+        "0 - No answer or unrelated response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        6,
+        6
+      ],
+      "skillFacet": "reason the benefit of moves",
+      "targetEvidence": "explains a valid reason for jumping a piece",
+      "alignmentRationale": "The child needs to articulate the reasoning behind making a certain move, which tests their understanding of strategic benefits."
+    },
+    {
+      "id": "6dfd5216-9248-4cc6-b702-32a644d44a2f",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "If your only moves are to help yourself win or block your opponent, which is the best decision?",
+      "rubric": [
+        "3 - You pick the move that helps you win directly.",
+        "2 - You might pick the block but unclear on winning.",
+        "1 - You mention something unrelated.",
+        "0 - No relevant choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Choose the move that helps you win"
+        },
+        {
+          "key": "b",
+          "text": "Block my opponent's move"
+        },
+        {
+          "key": "c",
+          "text": "Ignore both options"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "strategically choosing winning moves",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "child recognizes the move that directly leads to winning",
+      "alignmentRationale": "This question assesses their understanding of prioritizing personal victory over offensive strategies."
+    },
+    {
+      "id": "773d4d21-96b9-4791-ab36-13f985c5757c",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "When you plan your moves in a game, what factors do you consider? What do you think about?",
+      "rubric": [
+        "3 - Clear explanation of factors they consider when choosing moves.",
+        "2 - Some factors mentioned but not fully explained.",
+        "1 - Vague response with little clarity.",
+        "0 - No relevant answer."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "explaining thought process in strategy",
+      "targetEvidence": "child articulates thought processes regarding move selection",
+      "alignmentRationale": "This question tests the ability to articulate decision-making criteria in strategy games."
+    },
+    {
+      "id": "33ebd6c4-50d5-46fe-813a-42c4141be2c7",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "In a game, you have clay to build a wall for protection or a shovel to gather resources. What helps you win?",
+      "rubric": [
+        "3 - You choose to gather more resources for winning.",
+        "2 - You choose to build the wall for better protection.",
+        "1 - You confuse the options.",
+        "0 - No choice made."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Gather more resources"
+        },
+        {
+          "key": "b",
+          "text": "Build a wall for protection"
+        },
+        {
+          "key": "c",
+          "text": "Do nothing"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "balancing offense and defense",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "child evaluates the importance of resources versus defense",
+      "alignmentRationale": "This task evaluates the child’s ability to prioritize between resource acquisition and defense."
+    },
+    {
+      "id": "ca1b47c9-9a6f-4e1c-a9e4-a9405316baac",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You see that your opponent can win next turn by jumping your piece. What move will you make?",
+      "rubric": [
+        "3 - You block their jump to prevent them from winning.",
+        "2 - You suggest moving away from danger.",
+        "1 - You ignore their move or mention something unrelated.",
+        "0 - No strategy provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Block your friend’s jump"
+        },
+        {
+          "key": "b",
+          "text": "Move away and do nothing"
+        },
+        {
+          "key": "c",
+          "text": "Let them win"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "defending against an opponent's move",
+      "optionScores": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "targetEvidence": "child suggests blocking or defending to stop their friend from winning",
+      "alignmentRationale": "This question tests the child's ability to identify a defensive strategy in response to an opponent."
+    },
+    {
+      "id": "287230e0-d22c-4634-a298-442da8279dae",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You're in a game and can move left to get 3 apples or right to get 1 apple. What should you choose?",
+      "rubric": [
+        "3 - You know to choose left for more apples.",
+        "2 - You may choose left for apples but not explain clearly.",
+        "1 - You mention apples but don't explain a choice.",
+        "0 - You choose without a reason."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move left for 3 apples"
+        },
+        {
+          "key": "b",
+          "text": "Move right for 1 apple"
+        },
+        {
+          "key": "c",
+          "text": "Don't move"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "comparing options for better outcomes",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "child compares options to maximize apples and selects accordingly",
+      "alignmentRationale": "The task focuses on evaluating two clear options and making a choice to achieve a greater goal."
+    },
+    {
+      "id": "4d145763-6344-421f-8b57-52dc01c809da",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "Imagine you are playing a game where you can choose to take a shortcut that could help you move faster or a safe route that takes longer. What would you choose to do and why?",
+      "rubric": [
+        "3 - Clear choice with strong reason for safety or speed.",
+        "2 - Choice made but unclear reasoning.",
+        "1 - Non-specific or vague response.",
+        "0 - No answer or irrelevant response."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "decision making under risk",
+      "targetEvidence": "child articulates a clear comparison between risk and safety",
+      "alignmentRationale": "This question assesses how a child balances options based on outcomes."
+    },
+    {
+      "id": "6d8e8ffb-0d68-4528-8363-be4a6d9e0ebb",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You’re playing a game where you can collect 10 points for landing on a star or 3 points for landing on a heart. What should you do?",
+      "rubric": [
+        "3 - You choose the star for more points.",
+        "2 - You mention the star but unclear on points.",
+        "1 - You pick the heart without reasoning.",
+        "0 - No choice or reason given."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Land on the star for 10 points"
+        },
+        {
+          "key": "b",
+          "text": "Land on the heart for 3 points"
+        },
+        {
+          "key": "c",
+          "text": "Not choose"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "prioritizing moves based on score",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "child selects the higher score option",
+      "alignmentRationale": "The task requires the child to assess their options based on potential score gains."
+    },
+    {
+      "id": "4ce093cf-d5c5-49ae-a302-eb7538fe47ec",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You can move your game piece forward 2 spaces or backward 1 space. Which is the best choice if you are trying to win?",
+      "rubric": [
+        "3 - You pick forward for a better chance to win.",
+        "2 - You pick forward but unsure why it helps winning.",
+        "1 - You suggest backward but can't explain.",
+        "0 - No choice provided."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move forward 2 spaces"
+        },
+        {
+          "key": "b",
+          "text": "Move backward 1 space"
+        },
+        {
+          "key": "c",
+          "text": "Stay still"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "evaluating the impact of moves",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "targetEvidence": "child identifies the better move for winning",
+      "alignmentRationale": "This question evaluates the child's ability to analyze the potential benefits of each move towards a winning outcome."
+    },
+    {
+      "id": "336a7c6c-a4fc-4717-94ce-5546e372b02f",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "Imagine you are playing a game. What is the best way to decide your next move? Why?",
+      "rubric": [
+        "3 - Provides clear, sound reasoning based on options.",
+        "2 - Some reasoning, but less clear or specific.",
+        "1 - Vague idea with little explanation.",
+        "0 - No reasoning or understanding shown."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "strategy reasoning",
+      "targetEvidence": "articulates a thought process for choosing a move",
+      "alignmentRationale": "This assesses the ability to articulate decision-making in strategy."
+    },
+    {
+      "id": "6ab2e8f0-1521-42ae-a0e8-9d218d33e117",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You’re playing a game where you need to collect the most stars. You can move to the left to get 1 star or go to the right to get 2 stars. What should you do?",
+      "rubric": [
+        "3 - Choose to go right for 2 stars, showing a clear plan to collect more.",
+        "2 - Choose to go left for 1 star, but explain why you didn't choose the right move.",
+        "1 - Make a choice but without clear reasoning, or choose neither.",
+        "0 - Make an irrelevant choice or no choice."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Go left to get 1 star."
+        },
+        {
+          "key": "b",
+          "text": "Go right to get 2 stars."
+        },
+        {
+          "key": "c",
+          "text": "Don't make a move."
+        }
+      ],
+      "answerKey": "b",
+      "skillFacet": "selecting a strategic move",
+      "optionScores": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "targetEvidence": "chooses the right move based on maximizing stars",
+      "alignmentRationale": "This isolates the skill of choosing a beneficial move based on visible options."
+    },
+    {
+      "id": "7f43e4df-b5c4-4fa3-ba65-f171aa06cfec",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You're playing a board game. You can move 3 spaces forward or 1 space back. What will help you the most?",
+      "rubric": [
+        "3 - Choose to move 3 spaces forward to stay ahead.",
+        "2 - Choose to move 1 space back but explain it might be a defense.",
+        "1 - Make a choice but can't explain why.",
+        "0 - Incorrect choice unrelated to keeping up."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move 3 spaces forward."
+        },
+        {
+          "key": "b",
+          "text": "Move 1 space back."
+        },
+        {
+          "key": "c",
+          "text": "Choose to stay still."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "evaluating move outcomes",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "picks the advantageous move based on positioning",
+      "alignmentRationale": "This tests the ability to foresee the impact of a move."
+    },
+    {
+      "id": "9be0f9e4-8fc1-4bc8-bef4-e8b1c358989d",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "In a game, you can choose to gather 5 coins or build a wall for protection. What is the best option?",
+      "rubric": [
+        "3 - Choose to gather 5 coins to gain a lead.",
+        "2 - Choose to build a wall, but explain its importance.",
+        "1 - Make a choice without reasoning.",
+        "0 - Choose an irrelevant option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Gather 5 coins."
+        },
+        {
+          "key": "b",
+          "text": "Build a wall for protection."
+        },
+        {
+          "key": "c",
+          "text": "Ignore both options."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "deciding between resource management and defense",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "compares the short-term gain of coins vs. long-term protection",
+      "alignmentRationale": "This tests the ability to weigh immediate benefits against defensive strategies."
+    },
+    {
+      "id": "8f2ca552-9131-42e4-b0ec-5e05118f03d0",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You can either take the shortcut that’s risky or play it safe with a longer route. What should you do to reach the goal faster?",
+      "rubric": [
+        "3 - Choose the shortcut if it helps win faster, showing good judgment.",
+        "2 - Choose the safe route but explain why you prefer caution.",
+        "1 - Make a choice without clear reasons.",
+        "0 - Choose an irrelevant option."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Take the shortcut."
+        },
+        {
+          "key": "b",
+          "text": "Play it safe with the long route."
+        },
+        {
+          "key": "c",
+          "text": "Do nothing and wait."
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "assessing risk in gameplay",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "recognizes the impact of risk on winning speed",
+      "alignmentRationale": "This examines understanding of risk vs. reward in strategic choices."
+    },
+    {
+      "id": "775e1798-51a3-4da0-a310-f38fa8d7c473",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You are playing a game where you can share your turn with a friend. What would you tell them when it's their turn?",
+      "rubric": [
+        "3 - Shares useful advice to help them play better.",
+        "2 - Shares some advice but less helpful.",
+        "1 - Vague suggestions with little guidance.",
+        "0 - Offers no helpful advice or unclear suggestions."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "sharing strategies",
+      "targetEvidence": "gives helpful tips for a friend’s turn",
+      "alignmentRationale": "This tests the ability to communicate strategy in a collaborative environment."
+    },
+    {
+      "id": "d5509ab9-c91a-426f-8c3d-610dcb4491de",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "What do you think about when planning your moves during a game?",
+      "rubric": [
+        "3 - Considers multiple factors like winning, blocking, and opportunities.",
+        "2 - Thinks about some factors but not thoroughly or specifically.",
+        "1 - Mentions vague ideas with no clear reasoning.",
+        "0 - Shows little to no understanding of planning."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "evaluating factors in gameplay",
+      "targetEvidence": "considers various elements when planning moves",
+      "alignmentRationale": "This assesses critical thinking about strategy in games."
+    },
+    {
+      "id": "42088fdd-33f5-433d-a82a-9dbd65b525dc",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "If your friend is winning a game, what could you do to change that?",
+      "rubric": [
+        "3 - Suggests a clear strategy to improve your chances of winning.",
+        "2 - Mentions a strategy but lacks clarity.",
+        "1 - Vague thought with no implementable action.",
+        "0 - No strategy offered or unrelated action suggested."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "strategizing for competition",
+      "targetEvidence": "articulates a response to an opponent's advantage",
+      "alignmentRationale": "This tests strategic thinking in competitive contexts."
+    },
+    {
+      "id": "c9b5184f-31d3-4431-b4d4-4cc6125a0cdc",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "You're playing checkers. You can jump over an opponent's piece to take it. Which move should you make to get the most pieces?",
+      "rubric": [
+        "3 - You choose the move that takes the most opponent pieces immediately.",
+        "2 - You choose a move that takes at least one opponent piece but could take more later.",
+        "1 - You choose a move that does not take any opponent pieces but is a legal move.",
+        "0 - You choose a move that cannot happen or makes no sense."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Jump over two pieces"
+        },
+        {
+          "key": "b",
+          "text": "Jump over one piece"
+        },
+        {
+          "key": "c",
+          "text": "Move without jumping"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "compare moves for maximum gain",
+      "optionScores": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "targetEvidence": "The player compares possible moves and chooses one that captures the most pieces.",
+      "alignmentRationale": "The task isolates the ability to analyze strategic outcomes based on immediate goals."
+    },
+    {
+      "id": "c4721f29-d5f4-467c-ae8c-7146c183a042",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "What do you think about when planning a strategy before a game?",
+      "rubric": [
+        "3 - You share multiple ideas on how to plan for the game based on the rules and other players.",
+        "2 - You mention some things you might think about but don't explain clearly.",
+        "1 - You say you'll just try to figure it out as you go.",
+        "0 - Your response doesn’t relate to making a strategy."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "develop strategies before gameplay",
+      "targetEvidence": "The player describes a method or thought process they use in strategizing before a game.",
+      "alignmentRationale": "This task assesses how well a child can articulate their planning process for game success."
+    },
+    {
+      "id": "83ea59b6-0ea8-4af2-bb7a-12c602bb0592",
+      "age": 7,
+      "reviewed": false,
+      "type": "mcq",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "In a strategy game, your piece is under threat. What’s the best way to protect it?",
+      "rubric": [
+        "3 - You move to another square that is safe and keeps your strategy in mind.",
+        "2 - You move but don’t completely protect your piece or future positions.",
+        "1 - You move without thinking about protecting your piece.",
+        "0 - You make a move that fails to follow the rules."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Move to a safe square"
+        },
+        {
+          "key": "b",
+          "text": "Stay in the same place"
+        },
+        {
+          "key": "c",
+          "text": "Move somewhere risky"
+        }
+      ],
+      "answerKey": "a",
+      "skillFacet": "defend pieces in a game",
+      "optionScores": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "targetEvidence": "The player chooses a defensive move that maintains or improves their game position.",
+      "alignmentRationale": "The task isolates the ability to understand and respond strategically to threats."
+    },
+    {
+      "id": "f429fb06-24a0-408a-b9e0-a940d9b1ecd1",
+      "age": 7,
+      "reviewed": false,
+      "type": "open",
+      "trait": "strategy_games",
+      "format": "explanation",
+      "prompt": "When you have a choice of moves, how do you decide which one to make?",
+      "rubric": [
+        "3 - You explain a clear reason or method to choose between the moves you see.",
+        "2 - You mention looking at both moves but don’t finish your reasoning.",
+        "1 - You say you'll just think about it without a clear plan.",
+        "0 - Your response lacks a logical explanation."
+      ],
+      "weight": 1,
+      "ageBand": [
+        7,
+        7
+      ],
+      "skillFacet": "compare options before making a choice",
+      "targetEvidence": "The player articulates a specific method to evaluate the moves at hand.",
+      "alignmentRationale": "This task focuses on the thought process used in decision-making in games."
+    }
+  ]
+}
