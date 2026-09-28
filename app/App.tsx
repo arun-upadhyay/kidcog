@@ -11,6 +11,7 @@ import ResultsScreen from './src/screens/ResultsScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import HistoryScreen from './src/screens/HistoryScreen';
 import AppMenu from './src/components/AppMenu';
+import IdleGuard from './src/components/IdleGuard';
 import { AuthProvider, useAuth } from './src/auth/AuthContext';
 import { deleteAccount, deleteChildProfile, fetchTest, getParentReport, listChildren, prefetchRound, saveChild, submitAnswers, updateChildAvatar } from './src/api';
 import { supabase } from './src/auth/supabase';
@@ -254,6 +255,8 @@ function KidCogApp() {
   return (
     <SafeAreaProvider>
       <StatusBar style="dark" />
+      {/* Signs the parent out after 30 minutes with no taps or clicks. */}
+      <IdleGuard signedInAt={session.user.last_sign_in_at} onTimeout={logout}>
       <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
         {/* Outside every screen's scroll view, so it is always visible. */}
         <AppMenu
@@ -316,6 +319,7 @@ function KidCogApp() {
         </View>
         <BreakSheet visible={breakOpen} onClose={() => setBreakOpen(false)} />
       </SafeAreaView>
+      </IdleGuard>
     </SafeAreaProvider>
   );
 }

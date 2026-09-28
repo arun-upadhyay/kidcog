@@ -14,6 +14,7 @@ import * as AppleAuthentication from 'expo-apple-authentication';
 import Button from '../components/Button';
 import SocialButton from '../components/SocialButton';
 import { useAuth } from '../auth/AuthContext';
+import { idleMinutes, takeIdleSignOutNotice } from '../auth/idle';
 import { colors, spacing, type, column, GUTTER } from '../theme';
 
 export default function LoginScreen() {
@@ -39,6 +40,12 @@ export default function LoginScreen() {
   const [error, setError] = useState<string | null>(null);
   const [verificationEmail, setVerificationEmail] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  // Explain an automatic sign-out once, so it does not look like a fault.
+  useEffect(() => {
+    void takeIdleSignOutNotice().then(wasIdle => {
+      if (wasIdle) setNotice(`You were signed out after ${idleMinutes()} without activity, to keep your account safe. Please sign in again.`);
+    });
+  }, []);
 
   function showError(err: unknown) {
     const message = err instanceof Error ? err.message : 'Sign-in failed.';
@@ -183,6 +190,7 @@ export default function LoginScreen() {
               />
               {mode === 'create' ? <Text style={styles.helper}>We’ll email you a link to verify this parent account.</Text> : null}
               {error ? <Text style={styles.error}>{error}</Text> : null}
+              {notice ? <Text style={styles.notice}>{notice}</Text> : null}
               <Button
                 title={busy === 'email' ? (mode === 'create' ? 'Creating account…' : 'Signing in…') : (mode === 'create' ? 'Create parent account' : 'Sign in with email')}
                 onPress={() => void submitEmail()}

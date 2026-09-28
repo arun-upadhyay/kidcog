@@ -7,6 +7,7 @@ import * as Crypto from 'expo-crypto';
 import type { Provider, Session } from '@supabase/supabase-js';
 import { supabase, supabaseConfigured } from './supabase';
 import { saveAppleAuthorizationCode } from '../api';
+import { clearIdleNotice, markActive } from './idle';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -61,6 +62,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   async function signIn(provider: Extract<Provider, 'google' | 'apple' | 'facebook'>) {
     if (!supabaseConfigured) throw new Error('Add the Supabase public settings to app/.env first.');
+    // Signing in counts as activity for the automatic sign-out (see idle.ts).
+    markActive(true); void clearIdleNotice();
     const redirectTo = Linking.createURL('auth/callback');
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider,
@@ -88,6 +91,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
    */
   async function signInWithApple() {
     if (!supabaseConfigured) throw new Error('Add the Supabase public settings to app/.env first.');
+    // Signing in counts as activity for the automatic sign-out (see idle.ts).
+    markActive(true); void clearIdleNotice();
     const native = Platform.OS === 'ios' && await AppleAuthentication.isAvailableAsync().catch(() => false);
     if (!native) { await signIn('apple'); return; }
 
@@ -121,12 +126,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   async function signInWithEmail(email: string, password: string) {
     if (!supabaseConfigured) throw new Error('Add the Supabase public settings to app/.env first.');
+    // Signing in counts as activity for the automatic sign-out (see idle.ts).
+    markActive(true); void clearIdleNotice();
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) throw error;
+    markActive(true);
   }
 
   async function signUpWithEmail(email: string, password: string) {
     if (!supabaseConfigured) throw new Error('Add the Supabase public settings to app/.env first.');
+    // Signing in counts as activity for the automatic sign-out (see idle.ts).
+    markActive(true); void clearIdleNotice();
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
