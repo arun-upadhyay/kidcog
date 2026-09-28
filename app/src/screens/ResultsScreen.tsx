@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, ScrollView, Pressable, ActivityIndicator, type 
 import { CATEGORY_GROUPS } from '../categoryGroups';
 import RewardCard from '../components/RewardCard';
 import type { RoundReward } from '../progress';
-import { CATEGORY_VISUALS, GROUP_VISUALS } from '../categoryVisuals';
+import { CATEGORY_NAMES, CATEGORY_VISUALS, GROUP_NAMES, GROUP_VISUALS } from '../categoryVisuals';
+import Owl from '../components/Owl';
 import Button from '../components/Button';
 import { colors, spacing, type, column, GUTTER } from '../theme';
 import { speak, stopSpeaking, useSpeechState, lastSpeechError } from '../speech';
@@ -123,100 +124,84 @@ function ParentReportCard({ report }: { report: ParentReportType }) {
 }
 
 /**
- * One row of the rating scale.
+ * What the child played in this round, in the same words and colours as the
+ * activity picker: the friendly name ("Number magic") first, the official form
+ * wording underneath for parents who need to match it to a school form.
  *
- * A trait with no evidence shows "not seen", never a zero. A parent reading 0
- * beside "demonstrates great curiosity" would take it as a judgement about
- * their child rather than as missing data, and would carry that into the form.
+ * A category with no evidence shows "not played yet", never a zero. A parent
+ * reading 0 beside "demonstrates great curiosity" would take it as a judgement
+ * about their child rather than as missing data.
  */
-interface TryAction {
-  onPress: () => void;
-  /** This card's round is being generated. */
-  pending: boolean;
-  /** Any round is being generated, so every start button waits. */
-  busy: boolean;
-  /** Why this card's round failed to start, if it did. */
-  error: string | null;
-  count: number;
-}
-
-function TraitCard({ trait, tryAction }: { trait: TraitReport; tryAction?: TryAction }) {
-  const seen = trait.questionCount > 0;
+function PlayedCard({ trait }: { trait: TraitReport }) {
   const visual = CATEGORY_VISUALS[trait.key] ?? { icon: '⭐', background: colors.happySoft, border: colors.happy };
-
   return (
-    <View style={[styles.traitCard, seen && { borderColor: visual.border }]}>
-      <View style={[styles.traitIcon, { backgroundColor: visual.background, borderColor: visual.border }]}>
-        <Text style={styles.traitEmoji}>{visual.icon}</Text>
-      </View>
-      <View style={styles.traitBody}>
-        <View style={styles.domainHeader}>
-          <Text style={[styles.domainLabel, { flex: 1 }]}>{trait.label}</Text>
-          {trait.formScale ? (
-            <View style={[styles.scalePill, { backgroundColor: visual.background, borderColor: visual.border }]}>
-              <Text style={styles.scaleValue}>{trait.formScale.value}/5</Text>
-              <Text style={styles.scaleLabel}>{trait.formScale.label}</Text>
-            </View>
-          ) : null}
+    <View style={[styles.playedCard, { borderColor: visual.border }]}>
+      <View style={styles.playedTop}>
+        <View style={[styles.playedIcon, { backgroundColor: visual.background, borderColor: visual.border }]}>
+          <Text style={styles.playedEmoji}>{visual.icon}</Text>
         </View>
-
-        {seen && trait.formScale ? (
-          <>
-            <Bar percent={trait.percent} color={visual.border} />
-            <Text style={[styles.traitMeta, { marginTop: spacing(1) }]}>
-              {trait.earned} / {trait.possible} points · {trait.percent}% · {trait.questionCount} answered questions
-            </Text>
-          </>
-        ) : null}
-
-        <View style={[styles.statusPill, seen ? styles.statusSeen : null]}>
-          <Text style={[styles.statusText, seen ? styles.statusSeenText : null]}>{seen ? trait.band : 'Not yet observed'}</Text>
+        <View style={styles.playedTitles}>
+          <Text style={styles.playedName}>{CATEGORY_NAMES[trait.key] ?? trait.label}</Text>
+          <Text style={styles.officialName}>{trait.label}</Text>
         </View>
-        <Text style={[type.soft, { marginTop: spacing(1), fontSize: 13 }]}>{trait.blurb}</Text>
-        <Text style={[styles.smallNote, { marginTop: spacing(0.75), fontStyle: 'italic' }]}>
-          {trait.evidence}
-          {trait.measurable === 'behaviour'
-            ? ' Based on answers about challenge situations, not an observation of everyday behaviour.'
-            : trait.measurable === 'inferred'
-              ? ' Based on the ideas and explanations offered in this activity.'
-              : ''}
-        </Text>
-
-        {tryAction ? (
-          <View style={{ marginTop: spacing(1.5) }}>
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel={`${seen ? 'Try again' : 'Start'}: ${trait.label}, ${tryAction.count} questions`}
-              accessibilityState={{ disabled: tryAction.busy, busy: tryAction.pending }}
-              disabled={tryAction.busy}
-              onPress={tryAction.onPress}
-              style={({ pressed }) => [
-                styles.tryButton,
-                { borderColor: visual.border, backgroundColor: visual.background },
-                tryAction.busy && !tryAction.pending && styles.tryDisabled,
-                pressed && styles.pressed,
-              ]}
-            >
-              {tryAction.pending ? <ActivityIndicator color={colors.ink} style={{ marginRight: spacing(1) }} /> : null}
-              <Text style={styles.tryText}>
-                {tryAction.pending
-                  ? 'Making the questions…'
-                  : `${seen ? 'Try again' : 'Start this one'} · ${tryAction.count} questions ▶`}
-              </Text>
-            </Pressable>
-            {tryAction.error ? <Text style={styles.tryError}>{tryAction.error}</Text> : null}
+        {trait.formScale ? (
+          <View style={[styles.scalePill, { backgroundColor: visual.background, borderColor: visual.border }]}>
+            <Text style={styles.scaleValue}>{trait.formScale.value}/5</Text>
+            <Text style={styles.scaleLabel}>{trait.formScale.label}</Text>
           </View>
         ) : null}
       </View>
+      {trait.formScale ? <Bar percent={trait.percent} color={visual.border} /> : null}
+      <View style={styles.bandRow}>
+        <View style={styles.bandPill}><Text style={styles.bandText}>{trait.band}</Text></View>
+        <Text style={styles.traitMeta}>{trait.questionCount} {trait.questionCount === 1 ? 'question' : 'questions'} · {trait.percent}%</Text>
+      </View>
+      <Text style={styles.blurb}>{trait.blurb}</Text>
+      <Text style={styles.evidence}>
+        {trait.evidence}
+        {trait.measurable === 'behaviour'
+          ? ' Based on answers about challenge situations, not an observation of everyday behaviour.'
+          : trait.measurable === 'inferred'
+            ? ' Based on the ideas and explanations offered in this activity.'
+            : ''}
+      </Text>
     </View>
   );
 }
 
+/** The same "How many?" picker as the activity screen. */
 const ROUND_OPTIONS = [
-  { count: 2, icon: '⚡', title: 'Quick' },
-  { count: 5, icon: '⭐', title: 'More' },
-  { count: 6, icon: '🚀', title: 'Big' },
+  { count: 2, icon: '⚡' },
+  { count: 5, icon: '⭐' },
+  { count: 6, icon: '🚀' },
 ] as const;
+
+function HowMany({ value, onChange, disabled }: { value: number; onChange: (n: number) => void; disabled: boolean }) {
+  return (
+    <View style={styles.lengthRow}>
+      <Text style={styles.lengthLabel} numberOfLines={1}>How many?</Text>
+      <View style={styles.lengthPills}>
+        {ROUND_OPTIONS.map(option => {
+          const on = value === option.count;
+          return (
+            <Pressable
+              key={option.count}
+              accessibilityRole="radio"
+              accessibilityLabel={`${option.count} questions`}
+              accessibilityState={{ checked: on, disabled }}
+              disabled={disabled}
+              onPress={() => onChange(option.count)}
+              style={({ pressed }) => [styles.lengthPill, on && styles.lengthPillOn, pressed && styles.pressed]}
+            >
+              <Text style={styles.lengthIcon}>{option.icon}</Text>
+              <Text style={[styles.lengthNumber, on && styles.lengthNumberOn]}>{option.count}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
+    </View>
+  );
+}
 
 function chipStyle(r: ScoredResponse): TextStyle {
   if (r.skipped || r.ungraded) return styles.chipWarn;
@@ -250,13 +235,28 @@ function scoreSummary(report: Report): { headline: string; detail: string } {
   return { headline: skipped ? `${headline} · ${skipped} skipped` : headline, detail };
 }
 
+/** A card-shaped button that opens and closes a section, used for every fold-out on this screen. */
+function Fold({ icon, title, open, onToggle, tint = colors.happy }: { icon: string; title: string; open: boolean; onToggle: () => void; tint?: string }) {
+  return (
+    <Pressable
+      onPress={onToggle}
+      accessibilityRole="button"
+      accessibilityState={{ expanded: open }}
+      style={({ pressed }) => [styles.toggle, pressed && styles.pressed]}
+    >
+      <Text style={styles.toggleIcon}>{icon}</Text>
+      <Text style={styles.toggleText}>{title}</Text>
+      <View style={[styles.toggleBubble, { backgroundColor: tint }]}><Text style={styles.chevron}>{open ? '−' : '+'}</Text></View>
+    </Pressable>
+  );
+}
+
 export default function ResultsScreen({
   report,
   childName,
   onRestart,
   onChooseCategory,
   onReassess,
-  remainingUnseen,
   busy,
   error,
   historical = false,
@@ -267,38 +267,33 @@ export default function ResultsScreen({
   reward,
 }: ResultsScreenProps) {
   const [showDetail, setShowDetail] = useState(false);
-  const canTry = !historical && !!onTryCategory;
-  const [tryLength, setTryLength] = useState<number>(ROUND_OPTIONS.some(o => o.count === roundLength) ? roundLength : 2);
-  // Which card's Start was pressed, so only that card spins and shows an error.
+  const [showAll, setShowAll] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
+  const [count, setCount] = useState<number>(ROUND_OPTIONS.some(o => o.count === roundLength) ? roundLength : 2);
+  // Which "Play again" was pressed, so only that button spins.
   const [pendingTrait, setPendingTrait] = useState<TraitKey | null>(null);
 
-  function startCategory(key: TraitKey) {
-    if (!onTryCategory || busy) return;
-    setPendingTrait(key);
-    onTryCategory(key, tryLength);
-  }
-  const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
+  const played = report.traits.filter(t => t.questionCount > 0);
+  const who = childName?.trim() || 'Your child';
+  const summary = scoreSummary(report);
 
-  function toggleGroup(key: string) {
-    setExpandedGroups(current => {
-      const next = new Set(current);
-      next.has(key) ? next.delete(key) : next.add(key);
-      return next;
-    });
+  function playAgain(key: TraitKey) {
+    if (busy) return;
+    setPendingTrait(key);
+    if (onTryCategory) onTryCategory(key, count);
+    else onReassess();
   }
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.container}>
-      {historical && onBackToHistory ? <Pressable onPress={onBackToHistory} accessibilityRole="button"><Text style={styles.historyBack}>← Previous assessments</Text></Pressable> : null}
+      {historical && onBackToHistory ? <Pressable onPress={onBackToHistory} accessibilityRole="button"><Text style={styles.historyBack}>← Previous results</Text></Pressable> : null}
 
-      {/* Same look as the front page header: soft purple card, owl mascot. */}
+      {/* Same header shape as "What shall we explore?", with the owl. */}
       <View style={styles.hero}>
-        <View style={styles.decorOne} />
-        <View style={styles.decorTwo} />
-        <View style={styles.mascotBubble}><Text style={styles.mascot}>🦉</Text></View>
+        <View style={styles.heroBubble}><Owl mood="happy" size={46} /></View>
         <View style={styles.heroCopy}>
-          <Text style={styles.eyebrow}>{historical ? 'SAVED ASSESSMENT RESULT' : 'TEST RESULT'}</Text>
-          <Text style={styles.pageTitle}>{childName ? `${childName}'s test` : 'Test summary'}</Text>
+          <Text style={styles.eyebrow}>{historical ? 'SAVED RESULT' : 'ROUND COMPLETE'}</Text>
+          <Text style={styles.pageTitle}>{childName ? `${childName}’s results` : 'Results'}</Text>
           {completedAt ? <Text style={styles.heroText}>{new Date(completedAt).toLocaleString()}</Text> : null}
         </View>
       </View>
@@ -308,12 +303,8 @@ export default function ResultsScreen({
         <View style={styles.scoreBadge}>
           <Text style={styles.overallNumber}>{report.overall.possible > 0 ? `${report.overall.percent}%` : '—'}</Text>
         </View>
-        <Text style={styles.overallHeadline}>
-          {report.overall.possible > 0 ? scoreSummary(report).headline : 'Not scored'}
-        </Text>
-        {scoreSummary(report).detail ? (
-          <Text style={styles.overallDetail}>{scoreSummary(report).detail}</Text>
-        ) : null}
+        <Text style={styles.overallHeadline}>{report.overall.possible > 0 ? summary.headline : 'Not scored'}</Text>
+        {summary.detail ? <Text style={styles.overallDetail}>{summary.detail}</Text> : null}
       </View>
 
       {report.parentReport ? (
@@ -321,138 +312,67 @@ export default function ResultsScreen({
       ) : report.parentReportPending ? (
         <View style={styles.noteCard} accessibilityLiveRegion="polite">
           <ActivityIndicator color={colors.primary} />
-          <Text style={styles.noteText}>Writing a short note for you… the scores below are ready now.</Text>
+          <Text style={styles.noteText}>Writing a short note for you… the results below are ready now.</Text>
         </View>
       ) : report.parentReportError ? (
         <View style={styles.warnCard}>
           <View style={styles.warnIconBubble}><Text style={styles.iconEmoji}>🌦️</Text></View>
-          <Text style={styles.warnText}>
-            The written report couldn&apos;t be generated this time. The scores below are
-            unaffected.
-          </Text>
+          <Text style={styles.warnText}>The written note couldn&apos;t be made this time. The results below are unaffected.</Text>
         </View>
       ) : null}
 
       <View style={styles.headingRow}>
-        <View style={{ flex: 1 }}>
-          <Text style={styles.sectionTitle}>Category results</Text>
-          <Text style={styles.sectionHint}>
-            {canTry ? 'Tap a colorful card, then start any category right away.' : 'Tap a colorful card to see each category.'}
-          </Text>
-        </View>
-        <Text style={styles.headingEmoji}>📊</Text>
+        <Text style={[styles.sectionTitle, { flex: 1 }]}>{played.length === 1 ? `What ${who} played` : `What ${who} played (${played.length})`}</Text>
+        <Text style={styles.headingEmoji}>🎯</Text>
       </View>
-      <View style={styles.infoCallout}>
-        <Text style={styles.infoIcon}>ℹ️</Text>
-        <Text style={styles.infoText}>
-        All categories appear below. This result covers only the test just completed; earlier tests are in the child's history.
-        The 1–5 indicators describe evidence in these activities, not a ranking against other children
-        or an official school rating. Unobserved categories have no score. Speed, enjoyment, and
-        everyday behaviour need observations over time.
-        </Text>
-      </View>
-      {canTry ? (
-        <View style={styles.lengthRow}>
-          <Text style={styles.lengthLabel}>Questions per round</Text>
-          <View style={styles.lengthChips}>
-            {ROUND_OPTIONS.map(option => {
-              const on = tryLength === option.count;
-              return (
-                <Pressable
-                  key={option.count}
-                  accessibilityRole="radio"
-                  accessibilityLabel={`${option.title}, ${option.count} questions`}
-                  accessibilityState={{ checked: on, disabled: busy }}
-                  disabled={busy}
-                  onPress={() => setTryLength(option.count)}
-                  style={({ pressed }) => [styles.lengthChip, on && styles.lengthChipOn, pressed && styles.pressed]}
-                >
-                  <Text style={[styles.lengthChipText, on && styles.lengthChipTextOn]}>{option.icon} {option.count}</Text>
-                </Pressable>
-              );
-            })}
-          </View>
-        </View>
-      ) : null}
-      <View style={styles.groupList}>
-        {CATEGORY_GROUPS.map(group => {
-          const groupTraits = report.traits.filter(t => (t.group ?? 'intellectual') === group.key);
-          const observed = groupTraits.filter(t => t.questionCount > 0).length;
-          const expanded = expandedGroups.has(group.key);
-          const visual = GROUP_VISUALS[group.key];
-          return <View key={group.key} style={styles.groupCard}>
-            <Pressable
-              accessibilityRole="button"
-              accessibilityState={{ expanded }}
-              accessibilityLabel={`${group.label}, ${observed} of ${groupTraits.length} observed`}
-              onPress={() => toggleGroup(group.key)}
-              style={({ pressed }) => [styles.groupHeader, { backgroundColor: visual.background, borderColor: visual.border }, pressed && styles.pressed]}
-            >
-              <View style={[styles.groupIcon, { borderColor: visual.border }]}><Text style={styles.groupEmoji}>{visual.icon}</Text></View>
-              <View style={styles.groupHeaderCopy}>
-                <Text style={[styles.groupTitle, { color: visual.ink }]}>{group.label}</Text>
-                <Text style={styles.groupCount}>{observed} of {groupTraits.length} observed</Text>
-              </View>
-              <View style={[styles.chevronBubble, { backgroundColor: visual.border }]}><Text style={styles.chevron}>{expanded ? '−' : '+'}</Text></View>
-            </Pressable>
-            {expanded ? <View style={styles.groupItems}>{groupTraits.map(t => (
-              <TraitCard
-                key={t.key}
-                trait={t}
-                tryAction={canTry ? {
-                  onPress: () => startCategory(t.key),
-                  pending: busy && pendingTrait === t.key,
-                  busy,
-                  error: !busy && pendingTrait === t.key ? error : null,
-                  count: tryLength,
-                } : undefined}
-              />
-            ))}</View> : null}
-          </View>;
-        })}
-      </View>
+      {played.length ? (
+        <View style={styles.playedList}>{played.map(t => <PlayedCard key={t.key} trait={t} />)}</View>
+      ) : (
+        <Text style={styles.emptyText}>No answers were scored in this round, so there is nothing to show yet.</Text>
+      )}
 
       {report.graderFailed ? (
         <View style={styles.warnCard}>
           <View style={styles.warnIconBubble}><Text style={styles.iconEmoji}>✍️</Text></View>
           <Text style={styles.warnText}>
-            The written answers could not be graded automatically, so they are left out of the
-            totals above. They are worth reading through by hand.
+            The spoken or written answers could not be checked automatically, so they are left out of the
+            totals above. They are worth reading through below.
           </Text>
         </View>
       ) : null}
 
-      <Pressable
-        onPress={() => setShowDetail((v) => !v)}
-        accessibilityRole="button"
-        accessibilityState={{ expanded: showDetail }}
-        style={({ pressed }) => [styles.toggle, pressed && styles.pressed]}
-      >
-        <Text style={styles.toggleIcon}>📝</Text>
-        <Text style={styles.toggleText}>
-          {showDetail ? 'Hide question-by-question' : 'Show question-by-question'}
-        </Text>
-        <View style={styles.toggleBubble}><Text style={styles.chevron}>{showDetail ? '−' : '+'}</Text></View>
-      </Pressable>
+      {/* What to do next: the most common choice first. */}
+      {!historical ? (
+        <View style={styles.nextCard}>
+          <View style={styles.headingRowTight}>
+            <Text style={[styles.sectionTitle, { flex: 1 }]}>Keep playing</Text>
+            <Text style={styles.headingEmoji}>🎒</Text>
+          </View>
+          <HowMany value={count} onChange={setCount} disabled={busy} />
+          {played.map(t => (
+            <Button
+              key={t.key}
+              title={busy && pendingTrait === t.key ? 'Making your questions…' : `▶  Play ${CATEGORY_NAMES[t.key] ?? t.label} again`}
+              onPress={() => playAgain(t.key)}
+              loading={busy && pendingTrait === t.key}
+              disabled={busy}
+            />
+          ))}
+          <Button title="🌈  Choose another activity" variant="secondary" onPress={onChooseCategory} disabled={busy} />
+          {error ? <Text style={styles.errorText}>{error}</Text> : null}
+        </View>
+      ) : null}
 
+      <Fold icon="📝" title={showDetail ? 'Hide each question' : 'See each question and answer'} open={showDetail} onToggle={() => setShowDetail(v => !v)} />
       {showDetail && (
-        <View style={{ gap: spacing(2) }}>
+        <View style={{ gap: spacing(1.5) }}>
           {report.responses.map((r, i) => (
             <View key={r.questionId} style={styles.responseCard}>
-              {/* Question ids are generated UUIDs, meaningless to a parent. */}
               <Text style={type.label}>QUESTION {i + 1}</Text>
-              <Text style={[type.body, { marginTop: spacing(0.5), fontWeight: '600' }]}>
-                {r.prompt}
-              </Text>
-              <Text style={[type.soft, { marginTop: spacing(1) }]}>
-                Answer: {r.answer.trim() ? r.answer : '(left blank)'}
-              </Text>
+              <Text style={[type.body, { marginTop: spacing(0.5), fontWeight: '600' }]}>{r.prompt}</Text>
+              <Text style={[type.soft, { marginTop: spacing(1) }]}>Answer: {r.answer.trim() ? r.answer : '(no answer)'}</Text>
               <Text style={[styles.scoreChip, chipStyle(r)]}>
-                {r.skipped
-                  ? 'skipped — not scored'
-                  : r.ungraded
-                    ? 'not graded'
-                    : `${r.earned} / ${r.possible} points`}
+                {r.skipped ? 'skipped — not scored' : r.ungraded ? 'not checked' : `${r.earned} / ${r.possible} points`}
               </Text>
               {r.note ? <Text style={[type.soft, { marginTop: spacing(1) }]}>{r.note}</Text> : null}
             </View>
@@ -460,66 +380,88 @@ export default function ResultsScreen({
         </View>
       )}
 
-      {!historical && <View style={styles.reassessCard}>
-        <View style={styles.headingRowTight}>
-          <Text style={[styles.sectionTitle, { flex: 1 }]}>Explore another category</Text>
-          <Text style={styles.headingEmoji}>🎒</Text>
+      {/* Every activity, grouped exactly like the picker's tabs. */}
+      <Fold icon="🗂️" title={showAll ? 'Hide all activities' : `See all ${report.traits.length} activities`} open={showAll} onToggle={() => setShowAll(v => !v)} tint={colors.cool} />
+      {showAll ? (
+        <View style={styles.allList}>
+          {CATEGORY_GROUPS.map(group => {
+            const traits = report.traits.filter(t => (t.group ?? 'intellectual') === group.key);
+            if (!traits.length) return null;
+            const visual = GROUP_VISUALS[group.key];
+            const count = traits.filter(t => t.questionCount > 0).length;
+            return (
+              <View key={group.key} style={[styles.groupCard, { borderColor: visual.border }]}>
+                <View style={[styles.groupHeader, { backgroundColor: visual.background }]}>
+                  <Text style={styles.groupEmoji}>{visual.icon}</Text>
+                  <Text style={[styles.groupTitle, { color: visual.ink }]}>{GROUP_NAMES[group.key]}</Text>
+                  <Text style={styles.groupCount}>{count ? `${count} played` : 'None played'}</Text>
+                </View>
+                {traits.map(t => {
+                  const tv = CATEGORY_VISUALS[t.key];
+                  return (
+                    <View key={t.key} style={styles.allRow} accessible accessibilityLabel={`${CATEGORY_NAMES[t.key]}: ${t.formScale ? `${t.formScale.value} out of 5, ${t.formScale.label}` : 'not played in this round'}`}>
+                      <View style={[styles.allIcon, { backgroundColor: tv?.background, borderColor: tv?.border }]}><Text style={styles.allEmoji}>{tv?.icon ?? '⭐'}</Text></View>
+                      <Text style={styles.allName} numberOfLines={1}>{CATEGORY_NAMES[t.key] ?? t.label}</Text>
+                      {t.formScale
+                        ? <Text style={[styles.allScore, { borderColor: tv?.border, backgroundColor: tv?.background }]}>{t.formScale.value}/5</Text>
+                        : <Text style={styles.allNotYet}>Not played</Text>}
+                    </View>
+                  );
+                })}
+              </View>
+            );
+          })}
+          <Text style={styles.smallNote}>Only the activities played in this round have results. Earlier rounds are in {who}’s history.</Text>
         </View>
-        <Text style={[type.soft, { marginVertical: spacing(1) }]}>{report.traits.filter(t => t.questionCount > 0).length} of {report.traits.length} categories have observations so far. Your completed answers stay in this session.</Text>
-        <Button title="Choose the next category" onPress={onChooseCategory} disabled={busy} />
-        <Text style={[type.soft, { marginTop: spacing(1) }]}>
-          AI generates a fresh round each time. Your completed rounds, answers, and report are saved privately to your parent account.
-        </Text>
-        {error && !pendingTrait ? (
-          <Text style={[type.body, { color: colors.warn, marginTop: spacing(1.5) }]}>{error}</Text>
-        ) : null}
-        <View style={{ gap: spacing(1.5), marginTop: spacing(2) }}>
-          <Button
-            title="Ask different questions"
-            onPress={() => { setPendingTrait(null); onReassess(); }}
-            loading={busy && !pendingTrait}
-            disabled={remainingUnseen === 0 || (busy && !!pendingTrait)}
-          />
+      ) : null}
 
+      <Fold icon="🛡️" title="About these results" open={showAbout} onToggle={() => setShowAbout(v => !v)} tint="#B8A99A" />
+      {showAbout ? (
+        <View style={styles.aboutCard}>
+          <Text style={styles.aboutText}>
+            This covers only the round just finished. The 1–5 indicators describe what showed up in these
+            activities — not a ranking against other children or an official school rating. Activities not
+            played have no score. Speed, enjoyment and everyday behaviour need observations over time.
+          </Text>
+          <Text style={[styles.aboutText, { marginTop: spacing(1) }]}>{report.disclaimer}</Text>
         </View>
-      </View>}
+      ) : null}
 
-      <View style={styles.disclaimer}>
-        <Text style={styles.infoIcon}>🛡️</Text>
-        <Text style={styles.disclaimerText}>{report.disclaimer}</Text>
+      <View style={{ marginTop: spacing(1) }}>
+        <Button
+          title={historical ? '← Back to previous results' : '🏠  Done for now'}
+          variant="secondary"
+          onPress={historical && onBackToHistory ? onBackToHistory : onRestart}
+          disabled={busy}
+        />
       </View>
-
-      <View style={{ marginTop: spacing(3) }}><Button title={historical ? 'Back to previous assessments' : 'Start a new session'} variant="secondary" onPress={historical && onBackToHistory ? onBackToHistory : onRestart} disabled={busy} /></View>
     </ScrollView>
   );
 }
 
-// Shapes and colours follow the front page (StartScreen) and the category
-// picker: 22px rounded cards with 2px soft borders, emoji in white bubbles,
-// heavy warm-brown section titles, and the same per-group colours.
+// Shapes and colours follow the activity picker (CategoryScreen): 24px rounded
+// cards with 2px soft borders, emoji in white bubbles, heavy warm-brown titles,
+// the same "How many?" pills and the same group names and colours.
 const styles = StyleSheet.create({
   screen: { backgroundColor: '#FFF8EF' },
-  container: { padding: GUTTER, paddingBottom: spacing(6), ...column },
-  historyBack: { color: colors.primary, fontWeight: '800', marginBottom: spacing(2) },
-  pressed: { opacity: 0.78, transform: [{ scale: 0.985 }] },
+  container: { padding: GUTTER, paddingBottom: spacing(6), gap: spacing(2), ...column },
+  historyBack: { color: colors.primary, fontWeight: '800' },
+  pressed: { opacity: 0.8, transform: [{ scale: 0.97 }] },
 
-  hero: { position: 'relative', flexDirection: 'row', alignItems: 'center', gap: spacing(1.75), backgroundColor: '#EEE9FF', borderRadius: 26, padding: spacing(2.25), overflow: 'hidden', borderWidth: 2, borderColor: '#CABAF0' },
-  decorOne: { position: 'absolute', width: 90, height: 90, borderRadius: 45, backgroundColor: '#FFE4A8', top: -42, right: -22, opacity: 0.8 },
-  decorTwo: { position: 'absolute', width: 65, height: 65, borderRadius: 33, backgroundColor: '#CDEEDC', bottom: -34, right: 90, opacity: 0.8 },
-  mascotBubble: { width: 64, height: 64, borderRadius: 32, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#CABAF0', alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '-4deg' }] },
-  mascot: { fontSize: 38 },
+  hero: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), backgroundColor: '#EEE9FF', borderRadius: 24, padding: spacing(2), borderWidth: 2, borderColor: '#CABAF0' },
+  heroBubble: { width: 60, height: 60, borderRadius: 30, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#CABAF0', alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '-5deg' }] },
   heroCopy: { flex: 1 },
   eyebrow: { fontSize: 11, lineHeight: 15, fontWeight: '800', letterSpacing: 1, color: '#6D5B91' },
-  pageTitle: { fontSize: 26, lineHeight: 31, fontWeight: '900', color: '#6B4BB0', marginTop: 2 },
+  pageTitle: { fontSize: 23, lineHeight: 28, fontWeight: '900', color: '#4E3590', marginTop: 2 },
   heroText: { fontSize: 13, lineHeight: 19, color: '#6D5B91', marginTop: spacing(0.5) },
 
-  overall: { marginTop: spacing(2), backgroundColor: '#E5F5EA', borderRadius: 22, borderWidth: 2, borderColor: '#A9D7B8', padding: spacing(2.5), alignItems: 'center' },
+  overall: { backgroundColor: '#E5F5EA', borderRadius: 24, borderWidth: 2, borderColor: '#A9D7B8', padding: spacing(2.5), alignItems: 'center' },
   scoreBadge: { minWidth: 132, paddingHorizontal: spacing(2.5), paddingVertical: spacing(1), borderRadius: 999, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#A9D7B8', alignItems: 'center' },
   overallNumber: { fontSize: 44, lineHeight: 52, fontWeight: '900', color: '#34734E' },
   overallHeadline: { fontSize: 17, lineHeight: 23, fontWeight: '800', color: '#2F5D43', textAlign: 'center', marginTop: spacing(1.5) },
   overallDetail: { fontSize: 13, lineHeight: 19, color: '#4C6655', textAlign: 'center', marginTop: spacing(0.5) },
 
-  summaryCard: { marginTop: spacing(2), backgroundColor: colors.surface, borderWidth: 1.5, borderColor: '#EEDFCB', borderRadius: 22, padding: spacing(2) },
+  summaryCard: { backgroundColor: colors.surface, borderWidth: 2, borderColor: '#EEDFCB', borderRadius: 24, padding: spacing(2) },
   cardHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1.5) },
   titleRow: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.25), flexShrink: 1 },
   iconBubble: { width: 44, height: 44, borderRadius: 22, backgroundColor: '#FFF0C9', borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
@@ -532,73 +474,74 @@ const styles = StyleSheet.create({
   dot: { width: 8, height: 8, borderRadius: 4, backgroundColor: colors.happy, marginTop: 8 },
   closing: { marginTop: spacing(2.5), paddingTop: spacing(2), borderTopWidth: 1, borderTopColor: colors.line, fontStyle: 'italic' },
 
-  headingRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1), marginTop: spacing(3), paddingHorizontal: spacing(0.5) },
+  headingRow: { flexDirection: 'row', alignItems: 'center', gap: spacing(1), marginTop: spacing(1), paddingHorizontal: spacing(0.5) },
   headingRowTight: { flexDirection: 'row', alignItems: 'center', gap: spacing(1) },
-  sectionTitle: { fontSize: 18, lineHeight: 23, fontWeight: '900', color: '#513A27' },
-  sectionHint: { fontSize: 13, lineHeight: 18, color: colors.inkSoft, marginTop: 2 },
-  headingEmoji: { fontSize: 30 },
-  infoCallout: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1), backgroundColor: '#EDF7FF', borderRadius: 14, padding: spacing(1.5), marginTop: spacing(1.5) },
-  infoIcon: { fontSize: 16 },
-  infoText: { flex: 1, fontSize: 12, lineHeight: 18, color: '#526678' },
+  sectionTitle: { fontSize: 20, lineHeight: 25, fontWeight: '900', color: '#513A27' },
+  headingEmoji: { fontSize: 28 },
+  emptyText: { fontSize: 15, lineHeight: 22, color: colors.inkSoft, paddingHorizontal: spacing(0.5) },
 
-  groupList: { gap: spacing(1.5), marginTop: spacing(1.5) },
-  groupCard: { borderRadius: 22, overflow: 'hidden', backgroundColor: colors.surface, shadowColor: '#4A3728', shadowOpacity: 0.08, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 2 },
-  groupHeader: { flexDirection: 'row', alignItems: 'center', paddingVertical: spacing(1.5), paddingHorizontal: spacing(1.5), borderWidth: 2, borderRadius: 22 },
-  groupIcon: { width: 48, height: 48, borderRadius: 24, backgroundColor: '#FFFFFF', borderWidth: 2, alignItems: 'center', justifyContent: 'center', marginRight: spacing(1.25) },
-  groupEmoji: { fontSize: 25 },
-  groupHeaderCopy: { flex: 1, minWidth: 0 },
-  groupTitle: { fontSize: 17, lineHeight: 21, fontWeight: '800', color: colors.ink },
-  groupCount: { fontSize: 12, lineHeight: 16, color: '#6F655D', marginTop: 2, fontWeight: '600' },
-  chevronBubble: { width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center', marginLeft: spacing(1) },
-  chevron: { color: '#FFFFFF', fontSize: 22, lineHeight: 25, fontWeight: '900' },
-  groupItems: { gap: spacing(1.5), padding: spacing(2) },
-
-  traitCard: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1.5), padding: spacing(1.75), borderRadius: 18, borderWidth: 2, borderColor: colors.line, backgroundColor: colors.surface },
-  traitIcon: { width: 48, height: 48, borderRadius: 24, borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
-  traitEmoji: { fontSize: 24 },
-  traitBody: { flex: 1, minWidth: 0 },
-  domainHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: spacing(1), marginBottom: spacing(1) },
-  domainLabel: { fontSize: 16, lineHeight: 21, fontWeight: '800', color: colors.ink },
-  scalePill: { alignItems: 'center', borderRadius: 14, borderWidth: 1.5, paddingHorizontal: spacing(1.25), paddingVertical: spacing(0.5), minWidth: 64 },
+  playedList: { gap: spacing(1.5) },
+  playedCard: { backgroundColor: colors.surface, borderRadius: 24, borderWidth: 2, padding: spacing(2), gap: spacing(1.25), shadowColor: '#4A3728', shadowOpacity: 0.07, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 2 },
+  playedTop: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5) },
+  playedIcon: { width: 60, height: 60, borderRadius: 30, borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
+  playedEmoji: { fontSize: 32 },
+  playedTitles: { flex: 1, minWidth: 0 },
+  playedName: { fontSize: 20, lineHeight: 24, fontWeight: '900', color: '#3F3126' },
+  officialName: { fontSize: 12, lineHeight: 16, fontWeight: '700', color: colors.inkSoft, marginTop: 2 },
+  scalePill: { alignItems: 'center', borderRadius: 16, borderWidth: 2, paddingHorizontal: spacing(1.25), paddingVertical: spacing(0.5), minWidth: 66 },
   scaleValue: { fontSize: 20, fontWeight: '900', color: colors.ink, lineHeight: 24 },
-  scaleLabel: { fontSize: 10, fontWeight: '700', color: colors.inkSoft },
-  traitMeta: { fontSize: 12, lineHeight: 17, color: colors.inkSoft, fontWeight: '600' },
-  statusPill: { alignSelf: 'flex-start', marginTop: spacing(1), backgroundColor: '#F3EEE7', borderRadius: 999, paddingHorizontal: spacing(1.25), paddingVertical: spacing(0.5) },
-  statusSeen: { backgroundColor: colors.goSoft },
-  statusText: { fontSize: 12, fontWeight: '800', color: colors.inkSoft },
-  statusSeenText: { color: colors.accent },
+  scaleLabel: { fontSize: 10, fontWeight: '800', color: colors.inkSoft },
+  bandRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1), flexWrap: 'wrap' },
+  bandPill: { backgroundColor: colors.goSoft, borderRadius: 999, paddingHorizontal: spacing(1.25), paddingVertical: spacing(0.5) },
+  bandText: { fontSize: 13, fontWeight: '800', color: colors.accent },
+  traitMeta: { fontSize: 12, color: colors.inkSoft, fontWeight: '700' },
+  blurb: { fontSize: 14, lineHeight: 20, color: '#5E5249' },
+  evidence: { fontSize: 12, lineHeight: 18, color: colors.inkSoft, fontStyle: 'italic' },
   barTrack: { height: 10, backgroundColor: '#F3EEE7', borderRadius: 5, overflow: 'hidden' },
   barFill: { height: 10, borderRadius: 5 },
 
-  noteCard: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.25), marginTop: spacing(2), backgroundColor: '#F2EAFE', borderWidth: 2, borderColor: '#CABAF0', borderRadius: 20, padding: spacing(1.5) },
+  nextCard: { backgroundColor: '#FFF0C9', borderWidth: 2, borderColor: '#F4C966', borderRadius: 24, padding: spacing(2), gap: spacing(1.5) },
+  lengthRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1), flexWrap: 'wrap' },
+  lengthLabel: { fontSize: 16, fontWeight: '900', color: '#513A27' },
+  lengthPills: { flexDirection: 'row', gap: spacing(1) },
+  lengthPill: { flexDirection: 'row', alignItems: 'center', gap: 4, minHeight: 44, paddingHorizontal: spacing(1.5), borderRadius: 999, borderWidth: 2, borderColor: colors.line, backgroundColor: '#FFFFFF' },
+  lengthPillOn: { borderColor: colors.primary, backgroundColor: colors.primarySoft },
+  lengthIcon: { fontSize: 18 },
+  lengthNumber: { fontSize: 17, fontWeight: '900', color: '#6D5A49' },
+  lengthNumberOn: { color: colors.primary },
+  errorText: { color: colors.danger, backgroundColor: '#FBE9E7', padding: spacing(1.5), borderRadius: 12, fontSize: 14, lineHeight: 20 },
+
+  noteCard: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.25), backgroundColor: '#F2EAFE', borderWidth: 2, borderColor: '#CABAF0', borderRadius: 20, padding: spacing(1.5) },
   noteText: { flex: 1, fontSize: 14, lineHeight: 20, color: '#5A3E99', fontWeight: '700' },
-  warnCard: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1.25), marginTop: spacing(2), backgroundColor: '#FFF0EE', borderWidth: 2, borderColor: '#F2A28E', borderRadius: 20, padding: spacing(1.5) },
+  warnCard: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1.25), backgroundColor: '#FFF0EE', borderWidth: 2, borderColor: '#F2A28E', borderRadius: 20, padding: spacing(1.5) },
   warnIconBubble: { width: 40, height: 40, borderRadius: 20, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' },
   warnText: { flex: 1, fontSize: 14, lineHeight: 20, color: '#9C402F', fontWeight: '600' },
 
-  toggle: { flexDirection: 'row', alignItems: 'center', gap: spacing(1), marginTop: spacing(2.5), marginBottom: spacing(1.5), backgroundColor: colors.surface, borderWidth: 2, borderColor: '#EEDFCB', borderRadius: 18, paddingVertical: spacing(1.25), paddingHorizontal: spacing(1.5) },
+  toggle: { flexDirection: 'row', alignItems: 'center', gap: spacing(1), backgroundColor: colors.surface, borderWidth: 2, borderColor: '#EEDFCB', borderRadius: 20, minHeight: 56, paddingVertical: spacing(1), paddingHorizontal: spacing(1.5) },
   toggleIcon: { fontSize: 20 },
   toggleText: { flex: 1, color: '#513A27', fontWeight: '800', fontSize: 15 },
-  toggleBubble: { width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.happy },
-  responseCard: { backgroundColor: colors.surface, borderWidth: 2, borderColor: colors.line, borderRadius: 18, padding: spacing(2) },
+  toggleBubble: { width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
+  chevron: { color: '#FFFFFF', fontSize: 22, lineHeight: 25, fontWeight: '900' },
+  responseCard: { backgroundColor: colors.surface, borderWidth: 2, borderColor: colors.line, borderRadius: 20, padding: spacing(2) },
   scoreChip: { alignSelf: 'flex-start', marginTop: spacing(1.5), paddingHorizontal: spacing(1.5), paddingVertical: spacing(0.5), borderRadius: 999, fontSize: 13, fontWeight: '800', overflow: 'hidden' },
   chipGood: { backgroundColor: colors.goSoft, color: colors.accent },
   chipMid: { backgroundColor: '#FEF3E2', color: colors.warn },
   chipLow: { backgroundColor: '#FBE9E7', color: colors.danger },
   chipWarn: { backgroundColor: '#F3EEE7', color: colors.inkSoft },
 
-  lengthRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1), marginTop: spacing(1.5), backgroundColor: colors.surface, borderWidth: 1.5, borderColor: '#EEDFCB', borderRadius: 18, paddingVertical: spacing(1), paddingHorizontal: spacing(1.5), flexWrap: 'wrap' },
-  lengthLabel: { fontSize: 14, fontWeight: '800', color: '#513A27' },
-  lengthChips: { flexDirection: 'row', gap: spacing(0.75) },
-  lengthChip: { minWidth: 56, minHeight: 40, paddingHorizontal: spacing(1.25), borderRadius: 999, borderWidth: 2, borderColor: colors.line, backgroundColor: '#FFF9F0', alignItems: 'center', justifyContent: 'center' },
-  lengthChipOn: { borderColor: colors.primary, backgroundColor: colors.primarySoft },
-  lengthChipText: { fontSize: 14, fontWeight: '800', color: '#6D5A49' },
-  lengthChipTextOn: { color: colors.primary },
-  tryButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', minHeight: 44, borderRadius: 14, borderWidth: 2, paddingHorizontal: spacing(1.5), paddingVertical: spacing(1) },
-  tryDisabled: { opacity: 0.45 },
-  tryText: { fontSize: 14, fontWeight: '800', color: colors.ink },
-  tryError: { marginTop: spacing(1), fontSize: 13, lineHeight: 19, color: colors.danger },
-  reassessCard: { marginTop: spacing(2.5), backgroundColor: colors.surface, borderWidth: 1.5, borderColor: '#EEDFCB', borderRadius: 22, padding: spacing(2) },
-  disclaimer: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing(1), marginTop: spacing(2.5), backgroundColor: '#F3EEE7', borderRadius: 14, padding: spacing(1.5) },
-  disclaimerText: { flex: 1, fontSize: 12, lineHeight: 18, color: '#6B6259' },
+  allList: { gap: spacing(1.5) },
+  groupCard: { backgroundColor: colors.surface, borderRadius: 20, borderWidth: 2, overflow: 'hidden' },
+  groupHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing(1), paddingVertical: spacing(1), paddingHorizontal: spacing(1.5) },
+  groupEmoji: { fontSize: 22 },
+  groupTitle: { flex: 1, fontSize: 16, fontWeight: '900' },
+  groupCount: { fontSize: 12, fontWeight: '800', color: '#6F655D' },
+  allRow: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.25), paddingVertical: spacing(0.75), paddingHorizontal: spacing(1.5), borderTopWidth: 1, borderTopColor: '#F3EADB' },
+  allIcon: { width: 34, height: 34, borderRadius: 17, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center' },
+  allEmoji: { fontSize: 17 },
+  allName: { flex: 1, fontSize: 15, fontWeight: '800', color: '#3F3126' },
+  allScore: { fontSize: 13, fontWeight: '900', color: colors.ink, borderWidth: 1.5, borderRadius: 999, paddingHorizontal: spacing(1), paddingVertical: 2, overflow: 'hidden' },
+  allNotYet: { fontSize: 12, fontWeight: '700', color: '#A2968A' },
+
+  aboutCard: { backgroundColor: '#F3EEE7', borderRadius: 18, padding: spacing(1.75) },
+  aboutText: { fontSize: 13, lineHeight: 19, color: '#6B6259' },
 });

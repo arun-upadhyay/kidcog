@@ -10,6 +10,7 @@ import CelebrationScreen from './src/screens/CelebrationScreen';
 import ResultsScreen from './src/screens/ResultsScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import HistoryScreen from './src/screens/HistoryScreen';
+import ThankYouScreen, { isThankYouPage } from './src/screens/ThankYouScreen';
 import AppMenu from './src/components/AppMenu';
 import IdleGuard from './src/components/IdleGuard';
 import { AuthProvider, useAuth } from './src/auth/AuthContext';
@@ -325,6 +326,11 @@ function KidCogApp() {
 }
 
 export default function App() {
+  // Stripe and PayPal send parents to /thank-you after a support payment.
+  const [thankYou, setThankYou] = useState(isThankYouPage);
+  if (thankYou) {
+    return <ThankYouScreen onContinue={() => { globalThis.history?.replaceState(null, '', '/'); setThankYou(false); }} />;
+  }
   return <AuthProvider><KidCogApp /></AuthProvider>;
 }
 
