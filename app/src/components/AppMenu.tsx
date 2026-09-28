@@ -1,10 +1,35 @@
 import React, { useState } from 'react';
-import { Modal, View, Text, TextInput, StyleSheet, Pressable, Switch } from 'react-native';
+import { Linking, Modal, Platform, View, Text, TextInput, StyleSheet, Pressable, Switch } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Button from './Button';
 import AboutSheet from './AboutSheet';
 import { setSoundEffects, useSoundEffects } from '../games/sounds';
 import { colors, spacing, type, column, GUTTER } from '../theme';
+
+/**
+ * "Support KidCog" links for parents who want to chip in: a Stripe Payment Link
+ * (card, Apple Pay, Google Pay) and/or a PayPal link, from
+ * EXPO_PUBLIC_SUPPORT_STRIPE_URL and EXPO_PUBLIC_SUPPORT_PAYPAL_URL. Only the
+ * ones set are shown, and nothing at all if neither is.
+ *
+ * Website only: the App Store and Google Play require tips inside apps to use
+ * their own in-app purchases, so the phone apps leave this out. It lives in
+ * this parent menu, never on a child's screen.
+ */
+function supportLink(value: string | undefined) {
+  const url = (value ?? '').trim();
+  return Platform.OS === 'web' && /^https:\/\/\S+$/.test(url) ? url : null;
+}
+const SUPPORT_OPTIONS = [
+  { key: 'stripe', url: supportLink(process.env.EXPO_PUBLIC_SUPPORT_STRIPE_URL), title: 'Card', note: 'Also Apple Pay and Google Pay · by Stripe', icon: '💳' },
+  { key: 'paypal', url: supportLink(process.env.EXPO_PUBLIC_SUPPORT_PAYPAL_URL), title: 'PayPal', note: 'Pay from your PayPal account', icon: '🅿️' },
+].filter((option): option is { key: string; url: string; title: string; note: string; icon: string } => option.url !== null);
+
+function openInNewTab(url: string) {
+  // A new tab, so KidCog (and a child's round in progress) stays open.
+  if (typeof window !== 'undefined') window.open(url, '_blank', 'noopener,noreferrer');
+  else void Linking.openURL(url);
+}
 
 /**
  * The top bar shown on every signed-in screen: the ☰ parent-account menu and
@@ -40,6 +65,7 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
   const [accountMessage, setAccountMessage] = useState<string | null>(null);
   const [accountError, setAccountError] = useState<string | null>(null);
   const [deletingAccount, setDeletingAccount] = useState(false);
+  const [supporting, setSupporting] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState('');
   const [accountDeleted, setAccountDeleted] = useState<string | null>(null);
 
@@ -52,6 +78,7 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
     setAccountMessage(null);
     setDeletingAccount(false);
     setDeleteConfirm('');
+    setSupporting(false);
   }
 
   async function confirmDeleteAccount() {
@@ -175,6 +202,21 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
                 </Pressable>
                 <Pressable onPress={() => { setDeletingAccount(false); setDeleteConfirm(''); setAccountError(null); }} style={styles.cancelButton} accessibilityRole="button"><Text style={styles.cancelText}>Keep my account</Text></Pressable>
               </View>
+            ) : supporting ? (
+              <View style={styles.supportPanel}>
+                <Text style={styles.supportHeart} accessible={false}>💛</Text>
+                <Text style={styles.supportTitle}>Support KidCog</Text>
+                <Text style={styles.supportBody}>KidCog is made by a small independent team. If it helps your family, a small contribution helps keep it running and growing. Thank you!</Text>
+                {SUPPORT_OPTIONS.map(option => (
+                  <Pressable key={option.key} onPress={() => openInNewTab(option.url)} accessibilityRole="link" accessibilityLabel={`Support with ${option.title}, opens in a new tab`} style={({ pressed }) => [styles.supportOption, pressed && styles.supportOptionPressed]}>
+                    <Text style={styles.menuActionIcon} accessible={false}>{option.icon}</Text>
+                    <View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>{option.title}</Text><Text style={type.soft}>{option.note}</Text></View>
+                    <Text style={styles.external} accessible={false}>↗</Text>
+                  </Pressable>
+                ))}
+                <Text style={[type.soft, { textAlign: 'center' }]}>Completely optional. KidCog works the same either way.</Text>
+                <Pressable onPress={() => setSupporting(false)} style={styles.cancelButton} accessibilityRole="button"><Text style={styles.cancelText}>Back</Text></Pressable>
+              </View>
             ) : changingPassword ? (
               <View style={styles.passwordPanel}>
                 <Text style={styles.passwordTitle}>Set a new password</Text>
@@ -202,6 +244,11 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
                 {canChangePassword ? (
                   <Pressable onPress={() => { setChangingPassword(true); setAccountMessage(null); }} accessibilityRole="button" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
                     <Text style={styles.menuActionIcon}>🔐</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>Change password</Text><Text style={type.soft}>Update the parent account password</Text></View><Text style={styles.chevron}>›</Text>
+                  </Pressable>
+                ) : null}
+                {SUPPORT_OPTIONS.length ? (
+                  <Pressable onPress={() => { setSupporting(true); setAccountMessage(null); }} accessibilityRole="button" accessibilityLabel="Support KidCog" style={({ pressed }) => [styles.supportLink, pressed && styles.menuActionPressed]}>
+                    <Text style={styles.supportLinkText}>💛 Support this project</Text>
                   </Pressable>
                 ) : null}
                 <Pressable onPress={() => { closeMenu(); onSignOut(); }} accessibilityRole="button" style={({ pressed }) => [styles.menuAction, styles.signOutAction, pressed && styles.menuActionPressed]}>
@@ -254,6 +301,15 @@ const styles = StyleSheet.create({
   menuActionCopy: { flex: 1 },
   menuActionTitle: { fontSize: 16, fontWeight: '700', color: colors.ink },
   chevron: { fontSize: 30, color: colors.inkSoft },
+  supportLink: { minHeight: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing(0.75), marginTop: spacing(1.5), borderRadius: 999, alignSelf: 'center', paddingHorizontal: spacing(2) },
+  supportLinkText: { fontSize: 15, fontWeight: '700', color: '#9A6B00' },
+  supportPanel: { gap: spacing(1.25) },
+  supportHeart: { fontSize: 44, textAlign: 'center' },
+  supportTitle: { fontSize: 20, fontWeight: '900', color: colors.ink, textAlign: 'center' },
+  supportBody: { fontSize: 15, lineHeight: 22, color: colors.inkSoft, textAlign: 'center', marginBottom: spacing(0.5) },
+  supportOption: { minHeight: 64, flexDirection: 'row', alignItems: 'center', gap: spacing(1.25), paddingHorizontal: spacing(1.5), borderRadius: 14, borderWidth: 1.5, borderColor: colors.line, backgroundColor: colors.surface },
+  supportOptionPressed: { backgroundColor: colors.bg },
+  external: { fontSize: 20, fontWeight: '800', color: colors.inkSoft },
   signOutAction: { marginTop: spacing(0.5), backgroundColor: '#FBE9E7' },
   signOutText: { color: colors.danger, fontSize: 16, fontWeight: '800' },
   passwordPanel: { gap: spacing(1.25) },
