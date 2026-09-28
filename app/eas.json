@@ -8,7 +8,7 @@
       "distribution": "internal",
       "environment": "preview",
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://api.ritvikglobal.com"
+        "EXPO_PUBLIC_API_URL": "https://kidcog.onrender.com"
       },
       "android": {
         "buildType": "apk"
@@ -18,7 +18,7 @@
       "autoIncrement": true,
       "environment": "production",
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://api.ritvikglobal.com"
+        "EXPO_PUBLIC_API_URL": "https://kidcog.onrender.com"
       }
     }
   },
