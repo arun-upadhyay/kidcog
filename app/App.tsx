@@ -4,6 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import CategoryScreen from './src/screens/CategoryScreen';
+import PlayZoneScreen from './src/screens/PlayZoneScreen';
+import type { GameKey } from './src/playzone/common';
 import StartScreen from './src/screens/StartScreen';
 import QuizScreen from './src/screens/QuizScreen';
 import CelebrationScreen from './src/screens/CelebrationScreen';
@@ -18,7 +20,7 @@ import { AuthProvider, useAuth } from './src/auth/AuthContext';
 import { deleteAccount, deleteChildProfile, fetchTest, getParentReport, listChildren, prefetchRound, saveChild, submitAnswers, updateChildAvatar } from './src/api';
 import { supabase } from './src/auth/supabase';
 import { stopSpeaking } from './src/speech';
-import { forgetProgress, loadProgress, recordRound, type ChildProgress, type RoundReward } from './src/progress';
+import { forgetProgress, loadProgress, recordArcade, recordRound, type ChildProgress, type RoundReward } from './src/progress';
 import BreakSheet, { BREAK_AFTER_MS } from './src/components/BreakSheet';
 import { colors } from './src/theme';
 import type { ChildProfile, HistoricalAssessment, Report, ResponseInput, SavedChildProfile, TestPayload, TraitKey } from './src/types';
@@ -28,7 +30,7 @@ import type { ChildProfile, HistoricalAssessment, Report, ResponseInput, SavedCh
  * and the scores sit behind a grown-up gate. Older children go straight to
  * results, where seeing their own score is reasonable and useful.
  */
-type Stage = 'start' | 'categories' | 'quiz' | 'celebrate' | 'results' | 'history' | 'historical_result';
+type Stage = 'start' | 'categories' | 'quiz' | 'celebrate' | 'results' | 'history' | 'historical_result' | 'playzone';
 
 function messageOf(err: unknown): string {
   return err instanceof Error ? err.message : 'Something went wrong.';
@@ -150,6 +152,20 @@ function KidCogApp() {
     setError(null);
     setStage('categories');
   }, []);
+
+  const openPlayZone = useCallback(() => {
+    playStartedAt.current ??= Date.now();
+    setStage('playzone');
+  }, []);
+
+  /** A Play Zone game was won: save its stars and level, and suggest a break after a long spell of play. */
+  const finishGame = useCallback((game: GameKey, stars: number, nextLevel: number) => {
+    if (child?.id) void recordArcade(child.id, game, stars, nextLevel).then(setProgress).catch(() => {});
+    if (playStartedAt.current !== null && Date.now() - playStartedAt.current >= BREAK_AFTER_MS) {
+      setBreakOpen(true);
+      playStartedAt.current = Date.now();
+    }
+  }, [child?.id]);
 
   const finish = useCallback(
     async (responses: ResponseInput[]) => {
@@ -288,7 +304,11 @@ function KidCogApp() {
 
           {stage === 'historical_result' && historical && <ResultsScreen report={historical.report} sessionId={historical.id} childName={historical.childName} completedAt={historical.completedAt} historical onBackToHistory={() => setStage('history')} onRestart={restart} onChooseCategory={() => {}} onReassess={() => {}} remainingUnseen={0} busy={false} error={null} />}
 
-          {stage === 'categories' && <CategoryScreen initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} progress={progress} onReport={() => setStage('results')} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
+          {stage === 'categories' && <CategoryScreen initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} progress={progress} onReport={() => setStage('results')} onPlayZone={openPlayZone} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
+
+          {stage === 'playzone' && (
+            <PlayZoneScreen childName={child?.firstName} age={child?.age} progress={progress} onBack={() => setStage('categories')} onFinish={finishGame} />
+          )}
 
           {stage === 'quiz' && test && (
             <QuizScreen test={test} onFinish={finish} onExit={leaveQuiz} submitting={busy} error={error} />

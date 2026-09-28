@@ -8,6 +8,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AVATARS } from './avatars';
 import type { Report, TraitKey } from './types';
+import type { GameKey } from './playzone/common';
 
 export interface ChildProgress {
   stars: number;
@@ -18,6 +19,8 @@ export interface ChildProgress {
   /** Categories this child has played, with stars won in each. */
   visited: Partial<Record<TraitKey, { stars: number; plays: number }>>;
   lastTrait?: TraitKey;
+  /** Play Zone games: the level to start at next time and the stars won there. */
+  arcade?: Partial<Record<GameKey, { level: number; stars: number; plays: number }>>;
 }
 
 export interface RoundReward {
@@ -93,4 +96,21 @@ export async function recordRound(childId: string, trait: TraitKey, report: Repo
   };
   await saveProgress(childId, next);
   return { progress: next, reward: { stars, totalStars: next.stars, sticker, levelChange } };
+}
+
+/**
+ * A Play Zone game was won: its stars join the child's total, and the game
+ * starts at the next level next time. No sticker (those stay for thinking
+ * activities, so the games never become the quickest way to fill the book).
+ */
+export async function recordArcade(childId: string, game: GameKey, stars: number, nextLevel: number): Promise<ChildProgress> {
+  const progress = await loadProgress(childId);
+  const current = progress.arcade?.[game] ?? { level: 1, stars: 0, plays: 0 };
+  const next: ChildProgress = {
+    ...progress,
+    stars: progress.stars + stars,
+    arcade: { ...progress.arcade, [game]: { level: Math.max(current.level, nextLevel), stars: current.stars + stars, plays: current.plays + 1 } },
+  };
+  await saveProgress(childId, next);
+  return next;
 }

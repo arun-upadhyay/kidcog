@@ -28,7 +28,7 @@ const ROUND_OPTIONS = [
  */
 const VIEW_KEY = 'kidcog.categoryView.v1';
 
-export default function CategoryScreen({ onSelect, onPreview, progress = null, onReport, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
+export default function CategoryScreen({ onSelect, onPreview, progress = null, onReport, onPlayZone, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
   onSelect: (trait: TraitKey, count: number) => void;
   /** A category's sheet was opened: a chance to get its questions ready early. */
   onPreview?: (trait: TraitKey) => void;
@@ -38,6 +38,8 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
   initialCategory?: TraitKey;
   initialCount?: number;
   onReport: () => void;
+  /** Opens the Play Zone games (hidden when not given). */
+  onPlayZone?: () => void;
   onBack: () => void;
   /** The latest test's result, for the "View latest result" button. */
   report: Report | null;
@@ -96,6 +98,18 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
         <View style={styles.heroBubble}><Text style={styles.heroEmoji}>🌈</Text></View>
         <Text style={styles.heroTitle}>What shall we explore?</Text>
       </View>
+
+      {onPlayZone ? (
+        <Pressable onPress={onPlayZone} disabled={busy} accessibilityRole="button" accessibilityLabel="Open the Play Zone games"
+          style={({ pressed }) => [styles.playZone, pressed && styles.pressed]}>
+          <Text style={styles.playZoneEmoji}>🎮</Text>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.playZoneTitle}>Play Zone</Text>
+            <Text style={styles.playZoneSub}>Number Snake, Bubble Pop, mazes and tracing</Text>
+          </View>
+          <Text style={styles.playZoneGo}>▶</Text>
+        </Pressable>
+      ) : null}
 
       <View style={styles.lengthRow}>
         <Text style={styles.lengthLabel}>How many?</Text>
@@ -236,6 +250,12 @@ const styles = StyleSheet.create({
   heroBubble: { width: 56, height: 56, borderRadius: 28, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#F4C966', transform: [{ rotate: '-5deg' }] },
   heroEmoji: { fontSize: 32 },
   heroTitle: { flex: 1, fontSize: 23, lineHeight: 28, fontWeight: '900', color: '#633E12' },
+
+  playZone: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), backgroundColor: '#EEE9FF', borderRadius: 20, paddingVertical: spacing(1.25), paddingHorizontal: spacing(2), borderWidth: 2, borderColor: '#CABAF0' },
+  playZoneEmoji: { fontSize: 30 },
+  playZoneTitle: { fontSize: 18, fontWeight: '900', color: '#4E3590' },
+  playZoneSub: { fontSize: 13, fontWeight: '700', color: '#6A58A0', marginTop: 1 },
+  playZoneGo: { fontSize: 20, fontWeight: '900', color: '#4E3590' },
 
   lengthRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1) },
   lengthLabel: { fontSize: 16, fontWeight: '900', color: '#513A27' },
