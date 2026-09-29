@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { Alert, Platform, StyleSheet, View } from 'react-native';
+import { Alert, Platform, StyleSheet, View, Text, Pressable, ActivityIndicator } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
@@ -51,6 +51,11 @@ function KidCogApp() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [savedChildren, setSavedChildren] = useState<SavedChildProfile[]>([]);
+  const [profilesOwner, setProfilesOwner] = useState<string | null>(null);
+  const [profilesError, setProfilesError] = useState<string | null>(null);
+  const [profilesAttempt, setProfilesAttempt] = useState(0);
+  const parentId = session?.user.id;
+
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [historyChild, setHistoryChild] = useState<SavedChildProfile | null>(null);
   const [historical, setHistorical] = useState<HistoricalAssessment | null>(null);
@@ -69,9 +74,18 @@ function KidCogApp() {
   }, [child?.id]);
 
   useEffect(() => {
-    if (!session) { setSavedChildren([]); return; }
-    void listChildren().then(setSavedChildren).catch(err => setError(messageOf(err)));
-  }, [session]);
+    let active = true;
+    setProfilesOwner(null);
+    setProfilesError(null);
+    setSavedChildren([]);
+    if (!parentId) return;
+    void listChildren().then(profiles => {
+      if (!active) return;
+      setSavedChildren(profiles);
+      setProfilesOwner(parentId);
+    }).catch(err => { if (active) setProfilesError(messageOf(err)); });
+    return () => { active = false; };
+  }, [parentId, profilesAttempt]);
 
   /** Start a test. Every test is its own session with its own result. */
   const beginRound = useCallback(async (profile: ChildProfile, trait: TraitKey, count: number) => {
@@ -290,7 +304,16 @@ function KidCogApp() {
           onHome={stage === 'start' ? undefined : goHome}
         />
         <View style={styles.root}>
-          {stage === 'start' && <StartScreen
+          {stage === 'start' && profilesOwner !== parentId && <View style={{ padding: 32, alignItems: 'center', gap: 16 }}>
+            <Text style={{ fontSize: 22, fontWeight: '800', color: '#60439B' }}>Who’s playing today?</Text>
+            {profilesError ? <>
+              <Text accessibilityRole="alert" style={{ textAlign: 'center' }}>We couldn’t load your saved players. {profilesError}</Text>
+              <Pressable accessibilityRole="button" onPress={() => { setProfilesError(null); setProfilesAttempt(n => n + 1); }} style={{ padding: 16, borderRadius: 16, backgroundColor: '#EEE9FF' }}>
+                <Text style={{ fontWeight: '800', color: '#60439B' }}>Try again</Text>
+              </Pressable>
+            </> : <><ActivityIndicator color="#7650C7" /><Text>Loading your saved players…</Text></>}
+          </View>}
+          {stage === 'start' && profilesOwner === parentId && <StartScreen
             onStart={start}
             loading={busy}
             error={error}

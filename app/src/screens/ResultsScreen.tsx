@@ -412,18 +412,29 @@ export default function ResultsScreen({
                 {traits.map(t => {
                   const tv = CATEGORY_VISUALS[t.key];
                   return (
-                    <View key={t.key} style={styles.allRow} accessible accessibilityLabel={`${CATEGORY_NAMES[t.key]}: ${t.formScale ? `${t.formScale.value} out of 5, ${t.formScale.label}` : 'not played in this round'}`}>
+                    <Pressable key={t.key}
+                      onPress={() => playAgain(t.key)}
+                      disabled={historical || !onTryCategory || busy}
+                      accessibilityRole={!historical && onTryCategory ? 'button' : undefined}
+                      accessibilityLabel={`${CATEGORY_NAMES[t.key] ?? t.label}: ${t.formScale ? `${t.formScale.value} out of 5` : t.questionCount > 0 ? 'played, not scored' : 'not played'}${!historical && onTryCategory ? `, ${t.questionCount > 0 ? 'play again' : 'start activity'}` : ''}`}
+                      accessibilityState={{ disabled: historical || !onTryCategory || busy, busy: busy && pendingTrait === t.key }}
+                      style={({ pressed }) => [styles.allRow, pressed && { backgroundColor: tv?.background ?? '#EEE9FF' }, busy && { opacity: 0.6 }]}>
+
                       <View style={[styles.allIcon, { backgroundColor: tv?.background, borderColor: tv?.border }]}><Text style={styles.allEmoji}>{tv?.icon ?? '⭐'}</Text></View>
                       <Text style={styles.allName} numberOfLines={1}>{CATEGORY_NAMES[t.key] ?? t.label}</Text>
                       {t.formScale
                         ? <Text style={[styles.allScore, { borderColor: tv?.border, backgroundColor: tv?.background }]}>{t.formScale.value}/5</Text>
-                        : <Text style={styles.allNotYet}>Not played</Text>}
-                    </View>
+                        : <Text style={styles.allNotYet}>{t.questionCount > 0 ? 'Not scored' : 'Not played'}</Text>}
+                      {!historical && onTryCategory ? <Text style={styles.allPlay}>
+                        {busy && pendingTrait === t.key ? 'Loading…' : t.questionCount > 0 ? 'Again ▶' : 'Play ▶'}
+                      </Text> : null}
+                    </Pressable>
                   );
                 })}
               </View>
             );
           })}
+          {!historical && error && pendingTrait ? <Text accessibilityRole="alert" style={styles.errorText}>{error}</Text> : null}
           <Text style={styles.smallNote}>Only the activities played in this round have results. Earlier rounds are in {who}’s history.</Text>
         </View>
       ) : null}
@@ -549,7 +560,8 @@ const styles = StyleSheet.create({
   groupEmoji: { fontSize: 22 },
   groupTitle: { flex: 1, fontSize: 16, fontWeight: '900' },
   groupCount: { fontSize: 12, fontWeight: '800', color: '#6F655D' },
-  allRow: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.25), paddingVertical: spacing(0.75), paddingHorizontal: spacing(1.5), borderTopWidth: 1, borderTopColor: '#F3EADB' },
+  allPlay: { fontSize: 13, fontWeight: '800', color: '#60439B', paddingVertical: 8, paddingHorizontal: 10, borderRadius: 12, backgroundColor: '#EEE9FF', overflow: 'hidden' },
+  allRow: { minHeight: 52, flexDirection: 'row', alignItems: 'center', gap: spacing(1.25), paddingVertical: spacing(0.75), paddingHorizontal: spacing(1.5), borderTopWidth: 1, borderTopColor: '#F3EADB' },
   allIcon: { width: 34, height: 34, borderRadius: 17, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center' },
   allEmoji: { fontSize: 17 },
   allName: { flex: 1, fontSize: 15, fontWeight: '800', color: '#3F3126' },
