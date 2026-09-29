@@ -54,12 +54,12 @@ export default function PlayZoneScreen({ childName, age, progress, onBack, onFin
       onFinish: (stars: number, nextLevel: number) => onFinish(playing, stars, nextLevel),
     };
     return (
-      <View style={styles.gameScreen}>
+      <ScrollView style={styles.gameScroll} contentContainerStyle={styles.gameScreen}>
         {playing === 'snake' ? <NumberSnake {...props} /> : null}
         {playing === 'bubbles' ? <BubblePop {...props} /> : null}
         {playing === 'maze' ? <MazeRunner {...props} /> : null}
         {playing === 'trace' ? <TraceDraw {...props} /> : null}
-      </View>
+      </ScrollView>
     );
   }
 
@@ -122,7 +122,8 @@ export default function PlayZoneScreen({ childName, age, progress, onBack, onFin
 const styles = StyleSheet.create({
   screen: { backgroundColor: '#FFF8EF' },
   container: { padding: GUTTER, paddingBottom: spacing(6), gap: spacing(2), ...column },
-  gameScreen: { flex: 1, backgroundColor: '#FFF8EF', padding: GUTTER, paddingTop: spacing(1.5), ...column },
+  gameScroll: { flex: 1, backgroundColor: '#FFF8EF' },
+  gameScreen: { flexGrow: 1, paddingBottom: spacing(6), backgroundColor: '#FFF8EF', padding: GUTTER, paddingTop: spacing(1.5), ...column },
   pressed: { opacity: 0.85, transform: [{ scale: 0.97 }] },
   back: { alignSelf: 'flex-start', minHeight: 40, justifyContent: 'center', paddingHorizontal: spacing(1.5), borderRadius: 999, borderWidth: 1.5, borderColor: colors.line, backgroundColor: colors.surface },
   backText: { fontSize: 14, fontWeight: '800', color: colors.inkSoft },

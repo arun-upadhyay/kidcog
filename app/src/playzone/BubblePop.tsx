@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Animated, Easing, Pressable, StyleSheet, Text, View } from 'react-native';
 import { playSound } from '../games/sounds';
 import { colors, spacing } from '../theme';
-import { GameFrame, WinCard, randomInt, useBoardSize, useNative } from './common';
+import { GameSurface, GameStartCard, GameFrame, WinCard, randomInt, useNative } from './common';
 
 /**
  * Bubble Pop: bubbles float up; pop only the ones that match the rule
@@ -45,9 +45,9 @@ export default function BubblePop({ level: startLevel, onBack, onFinish }: {
   level: number; onBack: () => void; onFinish: (stars: number, nextLevel: number) => void;
 }) {
   const [level, setLevel] = useState(Math.min(5, Math.max(1, startLevel)));
-  const width = useBoardSize(460);
-  const height = Math.round(width * 1.15);
-  const size = Math.round(width / 4.3);
+  const [width, setBoardWidth] = useState(320);
+  const height = Math.round(width * 0.9);
+  const size = Math.min(110, Math.round(width / 4.3));
   const [rule, setRule] = useState(() => ruleFor(level));
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
   const [popped, setPopped] = useState(0);
@@ -104,6 +104,7 @@ export default function BubblePop({ level: startLevel, onBack, onFinish }: {
 
   return (
     <GameFrame emoji="🫧" title="Bubble Pop" level={level} onBack={onBack} hint={rule.hint}>
+      <GameSurface theme="blue" eyebrow="THE BUBBLE SKY" title="Pop, pop, hooray! 🫧" badgeLabel="POPPED" badge={`${popped} / ${rule.goal}`} onWidth={setBoardWidth}>
       <View style={styles.meter} accessibilityLabel={`${popped} of ${rule.goal} popped`}>
         <View style={[styles.meterFill, { width: `${(popped / rule.goal) * 100}%` }]} />
         <Text style={styles.meterText}>{popped} / {rule.goal}</Text>
@@ -122,13 +123,11 @@ export default function BubblePop({ level: startLevel, onBack, onFinish }: {
           </Animated.View>
         ))}
         {!running && won === null ? (
-          <Pressable style={styles.start} onPress={() => setRunning(true)} accessibilityRole="button">
-            <Text style={styles.startText}>{popped === 0 ? '▶  Tap to start' : '▶  Keep going'}</Text>
-            <Text style={styles.startSub}>{rule.hint}</Text>
-          </Pressable>
+          <GameStartCard emoji="🫧" title="Ready to pop?" hint={rule.hint} onStart={() => { setBubbles([]); setRunning(true); }} resume={popped > 0} />
         ) : null}
       </View>
       {running ? <Pressable onPress={() => setRunning(false)} style={styles.pause} accessibilityRole="button"><Text style={styles.pauseText}>⏸ Pause</Text></Pressable> : null}
+      </GameSurface>
       {won !== null ? (
         <WinCard stars={won} message={`You popped ${rule.goal} bubbles!`} onExit={onBack} onAgain={() => reset(level)}
           onNext={level < 5 ? () => setLevel(level + 1) : undefined} />
@@ -138,10 +137,10 @@ export default function BubblePop({ level: startLevel, onBack, onFinish }: {
 }
 
 const styles = StyleSheet.create({
-  meter: { width: '100%', maxWidth: 460, height: 26, borderRadius: 13, backgroundColor: '#F3EEE7', overflow: 'hidden', justifyContent: 'center' },
+  meter: { width: '100%', height: 26, borderRadius: 13, backgroundColor: '#F3EEE7', overflow: 'hidden', justifyContent: 'center' },
   meterFill: { position: 'absolute', left: 0, top: 0, bottom: 0, backgroundColor: '#8FD3A5' },
   meterText: { textAlign: 'center', fontSize: 14, fontWeight: '900', color: '#2F5D43' },
-  sky: { backgroundColor: '#EAF6FF', borderRadius: 20, borderWidth: 3, borderColor: '#A8D4EF', overflow: 'hidden' },
+  sky: { backgroundColor: '#EAF6FF', borderRadius: 24, borderWidth: 3, borderColor: '#A8D4EF', overflow: 'hidden' },
   bubbleWrap: { position: 'absolute', top: 0 },
   bubble: { flex: 1, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: 'rgba(255,255,255,0.9)', shadowColor: '#2F7FC1', shadowOpacity: 0.2, shadowRadius: 6, shadowOffset: { width: 0, height: 2 }, elevation: 2, padding: 6 },
   bubbleText: { fontWeight: '900', color: '#3F3126', textAlign: 'center' },

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { playSound } from '../games/sounds';
 import { colors } from '../theme';
-import { DirPad, GameFrame, WinCard, shuffle, useArrowKeys, useBoardSize, useSwipe, type Dir } from './common';
+import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, shuffle, useArrowKeys, useSwipe, type Dir } from './common';
 
 /**
  * Maze Runner: help the owl through the maze to the flag, picking up stars on
@@ -59,8 +59,8 @@ export default function MazeRunner({ level: startLevel, onBack, onFinish }: {
 }) {
   const [level, setLevel] = useState(Math.min(MAZE_LEVELS, Math.max(1, startLevel)));
   const size = SIZES[level - 1]!;
-  const board = useBoardSize(440);
-  const cell = Math.floor(board / size);
+  const [board, setBoardWidth] = useState(320);
+  const cell = Math.floor((board - 3) / size);
   const [round, setRound] = useState(0);
   const walls = useMemo(() => makeMaze(size), [size, round]); // eslint-disable-line react-hooks/exhaustive-deps
   const starCells = useMemo(() => placeStars(walls, size), [walls, size]);
@@ -98,6 +98,7 @@ export default function MazeRunner({ level: startLevel, onBack, onFinish }: {
   return (
     <GameFrame emoji="🦉" title="Maze Runner" level={level} onBack={onBack}
       hint={won === null ? `Help Owl reach the flag 🏁 — grab the stars! (${got.length} of 3)` : ''}>
+      <GameSurface theme="purple" eyebrow="THE STAR TRAIL" title="An owl adventure 🦉" badgeLabel="STARS" badge={`${got.length} / 3`} onWidth={setBoardWidth}>
       <View {...swipe.panHandlers} accessibilityLabel={`Maze, ${size} by ${size}. Owl is at column ${pos.x + 1}, row ${pos.y + 1}.`}
         style={[styles.board, { width: cell * size + line, height: cell * size + line }, bump && styles.bump]}>
         {trail.map(k => {
@@ -119,6 +120,7 @@ export default function MazeRunner({ level: startLevel, onBack, onFinish }: {
         <Text style={[styles.piece, { left: pos.x * cell, top: pos.y * cell, width: cell, lineHeight: cell, fontSize: cell * 0.62 }]}>🦉</Text>
       </View>
       <DirPad onDir={move} disabled={won !== null} />
+      </GameSurface>
       {won !== null ? (
         <WinCard stars={won} message={won === 3 ? 'Out of the maze with every star!' : `Out of the maze with ${got.length} ${got.length === 1 ? 'star' : 'stars'}. Can you find all 3 next time?`}
           onExit={onBack} onAgain={() => setRound(r => r + 1)}

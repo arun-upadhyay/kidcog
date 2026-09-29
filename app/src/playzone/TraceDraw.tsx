@@ -3,7 +3,7 @@ import { Animated, PanResponder, Platform, Pressable, StyleSheet, Text, View } f
 import Svg, { Circle, Polyline } from 'react-native-svg';
 import { playSound } from '../games/sounds';
 import { colors, spacing } from '../theme';
-import { GameFrame, WinCard, useBoardSize, useNative } from './common';
+import { GameSurface, GameStartCard, GameFrame, WinCard, useNative } from './common';
 
 /**
  * Trace & Draw: follow the dotted guide with a finger (or the mouse) to write
@@ -100,7 +100,7 @@ export default function TraceDraw({ level: startLevel, onBack, onFinish }: {
 }) {
   const [level, setLevel] = useState(Math.min(TRACE_LEVELS.length, Math.max(1, startLevel)));
   const cfg = TRACE_LEVELS[level - 1]!;
-  const size = useBoardSize(380);
+  const [size, setBoardWidth] = useState(320);
   const [index, setIndex] = useState(0);
   const [skipped, setSkipped] = useState(0);
   const [won, setWon] = useState<number | null>(null);
@@ -187,6 +187,7 @@ export default function TraceDraw({ level: startLevel, onBack, onFinish }: {
   return (
     <GameFrame emoji="✏️" title="Trace & Draw" level={level} onBack={onBack}
       hint={won === null ? (glyphDone ? `Beautiful ${char}! ✨` : `Trace the ${/\d/.test(char) ? 'number' : 'letter'} ${char}. Start at the green dot.`) : ''}>
+      <GameSurface theme="coral" eyebrow="THE CREATIVE CORNER" title={cfg.name} badgeLabel="TRACE" badge={char} onWidth={setBoardWidth}>
       <View style={styles.row}>
         {cfg.chars.map((c, i) => (
           <Text key={c} style={[styles.chip, i < index && styles.chipDone, i === index && styles.chipNext]}>{c}</Text>
@@ -220,6 +221,7 @@ export default function TraceDraw({ level: startLevel, onBack, onFinish }: {
         <Pressable onPress={resetGlyph} style={styles.action} accessibilityRole="button"><Text style={styles.actionText}>↺ Start again</Text></Pressable>
         <Pressable onPress={() => nextGlyph(true)} disabled={glyphDone} style={styles.action} accessibilityRole="button"><Text style={styles.actionText}>Skip ▶</Text></Pressable>
       </View>
+      </GameSurface>
       {won !== null ? (
         <WinCard stars={won} message={`${cfg.name}: all traced!`} onExit={onBack}
           onAgain={() => { setIndex(0); setSkipped(0); setWon(null); resetGlyph(); }}

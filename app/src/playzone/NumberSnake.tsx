@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { playSound } from '../games/sounds';
 import { colors, spacing } from '../theme';
-import { DirPad, GameFrame, WinCard, randomInt, shuffle, useArrowKeys, useBoardSize, useSwipe, type Dir } from './common';
+import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, randomInt, shuffle, useArrowKeys, useSwipe, type Dir } from './common';
 
 /**
  * Number Snake: steer the snake to eat the numbers in order. It grows with each
@@ -28,8 +28,14 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
 }) {
   const [level, setLevel] = useState(Math.min(LEVELS.length, Math.max(1, startLevel)));
   const cfg = LEVELS[level - 1]!;
-  const board = useBoardSize(440);
-  const cell = Math.floor((board - BORDER * 2) / cfg.grid);
+  const [availableWidth, setAvailableWidth] = useState(320);
+  const board = Math.min(availableWidth, 760);
+  const { height: viewportHeight } = useWindowDimensions();
+  const cellWidth = (board - BORDER * 2) / cfg.grid;
+  // Preserve the full panel width while reserving vertical space for controls.
+  const boardHeight = Math.min(board, Math.max(240, viewportHeight - 450));
+  const cellHeight = (boardHeight - BORDER * 2) / cfg.grid;
+  const cell = Math.min(cellWidth, cellHeight);
   const [, render] = useState(0);
   const [running, setRunning] = useState(false);
   const [won, setWon] = useState<number | null>(null);
@@ -66,9 +72,10 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
   const turn = useCallback((dir: Dir) => {
     const g = game.current;
     const last = g.queued[g.queued.length - 1] ?? g.dir;
-    if (dir === last || dir === OPPOSITE[last]) return;
+    if (won !== null || dir === OPPOSITE[last]) return;
+    if (!running) setRunning(true);
+    if (dir === last) return;
     if (g.queued.length < 2) g.queued.push(dir);
-    if (!running && won === null) setRunning(true);
   }, [running, won]);
   useArrowKeys(turn, won === null);
   const swipe = useSwipe(turn);
@@ -114,33 +121,37 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
   return (
     <GameFrame emoji="🐍" title="Number Snake" level={level} onBack={onBack}
       hint={won === null ? (oops !== null ? `Oops, that's ${oops}! Find ${target}.` : `Eat the numbers in order: find ${target ?? ''}`) : ''}>
+      <GameSurface theme="green" eyebrow="THE COUNTING GARDEN" title={`${cfg.name} 🌿`} badgeLabel="FIND NEXT" badge={target ?? '★'} onWidth={setAvailableWidth}>
       <View style={styles.progress}>
         {cfg.sequence.map((v, i) => (
-          <Text key={v} style={[styles.chip, i < g.next && styles.chipDone, i === g.next && styles.chipNext]}>{v}</Text>
+          <Text key={v} style={[styles.chip, i < g.next && styles.chipDone, i === g.next && styles.chipNext]}>{i < g.next ? '✓' : v}</Text>
         ))}
       </View>
-      <View {...swipe.panHandlers} style={[styles.board, { width: cell * cfg.grid + BORDER * 2, height: cell * cfg.grid + BORDER * 2 }]} accessibilityLabel={`Snake board. Find number ${target}.`}>
+      <View style={styles.journey}><View style={[styles.journeyFill, { width: `${g.next / cfg.sequence.length * 100}%` }]} /></View>
+      <View {...(running ? swipe.panHandlers : {})} style={[styles.board, { width: board, height: boardHeight }]} accessibilityLabel={`Snake board. Find number ${target}.`}>
+        <View pointerEvents="none" style={StyleSheet.absoluteFill}>
+          {Array.from({ length: cfg.grid * cfg.grid }, (_, i) => <View key={i} style={{ position: 'absolute', left: (i % cfg.grid) * cellWidth, top: Math.floor(i / cfg.grid) * cellHeight, width: cellWidth, height: cellHeight, backgroundColor: (i % cfg.grid + Math.floor(i / cfg.grid)) % 2 ? '#E0F1CF' : '#EBF7DE', borderWidth: 0.5, borderColor: '#D8EBC9' }} />)}
+        </View>
         {g.food.map(f => (
-          <View key={f.id} style={[styles.food, { left: f.x * cell + 2, top: f.y * cell + 2, width: cell - 4, height: cell - 4, borderRadius: cell / 2 }, f.value === target ? styles.foodTarget : null]}>
+          <View key={f.id} style={[styles.food, { left: f.x * cellWidth + (cellWidth - cell) / 2 + 2, top: f.y * cellHeight + (cellHeight - cell) / 2 + 2, width: cell - 4, height: cell - 4, borderRadius: cell / 2 }, f.value === target ? styles.foodTarget : null]}>
             <Text style={[styles.foodText, { fontSize: Math.max(11, cell * 0.42) }]}>{f.value}</Text>
           </View>
         ))}
         {g.snake.map((s, i) => (
-          <View key={i} style={[styles.body, { left: s.x * cell + 1, top: s.y * cell + 1, width: cell - 2, height: cell - 2, borderRadius: i === 0 ? cell / 2.5 : cell / 3.5, backgroundColor: i === 0 ? '#2E8B57' : i % 2 ? '#5CB87A' : '#4CAF6E' }]}>
+          <View key={i} style={[styles.body, { left: s.x * cellWidth + 1, top: s.y * cellHeight + 1, width: cellWidth - 2, height: cellHeight - 2, borderRadius: i === 0 ? cell / 2.5 : cell / 3.5, backgroundColor: i === 0 ? '#147C60' : i % 2 ? '#43B883' : '#75CD80', borderBottomWidth: 4, borderBottomColor: '#23895E' }]}>
             {i === 0 ? <Text style={{ fontSize: cell * 0.45 }}>👀</Text> : null}
           </View>
         ))}
         {!running && won === null ? (
-          <Pressable style={styles.start} onPress={() => setRunning(true)} accessibilityRole="button">
-            <Text style={styles.startText}>{g.next === 0 ? '▶  Tap to start' : '▶  Keep going'}</Text>
-            <Text style={styles.startSub}>Swipe or use the arrows to steer</Text>
-          </Pressable>
+          <GameStartCard emoji="🐍" title="Ready, little explorer?" hint="Swipe, use arrow keys, or tap the buttons below." onStart={() => setRunning(true)} resume={g.next > 0} />
         ) : null}
       </View>
+      <Text style={styles.tip}>🌼 {g.next} / {cfg.sequence.length} collected · Friendly walls: pop out the other side!</Text>
       <View style={styles.controls}>
         <DirPad onDir={turn} disabled={won !== null} />
         {running ? <Pressable onPress={() => setRunning(false)} style={styles.pause} accessibilityRole="button"><Text style={styles.pauseText}>⏸ Pause</Text></Pressable> : null}
       </View>
+      </GameSurface>
       {won !== null ? (
         <WinCard stars={won} message={`${cfg.name}: you ate every number in order!`} onExit={onBack} onAgain={reset}
           onNext={level < LEVELS.length ? () => setLevel(level + 1) : undefined} />
@@ -150,19 +161,32 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
 }
 
 const styles = StyleSheet.create({
-  progress: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 4, maxWidth: 440 },
-  chip: { minWidth: 30, textAlign: 'center', paddingVertical: 3, paddingHorizontal: 5, borderRadius: 8, backgroundColor: '#F3EEE7', color: colors.inkSoft, fontWeight: '800', fontSize: 13, overflow: 'hidden' },
+  adventure: { width: '100%', maxWidth: 760, alignItems: 'center', gap: 12, backgroundColor: '#F2F7EC', borderRadius: 28 },
+  mission: { alignSelf: 'stretch', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 16, gap: 8 },
+  eyebrow: { fontSize: 10, fontWeight: '900', letterSpacing: 1.4, color: '#4E7860' },
+  missionTitle: { fontSize: 23, fontWeight: '900', color: '#235E46', marginTop: 5 },
+  targetBadge: { backgroundColor: '#FFF1BD', borderRadius: 18, paddingHorizontal: 16, paddingVertical: 8, alignItems: 'center', borderWidth: 2, borderColor: '#F3D273' },
+  targetLabel: { fontSize: 9, fontWeight: '900', color: '#805218', letterSpacing: 1 },
+  targetNumber: { fontSize: 28, fontWeight: '900', color: '#805218' },
+  journey: { width: '90%', height: 8, borderRadius: 4, backgroundColor: '#D9E7CF', overflow: 'hidden' },
+  journeyFill: { height: '100%', backgroundColor: '#53AE77', borderRadius: 4 },
+  startCard: { width: '86%', maxWidth: 330, backgroundColor: '#FFFCF3', borderRadius: 26, borderWidth: 2, borderColor: '#FFFFFF', padding: 18, gap: 12, alignItems: 'center', shadowColor: '#315B35', shadowOpacity: 0.15, shadowRadius: 18, shadowOffset: { width: 0, height: 7 }, elevation: 5 },
+  mascot: { fontSize: 42 },
+  startTitle: { fontSize: 20, fontWeight: '900', color: '#285E45', textAlign: 'center' },
+  tip: { fontSize: 12, lineHeight: 18, color: '#47684B', textAlign: 'center', paddingHorizontal: 16 },
+  progress: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 4, paddingHorizontal: 12 },
+  chip: { minWidth: 30, textAlign: 'center', paddingVertical: 3, paddingHorizontal: 5, borderRadius: 8, backgroundColor: '#FFFFFF', color: colors.inkSoft, fontWeight: '800', fontSize: 13, overflow: 'hidden' },
   chipDone: { backgroundColor: colors.goSoft, color: colors.accent },
   chipNext: { backgroundColor: '#FFF0C9', color: '#8A5A0A', borderWidth: 2, borderColor: '#F4C966' },
-  board: { backgroundColor: '#E9F6EC', borderRadius: 16, borderWidth: BORDER, borderColor: '#A9D7B8', overflow: 'hidden' },
+  board: { backgroundColor: '#EBF7DE', alignSelf: 'center', borderRadius: 24, borderWidth: BORDER, borderColor: '#75B78D', overflow: 'hidden' },
   food: { position: 'absolute', backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#E0CFB5', alignItems: 'center', justifyContent: 'center' },
-  foodTarget: { borderColor: '#F4C966', backgroundColor: '#FFF8DF' },
+  foodTarget: { borderColor: '#ECA829', backgroundColor: '#FFE798' },
   foodText: { fontWeight: '900', color: '#3F3126' },
   body: { position: 'absolute', alignItems: 'center', justifyContent: 'center' },
-  start: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255,255,255,0.7)', alignItems: 'center', justifyContent: 'center', gap: spacing(0.5) },
-  startText: { fontSize: 24, fontWeight: '900', color: '#2E8B57' },
+  start: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(224,243,210,0.35)', alignItems: 'center', justifyContent: 'center', gap: spacing(0.5) },
+  startText: { fontSize: 20, fontWeight: '900', color: '#FFFFFF', backgroundColor: '#7650C7', paddingVertical: 14, paddingHorizontal: 28, borderRadius: 18, overflow: 'hidden' },
   startSub: { fontSize: 14, fontWeight: '700', color: colors.inkSoft },
-  controls: { alignItems: 'center', gap: spacing(1) },
+  controls: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: spacing(1), paddingBottom: 8 },
   pause: { minHeight: 40, justifyContent: 'center', paddingHorizontal: spacing(2) },
   pauseText: { fontSize: 15, fontWeight: '800', color: colors.inkSoft },
 });
