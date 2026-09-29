@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { playSound } from '../games/sounds';
 import { colors } from '../theme';
 import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, shuffle, useArrowKeys, useSwipe, type Dir } from './common';
@@ -59,7 +59,9 @@ export default function MazeRunner({ level: startLevel, onBack, onFinish }: {
 }) {
   const [level, setLevel] = useState(Math.min(MAZE_LEVELS, Math.max(1, startLevel)));
   const size = SIZES[level - 1]!;
-  const [board, setBoardWidth] = useState(320);
+  const [availableWidth, setBoardWidth] = useState(320);
+  const { height: screenHeight } = useWindowDimensions();
+  const board = Math.min(availableWidth, Math.max(240, screenHeight - 380));
   const cell = Math.floor((board - 3) / size);
   const [round, setRound] = useState(0);
   const walls = useMemo(() => makeMaze(size), [size, round]); // eslint-disable-line react-hooks/exhaustive-deps

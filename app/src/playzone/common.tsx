@@ -20,8 +20,11 @@ export function GameSurface({ theme, eyebrow, title, badgeLabel, badge, onWidth,
   badgeLabel: string; badge: string | number; onWidth: (width: number) => void; children: React.ReactNode;
 }) {
   const [panelWidth, setPanelWidth] = useState(320);
+  const { height } = useWindowDimensions();
+  const compact = height < 650;
+  const landscape = height < 450;
   // Fill the panel inside its 12px padding on either side.
-  // The game screen scrolls when the board and controls exceed its height.
+  // Short screens use a compact header; games reserve height for their controls.
   const boardSize = Math.max(1, panelWidth - 24);
   useEffect(() => { onWidth(boardSize); }, [boardSize, onWidth]);
   const palette = {
@@ -29,15 +32,15 @@ export function GameSurface({ theme, eyebrow, title, badgeLabel, badge, onWidth,
     purple: ['#F3EEFF', '#60439B'], coral: ['#FFF0E9', '#A44530'],
   }[theme];
   return <View onLayout={e => setPanelWidth(e.nativeEvent.layout.width)}
-    style={{ width: '100%', maxWidth: 760, alignItems: 'center', gap: 12, padding: 12, backgroundColor: palette[0], borderRadius: 28 }}>
-    <View style={{ alignSelf: 'stretch', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: 4 }}>
+    style={{ width: '100%', maxWidth: 760, alignItems: 'center', gap: compact ? 4 : 12, padding: 12, backgroundColor: palette[0], borderRadius: 28 }}>
+    {!landscape && <View style={{ alignSelf: 'stretch', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: 4 }}>
       <View style={{ flex: 1 }}><Text style={{ fontSize: 10, letterSpacing: 1.4, fontWeight: '900', color: palette[1] }}>{eyebrow}</Text>
-      <Text style={{ fontSize: 23, fontWeight: '900', color: palette[1], marginTop: 5 }}>{title}</Text></View>
+      <Text style={{ fontSize: compact ? 16 : 23, fontWeight: '900', color: palette[1], marginTop: 5 }}>{title}</Text></View>
       <View style={{ backgroundColor: '#FFF1BD', borderWidth: 2, borderColor: '#F3D273', borderRadius: 18, paddingHorizontal: 14, paddingVertical: 8, alignItems: 'center' }}>
         <Text style={{ fontSize: 9, fontWeight: '900', color: '#805218', letterSpacing: 1 }}>{badgeLabel}</Text>
         <Text style={{ fontSize: 26, fontWeight: '900', color: '#805218' }}>{badge}</Text>
       </View>
-    </View>
+    </View>}
     {children}
   </View>;
 }
@@ -45,12 +48,14 @@ export function GameSurface({ theme, eyebrow, title, badgeLabel, badge, onWidth,
 export function GameStartCard({ emoji, title, hint, onStart, resume = false }: {
   emoji: string; title: string; hint: string; onStart: () => void; resume?: boolean;
 }) {
+  const { height } = useWindowDimensions();
+  const compact = height < 650;
   return <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(235,245,240,0.35)', alignItems: 'center', justifyContent: 'center' }]}>
     <View style={{ width: '86%', maxWidth: 330, padding: 12, gap: 8, alignItems: 'center', borderRadius: 26, backgroundColor: '#FFFCF3', borderWidth: 2, borderColor: '#FFFFFF' }}>
-      <Text style={{ fontSize: 32 }}>{emoji}</Text>
-      <Text style={{ fontSize: 20, fontWeight: '900', color: '#4E3590', textAlign: 'center' }}>{title}</Text>
+      {!compact && <Text style={{ fontSize: 32 }}>{emoji}</Text>}
+      {!compact && <Text style={{ fontSize: 20, fontWeight: '900', color: '#4E3590', textAlign: 'center' }}>{title}</Text>}
       <Text style={{ fontSize: 14, lineHeight: 20, color: colors.inkSoft, textAlign: 'center' }}>{hint}</Text>
-      <Pressable accessibilityRole="button" onPress={onStart} style={({ pressed }) => ({ backgroundColor: '#7650C7', borderRadius: 18, paddingVertical: 14, paddingHorizontal: 28, opacity: pressed ? 0.8 : 1 })}>
+      <Pressable accessibilityRole="button" accessibilityHint={hint} onPress={onStart} style={({ pressed }) => ({ backgroundColor: '#7650C7', borderRadius: 18, paddingVertical: 14, paddingHorizontal: compact ? 12 : 28, opacity: pressed ? 0.8 : 1 })}>
         <Text style={{ fontSize: 20, fontWeight: '900', color: '#FFFFFF' }}>{resume ? '▶ Keep going' : '▶ Tap to start'}</Text>
       </Pressable>
     </View>

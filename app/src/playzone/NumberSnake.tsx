@@ -33,7 +33,7 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
   const { height: viewportHeight } = useWindowDimensions();
   const cellWidth = (board - BORDER * 2) / cfg.grid;
   // Preserve the full panel width while reserving vertical space for controls.
-  const boardHeight = Math.min(board, Math.max(240, viewportHeight - 450));
+  const boardHeight = Math.min(board, viewportHeight < 450 ? Math.max(120, viewportHeight - 245) : Math.max(160, viewportHeight - 450));
   const cellHeight = (boardHeight - BORDER * 2) / cfg.grid;
   const cell = Math.min(cellWidth, cellHeight);
   const [, render] = useState(0);
@@ -164,8 +164,8 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
           <GameStartCard emoji="🐍" title="Ready, little explorer?" hint="Slide your finger, click the arrow buttons, or use your keyboard arrows." onStart={() => setRunning(true)} resume={g.next > 0} />
         ) : null}
       </View>
-      <Text style={styles.tip}>🌼 {g.next} / {cfg.sequence.length} collected · Friendly walls: pop out the other side!</Text>
-      <Text style={styles.startSub}>Slide to steer, or use the arrows below</Text>
+      {viewportHeight >= 650 && <Text style={styles.tip}>🌼 {g.next} / {cfg.sequence.length} collected · Friendly walls: pop out the other side!</Text>}
+      {viewportHeight >= 650 && <Text style={styles.startSub}>Slide to steer, or use the arrows below</Text>}
       <View style={styles.controls}>
         <DirPad onDir={turn} disabled={won !== null} />
         {running ? <Pressable onPress={() => setRunning(false)} style={styles.pause} accessibilityRole="button"><Text style={styles.pauseText}>⏸ Pause</Text></Pressable> : null}

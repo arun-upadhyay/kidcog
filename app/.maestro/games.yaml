@@ -1,0 +1,27 @@
+appId: com.ritvikglobal.kidcog
+---
+# Prerequisite: signed-in dedicated test account, activity picker open.
+- tapOn: "Open the Play Zone games"
+- tapOn: "Play Number Snake"
+- assertVisible: "▶ Tap to start"
+- tapOn: "▶ Tap to start"
+- swipe:
+    start: "50%, 55%"
+    end: "75%, 55%"
+- assertVisible: "Go up"
+- tapOn: "Go up"
+- takeScreenshot: snake-playing
+- tapOn: "⏸ Pause"
+- tapOn: "Back to the Play Zone"
+- tapOn: "Play Bubble Pop"
+- assertVisible: "▶ Tap to start"
+- takeScreenshot: bubbles-start
+- tapOn: "Back to the Play Zone"
+- tapOn: "Play Maze Runner"
+- assertVisible: "Go right"
+- tapOn: "Go right"
+- takeScreenshot: maze-playing
+- tapOn: "Back to the Play Zone"
+- tapOn: "Play Trace & Draw"
+- assertVisible: "Skip ▶"
+- takeScreenshot: tracing

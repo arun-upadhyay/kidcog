@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, PanResponder, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Animated, PanResponder, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import Svg, { Circle, Polyline } from 'react-native-svg';
 import { playSound } from '../games/sounds';
 import { colors, spacing } from '../theme';
@@ -100,7 +100,9 @@ export default function TraceDraw({ level: startLevel, onBack, onFinish }: {
 }) {
   const [level, setLevel] = useState(Math.min(TRACE_LEVELS.length, Math.max(1, startLevel)));
   const cfg = TRACE_LEVELS[level - 1]!;
-  const [size, setBoardWidth] = useState(320);
+  const [availableWidth, setBoardWidth] = useState(320);
+  const { height: screenHeight } = useWindowDimensions();
+  const size = Math.min(availableWidth, Math.max(240, screenHeight - 380));
   const [index, setIndex] = useState(0);
   const [skipped, setSkipped] = useState(0);
   const [won, setWon] = useState<number | null>(null);

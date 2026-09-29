@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Animated, Easing, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Animated, Easing, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { playSound } from '../games/sounds';
 import { colors, spacing } from '../theme';
 import { GameSurface, GameStartCard, GameFrame, WinCard, randomInt, useNative } from './common';
@@ -46,7 +46,8 @@ export default function BubblePop({ level: startLevel, onBack, onFinish }: {
 }) {
   const [level, setLevel] = useState(Math.min(5, Math.max(1, startLevel)));
   const [width, setBoardWidth] = useState(320);
-  const height = Math.round(width * 0.9);
+  const { height: screenHeight } = useWindowDimensions();
+  const height = Math.min(Math.round(width * 0.9), screenHeight < 450 ? Math.max(120, screenHeight - 245) : Math.max(200, screenHeight - 370));
   const size = Math.min(110, Math.round(width / 4.3));
   const [rule, setRule] = useState(() => ruleFor(level));
   const [bubbles, setBubbles] = useState<Bubble[]>([]);

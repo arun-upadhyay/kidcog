@@ -20,9 +20,21 @@
       "env": {
         "EXPO_PUBLIC_API_URL": "https://kidcog.onrender.com"
       }
+    },
+    "play-internal": {
+      "extends": "production",
+      "android": {
+        "buildType": "app-bundle"
+      }
     }
   },
   "submit": {
-    "production": {}
+    "production": {},
+    "play-internal": {
+      "android": {
+        "track": "internal",
+        "releaseStatus": "draft"
+      }
+    }
   }
 }
