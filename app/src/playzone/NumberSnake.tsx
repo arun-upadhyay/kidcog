@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { PanResponder, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { playSound } from '../games/sounds';
 import { colors, spacing } from '../theme';
-import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, randomInt, shuffle, useArrowKeys, useSwipe, type Dir } from './common';
+import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, randomInt, shuffle, useArrowKeys, type Dir } from './common';
 
 /**
  * Number Snake: steer the snake to eat the numbers in order. It grows with each
@@ -78,7 +78,25 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
     if (g.queued.length < 2) g.queued.push(dir);
   }, [running, won]);
   useArrowKeys(turn, won === null);
-  const swipe = useSwipe(turn);
+  // Measure each segment, so a child can turn repeatedly without lifting a finger.
+  const turnRef = useRef(turn);
+  turnRef.current = turn;
+  const swipe = useMemo(() => {
+    let anchorX = 0, anchorY = 0;
+    return PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderTerminationRequest: () => false,
+      onPanResponderGrant: () => { anchorX = 0; anchorY = 0; },
+      onPanResponderMove: (_event, gesture) => {
+        const dx = gesture.dx - anchorX, dy = gesture.dy - anchorY;
+        if (Math.max(Math.abs(dx), Math.abs(dy)) < 12) return;
+        turnRef.current(Math.abs(dx) > Math.abs(dy)
+          ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
+        anchorX = gesture.dx; anchorY = gesture.dy;
+      },
+    });
+  }, []);
 
   useEffect(() => {
     if (!running) return;
@@ -128,7 +146,7 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
         ))}
       </View>
       <View style={styles.journey}><View style={[styles.journeyFill, { width: `${g.next / cfg.sequence.length * 100}%` }]} /></View>
-      <View {...(running ? swipe.panHandlers : {})} style={[styles.board, { width: board, height: boardHeight }]} accessibilityLabel={`Snake board. Find number ${target}.`}>
+      <View {...(running ? swipe.panHandlers : {})} style={[styles.board, { width: board, height: boardHeight }, running && Platform.OS === 'web' ? ({ touchAction: 'none', userSelect: 'none' } as object) : null]} accessibilityLabel={`Snake board. Find number ${target}.`}>
         <View pointerEvents="none" style={StyleSheet.absoluteFill}>
           {Array.from({ length: cfg.grid * cfg.grid }, (_, i) => <View key={i} style={{ position: 'absolute', left: (i % cfg.grid) * cellWidth, top: Math.floor(i / cfg.grid) * cellHeight, width: cellWidth, height: cellHeight, backgroundColor: (i % cfg.grid + Math.floor(i / cfg.grid)) % 2 ? '#E0F1CF' : '#EBF7DE', borderWidth: 0.5, borderColor: '#D8EBC9' }} />)}
         </View>
@@ -143,10 +161,11 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
           </View>
         ))}
         {!running && won === null ? (
-          <GameStartCard emoji="🐍" title="Ready, little explorer?" hint="Swipe, use arrow keys, or tap the buttons below." onStart={() => setRunning(true)} resume={g.next > 0} />
+          <GameStartCard emoji="🐍" title="Ready, little explorer?" hint="Slide your finger, click the arrow buttons, or use your keyboard arrows." onStart={() => setRunning(true)} resume={g.next > 0} />
         ) : null}
       </View>
       <Text style={styles.tip}>🌼 {g.next} / {cfg.sequence.length} collected · Friendly walls: pop out the other side!</Text>
+      <Text style={styles.startSub}>Slide to steer, or use the arrows below</Text>
       <View style={styles.controls}>
         <DirPad onDir={turn} disabled={won !== null} />
         {running ? <Pressable onPress={() => setRunning(false)} style={styles.pause} accessibilityRole="button"><Text style={styles.pauseText}>⏸ Pause</Text></Pressable> : null}
