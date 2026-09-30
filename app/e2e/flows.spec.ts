@@ -95,10 +95,9 @@ test('answers stay paired with questions and another category starts from result
   const submitted = page.waitForRequest(r => new URL(r.url()).pathname === '/api/submit');
   await page.getByRole('button', { name: /finished/ }).click();
   expect((await submitted).postDataJSON().responses.map((r: any) => [r.questionId, r.answer])).toEqual([['q1','a'], ['q2','b']]);
-  await page.getByText('Grown-ups: see the results', { exact: true }).click();
-  const gate = await page.getByText(/What is \d+ \+ \d+\?/).innerText();
-  const numbers = gate.match(/\d+/g)!.map(Number);
-  await page.getByText(String(numbers[0]! + numbers[1]!), { exact: true }).click();
+  await expect(page.getByText('Great job, Test Explorer!', { exact: true })).toBeVisible();
+  await expect(page.getByText('Grown-ups: see the results', { exact: true })).toHaveCount(0);
+  await expect(page.getByText(/What is \d+ \+ \d+\?/)).toHaveCount(0);
   await page.getByText(/See all 2 activities/).click();
   const next = page.waitForRequest(r => new URL(r.url()).pathname === '/api/test');
   await page.getByRole('button', { name: /What happens next.*start activity/ }).click();

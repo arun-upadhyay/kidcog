@@ -306,7 +306,7 @@ export default function ResultsScreen({
         <View style={styles.heroBubble}><Owl mood="happy" size={46} /></View>
         <View style={styles.heroCopy}>
           <Text style={styles.eyebrow}>{historical ? 'SAVED RESULT' : 'ROUND COMPLETE'}</Text>
-          <Text style={styles.pageTitle}>{childName ? `${childName}’s results` : 'Results'}</Text>
+          <Text style={styles.pageTitle}>{historical ? (childName ? `${childName}’s results` : 'Results') : (childName ? `Great job, ${childName}!` : 'Great job!')}</Text>
           {completedAt ? <Text style={styles.heroText}>{new Date(completedAt).toLocaleString()}</Text> : null}
         </View>
       </View>

@@ -8,7 +8,6 @@ import PlayZoneScreen from './src/screens/PlayZoneScreen';
 import type { GameKey } from './src/playzone/common';
 import StartScreen from './src/screens/StartScreen';
 import QuizScreen from './src/screens/QuizScreen';
-import CelebrationScreen from './src/screens/CelebrationScreen';
 import ResultsScreen from './src/screens/ResultsScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import HistoryScreen from './src/screens/HistoryScreen';
@@ -25,12 +24,8 @@ import BreakSheet, { BREAK_AFTER_MS } from './src/components/BreakSheet';
 import { colors } from './src/theme';
 import type { ChildProfile, HistoricalAssessment, Report, ResponseInput, SavedChildProfile, TestPayload, TraitKey } from './src/types';
 
-/**
- * `celebrate` only exists for the young profile: the child sees a well done,
- * and the scores sit behind a grown-up gate. Older children go straight to
- * results, where seeing their own score is reasonable and useful.
- */
-type Stage = 'start' | 'categories' | 'quiz' | 'celebrate' | 'results' | 'history' | 'historical_result' | 'playzone';
+/** Completed rounds show results and rewards immediately for every age. */
+type Stage = 'start' | 'categories' | 'quiz' | 'results' | 'history' | 'historical_result' | 'playzone';
 
 function messageOf(err: unknown): string {
   return err instanceof Error ? err.message : 'Something went wrong.';
@@ -208,7 +203,7 @@ function KidCogApp() {
           for (const t of r.traits) if (t.questionCount > 0) byKey.set(t.key, t);
           return [...byKey.values()];
         });
-        setStage(test?.profile.showScoreToChild ? 'results' : 'celebrate');
+        setStage('results');
       } catch (err) {
         setError(messageOf(err));
       } finally {
@@ -337,21 +332,12 @@ function KidCogApp() {
             <QuizScreen test={test} onFinish={finish} onExit={leaveQuiz} submitting={busy} error={error} />
           )}
 
-          {stage === 'celebrate' && (
-            <CelebrationScreen
-              childName={child?.firstName}
-              reward={reward}
-              onUnlock={() => setStage('results')}
-              onRestart={restart}
-            />
-          )}
-
           {stage === 'results' && report && (
             <ResultsScreen
               report={report}
               sessionId={sessionId}
               childName={child?.firstName}
-              reward={test?.profile.showScoreToChild ? reward : null}
+              reward={reward}
               onRestart={restart}
               onChooseCategory={chooseCategory}
               onReassess={reassess}
