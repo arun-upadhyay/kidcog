@@ -12,7 +12,7 @@ type Section = { title: string; paragraphs?: string[]; bullets?: string[] };
  * of data or a new service is added, update this page in the same change.
  */
 const PRIVACY: Section[] = [
-  { title: 'Who we are', paragraphs: [`Little Hoot is made by ${COMPANY} ("we", "us"). Little Hoot is a playful thinking and learning activity for children aged about 4 to 7, used together with a parent or guardian. Accounts belong to parents and guardians; children do not have their own accounts and do not sign in.`] },
+  { title: 'Who we are', paragraphs: [`KidCog is made by ${COMPANY} ("we", "us"). KidCog is a playful thinking and learning activity for children aged about 4 to 7, used together with a parent or guardian. Accounts belong to parents and guardians; children do not have their own accounts and do not sign in.`] },
   { title: 'What we collect', bullets: [
     'Parent account: your email address, and your name and profile picture if you sign in with Google, Facebook or Apple. If you use email sign-in, your password is stored securely (hashed) by our sign-in provider; we never see it.',
     'About each child you add: a nickname or first name you choose, their age (4–7) and a picture you pick from our built-in animal pictures. Please use a nickname or first name only.',
@@ -25,7 +25,7 @@ const PRIVACY: Section[] = [
     'No advertising and no ad tracking.',
     'No analytics or tracking tools, and no selling or renting of personal information.',
     'We do not ask children for their full name, school, address, photos or contact details.',
-    'Little Hoot is not an IQ test or a clinical assessment, and it never gives an IQ score, percentile or comparison with other children.',
+    'KidCog is not an IQ test or a clinical assessment, and it never gives an IQ score, percentile or comparison with other children.',
   ] },
   { title: 'How we use information', bullets: [
     'To run the activities, score answers and show results to you.',
@@ -33,7 +33,7 @@ const PRIVACY: Section[] = [
     'To keep your account secure, to fix problems, and to review content that parents report.',
     'To reply when you contact us.',
   ] },
-  { title: 'Service providers we use', paragraphs: ['We share information only with companies that help us run Little Hoot, and only what they need:'], bullets: [
+  { title: 'Service providers we use', paragraphs: ['We share information only with companies that help us run KidCog, and only what they need:'], bullets: [
     'OpenAI: turns spoken answers into text, checks spoken and written answers, writes the note for you (using your child’s nickname and age), and reads questions aloud. Under OpenAI’s API terms, this data is not used to train its models.',
     'Supabase: sign-in and our database, where accounts, child profiles and results are stored.',
     'Render and Vercel: host our server and website.',
@@ -41,7 +41,7 @@ const PRIVACY: Section[] = [
     'Stripe and PayPal: only if you choose to make an optional support payment on our website. They handle the payment; we do not receive your card details.',
   ] },
   { title: 'Children’s privacy', paragraphs: [
-    'Little Hoot is designed to be used by children with a parent or guardian. A parent creates the account and confirms consent before a child plays. We collect only what is needed for the activities, as listed above.',
+    'KidCog is designed to be used by children with a parent or guardian. A parent creates the account and confirms consent before a child plays. We collect only what is needed for the activities, as listed above.',
     'You can review your child’s results in the app at any time, delete a child’s profile or a single result, or delete your whole account. You can also contact us to ask what we hold, to correct it, or to delete it.',
   ] },
   { title: 'How long we keep information', paragraphs: [
@@ -57,11 +57,11 @@ const PRIVACY: Section[] = [
 
 const DELETE: Section[] = [
   { title: 'Delete in the app (quickest)', bullets: [
-    'Open Little Hoot and sign in.',
+    'Open KidCog and sign in.',
     'Tap the ☰ menu at the top left.',
     'Tap “Delete account” at the bottom, type DELETE, and confirm.',
   ] },
-  { title: 'Or ask us by email', paragraphs: [`Email ${CONTACT_EMAIL} from the email address you use for Little Hoot, with the subject “Delete my Little Hoot account”. We will delete it within 30 days and confirm by email.`] },
+  { title: 'Or ask us by email', paragraphs: [`Email ${CONTACT_EMAIL} from the email address you use for KidCog, with the subject “Delete my KidCog account”. We will delete it within 30 days and confirm by email.`] },
   { title: 'What is deleted', bullets: [
     'Your parent account and sign-in details.',
     'All child profiles (nicknames, ages, pictures).',
@@ -88,8 +88,8 @@ export default function LegalScreen({ page, onContinue }: { page: 'privacy' | 'd
       <View style={styles.hero}>
         <View style={styles.heroBubble}><Owl mood="idle" size={44} /></View>
         <View style={{ flex: 1 }}>
-          <Text style={styles.eyebrow}>LITTLE HOOT</Text>
-          <Text style={styles.title} accessibilityRole="header">{page === 'privacy' ? 'Privacy policy' : 'Delete your Little Hoot account'}</Text>
+          <Text style={styles.eyebrow}>KIDCOG</Text>
+          <Text style={styles.title} accessibilityRole="header">{page === 'privacy' ? 'Privacy policy' : 'Delete your KidCog account'}</Text>
           <Text style={styles.updated}>{page === 'privacy' ? `Last updated ${POLICY_UPDATED}` : 'How to delete your account and data'}</Text>
         </View>
       </View>
@@ -111,7 +111,7 @@ export default function LegalScreen({ page, onContinue }: { page: 'privacy' | 'd
       <Text style={styles.small}>
         {page === 'privacy' ? `See also: how to delete your account — ${WEB_URL}${DELETE_ACCOUNT_PATH}` : `See also: privacy policy — ${WEB_URL}${PRIVACY_PATH}`}
       </Text>
-      <Button title="Go to Little Hoot" variant="secondary" onPress={onContinue} />
+      <Button title="Go to KidCog" variant="secondary" onPress={onContinue} />
     </ScrollView>
   );
 }

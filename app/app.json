@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Little Hoot",
+    "name": "KidCog",
     "slug": "kidcog",
     "scheme": "kidcog",
     "version": "0.1.0",
@@ -34,8 +34,8 @@
     "web": {
       "bundler": "metro",
       "favicon": "./assets/favicon.png",
-      "name": "Little Hoot",
-      "shortName": "Little Hoot",
+      "name": "KidCog",
+      "shortName": "KidCog",
       "themeColor": "#6B4BB0",
       "backgroundColor": "#FFF8EF"
     },
@@ -49,7 +49,7 @@
       [
         "expo-audio",
         {
-          "microphonePermission": "Little Hoot uses the microphone only when you tap the microphone button, so your child can say their answer out loud. The recording is turned into text to score the answer.",
+          "microphonePermission": "KidCog uses the microphone only when you tap the microphone button, so your child can say their answer out loud. The recording is turned into text to score the answer.",
           "recordAudioAndroid": true,
           "enableBackgroundPlayback": false,
           "enableBackgroundRecording": false

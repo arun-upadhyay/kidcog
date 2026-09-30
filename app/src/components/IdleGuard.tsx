@@ -82,7 +82,7 @@ export default function IdleGuard({ signedInAt, onTimeout, children }: {
           <Owl mood="idle" size={84} />
           <Text style={styles.title}>Still there?</Text>
           <Text style={styles.text}>
-            Nothing has happened for a while, so Little Hoot will sign you out in <Text style={styles.count}>{countdown}</Text> to keep your family’s account safe.
+            Nothing has happened for a while, so KidCog will sign you out in <Text style={styles.count}>{countdown}</Text> to keep your family’s account safe.
           </Text>
           <View style={styles.actions}>
             <Button title="Stay signed in" onPress={stay} />

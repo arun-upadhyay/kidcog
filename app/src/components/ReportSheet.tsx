@@ -73,7 +73,7 @@ export default function ReportSheet({ visible, onClose, kind, sessionId, questio
         <View style={styles.body}>
           <Text style={styles.eyebrow}>FOR GROWN-UPS</Text>
           <Text style={styles.title}>Report this {what}</Text>
-          <Text style={styles.text}>Little Hoot’s {kind === 'question' ? 'questions are' : 'notes are'} made with AI. If something isn’t right, let us know.</Text>
+          <Text style={styles.text}>KidCog’s {kind === 'question' ? 'questions are' : 'notes are'} made with AI. If something isn’t right, let us know.</Text>
           <View style={styles.reasons} accessibilityRole="radiogroup">
             {REASONS.map(option => {
               const on = reason === option.key;

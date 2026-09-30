@@ -14,7 +14,7 @@ const SECTIONS = [
   {
     icon: '🧠',
     title: 'A practice activity',
-    body: 'Little Hoot is for playful thinking practice. It is not an IQ test or a clinical assessment, and it never gives an IQ score, a percentile or a comparison with other children. Each result is a snapshot of one session.',
+    body: 'KidCog is for playful thinking practice. It is not an IQ test or a clinical assessment, and it never gives an IQ score, a percentile or a comparison with other children. Each result is a snapshot of one session.',
   },
   {
     icon: '👂',
@@ -30,10 +30,10 @@ const SECTIONS = [
 
 export default function AboutSheet({ visible, onClose }: { visible: boolean; onClose: () => void }) {
   return (
-    <Sheet visible={visible} onClose={onClose} closeLabel="Close About Little Hoot">
+    <Sheet visible={visible} onClose={onClose} closeLabel="Close About KidCog">
           <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
             <Text style={styles.owl}>🦉</Text>
-            <Text style={styles.title}>About Little Hoot</Text>
+            <Text style={styles.title}>About KidCog</Text>
             {SECTIONS.map(section => (
               <View key={section.title} style={styles.section}>
                 <Text style={styles.sectionIcon}>{section.icon}</Text>
