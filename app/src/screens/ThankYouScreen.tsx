@@ -24,11 +24,11 @@ export default function ThankYouScreen({ onContinue }: { onContinue: () => void 
         <Text style={styles.heart} accessible={false}>💛</Text>
         <Text style={styles.title} accessibilityRole="header">Thank you so much!</Text>
         <Text style={styles.body}>
-          Your support means a lot. It helps keep KidCog running and lets us keep adding new activities for curious young minds.
+          Your support means a lot. It helps keep Little Hoot running and lets us keep adding new activities for curious young minds.
         </Text>
         <Text style={styles.small}>Your payment receipt is on its way to your email.</Text>
         <View style={styles.action}>
-          <Button title="Back to KidCog" onPress={onContinue} />
+          <Button title="Back to Little Hoot" onPress={onContinue} />
         </View>
       </View>
     </ScrollView>

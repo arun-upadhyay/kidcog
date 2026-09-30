@@ -55,7 +55,7 @@ export default function LoginScreen() {
       setError('Please verify your email before signing in.');
     } else if (/user is banned|banned/i.test(message)) {
       // Deleted accounts are blocked from signing in during the 30-day grace period.
-      setError('This account was deleted. It will be permanently erased 30 days after deletion. To restore it before then, contact the KidCog team.');
+      setError('This account was deleted. It will be permanently erased 30 days after deletion. To restore it before then, contact the Little Hoot team.');
     } else if (/provider is not enabled|unsupported provider/i.test(message)) {
       setError('This sign-in option is not switched on yet. Please use another option for now.');
     } else if (/invalid login credentials/i.test(message)) {
@@ -134,7 +134,7 @@ export default function LoginScreen() {
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
           <Text style={styles.mascot}>🦉</Text>
-          <Text style={styles.title}>Welcome to KidCog</Text>
+          <Text style={styles.title}>Welcome to Little Hoot</Text>
           <Text style={styles.body}>Sign in as a parent to keep child nicknames and assessment sessions together.</Text>
 
           {!configured ? <Text style={styles.error}>Supabase is not configured. Copy app/.env.example to app/.env and add your project URL and public key.</Text> : null}
@@ -199,7 +199,7 @@ export default function LoginScreen() {
                 loading={busy === 'email'}
               />
               {mode === 'signIn' ? (
-                <Text style={styles.signInHint}>Signed up with {socialList}? Use the same button below — those accounts don’t have a KidCog password.</Text>
+                <Text style={styles.signInHint}>Signed up with {socialList}? Use the same button below — those accounts don’t have a Little Hoot password.</Text>
               ) : null}
 
               <View style={styles.divider}><View style={styles.rule} /><Text style={styles.or}>OR</Text><View style={styles.rule} /></View>

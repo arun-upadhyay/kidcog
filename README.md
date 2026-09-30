@@ -1,4 +1,4 @@
-# KidCog
+# Little Hoot
 
 A practice activity with two category groups: Intellectual Ability (8 rows) and Social/Emotional/Behavioral (6 rows), in the order of the reference form.
 

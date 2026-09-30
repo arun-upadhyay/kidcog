@@ -136,7 +136,7 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
           <Text style={styles.helloTitle}>Who’s playing today?</Text>
           <Text style={styles.helloHint}>{showNewForm ? 'Add a player to start' : 'Tap a player to start'}</Text>
         </View>
-        <Pressable onPress={() => setAboutOpen(true)} accessibilityRole="button" accessibilityLabel="About KidCog" hitSlop={8} style={({ pressed }) => [styles.infoButton, pressed && styles.pressed]}>
+        <Pressable onPress={() => setAboutOpen(true)} accessibilityRole="button" accessibilityLabel="About Little Hoot" hitSlop={8} style={({ pressed }) => [styles.infoButton, pressed && styles.pressed]}>
           <Text style={styles.infoText}>ⓘ</Text>
         </Pressable>
       </View>
@@ -234,9 +234,9 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
       ) : null}
 
       <View style={styles.consentRow}>
-        <Switch value={consent} onValueChange={setConsent} trackColor={{ true: colors.go, false: colors.line }} accessibilityLabel="I'm the parent or guardian and agree to how KidCog checks answers" />
+        <Switch value={consent} onValueChange={setConsent} trackColor={{ true: colors.go, false: colors.line }} accessibilityLabel="I'm the parent or guardian and agree to how Little Hoot checks answers" />
         <Text style={styles.consentText}>
-          I’m the parent or guardian and agree to how KidCog checks answers.{' '}
+          I’m the parent or guardian and agree to how Little Hoot checks answers.{' '}
           <Text style={styles.learnMore} onPress={() => setAboutOpen(true)} accessibilityRole="link">Learn more</Text>
         </Text>
       </View>

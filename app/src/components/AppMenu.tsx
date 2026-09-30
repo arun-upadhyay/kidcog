@@ -131,10 +131,10 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
             onPress={onHome}
             disabled={!onHome}
             accessibilityRole={onHome ? 'button' : 'header'}
-            accessibilityLabel={onHome ? 'KidCog, go to the home page' : 'KidCog'}
+            accessibilityLabel={onHome ? 'Little Hoot, go to the home page' : 'Little Hoot'}
             style={({ pressed }) => [styles.brand, pressed && styles.menuButtonPressed]}
           >
-            <Text style={styles.brandText}>🦉 KidCog</Text>
+            <Text style={styles.brandText}>🦉 Little Hoot</Text>
           </Pressable>
         </View>
       </View>
@@ -175,7 +175,7 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
                 <View style={styles.deleteNote}>
                   <Text style={styles.deleteNoteText}>
                     Your data is kept for 30 days in case this was a mistake, then permanently erased. To restore
-                    the account within those 30 days, contact the KidCog team.
+                    the account within those 30 days, contact the Little Hoot team.
                   </Text>
                 </View>
                 <Text style={styles.deleteLabel}>Type DELETE to confirm</Text>
@@ -205,8 +205,8 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
             ) : supporting ? (
               <View style={styles.supportPanel}>
                 <Text style={styles.supportHeart} accessible={false}>💛</Text>
-                <Text style={styles.supportTitle}>Support KidCog</Text>
-                <Text style={styles.supportBody}>KidCog is made by a small independent team. If it helps your family, a small contribution helps keep it running and growing. Thank you!</Text>
+                <Text style={styles.supportTitle}>Support Little Hoot</Text>
+                <Text style={styles.supportBody}>Little Hoot is made by a small independent team. If it helps your family, a small contribution helps keep it running and growing. Thank you!</Text>
                 {SUPPORT_OPTIONS.map(option => (
                   <Pressable key={option.key} onPress={() => openInNewTab(option.url)} accessibilityRole="link" accessibilityLabel={`Support with ${option.title}, opens in a new tab`} style={({ pressed }) => [styles.supportOption, pressed && styles.supportOptionPressed]}>
                     <Text style={styles.menuActionIcon} accessible={false}>{option.icon}</Text>
@@ -214,7 +214,7 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
                     <Text style={styles.external} accessible={false}>↗</Text>
                   </Pressable>
                 ))}
-                <Text style={[type.soft, { textAlign: 'center' }]}>Completely optional. KidCog works the same either way.</Text>
+                <Text style={[type.soft, { textAlign: 'center' }]}>Completely optional. Little Hoot works the same either way.</Text>
                 <Pressable onPress={() => setSupporting(false)} style={styles.cancelButton} accessibilityRole="button"><Text style={styles.cancelText}>Back</Text></Pressable>
               </View>
             ) : changingPassword ? (
@@ -238,8 +238,8 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
                   <Text style={styles.menuActionIcon}>{soundOn ? '🔊' : '🔇'}</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>Sound effects</Text><Text style={type.soft}>Chimes and pops in the games</Text></View>
                   <Switch value={soundOn} onValueChange={setSoundEffects} trackColor={{ true: colors.go, false: colors.line }} accessibilityLabel="Sound effects" />
                 </View>
-                <Pressable onPress={() => { closeMenu(); setAboutOpen(true); }} accessibilityRole="button" accessibilityLabel="About KidCog" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
-                  <Text style={styles.menuActionIcon}>ⓘ</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>About KidCog</Text><Text style={type.soft}>How it works and privacy</Text></View><Text style={styles.chevron}>›</Text>
+                <Pressable onPress={() => { closeMenu(); setAboutOpen(true); }} accessibilityRole="button" accessibilityLabel="About Little Hoot" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
+                  <Text style={styles.menuActionIcon}>ⓘ</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>About Little Hoot</Text><Text style={type.soft}>How it works and privacy</Text></View><Text style={styles.chevron}>›</Text>
                 </Pressable>
                 {canChangePassword ? (
                   <Pressable onPress={() => { setChangingPassword(true); setAccountMessage(null); }} accessibilityRole="button" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
@@ -247,7 +247,7 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
                   </Pressable>
                 ) : null}
                 {SUPPORT_OPTIONS.length ? (
-                  <Pressable onPress={() => { setSupporting(true); setAccountMessage(null); }} accessibilityRole="button" accessibilityLabel="Support KidCog" style={({ pressed }) => [styles.supportLink, pressed && styles.menuActionPressed]}>
+                  <Pressable onPress={() => { setSupporting(true); setAccountMessage(null); }} accessibilityRole="button" accessibilityLabel="Support Little Hoot" style={({ pressed }) => [styles.supportLink, pressed && styles.menuActionPressed]}>
                     <Text style={styles.supportLinkText}>💛 Support this project</Text>
                   </Pressable>
                 ) : null}
