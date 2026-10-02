@@ -17,7 +17,10 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ritvikglobal.kidcog",
-      "usesAppleSignIn": true
+      "usesAppleSignIn": true,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.ritvikglobal.kidcog",
@@ -29,6 +32,10 @@
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.WRITE_EXTERNAL_STORAGE",
         "android.permission.SYSTEM_ALERT_WINDOW"
+      ],
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
       ]
     },
     "web": {
@@ -40,7 +47,10 @@
       "backgroundColor": "#FFF8EF"
     },
     "extra": {
-      "apiBaseUrl": "http://localhost:4000"
+      "apiBaseUrl": "http://localhost:4000",
+      "eas": {
+        "projectId": "5a2c8c83-9b8e-45b2-b8a4-ee402b4e41c9"
+      }
     },
     "plugins": [
       "expo-secure-store",

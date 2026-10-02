@@ -29,7 +29,11 @@
     }
   },
   "submit": {
-    "production": {},
+    "production": {
+      "ios": {
+        "ascAppId": "6818594671"
+      }
+    },
     "play-internal": {
       "android": {
         "track": "internal",
