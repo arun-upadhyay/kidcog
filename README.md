@@ -7,6 +7,10 @@ A practice activity with two category groups: Intellectual Ability (8 rows) and 
 Start the server with `cd server && npm run dev`, and the app with `cd app && npm start`.
 Set `OPENAI_API_KEY` and `OPENAI_MODEL` in `server/.env`. Optionally use `OPENAI_QUESTION_MODEL` for question generation. The active flow always uses AI; `USE_MOCK_GRADER` no longer enables canned grading.
 
+## Build and release (iPhone and Android)
+
+Store builds run on Expo (EAS) from the `app/` folder with short npm commands, for example `npm run release:ios` (build and send to TestFlight) and `npm run test:android` (an Android test app for your own phone). The full step-by-step process, every command, the one-time setup for each store and what to do when something goes wrong are in [RELEASING.md](RELEASING.md).
+
 ## Rounds and results
 
 Parents select an age, category, and exactly 2, 5, or 6 questions. `POST /api/test` generates a new mixed-interaction round with item-specific rubrics. No fixed bank or canned fallback is used. Generation failures show a retry message. Requests with the same request ID share work for two minutes.

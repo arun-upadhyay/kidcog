@@ -10,7 +10,17 @@
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "test:e2e": "playwright test",
-    "test:e2e:report": "playwright show-report"
+    "test:e2e:report": "playwright show-report",
+    "eas:login": "npx --yes eas-cli@latest login",
+    "env:check": "npx --yes eas-cli@latest env:list --environment production && npx --yes eas-cli@latest env:list --environment preview",
+    "test:android": "npm run typecheck && npx --yes eas-cli@latest build --platform android --profile preview",
+    "build:android": "npm run typecheck && npx --yes eas-cli@latest build --platform android --profile play-internal",
+    "submit:android": "npx --yes eas-cli@latest submit --platform android --profile play-internal --latest",
+    "release:android": "npm run typecheck && npx --yes eas-cli@latest build --platform android --profile play-internal --auto-submit",
+    "build:ios": "npm run typecheck && npx --yes eas-cli@latest build --platform ios --profile production",
+    "submit:ios": "npx --yes eas-cli@latest submit --platform ios --profile production --latest",
+    "release:ios": "npm run typecheck && npx --yes eas-cli@latest build --platform ios --profile production --auto-submit",
+    "builds": "npx --yes eas-cli@latest build:list --limit 5"
   },
   "dependencies": {
     "@expo/metro-runtime": "~57.0.16",
