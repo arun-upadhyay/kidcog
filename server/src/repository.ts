@@ -167,6 +167,13 @@ export async function saveContentReport(report: ContentReport) {
   fail(error);
 }
 
+/** How many different parents have reported this bank question. */
+export async function bankQuestionReporterCount(bankQuestionId: string): Promise<number> {
+  const { data, error } = await supabaseAdmin.from('content_reports').select('parent_id').eq('bank_question_id', bankQuestionId).limit(1000);
+  fail(error);
+  return new Set((data ?? []).map(row => (row as { parent_id: string }).parent_id)).size;
+}
+
 /** The written report arrives after the scores; this adds it to the saved result. */
 export async function saveParentReport(parentId: string, sessionId: string, report: Report) {
   const { error } = await supabaseAdmin.from('assessment_sessions').update({ parent_report: report.parentReport ?? null, report_snapshot: report }).eq('id', sessionId).eq('parent_id', parentId);

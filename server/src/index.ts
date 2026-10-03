@@ -3,7 +3,7 @@ import express, { type Request, type Response, type NextFunction } from 'express
 import cors from 'cors';
 import { z } from 'zod';
 
-import { publicQuestion, generatedQuestionById, rememberGeneratedQuestion } from './generatedQuestions.js';
+import { publicQuestion, rememberGeneratedQuestion } from './generatedQuestions.js';
 import { bankStatus, prefetchForChild, retireQuestion, roundForChild, seedFromFiles } from './questionBank.js';
 import { questionSource } from './questionFiles.js';
 import { clampLevel, defaultLevel, gameShare, makeGames } from './games.js';
@@ -18,8 +18,23 @@ import type { PublicQuestion, TestPayload } from './types.js';
 import { supabaseReady, userIdFromBearer } from './supabase.js';
 import { isAccountDeleted, scheduleAccountDeletion, startPurgeSchedule, PURGE_AFTER_DAYS } from './accountDeletion.js';
 import { storeAppleAuthorizationCode } from './appleSignIn.js';
-import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, updateChildAvatar, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, saveContentReport, saveGeneratedQuestions, saveParentReport, saveReport } from './repository.js';
+import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, updateChildAvatar, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, bankQuestionReporterCount, saveContentReport, saveGeneratedQuestions, saveParentReport, saveReport } from './repository.js';
 import type { Report } from './types.js';
+
+/**
+ * Raw error text (database messages, stack details) helps while developing
+ * but gives an attacker hints in production. On Render, or with
+ * NODE_ENV=production, responses carry only the friendly message and the
+ * details go to the server log instead. SHOW_ERROR_DETAIL=1 brings them back
+ * for debugging.
+ */
+const SHOW_ERROR_DETAIL = process.env.SHOW_ERROR_DETAIL === '1' || (process.env.NODE_ENV !== 'production' && !process.env.RENDER);
+function errorDetail(err: unknown): string | undefined {
+  const message = err instanceof Error ? err.message : String(err);
+  if (SHOW_ERROR_DETAIL) return message;
+  console.error('  x request failed:', message);
+  return undefined;
+}
 
 type AuthRequest = Request & { parentId?: string };
 async function requireParent(req: AuthRequest, res: Response, next: NextFunction) {
@@ -44,25 +59,69 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS ?? '').split(',').map(o => o
 app.use(cors(allowedOrigins.length === 0 ? undefined : {
   origin: (origin, callback) => callback(null, !origin || allowedOrigins.includes(origin) || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)),
 }));
-// Raised from 256kb because spoken answers arrive as base64 audio.
-app.use(express.json({ limit: '12mb' }));
+/**
+ * A simple sliding-window counter: at most `max` hits per key in `windowMs`.
+ * In memory, so it resets when the server restarts and is per server; fine
+ * for one Render instance. Old keys are swept every minute so the map cannot
+ * grow without limit.
+ */
+function limiter(max: number, windowMs: number) {
+  const hits = new Map<string, number[]>();
+  const sweep = setInterval(() => {
+    const now = Date.now();
+    for (const [key, times] of hits) {
+      const kept = times.filter(t => now - t < windowMs);
+      if (kept.length) hits.set(key, kept); else hits.delete(key);
+    }
+  }, 60_000);
+  sweep.unref();
+  return (key: string) => {
+    const now = Date.now();
+    const times = (hits.get(key) ?? []).filter(t => now - t < windowMs);
+    times.push(now);
+    hits.set(key, times);
+    return times.length <= max;
+  };
+}
 
-// Crude in-memory rate limit. Replace with a real one before you go public.
-const hits = new Map<string, number[]>();
+// Per IP address, for every request. Runs before the body is read, so a
+// flood of large requests is turned away without the server parsing them.
+const perIp = limiter(Number(process.env.RATE_LIMIT_PER_MINUTE) || 30, 60_000);
 app.use((req: Request, res: Response, next: NextFunction) => {
-  const ip = req.ip ?? 'unknown';
-  const now = Date.now();
-  const windowMs = 60_000;
-  const max = 30;
-  const entry = (hits.get(ip) ?? []).filter((t) => now - t < windowMs);
-  entry.push(now);
-  hits.set(ip, entry);
-  if (entry.length > max) {
-    res.status(429).json({ error: 'Too many requests, slow down.' });
-    return;
-  }
+  if (!perIp(req.ip ?? 'unknown')) { res.status(429).json({ error: 'Too many requests, slow down.' }); return; }
   next();
 });
+
+// Only the voice-answer route needs room for base64 audio; everything else
+// is small JSON (the largest, a finished round, is well under 1 MB).
+app.use('/api/transcribe', express.json({ limit: '12mb' }));
+app.use(express.json({ limit: '1mb' }));
+
+/**
+ * Caps per signed-in parent on the routes that cost OpenAI credit, so one
+ * account (even spread over many IP addresses) cannot run up the bill: a short
+ * burst limit and a daily limit. Generous for a family playing all day.
+ */
+const AI_LIMITS = {
+  transcribe: { perMinute: 15, perDay: 400 },
+  speech: { perMinute: 40, perDay: 1500 },
+  submit: { perMinute: 6, perDay: 150 },
+  report: { perMinute: 5, perDay: 30 },
+} as const;
+type AiKind = keyof typeof AI_LIMITS;
+const aiCounters = Object.fromEntries(Object.entries(AI_LIMITS).map(([kind, l]) => [kind, {
+  minute: limiter(l.perMinute, 60_000),
+  day: limiter(Math.max(1, Math.round(l.perDay * (Number(process.env.AI_DAILY_LIMIT_SCALE) || 1))), 24 * 60 * 60_000),
+}])) as Record<AiKind, { minute: (key: string) => boolean; day: (key: string) => boolean }>;
+function aiQuota(kind: AiKind) {
+  return (req: AuthRequest, res: Response, next: NextFunction) => {
+    const counter = aiCounters[kind];
+    const key = req.parentId ?? req.ip ?? 'unknown';
+    if (!counter.minute(key)) { res.status(429).json({ error: 'That was a lot at once. Please wait a minute and try again.' }); return; }
+    if (!counter.day(key)) { res.status(429).json({ error: 'Daily limit reached for this account. Please try again tomorrow.' }); return; }
+    next();
+  };
+}
 
 app.get('/health', (_req: Request, res: Response) => {
   const mock = false;
@@ -96,7 +155,7 @@ app.delete('/api/account', requireParent, async (req: AuthRequest, res: Response
     const { purgeAfter } = await scheduleAccountDeletion(req.parentId!, token);
     res.json({ deleted: true, purgeAfter, graceDays: PURGE_AFTER_DAYS });
   } catch (err) {
-    res.status(500).json({ error: 'Could not delete the account.', detail: err instanceof Error ? err.message : String(err) });
+    res.status(500).json({ error: 'Could not delete the account.', detail: errorDetail(err) });
   }
 });
 
@@ -113,7 +172,7 @@ app.post('/api/apple/authorization-code', requireParent, async (req: AuthRequest
     res.status(stored ? 200 : 202).json({ stored });
   } catch (err) {
     console.error('  ✗ Could not store Apple token:', err instanceof Error ? err.message : err);
-    res.status(502).json({ error: 'Could not store the Apple sign-in token.', detail: err instanceof Error ? err.message : String(err) });
+    res.status(502).json({ error: 'Could not store the Apple sign-in token.', detail: errorDetail(err) });
   }
 });
 
@@ -122,14 +181,14 @@ const AVATAR_KEY = z.string().regex(/^[a-z]{2,16}$/);
 
 app.get('/api/children', requireParent, async (req: AuthRequest, res: Response) => {
   try { res.json(await listChildren(req.parentId!)); }
-  catch (err) { res.status(500).json({ error: 'Could not load child profiles.', detail: err instanceof Error ? err.message : String(err) }); }
+  catch (err) { res.status(500).json({ error: 'Could not load child profiles.', detail: errorDetail(err) }); }
 });
 
 app.post('/api/children', requireParent, async (req: AuthRequest, res: Response) => {
   const parsed = z.object({ nickname: z.string().trim().min(1).max(60), age: z.number().int().min(4).max(12), avatar: AVATAR_KEY.optional() }).safeParse(req.body);
   if (!parsed.success) { res.status(400).json({ error: 'Enter a first name or nickname.' }); return; }
   try { res.status(201).json(await findOrCreateChild(req.parentId!, parsed.data.nickname, parsed.data.age, parsed.data.avatar)); }
-  catch (err) { res.status(500).json({ error: 'Could not save child profile.', detail: err instanceof Error ? err.message : String(err) }); }
+  catch (err) { res.status(500).json({ error: 'Could not save child profile.', detail: errorDetail(err) }); }
 });
 
 app.patch('/api/children/:childId', requireParent, async (req: AuthRequest, res: Response) => {
@@ -139,7 +198,7 @@ app.patch('/api/children/:childId', requireParent, async (req: AuthRequest, res:
     const child = await updateChildAvatar(req.parentId!, parsed.data.childId, parsed.data.avatar);
     if (!child) { res.status(404).json({ error: 'Child profile was not found.' }); return; }
     res.json(child);
-  } catch (err) { res.status(500).json({ error: 'Could not change the picture.', detail: err instanceof Error ? err.message : String(err) }); }
+  } catch (err) { res.status(500).json({ error: 'Could not change the picture.', detail: errorDetail(err) }); }
 });
 
 app.delete('/api/children/:childId', requireParent, async (req: AuthRequest, res: Response) => {
@@ -149,7 +208,7 @@ app.delete('/api/children/:childId', requireParent, async (req: AuthRequest, res
     const deleted = await deleteChildProfile(req.parentId!, parsed.data);
     if (!deleted) { res.status(404).json({ error: 'Child profile was not found.' }); return; }
     res.status(204).end();
-  } catch (err) { res.status(500).json({ error: 'Could not delete the child profile.', detail: err instanceof Error ? err.message : String(err) }); }
+  } catch (err) { res.status(500).json({ error: 'Could not delete the child profile.', detail: errorDetail(err) }); }
 });
 
 app.get('/api/children/:childId/sessions', requireParent, async (req: AuthRequest, res: Response) => {
@@ -159,7 +218,7 @@ app.get('/api/children/:childId/sessions', requireParent, async (req: AuthReques
     const result = await listCompletedSessions(req.parentId!, parsed.data.childId, parsed.data.limit, parsed.data.offset);
     if (!result) { res.status(404).json({ error: 'Child profile was not found.' }); return; }
     res.json(result);
-  } catch (err) { res.status(500).json({ error: 'Could not load assessment history.', detail: err instanceof Error ? err.message : String(err) }); }
+  } catch (err) { res.status(500).json({ error: 'Could not load assessment history.', detail: errorDetail(err) }); }
 });
 
 app.get('/api/sessions/:sessionId/report', requireParent, async (req: AuthRequest, res: Response) => {
@@ -169,7 +228,7 @@ app.get('/api/sessions/:sessionId/report', requireParent, async (req: AuthReques
     const result = await historicalAssessment(req.parentId!, parsed.data);
     if (!result) { res.status(404).json({ error: 'This completed report is unavailable.' }); return; }
     res.json(result);
-  } catch (err) { res.status(500).json({ error: 'Could not load the assessment report.', detail: err instanceof Error ? err.message : String(err) }); }
+  } catch (err) { res.status(500).json({ error: 'Could not load the assessment report.', detail: errorDetail(err) }); }
 });
 
 app.delete('/api/sessions/:sessionId', requireParent, async (req: AuthRequest, res: Response) => {
@@ -179,7 +238,7 @@ app.delete('/api/sessions/:sessionId', requireParent, async (req: AuthRequest, r
     const deleted = await deleteAssessmentSession(req.parentId!, parsed.data);
     if (!deleted) { res.status(404).json({ error: 'Assessment result was not found.' }); return; }
     res.status(204).end();
-  } catch (err) { res.status(500).json({ error: 'Could not delete the assessment result.', detail: err instanceof Error ? err.message : String(err) }); }
+  } catch (err) { res.status(500).json({ error: 'Could not delete the assessment result.', detail: errorDetail(err) }); }
 });
 
 /** The test the app should present. Answer keys and rubrics stay on the server. */
@@ -224,7 +283,7 @@ app.post('/api/test', requireParent, async (req: AuthRequest, res: Response) => 
     }
     res.json(await work);
   } catch (err) {
-    res.status(502).json({ error: 'Could not get this round ready. Please try again.', detail: err instanceof Error ? err.message : String(err) });
+    res.status(502).json({ error: 'Could not get this round ready. Please try again.', detail: errorDetail(err) });
   }
 });
 
@@ -241,7 +300,7 @@ app.post('/api/prefetch', requireParent, async (req: AuthRequest, res: Response)
     res.status(202).json(await prefetchForChild({ parentId: req.parentId!, childId: input.data.childProfileId, age: input.data.age, trait: input.data.trait, largest: 6 - gameShare(input.data.trait, 6) }));
   } catch (err) {
     // Only a head start; the round itself will still work without it.
-    res.status(202).json({ ready: false, working: false, detail: err instanceof Error ? err.message : String(err) });
+    res.status(202).json({ ready: false, working: false, detail: errorDetail(err) });
   }
 });
 
@@ -275,7 +334,7 @@ function warmSpeech(texts: string[]) {
  * OpenAI credit, and the text itself (which can include a child's name) never
  * appears in an address or a server log.
  */
-app.post('/api/speech-key', requireParent, (req: AuthRequest, res: Response) => {
+app.post('/api/speech-key', requireParent, aiQuota('speech'), (req: AuthRequest, res: Response) => {
   const parsed = z.object({ text: z.string().trim().min(1).max(2500) }).safeParse(req.body);
   if (!parsed.success) { res.status(400).json({ error: 'Send the text to read, up to 2,500 characters.' }); return; }
   try { res.json({ key: registerSpeech(parsed.data.text) }); }
@@ -303,7 +362,7 @@ app.get('/api/speak', async (req: Request, res: Response) => {
     console.error(`\n  x SPEECH FAILED\n    ${detail}\n`);
     // The app falls back to the device voice, so this degrades rather than
     // leaving a pre-reader with no way to hear the question.
-    res.status(502).json({ error: 'Could not generate speech', detail });
+    res.status(502).json({ error: 'Could not generate speech', detail: SHOW_ERROR_DETAIL ? detail : undefined });
   }
 });
 
@@ -316,7 +375,7 @@ const TranscribeSchema = z.object({
   mimeType: z.string().max(80).optional(),
 });
 
-app.post('/api/transcribe', requireParent, async (req: Request, res: Response) => {
+app.post('/api/transcribe', requireParent, aiQuota('transcribe'), async (req: Request, res: Response) => {
   const parsed = TranscribeSchema.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: 'Invalid audio payload', details: parsed.error.flatten() });
@@ -332,7 +391,7 @@ app.post('/api/transcribe', requireParent, async (req: Request, res: Response) =
     console.error(`\n  x TRANSCRIPTION FAILED\n    ${detail}\n`);
     // The app falls back to letting a grown-up type the answer, so this is a
     // degraded path rather than a dead end.
-    res.status(502).json({ error: 'Could not transcribe the recording', detail });
+    res.status(502).json({ error: 'Could not transcribe the recording', detail: SHOW_ERROR_DETAIL ? detail : undefined });
   }
 });
 
@@ -357,6 +416,9 @@ const SubmissionSchema = z.object({
 });
 
 /** Written notes still being prepared, by session, so the app can wait for them. */
+/** Different parents who must report a bank question before it is retired automatically. */
+const REPORTS_TO_RETIRE = Math.max(1, Number(process.env.REPORTS_TO_RETIRE) || 2);
+
 const pendingReports = new Map<string, { parentId: string; work: Promise<Report> }>();
 
 /**
@@ -373,7 +435,7 @@ const ReportBody = z.object({
   details: z.string().trim().max(500).optional(),
 }).strict();
 
-app.post('/api/reports', requireParent, async (req: AuthRequest, res: Response) => {
+app.post('/api/reports', requireParent, aiQuota('report'), async (req: AuthRequest, res: Response) => {
   const parsed = ReportBody.safeParse(req.body);
   if (!parsed.success || (parsed.data.kind === 'question' && !parsed.data.questionId)) { res.status(400).json({ error: 'That report could not be read.' }); return; }
   const { kind, sessionId, questionId, reason, details } = parsed.data;
@@ -382,8 +444,8 @@ app.post('/api/reports', requireParent, async (req: AuthRequest, res: Response) 
     let content = '';
     let bankQuestionId: string | null = null;
     if (kind === 'question') {
-      const [saved] = await loadGeneratedQuestions(parentId, sessionId, [questionId!]).catch(() => [] as GeneratedQuestion[]);
-      const question = saved ?? generatedQuestionById(questionId!);
+      // Only a question this parent was actually given in this session.
+      const [question] = await loadGeneratedQuestions(parentId, sessionId, [questionId!]).catch(() => [] as GeneratedQuestion[]);
       if (!question) { res.status(404).json({ error: 'That question could not be found.' }); return; }
       content = question.prompt;
       bankQuestionId = question.bankQuestionId ?? null;
@@ -394,22 +456,30 @@ app.post('/api/reports', requireParent, async (req: AuthRequest, res: Response) 
       content = [note.opening, ...note.strengths, ...note.stuckPoints, note.thinkingNotes, ...note.practiceIdeas, note.closing].filter(Boolean).join('\n');
     }
 
-    let removed = false;
-    if (bankQuestionId) {
-      try { await retireQuestion(bankQuestionId); removed = true; }
-      catch (err) { console.warn('  ⚠ Could not retire a reported question:', err instanceof Error ? err.message : err); }
-    }
+    let saved = false;
     try {
       await saveContentReport({ parentId, sessionId, kind, questionId: questionId ?? null, bankQuestionId, content, reason, details: details || null });
+      saved = true;
     } catch (err) {
       // Before the migration is run the report still reaches the logs.
       console.warn('  ⚠ Content report not saved (run supabase/migrations/202609300001_content_reports.sql):', err instanceof Error ? err.message : err);
       console.warn('    REPORT', JSON.stringify({ kind, sessionId, questionId, bankQuestionId, reason, details, content: content.slice(0, 300) }));
     }
+
+    // One report no longer removes a question for everyone (a single account
+    // could otherwise empty the bank on purpose). It is retired once enough
+    // different parents have reported it; the rest wait for review in
+    // content_reports.
+    let removed = false;
+    if (bankQuestionId && saved) {
+      try {
+        if (await bankQuestionReporterCount(bankQuestionId) >= REPORTS_TO_RETIRE) { await retireQuestion(bankQuestionId); removed = true; }
+      } catch (err) { console.warn('  ⚠ Could not check or retire a reported question:', err instanceof Error ? err.message : err); }
+    }
     console.log(`[report] ${kind} ${reason}${removed ? ' — question retired from the bank' : ''}`);
     res.json({ ok: true, removed });
   } catch (err) {
-    res.status(500).json({ error: 'Could not send the report. Please try again.', detail: err instanceof Error ? err.message : String(err) });
+    res.status(500).json({ error: 'Could not send the report. Please try again.', detail: errorDetail(err) });
   }
 });
 
@@ -427,11 +497,11 @@ app.get('/api/sessions/:sessionId/parent-report', requireParent, async (req: Aut
     if (!saved) { res.status(404).json({ error: 'This result is unavailable.' }); return; }
     res.json({ parentReport: saved.report.parentReport ?? null, parentReportError: saved.report.parentReport ? null : 'The written note is not available for this result.' });
   } catch (err) {
-    res.status(500).json({ error: 'Could not load the written note.', detail: err instanceof Error ? err.message : String(err) });
+    res.status(500).json({ error: 'Could not load the written note.', detail: errorDetail(err) });
   }
 });
 
-app.post('/api/submit', requireParent, async (req: AuthRequest, res: Response) => {
+app.post('/api/submit', requireParent, aiQuota('submit'), async (req: AuthRequest, res: Response) => {
   const parsed = SubmissionSchema.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: 'Invalid submission', details: parsed.error.flatten() });
@@ -475,9 +545,18 @@ app.post('/api/submit', requireParent, async (req: AuthRequest, res: Response) =
     console.error('Scoring failed:', err);
     res.status(500).json({
       error: 'Scoring failed',
-      detail: err instanceof Error ? err.message : String(err),
+      detail: errorDetail(err),
     });
   }
+});
+
+// Last stop for errors Express raises itself (a request that is too large or
+// is not valid JSON). Without this, Express answers with an HTML page that can
+// include a stack trace.
+app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
+  const status = Number((err as { status?: number; statusCode?: number }).status ?? (err as { statusCode?: number }).statusCode) || 500;
+  if (status >= 500) console.error('  x unhandled error:', err);
+  res.status(status).json({ error: status === 413 ? 'That request is too large.' : status < 500 ? 'That request could not be read.' : 'Something went wrong. Please try again.' });
 });
 
 const port = Number(process.env.PORT || 4000);
