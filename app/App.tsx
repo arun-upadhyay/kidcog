@@ -15,6 +15,7 @@ import ThankYouScreen, { isThankYouPage } from './src/screens/ThankYouScreen';
 import LegalScreen, { isLegalPage } from './src/screens/LegalScreen';
 import AppMenu from './src/components/AppMenu';
 import IdleGuard from './src/components/IdleGuard';
+import GetAppBanner from './src/components/GetAppBanner';
 import { AuthProvider, useAuth } from './src/auth/AuthContext';
 import { deleteAccount, deleteChildProfile, fetchTest, getParentReport, listChildren, prefetchRound, saveChild, submitAnswers, updateChildAvatar } from './src/api';
 import { supabase } from './src/auth/supabase';
@@ -362,12 +363,15 @@ export default function App() {
   // Public pages Google Play and the App Store link to: no sign-in needed.
   const [legal, setLegal] = useState(isLegalPage);
   const home = () => { globalThis.history?.replaceState(null, '', '/'); setThankYou(false); setLegal(null); };
-  if (thankYou) return <ThankYouScreen onContinue={home} />;
-  if (legal) return <LegalScreen page={legal} onContinue={home} />;
-  return <AuthProvider><KidCogApp /></AuthProvider>;
+  const page = thankYou ? <ThankYouScreen onContinue={home} />
+    : legal ? <LegalScreen page={legal} onContinue={home} />
+    : <AuthProvider><KidCogApp /></AuthProvider>;
+  // On a phone's web browser, a small "Get the KidCog app" bar sits on top.
+  return <View style={styles.page}><GetAppBanner /><View style={styles.page}>{page}</View></View>;
 }
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
   root: { flex: 1, backgroundColor: colors.bg },
+  page: { flex: 1 },
 });
