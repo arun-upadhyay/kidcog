@@ -275,12 +275,12 @@
       "type": "mcq",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "What would you like to write about if you could create a fantasy world?",
+      "prompt": "If you could make up a fantasy world to write about, what would be in it?",
       "rubric": [
-        "3 - The idea includes magical things or fun adventures in a new world.",
-        "2 - The idea is related but lacks a clear fantasy element.",
-        "1 - The idea is very unclear or unrelated to a fantasy world.",
-        "0 - No idea about a fantasy world."
+        "3 - Picks a magical, imaginative setting.",
+        "2 - Picks a setting with a little magic.",
+        "1 - Picks an ordinary setting.",
+        "0 - Picks something that is not a fantasy idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -294,22 +294,22 @@
         },
         {
           "key": "b",
-          "text": "Just my house"
+          "text": "My homework"
         },
         {
           "key": "c",
-          "text": "A big tree"
+          "text": "A giant talking tree"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "inventing a creative setting",
+      "answerKey": "c",
       "optionScores": {
         "a": 3,
-        "b": 1,
-        "c": 0
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "Identifies a coherent theme for a fantasy world.",
-      "alignmentRationale": "This assesses their ability to conceptualize and describe a fantastic environment."
+      "skillFacet": "inventing a creative setting",
+      "targetEvidence": "chooses an imaginative fantasy setting.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "0c274a9b-3e48-4ee6-b8a1-1d9ed37107b5",
@@ -341,12 +341,12 @@
       "type": "mcq",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "What would you say if you could write a secret message to your favorite toy?",
+      "prompt": "If you could write a secret message to your favorite toy, what would you say?",
       "rubric": [
-        "3 - The message is kind and funny, showing a nice friendship with the toy.",
-        "2 - The message is related to the toy but not very clear or funny.",
-        "1 - The message is unclear or unrelated to the toy.",
-        "0 - No message or unrelated response."
+        "3 - Writes a warm, playful message to the toy.",
+        "2 - Writes a short friendly message.",
+        "1 - Writes a plain question.",
+        "0 - Writes a message with no imagination."
       ],
       "weight": 1,
       "ageBand": [
@@ -356,26 +356,26 @@
       "options": [
         {
           "key": "a",
-          "text": "You're the best, robot!"
+          "text": "Are you there?"
         },
         {
           "key": "b",
-          "text": "Are you there?"
+          "text": "You're the best, my favorite toy!"
         },
         {
           "key": "c",
           "text": "You're just a toy."
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "inventing a message",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
+        "a": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "Gives a coherent and friendly message directed to a toy.",
-      "alignmentRationale": "Assessing the ability to generate a short, focused message is key in creative writing."
+      "skillFacet": "inventing a message",
+      "targetEvidence": "chooses a warm, imaginative message.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "3a0c1963-6b8a-4350-8239-297a069534e3",
@@ -651,12 +651,12 @@
       "type": "mcq",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "What could you do to help a friend?",
+      "prompt": "Your friend is sad, so you want to write them a little note. What could your note say?",
       "rubric": [
-        "3 - Share a toy to play together.",
-        "2 - Say something nice to them.",
-        "1 - Just sit quietly.",
-        "0 - No idea given."
+        "3 - Writes a kind note that fits the friend's feelings.",
+        "2 - Writes a friendly note that is a bit general.",
+        "1 - Writes a note that does not fit the situation.",
+        "0 - Writes an unkind note."
       ],
       "weight": 1,
       "ageBand": [
@@ -666,26 +666,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Share a toy to play together."
+          "text": "I like cake."
         },
         {
           "key": "b",
-          "text": "Say something nice to them."
+          "text": "You are a great friend!"
         },
         {
           "key": "c",
-          "text": "Just sit quietly."
+          "text": "Go away."
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "communicating helpful actions",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "an idea for helping a friend that shows empathy or support",
-      "alignmentRationale": "This item assesses the child's ability to think of ways to help friends, promoting social skills."
+      "skillFacet": "writing a note by choice",
+      "targetEvidence": "chooses a kind message to write.",
+      "alignmentRationale": "Choosing to write a note to cheer someone up is writing for a real purpose."
     },
     {
       "id": "c780c4d8-5d8c-455c-b64f-2c50f282bbb3",
@@ -849,44 +849,24 @@
       "id": "c38bda3f-8dac-4240-aa74-a3da470db9f1",
       "age": 5,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "Which can be an animal in a story?",
+      "prompt": "Choose an animal to be the star of your own story. What is its name, and what happens to it?",
       "rubric": [
-        "3 - A wise owl who gives advice.",
-        "2 - A cat who likes to sleep.",
-        "1 - A fish swimming in water.",
-        "0 - A flower in the garden."
+        "3 - Names an animal character and tells what happens with several details or a reason, showing their own ideas.",
+        "2 - Gives an idea with one or two details.",
+        "1 - Gives a very short idea with no details.",
+        "0 - No answer or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "A wise owl who gives advice."
-        },
-        {
-          "key": "b",
-          "text": "A cat who likes to sleep."
-        },
-        {
-          "key": "c",
-          "text": "A fish swimming in water."
-        }
-      ],
-      "answerKey": "a",
       "skillFacet": "choosing an animal character",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "selects an engaging animal for storytelling",
-      "alignmentRationale": "Tests ability to choose interesting animal characters for stories."
+      "targetEvidence": "invents an animal character and a plot event.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "2a026f0b-c4e7-4599-8c0c-764712969242",
@@ -964,12 +944,12 @@
       "type": "mcq",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "Which poem idea sounds the best? A tree that dances, a frog that sings, or a cat that cooks?",
+      "prompt": "Which poem idea sounds the most fun to write about? Then tell your grown-up one line for your poem!",
       "rubric": [
-        "3 - The tree that dances is a fun and interesting idea for a poem.",
-        "2 - The frog that sings is good but less exciting than the dancing tree.",
-        "1 - The cat that cooks is the least interesting idea for a poem.",
-        "0 - No choice is made."
+        "3 - Picks any poem idea; every choice is a good starting idea.",
+        "2 - Picks an idea and needs help to say more.",
+        "1 - Unsure, but listens to the ideas.",
+        "0 - No answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -990,15 +970,15 @@
           "text": "a cat that cooks"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "pick a creative poem idea",
+      "answerKey": "b",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "Selects an idea for a poem that is imaginative.",
-      "alignmentRationale": "This question evaluates the child’s ability to discern which creative idea would make for an engaging poem."
+      "skillFacet": "pick a creative poem idea",
+      "targetEvidence": "chooses a poem idea and shares a line.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "48793905-fdbb-45be-8136-c0a21f733f19",
@@ -1027,44 +1007,24 @@
       "id": "aace6f51-3e31-473d-997e-09ceba8c454f",
       "age": 5,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "What story idea sounds most exciting? A rabbit in a race, a turtle on a skateboard, or a fish that flies?",
+      "prompt": "Make up an exciting story about an animal doing something surprising. What happens in your story?",
       "rubric": [
-        "3 - The rabbit in a race is a very fun story idea.",
-        "2 - The turtle on a skateboard is interesting but less exciting than the rabbit.",
-        "1 - The fish that flies is the least engaging idea for a story.",
-        "0 - No choice is made."
+        "3 - Tells a story idea with several details or a reason, showing their own ideas.",
+        "2 - Gives an idea with one or two details.",
+        "1 - Gives a very short idea with no details.",
+        "0 - No answer or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "a rabbit in a race"
-        },
-        {
-          "key": "b",
-          "text": "a turtle on a skateboard"
-        },
-        {
-          "key": "c",
-          "text": "a fish that flies"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "choose an exciting story idea",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "Identifies an imaginative story idea that seems exciting.",
-      "alignmentRationale": "This encourages the child to think about fun and engaging content while selecting a story framework."
+      "skillFacet": "inventing an exciting story idea",
+      "targetEvidence": "invents a story idea with a surprising event.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "0defee60-597b-466b-a5b1-0fc2f6fa7a60",
@@ -1096,12 +1056,12 @@
       "type": "mcq",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "Which story would you choose? A dog that dreams, a frog who helps, or a bear that sings?",
+      "prompt": "Which story would you like to write? Then tell your grown-up what happens first!",
       "rubric": [
-        "3 - A dog that dreams is the most creative and fun story idea.",
-        "2 - A frog who helps is good but less exciting than the dreaming dog.",
-        "1 - A bear that sings is the least engaging choice for a story.",
-        "0 - No choice is made."
+        "3 - Picks any story idea; every choice is a good starting idea.",
+        "2 - Picks an idea and needs help to say more.",
+        "1 - Unsure, but listens to the ideas.",
+        "0 - No answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1122,15 +1082,15 @@
           "text": "a bear that sings"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "select a creative story idea",
+      "answerKey": "c",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "Chooses a distinct and imaginative story concept.",
-      "alignmentRationale": "This encourages selection of unique characters that can inspire creative narratives."
+      "skillFacet": "select a creative story idea",
+      "targetEvidence": "chooses a story idea and starts it.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "8aba8707-c132-4b4a-9dbe-ed623ab4b1fe",
@@ -1164,10 +1124,10 @@
       "format": "explanation",
       "prompt": "What could be a silly animal in a story?",
       "rubric": [
-        "3 - An animal that is very funny and creative.",
-        "2 - An animal that is somewhat funny but not unique.",
-        "1 - An animal that is not funny at all.",
-        "0 - No animal mentioned."
+        "3 - Picks an animal doing something funny and unexpected.",
+        "2 - Picks an animal that is a little unusual.",
+        "1 - Picks an ordinary animal.",
+        "0 - No answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1177,26 +1137,26 @@
       "options": [
         {
           "key": "a",
-          "text": "A cat that wears shoes"
+          "text": "A fish"
         },
         {
           "key": "b",
-          "text": "A fish"
+          "text": "A cat that wears shoes"
         },
         {
           "key": "c",
           "text": "A dog that doesn't bark"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "character creation and humor",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 2
       },
-      "targetEvidence": "The child identifies a unique and funny animal character.",
-      "alignmentRationale": "This question tests the ability to create a character idea that is humorous and engaging for a story, isolating character creation."
+      "skillFacet": "character creation and humor",
+      "targetEvidence": "chooses the most silly, unexpected animal.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "41cc5934-f2f0-40dc-b323-e4ae0ebea5c5",
@@ -1253,10 +1213,10 @@
       "format": "explanation",
       "prompt": "What adventure would you write about a superhero?",
       "rubric": [
-        "3 - A fun story idea with great details about the superhero's adventure.",
-        "2 - A good idea but not very detailed about the adventure.",
-        "1 - A very simple idea or unclear story.",
-        "0 - No story idea shared."
+        "3 - Picks a real story idea with something happening.",
+        "2 - Picks an idea with a little story in it.",
+        "1 - Picks a sentence that is not a story.",
+        "0 - No answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1277,15 +1237,15 @@
           "text": "A sad story about a superhero"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "inventing an adventure concept",
+      "answerKey": "c",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "Generates a creative story idea centered on a superhero's journey.",
-      "alignmentRationale": "This question prompts the child to create a narrative focused on a superhero, evaluating their story-generating capabilities."
+      "skillFacet": "inventing an adventure concept",
+      "targetEvidence": "chooses a story idea with events.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "37cd39d7-7455-4ef9-9dc7-cd2b8c04135d",
@@ -1449,12 +1409,12 @@
       "type": "mcq",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "What type of poem would you like to write about stars?",
+      "prompt": "What kind of poem would you like to write about stars?",
       "rubric": [
-        "3 - A clear and creative idea for a star poem, like 'twinkling stars'.",
-        "2 - A good idea that relates to stars, but less detailed, like 'stars are bright'.",
-        "1 - A very simple idea or not really about stars.",
-        "0 - No idea suggested."
+        "3 - Picks any poem idea; every choice is a good starting idea.",
+        "2 - Picks an idea and needs help to say more.",
+        "1 - Unsure, but listens to the ideas.",
+        "0 - No answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1472,18 +1432,18 @@
         },
         {
           "key": "c",
-          "text": "A sad poem"
+          "text": "A sad poem about a lonely star"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "inventing a poetic idea",
+      "answerKey": "b",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "Generates a creative idea for a poem with a specific theme.",
-      "alignmentRationale": "This question requires the child to think of poetic vocabulary related to stars, showcasing their ability to create original content."
+      "skillFacet": "inventing a poetic idea",
+      "targetEvidence": "chooses a poem idea about stars.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "53419edc-9806-4160-b838-5b1cb3848b64",
@@ -1492,12 +1452,12 @@
       "type": "mcq",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "If you could write a fun letter to a friend about a magic tree, what would you tell them?",
+      "prompt": "If you wrote a fun letter to a friend about a magic tree, what would you tell them?",
       "rubric": [
-        "3 - Shares a clear and creative idea about what the tree does or says.",
-        "2 - Offers a creative idea, but details are limited.",
-        "1 - Idea is unclear or very simple without excitement.",
-        "0 - No valid idea or response."
+        "3 - Shares a magical, imaginative idea about the tree.",
+        "2 - Shares a small magic detail.",
+        "1 - Shares an ordinary fact that is not magic.",
+        "0 - No answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1518,15 +1478,15 @@
           "text": "It talks and tells stories!"
         }
       ],
-      "answerKey": "c",
-      "skillFacet": "inventing a message",
+      "answerKey": "a",
       "optionScores": {
-        "a": 2,
+        "a": 3,
         "b": 1,
         "c": 3
       },
-      "targetEvidence": "Generates a creative idea focusing on the magic tree and what makes it special.",
-      "alignmentRationale": "The question prompts children to think creatively about their message, which emphasizes the skill of generating original content through choice."
+      "skillFacet": "inventing a message",
+      "targetEvidence": "chooses an imaginative detail for the letter.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "42e85773-3d71-43e6-af20-8449709a29cc",
@@ -1647,12 +1607,12 @@
       "type": "mcq",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "What type of message would you write to a character from your favorite book?",
+      "prompt": "What message would you write to a character from your favorite book?",
       "rubric": [
-        "3 - Clearly expresses a thoughtful and creative message to the character.",
-        "2 - Shares an idea, but lacks depth or interesting thoughts.",
-        "1 - Simple message that does not fully connect to the character.",
-        "0 - No valid idea or response."
+        "3 - Writes a curious or creative message to the character.",
+        "2 - Writes a friendly but general message.",
+        "1 - Writes a very plain message.",
+        "0 - No answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1673,15 +1633,15 @@
           "text": "Can I be in your story?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "inventing a message",
+      "answerKey": "c",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "Presents a message that shows connection to a book character with creativity.",
-      "alignmentRationale": "The task invites children to think critically about characters and their stories, providing insight into their reflective creativity."
+      "skillFacet": "inventing a message",
+      "targetEvidence": "chooses a creative, engaged message.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "8a3785b8-c9ba-44be-8477-e5d1d23037b0",
@@ -1851,12 +1811,12 @@
       "type": "mcq",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "You want to write a poem about friendship. What should it be about?",
+      "prompt": "You want to write a poem about friendship. What could it be about?",
       "rubric": [
-        "3 - A theme of sharing or helping a friend",
-        "2 - A theme of fun times with a friend",
-        "1 - A general idea about friendship",
-        "0 - No clear theme provided"
+        "3 - Picks a topic about friendship, like caring or silly fun.",
+        "2 - Picks a topic loosely linked to friendship.",
+        "1 - Picks a topic that is not about friendship.",
+        "0 - No answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1877,58 +1837,38 @@
           "text": "Being alone"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choosing a theme for writing",
+      "answerKey": "b",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 0
+        "b": 3,
+        "c": 1
       },
-      "targetEvidence": "Selects a clear theme related to friendship for the poem.",
-      "alignmentRationale": "The task requires choosing a clear thematic direction, aligning with original idea generation."
+      "skillFacet": "choosing a theme for writing",
+      "targetEvidence": "chooses a topic that fits a friendship poem.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "ef4a356f-5b09-45d1-a1e5-6c4f603bf040",
       "age": 7,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "You want to invent a new game. What should the game use?",
+      "prompt": "Invent a brand new game. Tell or write the rules: how do you play, and how do you win?",
       "rubric": [
-        "3 - A unique and fun activity",
-        "2 - A simple or familiar activity",
-        "1 - An unclear or boring idea",
-        "0 - No clear idea given"
+        "3 - Explains game rules in order with several details or a reason, showing their own ideas.",
+        "2 - Gives an idea with one or two details.",
+        "1 - Gives a very short idea with no details.",
+        "0 - No answer or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Jumping and running"
-        },
-        {
-          "key": "b",
-          "text": "Just sitting quietly"
-        },
-        {
-          "key": "c",
-          "text": "Talking and whispering"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "inventing an idea",
-      "optionScores": {
-        "a": 3,
-        "b": 0,
-        "c": 2
-      },
-      "targetEvidence": "Generates a creative and unique idea for a game.",
-      "alignmentRationale": "This question assesses ability to create a novel game concept by selecting a unique activity."
+      "skillFacet": "writing instructions for an invention",
+      "targetEvidence": "writes or tells clear rules for an invented game.",
+      "alignmentRationale": "Writing rules for a game they invent is self-chosen writing; any kind of game is welcome."
     },
     {
       "id": "5c5a8b9a-c812-4ddc-8a67-facf8bf57b7a",
@@ -1960,12 +1900,12 @@
       "type": "mcq",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "If you could write a letter to an animal, what kind of animal would you write to?",
+      "prompt": "If you could write a letter to an animal, which animal would you write to?",
       "rubric": [
-        "3 - A specific and interesting animal",
-        "2 - A common animal",
-        "1 - An unclear choice of animal",
-        "0 - No clear animal mentioned"
+        "3 - Picks any animal; every choice is a good starting idea.",
+        "2 - Picks an idea and needs help to say more.",
+        "1 - Unsure, but listens to the ideas.",
+        "0 - No answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1986,15 +1926,15 @@
           "text": "A dog"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "selecting a subject for writing",
+      "answerKey": "b",
       "optionScores": {
         "a": 3,
-        "b": 1,
-        "c": 2
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "Chooses a clear and imaginative animal for the letter.",
-      "alignmentRationale": "This question tests ability to choose a creative subject for expressive writing."
+      "skillFacet": "selecting a subject for writing",
+      "targetEvidence": "chooses an animal to write a letter to.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "4d3d282c-65f3-45dc-9f6b-3f116dbfa7ec",
@@ -2155,44 +2095,24 @@
       "id": "591dcb17-cdc3-4f0e-80bd-d66d6985f116",
       "age": 7,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "You want to write a short poem about a season. Which season do you choose?",
+      "prompt": "You want to write a short poem about a season. Which season would you pick, and what would your poem say?",
       "rubric": [
-        "3 - Chooses a season like 'spring' and explains why with good detail.",
-        "2 - Chooses a season but gives a less clear reason (like 'I like it').",
-        "1 - Picks a season but doesn’t explain anything about it.",
-        "0 - Does not choose or explain a season."
+        "3 - Picks a season and shares poem ideas with several details or a reason, showing their own ideas.",
+        "2 - Gives an idea with one or two details.",
+        "1 - Gives a very short idea with no details.",
+        "0 - No answer or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Spring"
-        },
-        {
-          "key": "b",
-          "text": "Summer"
-        },
-        {
-          "key": "c",
-          "text": "Winter"
-        }
-      ],
-      "answerKey": "a",
       "skillFacet": "selecting themes for writing",
-      "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
-      },
-      "targetEvidence": "The child selects a season and provides a related reason for their choice.",
-      "alignmentRationale": "This task requires children to identify a theme, helping to demonstrate motivation to write."
+      "targetEvidence": "chooses a season and shares ideas for a poem.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "dd26b440-a2d4-4344-95d9-f842806de174",
@@ -2221,44 +2141,24 @@
       "id": "b81f8aaa-ca04-441e-917a-23194dbb1040",
       "age": 7,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "If you could create a new character for a story, what would they be like?",
+      "prompt": "Make up a new character for a story. Who are they, what do they look like, and what do they love to do?",
       "rubric": [
-        "3 - Creates a unique character with special traits or actions.",
-        "2 - Offers a character but with less interesting details.",
-        "1 - Suggests a character name but no traits or actions.",
-        "0 - Does not provide any character idea."
+        "3 - Describes a character with several details or a reason, showing their own ideas.",
+        "2 - Gives an idea with one or two details.",
+        "1 - Gives a very short idea with no details.",
+        "0 - No answer or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "A brave dragon"
-        },
-        {
-          "key": "b",
-          "text": "A girl"
-        },
-        {
-          "key": "c",
-          "text": "A cat"
-        }
-      ],
-      "answerKey": "a",
       "skillFacet": "inventing characters for stories",
-      "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
-      },
-      "targetEvidence": "The child generates a unique character idea with clear traits.",
-      "alignmentRationale": "This task focuses on character invention, a core component of writing stories."
+      "targetEvidence": "invents and describes an original character.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "0fa3e1dc-9112-4615-9ca1-9e987b53ddbe",
@@ -2379,12 +2279,12 @@
       "type": "mcq",
       "trait": "self_motivated_writing",
       "format": "explanation",
-      "prompt": "You want to write a poem. What should your poem be about?",
+      "prompt": "You want to write a poem. What could your poem be about?",
       "rubric": [
-        "3 - About something you love, like pets or games; it shows passion.",
-        "2 - About things around you, like trees or the sky; it has some feeling.",
-        "1 - About something random; it doesn’t have a clear idea.",
-        "0 - It doesn’t say what to write about."
+        "3 - Picks any poem topic; every choice is a good starting idea.",
+        "2 - Picks an idea and needs help to say more.",
+        "1 - Unsure, but listens to the ideas.",
+        "0 - No answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -2394,7 +2294,7 @@
       "options": [
         {
           "key": "a",
-          "text": "My favorite pet 🐶"
+          "text": "An animal I love"
         },
         {
           "key": "b",
@@ -2402,18 +2302,18 @@
         },
         {
           "key": "c",
-          "text": "A random item"
+          "text": "My favorite place"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choosing a topic for writing",
+      "answerKey": "c",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "Child identifies a topic that shows personal interest.",
-      "alignmentRationale": "Choosing a meaningful topic reflects intrinsic motivation to write."
+      "skillFacet": "choosing a topic for writing",
+      "targetEvidence": "chooses a topic for a poem.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     },
     {
       "id": "675e627c-5229-40f6-8889-b275bd4d30c0",
@@ -2447,10 +2347,10 @@
       "format": "explanation",
       "prompt": "What kind of story do you enjoy telling the most?",
       "rubric": [
-        "3 - A fun adventure story; it’s exciting and creative!",
-        "2 - A fun story about friends; it has some good moments.",
-        "1 - A simple story without much detail; it feels plain.",
-        "0 - I don't like making up stories."
+        "3 - Picks any kind of story; every choice is a good starting idea.",
+        "2 - Picks an idea and needs help to say more.",
+        "1 - Unsure, but listens to the ideas.",
+        "0 - No answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -2460,26 +2360,26 @@
       "options": [
         {
           "key": "a",
-          "text": "An adventure story!"
+          "text": "An adventure story"
         },
         {
           "key": "b",
-          "text": "A funny story."
+          "text": "A funny story"
         },
         {
           "key": "c",
-          "text": "A boring story."
+          "text": "A spooky story"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "choosing a story type",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "Child identifies a genre they enjoy writing about.",
-      "alignmentRationale": "Choosing a preferred story style shows intrinsic motivation."
+      "skillFacet": "choosing a story type",
+      "targetEvidence": "names a kind of story they enjoy telling.",
+      "alignmentRationale": "Inventing story or poem ideas by choice is the heart of self-motivated writing; any idea is welcome."
     }
   ]
 }

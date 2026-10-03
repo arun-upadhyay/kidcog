@@ -31,12 +31,12 @@
       "type": "mcq",
       "trait": "cause_effect",
       "format": "explanation",
-      "prompt": "If you turn off a fan, what happens in the room?",
+      "prompt": "You turn off a fan. What happens?",
       "rubric": [
-        "3 - It gets warmer without the fan.",
-        "2 - It stays the same for a little.",
-        "1 - The fan will break.",
-        "0 - The fan spins slowly."
+        "3 - Chooses 'The wind from the fan stops'",
+        "2 - Chooses it after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses rain or lights, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -46,26 +46,26 @@
       "options": [
         {
           "key": "a",
-          "text": "It gets warmer without the fan."
+          "text": "It starts to rain"
         },
         {
           "key": "b",
-          "text": "It cools down for a while."
+          "text": "The wind from the fan stops"
         },
         {
           "key": "c",
-          "text": "The light turns off."
+          "text": "The lights turn off"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "predicting temperature changes",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
+        "a": 0,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "identifies a clear consequence of the fan being turned off",
-      "alignmentRationale": "The question focuses on identifying how the temperature will change based on the operation of the fan."
+      "skillFacet": "predicting an effect",
+      "targetEvidence": "Links turning off a fan to the breeze stopping.",
+      "alignmentRationale": "Links an action to its direct effect."
     },
     {
       "id": "2368b9ca-491a-44cc-82d8-59d1fe78515e",
@@ -292,12 +292,12 @@
       "type": "mcq",
       "trait": "cause_effect",
       "format": "explanation",
-      "prompt": "If it rains, what happens to the ground?",
+      "prompt": "It rains a lot. What happens to the ground?",
       "rubric": [
-        "3 - The ground gets wet.",
-        "2 - The ground has some water on it.",
-        "1 - The ground might dry.",
-        "0 - I don’t know."
+        "3 - Chooses 'It gets wet'",
+        "2 - Chooses wet after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses dry or dusty, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -307,26 +307,26 @@
       "options": [
         {
           "key": "a",
-          "text": "The ground gets wet."
+          "text": "It gets dry"
         },
         {
           "key": "b",
-          "text": "The ground gets dry."
+          "text": "It gets dusty"
         },
         {
           "key": "c",
-          "text": "The ground changes color."
+          "text": "It gets wet"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "detecting environmental change from weather",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
+        "a": 0,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "understands that rain causes wet ground",
-      "alignmentRationale": "This item tests the child's understanding of weather effects on the environment, linking the cause to an observable outcome."
+      "skillFacet": "predicting an effect",
+      "targetEvidence": "Links rain to wet ground.",
+      "alignmentRationale": "Links a cause to its effect."
     },
     {
       "id": "0f5ed164-8afc-4efc-9beb-8b09c31ba16c",
@@ -599,12 +599,12 @@
       "type": "mcq",
       "trait": "cause_effect",
       "format": "explanation",
-      "prompt": "If a toy is wet from the rain, what will happen if you dry it?",
+      "prompt": "A toy is wet from the rain. You leave it in the warm sun. What happens?",
       "rubric": [
-        "3 - You correctly say it will be dry or ready to play with.",
-        "2 - You mention something about it getting better but not fully clear.",
-        "1 - You say something unrelated to drying.",
-        "0 - You don’t answer or answer nothing relevant."
+        "3 - Chooses 'It dries' and mentions the warm sun",
+        "2 - Chooses it dries without explaining",
+        "1 - Gives a partly related answer",
+        "0 - Chooses wetter or blue, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -614,26 +614,26 @@
       "options": [
         {
           "key": "a",
-          "text": "It will be dry."
+          "text": "It gets wetter"
         },
         {
           "key": "b",
-          "text": "It will be heavy."
+          "text": "It dries"
         },
         {
           "key": "c",
-          "text": "It will break."
+          "text": "It turns blue"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "connect change to outcome",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
+        "a": 0,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "Identifies drying as a way to change the toy's wet condition.",
-      "alignmentRationale": "Tests understanding of how drying changes the state of a wet object."
+      "skillFacet": "predicting an effect",
+      "targetEvidence": "Links sun warmth to drying.",
+      "alignmentRationale": "Links a cause to its effect."
     },
     {
       "id": "8b835672-d55a-4db0-8cf0-e44d90988efd",
@@ -751,12 +751,12 @@
       "type": "mcq",
       "trait": "cause_effect",
       "format": "explanation",
-      "prompt": "If you close a window on a hot day, what happens inside the room?",
+      "prompt": "On a hot, windy day, you open a window. What happens in the room?",
       "rubric": [
-        "3 - It gets cooler or keeps cool air in.",
-        "2 - The child mentions something but not cooling clearly.",
-        "1 - The child gives an unrelated response.",
-        "0 - The child does not respond."
+        "3 - Chooses 'You feel a breeze'",
+        "2 - Chooses the breeze after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses darker room or lights off, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -766,26 +766,26 @@
       "options": [
         {
           "key": "a",
-          "text": "It gets cooler."
+          "text": "The room gets darker"
         },
         {
           "key": "b",
-          "text": "It gets brighter."
+          "text": "You feel a breeze"
         },
         {
           "key": "c",
-          "text": "It feels humid."
+          "text": "The lights turn off"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "connecting action to effect",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
+        "a": 0,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "the child associates closing the window with the temperature change",
-      "alignmentRationale": "This is a clear cause-effect link based on action and feeling."
+      "skillFacet": "predicting an effect",
+      "targetEvidence": "Predicts that opening a window lets in air.",
+      "alignmentRationale": "Links an action to its effect."
     },
     {
       "id": "e1d44c14-c815-4b7a-b015-cfe1a8b0931d",
@@ -1520,12 +1520,12 @@
       "type": "mcq",
       "trait": "cause_effect",
       "format": "explanation",
-      "prompt": "If the sun comes out after the rain, what might you see?",
+      "prompt": "The sun comes out while it is still raining. What special thing might you see in the sky?",
       "rubric": [
-        "3 - You choose that a rainbow could appear.",
-        "2 - You choose that it will be sunny.",
-        "1 - You say the ground is still wet.",
-        "0 - You do not connect any ideas."
+        "3 - Chooses 'A rainbow'",
+        "2 - Chooses rainbow after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses snow or stars, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1535,26 +1535,26 @@
       "options": [
         {
           "key": "a",
-          "text": "A rainbow could appear"
+          "text": "Snowflakes"
         },
         {
           "key": "b",
-          "text": "It will be sunny"
+          "text": "A rainbow"
         },
         {
           "key": "c",
-          "text": "The trees might sway"
+          "text": "Lots of stars"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "predicting visual changes after weather",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "connects a weather pattern with a potential visual outcome",
-      "alignmentRationale": "This question connects the change in weather to its visual effect, revealing comprehension of cause and effect."
+      "skillFacet": "predicting an effect",
+      "targetEvidence": "Links sun and rain together to a rainbow.",
+      "alignmentRationale": "Links two causes to their effect."
     },
     {
       "id": "eaf1b79d-fd35-4f89-8ab4-08df1bec3062",
@@ -2002,12 +2002,12 @@
       "type": "mcq",
       "trait": "cause_effect",
       "format": "explanation",
-      "prompt": "A bee buzzed near a flower, and then the flower opened up. What caused the flower to open?",
+      "prompt": "A flower was closed all night. In the morning it opened up. What most likely made it open?",
       "rubric": [
-        "3 - Identifies the bee as the cause of the flower opening.",
-        "2 - Suggests something related to flowers or bees, but not precise.",
-        "1 - Gives a vague response like 'nature.'",
-        "0 - States something unrelated."
+        "3 - Chooses 'Morning sunlight'",
+        "2 - Chooses sunlight after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses the dog or the moon, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2017,26 +2017,26 @@
       "options": [
         {
           "key": "a",
-          "text": "The bee buzzing"
+          "text": "A dog barking"
         },
         {
           "key": "b",
-          "text": "The sun shining"
+          "text": "The moon coming out"
         },
         {
           "key": "c",
-          "text": "The wind blowing"
+          "text": "Morning sunlight"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "connect event to outcome",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
+        "a": 0,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "child identifies bee as the cause for the flower opening",
-      "alignmentRationale": "This tests the ability to connect an action (bee buzzing) to a result (flower opening)."
+      "skillFacet": "finding a cause",
+      "targetEvidence": "Identifies sunlight as the cause.",
+      "alignmentRationale": "Works backward from an effect to its cause."
     },
     {
       "id": "026b36e4-48e2-4929-86fa-e130283145c7",
@@ -2246,12 +2246,12 @@
       "type": "mcq",
       "trait": "cause_effect",
       "format": "explanation",
-      "prompt": "If you change the weather from sunny to rainy, what will happen?",
+      "prompt": "The weather changes from sunny to rainy. What will people most likely do?",
       "rubric": [
-        "3 - People might use umbrellas and wear raincoats to stay dry.",
-        "2 - It could get colder outside.",
-        "1 - The sun will hide.",
-        "0 - Nothing will change."
+        "3 - Chooses umbrellas and links it to the rain",
+        "2 - Chooses umbrellas but cannot explain",
+        "1 - Chooses sun hats",
+        "0 - Chooses nothing different or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2261,26 +2261,26 @@
       "options": [
         {
           "key": "a",
-          "text": "People might use umbrellas."
+          "text": "Put on sun hats"
         },
         {
           "key": "b",
-          "text": "It could get colder."
+          "text": "Nothing different"
         },
         {
           "key": "c",
-          "text": "Nothing will change."
+          "text": "Open their umbrellas"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "identify the effect of a condition change",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "Recognizes that changing from sunny to rainy affects how people dress.",
-      "alignmentRationale": "This question evaluates the understanding of how a change in weather conditions leads to specific human responses."
+      "skillFacet": "predicting an effect",
+      "targetEvidence": "Predicts how people respond to rain.",
+      "alignmentRationale": "Links a change in weather to what follows."
     },
     {
       "id": "c0a465ec-efe1-4893-ad4e-c398d1d2d717",
@@ -2530,21 +2530,21 @@
       "type": "open",
       "trait": "cause_effect",
       "format": "explanation",
-      "prompt": "What happens if a bike stops going downhill?",
+      "prompt": "A bike rolls down a hill without anyone pedalling. What happens to its speed? Why?",
       "rubric": [
-        "3 - The bike will slow down or stop, showing understanding of the effect.",
-        "2 - The bike might go slower, linking some changes.",
-        "1 - The bike keeps going, showing unclear understanding.",
-        "0 - The answer does not relate to the action of the bike."
+        "3 - Says it goes faster and explains the hill pulls or pushes it down",
+        "2 - Says it goes faster but gives no reason",
+        "1 - Gives an unclear or wrong effect",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "skillFacet": "linking movement to forces",
-      "targetEvidence": "child connects the action (stopping going downhill) to the effect (slowing down or stopping)",
-      "alignmentRationale": "This question tests understanding of how movements are affected by changes in the environment, linking cause and effect."
+      "skillFacet": "explaining an effect",
+      "targetEvidence": "Explains what happens to speed on a hill and why.",
+      "alignmentRationale": "Asks for an effect and its cause."
     },
     {
       "id": "14e9efa0-1c79-4418-a1e3-3c8a21e71877",

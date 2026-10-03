@@ -28,6 +28,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { TRAIT_ORDER, type TraitKey } from './traits.js';
 import type { GeneratedQuestion } from './generatedQuestions.js';
+import { validateQuestionContent } from './questionQuality.js';
 
 export const QUESTIONS_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'questions');
 
@@ -36,23 +37,33 @@ export type QuestionFile = { category: TraitKey; questions: FileQuestion[] };
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-/** Why an entry can't be used, or null if it is fine. Kept deliberately simple. */
-function problemWith(q: FileQuestion, category: TraitKey): string | null {
+/** Why an entry cannot be shown to a child, or null if it is safe to load. */
+export function validateFileQuestion(q: FileQuestion, category: TraitKey): string | null {
   if (!q || typeof q !== 'object') return 'not a question';
   if (typeof q.id !== 'string' || !UUID.test(q.id)) return 'missing or invalid "id"';
   if (!Number.isInteger(q.age) || q.age < 4 || q.age > 12) return '"age" must be a whole number from 4 to 12';
   if (q.trait !== category) return `"trait" should be "${category}"`;
   if (typeof q.prompt !== 'string' || q.prompt.trim().length < 5) return 'missing "prompt"';
+  const contentProblem = validateQuestionContent(q);
+  if (contentProblem) return contentProblem;
+  const rubric = (q as { rubric?: unknown }).rubric;
+  if (!Array.isArray(rubric) || rubric.length !== 4 || !rubric.every((band, index) => typeof band === 'string' && band.startsWith(`${3 - index} - `))) {
+    return '"rubric" must contain the four bands 3, 2, 1, 0 in order';
+  }
   if (q.type === 'mcq') {
-    const options = (q as { options?: Array<{ key: string }> }).options;
-    const answerKey = (q as { answerKey?: string }).answerKey;
-    if (!Array.isArray(options) || options.length < 2) return 'multiple choice needs at least 2 options';
+    const options = q.options;
+    const answerKey = q.answerKey;
+    if (!Array.isArray(options) || options.length < 2 || options.length > 4) return 'multiple choice needs 2 to 4 options';
+    if (new Set(options.map(o => o.key)).size !== options.length) return 'multiple-choice option keys must be unique';
     if (!options.some(o => o.key === answerKey)) return '"answerKey" does not match any option';
+    const scores = q.optionScores;
+    if (!scores || options.some(o => !Number.isInteger(scores[o.key]) || scores[o.key]! < 0 || scores[o.key]! > 3)) return 'every option needs an "optionScores" value from 0 to 3';
+    if (scores[answerKey] !== 3) return 'the answer key must score 3 points';
     return null;
   }
   if (q.type === 'open') {
-    const rubric = (q as { rubric?: unknown }).rubric;
-    if (!Array.isArray(rubric) || rubric.length < 2) return 'a spoken question needs a "rubric" with at least 2 levels';
+    if ('options' in q && q.options != null) return 'a spoken question must not contain choices';
+    if ('answerKey' in q && q.answerKey != null) return 'a spoken question must not contain an answer key';
     return null;
   }
   return '"type" must be "mcq" or "open"';
@@ -95,7 +106,7 @@ function load() {
     const seen = new Set<string>();
     (file.questions ?? []).forEach((entry, i) => {
       if (entry?.disabled) return;
-      const problem = problemWith(entry, category) ?? (seen.has(entry.id) ? 'the same "id" is used twice' : null);
+      const problem = validateFileQuestion(entry, category) ?? (seen.has(entry.id) ? 'the same "id" is used twice' : null);
       if (problem) { problems.push(`${name} #${i + 1}: ${problem}`); return; }
       seen.add(entry.id);
       const { age, reviewed: _reviewed, disabled: _disabled, ...question } = entry;

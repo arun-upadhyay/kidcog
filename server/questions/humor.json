@@ -140,12 +140,12 @@
       "type": "mcq",
       "trait": "humor",
       "format": "explanation",
-      "prompt": "What did the frog say to the fly?",
+      "prompt": "Here is a joke! What game does a frog love to play?",
       "rubric": [
-        "3 - The answer includes a playful and silly twist related to the fly.",
-        "2 - An answer that's somewhat funny but not as clever.",
-        "1 - A basic response that doesn’t convey humor.",
-        "0 - No answer or unrelated response."
+        "3 - Picks the punchline that plays on a jumping frog and the game 'leapfrog'.",
+        "2 - Picks an answer that is a bit silly but misses the wordplay.",
+        "1 - Picks a plain, ordinary answer with no joke.",
+        "0 - Picks an unrelated answer or does not answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -155,26 +155,26 @@
       "options": [
         {
           "key": "a",
-          "text": "You look fly today!"
+          "text": "Hide and seek."
         },
         {
           "key": "b",
-          "text": "Jump around!"
+          "text": "Sleeping."
         },
         {
           "key": "c",
-          "text": "Buzz off!"
+          "text": "Leapfrog!"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "creates a light joke",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "provides a playful response that forms a gentle joke.",
-      "alignmentRationale": "This prompt aims to elicit original humor through playful word association."
+      "skillFacet": "recognizes a pun",
+      "targetEvidence": "chooses the punchline that plays on 'leapfrog'.",
+      "alignmentRationale": "Young children know the game leapfrog, so the joke lands at age 4."
     },
     {
       "id": "95a8b48b-f644-4458-9184-6b2540292d4d",
@@ -183,12 +183,12 @@
       "type": "mcq",
       "trait": "humor",
       "format": "explanation",
-      "prompt": "What do you call a funny rabbit?",
+      "prompt": "What do you call a rabbit that makes everyone laugh?",
       "rubric": [
-        "3 - The answer connects 'hare' to 'hair', showing clever wordplay.",
-        "2 - The answer connects to bunnies or something funny but not wordplay.",
-        "1 - References a rabbit without being funny.",
-        "0 - No answer or unrelated response."
+        "3 - Picks the punchline that plays on the rhyme 'funny bunny'.",
+        "2 - Picks an answer that is a bit silly but misses the wordplay.",
+        "1 - Picks a plain, ordinary answer with no joke.",
+        "0 - Picks an unrelated answer or does not answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -198,26 +198,26 @@
       "options": [
         {
           "key": "a",
-          "text": "A hare-raising comedian!"
+          "text": "A hopping animal."
         },
         {
           "key": "b",
-          "text": "A hopping animal!"
+          "text": "A funny bunny!"
         },
         {
           "key": "c",
-          "text": "A funny bunny!"
+          "text": "A brown rabbit."
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognizes a pun",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
+        "a": 1,
+        "b": 3,
+        "c": 1
       },
-      "targetEvidence": "responds with a joke that plays on the sound of a word or its meaning.",
-      "alignmentRationale": "This task isolates subtle humor through pun recognition rather than simple association."
+      "skillFacet": "enjoys a silly rhyme",
+      "targetEvidence": "chooses the rhyming, silly name.",
+      "alignmentRationale": "Rhyme play is the kind of word humor 4-year-olds enjoy and understand."
     },
     {
       "id": "f46b612e-26c6-49f3-a9bb-55747ba6e11d",
@@ -226,12 +226,12 @@
       "type": "mcq",
       "trait": "humor",
       "format": "explanation",
-      "prompt": "What do you call a bear with no ears?",
+      "prompt": "Here is a silly joke! What do you call a dinosaur that is fast asleep?",
       "rubric": [
-        "3 - The answer reveals clever wordplay with 'B' and 'ear.'",
-        "2 - The answer reflects some cleverness, but less humor.",
-        "1 - A basic answer that doesn't show humor.",
-        "0 - No answer or unrelated response."
+        "3 - Picks the punchline that plays on 'dinosaur' and 'snore'.",
+        "2 - Picks an answer that is a bit silly but misses the wordplay.",
+        "1 - Picks a plain, ordinary answer with no joke.",
+        "0 - Picks an unrelated answer or does not answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -241,26 +241,26 @@
       "options": [
         {
           "key": "a",
-          "text": "B!"
+          "text": "A green dinosaur."
         },
         {
           "key": "b",
-          "text": "A bear with no sound!"
+          "text": "A dino-snore!"
         },
         {
           "key": "c",
-          "text": "A funny animal!"
+          "text": "A dinosaur in a park."
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognizes a pun",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
+        "a": 1,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "responds creatively involving a pun about definition.",
-      "alignmentRationale": "This tests the understanding of jokes based on wordplay."
+      "skillFacet": "recognizes a pun",
+      "targetEvidence": "chooses the punchline that plays on 'dino-snore'.",
+      "alignmentRationale": "A sound-based pun a 4-year-old can hear without needing to spell."
     },
     {
       "id": "9cf2814f-ae68-46f2-a301-c1034ab653d8",
@@ -688,12 +688,12 @@
       "type": "mcq",
       "trait": "humor",
       "format": "explanation",
-      "prompt": "What do you call a cow in a funny hat?",
+      "prompt": "Here is a joke! What do you call a cow that plays music?",
       "rubric": [
-        "3 - Udderly ridiculous!",
-        "2 - Moo-sical hat!",
-        "1 - Funny cow!",
-        "0 - I don’t know."
+        "3 - Picks the punchline that plays on 'moo' and 'musician'.",
+        "2 - Picks an answer that is a bit silly but misses the wordplay.",
+        "1 - Picks a plain, ordinary answer with no joke.",
+        "0 - Picks an unrelated answer or does not answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -703,26 +703,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Udderly ridiculous!"
+          "text": "A brown cow."
         },
         {
           "key": "b",
-          "text": "Moo-sical hat!"
+          "text": "A moo-sician!"
         },
         {
           "key": "c",
-          "text": "Funny cow!"
+          "text": "A cow in a field."
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognize a playful double meaning",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "child picks the best response that plays with words",
-      "alignmentRationale": "Here, the task focuses on identifying the humorous response that cleverly uses pun-based language."
+      "skillFacet": "recognizes a pun",
+      "targetEvidence": "chooses the punchline that plays on 'moo-sician'.",
+      "alignmentRationale": "Only one option is a pun, so the joke answer is clear."
     },
     {
       "id": "e4d4474a-83d0-4e51-a958-705b349c2c76",
@@ -995,12 +995,12 @@
       "type": "mcq",
       "trait": "humor",
       "format": "explanation",
-      "prompt": "What do you call a funny cow?",
+      "prompt": "Here is a joke! Where do cows go for a fun night out?",
       "rubric": [
-        "3 - The answer is a clever pun like 'A moo-d comedian!'.",
-        "2 - The answer is a decent attempt at humor like 'A silly cow.'",
-        "1 - The answer misses the joke but has some humor like 'A cow that laughs.'",
-        "0 - The answer is unrelated or makes no sense."
+        "3 - Picks the punchline that plays on 'moo' and 'movies'.",
+        "2 - Picks an answer that is a bit silly but misses the wordplay.",
+        "1 - Picks a plain, ordinary answer with no joke.",
+        "0 - Picks an unrelated answer or does not answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1010,26 +1010,26 @@
       "options": [
         {
           "key": "a",
-          "text": "A moo-d comedian!"
+          "text": "To the moo-vies!"
         },
         {
           "key": "b",
-          "text": "A silly cow."
+          "text": "To the farm."
         },
         {
           "key": "c",
-          "text": "A cow that laughs."
+          "text": "To sleep."
         }
       ],
       "answerKey": "a",
-      "skillFacet": "creation of a playful pun",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 1,
+        "c": 0
       },
-      "targetEvidence": "Child selects a clever phrase that plays on words related to cows.",
-      "alignmentRationale": "This question tests understanding of puns, requiring connections between cows and humor."
+      "skillFacet": "recognizes a pun",
+      "targetEvidence": "chooses the punchline that plays on 'moo-vies'.",
+      "alignmentRationale": "A sound-based pun that 5-year-olds can hear and repeat."
     },
     {
       "id": "7ab1b70a-f847-4c5a-85be-c03ee0e203cd",
@@ -1061,12 +1061,12 @@
       "type": "mcq",
       "trait": "humor",
       "format": "explanation",
-      "prompt": "What did one cookie say to the other cookie at the party?",
+      "prompt": "What did one cookie say to the other cookie?",
       "rubric": [
-        "3 - The answer is a clever and funny line like 'You crumble me up!'.",
-        "2 - The answer is funny but a bit off like 'I feel sweet here.'",
-        "1 - The answer is silly but not really a joke like 'Let's have fun!'.",
-        "0 - The answer does not make sense or relate to cookies."
+        "3 - Picks the punchline that plays on the saying 'smart cookie' told by a real cookie.",
+        "2 - Picks an answer that is a bit silly but misses the wordplay.",
+        "1 - Picks a plain, ordinary answer with no joke.",
+        "0 - Picks an unrelated answer or does not answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1076,26 +1076,26 @@
       "options": [
         {
           "key": "a",
-          "text": "You crumble me up!"
-        },
-        {
-          "key": "b",
           "text": "I feel sweet here."
         },
         {
-          "key": "c",
+          "key": "b",
           "text": "Let's have fun!"
+        },
+        {
+          "key": "c",
+          "text": "You're one smart cookie!"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognition of playful dialogue",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "Child picks a line that sounds like playful banter between objects.",
-      "alignmentRationale": "This question invites the child to identify humor in the context of cookies interacting."
+      "skillFacet": "recognizes a pun",
+      "targetEvidence": "chooses the punchline that plays on 'smart cookie'.",
+      "alignmentRationale": "A familiar saying becomes funny when a cookie says it."
     },
     {
       "id": "3501d04c-fa9a-4605-9e2f-8000d9a81ce3",
@@ -1170,12 +1170,12 @@
       "type": "mcq",
       "trait": "humor",
       "format": "explanation",
-      "prompt": "What do you call a funny tree?",
+      "prompt": "Here is a riddle joke! What kind of tree can fit in your hand?",
       "rubric": [
-        "3 - The answer is 'a silly tree.'",
-        "2 - The answer is 'a happy tree.'",
-        "1 - The answer is 'a tall tree.'",
-        "0 - The answer is none of these."
+        "3 - Picks the punchline that plays on 'palm' meaning both a tree and the inside of your hand.",
+        "2 - Picks an answer that is a bit silly but misses the wordplay.",
+        "1 - Picks a plain, ordinary answer with no joke.",
+        "0 - Picks an unrelated answer or does not answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1185,26 +1185,26 @@
       "options": [
         {
           "key": "a",
-          "text": "a silly tree."
+          "text": "An apple tree."
         },
         {
           "key": "b",
-          "text": "a happy tree."
+          "text": "A big tree."
         },
         {
           "key": "c",
-          "text": "a tall tree."
+          "text": "A palm tree!"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a type of humor",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "child recognizes a playful wordplay about a tree",
-      "alignmentRationale": "This task tests the child's ability to choose humor based on wordplay involving adjectives and nouns."
+      "skillFacet": "recognizes a pun",
+      "targetEvidence": "chooses the punchline that plays on the double meaning of 'palm'.",
+      "alignmentRationale": "A double-meaning riddle young children can get with a hand to look at."
     },
     {
       "id": "d8aaf701-c55a-4a9e-ad58-0b876fcbdb99",
@@ -1302,12 +1302,12 @@
       "type": "mcq",
       "trait": "humor",
       "format": "explanation",
-      "prompt": "What type of fish loves doing math?",
+      "prompt": "Here is a joke! Why are fish so smart?",
       "rubric": [
-        "3 - The answer is 'a math fish.'",
-        "2 - The answer is 'a smart fish.'",
-        "1 - The answer is 'a big fish.'",
-        "0 - The answer is none of these."
+        "3 - Picks the punchline that plays on a 'school' of fish and a school for learning.",
+        "2 - Picks an answer that is a bit silly but misses the wordplay.",
+        "1 - Picks a plain, ordinary answer with no joke.",
+        "0 - Picks an unrelated answer or does not answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1317,26 +1317,26 @@
       "options": [
         {
           "key": "a",
-          "text": "a math fish."
+          "text": "Because they swim fast."
         },
         {
           "key": "b",
-          "text": "a smart fish."
+          "text": "Because they are wet."
         },
         {
           "key": "c",
-          "text": "a big fish."
+          "text": "Because they live in schools!"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a playful concept",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "child identifies wordplay related to fish and math",
-      "alignmentRationale": "This question assesses the understanding of humorous connections between unrelated topics."
+      "skillFacet": "recognizes a pun",
+      "targetEvidence": "chooses the punchline that plays on the two meanings of 'school'.",
+      "alignmentRationale": "Children know both kinds of school, so the double meaning is easy to enjoy."
     },
     {
       "id": "631ffa44-37fc-4932-8da5-9394811dd96a",
@@ -1368,12 +1368,12 @@
       "type": "mcq",
       "trait": "humor",
       "format": "explanation",
-      "prompt": "What does a cat do when it eats too much candy?",
+      "prompt": "Here is a joke! What is a cat's favorite color?",
       "rubric": [
-        "3 - it has 'a feline sugar rush!'",
-        "2 - it just feels full",
-        "1 - it could feel funny",
-        "0 - cats should not eat candy"
+        "3 - Picks the punchline that plays on a cat's 'purr' and the color 'purple'.",
+        "2 - Picks an answer that is a bit silly but misses the wordplay.",
+        "1 - Picks a plain, ordinary answer with no joke.",
+        "0 - Picks an unrelated answer or does not answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1383,26 +1383,26 @@
       "options": [
         {
           "key": "a",
-          "text": "A feline sugar rush!"
+          "text": "Purr-ple!"
         },
         {
           "key": "b",
-          "text": "It feels full!"
+          "text": "Orange."
         },
         {
           "key": "c",
-          "text": "It could be funny!"
+          "text": "Cats like fish."
         }
       ],
       "answerKey": "a",
-      "skillFacet": "word for a feeling",
       "optionScores": {
         "a": 3,
         "b": 1,
         "c": 0
       },
-      "targetEvidence": "Chooses the answer linking 'feline' to a cat and sugar high.",
-      "alignmentRationale": "This isolates recognition of playful language involving similarities and connotations."
+      "skillFacet": "recognizes a pun",
+      "targetEvidence": "chooses the punchline that plays on 'purr-ple'.",
+      "alignmentRationale": "A sound-based pun that mixes a cat noise into a color word."
     },
     {
       "id": "64694a3b-22bd-4f66-9961-fa9fd80ec6e8",
@@ -1764,12 +1764,12 @@
       "type": "mcq",
       "trait": "humor",
       "format": "explanation",
-      "prompt": "What do you call a frog that tells jokes?",
+      "prompt": "Here is a joke! What did the frog order for lunch?",
       "rubric": [
-        "3 - That's a great joke!",
-        "2 - A fun idea but not quite right.",
-        "1 - Not really funny this time.",
-        "0 - Doesn't make sense."
+        "3 - Picks the punchline that plays on 'French fries' and the flies frogs eat.",
+        "2 - Picks an answer that is a bit silly but misses the wordplay.",
+        "1 - Picks a plain, ordinary answer with no joke.",
+        "0 - Picks an unrelated answer or does not answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1779,26 +1779,26 @@
       "options": [
         {
           "key": "a",
-          "text": "A jumping frog!"
+          "text": "A salad."
         },
         {
           "key": "b",
-          "text": "A funny frog!"
+          "text": "French flies!"
         },
         {
           "key": "c",
-          "text": "A tired frog!"
+          "text": "Water."
         }
       ],
       "answerKey": "b",
-      "skillFacet": "incongruity",
       "optionScores": {
         "a": 1,
         "b": 3,
-        "c": 2
+        "c": 0
       },
-      "targetEvidence": "Recognizes a humorous double meaning of the word 'jokes'.",
-      "alignmentRationale": "This question targets understanding of humor through puns and playful language, mapping directly to the fun our kids could have with the word 'jokes'."
+      "skillFacet": "recognizes a pun",
+      "targetEvidence": "chooses the punchline that plays on 'French flies'.",
+      "alignmentRationale": "Swapping one sound turns a favorite food into frog food, a clear sound pun."
     },
     {
       "id": "9c1f86aa-77b1-474e-b61c-7294b1ad212a",
@@ -1830,12 +1830,12 @@
       "type": "mcq",
       "trait": "humor",
       "format": "explanation",
-      "prompt": "What do you call a kangaroo that loves to bounce?",
+      "prompt": "Here is a joke! What is a kangaroo's favorite game to play?",
       "rubric": [
-        "3 - That's a clever joke!",
-        "2 - A fun alternative!",
-        "1 - Just okay, but not funny.",
-        "0 - Doesn't make sense."
+        "3 - Picks the punchline that plays on kangaroos hopping and the game 'hopscotch'.",
+        "2 - Picks an answer that is a bit silly but misses the wordplay.",
+        "1 - Picks a plain, ordinary answer with no joke.",
+        "0 - Picks an unrelated answer or does not answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1845,26 +1845,26 @@
       "options": [
         {
           "key": "a",
-          "text": "A bouncy house!"
+          "text": "Hopscotch!"
         },
         {
           "key": "b",
-          "text": "A jumping kangaroo!"
+          "text": "Hide and seek."
         },
         {
           "key": "c",
-          "text": "A tired kangaroo!"
+          "text": "Sleeping."
         }
       ],
       "answerKey": "a",
-      "skillFacet": "kind wordplay",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 1,
+        "c": 0
       },
-      "targetEvidence": "The response is relevant to the joke format and humorous.",
-      "alignmentRationale": "This question invites selection of the best punchline that matches common humor used with animals, targeting a playful twist."
+      "skillFacet": "recognizes a pun",
+      "targetEvidence": "chooses the punchline that plays on 'hopscotch' for a hopping animal.",
+      "alignmentRationale": "Linking a familiar game name to how kangaroos move is a clear, kind pun."
     },
     {
       "id": "d8868100-011f-4e49-b19f-5f91930bc4f0",
@@ -2406,10 +2406,10 @@
       "format": "explanation",
       "prompt": "What does a cloud wear under its raincoat?",
       "rubric": [
-        "3 - The answer is clever and related to the joke.",
-        "2 - The answer shows some understanding of humor but is less relevant.",
-        "1 - The answer is somewhat amusing but not connected.",
-        "0 - The answer misses any humor connection at all."
+        "3 - Picks the punchline that plays on 'thunder' and 'underwear'.",
+        "2 - Picks an answer that is a bit silly but misses the wordplay.",
+        "1 - Picks a plain, ordinary answer with no joke.",
+        "0 - Picks an unrelated answer or does not answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -2423,7 +2423,7 @@
         },
         {
           "key": "b",
-          "text": "Underwear!"
+          "text": "Thunderwear!"
         },
         {
           "key": "c",
@@ -2431,14 +2431,14 @@
         }
       ],
       "answerKey": "b",
-      "skillFacet": "understanding playful language",
       "optionScores": {
         "a": 1,
         "b": 3,
         "c": 0
       },
-      "targetEvidence": "identification of a witty response to the setup",
-      "alignmentRationale": "The task assesses comprehension of humor from wordplay."
+      "skillFacet": "recognizes a pun",
+      "targetEvidence": "chooses the punchline that plays on 'thunderwear'.",
+      "alignmentRationale": "The punchline blends a weather word with a clothing word, a classic child-friendly pun."
     },
     {
       "id": "5e8ec942-334c-4eb5-961a-fa17ac38686e",
@@ -2536,12 +2536,12 @@
       "type": "mcq",
       "trait": "humor",
       "format": "explanation",
-      "prompt": "What did the grape say when it got stepped on?",
+      "prompt": "Why did the grape stop rolling down the road?",
       "rubric": [
-        "3 - The answer is a clever punchline that fits the joke.",
-        "2 - The answer shows some understanding but is less relevant.",
-        "1 - The answer is somewhat amusing but not connected.",
-        "0 - The answer doesn’t relate to the joke at all."
+        "3 - Picks the punchline that plays on 'juice' meaning both grape juice and energy.",
+        "2 - Picks an answer that is a bit silly but misses the wordplay.",
+        "1 - Picks a plain, ordinary answer with no joke.",
+        "0 - Picks an unrelated answer or does not answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -2551,26 +2551,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Ouch!"
+          "text": "It was tired of rolling."
         },
         {
           "key": "b",
-          "text": "That was juicy!"
+          "text": "Because grapes are purple."
         },
         {
           "key": "c",
-          "text": "Nothing, it just let out a little wine!"
+          "text": "It ran out of juice!"
         }
       ],
       "answerKey": "c",
-      "skillFacet": "identifying humorous responses",
       "optionScores": {
         "a": 1,
         "b": 0,
         "c": 3
       },
-      "targetEvidence": "recognition of a fitting humorous response based on context",
-      "alignmentRationale": "Assessing recognition of humor in familiar joke formats."
+      "skillFacet": "recognizes a pun",
+      "targetEvidence": "chooses the punchline that plays on 'ran out of juice'.",
+      "alignmentRationale": "The double meaning of 'out of juice' is a gentle pun a 7-year-old can explain."
     },
     {
       "id": "488dd4ef-819b-41d5-8a9f-9544c079bdbe",

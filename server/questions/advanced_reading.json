@@ -8,12 +8,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "A kitten sees a string. What does it likely do?  \nA. Run away\nB. Play with it\nC. Sleep",
+      "prompt": "A kitten sees a string. What will it most likely do?",
       "rubric": [
-        "3 - The answer accurately predicts an action cats often take with strings.",
-        "2 - The answer offers a somewhat related but less likely action.",
-        "1 - The answer provides an unrelated action.",
-        "0 - The answer does not relate to the kitten's actions."
+        "3 - Uses the story clues to choose: the kitten plays.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -35,14 +35,14 @@
         }
       ],
       "answerKey": "b",
-      "skillFacet": "predicting character actions",
       "optionScores": {
         "a": 1,
         "b": 3,
-        "c": 2
+        "c": 1
       },
-      "targetEvidence": "selecting the most likely action the kitten would take with the string",
-      "alignmentRationale": "This question challenges the child's ability to infer the kitten's behavior based on common experiences or known actions."
+      "skillFacet": "predicting character actions",
+      "targetEvidence": "predicts the kitten's likely action.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "03b7b21a-ef5f-4506-accb-c1d98b13e92d",
@@ -74,12 +74,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "If a puppy finds a ball, what do you think it will do?  \nA. Bark at it  \nB. Ignore it  \nC. Play with it",
+      "prompt": "A puppy finds a ball. What do you think it will do?",
       "rubric": [
-        "3 - The answer shows clear understanding of what puppies enjoy doing.",
-        "2 - The answer shows some understanding but a less likely action.",
-        "1 - The answer relates to the puppy but is not likely.",
-        "0 - The answer does not relate to the puppy's actions."
+        "3 - Uses the story clues to choose: the puppy plays.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -101,14 +101,14 @@
         }
       ],
       "answerKey": "c",
-      "skillFacet": "predicting character actions",
       "optionScores": {
-        "a": 1,
-        "b": 2,
+        "a": 2,
+        "b": 1,
         "c": 3
       },
-      "targetEvidence": "choosing a likely action the puppy would take when seeing a ball",
-      "alignmentRationale": "This question tests the child’s ability to predict a common behavior of a puppy."
+      "skillFacet": "predicting character actions",
+      "targetEvidence": "predicts the puppy's likely action.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "d0e40244-a81a-40e4-b229-8f3204422154",
@@ -140,12 +140,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "A girl sees a bird in a tree. What do you think she will do?  \nA. Run away\nB. Try to catch it\nC. Watch it sing",
+      "prompt": "A girl sees a bird singing in a tree. She sits very still and smiles. What do you think she will do?",
       "rubric": [
-        "3 - The answer shows clear understanding of the girl's actions toward the bird.",
-        "2 - The answer shows some understanding but has a less likely action.",
-        "1 - The answer provides an unrelated action.",
-        "0 - The answer does not provide any action."
+        "3 - Uses the story clues to choose: she will keep watching.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -163,18 +163,18 @@
         },
         {
           "key": "c",
-          "text": "Watch it sing"
+          "text": "Keep watching it sing"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "predicting character actions",
+      "answerKey": "c",
       "optionScores": {
-        "a": 1,
-        "b": 3,
-        "c": 2
+        "a": 0,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "picking a plausible action from the options related to the girl and the bird",
-      "alignmentRationale": "This question allows the child to predict a character's action based on a story scenario, emphasizing comprehension and inference."
+      "skillFacet": "predicting character actions",
+      "targetEvidence": "uses the 'sits still and smiles' clue to predict watching.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "c8733f55-0fb2-45cc-9067-b4a47b1f820d",
@@ -206,12 +206,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "When a rabbit sees a basket of carrots, what might it do?  \nA. Dance\nB. Eat a carrot\nC. Jump away",
+      "prompt": "A hungry rabbit sees a basket of carrots. What will it most likely do?",
       "rubric": [
-        "3 - The answer correctly identifies what rabbits typically do with food.",
-        "2 - The answer is somewhat related but less common for a rabbit.",
-        "1 - The answer suggests an unrelated action.",
-        "0 - The answer does not relate at all to the situation."
+        "3 - Uses the story clues to choose: the rabbit eats.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -221,26 +221,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Dance"
+          "text": "Eat a carrot"
         },
         {
           "key": "b",
-          "text": "Eat a carrot"
+          "text": "Dance"
         },
         {
           "key": "c",
           "text": "Jump away"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "predicting character actions",
+      "answerKey": "a",
       "optionScores": {
-        "a": 1,
-        "b": 3,
-        "c": 2
+        "a": 3,
+        "b": 1,
+        "c": 1
       },
-      "targetEvidence": "selecting a plausible action of the rabbit with food",
-      "alignmentRationale": "This question assesses the child's capacity to predict behaviors related to familiar scenarios."
+      "skillFacet": "predicting character actions",
+      "targetEvidence": "uses the 'hungry' clue to predict eating.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "71aae661-bbbe-4bbd-9b28-8bb4aa211f20",
@@ -341,12 +341,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "In a tale, a turtle sees a bright sun. What do you think the turtle will do?  \nA. Hide in its shell  \nB. Try to climb the tallest tree  \nC. Go swimming in the water",
+      "prompt": "In a story, a turtle feels very hot in the bright sun. What do you think the turtle will do?",
       "rubric": [
-        "3 - The child selects 'C. Go swimming in the water,' which fits a turtle's behavior on a sunny day.",
-        "2 - The child selects 'A. Hide in its shell,' showing some understanding of safety but not the turtle's usual choice.",
-        "1 - The child selects 'B. Try to climb the tallest tree,' which is not typical for turtles.",
-        "0 - The child does not answer or chooses an unrelated option."
+        "3 - Uses the story clues to choose: the turtle cools off in the water.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -360,22 +360,22 @@
         },
         {
           "key": "b",
-          "text": "Try to climb the tallest tree"
+          "text": "Climb the tallest tree"
         },
         {
           "key": "c",
-          "text": "Go swimming in the water"
+          "text": "Go swimming in the cool water"
         }
       ],
       "answerKey": "c",
-      "skillFacet": "understanding character actions",
       "optionScores": {
         "a": 1,
         "b": 0,
         "c": 3
       },
-      "targetEvidence": "The child connects a turtle's actions to the environment and behavior expectations.",
-      "alignmentRationale": "This question assesses how well children grasp character behavior in relation to their surroundings."
+      "skillFacet": "understanding character actions",
+      "targetEvidence": "uses the 'very hot' clue to predict cooling off.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "8dca914f-0ad1-4afc-8c73-262194528a75",
@@ -430,12 +430,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "A rabbit sees a carrot on the ground. What will the rabbit most likely do?  \nA. Jump over it  \nB. Eat it  \nC. Leave it there",
+      "prompt": "A rabbit sees a carrot on the ground. What will the rabbit most likely do?",
       "rubric": [
-        "3 - The child selects 'B. Eat it,' correctly identifying a rabbit's action toward food.",
-        "2 - The child selects 'A. Jump over it,' which shows some action but not the most logical one.",
-        "1 - The child selects 'C. Leave it there,' which does not show understanding of the rabbit's desire.",
-        "0 - The child does not answer or chooses an unrelated option."
+        "3 - Uses the story clues to choose: the rabbit eats it.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -449,22 +449,22 @@
         },
         {
           "key": "b",
-          "text": "Eat it"
+          "text": "Leave it there"
         },
         {
           "key": "c",
-          "text": "Leave it there"
+          "text": "Eat it"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "understanding character behavior",
+      "answerKey": "c",
       "optionScores": {
         "a": 1,
-        "b": 3,
-        "c": 0
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "The child uses knowledge about rabbits to infer their likely actions.",
-      "alignmentRationale": "This question focuses on understanding actions based on characters and common behaviors in a story context."
+      "skillFacet": "understanding character behavior",
+      "targetEvidence": "predicts the rabbit's likely action.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "d80b72ce-0154-4725-b31d-ce4d7b8315af",
@@ -473,12 +473,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "In a story, a bear finds honey in a tree. What do you think he will do with it?  \nA. Ignore it  \nB. Share it with friends  \nC. Eat it",
+      "prompt": "In a story, a very hungry bear finds honey in a tree. What do you think he will do with it?",
       "rubric": [
-        "3 - The child selects 'C. Eat it,' showing understanding of a bear's desire for honey.",
-        "2 - The child selects 'B. Share it with friends,' showing a slight understanding of sharing but lacking the main action.",
-        "1 - The child selects 'A. Ignore it,' which does not fit with what bears usually do.",
-        "0 - The child does not answer or chooses an unrelated action."
+        "3 - Uses the story clues to choose: the hungry bear eats it.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -500,14 +500,14 @@
         }
       ],
       "answerKey": "c",
-      "skillFacet": "connecting character motivations",
       "optionScores": {
         "a": 0,
-        "b": 1,
+        "b": 2,
         "c": 3
       },
-      "targetEvidence": "The child connects character actions with what they know about bears and honey.",
-      "alignmentRationale": "The question focuses on understanding a character's motivation in a narrative, assessing comprehension rather than literary habits."
+      "skillFacet": "connecting character motivations",
+      "targetEvidence": "uses the 'very hungry' clue to predict eating.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "b2ee575c-a9b1-42cf-9a5e-bd37df04d2e3",
@@ -562,12 +562,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "A girl sees a butterfly land near her. What do you think she will do?",
+      "prompt": "A girl knows butterfly wings are easy to hurt. A butterfly lands near her. What will she do?",
       "rubric": [
-        "3 - Try to catch it gently.",
-        "2 - Watch it fly away.",
-        "1 - Scream and run away.",
-        "0 - Ignore it."
+        "3 - Uses the story clues to choose: she watches it quietly.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -577,26 +577,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Try to catch it gently."
+          "text": "Grab it"
         },
         {
           "key": "b",
-          "text": "Watch it fly away."
+          "text": "Watch it quietly"
         },
         {
           "key": "c",
-          "text": "Scream and run away."
+          "text": "Scream and run away"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "predict from character actions",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 0,
+        "b": 3,
         "c": 1
       },
-      "targetEvidence": "The child anticipates the girl's reaction based on the attraction of the butterfly.",
-      "alignmentRationale": "This question assesses the child's understanding of common reactions to gentle and interesting stimuli."
+      "skillFacet": "predict from character actions",
+      "targetEvidence": "uses the clue about wings to predict gentle watching.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "524eb440-ec90-4413-919b-edfa64b1164f",
@@ -605,12 +605,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "A dog hears a loud noise. What might it do?",
+      "prompt": "A little dog is scared of a loud BOOM. It wants its owner to keep it safe. What will it do?",
       "rubric": [
-        "3 - Bark and run to its owner.",
-        "2 - Sit quietly and listen.",
-        "1 - Run away from the noise.",
-        "0 - Ignore it."
+        "3 - Uses the story clues to choose: the dog runs to its owner.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -620,26 +620,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Bark and run to its owner."
+          "text": "Play with a ball"
         },
         {
           "key": "b",
-          "text": "Sit quietly and listen."
+          "text": "Eat its dinner"
         },
         {
           "key": "c",
-          "text": "Run away from the noise."
+          "text": "Run to its owner"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "predict from character actions",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "The child interprets the dog's reaction based on context clues.",
-      "alignmentRationale": "The task evaluates the child's ability to connect sound stimuli to a character's potential behavior."
+      "skillFacet": "predict from character actions",
+      "targetEvidence": "uses the 'scared' and 'owner' clues to predict.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "befd0145-28df-4c78-9375-40a452ec6baf",
@@ -671,12 +671,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "A girl sees a friend fall down. What should she do?",
+      "prompt": "In a story, Rosa always helps her friends. Her friend trips and falls on the playground. What will Rosa do next?",
       "rubric": [
-        "3 - Help her get up and ask if she's okay.",
-        "2 - Look at her but not help.",
-        "1 - Walk away and ignore her.",
-        "0 - Just laugh at her."
+        "3 - Uses the story clues to choose: Rosa helps her friend.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -686,26 +686,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Help her get up"
+          "text": "Laugh at her friend"
         },
         {
           "key": "b",
-          "text": "Just look at her"
+          "text": "Keep playing alone"
         },
         {
           "key": "c",
-          "text": "Walk away"
+          "text": "Help her friend get up"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "deciding on a helpful action",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "child can select a socially appropriate response in a situation",
-      "alignmentRationale": "This question tests social understanding and appropriate behavior in a caring scenario."
+      "skillFacet": "predicting from character traits",
+      "targetEvidence": "uses the 'always helps' clue to predict.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "e447fe2d-9736-436c-9bd0-3468b6878fdb",
@@ -780,21 +780,21 @@
       "type": "open",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "Tell me your favorite part of a fun day!",
+      "prompt": "Think of a story you heard or read. What was your favorite part, and why did you like it?",
       "rubric": [
-        "3 - I had fun playing with friends!",
-        "2 - I liked eating snacks.",
-        "1 - I just saw some things.",
-        "0 - It was boring."
+        "3 - Names a clear part of a story and gives a reason they liked it.",
+        "2 - Names a part of a story with a simple reason.",
+        "1 - Names a story but not a part or reason.",
+        "0 - No answer or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "personal narrative expression",
-      "targetEvidence": "child shares personal experiences in a fun context",
-      "alignmentRationale": "This question allows for personal expression and sharing of enjoyable experiences."
+      "skillFacet": "enjoying and recalling stories",
+      "targetEvidence": "recalls a favorite story part and explains why.",
+      "alignmentRationale": "Talking about a favorite part shows understanding and enjoyment of stories."
     },
     {
       "id": "27d8fcf3-4e5b-4aaf-9626-275f6a06cb07",
@@ -869,12 +869,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "A fish swims to the top of the water. What do you think it wants?",
+      "prompt": "A girl sprinkles fish food on top of the fish tank. A fish swims straight up to the top. What does the fish want?",
       "rubric": [
-        "3 - The fish wants to breathe air at the surface.",
-        "2 - The fish may be looking for food.",
-        "1 - The fish could be playing.",
-        "0 - The fish is just swimming."
+        "3 - Uses the story clues to choose: the fish wants to eat.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -884,26 +884,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Breathe air at the surface"
+          "text": "To fly in the sky"
         },
         {
           "key": "b",
-          "text": "Looking for food"
+          "text": "To eat the food"
         },
         {
           "key": "c",
-          "text": "Just swimming"
+          "text": "To go to sleep"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "inferring an intention",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 0,
+        "b": 3,
+        "c": 1
       },
-      "targetEvidence": "child can infer the fish's possible intentions based on its action",
-      "alignmentRationale": "This question prompts children to think critically about the behavior of a familiar animal in relation to its needs."
+      "skillFacet": "inferring an intention",
+      "targetEvidence": "uses the food clue to explain the fish's action.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "ba4b4612-2100-4d9f-a8b7-35cbcbf1242a",
@@ -935,12 +935,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "A child finds a lost puppy. What should the child do first?",
+      "prompt": "In a story, a child finds a lost puppy on the sidewalk. What should the child do first?",
       "rubric": [
-        "3 - Take the puppy home to help it.",
-        "2 - Ignore the puppy and keep playing.",
-        "1 - Call for someone to look.",
-        "0 - Run away from the puppy."
+        "3 - Uses the story clues to choose: tell a grown-up first.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -958,18 +958,18 @@
         },
         {
           "key": "c",
-          "text": "Call for someone"
+          "text": "Tell a grown-up"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "social situation response",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "selects the most helpful action for the puppy",
-      "alignmentRationale": "This question encourages an understanding of helpful actions in social contexts."
+      "skillFacet": "safe response to a found animal",
+      "targetEvidence": "chooses to get a grown-up's help first.",
+      "alignmentRationale": "Understanding a story event includes knowing the safe choice for a child character."
     },
     {
       "id": "1de97d77-8c13-492d-9527-63687d69b392",
@@ -1437,12 +1437,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "Alex saw his friend fall while playing. What do you think he would do?",
+      "prompt": "Alex is a kind friend. He sees his friend fall while playing. What do you think he will do?",
       "rubric": [
-        "3 - Alex would help his friend get up.",
-        "2 - Alex might laugh at what happened.",
-        "1 - Alex would just keep playing.",
-        "0 - Alex would run away."
+        "3 - Uses the story clues to choose: Alex helps his friend.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -1464,14 +1464,14 @@
         }
       ],
       "answerKey": "a",
-      "skillFacet": "predicting helpful actions",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 0,
         "c": 1
       },
-      "targetEvidence": "chooses a thoughtful response to a friend's fall",
-      "alignmentRationale": "This question assesses the prediction of an action based on social cues."
+      "skillFacet": "predicting helpful actions",
+      "targetEvidence": "uses the 'kind friend' clue to predict helping.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "293852a8-2eda-4bdd-b1ff-a238b35e9620",
@@ -1569,12 +1569,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "A boy saw a painting of a big, green dinosaur. What do you think he would say?",
+      "prompt": "Leo loves dinosaurs and has dinosaur toys everywhere. He sees a painting of a big, green dinosaur. What will he probably say?",
       "rubric": [
-        "3 - He might say it's so cool!",
-        "2 - He would say it's scary.",
-        "1 - He might say nothing at all.",
-        "0 - He could say he doesn't like dinosaurs."
+        "3 - Uses the story clues to choose: Leo thinks it is cool.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -1588,22 +1588,22 @@
         },
         {
           "key": "b",
-          "text": "It's scary."
+          "text": "I don't like dinosaurs."
         },
         {
           "key": "c",
-          "text": "I don't like dinosaurs."
+          "text": "What a boring painting."
         }
       ],
       "answerKey": "a",
-      "skillFacet": "predicting responses",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 0,
         "c": 1
       },
-      "targetEvidence": "picks a reaction the boy may express towards the painting",
-      "alignmentRationale": "This question engages children in imagining an appropriate response to the artwork."
+      "skillFacet": "predicting responses",
+      "targetEvidence": "uses the 'loves dinosaurs' clue to predict his reaction.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "f94fb238-57ba-45a8-881b-9283b91fc0ee",
@@ -1985,12 +1985,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "Once a rabbit discovered a garden full of carrots. How do you think the rabbit felt about the garden?",
+      "prompt": "A rabbit found a garden full of carrots. It jumped up and down with joy. How did the rabbit feel?",
       "rubric": [
-        "3 - Happy because it loves carrots!",
-        "2 - Surprised to find so many carrots.",
-        "1 - Curious about the garden.",
-        "0 - Sad because it wants other food."
+        "3 - Uses the story clues to choose: the rabbit felt happy.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -2000,26 +2000,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Happy because it loves carrots!"
+          "text": "Scared"
         },
         {
           "key": "b",
-          "text": "Surprised to find so many carrots."
+          "text": "Happy"
         },
         {
           "key": "c",
-          "text": "Curious about the garden."
+          "text": "Sleepy"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "comprehending character feelings",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 0,
+        "b": 3,
         "c": 1
       },
-      "targetEvidence": "Identifies a feeling that the rabbit would have upon discovering the garden.",
-      "alignmentRationale": "This assesses the ability to connect a character's feelings to a narrative context."
+      "skillFacet": "comprehending character feelings",
+      "targetEvidence": "uses the 'jumped with joy' clue to name the feeling.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "e260d019-a995-4a64-ae10-3656b52bf3ac",
@@ -2051,12 +2051,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "A boy sees a spaceship land in his yard. What could he do next?",
+      "prompt": "In a story, a boy sees a spaceship land in his yard. He is curious but careful. What will he most likely do next?",
       "rubric": [
-        "3 - The answer reflects curiosity and excitement, like 'go to see if anyone is inside.'",
-        "2 - The answer shows some interest, like 'watch from a distance.'",
-        "1 - The answer is unrealistic or vague, like 'run away.'",
-        "0 - The answer doesn’t relate to responding to a spaceship."
+        "3 - Uses the story clues to choose: he gets a grown-up and looks safely.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -2066,26 +2066,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Go to see if anyone is inside"
+          "text": "Run outside alone to look inside"
         },
         {
           "key": "b",
-          "text": "Stay inside the house"
+          "text": "Get a grown-up and peek out the window together"
         },
         {
           "key": "c",
-          "text": "Call the police"
+          "text": "Forget about it"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "inferring character motivation",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
+        "a": 1,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "selects a plausible action based on a surprising event",
-      "alignmentRationale": "This question measures the ability to connect surprising events to character actions."
+      "skillFacet": "inferring character motivation",
+      "targetEvidence": "uses 'curious but careful' to predict a safe choice.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "d0b58262-5593-4b29-bfc1-1022eec22714",
@@ -2157,44 +2157,24 @@
       "id": "54957c72-208c-4a28-856a-5e14294f0e0d",
       "age": 7,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "A boy finds a magic box that makes wishes come true. What might he wish for first?",
+      "prompt": "In a story, a boy finds a magic box that makes wishes come true. What do you think he might wish for first, and why?",
       "rubric": [
-        "3 - The answer is a thoughtful wish that shows creativity, like for family happiness or adventure.",
-        "2 - The answer is a common wish, such as toys or candy, indicating some creativity.",
-        "1 - The wish is silly or unclear, showing little understanding of wishes.",
-        "0 - The answer does not relate to the story at all."
+        "3 - Gives a wish and a clear reason linked to how the boy might think or feel.",
+        "2 - Gives a wish with a simple reason.",
+        "1 - Gives a wish with no reason.",
+        "0 - No answer or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "A happy family"
-        },
-        {
-          "key": "b",
-          "text": "A new toy"
-        },
-        {
-          "key": "c",
-          "text": "A pizza"
-        }
-      ],
-      "answerKey": "a",
       "skillFacet": "predicting a character's desire",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "chooses a plausible wish that fits the context of a magic box",
-      "alignmentRationale": "This task requires connecting character actions to possible wishes in a story context."
+      "targetEvidence": "suggests a wish and explains why the character might want it.",
+      "alignmentRationale": "Any wish is fine; the child is rewarded for reasoning about the character."
     },
     {
       "id": "255999b2-faa8-4b3a-a444-a41e98b50e05",
@@ -2378,12 +2358,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "Sophie is reading about a fairy who grants wishes. What might happen next?",
+      "prompt": "In Sophie's story, a fairy says, 'Close your eyes and make a wish!' A boy closes his eyes and wishes for a puppy. What will happen next?",
       "rubric": [
-        "3 - The fairy grants a wish.",
-        "2 - Someone might be surprised.",
-        "1 - The fairy might fly away.",
-        "0 - Nothing happens."
+        "3 - Uses the story clues to choose: the wish comes true.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -2393,26 +2373,26 @@
       "options": [
         {
           "key": "a",
-          "text": "The fairy grants a wish."
+          "text": "The fairy turns into a car"
         },
         {
           "key": "b",
-          "text": "Someone might be surprised."
+          "text": "The boy forgets his wish"
         },
         {
           "key": "c",
-          "text": "The fairy might fly away."
+          "text": "A puppy appears"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "inferring story details",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "the child infers potential outcomes from a narrative element",
-      "alignmentRationale": "This question asks children to think about typical story progression to infer possible events."
+      "skillFacet": "inferring story details",
+      "targetEvidence": "uses the fairy's words to predict the wish coming true.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "c80356ca-ee84-4fb0-a95a-0fd1ce77d896",
@@ -2421,12 +2401,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "Max read a story where a dinosaur got lost. What do you think the dinosaur will do next?",
+      "prompt": "In a story, a little dinosaur gets lost in the forest. He misses his mom and wants to go home. What will he do next?",
       "rubric": [
-        "3 - He will look for his friends.",
-        "2 - He might sit down.",
-        "1 - He could make a noise.",
-        "0 - He does nothing."
+        "3 - Uses the story clues to choose: he looks for his mom.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -2436,26 +2416,26 @@
       "options": [
         {
           "key": "a",
-          "text": "He will look for his friends."
+          "text": "Build a new house in the forest"
         },
         {
           "key": "b",
-          "text": "He might sit down."
+          "text": "Look for his mom"
         },
         {
           "key": "c",
-          "text": "He could make a noise."
+          "text": "Eat a sandwich"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "predicting character actions",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "child predicts logical next steps for the character",
-      "alignmentRationale": "This task evaluates the child's ability to predict what a character will do based on the storyline."
+      "skillFacet": "predicting character actions",
+      "targetEvidence": "uses the 'misses his mom' clue to predict.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "e35d58e6-1afa-4b27-b4da-b08c7d9325d3",
@@ -2487,12 +2467,12 @@
       "type": "mcq",
       "trait": "advanced_reading",
       "format": "explanation",
-      "prompt": "Jack heard a strange noise in the story. What might he do?",
+      "prompt": "Jack hears a strange noise in the kitchen. He holds his dad's hand and grabs a flashlight. What will Jack do next?",
       "rubric": [
-        "3 - He will investigate the noise.",
-        "2 - He might ignore it.",
-        "1 - He could cover his ears.",
-        "0 - He does nothing."
+        "3 - Uses the story clues to choose: Jack and his dad check the noise.",
+        "2 - Chooses something possible but not supported by the clues.",
+        "1 - Chooses something that fits the clues poorly.",
+        "0 - Chooses something that does not make sense in the story."
       ],
       "weight": 1,
       "ageBand": [
@@ -2502,26 +2482,26 @@
       "options": [
         {
           "key": "a",
-          "text": "He will investigate the noise."
+          "text": "Go with his dad to find the noise"
         },
         {
           "key": "b",
-          "text": "He might ignore it."
+          "text": "Cover his ears and sleep"
         },
         {
           "key": "c",
-          "text": "He could cover his ears."
+          "text": "Bake a cake"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "predicting character actions",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 1,
+        "c": 0
       },
-      "targetEvidence": "the child logically predicts how the character might react to a situation",
-      "alignmentRationale": "This question tests if the child can predict responses based on the character's situation."
+      "skillFacet": "predicting character actions",
+      "targetEvidence": "uses the flashlight and dad clues to predict.",
+      "alignmentRationale": "The child uses clues in a short story to predict or explain what a character does or feels."
     },
     {
       "id": "b35ed5f4-ad82-40a7-87c8-3853ad120c7c",

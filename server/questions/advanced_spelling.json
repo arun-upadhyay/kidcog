@@ -31,21 +31,21 @@
       "type": "open",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Say a word that ends with the sound 'ck'.",
+      "prompt": "'Duck' ends with the /k/ sound. Can you say another word that ends with the /k/ sound, like 'duck'?",
       "rubric": [
-        "3 - The word correctly ends with 'ck'.",
-        "2 - The word sounds close but not exactly 'ck'.",
-        "1 - The word does not match the sound but is a real word.",
-        "0 - No response or unrelated word."
+        "3 - Says a word ending in /k/ such as 'book', 'sock', 'cake' or 'bike'.",
+        "2 - Says a word with a /k/ sound in a different place (e.g. 'cat').",
+        "1 - Says a word but it does not have a /k/ sound.",
+        "0 - No answer, or an answer unrelated to the sounds or letters."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "word for a sound",
-      "targetEvidence": "The child provides a word ending with the sound 'ck'.",
-      "alignmentRationale": "This task isolates the child's ability to identify sounds in words by focusing on a specific ending sound."
+      "skillFacet": "hears the ending sound of a word",
+      "targetEvidence": "says a word ending in the /k/ sound",
+      "alignmentRationale": "Hearing ending sounds is a pre-reader listening step toward spelling endings such as '-ck'."
     },
     {
       "id": "508fe04d-d389-4636-abba-593ca4ae7306",
@@ -120,12 +120,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word matches the pattern: 'bat'?",
+      "prompt": "Grown-up, read each word out loud. Which word rhymes with 'bat'?",
       "rubric": [
-        "3 - The word is 'hat'.",
-        "2 - The word is 'bat' (same pattern, repeated).",
-        "1 - The word is 'bag' (similar but not exact).",
-        "0 - The word is unrelated or not recognizable."
+        "3 - Picks 'hat', which rhymes with 'bat'.",
+        "2 - Picks a word that shares one sound but does not match fully.",
+        "1 - Picks a word that does not match, but tries to listen to the sounds.",
+        "0 - No answer or random choice."
       ],
       "weight": 1,
       "ageBand": [
@@ -135,26 +135,26 @@
       "options": [
         {
           "key": "a",
-          "text": "hat"
+          "text": "dog"
         },
         {
           "key": "b",
-          "text": "bat"
+          "text": "cup"
         },
         {
           "key": "c",
-          "text": "bag"
+          "text": "hat"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word-family pattern",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "Child identifies a word that matches the family of 'bat'.",
-      "alignmentRationale": "This task specifically tests the ability to recognize word patterns within the same family as 'bat'."
+      "skillFacet": "hears rhyming word endings",
+      "targetEvidence": "picks 'hat' as the rhyme for 'bat'",
+      "alignmentRationale": "Hearing the '-at' rhyme is an early listening step toward word-family spelling."
     },
     {
       "id": "9803636e-e64a-4890-bbc2-41c33f5a9f47",
@@ -318,12 +318,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word rhymes with 'ring'?",
+      "prompt": "Grown-up, read each word out loud. Which word rhymes with 'ring'?",
       "rubric": [
-        "3 - The child chooses 'sing', which is a correct rhyme.",
-        "2 - The child selects 'wing', which is okay but related but not quite right.",
-        "1 - The child picks 'car', which does not rhyme.",
-        "0 - The child does not answer."
+        "3 - Picks 'king', which rhymes with 'ring'.",
+        "2 - Picks a word that shares one sound but does not match fully.",
+        "1 - Picks a word that does not match, but tries to listen to the sounds.",
+        "0 - No answer or random choice."
       ],
       "weight": 1,
       "ageBand": [
@@ -333,11 +333,11 @@
       "options": [
         {
           "key": "a",
-          "text": "sing"
+          "text": "king"
         },
         {
           "key": "b",
-          "text": "wing"
+          "text": "rug"
         },
         {
           "key": "c",
@@ -345,14 +345,14 @@
         }
       ],
       "answerKey": "a",
-      "skillFacet": "word for a rhyme",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 1,
+        "c": 0
       },
-      "targetEvidence": "Child identifies the rhyming word.",
-      "alignmentRationale": "This activity assesses the understanding of rhyme through a limited set of choices."
+      "skillFacet": "hears rhyming word endings",
+      "targetEvidence": "picks 'king' as the rhyme for 'ring'",
+      "alignmentRationale": "Hearing rhymes builds awareness of word families used in spelling."
     },
     {
       "id": "7e05d18b-47d0-439e-8fcb-c823ed2a8b4a",
@@ -450,12 +450,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word matches the pattern: 'bed'?",
+      "prompt": "Grown-up, read each word out loud. Which word rhymes with 'bed'?",
       "rubric": [
-        "3 - The child selects 'led', which matches the pattern.",
-        "2 - The child selects 'red', which is similar but not correct.",
-        "1 - The child selects 'big', which is unrelated to the pattern.",
-        "0 - The child does not answer."
+        "3 - Picks 'red', which rhymes with 'bed'.",
+        "2 - Picks a word that shares one sound but does not match fully.",
+        "1 - Picks a word that does not match, but tries to listen to the sounds.",
+        "0 - No answer or random choice."
       ],
       "weight": 1,
       "ageBand": [
@@ -465,26 +465,26 @@
       "options": [
         {
           "key": "a",
-          "text": "led"
+          "text": "big"
         },
         {
           "key": "b",
-          "text": "red"
+          "text": "bag"
         },
         {
           "key": "c",
-          "text": "big"
+          "text": "red"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a shared pattern",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "Child picks the correct rhyming pattern word.",
-      "alignmentRationale": "This task assesses recognition and production of word patterns from a small set of clear options."
+      "skillFacet": "hears rhyming word endings",
+      "targetEvidence": "picks 'red' as the rhyme for 'bed'",
+      "alignmentRationale": "Hearing the '-ed' rhyme is an early listening step toward word-family spelling."
     },
     {
       "id": "c8c0faf4-7d8e-449c-9e68-ecfcb1a242dc",
@@ -536,12 +536,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which of these words ends with 'at'?",
+      "prompt": "Grown-up, read each word out loud. Which word starts with the same sound as 'sun'?",
       "rubric": [
-        "3 - Chooses 'bat'.",
-        "2 - Chooses 'rat'.",
-        "1 - Chooses 'dog'.",
-        "0 - No choice made."
+        "3 - Picks 'sock', which starts with the /s/ sound like 'sun'.",
+        "2 - Picks a word that shares one sound but does not match fully.",
+        "1 - Picks a word that does not match, but tries to listen to the sounds.",
+        "0 - No answer or random choice."
       ],
       "weight": 1,
       "ageBand": [
@@ -551,26 +551,26 @@
       "options": [
         {
           "key": "a",
-          "text": "bat"
+          "text": "moon"
         },
         {
           "key": "b",
-          "text": "rat"
+          "text": "sock"
         },
         {
           "key": "c",
-          "text": "dog"
+          "text": "tree"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "notice shared ending patterns",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "Child identifies a word that ends with the specified letters.",
-      "alignmentRationale": "This question isolates the ability to recognize specific letter patterns at the end of words, distinct from overall spelling proficiency."
+      "skillFacet": "hears the first sound of a word",
+      "targetEvidence": "picks 'sock' as starting with the same /s/ sound as 'sun'",
+      "alignmentRationale": "Matching beginning sounds is an early listening step toward spelling for pre-readers."
     },
     {
       "id": "71c6e792-dda1-4483-8bac-b5fa16e2e4ad",
@@ -579,12 +579,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word has the same ending sound as 'book'?",
+      "prompt": "Grown-up, read each word out loud. Which word rhymes with 'book'?",
       "rubric": [
-        "3 - Chooses 'hook'.",
-        "2 - Chooses 'bake'.",
-        "1 - Chooses 'red'.",
-        "0 - No choice made."
+        "3 - Picks 'hook', which rhymes with 'book'.",
+        "2 - Picks a word that shares one sound but does not match fully.",
+        "1 - Picks a word that does not match, but tries to listen to the sounds.",
+        "0 - No answer or random choice."
       ],
       "weight": 1,
       "ageBand": [
@@ -598,22 +598,22 @@
         },
         {
           "key": "b",
-          "text": "bake"
+          "text": "bed"
         },
         {
           "key": "c",
-          "text": "red"
+          "text": "sun"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "notice shared ending sounds",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 0,
+        "c": 0
       },
-      "targetEvidence": "Child selects a word that shares the same ending sound.",
-      "alignmentRationale": "This question assesses the child's ability to identify and hear shared letter sounds at the end of words, isolated from other reading skills."
+      "skillFacet": "hears rhyming word endings",
+      "targetEvidence": "picks 'hook' as the rhyme for 'book'",
+      "alignmentRationale": "Hearing the '-ook' rhyme is an early listening step toward word-family spelling."
     },
     {
       "id": "bf9604ae-1f91-4988-97c5-3e430750d840",
@@ -731,21 +731,21 @@
       "type": "open",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Say a word that goes with 'sad'.",
+      "prompt": "Say a word that rhymes with 'sad'. Then, with your grown-up, say the letters you think spell your word.",
       "rubric": [
-        "3 - The word said fits well with 'sad', such as 'cry' or 'tears'.",
-        "2 - The word is somewhat related to feeling sad but not specific enough.",
-        "1 - The word is loosely related or not connected to feelings at all.",
-        "0 - No response or an incomprehensible answer."
+        "3 - Says a rhyme such as 'dad', 'mad', 'bad' or 'glad' and spells it with '-ad' at the end.",
+        "2 - Says a correct rhyme but cannot spell it, or spells it with one letter wrong.",
+        "1 - Says a word that shares a sound with 'sad' but does not rhyme.",
+        "0 - No answer, or an answer unrelated to the sounds or letters."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "related word generation",
-      "targetEvidence": "generates a word contextually related to 'sad'",
-      "alignmentRationale": "This question allows for exploration of emotional vocabulary, testing the ability to connect feelings with relevant words."
+      "skillFacet": "builds words in the '-ad' family",
+      "targetEvidence": "says and spells a rhyme for 'sad' using '-ad'",
+      "alignmentRationale": "Making and spelling a rhyme for 'sad' tests word-family spelling patterns instead of word meaning."
     },
     {
       "id": "5b1a4843-02dd-4634-a2dd-943d77753478",
@@ -1018,12 +1018,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "What word rhymes with 'bat'?",
+      "prompt": "Which word is spelled correctly? It is something you wear on your head.",
       "rubric": [
-        "3 - Correctly identifies 'hat'.",
-        "2 - Chooses a word that sounds similar but does not rhyme well, like 'cat'.",
-        "1 - Gives an unrelated option like 'dog'.",
-        "0 - Does not answer or guesses incorrectly."
+        "3 - Picks the correct spelling 'hat'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -1037,22 +1037,22 @@
         },
         {
           "key": "b",
-          "text": "cat"
+          "text": "hatt"
         },
         {
           "key": "c",
-          "text": "dog"
+          "text": "het"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "rhyming recognition",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 0,
         "c": 1
       },
-      "targetEvidence": "child accurately identifies a word that rhymes with 'bat'",
-      "alignmentRationale": "This task isolates rhyming comprehension by requiring recognition of similar sound endings."
+      "skillFacet": "spells words with the '-at' word family pattern",
+      "targetEvidence": "chooses 'hat' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'hat' from look-alike misspellings directly tests knowledge of the '-at' word family spelling pattern."
     },
     {
       "id": "9630bebe-1dfa-4b82-8f9d-d8d9dabfb4bf",
@@ -1061,12 +1061,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word has the same ending sound as 'run'?",
+      "prompt": "Which word is spelled correctly? \"The ___ is hot and bright.\"",
       "rubric": [
-        "3 - Correctly identifies 'fun'.",
-        "2 - Chooses a partially matching sound word like 'sun'.",
-        "1 - Selects an unrelated option like 'cat'.",
-        "0 - Does not answer or guesses incorrectly."
+        "3 - Picks the correct spelling 'sun'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -1076,26 +1076,26 @@
       "options": [
         {
           "key": "a",
-          "text": "fun"
+          "text": "sunn"
         },
         {
           "key": "b",
-          "text": "sun"
+          "text": "sn"
         },
         {
           "key": "c",
-          "text": "cat"
+          "text": "sun"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "final sound matching",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "child selects a word that matches the ending sound of 'run'",
-      "alignmentRationale": "This task focuses on identifying and matching final sounds in words."
+      "skillFacet": "spells words with the '-un' word family pattern",
+      "targetEvidence": "chooses 'sun' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'sun' from look-alike misspellings directly tests knowledge of the '-un' word family spelling pattern."
     },
     {
       "id": "eafdcb1e-46f4-4c34-b5e2-12ced79c11ef",
@@ -1127,21 +1127,21 @@
       "type": "open",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "What group of words does 'big' belong to?",
+      "prompt": "'Big' ends with '-ig'. Say another word that ends with '-ig', like 'big'. Which letter did you change?",
       "rubric": [
-        "3 - Correctly identifies a group such as 'size words' or 'adjectives'.",
-        "2 - Names a somewhat related concept but not quite, maybe 'animals'.",
-        "1 - Provides an unrelated term like 'food'.",
-        "0 - Does not respond or fails to provide an answer."
+        "3 - Says a word such as 'pig', 'dig', 'wig' or 'fig' and names the new first letter.",
+        "2 - Says a correct '-ig' word but cannot name the changed letter.",
+        "1 - Says a word with a similar sound that is not in the '-ig' family (e.g. 'bag').",
+        "0 - No answer, or an answer unrelated to the sounds or letters."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "categorical grouping",
-      "targetEvidence": "child successfully identifies the word group for 'big'",
-      "alignmentRationale": "This task checks for the understanding of word categories, distinguishing between various types of words."
+      "skillFacet": "builds words in the '-ig' family",
+      "targetEvidence": "makes a new '-ig' word by changing the first letter",
+      "alignmentRationale": "Swapping the first letter in a word family shows understanding of how spelling patterns work."
     },
     {
       "id": "841b5d9c-abbc-4592-b3db-5fe20fae84e6",
@@ -1150,12 +1150,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word begins with the same sound as 'cat'?",
+      "prompt": "Which word is spelled correctly? You drink milk from a ___.",
       "rubric": [
-        "3 - Answers with 'car'.",
-        "2 - Chooses a word that starts with a similar sound, like 'cap'.",
-        "1 - Selects a word that does not start with similar sounds, like 'man'.",
-        "0 - Picks a word that is unrelated, like 'dog'."
+        "3 - Picks the correct spelling 'cup'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -1165,26 +1165,26 @@
       "options": [
         {
           "key": "a",
-          "text": "car"
+          "text": "kup"
         },
         {
           "key": "b",
-          "text": "cap"
+          "text": "cupp"
         },
         {
           "key": "c",
-          "text": "man"
+          "text": "cup"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "initial sound matching",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "The child correctly finds a word starting with the same initial sound as 'cat'.",
-      "alignmentRationale": "The task measures the child's ability to detect and identify initial sounds in words, which is crucial for their spelling development."
+      "skillFacet": "spells words with the hard 'c' at the start pattern",
+      "targetEvidence": "chooses 'cup' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'cup' from look-alike misspellings directly tests knowledge of the hard 'c' at the start spelling pattern."
     },
     {
       "id": "657d8d58-2b3a-498a-afe8-6161ace287ae",
@@ -1325,21 +1325,21 @@
       "type": "open",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Say a word that goes with 'happy'.",
+      "prompt": "'Happy' starts with the /h/ sound. Say another word that starts with the same sound. Which letter does it start with?",
       "rubric": [
-        "3 - Gives an answer like 'joy' or 'smile'.",
-        "2 - Suggests a related word like 'fun' or 'play'.",
-        "1 - Says something loosely related like 'run'.",
-        "0 - Provides an unrelated word like 'tree'."
+        "3 - Says a word such as 'hat', 'hop' or 'house' and names the letter 'h'.",
+        "2 - Says a correct /h/ word but names the wrong letter or no letter.",
+        "1 - Says a word that starts with a different sound.",
+        "0 - No answer, or an answer unrelated to the sounds or letters."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "word association",
-      "targetEvidence": "The child produces a word related to the emotion 'happy'.",
-      "alignmentRationale": "This evaluates the child's ability to connect concepts, an important part of vocabulary and language development."
+      "skillFacet": "links a beginning sound to its letter",
+      "targetEvidence": "says an /h/ word and names the letter h",
+      "alignmentRationale": "Linking a beginning sound to its letter is a core early spelling skill."
     },
     {
       "id": "4ce186c2-d702-4e01-8244-e531e60d4534",
@@ -1371,12 +1371,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which of these words starts with the sound 'bl'?",
+      "prompt": "Which word is spelled correctly? You can build a tower with a toy ___.",
       "rubric": [
-        "3 - The answer is 'blue', which starts with 'bl'.",
-        "2 - The answer is 'black', which also starts but is a different word.",
-        "1 - The answer is 'red', which does not start with 'bl'.",
-        "0 - Any other response that doesn't fit the above."
+        "3 - Picks the correct spelling 'block'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -1386,26 +1386,26 @@
       "options": [
         {
           "key": "a",
-          "text": "blue"
+          "text": "blok"
         },
         {
           "key": "b",
-          "text": "black"
+          "text": "blokc"
         },
         {
           "key": "c",
-          "text": "red"
+          "text": "block"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a sound",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "The child can recognize the initial consonant cluster in words.",
-      "alignmentRationale": "This task isolates the recognition of beginning sounds, which is crucial for developing spelling skills."
+      "skillFacet": "spells words with the 'bl' blend and '-ck' ending pattern",
+      "targetEvidence": "chooses 'block' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'block' from look-alike misspellings directly tests knowledge of the 'bl' blend and '-ck' ending spelling pattern."
     },
     {
       "id": "98d3aa27-d3a1-4b92-accd-e76c80a1ee20",
@@ -1414,12 +1414,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word has the same ending sound as \"sing\"?",
+      "prompt": "Which word is spelled correctly? \"The ___ wears a gold crown.\"",
       "rubric": [
-        "3 - The answer is 'ring', which matches the ending sound.",
-        "2 - The answer is 'king', which has a similar ending sound but is a different word.",
-        "1 - The answer is 'cat', which does not match the ending sound.",
-        "0 - Any other response that doesn't fit the above."
+        "3 - Picks the correct spelling 'king'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -1429,7 +1429,7 @@
       "options": [
         {
           "key": "a",
-          "text": "ring"
+          "text": "kign"
         },
         {
           "key": "b",
@@ -1437,18 +1437,18 @@
         },
         {
           "key": "c",
-          "text": "cat"
+          "text": "keeng"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a sound",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 0,
+        "b": 3,
+        "c": 1
       },
-      "targetEvidence": "The child can identify rhymes or matching ending sounds in words.",
-      "alignmentRationale": "Recognizing rhymes is a key component of early spelling skills."
+      "skillFacet": "spells words with the '-ing' ending pattern",
+      "targetEvidence": "chooses 'king' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'king' from look-alike misspellings directly tests knowledge of the '-ing' ending spelling pattern."
     },
     {
       "id": "a0035adc-a473-4118-ae60-a3c1cba96f1d",
@@ -1457,12 +1457,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word ends with the same sound as \"trip\"?",
+      "prompt": "Which word is spelled correctly? It is a big boat that sails on the sea.",
       "rubric": [
-        "3 - The answer is 'hip', which rhymes with 'trip'.",
-        "2 - The answer is 'zap', which does not rhyme but shares an ending sound.",
-        "1 - The answer is 'top', which is not correct but has a different ending sound.",
-        "0 - Any other response that doesn't fit the above."
+        "3 - Picks the correct spelling 'ship'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -1472,26 +1472,26 @@
       "options": [
         {
           "key": "a",
-          "text": "hip"
+          "text": "shp"
         },
         {
           "key": "b",
-          "text": "zap"
+          "text": "shipp"
         },
         {
           "key": "c",
-          "text": "top"
+          "text": "ship"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a sound",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
+        "a": 0,
         "b": 1,
-        "c": 0
+        "c": 3
       },
-      "targetEvidence": "The child recognizes that 'hip' is the correct rhyming sound.",
-      "alignmentRationale": "This task isolates the child's ability to recognize and produce a spelling pattern related to sound endings."
+      "skillFacet": "spells words with the 'sh' + short 'i' pattern",
+      "targetEvidence": "chooses 'ship' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'ship' from look-alike misspellings directly tests knowledge of the 'sh' + short 'i' spelling pattern."
     },
     {
       "id": "7afcdb99-42a1-45a8-b369-8296ba17ac66",
@@ -1500,12 +1500,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which of these words shares the same middle sound as \"pan\"?",
+      "prompt": "Which word is spelled correctly? You use it to find your way on a trip.",
       "rubric": [
-        "3 - The answer is 'man', which shares the middle sound.",
-        "2 - The answer is 'pin', which has a similar middle sound but isn't the same.",
-        "1 - The answer is 'bat', which has different middle sounds.",
-        "0 - Any other response that doesn't fit the above."
+        "3 - Picks the correct spelling 'map'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -1515,26 +1515,26 @@
       "options": [
         {
           "key": "a",
-          "text": "man"
+          "text": "map"
         },
         {
           "key": "b",
-          "text": "pin"
+          "text": "mep"
         },
         {
           "key": "c",
-          "text": "bat"
+          "text": "mapp"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "word for a sound",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 0
+        "b": 1,
+        "c": 1
       },
-      "targetEvidence": "The child recognizes words that share middle sounds.",
-      "alignmentRationale": "Identifying middle sound patterns is critical for spelling and phonetic awareness."
+      "skillFacet": "spells words with the short 'a' in the middle pattern",
+      "targetEvidence": "chooses 'map' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'map' from look-alike misspellings directly tests knowledge of the short 'a' in the middle spelling pattern."
     },
     {
       "id": "21c48d9f-2192-439b-8cbe-e67d5a29cc22",
@@ -1566,12 +1566,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which of these shares the same ending as 'bake'?",
+      "prompt": "Which word is spelled correctly? We eat ___ at a birthday party.",
       "rubric": [
-        "3 - The answer is 'cake', which perfectly matches the ending sound.",
-        "2 - The answer is 'lake', which has a similar ending but different word.",
-        "1 - The answer is 'bag', which has a different sound.",
-        "0 - Any other response that doesn't fit the above."
+        "3 - Picks the correct spelling 'cake'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -1581,26 +1581,26 @@
       "options": [
         {
           "key": "a",
-          "text": "cake"
+          "text": "cak"
         },
         {
           "key": "b",
-          "text": "lake"
+          "text": "caik"
         },
         {
           "key": "c",
-          "text": "bag"
+          "text": "cake"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a sound",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 1,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "The child identifies a word that shares an ending sound.",
-      "alignmentRationale": "This question encourages listening for and recognizing rhyming patterns."
+      "skillFacet": "spells words with the silent 'e' ('a_e') pattern",
+      "targetEvidence": "chooses 'cake' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'cake' from look-alike misspellings directly tests knowledge of the silent 'e' ('a_e') spelling pattern."
     },
     {
       "id": "e6b7b50e-1a6c-4e86-972c-9a5595f89921",
@@ -1675,12 +1675,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word ends with the same sound as \"dog\"?",
+      "prompt": "Which word is spelled correctly? It is a green animal that hops and says 'ribbit'.",
       "rubric": [
-        "3 - The answer correctly ends with the same sound as 'dog,' showing knowledge of sound patterns.",
-        "2 - The answer partially matches the sound at the end but is not exact.",
-        "1 - The answer is not relevant to the ending sound asked.",
-        "0 - There is no answer or the answer does not relate to 'dog.'"
+        "3 - Picks the correct spelling 'frog'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -1690,26 +1690,26 @@
       "options": [
         {
           "key": "a",
-          "text": "cake"
+          "text": "frog"
         },
         {
           "key": "b",
-          "text": "log"
+          "text": "frogg"
         },
         {
           "key": "c",
-          "text": "big"
+          "text": "frawg"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "sound for an ending letter",
+      "answerKey": "a",
       "optionScores": {
-        "a": 1,
-        "b": 3,
-        "c": 2
+        "a": 3,
+        "b": 1,
+        "c": 1
       },
-      "targetEvidence": "Identifies a word ending with the same sound as 'dog'.",
-      "alignmentRationale": "This question tests awareness of phonetic patterns in spellings."
+      "skillFacet": "spells words with the short 'o' with a single final consonant pattern",
+      "targetEvidence": "chooses 'frog' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'frog' from look-alike misspellings directly tests knowledge of the short 'o' with a single final consonant spelling pattern."
     },
     {
       "id": "3afd84ce-527a-4bac-979c-f86132fe39b2",
@@ -1718,12 +1718,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word has the same middle sounds as \"man\"?",
+      "prompt": "Which word is spelled correctly? \"I ___ ride my bike.\"",
       "rubric": [
-        "3 - The answer shares the same middle vowel and consonant sound as 'man.'",
-        "2 - The answer has a similar middle but is not exact.",
-        "1 - The answer bears no relation to 'man.'",
-        "0 - There is no answer or it is completely unrelated."
+        "3 - Picks the correct spelling 'can'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -1733,26 +1733,26 @@
       "options": [
         {
           "key": "a",
-          "text": "cat"
-        },
-        {
-          "key": "b",
           "text": "can"
         },
         {
+          "key": "b",
+          "text": "kan"
+        },
+        {
           "key": "c",
-          "text": "fen"
+          "text": "cann"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "sound for a middle letter",
+      "answerKey": "a",
       "optionScores": {
-        "a": 1,
-        "b": 3,
-        "c": 2
+        "a": 3,
+        "b": 1,
+        "c": 1
       },
-      "targetEvidence": "Identifies a word with the same middle sound as 'man'.",
-      "alignmentRationale": "This isolates recognition of middle sound patterns fundamental for spelling."
+      "skillFacet": "spells words with the '-an' word family pattern",
+      "targetEvidence": "chooses 'can' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'can' from look-alike misspellings directly tests knowledge of the '-an' word family spelling pattern."
     },
     {
       "id": "ab23e007-d401-4e1c-af03-3fe6c77dcecb",
@@ -1761,12 +1761,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word shares the same final sound as \"light\"?",
+      "prompt": "Which word is spelled correctly? It is the time when the sky is dark and we sleep.",
       "rubric": [
-        "3 - The answer correctly shares the final sound with 'light.'",
-        "2 - The answer is somewhat close but not quite right.",
-        "1 - The answer does not correspond with 'light.'",
-        "0 - There is no answer or fails to connect."
+        "3 - Picks the correct spelling 'night'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -1776,26 +1776,26 @@
       "options": [
         {
           "key": "a",
-          "text": "kite"
+          "text": "nite"
         },
         {
           "key": "b",
-          "text": "sight"
+          "text": "night"
         },
         {
           "key": "c",
-          "text": "cat"
+          "text": "nihgt"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "sound for an ending letter",
       "optionScores": {
         "a": 1,
         "b": 3,
-        "c": 2
+        "c": 0
       },
-      "targetEvidence": "Identifies a word with the same ending sound as 'light'.",
-      "alignmentRationale": "This tests phonetic awareness of spelling patterns."
+      "skillFacet": "spells words with the '-ight' pattern",
+      "targetEvidence": "chooses 'night' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'night' from look-alike misspellings directly tests knowledge of the '-ight' spelling pattern."
     },
     {
       "id": "2b3defa5-d8c8-46a4-a1b9-6c603073c095",
@@ -2025,12 +2025,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word is part of the family with \"cat\" (like \"bat\")?",
+      "prompt": "Which word is spelled correctly? \"___ is my red ball.\"",
       "rubric": [
-        "3 - Correctly identifies a word that is part of the same family.",
-        "2 - Chooses a word that is related but not part of the exact family.",
-        "1 - Selects a word unrelated to the family.",
-        "0 - Does not pick a word."
+        "3 - Picks the correct spelling 'That'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -2040,26 +2040,26 @@
       "options": [
         {
           "key": "a",
-          "text": "dog"
+          "text": "That"
         },
         {
           "key": "b",
-          "text": "hat"
+          "text": "Thatt"
         },
         {
           "key": "c",
-          "text": "rat"
+          "text": "Dat"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "word-family pattern recognition",
+      "answerKey": "a",
       "optionScores": {
-        "a": 1,
-        "b": 3,
-        "c": 2
+        "a": 3,
+        "b": 1,
+        "c": 0
       },
-      "targetEvidence": "The child recognizes a word that belongs to the same family as 'cat'.",
-      "alignmentRationale": "This question tests the child’s ability to recognize word families, which aids spelling development."
+      "skillFacet": "spells words with the 'th' + '-at' family pattern",
+      "targetEvidence": "chooses 'That' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'That' from look-alike misspellings directly tests knowledge of the 'th' + '-at' family spelling pattern."
     },
     {
       "id": "788c5560-a746-4dc4-a285-a9993c901507",
@@ -2068,12 +2068,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word has the same ending sound as 'sock'?",
+      "prompt": "Which word is spelled correctly? \"I found a smooth ___ by the river.\"",
       "rubric": [
-        "3 - Correctly identifies the word with the matching ending sound.",
-        "2 - Chooses a word that is close but has a slightly different ending sound.",
-        "1 - Selects a word that has no relation to the sound.",
-        "0 - Does not select any word."
+        "3 - Picks the correct spelling 'rock'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -2083,11 +2083,11 @@
       "options": [
         {
           "key": "a",
-          "text": "bat"
+          "text": "rok"
         },
         {
           "key": "b",
-          "text": "look"
+          "text": "rocke"
         },
         {
           "key": "c",
@@ -2095,14 +2095,14 @@
         }
       ],
       "answerKey": "c",
-      "skillFacet": "sound match",
       "optionScores": {
-        "a": 0,
+        "a": 1,
         "b": 1,
         "c": 3
       },
-      "targetEvidence": "picks the word that rhymes with 'sock'",
-      "alignmentRationale": "This task focuses on recognizing and producing sound patterns by choosing a word that shares an ending sound."
+      "skillFacet": "spells words with the '-ck' ending after a short vowel pattern",
+      "targetEvidence": "chooses 'rock' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'rock' from look-alike misspellings directly tests knowledge of the '-ck' ending after a short vowel spelling pattern."
     },
     {
       "id": "4a9fc1c3-8515-4270-b662-86038b2bac5e",
@@ -2243,12 +2243,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word has the same middle sounds as 'bridge'?",
+      "prompt": "Which word is spelled correctly? \"Keep the milk cold in the ___.\"",
       "rubric": [
-        "3 - Correctly identifies the word with the matching middle sounds.",
-        "2 - Chooses a word that is somewhat similar in sound.",
-        "1 - Selects a word that does not match.",
-        "0 - Does not select any word."
+        "3 - Picks the correct spelling 'fridge'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -2258,26 +2258,26 @@
       "options": [
         {
           "key": "a",
-          "text": "drain"
-        },
-        {
-          "key": "b",
           "text": "fridge"
         },
         {
+          "key": "b",
+          "text": "frige"
+        },
+        {
           "key": "c",
-          "text": "kid"
+          "text": "fridj"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "middle sound recognition",
+      "answerKey": "a",
       "optionScores": {
-        "a": 0,
-        "b": 3,
+        "a": 3,
+        "b": 1,
         "c": 1
       },
-      "targetEvidence": "chooses the word containing the same middle sounds as 'bridge'",
-      "alignmentRationale": "This item targets recognition of phonetic patterns in the middle of words."
+      "skillFacet": "spells words with the '-dge' ending pattern",
+      "targetEvidence": "chooses 'fridge' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'fridge' from look-alike misspellings directly tests knowledge of the '-dge' ending spelling pattern."
     },
     {
       "id": "ddc6dcba-3c1b-4a08-a27b-97a2105f3725",
@@ -2395,12 +2395,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word is spelled with 'ai' like in 'train'?",
+      "prompt": "Which word is spelled correctly? It means water falling from the clouds.",
       "rubric": [
-        "3 - The answer correctly identifies the word with 'ai'.",
-        "2 - The answer is close but includes an incorrect spelling.",
-        "1 - The answer has little relation to the 'ai' spelling.",
-        "0 - The answer is irrelevant to the task."
+        "3 - Picks the correct spelling 'rain'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -2410,26 +2410,26 @@
       "options": [
         {
           "key": "a",
-          "text": "play"
+          "text": "rane"
         },
         {
           "key": "b",
-          "text": "peach"
+          "text": "rayn"
         },
         {
           "key": "c",
-          "text": "cat"
+          "text": "rain"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognizes a spelling pattern with vowel sounds",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 0,
-        "c": 0
+        "a": 1,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "correctly identifies spelling that uses 'ai'",
-      "alignmentRationale": "This question targets knowledge of vowel combinations and their spelling."
+      "skillFacet": "spells words with the 'ai' vowel team pattern",
+      "targetEvidence": "chooses 'rain' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'rain' from look-alike misspellings directly tests knowledge of the 'ai' vowel team spelling pattern."
     },
     {
       "id": "566ca3de-bf72-4216-994a-338f251bb673",
@@ -2550,12 +2550,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word is spelled correctly?",
+      "prompt": "Which word is spelled correctly? \"Yesterday the frog ___ over the log.\"",
       "rubric": [
-        "3 - 'jumped' is the correct spelling of the past tense of jump.",
-        "2 - 'jumpy' is a related word but not the same form.",
-        "1 - 'jummped' is close but not right.",
-        "0 - 'jumpt' is incorrect and doesn't match the word."
+        "3 - Picks the correct spelling 'jumped'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -2565,26 +2565,26 @@
       "options": [
         {
           "key": "a",
-          "text": "jumped"
+          "text": "jumpt"
         },
         {
           "key": "b",
-          "text": "jumpy"
+          "text": "jumped"
         },
         {
           "key": "c",
-          "text": "jumpt"
+          "text": "jumpd"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word spelling accuracy",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 1,
+        "b": 3,
+        "c": 1
       },
-      "targetEvidence": "Child distinguishes between correct and incorrect spellings of a similar-sounding word.",
-      "alignmentRationale": "This assesses knowledge of correct spelling through word familiarity."
+      "skillFacet": "spells words with the '-ed' past-tense ending pattern",
+      "targetEvidence": "chooses 'jumped' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'jumped' from look-alike misspellings directly tests knowledge of the '-ed' past-tense ending spelling pattern."
     },
     {
       "id": "80948697-8884-4af6-8e57-ecb3b4d3ba7f",
@@ -2685,12 +2685,12 @@
       "type": "mcq",
       "trait": "advanced_spelling",
       "format": "explanation",
-      "prompt": "Which word has the same ending sound as 'cat'?",
+      "prompt": "Which word is spelled correctly? It floats on water and can carry people.",
       "rubric": [
-        "3 - 'bat' shows complete understanding of sound patterns.",
-        "2 - 'hat' is a good choice but not as clear.",
-        "1 - 'dog' does not match the ending sound at all.",
-        "0 - 'tree' does not relate to 'cat'."
+        "3 - Picks the correct spelling 'boat'.",
+        "2 - Picks a misspelling that still shows most of the right sounds.",
+        "1 - Picks a misspelling that misses the spelling pattern.",
+        "0 - No answer or guesses without looking at the words."
       ],
       "weight": 1,
       "ageBand": [
@@ -2700,26 +2700,26 @@
       "options": [
         {
           "key": "a",
-          "text": "bat"
+          "text": "bote"
         },
         {
           "key": "b",
-          "text": "hat"
+          "text": "boat"
         },
         {
           "key": "c",
-          "text": "dog"
+          "text": "bowt"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "sound pattern recognition",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 1,
+        "b": 3,
         "c": 1
       },
-      "targetEvidence": "Child correctly identifies a word that ends in the same sound as another.",
-      "alignmentRationale": "This task tests the ability to match sounds to letters using familiar words."
+      "skillFacet": "spells words with the 'oa' vowel team pattern",
+      "targetEvidence": "chooses 'boat' over plausible misspellings",
+      "alignmentRationale": "Choosing the correct spelling of 'boat' from look-alike misspellings directly tests knowledge of the 'oa' vowel team spelling pattern."
     }
   ]
 }

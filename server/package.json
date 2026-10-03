@@ -13,6 +13,7 @@
     "restore-account": "tsx src/restoreAccount.ts",
     "fill-bank": "tsx src/fillBank.ts",
     "draft-questions": "tsx src/draftQuestions.ts",
+    "audit-questions": "node --import tsx src/auditQuestions.ts",
     "migrate": "tsx src/migrate.ts"
   },
   "dependencies": {

@@ -295,12 +295,12 @@
       "type": "mcq",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "You see a bird trying to fly but it can't reach the sky, what can you do to help?",
+      "prompt": "You see a bird on the ground that can't fly. What should you do?",
       "rubric": [
-        "3 - Suggests getting it help, like calling someone for assistance.",
-        "2 - Offers a reasonable action like moving the bird gently.",
-        "1 - Suggests an unclear or irrelevant action.",
-        "0 - Does not give a helpful answer."
+        "3 - Picks telling a grown-up.",
+        "2 - Picks ignoring it, which is safe but does not help.",
+        "1 - Picks yelling at it.",
+        "0 - No answer or a choice that does not solve the problem."
       ],
       "weight": 1,
       "ageBand": [
@@ -310,26 +310,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Help it to a nest."
+          "text": "Yell at it"
         },
         {
           "key": "b",
-          "text": "Ignore it."
+          "text": "Tell a grown-up right away"
         },
         {
           "key": "c",
-          "text": "Yell at it."
+          "text": "Ignore it"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "problem solving in a social context",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
+        "a": 0,
+        "b": 3,
+        "c": 1
       },
-      "targetEvidence": "provides a helpful action for the bird's situation.",
-      "alignmentRationale": "This question isolates the ability to suggest appropriate actions to help in a defined scenario."
+      "skillFacet": "chooses a safe way to help",
+      "targetEvidence": "asks a grown-up to help the bird",
+      "alignmentRationale": "Choosing the safe helper for a hurt animal is a practical problem-solving choice."
     },
     {
       "id": "ae2df67b-cd70-4402-aa1a-ce88a33f49ca",
@@ -450,7 +450,7 @@
       "type": "mcq",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "Look at these shapes: ◻️ ◼️ ◻️. What should come next?",
+      "prompt": "Here are some shapes: ◻️ ◼️ ◻️. What should come next?",
       "rubric": [
         "3 - Correctly continues the pattern with ◼️",
         "2 - Chooses a shape close to the pattern",
@@ -718,12 +718,12 @@
       "type": "mcq",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "You see a tray with 2 red apples 🍏🍏 and 1 green apple 🍎. How many total apples are there?",
+      "prompt": "On a tray there are 2 red apples 🍎🍎 and 1 green apple 🍏. How many apples are there in all?",
       "rubric": [
-        "3 - Accurately counts all three apples combined.",
-        "2 - Counts two apples or gives a plausible number close to three.",
-        "1 - Counts only one apple or makes an error.",
-        "0 - Does not answer."
+        "3 - Picks 3.",
+        "2 - Picks 2, counting only one color.",
+        "1 - Picks 4.",
+        "0 - No answer or a choice that does not solve the problem."
       ],
       "weight": 1,
       "ageBand": [
@@ -733,53 +733,26 @@
       "options": [
         {
           "key": "a",
-          "text": "3",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "circle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "2"
         },
         {
           "key": "b",
-          "text": "2",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "circle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "4"
         },
         {
           "key": "c",
-          "text": "4",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "circle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "3"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "counting total objects",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "states the total number of apples",
-      "alignmentRationale": "This prompts children to count and provide a total, isolating the skill of counting objects directly."
+      "skillFacet": "combines groups to find a total",
+      "targetEvidence": "finds 3 apples in all",
+      "alignmentRationale": "Putting two small groups together is a quick everyday problem."
     },
     {
       "id": "5b711b8d-536d-4d66-949c-e8429ec8eeb8",
@@ -811,12 +784,12 @@
       "type": "mcq",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "You see a big balloon 🎈 and a small balloon 🎈. Which one is bigger?",
+      "prompt": "You have one balloon, and two friends both want to play with it. What could you do so everyone has fun?",
       "rubric": [
-        "3 - Correctly identifies the big balloon as bigger.",
-        "2 - Recognizes that there are two balloons and chooses the correct one.",
-        "1 - Selects one balloon but does not specify which is bigger.",
-        "0 - Does not answer or selects both balloons."
+        "3 - Picks taking turns or playing together.",
+        "2 - Picks another idea but thinks about the friends.",
+        "1 - Picks keeping it or popping it.",
+        "0 - No answer or a choice that does not solve the problem."
       ],
       "weight": 1,
       "ageBand": [
@@ -826,53 +799,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Big balloon",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "circle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "Keep it all for yourself"
         },
         {
           "key": "b",
-          "text": "Small balloon",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "circle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "Pop it"
         },
         {
           "key": "c",
-          "text": "Both balloons",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "circle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "Take turns or bat it back and forth together"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "size comparison",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
+        "a": 0,
         "b": 0,
-        "c": 0
+        "c": 3
       },
-      "targetEvidence": "chooses the bigger balloon",
-      "alignmentRationale": "This task specifically assesses the child's ability to compare sizes and offer an answer without needing detailed explanation."
+      "skillFacet": "finds a fair solution",
+      "targetEvidence": "shares the balloon by taking turns or playing together",
+      "alignmentRationale": "Finding a quick fair solution is everyday intuitive problem solving."
     },
     {
       "id": "70c9f708-2b42-42b9-8fe9-4475a62fc420",
@@ -881,21 +827,21 @@
       "type": "open",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "If you saw a rainbow 🌈, what would you tell your friend?",
+      "prompt": "You are drawing outside when it starts to rain. How could you keep your drawing dry?",
       "rubric": [
-        "3 - Describes the rainbow or expresses excitement about it.",
-        "2 - Shares what a rainbow looks like without joy.",
-        "1 - Offers a short or unclear message about the rainbow.",
-        "0 - Does not answer."
+        "3 - Gives a workable plan, such as taking it inside or covering it, and says why.",
+        "2 - Gives a workable idea without a reason.",
+        "1 - Gives an idea that would still let it get wet.",
+        "0 - No answer, or an idea that does not solve the problem."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "expressive description",
-      "targetEvidence": "describes the rainbow to a friend",
-      "alignmentRationale": "This question aims to elicit an expressive response about an observed phenomenon, focusing on description."
+      "skillFacet": "solves an everyday problem",
+      "targetEvidence": "describes a way to keep the drawing dry",
+      "alignmentRationale": "Finding a quick fix for rain is intuitive problem solving."
     },
     {
       "id": "5a43ce54-e3cf-4f79-9167-b1f1dffaff2c",
@@ -904,7 +850,7 @@
       "type": "mcq",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "Look at these animals: 🐶🐱🐶🐱. What animal comes next?",
+      "prompt": "Here are some animals: 🐶🐱🐶🐱. What animal comes next?",
       "rubric": [
         "3 - Correctly identifies the dog as coming next in the pattern.",
         "2 - Gives the correct animal type but makes a similar mistake.",
@@ -974,21 +920,21 @@
       "type": "open",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "If you could make a big cake, what flavor would you choose?",
+      "prompt": "You are baking a cake with a grown-up. The recipe needs two eggs, but you have only one. What could you do?",
       "rubric": [
-        "3 - Chooses a popular, fun cake flavor like chocolate or vanilla.",
-        "2 - Suggests a common flavor but less exciting.",
-        "1 - Offers an unusual or unclear flavor choice.",
-        "0 - Does not answer."
+        "3 - Gives a workable plan, such as buying more eggs or making a smaller cake, and says why.",
+        "2 - Gives a workable idea without a reason.",
+        "1 - Gives an idea that does not fix the missing egg.",
+        "0 - No answer, or an idea that does not solve the problem."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "imaginative thinking",
-      "targetEvidence": "provides an idea for cake flavor",
-      "alignmentRationale": "This question taps into the child's creativity and preferences related to food."
+      "skillFacet": "solves a missing-item problem",
+      "targetEvidence": "suggests a way to bake without the second egg",
+      "alignmentRationale": "Finding a fix when something is missing is intuitive problem solving."
     },
     {
       "id": "c544627d-0880-4288-8cdc-e953048f6bcb",
@@ -1195,21 +1141,21 @@
       "type": "open",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "You have four blocks: a red one, a blue one, a yellow one, and a green one. Which one do you like the most?",
+      "prompt": "You want a toy on a high shelf, but you are too short to reach it. What could you do?",
       "rubric": [
-        "3 - The answer includes a color and reasoning.",
-        "2 - The answer is a color but with little explanation.",
-        "1 - The answer shows some opinion but lacks a clear color.",
-        "0 - The answer doesn't address the question."
+        "3 - Gives a safe plan, such as asking a grown-up to get it down, and says why.",
+        "2 - Gives a workable idea without a reason.",
+        "1 - Gives an unsafe idea, such as climbing the shelf.",
+        "0 - No answer, or an idea that does not solve the problem."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "expressing personal preference",
-      "targetEvidence": "gives a color choice reflecting a preference",
-      "alignmentRationale": "This question encourages children to express their preferences, demonstrating their ability to make choices based on familiarity."
+      "skillFacet": "finds a safe solution",
+      "targetEvidence": "describes a safe way to get the toy",
+      "alignmentRationale": "Coming up with a safe, workable plan is everyday problem solving."
     },
     {
       "id": "78af78c7-12ec-4951-8f5c-1d9f16c01517",
@@ -1284,7 +1230,7 @@
       "type": "mcq",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "Look at these blocks: 🔴🔵🔴🔵🔴 ? What comes next?",
+      "prompt": "Here are some blocks: 🔴🔵🔴🔵🔴 ? What comes next?",
       "rubric": [
         "3 - Correctly identifies the next block as 🔵.",
         "2 - Suggests an alternative block that fits the pattern.",
@@ -1327,12 +1273,12 @@
       "type": "mcq",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "Save the told dog from catching the house! You see a dog and a house. What should the dog do instead? 🐕🏠",
+      "prompt": "Your ball rolled under the couch, and your arm is too short to reach it. What could help you get it out?",
       "rubric": [
-        "3 - Provides a good suggestion like 'go play' or 'find a toy'.",
-        "2 - Suggests a simple action like 'sit' or 'stay'.",
-        "1 - Suggests something unrelated or silly.",
-        "0 - Does not answer correctly."
+        "3 - Picks the long stick or broom.",
+        "2 - Picks another item but knows something longer is needed.",
+        "1 - Picks an item that cannot reach.",
+        "0 - No answer or a choice that does not solve the problem."
       ],
       "weight": 1,
       "ageBand": [
@@ -1342,26 +1288,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Bark"
+          "text": "A tiny crayon"
         },
         {
           "key": "b",
-          "text": "Go play"
+          "text": "A long stick or broom"
         },
         {
           "key": "c",
-          "text": "Run away"
+          "text": "A bowl of soup"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "problem-solving in social situations",
       "optionScores": {
-        "a": 1,
+        "a": 0,
         "b": 3,
         "c": 0
       },
-      "targetEvidence": "offers a reasonable idea for the dog's actions",
-      "alignmentRationale": "This scenario tests the ability to provide an action that solves a problem creatively."
+      "skillFacet": "finds a tool to solve a problem",
+      "targetEvidence": "picks a long tool to reach the ball",
+      "alignmentRationale": "Seeing that a longer tool solves the problem is a quick, intuitive solution."
     },
     {
       "id": "094aa0db-ee89-4aa8-8f0e-c0949c76e889",
@@ -1413,7 +1359,7 @@
       "type": "mcq",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "You see these toys: 🧸, 🏀, 🧸, ? What toy comes next?",
+      "prompt": "Here are some toys: 🧸, 🏀, 🧸, ? What toy comes next?",
       "rubric": [
         "3 - Correctly identifies the next toy as 🏀.",
         "2 - Selects another toy that seems reasonable.",
@@ -1760,12 +1706,12 @@
       "type": "mcq",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "You are juggling 3 balls. If one falls, how can you keep going?",
+      "prompt": "You are carrying 3 balls in your arms, and one keeps falling out. What could you do?",
       "rubric": [
-        "3 - Correctly says to pick it up and continue juggling.",
-        "2 - Suggests stopping to pick it up.",
-        "1 - Says to give up juggling.",
-        "0 - Does not answer or gives a wrong choice."
+        "3 - Picks putting them in a bag or basket.",
+        "2 - Picks another idea but knows something must change.",
+        "1 - Picks an idea that makes it worse.",
+        "0 - No answer or a choice that does not solve the problem."
       ],
       "weight": 1,
       "ageBand": [
@@ -1775,26 +1721,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Pick it up and keep juggling"
+          "text": "Run faster"
         },
         {
           "key": "b",
-          "text": "Stop to pick it up"
+          "text": "Hold them more loosely"
         },
         {
           "key": "c",
-          "text": "Give up juggling"
+          "text": "Put them in a bag or basket"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "maintaining activity",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "provides a practical method to resolve the situation and keep juggling",
-      "alignmentRationale": "This tests the ability to think on one's feet and stay engaged despite challenges."
+      "skillFacet": "finds a simple fix",
+      "targetEvidence": "uses a bag or basket to carry the balls",
+      "alignmentRationale": "Finding an easy fix for an everyday problem is intuitive problem solving."
     },
     {
       "id": "c52b5d31-ba91-4a91-8551-4d5dfa882eb8",
@@ -1803,12 +1749,12 @@
       "type": "mcq",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "You have a basket with 4 apples and 2 oranges. If you want to take out a fruit, which one will you choose to have the most pieces?",
+      "prompt": "A basket has 4 apples and 2 oranges. Are there more apples or more oranges?",
       "rubric": [
-        "3 - Correctly chooses apples as they have more pieces.",
-        "2 - Chooses oranges or mentions both without a clear reason.",
-        "1 - Picks something unrelated to the pieces.",
-        "0 - Does not answer or gives a wrong choice."
+        "3 - Picks more apples.",
+        "2 - Picks the same number but compares the two groups.",
+        "1 - Picks more oranges.",
+        "0 - No answer or a choice that does not solve the problem."
       ],
       "weight": 1,
       "ageBand": [
@@ -1818,26 +1764,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Apples"
+          "text": "More oranges"
         },
         {
           "key": "b",
-          "text": "Oranges"
+          "text": "More apples"
         },
         {
           "key": "c",
-          "text": "Neither"
+          "text": "The same number"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "comparing quantities",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
+        "a": 0,
+        "b": 3,
+        "c": 1
       },
-      "targetEvidence": "chooses apples due to greater quantity",
-      "alignmentRationale": "This tests comparing the number of items, demonstrating problem-solving through intuitive selection."
+      "skillFacet": "compares two groups quickly",
+      "targetEvidence": "sees there are more apples",
+      "alignmentRationale": "Comparing amounts at a glance is intuitive problem solving."
     },
     {
       "id": "3782be00-8f33-4bde-8077-56a66e4c67b6",
@@ -1981,12 +1927,12 @@
       "type": "mcq",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "You see two cats and a dog. One cat is black, and one cat is white. If you want to find an animal with a different color, which one will you pick?",
+      "prompt": "You see a black cat, a black dog and a white cat. Which animal is a different color from the other two?",
       "rubric": [
-        "3 - You correctly choose the dog as a different color animal.",
-        "2 - You choose one of the cats and explain why it's different.",
-        "1 - You choose something unrelated but describe a reason for it.",
-        "0 - You don't choose any animal or your choice is confusing."
+        "3 - Picks the white cat.",
+        "2 - Picks the dog, thinking about a different kind of animal.",
+        "1 - Picks a black animal.",
+        "0 - No answer or a choice that does not solve the problem."
       ],
       "weight": 1,
       "ageBand": [
@@ -1996,7 +1942,7 @@
       "options": [
         {
           "key": "a",
-          "text": "the dog"
+          "text": "the black dog"
         },
         {
           "key": "b",
@@ -2007,15 +1953,15 @@
           "text": "the black cat"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognizing differences in color",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "selects the dog as it has a different color than both cats",
-      "alignmentRationale": "The task requires recognition of color differences, key for intuitive problem-solving."
+      "skillFacet": "spots the odd one out",
+      "targetEvidence": "finds the animal with the different color",
+      "alignmentRationale": "Spotting the odd one out quickly is intuitive problem solving."
     },
     {
       "id": "03824daa-55c4-456c-9ec8-013308665259",
@@ -2308,12 +2254,12 @@
       "type": "mcq",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "If you see a dog chasing a ball, what do you think will happen next?",
+      "prompt": "You want to pour juice, but the jug is too heavy for you to lift. What could you do?",
       "rubric": [
-        "3 - You correctly predict the dog will get the ball.",
-        "2 - You say something related but not clear.",
-        "1 - You mention something very different.",
-        "0 - You don’t answer."
+        "3 - Picks asking a grown-up to help.",
+        "2 - Picks another idea but knows the jug is too heavy.",
+        "1 - Picks an idea that would spill.",
+        "0 - No answer or a choice that does not solve the problem."
       ],
       "weight": 1,
       "ageBand": [
@@ -2323,26 +2269,26 @@
       "options": [
         {
           "key": "a",
-          "text": "The dog will catch the ball."
+          "text": "Try to lift it with one finger"
         },
         {
           "key": "b",
-          "text": "The dog will bark loudly."
+          "text": "Ask a grown-up to help you pour"
         },
         {
           "key": "c",
-          "text": "The dog will sit down."
+          "text": "Tip the jug over on the table"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "predicting sequence",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "gives a logical next step in the sequence",
-      "alignmentRationale": "This question tests the child's ability to predict an outcome based on a simple action."
+      "skillFacet": "finds a sensible solution",
+      "targetEvidence": "asks for help with a heavy jug",
+      "alignmentRationale": "Choosing the easy, safe solution is intuitive problem solving."
     },
     {
       "id": "bb9f1348-edcb-4c6d-bd01-2986f7a06586",
@@ -2615,12 +2561,12 @@
       "type": "mcq",
       "trait": "intuitive_problem_solving",
       "format": "explanation",
-      "prompt": "If you have a garden and the flowers are wilting, what could be causing it?",
+      "prompt": "The flowers in your garden are drooping, and the soil is very dry. What is most likely wrong?",
       "rubric": [
-        "3 - Points out a clear reason like lack of water.",
-        "2 - Suggests a less likely but still relevant cause.",
-        "1 - Offers an unrelated reason or incorrect answer.",
-        "0 - Doesn't provide an answer."
+        "3 - Picks that they need water.",
+        "2 - Picks another reason but links it to the plants.",
+        "1 - Picks a reason that is not real.",
+        "0 - No answer or a choice that does not solve the problem."
       ],
       "weight": 1,
       "ageBand": [
@@ -2630,26 +2576,26 @@
       "options": [
         {
           "key": "a",
-          "text": "They need more water."
+          "text": "They are sleepy"
         },
         {
           "key": "b",
-          "text": "They want to grow taller."
+          "text": "They need water"
         },
         {
           "key": "c",
-          "text": "They're too sunny outside."
+          "text": "They want to be taller"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "identifying causes",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
+        "a": 0,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "identifies a logical cause for the wilting flowers",
-      "alignmentRationale": "This question tests the child's understanding of common causes for a garden problem."
+      "skillFacet": "finds the likely cause of a problem",
+      "targetEvidence": "links dry soil to needing water",
+      "alignmentRationale": "Using the dry-soil clue to find the cause is intuitive problem solving."
     },
     {
       "id": "06826f1b-193a-4c37-be2a-873ac4bdf8f7",

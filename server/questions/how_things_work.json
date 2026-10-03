@@ -542,12 +542,12 @@
       "type": "mcq",
       "trait": "how_things_work",
       "format": "explanation",
-      "prompt": "What does a balloon do when you let it go?",
+      "prompt": "You blow up a balloon with your mouth and tie it. When you let go of it, what happens?",
       "rubric": [
-        "3 - The answer states the balloon flies away, showing understanding of the action.",
-        "2 - The answer notes some movement but lacks detail about flying away.",
-        "1 - The answer is vague about what happens to the balloon.",
-        "0 - No answer or completely incorrect answer."
+        "3 - Picks that it slowly falls to the floor.",
+        "2 - Picks floating but can say why some balloons float.",
+        "1 - Picks floating with no reason.",
+        "0 - No answer or a guess with no idea of how it works."
       ],
       "weight": 1,
       "ageBand": [
@@ -557,26 +557,26 @@
       "options": [
         {
           "key": "a",
-          "text": "It flies away."
+          "text": "It floats up to the sky"
         },
         {
           "key": "b",
-          "text": "It stays in place."
+          "text": "It slowly falls down to the floor"
         },
         {
           "key": "c",
-          "text": "It falls down."
+          "text": "It turns into a ball"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "action consequence",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
+        "a": 1,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "Child identifies that letting go of the balloon leads to it floating away.",
-      "alignmentRationale": "This question assesses knowledge of cause and effect in a familiar scenario, isolating mechanistic curiosity about how an action causes a reaction."
+      "skillFacet": "predicts what a breath-filled balloon does",
+      "targetEvidence": "predicts a breath-filled balloon falls slowly",
+      "alignmentRationale": "Predicting what a breath-filled balloon does checks understanding of how balloons work."
     },
     {
       "id": "ee4db861-a26e-47c3-8111-e16dc915b742",
@@ -760,12 +760,12 @@
       "type": "mcq",
       "trait": "how_things_work",
       "format": "explanation",
-      "prompt": "What part of a balloon allows it to float?",
+      "prompt": "Why does a balloon get bigger when you blow into it?",
       "rubric": [
-        "3 - Correctly identifies helium or air as the reason it floats.",
-        "2 - Offers another partially correct idea related to buoyancy.",
-        "1 - Suggests a different balloon part that does not help it float.",
-        "0 - Incorrect or unrelated response."
+        "3 - Picks that breath fills and stretches the balloon.",
+        "2 - Shows some idea that something goes inside the balloon.",
+        "1 - Picks a magical or color reason.",
+        "0 - No answer or a guess with no idea of how it works."
       ],
       "weight": 1,
       "ageBand": [
@@ -775,26 +775,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Helium or air"
+          "text": "Its color makes it grow"
         },
         {
           "key": "b",
-          "text": "The color"
+          "text": "It is hungry"
         },
         {
           "key": "c",
-          "text": "The size"
+          "text": "Your breath fills it up and stretches it"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "identify a cause for a function",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
+        "a": 0,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "Selects the part or reason related to buoyancy in a balloon.",
-      "alignmentRationale": "Understanding buoyancy relates directly to the child’s grasp of how things function in the world around them."
+      "skillFacet": "explains how air fills and stretches a balloon",
+      "targetEvidence": "links blowing air in to the balloon getting bigger",
+      "alignmentRationale": "Linking blowing to the balloon growing shows understanding of a simple everyday mechanism."
     },
     {
       "id": "4de109a9-b5aa-48cc-9773-8d943d56a09f",
@@ -912,12 +912,12 @@
       "type": "mcq",
       "trait": "how_things_work",
       "format": "explanation",
-      "prompt": "What part of a bicycle helps it go?",
+      "prompt": "What part of a bike do you push with your feet to make it go?",
       "rubric": [
-        "3 - The wheels help the bicycle go forward.",
-        "2 - The pedals are important but not the main part.",
-        "1 - The bike frame is what helps it go.",
-        "0 - A bicycle needs a horn to go."
+        "3 - Picks the pedals.",
+        "2 - Picks another part but explains how a bike moves.",
+        "1 - Picks a part that does not make the bike go.",
+        "0 - No answer or a guess with no idea of how it works."
       ],
       "weight": 1,
       "ageBand": [
@@ -927,26 +927,26 @@
       "options": [
         {
           "key": "a",
-          "text": "The wheels"
+          "text": "The handlebars"
         },
         {
           "key": "b",
-          "text": "The pedals"
+          "text": "The seat"
         },
         {
           "key": "c",
-          "text": "The bike frame"
+          "text": "The pedals"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a part’s function",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "Identify a part of the bicycle and its function.",
-      "alignmentRationale": "Asking about the bicycle's part tests understanding of how a familiar system works by focusing on specific mechanisms."
+      "skillFacet": "knows how a bike is made to move",
+      "targetEvidence": "identifies pedals as the part pushed to make a bike go",
+      "alignmentRationale": "Knowing what makes a bike go is a basic mechanism question about a familiar object."
     },
     {
       "id": "394eb7ce-b3a1-47a9-9361-1ad56c3505d0",
@@ -978,12 +978,12 @@
       "type": "mcq",
       "trait": "how_things_work",
       "format": "explanation",
-      "prompt": "What do you think makes a balloon float?",
+      "prompt": "Some party balloons float up to the ceiling. What is inside them that makes them float?",
       "rubric": [
-        "3 - The air inside is lighter than the outside air.",
-        "2 - The balloon is full of special gas.",
-        "1 - The balloon is just bouncy.",
-        "0 - The balloon needs to be blue."
+        "3 - Picks the special gas lighter than air (helium).",
+        "2 - Picks breath air, knowing there is a gas inside but not which kind.",
+        "1 - Picks breath air with no reason.",
+        "0 - No answer or a guess with no idea of how it works."
       ],
       "weight": 1,
       "ageBand": [
@@ -993,26 +993,26 @@
       "options": [
         {
           "key": "a",
-          "text": "The air inside is lighter"
+          "text": "Air from your breath"
         },
         {
           "key": "b",
-          "text": "It's full of special gas"
+          "text": "A special gas that is lighter than air"
         },
         {
           "key": "c",
-          "text": "The balloon is just bouncy"
+          "text": "Sand"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a cause of floating",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "Explain why a balloon can float based on its contents.",
-      "alignmentRationale": "This tests the understanding of buoyancy and the mechanism behind a balloon's ability to float."
+      "skillFacet": "explains why helium balloons float",
+      "targetEvidence": "identifies a lighter-than-air gas as the reason balloons float",
+      "alignmentRationale": "Explaining what makes a balloon float is a simple cause-and-mechanism question about a familiar object."
     },
     {
       "id": "1686c9f5-7754-4267-ae94-f59c16afa953",
@@ -1810,12 +1810,12 @@
       "type": "mcq",
       "trait": "how_things_work",
       "format": "explanation",
-      "prompt": "Which part of a vacuum cleaner helps pick up dirt?",
+      "prompt": "How does a vacuum cleaner pick up dirt?",
       "rubric": [
-        "3 - Correctly identifies the vacuum nozzle.",
-        "2 - Mentions a part like the motor, not directly for picking up.",
-        "1 - Identifies something unrelated like the cord.",
-        "0 - No answer that connects to the function."
+        "3 - Picks that it sucks in air and the dirt comes with it.",
+        "2 - Picks blowing, knowing air is involved.",
+        "1 - Picks glue or another wrong idea.",
+        "0 - No answer or a guess with no idea of how it works."
       ],
       "weight": 1,
       "ageBand": [
@@ -1825,26 +1825,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Nozzle"
+          "text": "It blows the dirt away"
         },
         {
           "key": "b",
-          "text": "Filter"
+          "text": "It sucks in air, and the dirt comes with it"
         },
         {
           "key": "c",
-          "text": "Cord"
+          "text": "It uses glue to stick the dirt"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "identifying operational parts",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
+        "a": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "Child accurately points out parts of a vacuum cleaner related to its dirt collection.",
-      "alignmentRationale": "This evaluates knowledge of how components work together in household objects."
+      "skillFacet": "explains suction in a vacuum cleaner",
+      "targetEvidence": "identifies sucking in air as how dirt is picked up",
+      "alignmentRationale": "Explaining suction tests understanding of the mechanism behind a familiar household machine."
     },
     {
       "id": "e4fed13c-2bdf-4f55-9ab9-e1b7d6a76cc3",
@@ -2051,12 +2051,12 @@
       "type": "mcq",
       "trait": "how_things_work",
       "format": "explanation",
-      "prompt": "What part helps a microwave cook food quickly?",
+      "prompt": "A microwave makes food hot. What does it use to heat the food?",
       "rubric": [
-        "3 - Correctly identifies the mechanism behind rapid cooking.",
-        "2 - Identifies a related part but not the cooking mechanism.",
-        "1 - Provides an irrelevant answer.",
-        "0 - No answer or unclear response."
+        "3 - Picks invisible waves that heat the food.",
+        "2 - Picks fire but knows the microwave makes heat.",
+        "1 - Picks an option that would not heat food.",
+        "0 - No answer or a guess with no idea of how it works."
       ],
       "weight": 1,
       "ageBand": [
@@ -2066,26 +2066,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Magnetron"
+          "text": "A little fire inside"
         },
         {
           "key": "b",
-          "text": "Tray"
+          "text": "Invisible waves that heat the food"
         },
         {
           "key": "c",
-          "text": "Door"
+          "text": "Ice cubes"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a part",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
+        "a": 1,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "the ability to recognize the component that enables efficient cooking in a microwave",
-      "alignmentRationale": "Targeting the understanding of microwave mechanisms aligns curiosity with function."
+      "skillFacet": "describes how a microwave heats food",
+      "targetEvidence": "identifies invisible waves as what heats the food",
+      "alignmentRationale": "Asking what a microwave uses to heat food tests a simple mechanism without technical words."
     },
     {
       "id": "7b44d70a-4005-4d6d-9c55-129029ac1d3b",
@@ -2289,12 +2289,12 @@
       "type": "mcq",
       "trait": "how_things_work",
       "format": "explanation",
-      "prompt": "What part of a washing machine helps to spin the clothes?",
+      "prompt": "In a washing machine, what part turns round and round to spin the clothes?",
       "rubric": [
-        "3 - Correctly identifies the part responsible for spinning clothes.",
-        "2 - Identifies a part but not for spinning clothes.",
-        "1 - Provides an unrelated answer.",
-        "0 - No answer or unclear response."
+        "3 - Picks the drum that holds the clothes.",
+        "2 - Picks the door, knowing a part of the machine moves.",
+        "1 - Picks soap or shows no idea of moving parts.",
+        "0 - No answer or a guess with no idea of how it works."
       ],
       "weight": 1,
       "ageBand": [
@@ -2304,26 +2304,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Agitator"
+          "text": "The soap"
         },
         {
           "key": "b",
-          "text": "Water pump"
+          "text": "The door"
         },
         {
           "key": "c",
-          "text": "Door handle"
+          "text": "The big drum that holds the clothes"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a part",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "the ability to correctly identify a part of a washing machine that spins clothes",
-      "alignmentRationale": "This question targets knowledge about a washing machine's mechanism, focusing on the recognition of specific parts."
+      "skillFacet": "knows which part of a washing machine spins",
+      "targetEvidence": "identifies the drum as the spinning part",
+      "alignmentRationale": "Identifying the spinning drum shows understanding of how a familiar machine works."
     },
     {
       "id": "b58149b8-75db-4f3c-a14c-0f2155495376",

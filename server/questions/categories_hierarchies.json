@@ -160,12 +160,12 @@
       "type": "mcq",
       "trait": "categories_hierarchies",
       "format": "explanation",
-      "prompt": "Which of these is a good pet? 🐶",
+      "prompt": "Which of these animals is a pet that many families keep at home?",
       "rubric": [
-        "3 - This is a common pet.",
-        "2 - This animal can be a pet but not typical as the best option.",
-        "1 - This is not suitable as a pet.",
-        "0 - No attempt or an unrelated answer."
+        "3 - Picks the cat.",
+        "2 - Picks a wild animal but can say what a pet is.",
+        "1 - Picks a wild animal.",
+        "0 - No answer or random choice."
       ],
       "weight": 1,
       "ageBand": [
@@ -179,22 +179,22 @@
         },
         {
           "key": "b",
-          "text": "Dog"
+          "text": "Cat"
         },
         {
           "key": "c",
-          "text": "Fish"
+          "text": "Tiger"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "sorting by suitability",
       "optionScores": {
         "a": 0,
         "b": 3,
-        "c": 1
+        "c": 0
       },
-      "targetEvidence": "selects the most suitable pet from the options",
-      "alignmentRationale": "Choosing a suitable pet demonstrates understanding of what makes an animal a good companion."
+      "skillFacet": "sorts pets from wild animals",
+      "targetEvidence": "picks the cat as the pet",
+      "alignmentRationale": "Telling pets from wild animals tests category membership."
     },
     {
       "id": "257ead79-d377-4446-9e48-0061f987f495",
@@ -295,14 +295,13 @@
       "type": "mcq",
       "trait": "categories_hierarchies",
       "format": "explanation",
-      "prompt": "Which of these is a reptile? 🐍",
+      "prompt": "Which of these animals can fly?",
       "rubric": [
-        "3 - Correctly identifies the reptile as the best option.",
-        "2 - Chooses a warm-blooded animal, showing some familiarity.",
-        "1 - Chooses the incorrect animal but shows some understanding.",
-        "0 - Selects an unrelated option or shows no understanding."
+        "3 - Picks the bird.",
+        "2 - Picks another animal but thinks about how animals move.",
+        "1 - Picks an animal that cannot fly.",
+        "0 - No answer or random choice."
       ],
-      "visual": "🐍",
       "weight": 1,
       "ageBand": [
         4,
@@ -311,26 +310,26 @@
       "options": [
         {
           "key": "a",
-          "text": "snake"
-        },
-        {
-          "key": "b",
           "text": "dog"
         },
         {
-          "key": "c",
+          "key": "b",
           "text": "fish"
+        },
+        {
+          "key": "c",
+          "text": "bird"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a category",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
+        "a": 0,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "correct identification of a reptile among options",
-      "alignmentRationale": "This task isolates the child's ability to identify a subgroup of animals based on features."
+      "skillFacet": "groups animals by how they move",
+      "targetEvidence": "picks the bird as an animal that flies",
+      "alignmentRationale": "Grouping animals by a shared feature tests category thinking."
     },
     {
       "id": "d2f3e671-81db-4651-94d5-fba90f83b469",
@@ -592,12 +591,12 @@
       "type": "mcq",
       "trait": "categories_hierarchies",
       "format": "explanation",
-      "prompt": "What kind of animal is a cat? 🐱",
+      "prompt": "What kind of thing is a cat? 🐱",
       "rubric": [
-        "3 - Correctly names the broader category and explains it, like saying 'A cat is a pet.'",
-        "2 - Identifies some category but lacks a full explanation.",
-        "1 - Names the animal but does not connect to its group.",
-        "0 - Fails to categorize the animal or chooses incorrectly."
+        "3 - Picks 'an animal'.",
+        "2 - Picks another group but knows a cat is alive.",
+        "1 - Picks a group a cat does not belong to.",
+        "0 - No answer or random choice."
       ],
       "weight": 1,
       "ageBand": [
@@ -607,53 +606,26 @@
       "options": [
         {
           "key": "a",
-          "text": "mammal",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "diamond",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "a plant"
         },
         {
           "key": "b",
-          "text": "reptile",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "hexagon",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "an animal"
         },
         {
           "key": "c",
-          "text": "fish",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "star",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "a food"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a type of animal",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 0,
+        "a": 0,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "Selects a correct category for the animal and provides rationale.",
-      "alignmentRationale": "This task tests understanding of how specific animals fit into larger groups."
+      "skillFacet": "names the larger group an item belongs to",
+      "targetEvidence": "places a cat in the animal group",
+      "alignmentRationale": "Naming the bigger group a cat belongs to tests simple hierarchy."
     },
     {
       "id": "8f5fd1b2-2cf7-4d16-a8bd-f426b61c39bd",
@@ -662,12 +634,12 @@
       "type": "mcq",
       "trait": "categories_hierarchies",
       "format": "explanation",
-      "prompt": "Which fruit is also a color? 🍍",
+      "prompt": "Which fruit has the same name as a color?",
       "rubric": [
-        "3 - Correctly identifies the fruit with a color and explains what color it is.",
-        "2 - Identifies the fruit but gives unclear reasoning or misses the connection to color.",
-        "1 - Picks a fruit without understanding the color connection.",
-        "0 - Incorrectly identifies a fruit or does not connect to color."
+        "3 - Picks orange.",
+        "2 - Picks another fruit but knows the name must be a color.",
+        "1 - Picks a fruit with no color name.",
+        "0 - No answer or random choice."
       ],
       "weight": 1,
       "ageBand": [
@@ -677,53 +649,26 @@
       "options": [
         {
           "key": "a",
-          "text": "grape",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "circle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "banana"
         },
         {
           "key": "b",
-          "text": "orange",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "square",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "orange"
         },
         {
           "key": "c",
-          "text": "kiwi",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "triangle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "pear"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "word for a type of food",
       "optionScores": {
         "a": 0,
         "b": 3,
         "c": 0
       },
-      "targetEvidence": "Selects the fruit with the color connection accurately.",
-      "alignmentRationale": "This item asks about categorizing foods by color, a skill in understanding groups."
+      "skillFacet": "sees one word in two groups",
+      "targetEvidence": "picks orange as both a fruit and a color",
+      "alignmentRationale": "Seeing that 'orange' belongs to two groups shows flexible category thinking."
     },
     {
       "id": "ab7514cc-3287-41c5-81fd-527b86a2041f",
@@ -864,12 +809,12 @@
       "type": "mcq",
       "trait": "categories_hierarchies",
       "format": "explanation",
-      "prompt": "Which of these belong in the snack group? 🍏🍪🍌",
+      "prompt": "🍪 cookie, 🍰 cake and 🍭 lollipop are all sweet treats. Which one also belongs in the sweet-treat group?",
       "rubric": [
-        "3 - Correctly identifies a snack item like a cookie or fruit.",
-        "2 - Identifies an item that could be a snack but is less obvious.",
-        "1 - Chooses an unrelated food or does not specify.",
-        "0 - Does not answer."
+        "3 - Picks the donut.",
+        "2 - Picks the carrot, knowing it is a food.",
+        "1 - Picks the sock.",
+        "0 - No answer or random choice."
       ],
       "weight": 1,
       "ageBand": [
@@ -879,26 +824,26 @@
       "options": [
         {
           "key": "a",
-          "text": "🍏"
+          "text": "🥕 carrot"
         },
         {
           "key": "b",
-          "text": "🍪"
+          "text": "🧦 sock"
         },
         {
           "key": "c",
-          "text": "🍟"
+          "text": "🍩 donut"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "recognizing a subgroup",
+      "answerKey": "c",
       "optionScores": {
-        "a": 0,
-        "b": 3,
-        "c": 0
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "correctly identifies an item that fits the snack category",
-      "alignmentRationale": "This task evaluates understanding of food categories based on snacks."
+      "skillFacet": "groups foods by a shared feature",
+      "targetEvidence": "adds the donut to the sweet-treat group",
+      "alignmentRationale": "Adding a new member to a clear group shows category thinking."
     },
     {
       "id": "10383d7d-846c-47b3-8d46-7286af00eb6d",
@@ -1128,12 +1073,12 @@
       "type": "mcq",
       "trait": "categories_hierarchies",
       "format": "explanation",
-      "prompt": "Which of these belongs with the colors? 🔴🔵🟡",
+      "prompt": "🔴 red, 🔵 blue and 🟡 yellow are all colors. Which word is also a color?",
       "rubric": [
-        "3 - Correctly identifies the color that fits, such as green.",
-        "2 - Identifies a color but it does not fit well.",
-        "1 - Gives an unrelated answer or does not specify.",
-        "0 - Does not answer."
+        "3 - Picks 'green', a color.",
+        "2 - Picks another word but can say what a color is.",
+        "1 - Picks a non-color word.",
+        "0 - No answer or random choice."
       ],
       "weight": 1,
       "ageBand": [
@@ -1143,26 +1088,26 @@
       "options": [
         {
           "key": "a",
-          "text": "🟢"
+          "text": "chair"
         },
         {
           "key": "b",
-          "text": "⚪"
+          "text": "green"
         },
         {
           "key": "c",
-          "text": "🟣"
+          "text": "dog"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognizing a subgroup",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 0,
+        "a": 0,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "chooses the color that fits with the others",
-      "alignmentRationale": "This task requires recognizing how a specific item fits into a group based on shared features."
+      "skillFacet": "identifies members of the color group",
+      "targetEvidence": "picks the only color word",
+      "alignmentRationale": "Finding the one member of the color group tests category membership."
     },
     {
       "id": "61ac60bf-ebd4-4406-8911-d7c6f8bfea76",
@@ -1237,14 +1182,13 @@
       "type": "mcq",
       "trait": "categories_hierarchies",
       "format": "explanation",
-      "prompt": "Which of these belongs with the fruit? 🍌",
+      "prompt": "🍌 A banana is a fruit. Which of these is also a fruit?",
       "rubric": [
-        "3 - It is a fruit, like an apple.",
-        "2 - It is a food but not a fruit, like a carrot.",
-        "1 - It is a drink and unrelated to fruit, like juice.",
-        "0 - No relevant idea about fruits."
+        "3 - Picks the apple.",
+        "2 - Picks carrot, knowing it is a plant food.",
+        "1 - Picks bread.",
+        "0 - No answer or random choice."
       ],
-      "visual": "🍏",
       "weight": 1,
       "ageBand": [
         5,
@@ -1253,26 +1197,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Apple"
-        },
-        {
-          "key": "b",
           "text": "Carrot"
         },
         {
+          "key": "b",
+          "text": "Bread"
+        },
+        {
           "key": "c",
-          "text": "Juice"
+          "text": "Apple"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a category (fruit)",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "chooses a valid fruit from options",
-      "alignmentRationale": "This task tests the ability to recognize and categorize fruits by attributes, not just matching visual examples."
+      "skillFacet": "identifies members of the fruit group",
+      "targetEvidence": "picks the apple as a fruit",
+      "alignmentRationale": "Matching another fruit to the banana tests category membership."
     },
     {
       "id": "62a0e143-7fe5-4bbb-8e36-5b4b2387969a",
@@ -1351,12 +1295,12 @@
       "type": "mcq",
       "trait": "categories_hierarchies",
       "format": "explanation",
-      "prompt": "Which animal belongs with pets? 🦁🐕🐠",
+      "prompt": "Which of these animals is a pet that can live in your home?",
       "rubric": [
-        "3 - Correctly identifies the pet animal, showing understanding of pets.",
-        "2 - Chooses a wild animal that could be misunderstood as domestic.",
-        "1 - Picks an unrelated animal without clear thinking.",
-        "0 - Picks none that relates to pets."
+        "3 - Picks the dog.",
+        "2 - Picks a wild animal but can say what a pet is.",
+        "1 - Picks a wild animal.",
+        "0 - No answer or random choice."
       ],
       "weight": 1,
       "ageBand": [
@@ -1366,53 +1310,26 @@
       "options": [
         {
           "key": "a",
-          "text": "🦁",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "circle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "🐕 dog"
         },
         {
           "key": "b",
-          "text": "🐕",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "circle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "🦁 lion"
         },
         {
           "key": "c",
-          "text": "🐠",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "circle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "🦒 giraffe"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "word for a pet animal",
+      "answerKey": "a",
       "optionScores": {
-        "a": 0,
-        "b": 3,
-        "c": 1
+        "a": 3,
+        "b": 0,
+        "c": 0
       },
-      "targetEvidence": "sorts animals recognizing domesticated versus wild ones",
-      "alignmentRationale": "This question targets the grouping of domesticated animals compared to wild animals in understanding pet categories."
+      "skillFacet": "sorts pets from wild animals",
+      "targetEvidence": "picks the dog as the pet",
+      "alignmentRationale": "Sorting pets from wild animals tests category membership."
     },
     {
       "id": "dc30a9e0-6198-4491-be17-763208154bdd",
@@ -1421,12 +1338,12 @@
       "type": "mcq",
       "trait": "categories_hierarchies",
       "format": "explanation",
-      "prompt": "Which of these fits in the toy group? 📚🚗🧸",
+      "prompt": "🧸 teddy bear, 🪀 yo-yo and 🪁 kite are all toys. Which one also belongs in the toy group?",
       "rubric": [
-        "3 - Picks the correct toy, showing clear understanding of grouping.",
-        "2 - Chooses an item that could relate to children but isn't a toy.",
-        "1 - Chooses an unrelated item, missing concept of toys.",
-        "0 - Chooses none related to toys at all."
+        "3 - Picks the ball.",
+        "2 - Picks the chair, knowing it is a thing at home.",
+        "1 - Picks the apple.",
+        "0 - No answer or random choice."
       ],
       "weight": 1,
       "ageBand": [
@@ -1436,53 +1353,26 @@
       "options": [
         {
           "key": "a",
-          "text": "📚",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "circle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "🍎 apple"
         },
         {
           "key": "b",
-          "text": "🚗",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "circle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "⚽ ball"
         },
         {
           "key": "c",
-          "text": "🧸",
-          "figure": {
-            "shapes": [
-              {
-                "fill": "solid",
-                "kind": "circle",
-                "tone": "primary"
-              }
-            ]
-          }
+          "text": "🪑 chair"
         }
       ],
-      "answerKey": "c",
-      "skillFacet": "word for a type of object",
+      "answerKey": "b",
       "optionScores": {
         "a": 0,
-        "b": 0,
-        "c": 3
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "sorts objects as toys versus non-toys",
-      "alignmentRationale": "This question tests whether the child can recognize toys specifically, addressing categorical knowledge."
+      "skillFacet": "identifies members of the toy group",
+      "targetEvidence": "adds the ball to the toy group",
+      "alignmentRationale": "Adding a new member to the toy group tests category membership."
     },
     {
       "id": "b1e58cb8-872a-4177-9d4e-1fc8e5f65517",

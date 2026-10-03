@@ -160,12 +160,12 @@
       "type": "mcq",
       "trait": "viewpoint_mood_intention",
       "format": "explanation",
-      "prompt": "Emma sees a butterfly land near her. What might Emma be feeling?",
+      "prompt": "A butterfly lands near Emma. She smiles and claps her hands. What is Emma feeling?",
       "rubric": [
-        "3 - Emma is likely feeling happy because butterflies are beautiful.",
-        "2 - Emma might feel curious about the butterfly's colors.",
-        "1 - Emma could be surprised that the butterfly is close.",
-        "0 - Emma might feel scared of the butterfly."
+        "3 - Uses the clues to choose: happy.",
+        "2 - Chooses a feeling or idea that is close but less supported.",
+        "1 - Chooses an answer the clues do not support.",
+        "0 - Chooses the opposite of what the clues show."
       ],
       "weight": 1,
       "ageBand": [
@@ -175,26 +175,26 @@
       "options": [
         {
           "key": "a",
-          "text": "happy"
+          "text": "sad"
         },
         {
           "key": "b",
-          "text": "curious"
+          "text": "happy"
         },
         {
           "key": "c",
-          "text": "surprised"
+          "text": "sleepy"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a feeling",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 0,
+        "b": 3,
         "c": 1
       },
-      "targetEvidence": "Identifies a plausible feeling and points to a clue like the butterfly's beauty.",
-      "alignmentRationale": "This task isolates the category by requiring a response based on a contextual clue about the butterfly's presence."
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "uses the smile and clap clues to name the feeling.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "da4f90da-138f-44fc-aa57-12d37d20726a",
@@ -507,12 +507,12 @@
       "type": "open",
       "trait": "viewpoint_mood_intention",
       "format": "explanation",
-      "prompt": "Ben sees a dog wag its tail and barks happily. What do you think the dog might be feeling?",
+      "prompt": "Ben sees a dog wag its tail and bark happily. What do you think the dog might be feeling?",
       "rubric": [
-        "3 - The answer describes a happy feeling for the dog because of tail wagging.",
-        "2 - The answer mentions some feelings but not clearly connected to actions.",
-        "1 - The answer is very vague about feelings related to the dog.",
-        "0 - The answer does not connect to the dog's feelings at all."
+        "3 - Names a fitting feeling (happy or excited) and points to a clue that shows it.",
+        "2 - Names a fitting feeling without a clue.",
+        "1 - Names a feeling that does not fit the clues.",
+        "0 - No answer or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -520,8 +520,8 @@
         4
       ],
       "skillFacet": "inferring feelings from behavior",
-      "targetEvidence": "child describes emotional state for the dog based on its actions",
-      "alignmentRationale": "This question enables the child to infer feelings from observable behavior."
+      "targetEvidence": "names the dog's feeling and a clue like the wagging tail.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "49fc2613-3eb1-4743-b1ea-f6d832d52f0b",
@@ -642,12 +642,12 @@
       "type": "mcq",
       "trait": "viewpoint_mood_intention",
       "format": "explanation",
-      "prompt": "Emma hugs her teddy bear tightly. What do you think she's feeling?",
+      "prompt": "At bedtime, Emma smiles and hugs her soft teddy bear. How does she feel?",
       "rubric": [
-        "3 - Correctly identifies that Emma feels comforted or safe and explains why with context.",
-        "2 - Suggests she might feel tired or sleepy without linking it back to her actions.",
-        "1 - States she might be scared.",
-        "0 - Provides no relevant information."
+        "3 - Uses the clues to choose: cozy and safe.",
+        "2 - Chooses a feeling or idea that is close but less supported.",
+        "1 - Chooses an answer the clues do not support.",
+        "0 - Chooses the opposite of what the clues show."
       ],
       "weight": 1,
       "ageBand": [
@@ -657,26 +657,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Emma feels comforted."
+          "text": "Bored"
         },
         {
           "key": "b",
-          "text": "Emma feels scared."
+          "text": "Scared"
         },
         {
           "key": "c",
-          "text": "Emma feels bored."
+          "text": "Cozy and safe"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognizing comfort from actions",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
+        "a": 0,
         "b": 1,
-        "c": 0
+        "c": 3
       },
-      "targetEvidence": "Identifies Emma's feelings from her hugging action.",
-      "alignmentRationale": "This assessment focuses on linking emotional states with a specific comfort behavior."
+      "skillFacet": "recognizing comfort from actions",
+      "targetEvidence": "uses the smile and bedtime clues to name comfort.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "a2b58d01-8956-49cc-a6a0-7331ed445396",
@@ -992,12 +992,12 @@
       "type": "mcq",
       "trait": "viewpoint_mood_intention",
       "format": "explanation",
-      "prompt": "A girl frowns and says, 'I don’t want to play today.' What does she likely feel?",
+      "prompt": "A girl frowns and says, 'I don't want to play today.' What does she likely feel?",
       "rubric": [
-        "3 - She feels sad and doesn't want to play.",
-        "2 - She feels excited to play.",
-        "1 - She feels tired but happy.",
-        "0 - She feels angry at everyone."
+        "3 - Uses the clues to choose: sad.",
+        "2 - Chooses a feeling or idea that is close but less supported.",
+        "1 - Chooses an answer the clues do not support.",
+        "0 - Chooses the opposite of what the clues show."
       ],
       "weight": 1,
       "ageBand": [
@@ -1019,14 +1019,14 @@
         }
       ],
       "answerKey": "a",
-      "skillFacet": "word for a feeling",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 0
+        "b": 0,
+        "c": 2
       },
-      "targetEvidence": "Identifies the girl's feeling as sad based on expression and words.",
-      "alignmentRationale": "This question assesses the ability to infer emotions from verbal and non-verbal clues."
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "uses the frown and words to name the feeling.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "94ecf4aa-142d-4d6e-92ab-0ecea769c13e",
@@ -1121,12 +1121,12 @@
       "type": "mcq",
       "trait": "viewpoint_mood_intention",
       "format": "explanation",
-      "prompt": "A puppy barks happily when it sees its owner. How does the puppy feel?",
+      "prompt": "A puppy wags its tail and jumps up when it sees its owner. How does the puppy feel?",
       "rubric": [
-        "3 - The puppy feels happy because it sees its owner.",
-        "2 - The puppy feels excited when it sees anyone.",
-        "1 - The puppy feels nothing special when it sees its owner.",
-        "0 - The puppy is sad."
+        "3 - Uses the clues to choose: happy or excited.",
+        "2 - Chooses a feeling or idea that is close but less supported.",
+        "1 - Chooses an answer the clues do not support.",
+        "0 - Chooses the opposite of what the clues show."
       ],
       "weight": 1,
       "ageBand": [
@@ -1147,15 +1147,15 @@
           "text": "Sad"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a feeling",
+      "answerKey": "b",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "Identifies the puppy's feeling as happy.",
-      "alignmentRationale": "This question examines the ability to infer emotions based on specific contextual clues."
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "names a feeling that matches the clues.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "7f7877ee-313e-49a6-8906-5d37ef2729a1",
@@ -1164,12 +1164,12 @@
       "type": "open",
       "trait": "viewpoint_mood_intention",
       "format": "explanation",
-      "prompt": "What makes your pet happy?",
+      "prompt": "A cat purrs and rubs against your leg. How do you think the cat feels? What clues tell you?",
       "rubric": [
-        "3 - It wags its tail or jumps around silly.",
-        "2 - It looks tired or is quiet.",
-        "1 - It looks like nothing special.",
-        "0 - It hides from you."
+        "3 - Names a fitting feeling (happy, calm, or friendly) and points to a clue that shows it.",
+        "2 - Names a fitting feeling without a clue.",
+        "1 - Names a feeling that does not fit the clues.",
+        "0 - No answer or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1177,8 +1177,8 @@
         5
       ],
       "skillFacet": "word for a feeling",
-      "targetEvidence": "Describes observable behavior that indicates a pet's happiness.",
-      "alignmentRationale": "This question allows for expression of knowledge regarding feelings by observing behavior."
+      "targetEvidence": "names the cat's feeling and the purring clue.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "0735526e-8459-48dc-af80-845b8da8a789",
@@ -1187,12 +1187,12 @@
       "type": "open",
       "trait": "viewpoint_mood_intention",
       "format": "explanation",
-      "prompt": "How does your favorite toy show that it is fun?",
+      "prompt": "Tom drops his ice cream on the ground, and his lip starts to wobble. How do you think Tom feels? What clues tell you?",
       "rubric": [
-        "3 - It makes sounds or lights up when you play.",
-        "2 - It sits quietly on the shelf.",
-        "1 - It looks boring.",
-        "0 - It is too heavy."
+        "3 - Names a fitting feeling (sad or upset) and points to a clue that shows it.",
+        "2 - Names a fitting feeling without a clue.",
+        "1 - Names a feeling that does not fit the clues.",
+        "0 - No answer or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1200,8 +1200,8 @@
         5
       ],
       "skillFacet": "recognizing mood",
-      "targetEvidence": "Describes a way that a toy can convey a feeling of fun.",
-      "alignmentRationale": "This question empowers creative expression related to feelings associated with objects."
+      "targetEvidence": "names Tom's feeling and the clues that show it.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "f54987be-3fae-44e1-8205-4907b8fb952b",
@@ -1210,21 +1210,21 @@
       "type": "open",
       "trait": "viewpoint_mood_intention",
       "format": "explanation",
-      "prompt": "Imagine you see your friend drop their toy. What could you do?",
+      "prompt": "Your friend drops their toy and it breaks. Their eyes fill with tears. How might your friend feel, and how can you tell?",
       "rubric": [
-        "3 - She can pick it up and give it back.",
-        "2 - She can look and walk away.",
-        "1 - She can say nothing.",
-        "0 - She can hide the toy."
+        "3 - Names a fitting feeling (sad or upset) and points to a clue that shows it.",
+        "2 - Names a fitting feeling without a clue.",
+        "1 - Names a feeling that does not fit the clues.",
+        "0 - No answer or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "recognizing intention",
-      "targetEvidence": "Proposes a helpful action in response to a friend's need.",
-      "alignmentRationale": "This open question allows for a demonstration of understanding how to respond to social situations."
+      "skillFacet": "recognizing a friend's feeling",
+      "targetEvidence": "names the friend's feeling and the tears clue.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "6041faba-89c5-4e0d-a946-65e8163cd80c",
@@ -1737,10 +1737,10 @@
       "format": "explanation",
       "prompt": "Nina sees a puppy playing with a ball. She laughs and points at it. What does Nina probably feel?",
       "rubric": [
-        "3 - Nina is happy because she finds the puppy funny.",
-        "2 - Nina might be amused but not sure why.",
-        "1 - Nina doesn't care about the puppy.",
-        "0 - Nina is upset about something else."
+        "3 - Uses the clues to choose: happy or amused.",
+        "2 - Chooses a feeling or idea that is close but less supported.",
+        "1 - Chooses an answer the clues do not support.",
+        "0 - Chooses the opposite of what the clues show."
       ],
       "weight": 1,
       "ageBand": [
@@ -1762,14 +1762,14 @@
         }
       ],
       "answerKey": "a",
-      "skillFacet": "word for a feeling",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "Nina's reaction of laughter suggests happiness or amusement.",
-      "alignmentRationale": "The task isolates feelings by focusing on Nina's reaction rather than the puppy alone."
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "names a feeling that fits laughing.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "245142ff-f86e-4c3f-96b5-4fe5da569015",
@@ -1844,12 +1844,12 @@
       "type": "mcq",
       "trait": "viewpoint_mood_intention",
       "format": "explanation",
-      "prompt": "During lunch, Mia shares her sandwich with her friend. What might Mia's intention be?",
+      "prompt": "During lunch, Mia shares her sandwich with her friend who has no food. What might Mia want to do?",
       "rubric": [
-        "3 - Mia wants to be kind and friendly to her friend.",
-        "2 - Mia needs to get rid of her sandwich.",
-        "1 - Mia is worried about her friend being hungry.",
-        "0 - Mia wants to eat lunch alone."
+        "3 - Uses the clues to choose: be kind.",
+        "2 - Chooses a feeling or idea that is close but less supported.",
+        "1 - Chooses an answer the clues do not support.",
+        "0 - Chooses the opposite of what the clues show."
       ],
       "weight": 1,
       "ageBand": [
@@ -1863,7 +1863,7 @@
         },
         {
           "key": "b",
-          "text": "Get rid of"
+          "text": "Get rid of food she doesn't like"
         },
         {
           "key": "c",
@@ -1871,14 +1871,14 @@
         }
       ],
       "answerKey": "a",
-      "skillFacet": "inferring intention",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 1,
         "c": 0
       },
-      "targetEvidence": "Mia's action of sharing suggests goodwill toward her friend.",
-      "alignmentRationale": "This question tests intention from the action taken in an interaction."
+      "skillFacet": "inferring intention",
+      "targetEvidence": "uses the friend-has-no-food clue to infer kindness.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "02d1fe40-2947-4232-ad04-8472fab2958d",
@@ -1976,12 +1976,12 @@
       "type": "mcq",
       "trait": "viewpoint_mood_intention",
       "format": "explanation",
-      "prompt": "Sam and Lily watch a dog bark. Sam thinks the dog is angry, but Lily thinks it is just playing. Who is most correct about how the dog feels?",
+      "prompt": "Sam and Lily see a dog wag its tail, drop a ball at their feet, and bark. Sam thinks the dog is angry. Lily thinks it wants to play. Who is right?",
       "rubric": [
-        "3 - Sam is correct because he sees the dog's body language, which shows anger.",
-        "2 - Lily is partly correct since the dog might be playing while still looking angry.",
-        "1 - Sam or Lily could be right, but there is no clear evidence from the story.",
-        "0 - There is no reason to choose either Sam or Lily."
+        "3 - Uses the clues to choose: Lily, because of the wagging tail and the ball.",
+        "2 - Chooses a feeling or idea that is close but less supported.",
+        "1 - Chooses an answer the clues do not support.",
+        "0 - Chooses the opposite of what the clues show."
       ],
       "weight": 1,
       "ageBand": [
@@ -1999,18 +1999,18 @@
         },
         {
           "key": "c",
-          "text": "Both"
+          "text": "Neither"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "inferring a mood from actions",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
+        "a": 0,
+        "b": 3,
+        "c": 1
       },
-      "targetEvidence": "The child identifies that Sam's viewpoint on the dog is supported by the dog's behavior.",
-      "alignmentRationale": "This question focuses on inferring mood from character observations rather than guessing emotions without context."
+      "skillFacet": "inferring a mood from actions",
+      "targetEvidence": "uses the tail and ball clues to judge the dog's mood.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "eb13746a-d87a-420f-99ca-2f913ab727cb",
@@ -2437,10 +2437,10 @@
       "format": "explanation",
       "prompt": "Max watched his sister, Lily, win the game and said, \"You always win!\" What might Max feel?",
       "rubric": [
-        "3 - Max feels upset and maybe jealous because he didn't win.",
-        "2 - Max feels frustrated, but he might also think Lily is good at the game.",
-        "1 - Max feels happy for Lily winning; he just likes to joke.",
-        "0 - Max is indifferent and feels nothing about Lily's win."
+        "3 - Uses the clues to choose: upset or frustrated.",
+        "2 - Chooses a feeling or idea that is close but less supported.",
+        "1 - Chooses an answer the clues do not support.",
+        "0 - Chooses the opposite of what the clues show."
       ],
       "weight": 1,
       "ageBand": [
@@ -2461,15 +2461,15 @@
           "text": "Happy"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a feeling",
+      "answerKey": "b",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "Identifies Max's likely emotional response to the situation.",
-      "alignmentRationale": "This tests the ability to infer feelings based on character interactions and words."
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "names a feeling that fits Max's words.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "ca9438fd-fd40-435e-8402-d35dc4a58063",
@@ -2501,12 +2501,12 @@
       "type": "mcq",
       "trait": "viewpoint_mood_intention",
       "format": "explanation",
-      "prompt": "Ben looks at the playground and tells his friend, \"Look at everyone having so much fun!\" What does Ben likely think?",
+      "prompt": "Ben stands by the playground and tells his friend, \"Everyone is having so much fun!\" What does Ben likely think?",
       "rubric": [
-        "3 - Ben thinks playing is joyful and interesting to watch.",
-        "2 - Ben finds the playground lively without strong feeling.",
-        "1 - Ben thinks it’s just okay, and doesn't care much.",
-        "0 - Ben doesn’t have any particular thoughts about it."
+        "3 - Uses the clues to choose: it looks fun.",
+        "2 - Chooses a feeling or idea that is close but less supported.",
+        "1 - Chooses an answer the clues do not support.",
+        "0 - Chooses the opposite of what the clues show."
       ],
       "weight": 1,
       "ageBand": [
@@ -2516,26 +2516,26 @@
       "options": [
         {
           "key": "a",
-          "text": "It is fun"
+          "text": "It is boring"
         },
         {
           "key": "b",
-          "text": "It is lively"
+          "text": "It is scary"
         },
         {
           "key": "c",
-          "text": "It is okay"
+          "text": "It looks fun"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a viewpoint",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "Identifies Ben's perspective on the scene based on his words.",
-      "alignmentRationale": "This tests the ability to infer a character's viewpoint from explicit observations."
+      "skillFacet": "word for a viewpoint",
+      "targetEvidence": "uses Ben's words to infer his view.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "19d72bf9-372b-481a-aafc-5d7cc4573f23",
@@ -2567,12 +2567,12 @@
       "type": "mcq",
       "trait": "viewpoint_mood_intention",
       "format": "explanation",
-      "prompt": "Emily heard someone say, \"You’re the best!\" What might she feel after hearing that?",
+      "prompt": "Emily heard someone say, \"You're the best!\" What might she feel after hearing that?",
       "rubric": [
-        "3 - Emily feels happy and appreciated by this kind comment.",
-        "2 - Emily feels a little proud but isn't very moved.",
-        "1 - Emily feels confused about the compliment.",
-        "0 - Emily doesn't care about what was said."
+        "3 - Uses the clues to choose: happy or proud.",
+        "2 - Chooses a feeling or idea that is close but less supported.",
+        "1 - Chooses an answer the clues do not support.",
+        "0 - Chooses the opposite of what the clues show."
       ],
       "weight": 1,
       "ageBand": [
@@ -2593,15 +2593,15 @@
           "text": "Confused"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a feeling",
+      "answerKey": "b",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 3,
         "c": 1
       },
-      "targetEvidence": "Identifies Emily's emotional response to positive feedback.",
-      "alignmentRationale": "This tests interpreting emotions from spoken words."
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "names a feeling that fits praise.",
+      "alignmentRationale": "The child reads clues like faces, actions, and words to understand a feeling or intention."
     },
     {
       "id": "c502eb92-a414-4a0e-b84c-72b63bcf00b2",

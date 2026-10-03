@@ -33,10 +33,10 @@
       "format": "explanation",
       "prompt": "Your friend says, 'No throwing balls indoors.' What would you like to ask?",
       "rubric": [
-        "3 - You ask a clear question about the rule, like 'Why not?'",
-        "2 - You ask a related question, but not directly about the rule.",
-        "1 - You ask something unrelated or unclear about the rule.",
-        "0 - You don’t ask a question."
+        "3 - Chooses a respectful question about the rule (why, or where it is okay).",
+        "2 - Chooses a respectful question after talking it through.",
+        "1 - Accepts or rejects the rule without asking anything.",
+        "0 - Chooses to break or ignore the rule."
       ],
       "weight": 1,
       "ageBand": [
@@ -46,26 +46,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Why can’t we?"
+          "text": "I'll throw it anyway."
         },
         {
           "key": "b",
-          "text": "Can I throw outside?"
+          "text": "Why can't we throw inside?"
         },
         {
           "key": "c",
-          "text": "What about running?"
+          "text": "Can we throw it outside instead?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a rule",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
+        "a": 0,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "The child forms a clear question about the reason for the rule.",
-      "alignmentRationale": "This question tests understanding of rules and their reasoning, not simply repeating them."
+      "skillFacet": "asking about a rule",
+      "targetEvidence": "asks the reason or limits of the rule",
+      "alignmentRationale": "Rewards respectful questions about a rule's reason or limits; defiant responses score lowest and safety is respected."
     },
     {
       "id": "19c83d0d-abb5-4c68-ac1d-288a04375fc3",
@@ -97,12 +97,12 @@
       "type": "mcq",
       "trait": "questions_authority",
       "format": "explanation",
-      "prompt": "A grown-up says, 'No loud voices inside.' What’s something you could ask?",
+      "prompt": "A grown-up says, 'No loud voices inside.' What's something you could ask?",
       "rubric": [
-        "3 - You clearly ask why loud voices aren't allowed.",
-        "2 - You ask about what's considered loud.",
-        "1 - You ask if whispers are okay.",
-        "0 - You don’t ask a question."
+        "3 - Chooses a respectful question about the rule (why, or what is okay).",
+        "2 - Chooses a respectful question after talking it through.",
+        "1 - Accepts or rejects the rule without asking anything.",
+        "0 - Chooses to break or ignore the rule."
       ],
       "weight": 1,
       "ageBand": [
@@ -112,26 +112,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Why can't we be loud?"
-        },
-        {
-          "key": "b",
           "text": "Is whispering okay?"
         },
         {
+          "key": "b",
+          "text": "Why can't we be loud inside?"
+        },
+        {
           "key": "c",
-          "text": "Can I shout outside?"
+          "text": "I'm going to yell anyway."
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for voice rules",
+      "answerKey": "b",
       "optionScores": {
         "a": 3,
-        "b": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "The child shows curiosity about the volume standard in specific environments.",
-      "alignmentRationale": "This checks their ability to inquire about sound levels and expectations."
+      "skillFacet": "asking about voice rules",
+      "targetEvidence": "asks about the reason or limits of the rule",
+      "alignmentRationale": "Rewards respectful questions about a rule's reason or limits; defiant responses score lowest and safety is respected."
     },
     {
       "id": "2480dce4-0b1c-473f-975b-a484c9c40994",
@@ -165,10 +165,10 @@
       "format": "explanation",
       "prompt": "A teacher says, 'No running in the classroom.' What do you want to ask?",
       "rubric": [
-        "3 - You clearly ask why running is not allowed.",
-        "2 - You ask about a different action in the classroom.",
-        "1 - You ask if you can walk quickly instead.",
-        "0 - You don’t ask a question."
+        "3 - Chooses a respectful question about the rule (why, or where running is okay).",
+        "2 - Chooses a respectful question after talking it through.",
+        "1 - Accepts or rejects the rule without asking anything.",
+        "0 - Chooses to break or ignore the rule."
       ],
       "weight": 1,
       "ageBand": [
@@ -178,26 +178,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Why can’t we run?"
+          "text": "Where is a good place to run?"
         },
         {
           "key": "b",
-          "text": "Can I jump instead?"
+          "text": "I'll run when no one is looking."
         },
         {
           "key": "c",
-          "text": "What if I walk?"
+          "text": "Why can't we run in here?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for classroom rules",
+      "answerKey": "c",
       "optionScores": {
         "a": 3,
-        "b": 1,
-        "c": 0
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "The child shows curiosity about the classroom rule regarding safety.",
-      "alignmentRationale": "This question assesses understanding of safety rules in a classroom setting."
+      "skillFacet": "asking about classroom rules",
+      "targetEvidence": "asks a respectful question about the rule",
+      "alignmentRationale": "Rewards respectful questions about a rule's reason or limits; defiant responses score lowest and safety is respected."
     },
     {
       "id": "15c79199-203e-4d75-b78d-8c1a3950b2a5",
@@ -519,12 +519,12 @@
       "type": "mcq",
       "trait": "questions_authority",
       "format": "explanation",
-      "prompt": "Your teacher says, 'No talking during tests.' What could you ask?",
+      "prompt": "Your teacher says, 'No talking during story time.' What could you ask?",
       "rubric": [
-        "3 - Why can't we talk during tests? (effective reason-seeking).",
-        "2 - Can I whisper? (less direct).",
-        "1 - I don't want that rule. (not a question).",
-        "0 - No question given."
+        "3 - Chooses a respectful question about the rule (why, or when talking is okay).",
+        "2 - Chooses a respectful question after talking it through.",
+        "1 - Accepts or rejects the rule without asking anything.",
+        "0 - Chooses to break or ignore the rule."
       ],
       "weight": 1,
       "ageBand": [
@@ -534,26 +534,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Why can't we talk during tests?"
+          "text": "I don't want that rule!"
         },
         {
           "key": "b",
-          "text": "Can I whisper?"
+          "text": "Can I ask a question after the story?"
         },
         {
           "key": "c",
-          "text": "I don't want that rule."
+          "text": "Why can't we talk during the story?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "inquiry about rules",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 0,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "The child chooses an appropriate question about the testing rule.",
-      "alignmentRationale": "This question evaluates the child's ability to inquire about educational rules."
+      "skillFacet": "asking about rules",
+      "targetEvidence": "asks a respectful question about the rule",
+      "alignmentRationale": "Rewards respectful questions about a rule's reason or limits; defiant responses score lowest and safety is respected."
     },
     {
       "id": "97a99d07-2ecf-4f72-84f4-5eec38f4f456",
@@ -562,12 +562,12 @@
       "type": "mcq",
       "trait": "questions_authority",
       "format": "explanation",
-      "prompt": "A friend says you can't talk during lunch. Why? What to ask?",
+      "prompt": "A friend says, 'No talking at lunch.' What could you ask?",
       "rubric": [
-        "3 - You ask, 'Why can't we talk? It's fun!'",
-        "2 - You say, 'That's not nice.'",
-        "1 - You say nothing.",
-        "0 - You say, 'Okay.'"
+        "3 - Chooses a respectful question about the rule (asking why).",
+        "2 - Chooses a respectful question after talking it through.",
+        "1 - Accepts or rejects the rule without asking anything.",
+        "0 - Chooses to break or ignore the rule."
       ],
       "weight": 1,
       "ageBand": [
@@ -577,26 +577,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Why can't we talk?"
+          "text": "Why can't we talk at lunch?"
         },
         {
           "key": "b",
-          "text": "That's not nice."
+          "text": "Okay."
         },
         {
           "key": "c",
-          "text": "Okay."
+          "text": "You're mean!"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "ask about rules",
       "optionScores": {
         "a": 3,
         "b": 1,
         "c": 0
       },
-      "targetEvidence": "chooses a question that asks about the reason for the rule",
-      "alignmentRationale": "This task isolates understanding of rules by prompting a child to inquire respectfully about a rule."
+      "skillFacet": "asking about rules",
+      "targetEvidence": "asks the reason for the rule",
+      "alignmentRationale": "Rewards respectful questions about a rule's reason or limits; defiant responses score lowest and safety is respected."
     },
     {
       "id": "fc4d8b6c-6b82-402e-bff0-01aedb5cd953",
@@ -1004,12 +1004,12 @@
       "type": "open",
       "trait": "questions_authority",
       "format": "explanation",
-      "prompt": "You find a toy in the park that's not yours. What would you ask an adult about it?",
+      "prompt": "Your grown-up says, 'If you find a toy at the park, don't take it home.' What question could you ask about this rule?",
       "rubric": [
-        "3 - I'd ask, \"Can I play with this?\"",
-        "2 - I'd ask, \"Whose toy is this?\"",
-        "1 - I'd ask if I can take it home.",
-        "0 - I'd ask nothing."
+        "3 - Asks a respectful question about the reason (e.g. 'Why not? What if no one comes back for it?').",
+        "2 - Asks a simple question (e.g. 'Why?').",
+        "1 - Just agrees or disagrees without asking.",
+        "0 - Does not answer or says they would take it anyway."
       ],
       "weight": 1,
       "ageBand": [
@@ -1017,8 +1017,8 @@
         5
       ],
       "skillFacet": "questioning a rule",
-      "targetEvidence": "gives a clear question regarding a found item relating to ownership and rules",
-      "alignmentRationale": "Encourages understanding of social rules about shared spaces and belongings."
+      "targetEvidence": "asks a thoughtful question about a found-toy rule",
+      "alignmentRationale": "Rewards respectful questions about a rule's reason or limits; defiant responses score lowest and safety is respected."
     },
     {
       "id": "cf2a9083-d9bf-40d6-8d88-ca6bd16c7f27",
@@ -1141,10 +1141,10 @@
       "format": "explanation",
       "prompt": "At the playground, your friends are told, 'No climbing on the slide.' What could you ask?",
       "rubric": [
-        "3 - Why can't we climb on it?",
-        "2 - Can we climb other things?",
-        "1 - Is it dangerous to climb?",
-        "0 - Can I climb the slide?"
+        "3 - Chooses a respectful question about the rule (why, or whether it is unsafe).",
+        "2 - Chooses a respectful question after talking it through.",
+        "1 - Accepts or rejects the rule without asking anything.",
+        "0 - Chooses to break or ignore the rule."
       ],
       "weight": 1,
       "ageBand": [
@@ -1158,22 +1158,22 @@
         },
         {
           "key": "b",
-          "text": "Can we climb other things?"
+          "text": "Is climbing on it dangerous?"
         },
         {
           "key": "c",
-          "text": "Is it dangerous to climb?"
+          "text": "Can we climb it when no one is watching?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "questioning a rule",
+      "answerKey": "b",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "chooses a clear question seeking to understand the reason for the climbing rule",
-      "alignmentRationale": "This prompt encourages thoughtful questioning about a common play rule."
+      "skillFacet": "questioning a rule",
+      "targetEvidence": "asks a respectful question about the rule's reason",
+      "alignmentRationale": "Rewards respectful questions about a rule's reason or limits; defiant responses score lowest and safety is respected."
     },
     {
       "id": "eb8f802f-68ee-4122-b9ab-c0022231f654",
@@ -1314,12 +1314,12 @@
       "type": "mcq",
       "trait": "questions_authority",
       "format": "explanation",
-      "prompt": "If you see a friend can’t play because they have to finish chores, what could you ask them?",
+      "prompt": "Your friend says, 'My family has a rule: chores first, then play.' What could you ask about this rule?",
       "rubric": [
-        "3 - You ask them what chores they have and if they can play later.",
-        "2 - You ask about chores but it’s not clear.",
-        "1 - You mention playing without asking a question.",
-        "0 - You don’t say anything about chores."
+        "3 - Chooses a respectful question about the rule (asking why).",
+        "2 - Chooses a respectful question after talking it through.",
+        "1 - Accepts or rejects the rule without asking anything.",
+        "0 - Chooses to break or ignore the rule."
       ],
       "weight": 1,
       "ageBand": [
@@ -1329,26 +1329,26 @@
       "options": [
         {
           "key": "a",
-          "text": "What chores do you have to do?"
+          "text": "Why do you do chores first?"
         },
         {
           "key": "b",
-          "text": "Can I help you?"
+          "text": "That rule is silly!"
         },
         {
           "key": "c",
-          "text": "You should play!"
+          "text": "Can I help so you finish sooner?"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "ask about a guideline",
       "optionScores": {
         "a": 3,
-        "b": 1,
-        "c": 0
+        "b": 0,
+        "c": 2
       },
-      "targetEvidence": "child asks about a friend’s chores showing concern",
-      "alignmentRationale": "This prompt assesses the child's ability to understand a friend's situation and invite discussion."
+      "skillFacet": "asking about a guideline",
+      "targetEvidence": "asks the reason for a family rule",
+      "alignmentRationale": "Rewards respectful questions about a rule's reason or limits; defiant responses score lowest and safety is respected."
     },
     {
       "id": "9f54dbf4-6240-417a-8936-8a2a0b816418",
@@ -1469,12 +1469,12 @@
       "type": "mcq",
       "trait": "questions_authority",
       "format": "explanation",
-      "prompt": "If there's a rule that you must raise your hand to speak in class, what would you ask the teacher about it?",
+      "prompt": "In class there is a rule: raise your hand to speak. What would you ask the teacher about it?",
       "rubric": [
-        "3 - You clearly ask why the rule is important and helpful.",
-        "2 - You ask a question related to the rule but not very clear.",
-        "1 - You say something but it's not really a question about the rule.",
-        "0 - You don't ask anything about the rule."
+        "3 - Chooses a respectful question about the rule (why, or how it helps).",
+        "2 - Chooses a respectful question after talking it through.",
+        "1 - Accepts or rejects the rule without asking anything.",
+        "0 - Chooses to break or ignore the rule."
       ],
       "weight": 1,
       "ageBand": [
@@ -1484,26 +1484,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Why do we have to raise hands?"
+          "text": "Can I talk now?"
         },
         {
           "key": "b",
-          "text": "What is the reason for raising our hands?"
+          "text": "Why do we raise our hands to speak?"
         },
         {
           "key": "c",
-          "text": "Can I talk now?"
+          "text": "Does raising hands help everyone get a turn?"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "asking for a reason",
       "optionScores": {
-        "a": 2,
+        "a": 0,
         "b": 3,
-        "c": 0
+        "c": 3
       },
-      "targetEvidence": "the child asks a clear question seeking the reason for the rule",
-      "alignmentRationale": "This question prompts the child to seek reasoning behind an established rule in a classroom setting."
+      "skillFacet": "asking for a reason",
+      "targetEvidence": "asks a question about the purpose of the rule",
+      "alignmentRationale": "Rewards respectful questions about a rule's reason or limits; defiant responses score lowest and safety is respected."
     },
     {
       "id": "fc6d6ba2-c702-423c-ad3b-24413183d22c",
@@ -1512,12 +1512,12 @@
       "type": "mcq",
       "trait": "questions_authority",
       "format": "explanation",
-      "prompt": "If you see a friend not wearing their helmet while riding a bike, what can you ask them?",
+      "prompt": "You see a friend riding a bike without a helmet. What could you say or ask?",
       "rubric": [
-        "3 - You ask why they aren't wearing it and if it’s safe.",
-        "2 - You suggest wearing it but don’t ask a good question.",
-        "1 - You mention the helmet but don’t question anything.",
-        "0 - You don’t say anything to your friend."
+        "3 - Chooses a response that supports wearing a helmet.",
+        "2 - Chooses a safe response after talking it through.",
+        "1 - Says nothing about safety.",
+        "0 - Agrees that riding without a helmet is fine."
       ],
       "weight": 1,
       "ageBand": [
@@ -1527,7 +1527,7 @@
       "options": [
         {
           "key": "a",
-          "text": "Why aren’t you wearing a helmet?"
+          "text": "Do you know helmets keep your head safe?"
         },
         {
           "key": "b",
@@ -1535,18 +1535,18 @@
         },
         {
           "key": "c",
-          "text": "I ride without one sometimes."
+          "text": "I ride without one sometimes too."
         }
       ],
       "answerKey": "a",
-      "skillFacet": "inquiring about safety",
       "optionScores": {
         "a": 3,
-        "b": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "the child asks a question related to a safety issue",
-      "alignmentRationale": "This question encourages the child to engage in a conversation about safety practices."
+      "skillFacet": "inquiring about safety",
+      "targetEvidence": "supports helmet safety with a question or suggestion",
+      "alignmentRationale": "Rewards respectful questions about a rule's reason or limits; defiant responses score lowest and safety is respected."
     },
     {
       "id": "91d7502e-637c-4dc4-a0b5-0bf761975e80",
@@ -2258,12 +2258,12 @@
       "type": "open",
       "trait": "questions_authority",
       "format": "explanation",
-      "prompt": "What question would you ask your teacher about stickers in class?",
+      "prompt": "Your teacher says, 'Only finished work gets a sticker.' What question would you like to ask your teacher about this rule?",
       "rubric": [
-        "3 - The question shows curiosity and a desire to understand the sticker rule.",
-        "2 - The question is clear but lacks depth or curiosity.",
-        "1 - The question is vague or unclear.",
-        "0 - No question is provided."
+        "3 - Asks a thoughtful, respectful question (e.g. 'What if someone tries hard but doesn't finish?').",
+        "2 - Asks a simple why question.",
+        "1 - Comments on the rule without asking a question.",
+        "0 - Does not answer or is disrespectful."
       ],
       "weight": 1,
       "ageBand": [
@@ -2271,8 +2271,8 @@
         7
       ],
       "skillFacet": "formulating questions about rules",
-      "targetEvidence": "provides a clear and thoughtful question regarding the rule",
-      "alignmentRationale": "This task encourages the child to think about and ask a question on a specific classroom rule."
+      "targetEvidence": "asks a thoughtful question about a sticker rule",
+      "alignmentRationale": "Rewards respectful questions about a rule's reason or limits; defiant responses score lowest and safety is respected."
     },
     {
       "id": "53bb1f12-a969-4967-9bb5-92e8c7f98ef0",

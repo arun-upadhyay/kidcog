@@ -143,12 +143,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "What is the best word to describe a cold ice cube?",
+      "prompt": "What is a good word to describe an ice cube?",
       "rubric": [
-        "3 - The answer is 'frozen' or a closely related word that captures the state of the ice.",
-        "2 - The answer is a word that somewhat relates, like 'frosty'.",
-        "1 - The answer is a vague or general word, like 'ice'.",
-        "0 - The answer is unrelated or does not mention ice."
+        "3 - Chooses the most precise word: 'frozen'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -162,22 +162,22 @@
         },
         {
           "key": "b",
-          "text": "frosty"
+          "text": "hot"
         },
         {
           "key": "c",
-          "text": "ice"
+          "text": "fluffy"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "precise word choice",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 0,
+        "c": 0
       },
-      "targetEvidence": "child selects a specific and clear word for describing cold ice cubes",
-      "alignmentRationale": "This question isolates precise word choice by focusing on a specific adjective appropriate to the context."
+      "skillFacet": "precise word choice",
+      "targetEvidence": "chooses 'frozen' for ice.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "13be24b8-4a3d-49e8-9c4f-4c43af6fcd9c",
@@ -232,12 +232,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "What is the best word to describe a very fluffy cloud?",
+      "prompt": "A cloud looks soft, like a big pillow. Which word fits the cloud best?",
       "rubric": [
-        "3 - Correctly identifies the most precise word for the fluffy cloud.",
-        "2 - Chooses a word that somewhat describes the cloud but is not the best fit.",
-        "1 - Selects a vague or unrelated word that does not fit the cloud.",
-        "0 - Does not choose any answer."
+        "3 - Chooses the most precise word: 'fluffy'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -247,26 +247,26 @@
       "options": [
         {
           "key": "a",
-          "text": "fluffy"
+          "text": "sharp"
         },
         {
           "key": "b",
-          "text": "big"
+          "text": "fluffy"
         },
         {
           "key": "c",
-          "text": "white"
+          "text": "heavy"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choose the most precise familiar word",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
+        "a": 0,
+        "b": 3,
+        "c": 1
       },
-      "targetEvidence": "chooses a word that accurately expresses the cloud’s fluffiness",
-      "alignmentRationale": "This question isolates the skill of selecting precise vocabulary related to familiar objects."
+      "skillFacet": "choose the most precise familiar word",
+      "targetEvidence": "chooses 'fluffy' for something soft.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "e2c03df8-876d-429b-82f1-ecab46a3edc5",
@@ -318,21 +318,21 @@
       "type": "open",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "What does a butterfly do?",
+      "prompt": "What does a butterfly do? Use your best action words to tell how it moves!",
       "rubric": [
-        "3 - Provides a detailed action such as 'flies around and lands on flowers'.",
-        "2 - Mentions some action like 'flies' or 'sits'.",
-        "1 - Gives a very vague response such as 'does something'.",
-        "0 - Offers an unrelated answer."
+        "3 - Uses several precise, vivid words about how a butterfly moves, like 'flutters' or 'floats' (for example exact colors, sizes, or action words).",
+        "2 - Uses one or two describing words.",
+        "1 - Gives a short answer with only plain words like 'nice' or 'good'.",
+        "0 - No answer, or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "describe an action",
-      "targetEvidence": "responds with a specific action of a butterfly",
-      "alignmentRationale": "The task requires describing a specific action, testing knowledge of butterflies instead of generalities."
+      "skillFacet": "describe an action with precise verbs",
+      "targetEvidence": "uses specific action words for a butterfly's movement.",
+      "alignmentRationale": "Asking for the best action words targets precise verb choice."
     },
     {
       "id": "d27c2cf8-fc2d-4c2b-ab98-6fb29974c860",
@@ -341,12 +341,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "What is a good word to describe a loud fire truck?",
+      "prompt": "A fire truck goes 'nee-naw, nee-naw' very loudly. Which word tells about its sound?",
       "rubric": [
-        "3 - Correctly identifies a precise word like 'noisy' or 'blaring'.",
-        "2 - Chooses a general word like 'big' or 'bright' that is less linked to sound.",
-        "1 - Uses a vague word like 'loud' without more detail.",
-        "0 - Provides an unrelated or incorrect word."
+        "3 - Chooses the most precise word: 'noisy'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -356,7 +356,7 @@
       "options": [
         {
           "key": "a",
-          "text": "noisy"
+          "text": "quiet"
         },
         {
           "key": "b",
@@ -364,18 +364,18 @@
         },
         {
           "key": "c",
-          "text": "loud"
+          "text": "noisy"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a sound",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "chooses a precise word that describes the sound of the fire truck",
-      "alignmentRationale": "The focus is on selecting a word that accurately conveys the specific sound characteristic."
+      "skillFacet": "word for a sound",
+      "targetEvidence": "chooses a word that describes a loud sound.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "041b928f-0187-44de-b2c3-5119532422e9",
@@ -384,21 +384,21 @@
       "type": "open",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "What can you see in a garden?",
+      "prompt": "What can you see in a garden? Use your best describing words for colors, shapes, and sizes!",
       "rubric": [
-        "3 - Lists specific plants or items like 'flowers, butterflies, and trees'.",
-        "2 - Mentions some things like 'something green'.",
-        "1 - Gives a very vague answer like 'stuff'.",
-        "0 - Provides an unrelated response."
+        "3 - Uses several precise, vivid words about things in a garden (for example exact colors, sizes, or action words).",
+        "2 - Uses one or two describing words.",
+        "1 - Gives a short answer with only plain words like 'nice' or 'good'.",
+        "0 - No answer, or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "describe a scene accurately",
-      "targetEvidence": "identifies items commonly found in a garden",
-      "alignmentRationale": "The task focuses on the ability to name specific objects that fit the context of a garden."
+      "skillFacet": "describe a scene with precise words",
+      "targetEvidence": "names garden things using specific describing words.",
+      "alignmentRationale": "Asking for describing words targets precise adjectives, not just naming."
     },
     {
       "id": "04b14d78-4bc8-42cb-b733-32bf51391049",
@@ -473,12 +473,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "What is the best word to describe a bright sun?",
+      "prompt": "Which word best describes the bright sun in the sky?",
       "rubric": [
-        "3 - Correctly identifies a precise word like 'shiny' or 'glowing'.",
-        "2 - Chooses a somewhat accurate word like 'big' or 'warm' though less precise.",
-        "1 - Uses a vague descriptor like 'good'.",
-        "0 - Provides an unrelated or incorrect word."
+        "3 - Chooses the most precise word: 'glowing'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -488,26 +488,26 @@
       "options": [
         {
           "key": "a",
-          "text": "shiny"
+          "text": "dark"
         },
         {
           "key": "b",
-          "text": "big"
+          "text": "glowing"
         },
         {
           "key": "c",
-          "text": "good"
+          "text": "cold"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a light",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "selects a precise word that describes the sun's brightness",
-      "alignmentRationale": "The task isolates the skill of selecting a descriptor that accurately conveys characteristics of sunlight."
+      "skillFacet": "word for a light",
+      "targetEvidence": "chooses 'glowing' for the sun's light.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "b362df51-2bd3-4484-9cbe-8ffeb2b354f3",
@@ -691,12 +691,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "What is the best word to describe a smooth ball?",
+      "prompt": "A ball has no bumps at all when you touch it. Which word describes how it feels?",
       "rubric": [
-        "3 - The word chosen accurately captures the quality of being smooth.",
-        "2 - The word chosen somewhat describes the ball but is not the best fit.",
-        "1 - The word chosen provides a vague description and is unclear.",
-        "0 - No answer or an unrelated word."
+        "3 - Chooses the most precise word: 'smooth'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -706,7 +706,7 @@
       "options": [
         {
           "key": "a",
-          "text": "shiny"
+          "text": "smooth"
         },
         {
           "key": "b",
@@ -718,14 +718,14 @@
         }
       ],
       "answerKey": "a",
-      "skillFacet": "word for a texture",
       "optionScores": {
         "a": 3,
         "b": 0,
         "c": 1
       },
-      "targetEvidence": "selects a word that clearly indicates smoothness",
-      "alignmentRationale": "This prompts recognition and selection of precise vocabulary regarding characteristics."
+      "skillFacet": "word for a texture",
+      "targetEvidence": "chooses the texture word 'smooth'.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "60b867fb-ba5f-4882-91e5-695c0fa96d3b",
@@ -866,21 +866,21 @@
       "type": "open",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "Tell me about a funny story that happened to you.",
+      "prompt": "Tell about something funny that happened to you. Use your best describing words so your grown-up can imagine it!",
       "rubric": [
-        "3 - Describes a funny story in a clear way with details that show what happened.",
-        "2 - Mentions a funny story but lacks details about the events or characters.",
-        "1 - Provides a very vague account or has no clear story.",
-        "0 - No relevant answer given."
+        "3 - Uses several precise, vivid words about the funny event (for example exact colors, sizes, or action words).",
+        "2 - Uses one or two describing words.",
+        "1 - Gives a short answer with only plain words like 'nice' or 'good'.",
+        "0 - No answer, or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "describe a scene accurately",
-      "targetEvidence": "shares a narrative with elements of humor and characterizes the happenings",
-      "alignmentRationale": "Encourages clear expression of personal experiences with vivid language."
+      "skillFacet": "describe an event with precise words",
+      "targetEvidence": "tells the event using specific, vivid words.",
+      "alignmentRationale": "Asking for describing words targets precise vocabulary in a personal story."
     },
     {
       "id": "b2050578-9c40-4d02-9604-d2e6d34ad93a",
@@ -978,12 +978,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "Which word is best for a quiet mouse?",
+      "prompt": "A mouse tiptoes and makes no sound at all. Which word describes it?",
       "rubric": [
-        "3 - Quiet",
-        "2 - Small",
-        "1 - Cute",
-        "0 - Scary"
+        "3 - Chooses the most precise word: 'silent'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -993,26 +993,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Quiet"
+          "text": "silent"
         },
         {
           "key": "b",
-          "text": "Small"
+          "text": "small"
         },
         {
           "key": "c",
-          "text": "Cute"
+          "text": "noisy"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "word for a sound",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 1,
+        "c": 0
       },
-      "targetEvidence": "The child picks a word that accurately describes the sound level of the mouse.",
-      "alignmentRationale": "This asks the child to choose a precise term for the sound, focusing on its quiet nature and contextually appropriate vocabulary."
+      "skillFacet": "word for a sound",
+      "targetEvidence": "chooses 'silent' for making no sound.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "164ce876-d70f-4c30-958e-19fe054507dc",
@@ -1021,21 +1021,21 @@
       "type": "open",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "Can you tell me about a fun game you like to play?",
+      "prompt": "Tell about a fun game you like to play. Use your best describing words for how it looks, sounds, or feels!",
       "rubric": [
-        "3 - Detailed description of the game",
-        "2 - General idea of the game",
-        "1 - Just the name of the game",
-        "0 - No answer"
+        "3 - Uses several precise, vivid words about the game (for example exact colors, sizes, or action words).",
+        "2 - Uses one or two describing words.",
+        "1 - Gives a short answer with only plain words like 'nice' or 'good'.",
+        "0 - No answer, or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "describe a scene accurately",
-      "targetEvidence": "The child shares specific details about the game they enjoy.",
-      "alignmentRationale": "This encourages the child to articulate what makes the game fun, demonstrating their vocabulary and ability to express ideas clearly."
+      "skillFacet": "describe an activity with precise words",
+      "targetEvidence": "describes the game with specific sense words.",
+      "alignmentRationale": "Asking for sense words targets precise vocabulary."
     },
     {
       "id": "2c9e70bb-ee47-449e-a9bc-98be5ba09d72",
@@ -1044,12 +1044,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "What word is best for a cheerful child?",
+      "prompt": "Which word means the same as 'cheerful'?",
       "rubric": [
-        "3 - Cheerful",
-        "2 - Happy",
-        "1 - Playful",
-        "0 - Boring"
+        "3 - Chooses the most precise word: 'happy'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -1059,26 +1059,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Cheerful"
+          "text": "grumpy"
         },
         {
           "key": "b",
-          "text": "Happy"
+          "text": "sleepy"
         },
         {
           "key": "c",
-          "text": "Playful"
+          "text": "happy"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a feeling",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "The child selects the most precise word relating to a positive emotion.",
-      "alignmentRationale": "This item asks for a word choice that showcases clarity and precision in emotional vocabulary."
+      "skillFacet": "word for a feeling",
+      "targetEvidence": "chooses the synonym of 'cheerful'.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "7d1d5f20-871e-4f36-907d-9c91f4c8a040",
@@ -1087,12 +1087,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "Which word describes a tall giraffe well?",
+      "prompt": "Which word means very, very tall, like a giraffe?",
       "rubric": [
-        "3 - Tall",
-        "2 - Long",
-        "1 - Cool",
-        "0 - Small"
+        "3 - Chooses the most precise word: 'towering'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -1102,26 +1102,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Tall"
+          "text": "tiny"
         },
         {
           "key": "b",
-          "text": "Long"
+          "text": "towering"
         },
         {
           "key": "c",
-          "text": "Cool"
+          "text": "short"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a size",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "The child picks the word that best describes the giraffe's height.",
-      "alignmentRationale": "This question engages the child's ability to choose precise vocabulary related to size, emphasizing contextual understanding."
+      "skillFacet": "word for a size",
+      "targetEvidence": "chooses the rich size word 'towering'.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "aa2d8ea3-f61b-4e49-ac76-8c8cd312ea1c",
@@ -1173,12 +1173,12 @@
       "type": "open",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "Tell me about your favorite food.",
+      "prompt": "Tell about your favorite food. Use your best describing words for how it tastes, smells, and feels!",
       "rubric": [
-        "3 - You share a food and explain why you like it.",
-        "2 - You say a food without detail.",
-        "1 - You just mention a food name.",
-        "0 - You don’t answer."
+        "3 - Uses several precise, vivid words about the food, like 'crunchy', 'juicy', or 'sweet' (for example exact colors, sizes, or action words).",
+        "2 - Uses one or two describing words.",
+        "1 - Gives a short answer with only plain words like 'nice' or 'good'.",
+        "0 - No answer, or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1186,8 +1186,8 @@
         5
       ],
       "skillFacet": "word for a food",
-      "targetEvidence": "naming a food with a possible reason",
-      "alignmentRationale": "This encourages children to use vocabulary to communicate their preferences effectively, showing their understanding of context."
+      "targetEvidence": "describes a food with specific taste and texture words.",
+      "alignmentRationale": "Asking for taste and texture words targets precise adjectives."
     },
     {
       "id": "ec6ee6da-56eb-4f6f-a3d3-9235e83db0b5",
@@ -1282,12 +1282,12 @@
       "type": "open",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "What do you like to do with your friends?",
+      "prompt": "What do you like to do with your friends? Use exciting action words to tell about it!",
       "rubric": [
-        "3 - You explain a fun activity together.",
-        "2 - You share an activity name only.",
-        "1 - You just say 'play'.",
-        "0 - You do not answer."
+        "3 - Uses several precise, vivid words about playing with friends, like 'race', 'build', or 'giggle' (for example exact colors, sizes, or action words).",
+        "2 - Uses one or two describing words.",
+        "1 - Gives a short answer with only plain words like 'nice' or 'good'.",
+        "0 - No answer, or an unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
@@ -1295,8 +1295,8 @@
         5
       ],
       "skillFacet": "word for an action",
-      "targetEvidence": "communicating an action with friends",
-      "alignmentRationale": "This encourages children to articulate their social interactions and use action words, enhancing vocabulary expression."
+      "targetEvidence": "uses specific action words for activities with friends.",
+      "alignmentRationale": "Asking for exciting action words targets precise verb choice."
     },
     {
       "id": "0b899c9b-6c09-4678-814f-23bd7576d2ee",
@@ -1391,12 +1391,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "In the sentence: 'The cake smells good,' what word can we replace to make it more interesting?",
+      "prompt": "Which word could replace 'good' to make this sentence more interesting: 'The cake smells good.'",
       "rubric": [
-        "3 - 'delicious', greatly enhances the description.",
-        "2 - 'okay', adds some meaning but not specific.",
-        "1 - 'nice', common and vague.",
-        "0 - 'bad', a negative word."
+        "3 - Chooses the most precise word: 'delicious'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -1406,26 +1406,26 @@
       "options": [
         {
           "key": "a",
-          "text": "delicious"
-        },
-        {
-          "key": "b",
           "text": "okay"
         },
         {
+          "key": "b",
+          "text": "loud"
+        },
+        {
           "key": "c",
-          "text": "nice"
+          "text": "delicious"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choose the most precise familiar word",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "Selects a word that makes the description more enticing.",
-      "alignmentRationale": "This question assesses the child's ability to enhance sensory language."
+      "skillFacet": "choose the most precise familiar word",
+      "targetEvidence": "chooses a richer word for a good smell.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "30917a65-7be8-44a3-925a-a0578451a97d",
@@ -1781,12 +1781,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "What is a better word to replace 'sad' to make it sound better: 'I feel sad after that'?",
+      "prompt": "Mia's picnic was cancelled because of rain. Which word best fits: 'Mia felt ___ because she could not have her picnic.'",
       "rubric": [
-        "3 - Chose 'disappointed' which is clear and precise.",
-        "2 - Chose 'upset' which is okay but less precise.",
-        "1 - Chose 'bad' which does not describe feeling.",
-        "0 - Gave an unrelated answer."
+        "3 - Chooses the most precise word: 'disappointed'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -1796,26 +1796,26 @@
       "options": [
         {
           "key": "a",
-          "text": "disappointed"
+          "text": "excited"
         },
         {
           "key": "b",
-          "text": "upset"
+          "text": "sleepy"
         },
         {
           "key": "c",
-          "text": "bad"
+          "text": "disappointed"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for feelings",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "chooses 'disappointed' to accurately express a feeling",
-      "alignmentRationale": "This question gauges understanding of emotions by prompting for a specific feeling-relevant word."
+      "skillFacet": "word for feelings",
+      "targetEvidence": "chooses 'disappointed' for a let-down.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "a8f0671d-d5f5-4b3b-85a6-693f881eace5",
@@ -1890,12 +1890,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "Which word can replace 'look' to make your sentence better: 'I look at the birds'?",
+      "prompt": "Which words best fill the blank? 'The birds are so beautiful that I ___ them for a long, long time.'",
       "rubric": [
-        "3 - 'gaze' adds a stronger image of looking closely.",
-        "2 - 'glance' is okay, but it's quick and less detailed.",
-        "1 - 'watch' is too general for this context.",
-        "0 - 'see' does not improve the description of looking."
+        "3 - Chooses the most precise word: 'gaze at' for a long look.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -1905,26 +1905,26 @@
       "options": [
         {
           "key": "a",
-          "text": "gaze"
+          "text": "glance at"
         },
         {
           "key": "b",
-          "text": "glance"
+          "text": "shout at"
         },
         {
           "key": "c",
-          "text": "watch"
+          "text": "gaze at"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choose the most precise familiar word",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "selects a more descriptive action than 'look'",
-      "alignmentRationale": "This asks for a more vivid verb to enhance the sentence."
+      "skillFacet": "choose the most precise familiar word",
+      "targetEvidence": "chooses 'gaze at' for looking for a long time.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "ed76d46a-3f8d-41d9-979b-61a150c36a08",
@@ -1956,12 +1956,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "In this sentence: 'The dog ran quickly,' which word can we replace to make it more interesting?",
+      "prompt": "Which word could replace 'ran' to make this sentence more exciting: 'The dog ran across the yard.'",
       "rubric": [
-        "3 - 'quickly' can be replaced by 'speedily' for more interest.",
-        "2 - 'ran' can be replaced by 'went', but it is less specific.",
-        "1 - 'the' cannot be replaced to make it interesting.",
-        "0 - 'dog' is a common word and cannot be improved here."
+        "3 - Chooses the most precise word: 'dashed'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -1971,26 +1971,26 @@
       "options": [
         {
           "key": "a",
-          "text": "speedily"
-        },
-        {
-          "key": "b",
           "text": "went"
         },
         {
+          "key": "b",
+          "text": "dashed"
+        },
+        {
           "key": "c",
-          "text": "the"
+          "text": "sat"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "replace a vague word from context",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "chooses a more interesting synonym for 'quickly'",
-      "alignmentRationale": "This item assesses ability to enhance language by replacing vague terms."
+      "skillFacet": "replace a vague word with a vivid one",
+      "targetEvidence": "chooses a vivid verb that keeps the meaning of 'ran'.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "58f7f13f-5faa-4fda-95b8-8bbad39231ab",
@@ -2197,12 +2197,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "What word best describes a large and powerful ocean wave?",
+      "prompt": "Which word best describes a big, powerful ocean wave?",
       "rubric": [
-        "3 - Correctly identifies 'huge' as the best choice.",
-        "2 - Identifies a related word like 'big' but not as precise.",
-        "1 - Chooses a word that is somewhat related but vague.",
-        "0 - Chooses an unrelated word."
+        "3 - Chooses the most precise word: 'mighty'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -2212,26 +2212,26 @@
       "options": [
         {
           "key": "a",
-          "text": "huge"
+          "text": "gentle"
         },
         {
           "key": "b",
-          "text": "big"
+          "text": "mighty"
         },
         {
           "key": "c",
-          "text": "swell"
+          "text": "wet"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choose the most precise familiar word",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 0,
+        "b": 3,
         "c": 1
       },
-      "targetEvidence": "selects the word 'huge' for accuracy",
-      "alignmentRationale": "This question requires use of a precise adjective to describe the ocean wave accurately."
+      "skillFacet": "choose the most precise familiar word",
+      "targetEvidence": "chooses 'mighty' for something big and powerful.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "421a5ade-cf0e-4855-9d92-77bb50ecc263",
@@ -2240,12 +2240,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "If a cake is ‘delicious’, which word here is a better choice?",
+      "prompt": "Which word means about the same as 'delicious'?",
       "rubric": [
-        "3 - Correctly identifies 'tasty' as the best choice.",
-        "2 - Identifies 'sweet' which is related but not as precise.",
-        "1 - Chooses a vague word that does not fit precisely.",
-        "0 - Chooses an unrelated word."
+        "3 - Chooses the most precise word: 'tasty'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -2255,26 +2255,26 @@
       "options": [
         {
           "key": "a",
-          "text": "tasty"
+          "text": "sour"
         },
         {
           "key": "b",
-          "text": "sweet"
+          "text": "plain"
         },
         {
           "key": "c",
-          "text": "good"
+          "text": "tasty"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choose the most precise familiar word",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "selects the word 'tasty' for clarity",
-      "alignmentRationale": "The question assesses the ability to select a precise synonym for 'delicious'."
+      "skillFacet": "knows a synonym",
+      "targetEvidence": "chooses the word that means nearly the same as 'delicious'.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "55a2f61d-529c-41a8-acff-7034d7ff5624",
@@ -2369,12 +2369,12 @@
       "type": "mcq",
       "trait": "extensive_vocabulary",
       "format": "explanation",
-      "prompt": "What word best describes a very bright star in the sky?",
+      "prompt": "Which word best describes a star so bright it almost hurts your eyes?",
       "rubric": [
-        "3 - The option is 'shiny' or another perfect synonym, showing excellent understanding.",
-        "2 - The option is 'bright' which is relevant but less specific, showing good vocabulary use.",
-        "1 - The option is 'big', which describes size not brightness, showing partial understanding.",
-        "0 - The option is unrelated like 'dark', showing no understanding."
+        "3 - Chooses the most precise word: 'dazzling'.",
+        "2 - Chooses a word that is close but less exact.",
+        "1 - Chooses a word that does not fit the meaning well.",
+        "0 - Chooses a word with the opposite or unrelated meaning."
       ],
       "weight": 1,
       "ageBand": [
@@ -2384,11 +2384,11 @@
       "options": [
         {
           "key": "a",
-          "text": "shiny"
+          "text": "dazzling"
         },
         {
           "key": "b",
-          "text": "bright"
+          "text": "dull"
         },
         {
           "key": "c",
@@ -2396,14 +2396,14 @@
         }
       ],
       "answerKey": "a",
-      "skillFacet": "choose the most precise familiar word",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 0,
         "c": 1
       },
-      "targetEvidence": "chooses a word that accurately conveys brightness",
-      "alignmentRationale": "This task focuses on identifying the most appropriate word related to brightness."
+      "skillFacet": "choose the most precise familiar word",
+      "targetEvidence": "chooses 'dazzling' for very bright light.",
+      "alignmentRationale": "Choosing the exact word for a meaning shows growing, precise vocabulary."
     },
     {
       "id": "ca6db9cf-6c02-45ba-8fef-985a417faaa8",

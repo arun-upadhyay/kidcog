@@ -53,10 +53,10 @@
       "format": "explanation",
       "prompt": "Your sibling looks tired after playing. What could you do?",
       "rubric": [
-        "3 - You suggest a calming activity like a book or resting.",
-        "2 - Your suggestion helps a little but isn’t as restful.",
-        "1 - You suggest something active when they need rest.",
-        "0 - No helpful idea is given."
+        "3 - Offers a calm, restful activity or a snack.",
+        "2 - Offers something kind but not restful.",
+        "1 - Suggests something tiring.",
+        "0 - Chooses an unkind answer, such as laughing or brushing off the feeling."
       ],
       "weight": 1,
       "ageBand": [
@@ -66,26 +66,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Let’s read a book together."
+          "text": "Let's read a book together."
         },
         {
           "key": "b",
-          "text": "Let’s play a game!"
+          "text": "Let's run a race!"
         },
         {
           "key": "c",
           "text": "Do you want a snack?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "noticing a sibling's needs",
+      "answerKey": "c",
       "optionScores": {
         "a": 3,
-        "b": 1,
-        "c": 2
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "suggests a calming response to the sibling's tiredness.",
-      "alignmentRationale": "This prompts the child to notice a sibling's physical emotional state and respond appropriately."
+      "skillFacet": "noticing a sibling's needs",
+      "targetEvidence": "chooses a calm or caring option for a tired sibling.",
+      "alignmentRationale": "Quiet reading and a snack both suit tiredness; running a race does not."
     },
     {
       "id": "755aff2e-d98f-4e12-bc52-dc20bf9e162c",
@@ -94,12 +94,12 @@
       "type": "mcq",
       "trait": "sensitivity_others",
       "format": "explanation",
-      "prompt": "Your friend is sitting quietly. What could you ask them?",
+      "prompt": "Your friend is sitting quietly and looks a little sad. What could you say?",
       "rubric": [
-        "3 - You suggest a fun question to make them smile or talk.",
-        "2 - You suggest a question, but it doesn’t invite conversation.",
-        "1 - You say something that doesn’t help.",
-        "0 - No helpful question is given."
+        "3 - Gently checks in or invites the friend to play.",
+        "2 - Says something friendly but not about the friend.",
+        "1 - Ignores the friend.",
+        "0 - Chooses an unkind answer, such as laughing or brushing off the feeling."
       ],
       "weight": 1,
       "ageBand": [
@@ -109,7 +109,7 @@
       "options": [
         {
           "key": "a",
-          "text": "Why are you quiet?"
+          "text": "You are boring!"
         },
         {
           "key": "b",
@@ -117,18 +117,18 @@
         },
         {
           "key": "c",
-          "text": "What’s wrong?"
+          "text": "Are you okay?"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "noticing a friend's mood",
       "optionScores": {
         "a": 0,
         "b": 3,
-        "c": 1
+        "c": 3
       },
-      "targetEvidence": "suggests a specific question that encourages interaction.",
-      "alignmentRationale": "This tests noticing a friend's mood and prompting a positive interaction."
+      "skillFacet": "noticing a friend's mood",
+      "targetEvidence": "chooses a gentle check-in or a kind invitation.",
+      "alignmentRationale": "Both kind choices show noticing a friend's mood; only the unkind one scores low."
     },
     {
       "id": "0e798be3-39af-4e82-b04c-b9883b885a7d",
@@ -206,21 +206,21 @@
       "type": "open",
       "trait": "sensitivity_others",
       "format": "explanation",
-      "prompt": "If you see someone who looks lonely at the park, what could you do to help?",
+      "prompt": "If you see a child who looks lonely at the park, what could you and your grown-up do to help?",
       "rubric": [
-        "3 - You suggest joining them to play or talk.",
-        "2 - You say you might invite them if you feel like it.",
-        "1 - You don’t say anything helpful.",
-        "0 - No response is given."
+        "3 - Suggests a kind way to include the child, like saying hi or asking them to play, with a grown-up nearby.",
+        "2 - Suggests something kind but general, like smiling at them.",
+        "1 - Notices the child is lonely but does not suggest a way to help.",
+        "0 - No answer, or an unkind or unrelated answer."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "considering a lonely person's feelings",
-      "targetEvidence": "suggests a way to engage and include someone.",
-      "alignmentRationale": "This item assesses the child's ability to recognize and respond to loneliness."
+      "skillFacet": "considering a lonely child's feelings",
+      "targetEvidence": "suggests a kind way to include a lonely child, with a grown-up.",
+      "alignmentRationale": "The child must notice loneliness and think of a caring response, safely with a grown-up."
     },
     {
       "id": "c954d48f-bb82-4af0-9423-1ec11046b7d2",
@@ -869,12 +869,12 @@
       "type": "mcq",
       "trait": "sensitivity_others",
       "format": "explanation",
-      "prompt": "A classmate looks sad during a group game. What can you do to help?",
+      "prompt": "A classmate looks sad while watching a group game. What can you do to help?",
       "rubric": [
-        "3 - You ask them if they want to join or play something else.",
-        "2 - You tell them to cheer up.",
-        "1 - You leave them alone.",
-        "0 - You laugh at them."
+        "3 - Invites the classmate to join the game.",
+        "2 - Asks how they feel.",
+        "1 - Says something that brushes off the feeling.",
+        "0 - Chooses an unkind answer, such as laughing or brushing off the feeling."
       ],
       "weight": 1,
       "ageBand": [
@@ -884,26 +884,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Ask them to join"
+          "text": "Ask them to join."
         },
         {
           "key": "b",
-          "text": "Tell them to cheer up"
+          "text": "Tell them to cheer up."
         },
         {
           "key": "c",
-          "text": "Laugh at them"
+          "text": "Laugh at them."
         }
       ],
       "answerKey": "a",
-      "skillFacet": "noticing sadness",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 1,
         "c": 0
       },
-      "targetEvidence": "the child attempts to engage the sad classmate",
-      "alignmentRationale": "This tests the child's ability to see sadness and act to include the person."
+      "skillFacet": "noticing sadness",
+      "targetEvidence": "chooses to include a left-out classmate.",
+      "alignmentRationale": "Inviting someone who is watching shows noticing they feel left out."
     },
     {
       "id": "7c47a400-5f21-4c36-b13a-2b511e5e0a49",
@@ -957,10 +957,10 @@
       "format": "explanation",
       "prompt": "Your sibling is tired after playing. What could you do to help them?",
       "rubric": [
-        "3 - You offer to help them clean up or suggest they take a break.",
-        "2 - You say they should just rest but don't offer to help.",
-        "1 - You tell them to stop playing.",
-        "0 - You ignore them."
+        "3 - Helps out or lets the tired sibling rest.",
+        "2 - Offers something kind but less helpful.",
+        "1 - Does nothing to help.",
+        "0 - Chooses an unkind answer, such as laughing or brushing off the feeling."
       ],
       "weight": 1,
       "ageBand": [
@@ -970,26 +970,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Help clean up"
+          "text": "Help clean up the toys."
         },
         {
           "key": "b",
-          "text": "Say just rest"
+          "text": "Let them rest."
         },
         {
           "key": "c",
-          "text": "Tell them to stop"
+          "text": "Make them clean up alone."
         }
       ],
       "answerKey": "a",
-      "skillFacet": "noticing tiredness",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "the child offers a helpful action to address tiredness",
-      "alignmentRationale": "This question measures the child's ability to identify a need for rest and suggest a way to assist."
+      "skillFacet": "noticing tiredness",
+      "targetEvidence": "chooses a way to ease a tired sibling.",
+      "alignmentRationale": "Both caring choices meet the tired sibling's need; the unkind one does not."
     },
     {
       "id": "4ffe7c58-81d9-497e-91fd-9026187251a1",
@@ -1176,12 +1176,12 @@
       "type": "mcq",
       "trait": "sensitivity_others",
       "format": "explanation",
-      "prompt": "If someone spills their drink, what’s a good thing to do?",
+      "prompt": "If someone spills their drink, what's a good thing to do?",
       "rubric": [
-        "3 - You grab some paper towels to help.",
-        "2 - You laugh and say oops.",
-        "1 - You walk away.",
-        "0 - You ignore them."
+        "3 - Helps clean up the spill.",
+        "2 - Asks if the person is okay.",
+        "1 - Walks away without helping.",
+        "0 - Chooses an unkind answer, such as laughing or brushing off the feeling."
       ],
       "weight": 1,
       "ageBand": [
@@ -1203,14 +1203,14 @@
         }
       ],
       "answerKey": "a",
-      "skillFacet": "helpful response to an accident",
       "optionScores": {
         "a": 3,
-        "b": 1,
-        "c": 0
+        "b": 0,
+        "c": 1
       },
-      "targetEvidence": "The child suggests a practical way to assist after a spill.",
-      "alignmentRationale": "This question tests the child’s ability to notice an accident and react in a helpful manner."
+      "skillFacet": "helpful response to an accident",
+      "targetEvidence": "chooses to help after an accident.",
+      "alignmentRationale": "Helping and not laughing shows awareness of how an accident feels."
     },
     {
       "id": "57b6dd60-9625-4a22-9e40-5657a159ce53",
@@ -1287,10 +1287,10 @@
       "format": "explanation",
       "prompt": "Your friend is sad because they lost their toy. What can you do?",
       "rubric": [
-        "3 - You suggest playing with another toy together.",
-        "2 - You offer to help look for the lost toy.",
-        "1 - You tell them it's not a big deal.",
-        "0 - You ignore them."
+        "3 - Offers to help find the lost toy.",
+        "2 - Offers comfort in another way.",
+        "1 - Picks something that does not help the friend.",
+        "0 - Chooses an unkind answer, such as laughing or brushing off the feeling."
       ],
       "weight": 1,
       "ageBand": [
@@ -1311,15 +1311,15 @@
           "text": "Say it's not important."
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "noticing a friend's feeling",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "The child suggests a way to help cheer their friend up.",
-      "alignmentRationale": "This question tests how well the child identifies a friend's emotion and responds with a helpful suggestion."
+      "skillFacet": "noticing a friend's feeling",
+      "targetEvidence": "chooses to help solve the friend's problem.",
+      "alignmentRationale": "Helping look for the toy responds directly to what is making the friend sad."
     },
     {
       "id": "d792daa3-a718-4af1-9737-12ef7524b194",
@@ -1615,12 +1615,12 @@
       "type": "mcq",
       "trait": "sensitivity_others",
       "format": "explanation",
-      "prompt": "A kid is sitting quietly on the playground and looks lonely. What could you do to help them?",
+      "prompt": "A kid is sitting alone on the playground and looks lonely. What could you do to help them?",
       "rubric": [
-        "3 - Suggests a kind way to invite the child to play, considering their feelings.",
-        "2 - Offers a suggestion but misses some needs of the lonely child.",
-        "1 - Gives an action that doesn't really help the child feel included.",
-        "0 - Suggests something unrelated or unkind."
+        "3 - Invites the lonely child to join in.",
+        "2 - Says hello or smiles at them.",
+        "1 - Ignores them.",
+        "0 - Chooses an unkind answer, such as laughing or brushing off the feeling."
       ],
       "weight": 1,
       "ageBand": [
@@ -1638,18 +1638,18 @@
         },
         {
           "key": "c",
-          "text": "Laugh with friends nearby."
+          "text": "Laugh and point at them."
         }
       ],
       "answerKey": "a",
-      "skillFacet": "word for noticing loneliness",
       "optionScores": {
         "a": 3,
-        "b": 0,
-        "c": 1
+        "b": 1,
+        "c": 0
       },
-      "targetEvidence": "Child identifies a helpful way to include someone who looks lonely.",
-      "alignmentRationale": "This task highlights the ability to perceive social situations and suggests thoughtful actions."
+      "skillFacet": "noticing loneliness",
+      "targetEvidence": "chooses to include a lonely child.",
+      "alignmentRationale": "Including someone shows noticing their feelings; laughing at them scores lowest."
     },
     {
       "id": "4405d811-b6d4-480c-b7f3-85b640aa33d5",
@@ -2119,10 +2119,10 @@
       "format": "explanation",
       "prompt": "Your classmate forgot their lunch and looks worried. What can you do to help?",
       "rubric": [
-        "3 - You offer to share your lunch or help them get food.",
-        "2 - You ask if they want to borrow your snack.",
-        "1 - You say it's too bad they forgot their lunch.",
-        "0 - You ignore them."
+        "3 - Shares food or gets a teacher to help.",
+        "2 - Says something kind but does not help with lunch.",
+        "1 - Does nothing.",
+        "0 - Chooses an unkind answer, such as laughing or brushing off the feeling."
       ],
       "weight": 1,
       "ageBand": [
@@ -2132,26 +2132,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Share your lunch"
+          "text": "Share some of your lunch."
         },
         {
           "key": "b",
-          "text": "Borrow a snack"
+          "text": "Tell a teacher."
         },
         {
           "key": "c",
-          "text": "Ignore them"
+          "text": "Ignore them."
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "noticing a need",
+      "answerKey": "b",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "suggests a helpful response based on the classmate's situation",
-      "alignmentRationale": "This scenario encourages identifying a need and responding appropriately to it."
+      "skillFacet": "noticing a need",
+      "targetEvidence": "chooses a helpful action for a worried classmate.",
+      "alignmentRationale": "Sharing and telling a teacher both meet the classmate's need."
     },
     {
       "id": "c6e0e81b-028a-48c6-9508-e7d68cb873e0",
@@ -2581,10 +2581,10 @@
       "format": "explanation",
       "prompt": "You see a friend who looks sad during lunch. What could you say to help them feel better?",
       "rubric": [
-        "3 - You invite them to join your game or activity.",
-        "2 - You ask if they want to talk about it.",
-        "1 - You tell them not to be sad.",
-        "0 - You ignore them."
+        "3 - Asks what is wrong or invites the friend to join in.",
+        "2 - Says something kind but general.",
+        "1 - Says something that does not help.",
+        "0 - Chooses an unkind answer, such as laughing or brushing off the feeling."
       ],
       "weight": 1,
       "ageBand": [
@@ -2594,7 +2594,7 @@
       "options": [
         {
           "key": "a",
-          "text": "Come play with us! 🎈"
+          "text": "Come play with us!"
         },
         {
           "key": "b",
@@ -2605,15 +2605,15 @@
           "text": "Just cheer up!"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "offering support",
+      "answerKey": "b",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "The answer indicates a specific way to engage the friend positively.",
-      "alignmentRationale": "This item assesses the ability to notice a friend's emotions and suggest a way to help that aligns with that awareness."
+      "skillFacet": "offering support",
+      "targetEvidence": "chooses a caring question or a kind invitation.",
+      "alignmentRationale": "Asking and inviting are both tuned to the friend's feelings."
     },
     {
       "id": "4860ae74-bdc5-407a-9dec-087caf23481c",

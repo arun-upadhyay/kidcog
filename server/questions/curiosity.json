@@ -31,7 +31,7 @@
       "type": "mcq",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "Look at these different fruits 🍎🍌🍍. What can we make with them?",
+      "prompt": "Here are some different fruits 🍎🍌🍍. What can we make with them?",
       "rubric": [
         "3 - Chooses a creative dish or drink idea, showing imagination.",
         "2 - Chooses an item that is somewhat related to the fruits, but less creative.",
@@ -74,12 +74,12 @@
       "type": "mcq",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "What if you could have a pet unicorn 🦄? What would you want to ask it?",
+      "prompt": "Imagine a pet unicorn 🦄. What would you want to ask it?",
       "rubric": [
-        "3 - Asks an imaginative question about the unicorn's magic or adventures.",
-        "2 - Asks a simple question about the unicorn's preferences or likes.",
-        "1 - Asks about a normal animal instead of a unicorn.",
-        "0 - Does not answer or asks something unrelated."
+        "3 - Chooses a curious how, why or what question",
+        "2 - Chooses a curious question but cannot say what they want to find out",
+        "1 - Chooses a plain statement instead of a question",
+        "0 - Gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -89,7 +89,7 @@
       "options": [
         {
           "key": "a",
-          "text": "Can you fly with me?"
+          "text": "You are a unicorn."
         },
         {
           "key": "b",
@@ -97,18 +97,18 @@
         },
         {
           "key": "c",
-          "text": "Are you big?"
+          "text": "Can you fly with me?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "ask a what-if question",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "selects or formulates a relevant question for the unicorn",
-      "alignmentRationale": "This item encourages imaginative speculation and the asking of open-ended possibilities related to a fantasy creature."
+      "skillFacet": "asking questions",
+      "targetEvidence": "Picks a curious question for the unicorn.",
+      "alignmentRationale": "Rewards asking questions over a statement."
     },
     {
       "id": "a07dc773-1412-4873-8d21-870cda01128e",
@@ -117,12 +117,12 @@
       "type": "mcq",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "Imagine a magic fish 🐟 can grant wishes. What would you ask for?",
+      "prompt": "Imagine a magic fish 🐟 that can talk. What would you like to ask it?",
       "rubric": [
-        "3 - States a fun and imaginative wish that shows creativity.",
-        "2 - States a wish that is somewhat common or expected, but still relevant.",
-        "1 - States a wish that does not really fit with the idea of a magic fish.",
-        "0 - Does not respond or suggests something totally unrelated."
+        "3 - Chooses a curious how, why or what question",
+        "2 - Chooses a curious question but cannot say what they want to find out",
+        "1 - Chooses a plain statement instead of a question",
+        "0 - Gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -132,26 +132,26 @@
       "options": [
         {
           "key": "a",
-          "text": "To swim in the ocean!"
+          "text": "Fish swim."
         },
         {
           "key": "b",
-          "text": "A toy fish"
+          "text": "How did you get your magic?"
         },
         {
           "key": "c",
-          "text": "To visit the zoo"
+          "text": "Where do you live?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "ask a creative wish",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
+        "a": 1,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "selects or demonstrates a suitable wish related to the magic fish",
-      "alignmentRationale": "This question prompts children to think out of the box and ask for something imaginative, testing curiosity."
+      "skillFacet": "asking questions",
+      "targetEvidence": "Picks a curious question for the fish.",
+      "alignmentRationale": "Changes a wish (preference) into a curiosity question."
     },
     {
       "id": "e7f39d68-d660-4c32-bf1e-d750c807d329",
@@ -160,12 +160,12 @@
       "type": "mcq",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "What could we do if we see clouds ☁️?",
+      "prompt": "There are clouds in the sky ☁️. What could we do?",
       "rubric": [
-        "3 - Suggests a creative or fun activity related to clouds.",
-        "2 - Suggests a common activity associated with clouds.",
-        "1 - Mentions something unrelated to clouds.",
-        "0 - Does not answer or gives an irrelevant response."
+        "3 - Chooses looking for shapes or wondering why clouds move",
+        "2 - Gives their own curious idea about clouds",
+        "1 - Gives an unclear idea",
+        "0 - Chooses watching TV or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -175,26 +175,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Make a cloud sculpture"
+          "text": "Look for shapes in the clouds"
         },
         {
           "key": "b",
-          "text": "Watch TV"
+          "text": "Watch TV instead"
         },
         {
           "key": "c",
-          "text": "Go to sleep"
+          "text": "Wonder why clouds move"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "choose a cloud-related activity",
       "optionScores": {
         "a": 3,
-        "b": 1,
-        "c": 0
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "selects or suggests a relevant activity involving clouds",
-      "alignmentRationale": "This item encourages thinking about the environment and imaginative play based on observable phenomena."
+      "skillFacet": "exploring with curiosity",
+      "targetEvidence": "Chooses to explore or wonder about clouds.",
+      "alignmentRationale": "Rewards noticing and wondering."
     },
     {
       "id": "34696694-aff7-4344-a483-e8f589acd846",
@@ -272,12 +272,12 @@
       "type": "mcq",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "Look at these animals 🐶🐱🐰. What if they could switch places? What would happen?",
+      "prompt": "What if a dog 🐶 could hop like a rabbit 🐰? What might happen?",
       "rubric": [
-        "3 - Answer suggests an interesting change and explains it.",
-        "2 - Answer describes a change without much detail.",
-        "1 - Answer is unclear or off-topic.",
-        "0 - No answer or no relevance."
+        "3 - Chooses the hopping-over-the-fence idea or gives their own what-if idea",
+        "2 - Gives a what-if idea that is unclear",
+        "1 - Says 'I don't know'",
+        "0 - Chooses the unrelated statement or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -287,26 +287,26 @@
       "options": [
         {
           "key": "a",
-          "text": "The dog would be sad."
+          "text": "Dogs are brown."
         },
         {
           "key": "b",
-          "text": "Then they would do fun things!"
+          "text": "I don't know."
         },
         {
           "key": "c",
-          "text": "The rabbit likes carrots."
+          "text": "It could hop over the fence!"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "invent a what-if",
+      "answerKey": "c",
       "optionScores": {
-        "a": 1,
-        "b": 3,
-        "c": 0
+        "a": 0,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "selects a relevant what-if question to explore the scenario further",
-      "alignmentRationale": "This question tests the child's ability to extend thinking beyond a simple situation by considering changes."
+      "skillFacet": "what-if thinking",
+      "targetEvidence": "Imagines what would follow from a what-if.",
+      "alignmentRationale": "Rewards wondering about possibilities."
     },
     {
       "id": "16949203-8dea-4852-a6bb-ff248d64c9d3",
@@ -315,7 +315,7 @@
       "type": "mcq",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "Look at this yummy fruit 🍎🍌🍍. What could we do with it?",
+      "prompt": "Here is some yummy fruit 🍎🍌🍍. What could we do with it?",
       "rubric": [
         "3 - Answer includes a fun idea to use the fruit.",
         "2 - Answer suggests a way to use them but is less creative.",
@@ -444,21 +444,21 @@
       "type": "open",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "Look at these toys 🚂🧸🍭. What game could we play with them?",
+      "prompt": "Here are three toys: a train 🚂, a teddy bear 🧸 and a ball ⚽. What game could we play with them?",
       "rubric": [
-        "3 - Provides a creative game idea connected to the toys.",
-        "2 - Suggests a game but lacks a clear connection.",
-        "1 - Vague or unclear game suggestion.",
-        "0 - No answer or no relevance."
+        "3 - Gives a creative game that uses the toys",
+        "2 - Suggests a game with a weak link to the toys",
+        "1 - Gives a vague or unclear idea",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "notice what remains unknown",
-      "targetEvidence": "provides a relevant game idea that links to the toys",
-      "alignmentRationale": "This question prompts reflection on creative use, seeking to expand the play context."
+      "skillFacet": "inventing new uses",
+      "targetEvidence": "Invents a game that uses the toys.",
+      "alignmentRationale": "Rewards wondering about new possibilities."
     },
     {
       "id": "99726079-438e-43d5-80c8-dd98142fdc62",
@@ -467,12 +467,12 @@
       "type": "mcq",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "Imagine a robot could help with chores 🤖. What would you want it to do?",
+      "prompt": "Imagine a robot that helps with chores 🤖. Which is a good question to ask about it?",
       "rubric": [
-        "3 - Suggests a specific chore for the robot.",
-        "2 - States a chore but lacks detail.",
-        "1 - Answer is unrelated to chores.",
-        "0 - No answer or no relevance."
+        "3 - Chooses a curious how, why or what question",
+        "2 - Chooses a curious question but cannot say what they want to find out",
+        "1 - Chooses a plain statement instead of a question",
+        "0 - Gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -482,26 +482,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Can it cook my dinner?"
-        },
-        {
-          "key": "b",
           "text": "Robots are fun."
         },
         {
+          "key": "b",
+          "text": "How does it know what to do?"
+        },
+        {
           "key": "c",
-          "text": "I like see robots."
+          "text": "I like seeing robots."
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choose the question that would teach more",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
+        "a": 1,
+        "b": 3,
+        "c": 1
       },
-      "targetEvidence": "selects a useful question involving the robot's tasks",
-      "alignmentRationale": "This question assesses curiosity by prompting thoughts about household tasks and creativity in using technology."
+      "skillFacet": "asking how questions",
+      "targetEvidence": "Picks a question about how the robot works.",
+      "alignmentRationale": "Rewards a curious how question."
     },
     {
       "id": "d4683d19-14fd-42e8-b006-060b763fc451",
@@ -644,10 +644,10 @@
       "format": "explanation",
       "prompt": "There are stars in the night sky 🌌. What could we ask about them?",
       "rubric": [
-        "3 - The question is deep, like 'How many stars are there?'.",
-        "2 - The question is about one star, like 'What is a star?'.",
-        "1 - The question is general, like 'Where are stars?'.",
-        "0 - The question does not relate, like 'What color is the tree?'."
+        "3 - Chooses a curious how, why or what question",
+        "2 - Chooses a curious question but cannot say what they want to find out",
+        "1 - Chooses a plain statement instead of a question",
+        "0 - Gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -657,26 +657,26 @@
       "options": [
         {
           "key": "a",
-          "text": "How many stars are there?"
+          "text": "Stars are pretty."
         },
         {
           "key": "b",
-          "text": "What is a star?"
+          "text": "How many stars are there?"
         },
         {
           "key": "c",
-          "text": "Where are stars?"
+          "text": "What is a star?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "selecting a learning question",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "picks a meaningful question that shows curiosity about stars",
-      "alignmentRationale": "The purpose is to guide thinking towards specific inquiry, integrating concepts rather than simply stating observations."
+      "skillFacet": "asking questions",
+      "targetEvidence": "Picks a curious question about stars.",
+      "alignmentRationale": "Rewards asking questions over a statement."
     },
     {
       "id": "78c7a847-63ca-4bb2-b729-2d0397b4ab6c",
@@ -754,12 +754,12 @@
       "type": "mcq",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "You found a hidden treasure chest. What question would you ask about it to learn more?",
+      "prompt": "You find a treasure chest. Which question would help you learn more about it?",
       "rubric": [
-        "3 - A question that reveals lots about the treasure, like 'Where did it come from?'",
-        "2 - A good question about the treasure, like 'What’s inside?'",
-        "1 - A less relevant question, like 'Is it heavy?'.",
-        "0 - An irrelevant question like 'Can I open it?'."
+        "3 - Chooses a curious how, why or what question",
+        "2 - Chooses a curious question but cannot say what they want to find out",
+        "1 - Chooses a plain statement instead of a question",
+        "0 - Gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -769,26 +769,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Where did it come from?"
+          "text": "It is a box."
         },
         {
           "key": "b",
-          "text": "What’s inside?"
+          "text": "What's inside?"
         },
         {
           "key": "c",
-          "text": "Can I open it?"
+          "text": "Where did it come from?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "exploring unknowns",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 1,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "selecting a question that digs into the treasure's story",
-      "alignmentRationale": "This question aims to assess the ability to ask deeper questions to uncover hidden information about a treasure."
+      "skillFacet": "asking questions",
+      "targetEvidence": "Picks a curious question about the chest.",
+      "alignmentRationale": "Rewards asking questions over a statement."
     },
     {
       "id": "f12171a8-6acc-476c-8b88-eaf70a697d78",
@@ -797,12 +797,12 @@
       "type": "mcq",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "If you could ask a rabbit what it wanted, which question would be best?",
+      "prompt": "If you could talk to a rabbit, which question would help you learn what it wants?",
       "rubric": [
-        "3 - A question about the rabbit's feelings, like 'What makes you happy?'",
-        "2 - A good question about what the rabbit needs, like 'What do you eat?'.",
-        "1 - A simple question like 'What is it?' that doesn't help.",
-        "0 - An unrelated question like 'Can I pet it?'."
+        "3 - Chooses a question about what the rabbit likes or wants",
+        "2 - Chooses 'Can I pet you?', a polite question about what you want",
+        "1 - Gives an unclear answer",
+        "0 - Gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -816,22 +816,22 @@
         },
         {
           "key": "b",
-          "text": "What do you eat?"
+          "text": "What do you like to eat?"
         },
         {
           "key": "c",
-          "text": "Can I pet it?"
+          "text": "Can I pet you?"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "understanding feelings",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 0
+        "b": 3,
+        "c": 2
       },
-      "targetEvidence": "selecting a question that explores the rabbit's emotions",
-      "alignmentRationale": "This question encourages understanding of the rabbit's desires, showing empathy towards the animal."
+      "skillFacet": "asking questions",
+      "targetEvidence": "Picks a question that finds out about the rabbit.",
+      "alignmentRationale": "Rewards curious questions about another's wants."
     },
     {
       "id": "dc9f63fa-dc60-4396-8178-0efe6f1b2939",
@@ -1195,10 +1195,10 @@
       "format": "explanation",
       "prompt": "You see a frog jumping. What might you ask it to learn more?",
       "rubric": [
-        "3 - Asks about how frogs jump or what they eat, like 'What do you eat?'",
-        "2 - Asks about where frogs live, like 'Where do you stay?'",
-        "1 - Asks a simple question about frogs, like 'Are you green?'",
-        "0 - Asks a question unrelated to frogs, like 'What is your favorite food?'"
+        "3 - Chooses a curious how, why or what question",
+        "2 - Chooses a curious question but cannot say what they want to find out",
+        "1 - Chooses a plain statement instead of a question",
+        "0 - Gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1208,26 +1208,26 @@
       "options": [
         {
           "key": "a",
-          "text": "What do you eat?"
+          "text": "You are green."
         },
         {
           "key": "b",
-          "text": "Where do you stay?"
+          "text": "Where do you live?"
         },
         {
           "key": "c",
-          "text": "Are you green?"
+          "text": "What do you eat?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "selecting a relevant question",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "inquires further about the frog's habits or environment",
-      "alignmentRationale": "This isolates the curiosity about the frog's life rather than its general appearance."
+      "skillFacet": "asking questions",
+      "targetEvidence": "Picks a curious question about the frog.",
+      "alignmentRationale": "Rewards asking questions over a statement."
     },
     {
       "id": "337e2e75-809d-4283-a27f-7cbd66f04ee8",
@@ -1810,12 +1810,12 @@
       "type": "mcq",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "A rabbit sees a big carrot. What could it ask?",
+      "prompt": "A rabbit sees a big carrot. What could it wonder?",
       "rubric": [
-        "3 - The rabbit could ask how to reach the carrot easily.",
-        "2 - The rabbit might ask why the carrot is so big.",
-        "1 - The rabbit could wonder if someone else likes carrots too.",
-        "0 - The rabbit asks what carrots are."
+        "3 - Chooses a curious how, why or what question",
+        "2 - Chooses a curious question but cannot say what they want to find out",
+        "1 - Chooses a plain statement instead of a question",
+        "0 - Gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1825,26 +1825,26 @@
       "options": [
         {
           "key": "a",
-          "text": "How can I get the carrot?"
+          "text": "Why is it so big and orange?"
         },
         {
           "key": "b",
-          "text": "Why is it orange?"
+          "text": "How can I reach it?"
         },
         {
           "key": "c",
-          "text": "What are veggies?"
+          "text": "I see a carrot."
         }
       ],
       "answerKey": "a",
-      "skillFacet": "word for a question",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 3,
         "c": 1
       },
-      "targetEvidence": "selecting a relevant question that explores the situation further",
-      "alignmentRationale": "This tests the ability to ask a helpful, open-ended question that extends the scenario."
+      "skillFacet": "asking how and why questions",
+      "targetEvidence": "Picks a how or why question.",
+      "alignmentRationale": "Rewards asking questions over a statement."
     },
     {
       "id": "4f9e37c5-5374-4882-a2c6-c2fc06b3a6b1",
@@ -1919,12 +1919,12 @@
       "type": "mcq",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "If you found a time machine, what would you want to know?",
+      "prompt": "You find a time machine. What would you want to know?",
       "rubric": [
-        "3 - You might want to know when you could go.",
-        "2 - You could ask who made it.",
-        "1 - You wonder if it's safe to use.",
-        "0 - You just want to try it out."
+        "3 - Chooses a curious how, why or what question",
+        "2 - Chooses a curious question but cannot say what they want to find out",
+        "1 - Chooses a plain statement instead of a question",
+        "0 - Gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1934,26 +1934,26 @@
       "options": [
         {
           "key": "a",
-          "text": "When can I go in it?"
+          "text": "It looks old."
         },
         {
           "key": "b",
-          "text": "Who owns it?"
+          "text": "Where could it take me?"
         },
         {
           "key": "c",
-          "text": "Is it really there?"
+          "text": "How does it work?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a question",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "choosing a question that extends the idea of a time machine",
-      "alignmentRationale": "This tests the ability to think beyond the obvious and explore possibilities."
+      "skillFacet": "asking how questions",
+      "targetEvidence": "Picks a question about how it works or where it goes.",
+      "alignmentRationale": "Rewards curious how and where questions."
     },
     {
       "id": "45bed15e-537b-4ad4-89d1-5c626346715f",
@@ -1985,12 +1985,12 @@
       "type": "mcq",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "A bird sees the sky is getting cloudy. What might it ask?",
+      "prompt": "A bird sees the sky getting cloudy. What might it wonder?",
       "rubric": [
-        "3 - The bird could ask if it will rain soon.",
-        "2 - It might wonder why clouds are gray.",
-        "1 - The bird asks if it can fly.",
-        "0 - The bird thinks it looks pretty."
+        "3 - Chooses a curious how, why or what question",
+        "2 - Chooses a curious question but cannot say what they want to find out",
+        "1 - Chooses a plain statement instead of a question",
+        "0 - Gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2000,7 +2000,7 @@
       "options": [
         {
           "key": "a",
-          "text": "Will it rain soon?"
+          "text": "The sky is grey."
         },
         {
           "key": "b",
@@ -2008,18 +2008,18 @@
         },
         {
           "key": "c",
-          "text": "Do birds like clouds?"
+          "text": "Will it rain soon?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a question",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "selecting a question that connects with the changing weather",
-      "alignmentRationale": "This question asks the child to select a relevant inquiry that goes beyond just the sight of clouds."
+      "skillFacet": "asking questions",
+      "targetEvidence": "Picks a curious question about the clouds.",
+      "alignmentRationale": "Rewards asking questions over a statement."
     },
     {
       "id": "f03fdcc5-4101-463b-8077-b211c565d1aa",
@@ -2490,12 +2490,12 @@
       "type": "mcq",
       "trait": "curiosity",
       "format": "explanation",
-      "prompt": "A rabbit sees a carrot on the ground. What would be a good question to ask?",
+      "prompt": "A rabbit sees a carrot on the ground. Which is the most curious question to wonder about?",
       "rubric": [
-        "3 - This question asks about another possible action or choice for the rabbit.",
-        "2 - This question is relevant but focuses only on the carrot without expanding.",
-        "1 - This question is somewhat related but not about the rabbit's options.",
-        "0 - This question does not connect to the rabbit or the carrot."
+        "3 - Chooses the why question",
+        "2 - Asks their own why or how question instead",
+        "1 - Chooses 'Is that a carrot?'",
+        "0 - Chooses the statement or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2505,26 +2505,26 @@
       "options": [
         {
           "key": "a",
-          "text": "What if the rabbit decides to hop away?"
+          "text": "Is that a carrot?"
         },
         {
           "key": "b",
-          "text": "Is the carrot orange?"
+          "text": "Carrots are orange."
         },
         {
           "key": "c",
-          "text": "Can rabbits eat carrots?"
+          "text": "Why do rabbits like carrots so much?"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "how actions can change",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "Selection of a question that explores different possibilities for the rabbit's actions.",
-      "alignmentRationale": "The question examines curiosity about animal choices, extending beyond the observed scenario."
+      "skillFacet": "asking why questions",
+      "targetEvidence": "Picks a question that wonders why.",
+      "alignmentRationale": "Rewards a genuine why question."
     },
     {
       "id": "7b1d86de-6505-49d1-b38b-0abacb678646",

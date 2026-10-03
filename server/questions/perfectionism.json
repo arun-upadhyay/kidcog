@@ -31,12 +31,12 @@
       "type": "mcq",
       "trait": "perfectionism",
       "format": "explanation",
-      "prompt": "You got some paint on your hands. What should you do?",
+      "prompt": "You are painting and you spill a little paint on the table. What could you do?",
       "rubric": [
-        "3 - You wash your hands so you can keep painting.",
-        "2 - You ignore it and keep painting with messy hands.",
-        "1 - You get upset and stop painting.",
-        "0 - You decide painting is too hard."
+        "3 - Chooses a calm, flexible response (saying it's okay and cleaning up).",
+        "2 - Chooses a calm response after talking it through, or names a feeling and then a next step.",
+        "1 - Chooses a response that avoids the mistake but does not deal with it.",
+        "0 - Chooses to give up or destroy the work (stopping forever)."
       ],
       "weight": 1,
       "ageBand": [
@@ -46,26 +46,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Wash your hands first"
+          "text": "Say 'oops, that's okay' and ask for help to clean it"
         },
         {
           "key": "b",
-          "text": "Keep painting messily"
+          "text": "Hide it so no one sees"
         },
         {
           "key": "c",
-          "text": "Stop painting and get upset"
+          "text": "Stop painting forever"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "choosing a healthy response to a minor mess",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 1,
+        "c": 0
       },
-      "targetEvidence": "picks a positive action after making a mess",
-      "alignmentRationale": "This question measures the ability to handle minor setbacks without frustration."
+      "skillFacet": "handling a small mistake calmly",
+      "targetEvidence": "chooses a calm fix for a paint spill",
+      "alignmentRationale": "Rewards calm, flexible responses to mistakes and knowing when work is good enough, not making things perfect."
     },
     {
       "id": "0f8c83aa-36b5-4c75-b4b8-7e4a7f2c23f5",
@@ -163,12 +163,12 @@
       "type": "mcq",
       "trait": "perfectionism",
       "format": "explanation",
-      "prompt": "You were coloring a picture, but some lines are outside the shapes. What will you do?",
+      "prompt": "You were coloring a picture, but some color went outside the lines. What will you do?",
       "rubric": [
-        "3 - You can use a dark marker to outline the shapes again.",
-        "2 - You decide to ignore it and just finish the picture.",
-        "1 - You tear up the picture and start over.",
-        "0 - You refuse to ever color again."
+        "3 - Chooses a calm, flexible response (finishing or turning it into something new).",
+        "2 - Chooses a calm response after talking it through, or names a feeling and then a next step.",
+        "1 - Chooses a response that avoids the mistake but does not deal with it.",
+        "0 - Chooses to give up or destroy the work (throwing it away)."
       ],
       "weight": 1,
       "ageBand": [
@@ -178,7 +178,7 @@
       "options": [
         {
           "key": "a",
-          "text": "Outline with a dark marker"
+          "text": "Tear it up and start over"
         },
         {
           "key": "b",
@@ -186,18 +186,18 @@
         },
         {
           "key": "c",
-          "text": "Tear it up and start new"
+          "text": "Turn the extra color into something new, like grass"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "adapting work to look better",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "suggests a valid way to fix or adapt the coloring",
-      "alignmentRationale": "This question encourages children to think about improvement strategies instead of giving up when something isn't perfect."
+      "skillFacet": "knowing when work is good enough",
+      "targetEvidence": "keeps going with imperfect coloring",
+      "alignmentRationale": "Rewards calm, flexible responses to mistakes and knowing when work is good enough, not making things perfect."
     },
     {
       "id": "47e65cd0-ccfd-415d-b807-c7da3157e95d",
@@ -206,12 +206,12 @@
       "type": "mcq",
       "trait": "perfectionism",
       "format": "explanation",
-      "prompt": "You built a tower, but it's a little wobbly. What should you do?",
+      "prompt": "You built a block tower, but it's a little wobbly. What could you do?",
       "rubric": [
-        "3 - You fix it by adding more blocks to make it stronger.",
-        "2 - You smile and say, 'It's okay, I like it like that.'",
-        "1 - You get mad and knock it down.",
-        "0 - You refuse to play with blocks anymore."
+        "3 - Chooses a calm, flexible response (widening the base or accepting it).",
+        "2 - Chooses a calm response after talking it through, or names a feeling and then a next step.",
+        "1 - Chooses a response that avoids the mistake but does not deal with it.",
+        "0 - Chooses to give up or destroy the work (quitting)."
       ],
       "weight": 1,
       "ageBand": [
@@ -221,26 +221,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Add more blocks to fix it"
+          "text": "Knock it down and stop building"
         },
         {
           "key": "b",
-          "text": "Say it's fine as it is"
+          "text": "Make the bottom wider so it stands better"
         },
         {
           "key": "c",
-          "text": "Knock it down and stop building"
+          "text": "Say it's fine and play with it"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "determining a way to finish well despite a problem",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "picks an action that helps improve or accept the current project",
-      "alignmentRationale": "The question helps assess how the child decides to improve or adapt to a project that is not perfect."
+      "skillFacet": "deciding to fix or accept",
+      "targetEvidence": "chooses a sensible fix or accepts the tower",
+      "alignmentRationale": "Rewards calm, flexible responses to mistakes and knowing when work is good enough, not making things perfect."
     },
     {
       "id": "b54d9c41-0166-409e-a6db-48279079041f",
@@ -378,44 +378,24 @@
       "id": "e3521a05-9fdc-4d03-a5a2-3d63b9b82e30",
       "age": 4,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "perfectionism",
       "format": "explanation",
-      "prompt": "You made a drawing, but it isn't colored in. What can you do?",
+      "prompt": "You made a drawing. How do you know when your drawing is finished?",
       "rubric": [
-        "3 - You say you'll color it now.",
-        "2 - You want to wait to color it.",
-        "1 - You think it’s okay without color.",
-        "0 - You don't know."
+        "3 - Gives a sensible sign it is done (e.g. 'when I like it', 'when it shows my idea').",
+        "2 - Gives a simple answer (e.g. 'when I stop').",
+        "1 - Says it is only done when it is perfect.",
+        "0 - Does not answer."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Color it now."
-        },
-        {
-          "key": "b",
-          "text": "Wait to color it."
-        },
-        {
-          "key": "c",
-          "text": "Leave it without color."
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "word for a next step",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "chooses to color the drawing to improve it",
-      "alignmentRationale": "This question examines the willingness to complete a task after realizing something is missing."
+      "skillFacet": "knowing when to finish",
+      "targetEvidence": "explains a calm way to decide work is finished",
+      "alignmentRationale": "Rewards calm, flexible responses to mistakes and knowing when work is good enough, not making things perfect."
     },
     {
       "id": "5a19f42c-64f5-453b-b878-d4c30310caae",
@@ -424,12 +404,12 @@
       "type": "mcq",
       "trait": "perfectionism",
       "format": "explanation",
-      "prompt": "You want to play outside, but it's raining. What could you do instead?",
+      "prompt": "You are building a block house for your toy, but it doesn't look like you planned. What could you do?",
       "rubric": [
-        "3 - You suggest playing a game inside.",
-        "2 - You think about waiting until it stops raining.",
-        "1 - You feel sad about it.",
-        "0 - You want to do nothing."
+        "3 - Chooses a calm, flexible response (asking for help or trying a new way).",
+        "2 - Chooses a calm response after talking it through, or names a feeling and then a next step.",
+        "1 - Chooses a response that avoids the mistake but does not deal with it.",
+        "0 - Chooses to give up or destroy the work (quitting)."
       ],
       "weight": 1,
       "ageBand": [
@@ -439,26 +419,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Play a game inside."
+          "text": "Ask someone to help me"
         },
         {
           "key": "b",
-          "text": "Wait until it stops raining."
+          "text": "Knock it all down and quit"
         },
         {
           "key": "c",
-          "text": "Feel sad about it."
+          "text": "Say 'that's okay' and try a new way"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "word for finding options when plans change",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "The child offers an alternative activity due to the rain.",
-      "alignmentRationale": "This task explores adaptability to changing situations."
+      "skillFacet": "flexibility when work doesn't match a plan",
+      "targetEvidence": "chooses a flexible response when work doesn't go as planned",
+      "alignmentRationale": "Rewards calm, flexible responses to mistakes and knowing when work is good enough, not making things perfect."
     },
     {
       "id": "b51e01a9-0bb8-495d-b314-f00267525bd5",
@@ -556,12 +536,12 @@
       "type": "mcq",
       "trait": "perfectionism",
       "format": "explanation",
-      "prompt": "You made a cake, but it didn't rise well. What can you do next?",
+      "prompt": "You helped make a cake, but it came out flat. What could you do next?",
       "rubric": [
-        "3 - You suggest eating it anyway or trying again.",
-        "2 - You think it could taste good as is.",
-        "1 - You get upset that it didn't rise.",
-        "0 - You say it's a bad cake."
+        "3 - Chooses a calm, flexible response (eating it or trying again).",
+        "2 - Chooses a calm response after talking it through, or names a feeling and then a next step.",
+        "1 - Chooses a response that avoids the mistake but does not deal with it.",
+        "0 - Chooses to give up or destroy the work (never baking again)."
       ],
       "weight": 1,
       "ageBand": [
@@ -571,26 +551,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Eat it anyway or try again."
+          "text": "Eat it anyway, it can still taste good"
         },
         {
           "key": "b",
-          "text": "It could taste good as is."
+          "text": "Throw it away and never bake again"
         },
         {
           "key": "c",
-          "text": "Feel upset about it."
+          "text": "Try again another day"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for dealing with imperfect results",
+      "answerKey": "c",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "The child finds a possible solution regardless of the outcome.",
-      "alignmentRationale": "This task looks at resilience and willingness to try again despite challenges."
+      "skillFacet": "dealing with imperfect results",
+      "targetEvidence": "chooses to enjoy or retry instead of giving up",
+      "alignmentRationale": "Rewards calm, flexible responses to mistakes and knowing when work is good enough, not making things perfect."
     },
     {
       "id": "b369489b-2705-4134-8a43-cd5f0a57e6ca",
@@ -665,12 +645,12 @@
       "type": "mcq",
       "trait": "perfectionism",
       "format": "explanation",
-      "prompt": "You drew a picture, but you used the wrong color for the sky. What should you do?",
+      "prompt": "You drew a picture and made the sky purple instead of blue. What could you do?",
       "rubric": [
-        "3 - Change it to the right color!",
-        "2 - Just leave it like that.",
-        "1 - You could give up drawing.",
-        "0 - It doesn't matter to me."
+        "3 - Chooses a calm, flexible response (leaving it or adding blue calmly).",
+        "2 - Chooses a calm response after talking it through, or names a feeling and then a next step.",
+        "1 - Chooses a response that avoids the mistake but does not deal with it.",
+        "0 - Chooses to give up or destroy the work (scribbling it out and stopping)."
       ],
       "weight": 1,
       "ageBand": [
@@ -680,26 +660,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Change it to the right color!"
+          "text": "Leave it - a purple sky is fun!"
         },
         {
           "key": "b",
-          "text": "Just leave it like that."
+          "text": "Scribble it all out and stop drawing"
         },
         {
           "key": "c",
-          "text": "You could give up drawing."
+          "text": "Add some blue if you want to"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "choosing to adapt after a mistake",
       "optionScores": {
         "a": 3,
-        "b": 1,
-        "c": 0
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "Selecting a positive action after noticing a mistake",
-      "alignmentRationale": "This tests the child's ability to respond positively to a mistake, showing care without anxiety."
+      "skillFacet": "accepting creative choices",
+      "targetEvidence": "accepts or calmly adjusts an unexpected color",
+      "alignmentRationale": "Rewards calm, flexible responses to mistakes and knowing when work is good enough, not making things perfect."
     },
     {
       "id": "3be9203e-f4d0-40bb-868d-ac2963abc56d",
@@ -731,12 +711,12 @@
       "type": "mcq",
       "trait": "perfectionism",
       "format": "explanation",
-      "prompt": "You are putting together a jigsaw puzzle and realize a piece is missing. What do you want to do?",
+      "prompt": "You are doing a jigsaw puzzle and find out a piece is missing. What could you do?",
       "rubric": [
-        "3 - Find another piece or keep working on the puzzle.",
-        "2 - Look for the missing piece.",
-        "1 - Stop doing the puzzle.",
-        "0 - You don't know what to do."
+        "3 - Chooses a calm, flexible response (finishing the rest or asking for help).",
+        "2 - Chooses a calm response after talking it through, or names a feeling and then a next step.",
+        "1 - Chooses a response that avoids the mistake but does not deal with it.",
+        "0 - Chooses to give up or destroy the work (throwing it away)."
       ],
       "weight": 1,
       "ageBand": [
@@ -746,26 +726,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Find another piece"
+          "text": "Stop and throw the puzzle away"
         },
         {
           "key": "b",
-          "text": "Look for the missing piece"
+          "text": "Finish the rest and look for the piece later"
         },
         {
           "key": "c",
-          "text": "Stop doing the puzzle"
+          "text": "Ask a grown-up to help look for it"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "persistence after a problem",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "The child chooses how to respond after discovering a missing puzzle piece.",
-      "alignmentRationale": "This question reflects persistence and coping skills in response to bumps while engaging in a puzzle, showing the ability to continue despite challenges."
+      "skillFacet": "persistence after a problem",
+      "targetEvidence": "keeps going calmly with a missing piece",
+      "alignmentRationale": "Rewards calm, flexible responses to mistakes and knowing when work is good enough, not making things perfect."
     },
     {
       "id": "2f88ea62-b349-4c4b-87fd-b580126019e4",
@@ -1285,12 +1265,12 @@
       "type": "mcq",
       "trait": "perfectionism",
       "format": "explanation",
-      "prompt": "You are building a puzzle and realize a piece does not fit. What should you do?",
+      "prompt": "You are doing a puzzle and a piece does not fit. What could you do?",
       "rubric": [
-        "3 - Find a different piece or try again.",
-        "2 - Leave it and quit.",
-        "1 - Feel upset and cry.",
-        "0 - Doesn't respond or says nothing."
+        "3 - Chooses a calm, flexible response (trying another piece or a calm break).",
+        "2 - Chooses a calm response after talking it through, or names a feeling and then a next step.",
+        "1 - Chooses a response that avoids the mistake but does not deal with it.",
+        "0 - Chooses to give up or destroy the work (quitting)."
       ],
       "weight": 1,
       "ageBand": [
@@ -1300,26 +1280,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Find a different piece."
+          "text": "Feel upset, then take a break and try again"
         },
         {
           "key": "b",
-          "text": "Leave it and quit."
+          "text": "Try a different piece"
         },
         {
           "key": "c",
-          "text": "Feel upset."
+          "text": "Quit the puzzle"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "problem-solving with projects",
+      "answerKey": "b",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "The child chooses a productive way to handle a fitting issue in a project.",
-      "alignmentRationale": "This question examines the ability to solve a problem related to completing a task, isolating innovative positive responses."
+      "skillFacet": "problem-solving with projects",
+      "targetEvidence": "chooses a calm way past a piece that doesn't fit",
+      "alignmentRationale": "Rewards calm, flexible responses to mistakes and knowing when work is good enough, not making things perfect."
     },
     {
       "id": "cf8d6d2d-8ab2-43ab-a84a-a198329f8eff",
@@ -1414,12 +1394,12 @@
       "type": "mcq",
       "trait": "perfectionism",
       "format": "explanation",
-      "prompt": "You are making a toy with clay, but you drop it and it breaks. What should you do?",
+      "prompt": "You are making a toy with clay, but you drop it and it breaks. What could you do?",
       "rubric": [
-        "3 - You can fix it and make it even better than before!",
-        "2 - You can pick it up and try to fix it but you might feel upset.",
-        "1 - You think it’s ruined and you want to give up.",
-        "0 - You don't know what to do."
+        "3 - Chooses a calm, flexible response (fixing or remaking it, even if sad).",
+        "2 - Chooses a calm response after talking it through, or names a feeling and then a next step.",
+        "1 - Chooses a response that avoids the mistake but does not deal with it.",
+        "0 - Chooses to give up or destroy the work (giving up)."
       ],
       "weight": 1,
       "ageBand": [
@@ -1429,26 +1409,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Fix it and make it better!"
+          "text": "Fix it or make it again"
         },
         {
           "key": "b",
-          "text": "Try to fix it but feel sad."
+          "text": "Feel sad, then try to fix it"
         },
         {
           "key": "c",
-          "text": "Give up on it because it’s broken."
+          "text": "Give up because it broke"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "responding to mistakes",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "chooses to fix the toy rather than give up",
-      "alignmentRationale": "This question focuses on how a child might handle breaking a creation and valuing the effort put in."
+      "skillFacet": "responding to mistakes",
+      "targetEvidence": "chooses to fix or remake the toy",
+      "alignmentRationale": "Rewards calm, flexible responses to mistakes and knowing when work is good enough, not making things perfect."
     },
     {
       "id": "de2d5219-ef34-469b-a9dd-790d17236e80",
@@ -1503,12 +1483,12 @@
       "type": "mcq",
       "trait": "perfectionism",
       "format": "explanation",
-      "prompt": "You are setting up a game, but one rule doesn’t seem fair. What is a good way to handle it?",
+      "prompt": "You are writing your name on a card, and one letter comes out wobbly. What could you do?",
       "rubric": [
-        "3 - Suggest a better rule to make the game fair for everyone!",
-        "2 - Just play it anyway but feel unhappy.",
-        "1 - Think you should just follow the unfair rule.",
-        "0 - You don’t know what to do."
+        "3 - Chooses a calm, flexible response (leaving it or fixing one letter).",
+        "2 - Chooses a calm response after talking it through, or names a feeling and then a next step.",
+        "1 - Chooses a response that avoids the mistake but does not deal with it.",
+        "0 - Chooses to give up or destroy the work (ripping up the card)."
       ],
       "weight": 1,
       "ageBand": [
@@ -1518,26 +1498,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Suggest a better rule!"
+          "text": "Leave it - the card still looks nice"
         },
         {
           "key": "b",
-          "text": "Play it anyway but feel unhappy."
+          "text": "Rip up the card"
         },
         {
           "key": "c",
-          "text": "Just follow the unfair rule."
+          "text": "Fix just that letter and keep going"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "deciding when to speak up",
+      "answerKey": "c",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "actively seeks to improve the situation rather than accepting it",
-      "alignmentRationale": "This question measures the ability to voice a concern in a social situation."
+      "skillFacet": "knowing when work is good enough",
+      "targetEvidence": "accepts or makes a small fix to a wobbly letter",
+      "alignmentRationale": "Rewards calm, flexible responses to mistakes and knowing when work is good enough, not making things perfect."
     },
     {
       "id": "2fffc731-d821-48f8-826d-c34ac8502f1e",
@@ -1873,12 +1853,12 @@
       "type": "mcq",
       "trait": "perfectionism",
       "format": "explanation",
-      "prompt": "You are building a sandcastle, but it collapses a little. What can you do?",
+      "prompt": "You are building a sandcastle, and part of it falls down. What could you do?",
       "rubric": [
-        "3 - Rebuild it and keep having fun!",
-        "2 - Fix only the collapsed parts.",
-        "1 - Leave it and walk away.",
-        "0 - Feel upset and do nothing."
+        "3 - Chooses a calm, flexible response (fixing the fallen part or rebuilding).",
+        "2 - Chooses a calm response after talking it through, or names a feeling and then a next step.",
+        "1 - Chooses a response that avoids the mistake but does not deal with it.",
+        "0 - Chooses to give up or destroy the work (destroying it)."
       ],
       "weight": 1,
       "ageBand": [
@@ -1888,26 +1868,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Rebuild it and keep having fun!"
+          "text": "Kick it all down and stop"
         },
         {
           "key": "b",
-          "text": "Fix only the collapsed parts."
+          "text": "Rebuild it and keep having fun"
         },
         {
           "key": "c",
-          "text": "Leave it and walk away."
+          "text": "Fix only the part that fell"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "finding solutions after a mistake",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "chooses to rebuild or continue playing in a positive way",
-      "alignmentRationale": "This question isolates the choice of action after a mistake, emphasizing resilience and creativity."
+      "skillFacet": "finding solutions after a mistake",
+      "targetEvidence": "chooses a proportionate fix",
+      "alignmentRationale": "Rewards calm, flexible responses to mistakes and knowing when work is good enough, not making things perfect."
     },
     {
       "id": "de2782e0-275f-47a2-8aed-ee33c55c7028",

@@ -8,12 +8,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a toy dog and a toy cat. Which one would you take on a trip?",
+      "prompt": "You are playing hide and seek. Where is the best place to hide?",
       "rubric": [
-        "3 - Chooses toy dog showing preference.",
-        "2 - Selects toy cat but less preferred.",
-        "1 - Picks one but isn’t specific.",
-        "0 - Doesn't choose a toy."
+        "3 - Picks behind the big couch.",
+        "2 - Picks the middle of the room but knows the seeker must not see you.",
+        "1 - Picks a spot the seeker will see right away.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -23,26 +23,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Toy dog"
+          "text": "In the middle of the room"
         },
         {
           "key": "b",
-          "text": "Toy cat"
+          "text": "Right next to the person counting"
         },
         {
           "key": "c",
-          "text": "Both"
+          "text": "Behind the big couch"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "expressing preference",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "selects a toy for a trip",
-      "alignmentRationale": "The child must express a preference based on the context of a trip."
+      "skillFacet": "chooses a good hiding spot",
+      "targetEvidence": "picks a hidden spot out of the seeker's view",
+      "alignmentRationale": "Choosing a hiding spot means thinking about what the other player will see."
     },
     {
       "id": "5a6812c6-e524-4e9f-88dc-4e7bbd860161",
@@ -51,12 +51,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a paper airplane and a balloon. Which one will move through the air better?",
+      "prompt": "When you play tic-tac-toe, what are you trying to make?",
       "rubric": [
-        "3 - Paper airplane will move better in the air.",
-        "2 - Balloon might float but not fly.",
-        "1 - Both are fun for play.",
-        "0 - Doesn't answer correctly."
+        "3 - Picks three of your marks in a row.",
+        "2 - Knows there is a goal but not what it is.",
+        "1 - Picks a goal that is not part of the game.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -66,26 +66,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Paper airplane"
+          "text": "The biggest drawing"
         },
         {
           "key": "b",
-          "text": "Balloon"
+          "text": "All the squares empty"
         },
         {
           "key": "c",
-          "text": "Both"
+          "text": "Three of your marks in a row"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choosing based on movement",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 0,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "selects the paper airplane for air movement",
-      "alignmentRationale": "This tests understanding of how different objects move in air."
+      "skillFacet": "knows the goal of a strategy game",
+      "targetEvidence": "names three in a row as the goal",
+      "alignmentRationale": "Knowing the goal of tic-tac-toe is needed to plan moves."
     },
     {
       "id": "317c3def-8d88-4ff6-9977-d7703952f028",
@@ -94,12 +94,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a red block, a blue block, and a green block. Which block do you pick first for building?",
+      "prompt": "You are building a block tower. You have a big block and a small block. Which one should go on the bottom so the tower does not fall?",
       "rubric": [
-        "3 - Chooses blue block for creativity.",
-        "2 - Selects red block but less preferred.",
-        "1 - Green block is okay but not best.",
-        "0 - Doesn't choose a block."
+        "3 - Picks the big block on the bottom.",
+        "2 - Picks the small block but thinks about balance.",
+        "1 - Picks the ball or gives no reason.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -109,26 +109,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Blue block"
+          "text": "The big block"
         },
         {
           "key": "b",
-          "text": "Red block"
+          "text": "The small block"
         },
         {
           "key": "c",
-          "text": "Green block"
+          "text": "A round ball"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "choosing based on creativity",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 1,
+        "c": 0
       },
-      "targetEvidence": "selects a block for a creative purpose",
-      "alignmentRationale": "This item assesses a child's creative preference in selecting building blocks."
+      "skillFacet": "plans a stable tower",
+      "targetEvidence": "chooses the big block as the base",
+      "alignmentRationale": "Deciding what goes on the bottom is planning ahead in a building game."
     },
     {
       "id": "dcfd6d47-40e7-46ed-9c19-365ecdc4acce",
@@ -137,21 +137,21 @@
       "type": "open",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have two toy animals: a lion and a rabbit. Which one do you like more for pretend play?",
+      "prompt": "You are building a block tower with a friend, but it keeps falling down. What could you try so it stands up tall?",
       "rubric": [
-        "3 - Chooses lion showing preference.",
-        "2 - Chooses rabbit showing preference.",
-        "1 - Picks a toy but not specific.",
-        "0 - Doesn't choose an animal."
+        "3 - Gives a clear plan with a reason, e.g. big blocks on the bottom, stack slowly and straight.",
+        "2 - Gives a workable idea without a reason.",
+        "1 - Says to try again with no change.",
+        "0 - No answer, or an answer with no plan."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "expressing preference",
-      "targetEvidence": "selects an animal for pretend play",
-      "alignmentRationale": "The child must express a preference from two given options."
+      "skillFacet": "plans a fix in a building game",
+      "targetEvidence": "describes a plan to keep a tower standing",
+      "alignmentRationale": "Planning what to change in a building game is looking ahead."
     },
     {
       "id": "0fe2e47e-19e5-4def-8ee8-e5b97af038e8",
@@ -160,12 +160,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a triangle and a square. You want to stack them. Which one goes on top?",
+      "prompt": "You are playing a bean bag game. You throw the bean bag at a bucket, but it lands short, before the bucket. What should you try next?",
       "rubric": [
-        "3 - Triangle goes on top because it's smaller.",
-        "2 - Square goes on top but not as good.",
-        "1 - Both shapes are fine for stacking.",
-        "0 - Doesn't answer correctly."
+        "3 - Picks throwing a little harder.",
+        "2 - Picks softer but knows the throw must change.",
+        "1 - Picks closing your eyes.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -175,26 +175,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Triangle"
+          "text": "Throw it softer"
         },
         {
           "key": "b",
-          "text": "Square"
+          "text": "Throw it a little harder"
         },
         {
           "key": "c",
-          "text": "Both"
+          "text": "Close your eyes"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choosing based on size",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
+        "a": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "selects the triangle for stacking",
-      "alignmentRationale": "The question requires choosing the best shape based on size for stacking."
+      "skillFacet": "adjusts a move after seeing the result",
+      "targetEvidence": "chooses to throw harder after a short throw",
+      "alignmentRationale": "Changing your next move based on the last one is simple game planning."
     },
     {
       "id": "185ad466-716c-430f-bade-e68eb6de2908",
@@ -203,21 +203,21 @@
       "type": "open",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have three fruit: an apple, a banana, and a grape. Which one would you like to eat?",
+      "prompt": "You are playing hide and seek, and you are hiding. What will you do so the seeker does not find you?",
       "rubric": [
-        "3 - Answers with apple.",
-        "2 - Chooses banana or grape.",
-        "1 - Picks a fruit but not specific.",
-        "0 - Doesn't choose a fruit."
+        "3 - Gives a plan with a reason, e.g. stay quiet and still behind something big so they can't see or hear me.",
+        "2 - Gives one good idea such as 'be quiet'.",
+        "1 - Names a place with no plan.",
+        "0 - No answer, or an answer with no plan."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "expressing preference",
-      "targetEvidence": "selects a fruit to eat",
-      "alignmentRationale": "This task tests the ability to express personal choice among fruit options."
+      "skillFacet": "plans how to stay hidden",
+      "targetEvidence": "describes how to stay hidden",
+      "alignmentRationale": "Thinking about what the seeker will see or hear is planning around another player."
     },
     {
       "id": "6d037df6-9b26-4d0d-a352-7b4d8c0dc8ac",
@@ -226,12 +226,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a toy car and a toy train. You want to race. Which one is best for fast speeds?",
+      "prompt": "You are playing 'Red light, green light'. The leader says, \"Red light!\" What should you do?",
       "rubric": [
-        "3 - Toy car is best for racing quickly.",
-        "2 - Toy train could work but is slower.",
-        "1 - Both can be fun toys for racing.",
-        "0 - Doesn't answer correctly."
+        "3 - Picks stopping and standing still.",
+        "2 - Picks another action but knows red means stop.",
+        "1 - Picks running.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -241,26 +241,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Toy car"
+          "text": "Stop and stand still"
         },
         {
           "key": "b",
-          "text": "Toy train"
+          "text": "Run fast"
         },
         {
           "key": "c",
-          "text": "Both"
+          "text": "Sit down and go to sleep"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "choosing based on speed",
       "optionScores": {
         "a": 3,
         "b": 1,
         "c": 0
       },
-      "targetEvidence": "selects the toy car for racing",
-      "alignmentRationale": "The child compares toys based on speed to select the fastest option."
+      "skillFacet": "follows game rules to stay in",
+      "targetEvidence": "stops on 'red light'",
+      "alignmentRationale": "Following the rules at the right moment is the base of playing games well."
     },
     {
       "id": "2629efb6-afc1-4862-be01-4cabfa029126",
@@ -312,12 +312,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have 1 blue ball and 3 yellow balls. You want to play a game. Which ball do you choose for more fun?",
+      "prompt": "You are playing 'I spy'. Your friend says, \"I spy something round and red.\" Which is the best guess?",
       "rubric": [
-        "3 - You select the ball that is more (or most) fun based on its quantity.",
-        "2 - You consider a ball but your choice shows some confusion about fun.",
-        "1 - You select a ball with no clear reasoning.",
-        "0 - No response or irrelevant choice."
+        "3 - Picks the red ball, which matches both clues.",
+        "2 - Picks an item that matches one clue.",
+        "1 - Picks an item that matches no clue.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -327,26 +327,26 @@
       "options": [
         {
           "key": "a",
-          "text": "yellow ball"
+          "text": "A green leaf"
         },
         {
           "key": "b",
-          "text": "blue ball"
+          "text": "A red ball"
         },
         {
           "key": "c",
-          "text": "another yellow ball"
+          "text": "A blue box"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "select for preference",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 0,
+        "a": 0,
+        "b": 3,
         "c": 1
       },
-      "targetEvidence": "child picks a ball based on a preference that relates to fun or engagement.",
-      "alignmentRationale": "This item isolates the child's preference-based decision-making under simple comparative contexts."
+      "skillFacet": "uses clues to make a good guess",
+      "targetEvidence": "uses both clues to guess the red ball",
+      "alignmentRationale": "Using clues to narrow a guess is simple game reasoning."
     },
     {
       "id": "c0637b3b-a8bf-4859-9334-958aee7db558",
@@ -355,12 +355,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have 2 blue circles and 1 red triangle. You want to make a pattern. Which shape should you place next?",
+      "prompt": "Let's play a pattern game. 🔵🔺🔵🔺🔵 ... What shape comes next?",
       "rubric": [
-        "3 - You choose the correct shape to continue the pattern.",
-        "2 - You make a choice that partially continues the pattern.",
-        "1 - You choose a shape not related to the pattern at all.",
-        "0 - No response or irrelevant choice."
+        "3 - Picks the red triangle that continues the pattern.",
+        "2 - Picks the blue circle but can say the pattern switches.",
+        "1 - Picks a shape not in the pattern.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -370,11 +370,11 @@
       "options": [
         {
           "key": "a",
-          "text": "blue circle"
+          "text": "red triangle"
         },
         {
           "key": "b",
-          "text": "red triangle"
+          "text": "blue circle"
         },
         {
           "key": "c",
@@ -382,14 +382,14 @@
         }
       ],
       "answerKey": "a",
-      "skillFacet": "compare options for patterns",
       "optionScores": {
         "a": 3,
-        "b": 0,
-        "c": 1
+        "b": 1,
+        "c": 0
       },
-      "targetEvidence": "child selects a shape that logically continues a pattern sequence.",
-      "alignmentRationale": "This task isolates the skill of pattern recognition by directly asking about continuation, focusing on the child's ability to compare choices based on established shapes."
+      "skillFacet": "predicts the next step in a pattern game",
+      "targetEvidence": "continues the circle-triangle pattern",
+      "alignmentRationale": "Seeing what comes next is the same look-ahead thinking used in games."
     },
     {
       "id": "f466049a-813d-42cb-b345-d126e3c795e2",
@@ -398,12 +398,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have 3 red apples and 1 green apple. You want to share with a friend. Which apple will you give first?",
+      "prompt": "You and a friend are playing a game where you take turns. It is your friend's turn now. What should you do?",
       "rubric": [
-        "3 - You choose the apple that is different from the others.",
-        "2 - You choose one of the red apples but not the right reason.",
-        "1 - You choose an apple without thinking.",
-        "0 - No response or irrelevant choice."
+        "3 - Picks waiting for their turn.",
+        "2 - Picks stopping but knows the rule is to take turns.",
+        "1 - Picks taking the friend's turn.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -413,26 +413,26 @@
       "options": [
         {
           "key": "a",
-          "text": "green apple"
+          "text": "Take my friend's turn"
         },
         {
           "key": "b",
-          "text": "red apple"
+          "text": "Wait for my turn"
         },
         {
           "key": "c",
-          "text": "another red apple"
+          "text": "Stop playing"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "decide based on differences",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 0,
+        "a": 0,
+        "b": 3,
         "c": 1
       },
-      "targetEvidence": "child identifies and shares an apple based on its unique color.",
-      "alignmentRationale": "This focuses on the ability to compare objects and make a selection based on distinguishing features, thus tracing the logic behind their decision."
+      "skillFacet": "follows turn-taking in a game",
+      "targetEvidence": "waits for their own turn",
+      "alignmentRationale": "Knowing and following turn order is the base of every strategy game."
     },
     {
       "id": "bb25ad20-68b5-4c2b-90cf-17c90ecd9f1d",
@@ -441,12 +441,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have 2 small toys: a car and a robot. You want to drive the toy that goes faster. Which toy do you pick?",
+      "prompt": "You are playing a board game. You roll the dice and get 3 dots. How many spaces do you move?",
       "rubric": [
-        "3 - You choose the toy associated with fast movement.",
-        "2 - You pick the other toy but provide a reason related to movement.",
-        "1 - You choose a toy without any clear reasoning.",
-        "0 - No response or irrelevant choice."
+        "3 - Picks 3 spaces.",
+        "2 - Picks another number but knows the dots tell you how far to move.",
+        "1 - Picks a number with no link to the dots.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -456,26 +456,26 @@
       "options": [
         {
           "key": "a",
-          "text": "car"
+          "text": "1 space"
         },
         {
           "key": "b",
-          "text": "robot"
+          "text": "3 spaces"
         },
         {
           "key": "c",
-          "text": "whistle"
+          "text": "6 spaces"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "select for speed",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 0,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "child picks a toy based on a characteristic attribute (speed).",
-      "alignmentRationale": "This task evaluates the child's ability to compare the properties of toys and make a choice based on a clearly defined goal of speed."
+      "skillFacet": "knows how dice moves work",
+      "targetEvidence": "moves the number of spaces shown",
+      "alignmentRationale": "Knowing how moves are counted is needed before planning moves."
     },
     {
       "id": "e8f3843a-7c89-44f3-b25e-a606bff53981",
@@ -484,21 +484,21 @@
       "type": "open",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a green turtle and a red fish. Which one would you pick for fun?",
+      "prompt": "You are playing tag, and you don't want to get tagged. What is your plan?",
       "rubric": [
-        "3 - You choose the better pet for fun with a clear reason.",
-        "2 - You pick one but don't explain.",
-        "1 - You give a general reason not related to fun.",
-        "0 - No response or irrelevant information."
+        "3 - Gives a plan with a reason, e.g. watch the tagger and run the other way, or go around things.",
+        "2 - Gives one good idea such as 'run fast'.",
+        "1 - Says something that does not help, with no plan.",
+        "0 - No answer, or an answer with no plan."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "evaluate for fun",
-      "targetEvidence": "child selects a toy or pet and provides reasoning for fun.",
-      "alignmentRationale": "The prompt asks for an evaluation based on a subjective measure (fun) without relying on specific knowledge, giving insight into preferences."
+      "skillFacet": "plans to avoid being tagged",
+      "targetEvidence": "describes a plan that uses where the tagger is",
+      "alignmentRationale": "Watching the other player and planning where to go is game strategy."
     },
     {
       "id": "2141df19-8e49-46f8-a6c5-5daf58096330",
@@ -507,21 +507,21 @@
       "type": "open",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a stuffed monkey and a bear. Which one would you take to hug?",
+      "prompt": "You are playing a memory game with cards face down. How can you remember where the matching cards are?",
       "rubric": [
-        "3 - You choose the better one with a clear reason.",
-        "2 - You pick one but don’t explain why.",
-        "1 - You give a general reason not related to hugging.",
-        "0 - No response or irrelevant information."
+        "3 - Gives a plan with a reason, e.g. look carefully at each card and say where it was out loud.",
+        "2 - Gives one good idea such as 'try hard to remember'.",
+        "1 - Says to just guess.",
+        "0 - No answer, or an answer with no plan."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "choose for comfort",
-      "targetEvidence": "child chooses animal and explains choice centered on comfort or hugging.",
-      "alignmentRationale": "This task allows children to express their preferences for comfort, fostering subjective evaluation that is not based on factual knowledge."
+      "skillFacet": "plans a memory strategy",
+      "targetEvidence": "describes a way to remember card spots",
+      "alignmentRationale": "Using a memory plan to find pairs is strategy in a simple game."
     },
     {
       "id": "942012d4-ebbf-4b8a-a012-9be3fdd856d3",
@@ -530,12 +530,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a shiny star and a dull moon. Which one would you pick to put in your room?",
+      "prompt": "You are playing a matching game with cards face down. You flip a card and see a star. You remember where you saw another star. What should you flip next?",
       "rubric": [
-        "3 - You select the item based on brightness, which is more visually appealing.",
-        "2 - You pick one but show confusion about choice criteria.",
-        "1 - You choose without thinking it through clearly.",
-        "0 - No response or irrelevant choice."
+        "3 - Picks the card where the other star was seen.",
+        "2 - Picks a new card but knows matching is the goal.",
+        "1 - Picks stopping the game.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -545,26 +545,26 @@
       "options": [
         {
           "key": "a",
-          "text": "shiny star"
+          "text": "A card you have never seen"
         },
         {
           "key": "b",
-          "text": "dull moon"
+          "text": "The card where you saw the other star"
         },
         {
           "key": "c",
-          "text": "star print"
+          "text": "No card, stop the game"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "evaluate for aesthetics",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 0,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "child selects decoration based on visual qualities.",
-      "alignmentRationale": "This evaluates the child's ability to assess items based on aesthetic appeal, comparing different visual characteristics to support their choice."
+      "skillFacet": "uses memory to plan a move",
+      "targetEvidence": "flips the remembered matching card",
+      "alignmentRationale": "Using memory to pick the best card is planning in a simple game."
     },
     {
       "id": "e82b56dd-fd33-443d-a9e2-474fbd4122b8",
@@ -573,12 +573,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a big bunny and a small turtle. You want to play. Which one do you pick for more fun?",
+      "prompt": "You are playing musical chairs. The music stops! What should you do?",
       "rubric": [
-        "3 - You choose the bunny, likely considering size and playfulness.",
-        "2 - You choose turtle but explain fun in a different way.",
-        "1 - Your choice is unclear without clear reasons.",
-        "0 - No response or irrelevant answer."
+        "3 - Picks quickly sitting on the nearest chair.",
+        "2 - Picks walking but knows you need a chair.",
+        "1 - Picks lying down.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -588,26 +588,26 @@
       "options": [
         {
           "key": "a",
-          "text": "bunny"
+          "text": "Keep walking around"
         },
         {
           "key": "b",
-          "text": "turtle"
+          "text": "Lie down on the floor"
         },
         {
           "key": "c",
-          "text": "other small bunny"
+          "text": "Quickly sit on the nearest chair"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "select for engagement",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
+        "a": 1,
         "b": 0,
-        "c": 2
+        "c": 3
       },
-      "targetEvidence": "child picks based on presumed fun attributes.",
-      "alignmentRationale": "This task asks children to consider size and perceived playfulness without relying on factual or learned comparison strategies."
+      "skillFacet": "acts on a game rule at the right time",
+      "targetEvidence": "sits on the nearest chair when the music stops",
+      "alignmentRationale": "Picking the nearest chair quickly is a simple plan to stay in the game."
     },
     {
       "id": "27f3f630-5a31-4ae3-a9ef-0f6a10b933cf",
@@ -616,12 +616,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have 2 red blocks and 1 blue block. You want to make a tower. Which block makes it tallest?",
+      "prompt": "You and a friend want to build the tallest tower. You have 2 red blocks and 1 blue block, all the same size. How do you make the tallest tower?",
       "rubric": [
-        "3 - Choose the blue block to make it taller. It will be the highest block.",
-        "2 - Choose any red block, which makes the tower almost as tall but not highest.",
-        "1 - Choose the blue block but say something else that doesn't help the answer.",
-        "0 - Choose incorrect blocks or guess without understanding."
+        "3 - Picks stacking all 3 blocks.",
+        "2 - Picks one block but says more blocks make it taller.",
+        "1 - Picks one block with no reason.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -631,26 +631,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Red block"
+          "text": "Use only the blue block"
         },
         {
           "key": "b",
-          "text": "Blue block"
+          "text": "Use one red block"
         },
         {
           "key": "c",
-          "text": "Both red blocks"
+          "text": "Stack all 3 blocks"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "choose the best block for height",
+      "answerKey": "c",
       "optionScores": {
-        "a": 1,
-        "b": 3,
-        "c": 2
+        "a": 0,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "Child selects the blue block as it makes the tower tallest.",
-      "alignmentRationale": "This question isolates the ability to plan ahead for height by considering the visible blocks."
+      "skillFacet": "plans a tower to reach a goal",
+      "targetEvidence": "chooses to stack all blocks for the tallest tower",
+      "alignmentRationale": "Planning which blocks to use to reach a goal is a simple building-game strategy."
     },
     {
       "id": "14f07947-88f1-46d9-aab8-49453a67c027",
@@ -659,21 +659,21 @@
       "type": "open",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You want to make a sandwich. Which toppings do you want?",
+      "prompt": "You are playing a game where you roll a ball to knock down blocks. Your ball rolled to the side and missed. What will you try next time?",
       "rubric": [
-        "3 - Pick specific toppings and a clear reason for each.",
-        "2 - Pick toppings but fumble on some reasons.",
-        "1 - Choose random things or pick none.",
-        "0 - Don't answer or say you don't want sandwiches."
+        "3 - Gives a change with a reason, e.g. aim straight at the middle or stand a bit closer.",
+        "2 - Gives a change with no reason.",
+        "1 - Says to do the same thing again.",
+        "0 - No answer, or an answer with no plan."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "deciding on food combinations",
-      "targetEvidence": "Child selects toppings with reasoning for the combination.",
-      "alignmentRationale": "This isolates the ability to select and justify choices of food."
+      "skillFacet": "adjusts a plan after a miss",
+      "targetEvidence": "describes a change to hit the blocks",
+      "alignmentRationale": "Changing a move after seeing what happened is planning ahead."
     },
     {
       "id": "bbb991d2-ba7a-4fa7-bd0d-1b53f4eb83dc",
@@ -682,21 +682,21 @@
       "type": "open",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You can choose a pet: a kitten or a puppy. Which one would you choose?",
+      "prompt": "You are playing a bean bag toss. You have to get the bean bag into a bucket. Your first throw went too far. What will you do on your next throw?",
       "rubric": [
-        "3 - Clearly state a choice with a good reason.",
-        "2 - Choose one but the reason is not clear.",
-        "1 - Choose either but say you might want something else.",
-        "0 - Don't choose or say you can't have pets."
+        "3 - Gives a change with a reason, e.g. throw softer because it went too far.",
+        "2 - Gives a change with no reason.",
+        "1 - Says to throw the same way.",
+        "0 - No answer, or an answer with no plan."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "choosing a pet based on preference",
-      "targetEvidence": "Child makes a choice and explains why they chose it.",
-      "alignmentRationale": "This determines the ability to articulate preferences in choices."
+      "skillFacet": "adjusts a plan after a throw",
+      "targetEvidence": "describes a change based on the first throw",
+      "alignmentRationale": "Using what happened to plan the next turn is game strategy."
     },
     {
       "id": "bda7d773-aac1-40ba-a3df-090dc5ac48c2",
@@ -705,12 +705,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have 2 teddy bears and 1 robot. You can only take one toy to play. Which one is cuddly?",
+      "prompt": "You are playing duck, duck, goose. Someone taps your head and says \"Goose!\" What should you do?",
       "rubric": [
-        "3 - Choose a teddy bear, as they are cuddly friends.",
-        "2 - Choose the robot but say why it can also play.",
-        "1 - Choose any toy, but give an unclear reason.",
-        "0 - Choose none or say you want something else."
+        "3 - Picks getting up and chasing them.",
+        "2 - Picks staying but knows 'goose' means something happens.",
+        "1 - Picks going home.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -720,26 +720,26 @@
       "options": [
         {
           "key": "a",
-          "text": "A teddy bear"
+          "text": "Stay sitting"
         },
         {
           "key": "b",
-          "text": "The robot"
+          "text": "Go home"
         },
         {
           "key": "c",
-          "text": "Both teddy bears"
+          "text": "Get up and chase them around the circle"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choosing a companion toy",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "Child selects a teddy bear for the friendly quality.",
-      "alignmentRationale": "This examines the ability to assess qualities of companionship in toys."
+      "skillFacet": "follows game rules",
+      "targetEvidence": "responds correctly to 'goose'",
+      "alignmentRationale": "Knowing what a game move calls for is the start of playing it well."
     },
     {
       "id": "b16e89fc-c138-4ed4-8a9d-1b92f2b5b05a",
@@ -748,12 +748,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a toy bird and a toy fish. You can move the bird 2 spaces or the fish 3 spaces. Which one helps you reach the nest faster?",
+      "prompt": "Your toy bird is on a game path. The nest is 3 spaces ahead. You can move 2 spaces or 3 spaces. Which move gets the bird to the nest?",
       "rubric": [
-        "3 - Correctly selects moving fish 3 spaces as the best choice.",
-        "2 - Chooses bird but shows some understanding of movement.",
-        "1 - Makes an incorrect choice or vague answer.",
-        "0 - Does not answer or gives an unrelated response."
+        "3 - Picks moving 3 spaces.",
+        "2 - Picks 2 spaces but counts toward the nest.",
+        "1 - Picks not moving.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -763,26 +763,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Move bird 2 spaces"
+          "text": "Don't move"
         },
         {
           "key": "b",
-          "text": "Move fish 3 spaces"
+          "text": "Move 2 spaces"
         },
         {
           "key": "c",
-          "text": "Don't move"
+          "text": "Move 3 spaces"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "analyzing move choices",
+      "answerKey": "c",
       "optionScores": {
-        "a": 1,
-        "b": 3,
-        "c": 0
+        "a": 0,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "chooses the option that helps the bird reach the nest faster",
-      "alignmentRationale": "This question is designed to analyze the understanding of moving strategies towards a goal."
+      "skillFacet": "picks the move that reaches a goal",
+      "targetEvidence": "picks the move that lands on the nest",
+      "alignmentRationale": "Matching a move to the distance to the goal is board-game planning."
     },
     {
       "id": "3d7a7889-bfa7-4ae6-b2ab-ba8f9196747e",
@@ -857,12 +857,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a toy elephant and a toy zebra. You can move the elephant 1 space or the zebra 4 spaces. Which move gets you closer to your friend?",
+      "prompt": "Your friend is 4 spaces ahead of your toy zebra on a game path. You can move 1 space or 4 spaces. Which move lands your zebra on your friend's space?",
       "rubric": [
-        "3 - Correctly chooses to move zebra 4 spaces as the better option.",
-        "2 - Chooses elephant but recognizes a need to move.",
-        "1 - Chooses a random option without reasoning.",
-        "0 - Does not answer or gives an irrelevant response."
+        "3 - Picks moving 4 spaces.",
+        "2 - Picks 1 space but moves toward the friend.",
+        "1 - Picks not moving.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -872,26 +872,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Move elephant 1 space"
+          "text": "Move 4 spaces"
         },
         {
           "key": "b",
-          "text": "Move zebra 4 spaces"
+          "text": "Move 1 space"
         },
         {
           "key": "c",
           "text": "Don't move"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "choosing optimal moves",
+      "answerKey": "a",
       "optionScores": {
-        "a": 1,
-        "b": 3,
+        "a": 3,
+        "b": 1,
         "c": 0
       },
-      "targetEvidence": "selects the move that results in getting closer to a friend",
-      "alignmentRationale": "The task tests the ability to evaluate which option effectively gets closer to a target."
+      "skillFacet": "picks the move that reaches a goal",
+      "targetEvidence": "picks the move that lands on the friend's space",
+      "alignmentRationale": "Matching a move to a stated distance is board-game planning."
     },
     {
       "id": "200013d0-8559-401f-973a-2be2e133b584",
@@ -1101,12 +1101,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have two toy robots. You can move one robot to the left 2 spaces or the other robot to the right 1 space. Which move helps you reach the wall faster?",
+      "prompt": "You are racing your toy robot on a row of spaces. The wall (the finish) is 2 spaces to the LEFT of your robot. Which move gets your robot to the wall?",
       "rubric": [
-        "3 - Chooses left 2 spaces toward the wall.",
-        "2 - Chooses right 1 space, showing some understanding.",
-        "1 - Gives an unrelated answer like saying to not move.",
-        "0 - Does not answer."
+        "3 - Picks moving left 2 spaces.",
+        "2 - Picks left but not the right number of spaces.",
+        "1 - Picks moving the wrong way.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -1116,26 +1116,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Move left 2 spaces"
-        },
-        {
-          "key": "b",
           "text": "Move right 1 space"
         },
         {
+          "key": "b",
+          "text": "Move left 2 spaces"
+        },
+        {
           "key": "c",
-          "text": "Do not move any robots"
+          "text": "Don't move"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "distance comparison for movement",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
+        "a": 0,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "chooses a move that brings a toy closer to a location",
-      "alignmentRationale": "This helps assess understanding of moving towards a goal based on distance."
+      "skillFacet": "chooses the move that reaches a goal",
+      "targetEvidence": "picks the direction and distance to the wall",
+      "alignmentRationale": "Matching direction and distance to a goal is simple move planning."
     },
     {
       "id": "ff83283e-8ceb-4a4d-944a-c62777c03221",
@@ -1230,21 +1230,21 @@
       "type": "open",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "If you have a toy robot and a toy airplane, how would you make up a story about them?",
+      "prompt": "You are playing tic-tac-toe and you go first. Where would you put your first X, and why?",
       "rubric": [
-        "3 - A clear story with both toys included.",
-        "2 - A story using just one toy or idea.",
-        "1 - Just names toys without a story.",
-        "0 - No answer."
+        "3 - Picks the middle or a corner and says it gives more ways to make three in a row.",
+        "2 - Picks a square and gives a simple reason.",
+        "1 - Picks a square with no reason.",
+        "0 - No answer, or an answer with no plan."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "create a narrative",
-      "targetEvidence": "Creates a story involving both toys.",
-      "alignmentRationale": "This question encourages children to use their imagination and narrative skills to build a playful story."
+      "skillFacet": "plans an opening move",
+      "targetEvidence": "picks a first move and explains why",
+      "alignmentRationale": "Planning the first move by thinking about later rows is strategy."
     },
     {
       "id": "fa2a82fe-ca1c-4e09-ae7a-5a16e79a2dde",
@@ -1253,12 +1253,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "If you can jump or walk to catch a butterfly, which is better for getting closer?",
+      "prompt": "You are the seeker in hide and seek. You hear giggling from behind the curtain. Where should you look first?",
       "rubric": [
-        "3 - Choose to jump as it's faster.",
-        "2 - Choose to walk but mention jumping.",
-        "1 - Say both but choose one without reason.",
-        "0 - No answer or choose something unrelated."
+        "3 - Picks behind the curtain, using the clue.",
+        "2 - Picks a real hiding place without using the clue.",
+        "1 - Picks a place no one could fit.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -1268,26 +1268,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Jump to get closer"
+          "text": "In the bathtub upstairs"
         },
         {
           "key": "b",
-          "text": "Walk to get closer"
+          "text": "Behind the curtain"
         },
         {
           "key": "c",
-          "text": "Stay still"
+          "text": "Inside a tiny cup"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choose best action for the objective",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "Selects jumping as the faster action to catch a butterfly.",
-      "alignmentRationale": "This task assesses the child's ability to decide on the most effective movement to achieve an objective."
+      "skillFacet": "uses clues to plan a search",
+      "targetEvidence": "looks where the giggling came from",
+      "alignmentRationale": "Using a clue to decide where to search is simple game strategy."
     },
     {
       "id": "fde62995-bfae-48a7-b29e-88239463ea79",
@@ -1339,21 +1339,21 @@
       "type": "open",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "If you have a choice to play soccer or tag, what would you choose to play and why?",
+      "prompt": "You are playing soccer. You are near the goal, and the goalie is standing on the left side. Where would you kick the ball, and why?",
       "rubric": [
-        "3 - Clearly describes a reason to choose one game.",
-        "2 - States a choice but does not explain well.",
-        "1 - Gives an unrelated answer.",
-        "0 - Does not answer."
+        "3 - Says to kick to the right side because the goalie is on the left.",
+        "2 - Picks a side with a simple reason.",
+        "1 - Picks a spot with no reason.",
+        "0 - No answer, or an answer with no plan."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "game preference reasoning",
-      "targetEvidence": "expresses a personal choice with a reason",
-      "alignmentRationale": "This invites children to share their thoughts on games and choices in play."
+      "skillFacet": "plans a move around another player",
+      "targetEvidence": "aims away from the goalie and explains why",
+      "alignmentRationale": "Choosing where to kick by thinking about the goalie is game strategy."
     },
     {
       "id": "2bb2f041-503a-459a-b840-c002f4a75514",
@@ -1362,21 +1362,21 @@
       "type": "open",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a toy train and a toy car. Describe how you would play a game with them!",
+      "prompt": "You are the seeker in hide and seek. How will you plan where to look for your friends?",
       "rubric": [
-        "3 - Clear game idea with both toys included.",
-        "2 - Mention one toy and some play idea.",
-        "1 - Describe only the toys without a game.",
-        "0 - No answer."
+        "3 - Gives a plan, e.g. listen for sounds and check good hiding spots one by one.",
+        "2 - Gives one good idea such as 'look behind things'.",
+        "1 - Names a place with no plan.",
+        "0 - No answer, or an answer with no plan."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "design a game",
-      "targetEvidence": "Describes a game idea using both toys.",
-      "alignmentRationale": "This question prompts children to demonstrate their ability to create a simple game using familiar toys, showing planning skills."
+      "skillFacet": "plans a search",
+      "targetEvidence": "describes an organized search plan",
+      "alignmentRationale": "Planning a search instead of looking at random is strategy."
     },
     {
       "id": "0c099670-adbf-483c-8e0e-c28e29df3005",
@@ -1428,12 +1428,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You can move two of your pieces forward or one piece sideways. Which helps you to play better?",
+      "prompt": "You are playing tic-tac-toe. You have two X's in the top row, and the last square in that row is empty. It is your turn. What should you do?",
       "rubric": [
-        "3 - You choose to move both pieces forward for a strong move.",
-        "2 - You choose to move one piece sideways for a safe move.",
-        "1 - You make a choice but it does not help your position at all.",
-        "0 - You don't say anything or choose a move that doesn't make sense."
+        "3 - Picks the empty top square to make three in a row and win.",
+        "2 - Picks another square but knows three in a row wins.",
+        "1 - Picks skipping the turn.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -1443,26 +1443,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Move both pieces forward"
+          "text": "Put your X in a far corner"
         },
         {
           "key": "b",
-          "text": "Move one piece sideways"
+          "text": "Put your X in the empty top square"
         },
         {
           "key": "c",
-          "text": "Stay in place"
+          "text": "Skip your turn"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "strategic movement",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "chooses a move that improves game position",
-      "alignmentRationale": "This question examines the skill of assessing and optimizing movements."
+      "skillFacet": "spots a winning move",
+      "targetEvidence": "completes three in a row to win",
+      "alignmentRationale": "Spotting a winning move is the first step in strategy games."
     },
     {
       "id": "3c2646ad-2df3-4a36-a3b4-bc59c8fe7de2",
@@ -1471,12 +1471,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a pawn at square 3. You can move it to square 4 or jump over your friend's piece at square 5. What should you do to get closer to winning?",
+      "prompt": "In a board game, your piece is on space 3. The finish is on space 6. You can move 1 space or 3 spaces. Which move gets you to the finish?",
       "rubric": [
-        "3 - You choose to jump the friend's piece, showing a good strategic move.",
-        "2 - You choose to move to square 4, understanding that helps, but not as well.",
-        "1 - You pick a move and explain it, but it isn't the best choice.",
-        "0 - You don't choose a move or give an answer that does not help."
+        "3 - Picks moving 3 spaces to reach space 6.",
+        "2 - Picks 1 space but can count to where it lands.",
+        "1 - Picks 1 space with no counting.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -1486,26 +1486,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Jump to square 5"
+          "text": "Move 1 space"
         },
         {
           "key": "b",
-          "text": "Move to square 4"
+          "text": "Move 3 spaces"
         },
         {
           "key": "c",
-          "text": "Do nothing"
+          "text": "Don't move"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choosing the best move",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "chooses the best move that helps reach a goal",
-      "alignmentRationale": "This question isolates the skill of planning ahead by requiring a choice between different moves."
+      "skillFacet": "compares moves on a race board",
+      "targetEvidence": "picks the move that lands exactly on the finish",
+      "alignmentRationale": "Comparing two moves to reach a goal is core board-game planning."
     },
     {
       "id": "bd1fd984-20b2-4c78-9ef2-cd040e242662",
@@ -1514,12 +1514,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have a red and a blue checker. You can move the red checker forward or the blue checker to the side. Which move keeps you safe?",
+      "prompt": "In checkers, your friend could jump your red checker on their next turn. You can move your red checker forward to a square where it cannot be jumped. What is the safest move?",
       "rubric": [
-        "3 - You choose to move the red checker, showing good understanding of safety.",
-        "2 - You move the blue checker, which is safer than no move but not best.",
-        "1 - You move a checker but without explaining why it's a good move.",
-        "0 - You don't choose a move or the move doesn't improve safety."
+        "3 - Picks moving the red checker to the safe square.",
+        "2 - Picks another move but sees the danger.",
+        "1 - Picks a move that leaves the checker in danger.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -1529,26 +1529,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Move the red checker"
+          "text": "Leave it and move a checker far away"
         },
         {
           "key": "b",
-          "text": "Move the blue checker"
+          "text": "Do nothing"
         },
         {
           "key": "c",
-          "text": "Don't move anything"
+          "text": "Move the red checker to the safe square"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "protecting your pieces",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "chooses a move that keeps their pieces safe",
-      "alignmentRationale": "This question asks the child to consider the safety of their pieces and make a strategic move."
+      "skillFacet": "protects a piece from capture",
+      "targetEvidence": "moves the threatened checker to safety",
+      "alignmentRationale": "Seeing a threat and moving out of danger is basic checkers planning."
     },
     {
       "id": "1a81ecfb-c4b3-4f74-8fd8-2a81a6c35617",
@@ -1735,12 +1735,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have 2 red and 1 blue checker. You want to jump an opponent’s checker. Which of these moves can you make?",
+      "prompt": "You are playing a game where you drop discs to get 4 in a row. You have 3 discs in a row, and the space next to them is empty. It is your turn. What should you do?",
       "rubric": [
-        "3 - This move uses the red checker to jump.",
-        "2 - This move uses the blue checker only.",
-        "1 - This move does not jump any checker.",
-        "0 - This move is not a valid option."
+        "3 - Picks dropping the disc to make 4 in a row.",
+        "2 - Picks another space but knows 4 in a row wins.",
+        "1 - Picks not playing.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -1750,26 +1750,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Jump the opponent’s checker with the red checker."
+          "text": "Drop your disc in the empty space to make 4"
         },
         {
           "key": "b",
-          "text": "Move the blue checker forward."
+          "text": "Drop your disc on the other side of the board"
         },
         {
           "key": "c",
-          "text": "Do nothing."
+          "text": "Don't drop a disc"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "choose a move under a simple rule",
       "optionScores": {
         "a": 3,
         "b": 1,
         "c": 0
       },
-      "targetEvidence": "child identifies a jump move correctly based on color and number of checkers.",
-      "alignmentRationale": "This task requires understanding the basic rules of jumping in checkers, which is planned strategy."
+      "skillFacet": "spots a winning move",
+      "targetEvidence": "completes 4 in a row to win",
+      "alignmentRationale": "Spotting a winning move is basic game planning."
     },
     {
       "id": "1e3570b2-5ae0-46f8-953d-f9b560efc4f9",
@@ -1861,44 +1861,24 @@
       "id": "2c463a44-df56-4a1c-af66-a448fc05c5b2",
       "age": 6,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You want to win the game. Your friend has a chance to jump you. What should you do next?",
+      "prompt": "In checkers, your friend's checker could jump your checker on their next turn. What could you do to keep your checker safe? Tell your grown-up your plan.",
       "rubric": [
-        "3 - Block your friend to prevent their jump.",
-        "2 - Move away from danger, but not block.",
-        "1 - Don’t move at all.",
-        "0 - Make a move that helps your friend."
+        "3 - Gives a workable plan, such as moving the checker to a safe square or blocking the empty landing square, and says why it stops the jump.",
+        "2 - Gives a workable plan but cannot say why it works.",
+        "1 - Notices the danger but has no plan to stop it.",
+        "0 - No answer, or a plan that leaves the checker in danger."
       ],
       "weight": 1,
       "ageBand": [
         6,
         6
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Block your friend’s jump."
-        },
-        {
-          "key": "b",
-          "text": "Move your piece back, away but not block."
-        },
-        {
-          "key": "c",
-          "text": "Do nothing, stay still."
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "anticipate another player’s next option",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "child identifies defensive strategy to prevent opponent's move.",
-      "alignmentRationale": "This tests the ability to think ahead defensively in the game."
+      "skillFacet": "defends a piece in checkers",
+      "targetEvidence": "describes a plan to stop a capture",
+      "alignmentRationale": "Planning a defence against a jump shows looking ahead at the other player's move."
     },
     {
       "id": "028de845-f679-4a61-95b9-d0c964945be5",
@@ -1930,12 +1910,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "Your pieces are lined up. What move can you make to get closer to winning?",
+      "prompt": "In checkers, your checker is right next to your friend's checker, and the square just behind their checker is empty. It is your turn. What move gets you closer to winning?",
       "rubric": [
-        "3 - Move to capture an opponent's piece or advance.",
-        "2 - Move to a space that doesn’t help much.",
-        "1 - Move that doesn't help your position.",
-        "0 - No move suggested."
+        "3 - Picks jumping and capturing the checker.",
+        "2 - Picks another move but sees the jump is possible.",
+        "1 - Picks skipping the turn.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -1945,26 +1925,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Capture the opponent's piece."
+          "text": "Skip your turn"
         },
         {
           "key": "b",
-          "text": "Move to an empty space."
+          "text": "Move a different checker sideways"
         },
         {
           "key": "c",
-          "text": "Move backwards."
+          "text": "Jump over their checker and take it"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "compare possible moves and choose one that improves a stated goal",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "child identifies an effective move for advancing in the game.",
-      "alignmentRationale": "This tests decision-making to achieve goals in the game."
+      "skillFacet": "spots a capture",
+      "targetEvidence": "chooses the available jump",
+      "alignmentRationale": "Seeing and taking a capture is basic checkers strategy."
     },
     {
       "id": "0e044b84-3b2e-4308-a8cf-17c14b5a1999",
@@ -1973,21 +1953,21 @@
       "type": "open",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "If you can move your knight to 2 spaces or jump, what would you do? Why?",
+      "prompt": "In checkers, you can move your checker to a square where your friend could jump it, or to a square where it is safe. Which would you choose, and why?",
       "rubric": [
-        "3 - Clear, strategic reasoning for chosen move.",
-        "2 - Reasoning has some understanding of rules.",
-        "1 - Limited reasoning, unclear about strategy.",
-        "0 - No reasoning provided."
+        "3 - Picks the safe square and says the friend could jump it on the other square.",
+        "2 - Picks the safe square with no reason.",
+        "1 - Picks the unsafe square but thinks about the friend's move.",
+        "0 - No answer, or an answer with no plan."
       ],
       "weight": 1,
       "ageBand": [
         6,
         6
       ],
-      "skillFacet": "anticipate another player’s next option",
-      "targetEvidence": "child explains reasoning for knight's movement effectively.",
-      "alignmentRationale": "This question encourages thinking ahead based on one’s move in the context of the game."
+      "skillFacet": "compares a safe and an unsafe move",
+      "targetEvidence": "chooses the safe square and explains the danger",
+      "alignmentRationale": "Comparing moves by thinking about what the other player can do is checkers strategy."
     },
     {
       "id": "3bdadc87-6689-4010-a6e3-049a7d2a350c",
@@ -2039,12 +2019,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You have two pieces. You can move one piece two spaces or both pieces one space. What move might help you win?",
+      "prompt": "In a race game, your blue piece is 2 spaces from the finish. Your red piece is far away. You can move one piece 2 spaces, or both pieces 1 space. The first piece to the finish wins. What should you do?",
       "rubric": [
-        "3 - Moving one piece two spaces can help get closer to the finish quicker.",
-        "2 - Moving both pieces one space may keep them both safe but doesn’t progress as fast.",
-        "1 - Moving one piece at random might not help your strategy.",
-        "0 - Not answering or saying to wait."
+        "3 - Picks moving the blue piece 2 spaces to win.",
+        "2 - Picks moving both but knows the blue piece is close.",
+        "1 - Picks not moving.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -2054,26 +2034,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Move one piece two spaces"
+          "text": "Move the blue piece 2 spaces"
         },
         {
           "key": "b",
-          "text": "Move both pieces one space"
+          "text": "Move both pieces 1 space"
         },
         {
           "key": "c",
-          "text": "Don't move any pieces"
+          "text": "Don't move"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "evaluate multiple move strategies",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 1,
         "c": 0
       },
-      "targetEvidence": "selects the move that advances the game",
-      "alignmentRationale": "This question measures ability to evaluate options and choose the one that is strategically better."
+      "skillFacet": "compares moves to win now",
+      "targetEvidence": "chooses the move that finishes the race",
+      "alignmentRationale": "Comparing moves and spotting a winning one is core strategy."
     },
     {
       "id": "4838fa00-704d-45a1-8efe-a9d08ae4cb8a",
@@ -2148,12 +2128,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "If your only moves are to help yourself win or block your opponent, which is the best decision?",
+      "prompt": "In tic-tac-toe, it is your turn. You have two X's in a row with an empty square that makes three. Your friend also has two O's in a row. What is the best move?",
       "rubric": [
-        "3 - You pick the move that helps you win directly.",
-        "2 - You might pick the block but unclear on winning.",
-        "1 - You mention something unrelated.",
-        "0 - No relevant choice."
+        "3 - Picks making three in a row to win right now.",
+        "2 - Picks blocking, which is careful but misses the win.",
+        "1 - Picks a random square.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -2163,26 +2143,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Choose the move that helps you win"
+          "text": "Block your friend's row"
         },
         {
           "key": "b",
-          "text": "Block my opponent's move"
+          "text": "Put your X in the empty square to make three and win"
         },
         {
           "key": "c",
-          "text": "Ignore both options"
+          "text": "Put your X anywhere"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "strategically choosing winning moves",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "child recognizes the move that directly leads to winning",
-      "alignmentRationale": "This question assesses their understanding of prioritizing personal victory over offensive strategies."
+      "skillFacet": "chooses between winning and blocking",
+      "targetEvidence": "takes the win when one is available",
+      "alignmentRationale": "Deciding between winning and blocking means comparing moves."
     },
     {
       "id": "773d4d21-96b9-4791-ab36-13f985c5757c",
@@ -2211,44 +2191,24 @@
       "id": "33ebd6c4-50d5-46fe-813a-42c4141be2c7",
       "age": 7,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "In a game, you have clay to build a wall for protection or a shovel to gather resources. What helps you win?",
+      "prompt": "In a pretend castle game, on your turn you can build a wall to keep your castle safe or collect more coins. Which would you choose, and why?",
       "rubric": [
-        "3 - You choose to gather more resources for winning.",
-        "2 - You choose to build the wall for better protection.",
-        "1 - You confuse the options.",
-        "0 - No choice made."
+        "3 - Picks either choice and gives a plan or reason (e.g. 'a wall keeps me safe first' or 'coins help me build more later').",
+        "2 - Picks a choice with a simple reason.",
+        "1 - Picks a choice with no reason.",
+        "0 - No answer."
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Gather more resources"
-        },
-        {
-          "key": "b",
-          "text": "Build a wall for protection"
-        },
-        {
-          "key": "c",
-          "text": "Do nothing"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "balancing offense and defense",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
-      },
-      "targetEvidence": "child evaluates the importance of resources versus defense",
-      "alignmentRationale": "This task evaluates the child’s ability to prioritize between resource acquisition and defense."
+      "skillFacet": "explains a game choice with a plan",
+      "targetEvidence": "gives a reason for a game choice",
+      "alignmentRationale": "Explaining why a move helps in a game shows planning, and either choice can be good."
     },
     {
       "id": "ca1b47c9-9a6f-4e1c-a9e4-a9405316baac",
@@ -2257,12 +2217,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "You see that your opponent can win next turn by jumping your piece. What move will you make?",
+      "prompt": "You are playing tic-tac-toe. Your friend has two O's in a row, and the third square is empty. You cannot win on this turn. What should you do?",
       "rubric": [
-        "3 - You block their jump to prevent them from winning.",
-        "2 - You suggest moving away from danger.",
-        "1 - You ignore their move or mention something unrelated.",
-        "0 - No strategy provided."
+        "3 - Picks blocking the empty square.",
+        "2 - Picks another square but sees the friend could win.",
+        "1 - Picks letting them win.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -2272,26 +2232,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Block your friend’s jump"
+          "text": "Put your X in a far corner"
         },
         {
           "key": "b",
-          "text": "Move away and do nothing"
+          "text": "Let them take the square"
         },
         {
           "key": "c",
-          "text": "Let them win"
+          "text": "Put your X in the empty square to block"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "defending against an opponent's move",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "child suggests blocking or defending to stop their friend from winning",
-      "alignmentRationale": "This question tests the child's ability to identify a defensive strategy in response to an opponent."
+      "skillFacet": "blocks the other player's win",
+      "targetEvidence": "blocks the square that would let the friend win",
+      "alignmentRationale": "Blocking an opponent's win means thinking about their next move."
     },
     {
       "id": "287230e0-d22c-4634-a298-442da8279dae",
@@ -2561,12 +2521,12 @@
       "type": "mcq",
       "trait": "strategy_games",
       "format": "explanation",
-      "prompt": "In a game, you can choose to gather 5 coins or build a wall for protection. What is the best option?",
+      "prompt": "In a game, the first player to get 10 coins wins. Nobody can take your coins. You have 5 coins. On your turn you can collect 5 coins or build a wall. What is the best choice?",
       "rubric": [
-        "3 - Choose to gather 5 coins to gain a lead.",
-        "2 - Choose to build a wall, but explain its importance.",
-        "1 - Make a choice without reasoning.",
-        "0 - Choose an irrelevant option."
+        "3 - Picks collecting 5 coins to reach 10 and win.",
+        "2 - Picks the wall but knows coins count toward winning.",
+        "1 - Picks skipping the turn.",
+        "0 - No answer or a choice with no plan."
       ],
       "weight": 1,
       "ageBand": [
@@ -2576,26 +2536,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Gather 5 coins."
+          "text": "Build a wall"
         },
         {
           "key": "b",
-          "text": "Build a wall for protection."
+          "text": "Collect 5 coins and win"
         },
         {
           "key": "c",
-          "text": "Ignore both options."
+          "text": "Skip your turn"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "deciding between resource management and defense",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "compares the short-term gain of coins vs. long-term protection",
-      "alignmentRationale": "This tests the ability to weigh immediate benefits against defensive strategies."
+      "skillFacet": "chooses the move that wins",
+      "targetEvidence": "adds coins to reach the winning total",
+      "alignmentRationale": "Seeing that one choice wins right away is basic game planning."
     },
     {
       "id": "8f2ca552-9131-42e4-b0ec-5e05118f03d0",

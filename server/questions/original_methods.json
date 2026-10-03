@@ -8,12 +8,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You have a paper plate and want to make a fun toy. What could you use it for?",
+      "prompt": "You have a paper plate and want to make a fun toy. What could you do with it?",
       "rubric": [
-        "3 - Suggests a creative use like making an animal face or a flying disc.",
-        "2 - Suggests a use that is somewhat related, like coloring on it.",
-        "1 - Mentions something unclear or not very useful, like stacking.",
-        "0 - Does not answer or suggests no use."
+        "3 - Picks a fresh, workable idea (mask or flying disc).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (using it for food as usual).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -27,7 +27,7 @@
         },
         {
           "key": "b",
-          "text": "Throw it in the air"
+          "text": "Throw it like a flying disc"
         },
         {
           "key": "c",
@@ -35,14 +35,14 @@
         }
       ],
       "answerKey": "a",
-      "skillFacet": "recognizing alternative uses for items",
       "optionScores": {
         "a": 3,
-        "b": 1,
-        "c": 2
+        "b": 3,
+        "c": 1
       },
-      "targetEvidence": "proposes a practical and fun use for the paper plate",
-      "alignmentRationale": "The task isolates the ability to think of different ways to use a common object creatively."
+      "skillFacet": "recognizing alternative uses for items",
+      "targetEvidence": "chooses a toy use for a paper plate",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "21a4cb04-27c5-452c-8652-c246fcfac3db",
@@ -94,12 +94,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You have a shoelace and need to play. What else can it do besides tying shoes?",
+      "prompt": "You have a shoelace. What else could you do with it besides tying shoes?",
       "rubric": [
-        "3 - Suggests a playful use like skipping rope or making a necklace.",
-        "2 - Suggests something somewhat related like using it to hang something.",
-        "1 - Mentions a use that's unclear like keeping it in a pocket.",
-        "0 - Does not provide an answer."
+        "3 - Picks a fresh, workable idea (snake shape or pulling a toy).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (tying shoes as usual).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -109,26 +109,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Jump rope with it! 🎉"
+          "text": "Tie my shoes with it"
         },
         {
           "key": "b",
-          "text": "Tie up a box"
+          "text": "Lay it in a wiggly snake shape"
         },
         {
           "key": "c",
-          "text": "Make it into a belt"
+          "text": "Pull a toy car with it"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "suggesting alternative fun activities",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
+        "a": 1,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "finds a different fun way to use a shoelace",
-      "alignmentRationale": "This task evaluates whether the child can think of playful alternative uses for a common item."
+      "skillFacet": "suggesting alternative fun activities",
+      "targetEvidence": "picks a feasible new use for a shoelace",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "aecf91ea-3111-4119-bfb5-af1143505fdd",
@@ -295,12 +295,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You have some boxes and want to make a toy car race. What can you use to make the cars move without pushing them?",
+      "prompt": "You have some boxes and want a toy car race. How can you make the cars move without pushing them?",
       "rubric": [
-        "3 - Suggests using a slope or ramp that would help cars roll down.",
-        "2 - Mentions using a string to pull the cars, which is a clever alternative.",
-        "1 - Says put a toy inside the box, which isn't a new way to move it.",
-        "0 - Suggests something unrelated to moving the cars."
+        "3 - Picks a fresh, workable idea (string or ramp).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (an idea that does not move the cars).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -310,26 +310,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Make a ramp for the cars"
-        },
-        {
-          "key": "b",
           "text": "Put a toy in the box"
         },
         {
+          "key": "b",
+          "text": "Pull them with a string"
+        },
+        {
           "key": "c",
-          "text": "Pull with a string"
+          "text": "Make a ramp so they roll down"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "create new movement methods",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
+        "a": 1,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "The child identifies a creative method to make cars move without direct push.",
-      "alignmentRationale": "This task requires a new approach to making cars move using common materials."
+      "skillFacet": "creating new movement methods",
+      "targetEvidence": "picks a way to move cars without pushing",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "38d03757-69b2-477c-8051-485f2d815259",
@@ -427,12 +427,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You have a cup and want to play but can’t fill it with water. What could you do with it instead?",
+      "prompt": "You have a plastic cup but no water. What fun thing could you do with the cup instead?",
       "rubric": [
-        "3 - Suggests using the cup for stacking or creating a game like target practice.",
-        "2 - Mentions using it to hold something else, which is somewhat useful.",
-        "1 - Says to play pretend but doesn’t use the cup effectively.",
-        "0 - Suggests an unrelated use that ignores the cup's shape."
+        "3 - Picks a fresh, workable idea (stacking or pretend play).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (putting it away).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -442,26 +442,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Stack it or play target practice"
+          "text": "Stack cups into a tall tower"
         },
         {
           "key": "b",
-          "text": "Hold something else"
+          "text": "Use it as a pretend phone or hat"
         },
         {
           "key": "c",
-          "text": "Play pretend"
+          "text": "Put it back in the cupboard"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "rethink an object’s role",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 3,
         "c": 1
       },
-      "targetEvidence": "The child identifies a playful activity involving the cup that is not its typical use.",
-      "alignmentRationale": "This question assesses the child's ability to creatively repurpose an everyday object."
+      "skillFacet": "rethinking an object's role",
+      "targetEvidence": "picks a playful new use for a cup",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "191bcd41-8bd7-457a-8fc1-941d4f310d57",
@@ -513,44 +513,24 @@
       "id": "0bb64f2a-dee4-458e-93df-9298e1ea7008",
       "age": 4,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You have clay but you want to use it in a new way. What could you do with it that’s different from making things?",
+      "prompt": "What is a game you could play with clay?",
       "rubric": [
-        "3 - You can use it to create a fun, squishy game.",
-        "2 - You can roll it into a ball.",
-        "1 - You can leave it alone.",
-        "0 - You can give it away."
+        "3 - Invents a game with rules or a goal (e.g. 'roll clay balls into a cup', 'hide a bead inside and find it').",
+        "2 - Gives a simple playful idea (e.g. 'squish it').",
+        "1 - Only describes making a shape with it.",
+        "0 - Does not answer."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Create a fun, squishy game."
-        },
-        {
-          "key": "b",
-          "text": "Roll it into a ball."
-        },
-        {
-          "key": "c",
-          "text": "Leave it alone."
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "finding a sound, less-obvious route to a goal",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "Child selects a playful and innovative way to use clay besides crafting objects.",
-      "alignmentRationale": "This checks for the ability to think differently about a common material like clay."
+      "skillFacet": "finding a less-obvious use",
+      "targetEvidence": "invents a game using clay",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "c91ce248-d5b7-4c9d-81b6-50b4b138df29",
@@ -757,12 +737,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You need to catch a ball. What else could you throw to catch it?",
+      "prompt": "You want to play catch, but you have no ball. What could you throw instead?",
       "rubric": [
-        "3 - Suggests something that works well like a stuffed toy.",
-        "2 - Mentions something less effective like a pillow.",
-        "1 - Suggests an unrelated item like a book.",
-        "0 - Doesn't provide a suggestion."
+        "3 - Picks a fresh, workable idea (socks or stuffed toy).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (a hard or heavy object).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -772,26 +752,26 @@
       "options": [
         {
           "key": "a",
-          "text": "A stuffed toy"
+          "text": "A pair of rolled-up socks"
         },
         {
           "key": "b",
-          "text": "A pillow"
+          "text": "A stuffed toy"
         },
         {
           "key": "c",
-          "text": "A book"
+          "text": "A heavy book"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "finding a sound, less-obvious route to a goal",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "offers an alternative item for catching similar to a ball",
-      "alignmentRationale": "This task looks for the ability to think of other items that can function similarly to a ball in a catching game."
+      "skillFacet": "finding a workable substitute",
+      "targetEvidence": "picks a soft, safe thing to throw",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "636b9013-f6fa-4cd0-b382-d379ffbc0d9d",
@@ -823,12 +803,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You have picture cards. What else could you use to tell a story?",
+      "prompt": "You want to tell a story, but you have no storybook. What else could you use to tell it?",
       "rubric": [
-        "3 - Suggests a different storytelling method like puppets.",
-        "2 - Mentions a less effective method like singing.",
-        "1 - Suggests something unrelated like a toy.",
-        "0 - Doesn't provide a suggestion."
+        "3 - Picks a fresh, workable idea (puppets or toys).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (giving up without a book).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -838,26 +818,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Puppets"
+          "text": "Nothing, you need a book"
         },
         {
           "key": "b",
-          "text": "Singing"
+          "text": "Puppets made from socks"
         },
         {
           "key": "c",
-          "text": "A toy"
+          "text": "Toys as the characters"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "finding a sound, less-obvious route to a goal",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 0,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "offers another method for storytelling that can relate to a narrative",
-      "alignmentRationale": "The task tests the ability to think of alternative storytelling tools or methods."
+      "skillFacet": "finding another route to storytelling",
+      "targetEvidence": "picks props to tell a story without a book",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "58eb3f08-e374-49a1-ab70-a8992fda27f2",
@@ -909,12 +889,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You have a ball and want to play. What could you use instead of a ball?",
+      "prompt": "You want to play a rolling game, but you can't find your ball. What could you roll instead?",
       "rubric": [
-        "3 - You suggest a different object that can still be rolled, like a bottle.",
-        "2 - You pick something round but not good for playing, like a marble.",
-        "1 - You suggest something completely different, like a stick.",
-        "0 - You don’t suggest anything."
+        "3 - Picks a fresh, workable idea (toy car or rolled socks).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (something that will not roll).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -924,26 +904,26 @@
       "options": [
         {
           "key": "a",
-          "text": "a bottle"
+          "text": "A square block"
         },
         {
           "key": "b",
-          "text": "a marble"
+          "text": "A toy car"
         },
         {
           "key": "c",
-          "text": "a block"
+          "text": "A pair of rolled-up socks"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognizes a workable alternative method",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "suggests another object that can serve a similar function as a ball",
-      "alignmentRationale": "This question assesses the child's ability to identify similar uses in different objects."
+      "skillFacet": "recognizing a workable alternative",
+      "targetEvidence": "picks a safe item that can roll",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "b288760b-cca0-4d6c-8deb-176f2cba3e54",
@@ -975,12 +955,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You have some string. What else could it be used for?",
+      "prompt": "You have a long piece of string. Besides tying things up, what else could you do with it?",
       "rubric": [
-        "3 - You suggest something practical like tying things up.",
-        "2 - You say something that's not very useful, like a necklace.",
-        "1 - You suggest something totally unrelated, like a toy.",
-        "0 - You don’t know what else to use."
+        "3 - Picks a fresh, workable idea (bracelet or shape).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (throwing it away).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -990,26 +970,26 @@
       "options": [
         {
           "key": "a",
-          "text": "tying things up"
+          "text": "Make a bracelet with a grown-up"
         },
         {
           "key": "b",
-          "text": "a necklace"
+          "text": "Lay it out to make a letter or shape"
         },
         {
           "key": "c",
-          "text": "a toy"
+          "text": "Throw it away"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognizes a workable alternative method",
+      "answerKey": "b",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "identifies another practical use for string",
-      "alignmentRationale": "This question encourages thinking about the practical applications of a common item."
+      "skillFacet": "recognizing a new use",
+      "targetEvidence": "picks an unusual use for string",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "c41cf57d-5dff-4243-b683-248a7aa80086",
@@ -1170,44 +1150,24 @@
       "id": "2afc2200-084a-433c-b088-2b2e83edef8d",
       "age": 5,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You want to drink juice. What else can you squeeze to get juice?",
+      "prompt": "You want some juice, but the juice box is empty. With a grown-up's help, what is a different way you could make a yummy fruit drink?",
       "rubric": [
-        "3 - A smart choice like a cucumber or a watermelon.",
-        "2 - A sensible choice like a lemon or a lime.",
-        "1 - A choice that's not really juice, like a tomato (if thinking of sauce).",
-        "0 - Something that doesn't produce juice at all."
+        "3 - Describes a workable new way (e.g. squeeze oranges, mash berries with water, blend fruit).",
+        "2 - Names a fruit to use without saying how.",
+        "1 - Suggests buying more juice or another usual drink.",
+        "0 - Does not answer or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "watermelon"
-        },
-        {
-          "key": "b",
-          "text": "lemon"
-        },
-        {
-          "key": "c",
-          "text": "carrot"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "finding alternative food for juice",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "the child identifies a food item that can produce juice",
-      "alignmentRationale": "This question asks about recognizing alternatives to common food sources, engaging the expected reasoning."
+      "skillFacet": "finding another route to a goal",
+      "targetEvidence": "describes a way to make a fruit drink from fruit",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "62bbecfe-82ed-48f9-a335-f071b8b51d09",
@@ -1218,10 +1178,10 @@
       "format": "explanation",
       "prompt": "You want to build a fort. What else could you use besides chairs?",
       "rubric": [
-        "3 - A creative idea like using pillows or blankets to build the fort.",
-        "2 - A sensible idea like using a table or couch.",
-        "1 - A practical idea like using toys or books without stacking them up.",
-        "0 - An idea that does not help with building a fort."
+        "3 - Picks a fresh, workable idea (pillows or blanket over a table).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (not building at all).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -1231,26 +1191,26 @@
       "options": [
         {
           "key": "a",
-          "text": "pillows"
+          "text": "Pillows from the couch"
         },
         {
           "key": "b",
-          "text": "couch"
+          "text": "A blanket over a table"
         },
         {
           "key": "c",
-          "text": "toys"
+          "text": "Just sit on the floor"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "finding an unusual building method",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "the child connects an alternative building method to creating a fort",
-      "alignmentRationale": "The question explores the child's ability to think creatively about structures, fitting the task pattern."
+      "skillFacet": "finding an unusual building method",
+      "targetEvidence": "picks another fort material",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "22f23151-6ea1-46c8-a65e-ebd30475d901",
@@ -1282,12 +1242,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You have a piece of paper. What else could you use to make a card?",
+      "prompt": "You want to make a card for a friend, but there is no paper. What could you use instead?",
       "rubric": [
-        "3 - A creative alternative like a leaf or a box flap.",
-        "2 - A common alternative like a notepad or another sheet of paper.",
-        "1 - A practical alternative that doesn’t fit well like cardboard.",
-        "0 - Something that cannot make a card at all."
+        "3 - Picks a fresh, workable idea (cardboard or a leaf).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (something you cannot write on).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -1297,26 +1257,26 @@
       "options": [
         {
           "key": "a",
-          "text": "leaf"
+          "text": "A cup of water"
         },
         {
           "key": "b",
-          "text": "notepad"
+          "text": "Cardboard from an old box"
         },
         {
           "key": "c",
-          "text": "cardboard"
+          "text": "A big, flat leaf"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognizing alternative materials for making objects",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "the child suggests a different material to create a card",
-      "alignmentRationale": "This question addresses alternatives for crafting, aligning with the task's exploration of flexibility."
+      "skillFacet": "recognizing alternative materials",
+      "targetEvidence": "picks a non-paper material for a card",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "a296afe3-5274-452d-af1a-869aafdda9a2",
@@ -1503,12 +1463,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You want to listen to music but don’t have loudspeakers. What’s a different way to do it?",
+      "prompt": "You want to make music, but there is no radio or music player. What is a different way to make music?",
       "rubric": [
-        "3 - Suggested using headphones or earphones.",
-        "2 - Suggested something less useful like using a bowl.",
-        "1 - Suggested something not helpful like singing.",
-        "0 - Didn't suggest anything."
+        "3 - Picks a fresh, workable idea (pot drum or rice shaker).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (doing nothing).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -1518,26 +1478,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Headphones"
+          "text": "Tap a pot with a spoon like a drum"
         },
         {
           "key": "b",
-          "text": "A shoe"
+          "text": "Shake a closed bottle with rice inside"
         },
         {
           "key": "c",
-          "text": "A stick"
+          "text": "Sit quietly and wait"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "finding a sound, less-obvious route to a goal",
       "optionScores": {
         "a": 3,
-        "b": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "recognizes alternative ways of enjoying music without speakers",
-      "alignmentRationale": "This question assesses the ability to innovate using everyday materials instead of relying on standard options."
+      "skillFacet": "inventing a way to make music",
+      "targetEvidence": "picks a homemade way to make music",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "f8f1bcd1-03fb-41f0-aaff-218ba939a7f7",
@@ -1701,12 +1661,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "If you want to play outside but it’s too muddy, what could you use instead?",
+      "prompt": "You want to play outside, but it's too muddy. What is a fun way to play instead?",
       "rubric": [
-        "3 - Suggests a useful alternative like playing inside with toys, providing a good reason.",
-        "2 - Proposes a decent alternative but lacks a strong link to the activity.",
-        "1 - Gives an option that is not practical or related.",
-        "0 - Does not suggest a relevant idea."
+        "3 - Picks a fresh, workable idea (indoor obstacle course or worm hunt).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (waiting).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -1716,26 +1676,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Play a board game"
+          "text": "Sit and wait all day"
         },
         {
           "key": "b",
-          "text": "Watch TV"
+          "text": "Make an obstacle course inside with pillows"
         },
         {
           "key": "c",
-          "text": "Sit and wait"
+          "text": "Put on rain boots and look for worms with a grown-up"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "thinking of alternatives for activities",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 0,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "offers another way to enjoy playtime",
-      "alignmentRationale": "This question tests the ability to think of alternative activities when faced with an obstacle."
+      "skillFacet": "thinking of alternatives for activities",
+      "targetEvidence": "picks a creative new way to play",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "fd6e9be6-b17a-41fc-bf1e-d0410bd0a5c5",
@@ -2229,12 +2189,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You have a pencil and some old newspapers, but you want to send a message. What is a creative way to do that?",
+      "prompt": "You have a pencil and some old newspapers, and you want to send a message. What is a creative way to do it?",
       "rubric": [
-        "3 - Use the newspaper to write a note and fold it in a clever shape.",
-        "2 - Suggest writing on a piece of the newspaper without folding.",
-        "1 - Say to write on the newspapers but not in a new way.",
-        "0 - Say it's not possible to use them for a message."
+        "3 - Picks a fresh, workable idea (cutting out letters or using the white edges).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (giving up).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -2244,11 +2204,11 @@
       "options": [
         {
           "key": "a",
-          "text": "Make a note and fold it creatively"
+          "text": "Cut out letters from the newspaper to spell it"
         },
         {
           "key": "b",
-          "text": "Just write on the newspaper"
+          "text": "Write on the white edges of the newspaper"
         },
         {
           "key": "c",
@@ -2256,14 +2216,14 @@
         }
       ],
       "answerKey": "a",
-      "skillFacet": "finding a sound, less-obvious route to a goal",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "Presents a creative way to use materials differently for communication.",
-      "alignmentRationale": "The task prompts the child to find an unexpected but effective way to convey a message."
+      "skillFacet": "finding a less-obvious route",
+      "targetEvidence": "picks a way to make a message from newspaper",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "9e2d55fe-245c-497b-8647-e518924216e2",
@@ -2404,12 +2364,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You have an empty container and colorful rocks. How could you use them in a surprising way?",
+      "prompt": "You have an empty container and some colorful rocks. How could you use them in a surprising way?",
       "rubric": [
-        "3 - Create a game or artwork from the colorful rocks and container.",
-        "2 - Suggest using them for decoration without a new idea.",
-        "1 - Mention just placing them in the container.",
-        "0 - Say they can't be used unexpectedly."
+        "3 - Picks a fresh, workable idea (shaker or decorating).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (doing nothing).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -2419,26 +2379,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Make a fun game with the rocks"
+          "text": "Just leave them on the table"
         },
         {
           "key": "b",
-          "text": "Decorate the container with them"
+          "text": "Put rocks inside, close it, and make a shaker"
         },
         {
           "key": "c",
-          "text": "Just put them in the container"
+          "text": "Decorate the outside of the container with rocks"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "finding a sound, less-obvious route to a goal",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "Identifies a creative use or game involving both rocks and the container.",
-      "alignmentRationale": "Finding an unexpected use connects creative thinking with practical application."
+      "skillFacet": "finding a less-obvious use",
+      "targetEvidence": "picks a creative use of both items",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     },
     {
       "id": "680fc5fd-3c75-4f90-9364-d75f4685ad6f",
@@ -2605,12 +2565,12 @@
       "type": "mcq",
       "trait": "original_methods",
       "format": "explanation",
-      "prompt": "You have a ball and some chairs. How could you use them together for a fun game without using them as they were meant to be?",
+      "prompt": "You have a ball and some chairs. How could you use them together for a new game?",
       "rubric": [
-        "3 - Proposes a creative game using the objects in a fun way, like rolling the ball around the chairs.",
-        "2 - Mentions a game that relates but is not very unique, like passing the ball between chairs.",
-        "1 - Suggests simply using the ball for soccer or like usual.",
-        "0 - Does not suggest any idea or gives a wrong answer."
+        "3 - Picks a fresh, workable idea (chair-leg goal or weaving course).",
+        "2 - Picks a workable idea after talking it through, or adds their own new idea.",
+        "1 - Picks the usual or less useful choice (using them as usual).",
+        "0 - Does not choose or gives an unsafe idea."
       ],
       "weight": 1,
       "ageBand": [
@@ -2620,26 +2580,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Roll the ball around the chairs!"
+          "text": "Sit on the chairs and hold the ball"
         },
         {
           "key": "b",
-          "text": "Pass the ball between chairs."
+          "text": "Roll the ball between chair legs like a goal"
         },
         {
           "key": "c",
-          "text": "Just play soccer with the ball."
+          "text": "Weave around the chairs while bouncing the ball"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "finding a sound route to a goal",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 1,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "the child creates a novel game using both items",
-      "alignmentRationale": "This question focuses on creative problem-solving through innovative usage of common items."
+      "skillFacet": "inventing a game",
+      "targetEvidence": "picks a new game that uses both items",
+      "alignmentRationale": "Rewards finding a workable, less-obvious use or route rather than the usual one."
     }
   ]
 }

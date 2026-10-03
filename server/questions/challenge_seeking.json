@@ -8,12 +8,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "You have two cookies. One is soft and easy to eat, and the other is hard and has a surprise inside. Which one do you want?",
+      "prompt": "Decorate a cookie! Easy way: add sprinkles. Tricky way: draw a face with icing. Which do you want to try?",
       "rubric": [
-        "3 - You choose the hard cookie, showing you want a challenge.",
-        "2 - You might choose the hard cookie but are unsure or mention both.",
-        "1 - You choose the soft cookie.",
-        "0 - You do not pick a cookie."
+        "3 - Chooses the tricky icing face, the harder task",
+        "2 - Chooses to do the easy one first and then the hard one, or wants both",
+        "1 - Chooses the easy sprinkles",
+        "0 - Chooses neither or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -23,26 +23,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Soft cookie"
+          "text": "The tricky face"
         },
         {
           "key": "b",
-          "text": "Hard cookie"
+          "text": "The easy sprinkles"
         },
         {
           "key": "c",
-          "text": "Both cookies"
+          "text": "Neither"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "deciding on challenge",
+      "answerKey": "a",
       "optionScores": {
-        "a": 1,
-        "b": 3,
-        "c": 2
+        "a": 3,
+        "b": 1,
+        "c": 0
       },
-      "targetEvidence": "selects the harder cookie option and reasons why",
-      "alignmentRationale": "This task focuses on children's willingness to select a more challenging option based on their strategy."
+      "skillFacet": "choosing a harder task",
+      "targetEvidence": "Picks the tricky decorating task.",
+      "alignmentRationale": "Makes the choice a task with a clear difficulty level."
     },
     {
       "id": "6c4267bf-28a9-4744-b74e-2c91b27232b3",
@@ -117,12 +117,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "If you have to do a new puzzle and it’s very hard, what could you try?",
+      "prompt": "Your new puzzle is very hard. What could you try?",
       "rubric": [
-        "3 - You mention asking for help or taking breaks while trying.",
-        "2 - You mention doing your best or trying harder.",
-        "1 - You say to just keep going without extra help.",
-        "0 - You do not give an answer."
+        "3 - Chooses to keep trying or to ask for a hint, staying with the challenge",
+        "2 - Wants to try a little longer but is unsure how",
+        "1 - Wants to switch to an easier puzzle",
+        "0 - Chooses to give up or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -132,26 +132,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Ask someone for help"
+          "text": "Keep trying a new way"
         },
         {
           "key": "b",
-          "text": "Keep trying without help"
+          "text": "Ask someone for a hint"
         },
         {
           "key": "c",
-          "text": "Just give up"
+          "text": "Give up right away"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "problem-solving approach",
       "optionScores": {
         "a": 3,
-        "b": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "identifies a helpful strategy when faced with a challenge",
-      "alignmentRationale": "The question seeks to understand how children think about approaching difficult tasks."
+      "skillFacet": "staying with a challenge",
+      "targetEvidence": "Chooses a way to keep going with a hard task.",
+      "alignmentRationale": "Rewards sticking with a challenge, with or without help."
     },
     {
       "id": "76fabcef-e792-4a09-9b42-7190b1f550dd",
@@ -269,12 +269,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "You want to make a building with blocks. One way is to stack them high and one way is to make a flat house. Which way do you want to try?",
+      "prompt": "You can build an easy short tower or a tricky tall tower. Which one do you want to try?",
       "rubric": [
-        "3 - You choose stacking them high, showing you're ready for a challenge.",
-        "2 - You mention both ways or are unsure.",
-        "1 - You pick the flat house.",
-        "0 - You don't make a choice."
+        "3 - Chooses the tricky tall tower, the harder task",
+        "2 - Chooses to do the easy one first and then the hard one, or wants both",
+        "1 - Chooses the easy short tower",
+        "0 - Chooses nothing or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -284,26 +284,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Make a flat house"
+          "text": "The easy short tower"
         },
         {
           "key": "b",
-          "text": "Stack them high"
+          "text": "The tricky tall tower"
         },
         {
           "key": "c",
-          "text": "Both ways"
+          "text": "Both, easy one first"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "choosing difficulty",
       "optionScores": {
         "a": 1,
         "b": 3,
         "c": 2
       },
-      "targetEvidence": "selects the more challenging building method",
-      "alignmentRationale": "The focus here is on the choice of task difficulty."
+      "skillFacet": "choosing a harder task",
+      "targetEvidence": "Picks the task labelled tricky.",
+      "alignmentRationale": "Offers a clearly easy and clearly hard choice."
     },
     {
       "id": "5b1deda8-a89f-4d9f-9585-90aeb00dc4e2",
@@ -401,12 +401,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "You see a basket with toy animals. One animal is soft and easy to play with, and another animal is hard and has moving parts. Which one do you want?",
+      "prompt": "One toy animal is easy. Another is tricky, with parts that move and click. Which do you want to try?",
       "rubric": [
-        "3 - You choose the hard animal and explain you want the challenge.",
-        "2 - You choose the hard animal but don’t explain why.",
-        "1 - You choose the soft animal but mention wanting to try the hard one later.",
-        "0 - You don’t choose either animal."
+        "3 - Chooses the tricky toy, the harder task",
+        "2 - Chooses to do the easy one first and then the hard one, or wants both",
+        "1 - Chooses the easy toy",
+        "0 - Chooses neither or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -416,26 +416,26 @@
       "options": [
         {
           "key": "a",
-          "text": "The soft animal"
+          "text": "The easy toy"
         },
         {
           "key": "b",
-          "text": "The hard animal"
+          "text": "The tricky toy"
         },
         {
           "key": "c",
-          "text": "Neither animal"
+          "text": "Neither toy"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "selecting a challenging activity",
       "optionScores": {
         "a": 1,
         "b": 3,
         "c": 0
       },
-      "targetEvidence": "selects the challenging animal and offers reasoning",
-      "alignmentRationale": "This question targets the child's ability to identify preference for a challenging activity and provide reasoning."
+      "skillFacet": "choosing a harder task",
+      "targetEvidence": "Picks the tricky toy.",
+      "alignmentRationale": "Uses 'tricky' instead of the ambiguous word 'hard'."
     },
     {
       "id": "19bab5ce-cfdb-42a4-80c8-3c515809fd16",
@@ -665,12 +665,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "You see a climbing wall. One part is easy, and one part is very high. Which one do you want to try?",
+      "prompt": "A low climbing wall has an easy side and a tricky side. Which side do you want to try with a grown-up?",
       "rubric": [
-        "3 - You choose the high part and say you'll ask if you want help.",
-        "2 - You choose the high part but don’t mention help.",
-        "1 - You choose the easy part for fun.",
-        "0 - You choose without thinking."
+        "3 - Chooses the tricky side, the harder task",
+        "2 - Chooses to do the easy one first and then the hard one, or wants both",
+        "1 - Chooses the easy side",
+        "0 - Chooses not climbing or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -680,26 +680,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Easy part"
+          "text": "The easy side"
         },
         {
           "key": "b",
-          "text": "High part"
+          "text": "The tricky side"
         },
         {
           "key": "c",
-          "text": "Don't want to climb."
+          "text": "I don't want to climb"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "word for choosing a challenge",
       "optionScores": {
         "a": 1,
         "b": 3,
         "c": 0
       },
-      "targetEvidence": "selects the difficult option and indicates willingness to seek support",
-      "alignmentRationale": "This question tests the ability to choose a tougher challenge while being open to assistance."
+      "skillFacet": "choosing a harder task",
+      "targetEvidence": "Picks the trickier, still safe, option.",
+      "alignmentRationale": "Makes the challenge about skill, not height."
     },
     {
       "id": "8276210f-5e7a-4990-8388-a0a0dff65ce6",
@@ -797,12 +797,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "You see a toy with lots of buttons. What will you do?",
+      "prompt": "A toy does an easy trick with one button, or a tricky dance with three buttons. Which will you try?",
       "rubric": [
-        "3 - I will press the buttons one by one and see what happens!",
-        "2 - I will try to press some buttons, but not all.",
-        "1 - I think I will just watch someone else use it.",
-        "0 - I won't touch it at all."
+        "3 - Chooses the tricky dance, the harder task",
+        "2 - Chooses to do the easy one first and then the hard one, or wants both",
+        "1 - Chooses the easy trick",
+        "0 - Chooses watching someone else or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -812,26 +812,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Press all the buttons!"
+          "text": "The easy trick"
         },
         {
           "key": "b",
-          "text": "Try a few buttons only."
+          "text": "Watch someone else"
         },
         {
           "key": "c",
-          "text": "Just watch someone else use it."
+          "text": "Learn the tricky dance"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "trying new experiences",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "decides to engage with a new toy despite its difficulty",
-      "alignmentRationale": "This question evaluates a child's willingness to experiment with something unfamiliar or difficult."
+      "skillFacet": "choosing a harder task",
+      "targetEvidence": "Picks the harder thing to learn.",
+      "alignmentRationale": "Gives an easy versus hard choice."
     },
     {
       "id": "62adae05-7011-4898-9548-7463b62a7131",
@@ -1391,12 +1391,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "You can pick a task! Which one seems more fun to try?",
+      "prompt": "You can pick one task. Which is the biggest challenge you would like to try?",
       "rubric": [
-        "3 - You picked the tricky one and explained why it seemed fun.",
-        "2 - You picked the tricky one but didn't say why.",
-        "1 - You picked the easy one or didn't explain your choice.",
-        "0 - No choice was made."
+        "3 - Chooses the tall tower, the harder task",
+        "2 - Chooses to do the easy one first and then the hard one, or wants both",
+        "1 - Chooses counting to 3",
+        "0 - Chooses doing nothing or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1406,26 +1406,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Build a tall tower with blocks"
+          "text": "Count from 1 to 3"
         },
         {
           "key": "b",
-          "text": "Color a picture"
+          "text": "Build a block tower as tall as you"
         },
         {
           "key": "c",
-          "text": "Count from 1 to 10"
+          "text": "Sit and do nothing"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choosing a challenging task",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
+        "a": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "selects the more challenging option and shares a reason why it's fun",
-      "alignmentRationale": "This question isolates the skill of choosing challenging tasks by asking for a specific preference."
+      "skillFacet": "choosing a harder task",
+      "targetEvidence": "Picks the most challenging task.",
+      "alignmentRationale": "Asks for the challenge, not the most fun task."
     },
     {
       "id": "fa587ffb-6263-42ae-b60f-3201d34675b2",
@@ -1434,12 +1434,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "Imagine you have a big puzzle. What is the best first step to solve it?",
+      "prompt": "You finished a puzzle easily. What would you like to do next?",
       "rubric": [
-        "3 - You said to look at the pieces and find edges.",
-        "2 - You said to put some pieces together but didn’t explain.",
-        "1 - You suggested looking at the box but not much else.",
-        "0 - No useful steps were mentioned."
+        "3 - Chooses a puzzle with more pieces, the harder task",
+        "2 - Chooses to do the easy one first and then the hard one, or wants both",
+        "1 - Chooses the same puzzle",
+        "0 - Chooses stopping or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1449,26 +1449,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Find the edge pieces first"
+          "text": "Do the same puzzle again"
         },
         {
           "key": "b",
-          "text": "Just start anywhere"
+          "text": "Try a puzzle with more pieces"
         },
         {
           "key": "c",
-          "text": "Look at the picture again"
+          "text": "Stop doing puzzles"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "first step on a puzzle",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
+        "a": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "provides a specific, helpful first step for completing a puzzle.",
-      "alignmentRationale": "This question tests the child's ability to think about how to begin a challenging task effectively."
+      "skillFacet": "choosing a harder task",
+      "targetEvidence": "Moves on to a harder puzzle.",
+      "alignmentRationale": "Tests reaching for the harder option after success."
     },
     {
       "id": "3552c9b2-adea-4dbe-b04e-90570d7b368d",
@@ -1675,12 +1675,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "You can pick a game to play. Would you choose:",
+      "prompt": "You can pick a puzzle to play. Which would you choose?",
       "rubric": [
-        "3 - You picked the harder game and said why it would be fun.",
-        "2 - You picked the harder game but didn't explain.",
-        "1 - You chose an easy game but tried to make it fun.",
-        "0 - You picked an easy game without any reason."
+        "3 - Chooses the tricky new puzzle, the harder task",
+        "2 - Chooses to do the easy one first and then the hard one, or wants both",
+        "1 - Chooses the easy puzzle",
+        "0 - Chooses no puzzle or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1690,26 +1690,26 @@
       "options": [
         {
           "key": "a",
-          "text": "A simple puzzle"
+          "text": "An easy puzzle you have done before"
         },
         {
           "key": "b",
-          "text": "A tricky riddle"
+          "text": "A tricky new puzzle"
         },
         {
           "key": "c",
-          "text": "A game for babies"
+          "text": "No puzzle"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "word for a choice between tasks",
       "optionScores": {
-        "a": 0,
+        "a": 1,
         "b": 3,
-        "c": 1
+        "c": 0
       },
-      "targetEvidence": "chooses the harder game, possibly explaining the choice",
-      "alignmentRationale": "This question assesses the ability to choose a challenge based on potential enjoyment."
+      "skillFacet": "choosing a harder task",
+      "targetEvidence": "Picks the tricky new puzzle.",
+      "alignmentRationale": "Gives a clearly easy and clearly hard choice."
     },
     {
       "id": "fb5821ad-7799-4e85-ab28-62802bb72c8c",
@@ -1982,12 +1982,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "You can try a new hobby! Which one sounds more fun?",
+      "prompt": "You can paint one big circle, which is easy, or a big scene with lots of details, which is tricky. Which do you choose?",
       "rubric": [
-        "3 - You pick the harder hobby and explain why it’s exciting.",
-        "2 - You pick the harder hobby but don’t explain.",
-        "1 - You pick a simple hobby instead of the hard one.",
-        "0 - You say none of the hobbies sound fun."
+        "3 - Chooses the tricky detailed scene, the harder task",
+        "2 - Chooses to do the easy one first and then the hard one, or wants both",
+        "1 - Chooses the easy circle",
+        "0 - Chooses not painting or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1997,26 +1997,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Painting (easy)"
+          "text": "The tricky detailed scene"
         },
         {
           "key": "b",
-          "text": "Building a robot (hard)"
+          "text": "The easy circle"
         },
         {
           "key": "c",
-          "text": "Just playing outside (not a hobby)"
+          "text": "Not paint today"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "drawing excitement from challenge",
+      "answerKey": "a",
       "optionScores": {
-        "a": 1,
-        "b": 3,
+        "a": 3,
+        "b": 1,
         "c": 0
       },
-      "targetEvidence": "selects a new hobby and reasons",
-      "alignmentRationale": "This question measures how children gravitate towards harder options while expressing their thoughts."
+      "skillFacet": "choosing a harder task",
+      "targetEvidence": "Picks the harder version of the same hobby.",
+      "alignmentRationale": "Compares easy and hard versions of one activity."
     },
     {
       "id": "424c5e4c-a6a3-4c79-9c59-4cf01f680963",
@@ -2134,12 +2134,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "You can draw a sunset or a night sky full of stars. Which one do you want to try?",
+      "prompt": "You can draw a simple sun, or a tricky night sky with lots of stars and a moon. Which one will you try?",
       "rubric": [
-        "3 - The answer chooses the detailed night sky and provides a fun reason.",
-        "2 - The answer chooses the night sky but gives a simple reason.",
-        "1 - The answer chooses the sunset with a slight reason.",
-        "0 - The answer does not decide or explains unrelated ideas."
+        "3 - Chooses the tricky night sky, the harder task",
+        "2 - Chooses to do the easy one first and then the hard one, or wants both",
+        "1 - Chooses the simple sun",
+        "0 - Chooses neither or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2149,26 +2149,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Draw a sunset"
+          "text": "The simple sun"
         },
         {
           "key": "b",
-          "text": "Draw a night sky full of stars"
+          "text": "Neither, I want to play"
         },
         {
           "key": "c",
-          "text": "Neither, I want to play"
+          "text": "The tricky night sky"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "selecting a more complex option",
+      "answerKey": "c",
       "optionScores": {
         "a": 1,
-        "b": 3,
-        "c": 0
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "chooses the harder drawing task with an exciting rationale",
-      "alignmentRationale": "This question tests the child's ability to opt for a more complicated creative task over a simpler one."
+      "skillFacet": "choosing a harder task",
+      "targetEvidence": "Picks the drawing that is clearly harder.",
+      "alignmentRationale": "Offers a clearly easy and clearly hard choice."
     },
     {
       "id": "e5f37ba9-7ed3-45bc-9040-42d4d18129b6",
@@ -2177,12 +2177,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "You have two tasks: paint a colorful picture or create a jungle scene with animals. Which one do you choose?",
+      "prompt": "You can paint an easy one-colour painting, or a tricky jungle with lots of animals. Which do you choose?",
       "rubric": [
-        "3 - The answer shows a clear selection of the challenging task and includes a reason like wanting to learn more.",
-        "2 - The answer chooses the challenging task but gives a vague reason.",
-        "1 - The answer chooses the easy task but includes a little reason.",
-        "0 - The answer does not choose a task or includes irrelevant information."
+        "3 - Chooses the tricky jungle, the harder task",
+        "2 - Chooses to do the easy one first and then the hard one, or wants both",
+        "1 - Chooses the easy painting",
+        "0 - Chooses neither or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2192,26 +2192,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Paint a colorful picture"
+          "text": "The tricky jungle"
         },
         {
           "key": "b",
-          "text": "Create a jungle scene with animals"
+          "text": "The easy one-colour painting"
         },
         {
           "key": "c",
-          "text": "None of these"
+          "text": "Neither"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "choosing a challenging task",
+      "answerKey": "a",
       "optionScores": {
-        "a": 1,
-        "b": 3,
+        "a": 3,
+        "b": 1,
         "c": 0
       },
-      "targetEvidence": "picks the harder task and provides a reason for the choice",
-      "alignmentRationale": "This question asks the child to actively choose a more difficult task, demonstrating their approach to challenge-seeking."
+      "skillFacet": "choosing a harder task",
+      "targetEvidence": "Picks the painting that is clearly harder.",
+      "alignmentRationale": "Offers a clearly easy and clearly hard choice."
     },
     {
       "id": "361ec116-2700-4717-9bfc-099f7653b10e",
@@ -2375,12 +2375,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "You can choose to build a tall tower with blocks or a big airplane. Which would you pick?",
+      "prompt": "You can build an easy tower with 5 blocks, or a tricky airplane with lots of parts. Which would you pick?",
       "rubric": [
-        "3 - You clearly choose the tall tower and explain why it's challenging and fun.",
-        "2 - You choose the tall tower but give less detail about its challenge.",
-        "1 - You choose the airplane, with some explanation of why.",
-        "0 - You choose neither or don’t explain your choice."
+        "3 - Chooses the tricky airplane, the harder task",
+        "2 - Chooses to do the easy one first and then the hard one, or wants both",
+        "1 - Chooses the easy tower",
+        "0 - Chooses not building or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2390,26 +2390,26 @@
       "options": [
         {
           "key": "a",
-          "text": "The tall tower"
+          "text": "The easy tower"
         },
         {
           "key": "b",
-          "text": "The big airplane"
+          "text": "The tricky airplane"
         },
         {
           "key": "c",
-          "text": "Neither"
+          "text": "I don't want to build"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choosing a challenging task",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 0,
+        "a": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "selects a challenging task and provides a brief reason for the choice",
-      "alignmentRationale": "This question directly observes the child's preference for challenge through a choice, illustrating their willingness to engage with more difficult tasks."
+      "skillFacet": "choosing a harder task",
+      "targetEvidence": "Picks the task that is clearly harder.",
+      "alignmentRationale": "Offers a clearly easy and clearly hard choice."
     },
     {
       "id": "5d1f7f02-e6bb-4c25-9260-d6ff99f824da",
@@ -2573,12 +2573,12 @@
       "type": "mcq",
       "trait": "challenge_seeking",
       "format": "explanation",
-      "prompt": "You can do a puzzle or a drawing. Which one will you try?",
+      "prompt": "You can do an easy puzzle with 10 pieces, or a tricky puzzle with 50 pieces. Which will you try?",
       "rubric": [
-        "3 - You choose the puzzle and explain you like the challenge.",
-        "2 - You choose the puzzle but don't say why.",
-        "1 - You choose the drawing and say it is easy.",
-        "0 - You choose the drawing and don't explain."
+        "3 - Chooses the tricky puzzle, the harder task",
+        "2 - Chooses to do the easy one first and then the hard one, or wants both",
+        "1 - Chooses the easy puzzle",
+        "0 - Chooses neither or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2588,26 +2588,26 @@
       "options": [
         {
           "key": "a",
-          "text": "I want to do the puzzle! It's fun!"
+          "text": "The easy puzzle"
         },
         {
           "key": "b",
-          "text": "I will do the puzzle."
+          "text": "The tricky puzzle"
         },
         {
           "key": "c",
-          "text": "I want to do the drawing."
+          "text": "Neither"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choose challenging tasks",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "Selects the puzzle as a more difficult option and gives a reason.",
-      "alignmentRationale": "This question tests the ability to choose a challenging task over an easier one."
+      "skillFacet": "choosing a harder task",
+      "targetEvidence": "Picks the task that is clearly harder.",
+      "alignmentRationale": "Offers a clearly easy and clearly hard choice."
     },
     {
       "id": "7d0645a7-f99f-4236-941b-789b7bebfc50",

@@ -192,12 +192,12 @@
       "type": "mcq",
       "trait": "motivation_focus",
       "format": "explanation",
-      "prompt": "You are coloring and get distracted; what can you say to help you stay focused?",
+      "prompt": "You are coloring and get distracted. What can you say to help you keep going?",
       "rubric": [
-        "3 - You say something fun to remind yourself to keep coloring.",
-        "2 - You say you want to finish this page.",
-        "1 - You say you'll come back later.",
-        "0 - You don't say anything."
+        "3 - Chooses a helpful way to keep going (cheering yourself on or naming your goal).",
+        "2 - Chooses a helpful way after talking it through.",
+        "1 - Chooses to put the task off without a plan.",
+        "0 - Chooses to give up or do nothing."
       ],
       "weight": 1,
       "ageBand": [
@@ -207,26 +207,26 @@
       "options": [
         {
           "key": "a",
-          "text": "\"I love coloring!\""
+          "text": "'I love coloring!'"
         },
         {
           "key": "b",
-          "text": "\"I want to finish this one.\""
+          "text": "'I want to finish this one.'"
         },
         {
           "key": "c",
-          "text": "\"I'll come back later.\""
+          "text": "'I'll stop now.'"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "word for a focus strategy",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "the child identifies a verbal cue to maintain focus on coloring",
-      "alignmentRationale": "This question evaluates the ability to articulate a self-motivating statement to keep on task."
+      "skillFacet": "self-talk to stay focused",
+      "targetEvidence": "picks a helpful thing to say to keep coloring",
+      "alignmentRationale": "Rewards strategies that help the child stay with or return to a chosen task."
     },
     {
       "id": "4e109749-1a2c-452b-a083-5a94c8b0d193",
@@ -324,21 +324,21 @@
       "type": "open",
       "trait": "motivation_focus",
       "format": "explanation",
-      "prompt": "What can you do if you see something fun outside while you are playing?",
+      "prompt": "You are playing a game and you want to finish it, but you see something fun outside. What can you do to finish your game first?",
       "rubric": [
-        "3 - Explain how to keep playing and also look outside.",
-        "2 - Mention the fun thing but stop playing.",
-        "1 - Just stop playing and go outside.",
-        "0 - Ignore the fun thing and stay focused inside."
+        "3 - Names a clear strategy (e.g. 'tell myself I'll look after', 'turn away from the window').",
+        "2 - Says they would finish first without saying how.",
+        "1 - Says they would go look and maybe come back.",
+        "0 - Does not answer."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "strategy to maintain focus despite distraction",
-      "targetEvidence": "the child provides a suggestion for managing attention between two activities",
-      "alignmentRationale": "This question tests the child's ability to suggest a way to focus on a task even when there is something else interesting happening nearby."
+      "skillFacet": "strategy to stay focused despite distraction",
+      "targetEvidence": "names a way to finish the game before looking",
+      "alignmentRationale": "Rewards strategies that help the child stay with or return to a chosen task."
     },
     {
       "id": "be29be42-fcd3-4665-9107-5a32df60c69e",
@@ -393,21 +393,21 @@
       "type": "open",
       "trait": "motivation_focus",
       "format": "explanation",
-      "prompt": "If you finish a puzzle but lose a piece, what can you do to keep playing?",
+      "prompt": "You are doing a puzzle and you lose a piece. What can you do to keep going?",
       "rubric": [
-        "3 - You provide a clear action to solve the problem responsibly.",
-        "2 - You suggest something related to the piece but not really actionable.",
-        "1 - You mention just stopping because it's broken.",
-        "0 - Your answer doesn’t relate to the puzzle or the piece."
+        "3 - Gives a clear plan (e.g. 'keep doing the other pieces and look for it later', 'ask for help to find it').",
+        "2 - Gives a simple idea (e.g. 'look for it').",
+        "1 - Says they would stop for now.",
+        "0 - Does not answer."
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "word for problem-solving",
-      "targetEvidence": "Child identifies an action to take to remain engaged despite an incomplete puzzle.",
-      "alignmentRationale": "This assesses problem-solving skills when faced with setback and encourages children to remain focused on their tasks."
+      "skillFacet": "problem-solving to stay engaged",
+      "targetEvidence": "names a way to keep working despite a lost piece",
+      "alignmentRationale": "Rewards strategies that help the child stay with or return to a chosen task."
     },
     {
       "id": "5c290a7f-3c55-4a6a-b130-34cdc59a4357",
@@ -976,21 +976,21 @@
       "type": "open",
       "trait": "motivation_focus",
       "format": "explanation",
-      "prompt": "What do you enjoy doing when you get stuck on something?",
+      "prompt": "What can you do when something is hard and you get stuck?",
       "rubric": [
-        "3 - The child shares a way to move forward, like asking for help or trying harder.",
-        "2 - The child gives a related answer but may lack detail.",
-        "1 - The child seems unsure or gives a general answer.",
-        "0 - The child does not answer."
+        "3 - Names a clear strategy (e.g. 'try another way', 'take a breath and try again', 'ask for help').",
+        "2 - Gives a simple idea (e.g. 'keep trying').",
+        "1 - Says they would stop for now.",
+        "0 - Does not answer."
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "strategy for regaining focus",
-      "targetEvidence": "The child describes actions to take when encountering a challenge in a task.",
-      "alignmentRationale": "This allows children to express their understanding of strategies for tackling difficult situations during activities."
+      "skillFacet": "strategy for getting unstuck",
+      "targetEvidence": "names a strategy for getting unstuck",
+      "alignmentRationale": "Rewards strategies that help the child stay with or return to a chosen task."
     },
     {
       "id": "9a2e2cc8-b64c-4a23-ac93-2f3fed71ddc0",
@@ -1042,12 +1042,12 @@
       "type": "mcq",
       "trait": "motivation_focus",
       "format": "explanation",
-      "prompt": "You want to draw a picture. First, you need to get your crayons. What should you do if you can’t find them?",
+      "prompt": "You want to draw, but you can't find your crayons. What could you do?",
       "rubric": [
-        "3 - Say to ask a grown-up for help finding the crayons.",
-        "2 - Look in a few places, like under the table or on the shelf.",
-        "1 - Say to just give up drawing.",
-        "0 - Don't say anything."
+        "3 - Chooses a helpful way to keep going (looking or asking for help).",
+        "2 - Chooses a helpful way after talking it through.",
+        "1 - Chooses to put the task off without a plan.",
+        "0 - Chooses to give up or do nothing."
       ],
       "weight": 1,
       "ageBand": [
@@ -1057,26 +1057,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Ask a grown-up for help"
-        },
-        {
-          "key": "b",
           "text": "Look under the table"
         },
         {
-          "key": "c",
+          "key": "b",
           "text": "Just give up"
+        },
+        {
+          "key": "c",
+          "text": "Ask a grown-up for help"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "strategy for finding tools",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 0
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "The child can suggest asking for help or looking in specific places to find necessary supplies.",
-      "alignmentRationale": "This question tests the child's ability to find solutions by suggesting practical strategies when facing a challenge."
+      "skillFacet": "strategy for finding tools",
+      "targetEvidence": "picks a way to find the crayons",
+      "alignmentRationale": "Rewards strategies that help the child stay with or return to a chosen task."
     },
     {
       "id": "c7988558-45f6-46b3-9827-55d07b6d2021",
@@ -1283,12 +1283,12 @@
       "type": "mcq",
       "trait": "motivation_focus",
       "format": "explanation",
-      "prompt": "You're helping a friend with a puzzle, but you can’t find one piece. What can you do to keep looking?",
+      "prompt": "You're helping a friend with a puzzle, but you can't find one piece. What can you do?",
       "rubric": [
-        "3 - Look in the box or ask your friend for help.",
-        "2 - Search around the table to see if it's nearby.",
-        "1 - Just wait and see if it turns up by itself.",
-        "0 - Say you can't find it and stop helping."
+        "3 - Chooses a helpful way to keep going (searching or asking for help).",
+        "2 - Chooses a helpful way after talking it through.",
+        "1 - Chooses to put the task off without a plan.",
+        "0 - Chooses to give up or do nothing."
       ],
       "weight": 1,
       "ageBand": [
@@ -1298,26 +1298,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Look in the box or ask for help."
+          "text": "Just wait and do nothing"
         },
         {
           "key": "b",
-          "text": "Search around the table."
+          "text": "Look in the box or under the table"
         },
         {
           "key": "c",
-          "text": "Just wait and do nothing."
+          "text": "Keep doing other pieces and ask for help to look"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "seeking help or solutions",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 0,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "The child actively looks for the missing piece or seeks assistance.",
-      "alignmentRationale": "This question evaluates strategies for continuing a task despite a setback."
+      "skillFacet": "seeking help or solutions",
+      "targetEvidence": "picks an active way to keep going",
+      "alignmentRationale": "Rewards strategies that help the child stay with or return to a chosen task."
     },
     {
       "id": "8ae95bc3-21c6-419c-a7f8-f2a92d3cf894",
@@ -1326,12 +1326,12 @@
       "type": "mcq",
       "trait": "motivation_focus",
       "format": "explanation",
-      "prompt": "You're working on a puzzle, but you lose one piece. What can you do to keep working on it?",
+      "prompt": "You're doing a puzzle, but you lose one piece. What can you do to keep working on it?",
       "rubric": [
-        "3 - Keep working on the puzzle with the pieces you have and find the missing one later.",
-        "2 - Search for the piece while working on the puzzle.",
-        "1 - Stop working on the puzzle entirely.",
-        "0 - Say you can only do the puzzle with all pieces."
+        "3 - Chooses a helpful way to keep going (searching or working around it).",
+        "2 - Chooses a helpful way after talking it through.",
+        "1 - Chooses to put the task off without a plan.",
+        "0 - Chooses to give up or do nothing."
       ],
       "weight": 1,
       "ageBand": [
@@ -1341,7 +1341,7 @@
       "options": [
         {
           "key": "a",
-          "text": "Keep working without it"
+          "text": "Stop the puzzle"
         },
         {
           "key": "b",
@@ -1349,18 +1349,18 @@
         },
         {
           "key": "c",
-          "text": "Stop the puzzle"
+          "text": "Keep working without it"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "strategy for continuing a task",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 0,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "selects a method for effective problem-solving during a task",
-      "alignmentRationale": "Selecting a positive approach to the task showcases problem-solving skills."
+      "skillFacet": "strategy for continuing a task",
+      "targetEvidence": "picks a way to keep working on the puzzle",
+      "alignmentRationale": "Rewards strategies that help the child stay with or return to a chosen task."
     },
     {
       "id": "3c81ab81-ad2c-4246-bcba-f9901b9fd934",
@@ -1696,12 +1696,12 @@
       "type": "mcq",
       "trait": "motivation_focus",
       "format": "explanation",
-      "prompt": "You are crafting a necklace, but you ran out of beads. What should you do next?",
+      "prompt": "You are making a necklace, but you run out of beads. What could you do next?",
       "rubric": [
-        "3 - You could look for more beads or find different materials.",
-        "2 - You might use only the beads you have left and make it smaller.",
-        "1 - You might stop crafting and do something else.",
-        "0 - You could ask someone else to give you their beads."
+        "3 - Chooses a helpful way to keep going (adapting or finding more).",
+        "2 - Chooses a helpful way after talking it through.",
+        "1 - Chooses to put the task off without a plan.",
+        "0 - Chooses to give up or do nothing."
       ],
       "weight": 1,
       "ageBand": [
@@ -1711,26 +1711,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Look for more beads"
+          "text": "Stop crafting"
         },
         {
           "key": "b",
-          "text": "Make it smaller with fewer beads"
+          "text": "Make it shorter with the beads you have"
         },
         {
           "key": "c",
-          "text": "Stop crafting"
+          "text": "Look for more beads"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "strategy for returning to a task",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "chooses an option to continue crafting after running out of resources",
-      "alignmentRationale": "This question explores strategies for returning to a task after running into limitations."
+      "skillFacet": "strategy for continuing a task",
+      "targetEvidence": "picks a way to finish the necklace",
+      "alignmentRationale": "Rewards strategies that help the child stay with or return to a chosen task."
     },
     {
       "id": "b557ec8f-f74b-4e8a-bb1b-03c9fbf0543d",
@@ -1739,12 +1739,12 @@
       "type": "mcq",
       "trait": "motivation_focus",
       "format": "explanation",
-      "prompt": "You're putting together a LEGO set, but you can’t find the instruction manual. What can you do to keep building?",
+      "prompt": "You're building a LEGO set, but you can't find the instructions. What can you do to keep building?",
       "rubric": [
-        "3 - You could look online for the instructions or guess based on the pieces.",
-        "2 - You might try to build without instructions.",
-        "1 - You could stop building altogether.",
-        "0 - You might ask someone else to find the manual."
+        "3 - Chooses a helpful way to keep going (asking a grown-up or building freely).",
+        "2 - Chooses a helpful way after talking it through.",
+        "1 - Chooses to put the task off without a plan.",
+        "0 - Chooses to give up or do nothing."
       ],
       "weight": 1,
       "ageBand": [
@@ -1754,11 +1754,11 @@
       "options": [
         {
           "key": "a",
-          "text": "Look online for instructions"
+          "text": "Ask a grown-up to help find the instructions"
         },
         {
           "key": "b",
-          "text": "Build without instructions"
+          "text": "Build your own design without instructions"
         },
         {
           "key": "c",
@@ -1766,14 +1766,14 @@
         }
       ],
       "answerKey": "a",
-      "skillFacet": "strategy for continuing a task",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 1
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "selects a way to continue building despite losing instructions",
-      "alignmentRationale": "This response tests the ability to adapt strategy when information is missing."
+      "skillFacet": "strategy for continuing a task",
+      "targetEvidence": "picks a safe way to keep building",
+      "alignmentRationale": "Rewards strategies that help the child stay with or return to a chosen task."
     },
     {
       "id": "1415475a-351c-49fb-bd89-8f71f82f99a4",
@@ -2066,12 +2066,12 @@
       "type": "mcq",
       "trait": "motivation_focus",
       "format": "explanation",
-      "prompt": "You started a project but got distracted by a game. What should you do next to get back to your project?",
+      "prompt": "You started a project but got distracted by a game. What could you do to get back to your project?",
       "rubric": [
-        "3 - You set a timer for your game to finish quickly.",
-        "2 - You put away the game and take a break.",
-        "1 - You leave the game on and try to work.",
-        "0 - You don’t return to working."
+        "3 - Chooses a helpful way to keep going (putting the game away or using a timer).",
+        "2 - Chooses a helpful way after talking it through.",
+        "1 - Chooses to put the task off without a plan.",
+        "0 - Chooses to give up or do nothing."
       ],
       "weight": 1,
       "ageBand": [
@@ -2081,26 +2081,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Set a timer for the game ⏱️"
+          "text": "Leave the game on"
         },
         {
           "key": "b",
-          "text": "Put away the game"
+          "text": "Put the game away"
         },
         {
           "key": "c",
-          "text": "Leave the game on"
+          "text": "Set a timer for the game ⏱️"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "returning to task after distraction",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 3,
+        "c": 3
       },
-      "targetEvidence": "choice of an effective action to resume the project",
-      "alignmentRationale": "This question isolates the skill of choosing a strategy to return to a task after being distracted."
+      "skillFacet": "returning to task after distraction",
+      "targetEvidence": "picks a way to get back to the project",
+      "alignmentRationale": "Rewards strategies that help the child stay with or return to a chosen task."
     },
     {
       "id": "6aa0ef14-eba9-43e1-a6a2-d9aa0fd1c49b",
@@ -2132,12 +2132,12 @@
       "type": "mcq",
       "trait": "motivation_focus",
       "format": "explanation",
-      "prompt": "You want to finish your art project but your friend wants to play. What can you say to help you focus on your project?",
+      "prompt": "You want to finish your art project, but your friend wants to play. What could you say to stay focused?",
       "rubric": [
-        "3 - You choose to politely say you need to finish your project now.",
-        "2 - You tell your friend you will play later, but it’s still not clear you can focus.",
-        "1 - You agree to play now and forget about your project.",
-        "0 - You say nothing and just keep working on the project."
+        "3 - Chooses a helpful way to keep going (finishing first and planning play after).",
+        "2 - Chooses a helpful way after talking it through.",
+        "1 - Chooses to put the task off without a plan.",
+        "0 - Chooses to give up or do nothing."
       ],
       "weight": 1,
       "ageBand": [
@@ -2147,26 +2147,26 @@
       "options": [
         {
           "key": "a",
-          "text": "I need to finish this project first."
+          "text": "I need to finish this first. Let's play after!"
         },
         {
           "key": "b",
-          "text": "Let’s play for a bit."
+          "text": "Let's play for a bit and forget my project."
         },
         {
           "key": "c",
-          "text": "I don’t want to play now."
+          "text": "I don't want to play now."
         }
       ],
       "answerKey": "a",
-      "skillFacet": "word for a helpful action",
       "optionScores": {
         "a": 3,
-        "b": 1,
-        "c": 0
+        "b": 0,
+        "c": 2
       },
-      "targetEvidence": "selects a social response that helps maintain focus on a task",
-      "alignmentRationale": "This tests the ability to articulate a helpful social strategy for avoiding distraction."
+      "skillFacet": "word for a helpful action",
+      "targetEvidence": "picks a response that keeps focus on the project",
+      "alignmentRationale": "Rewards strategies that help the child stay with or return to a chosen task."
     },
     {
       "id": "9711de85-5eb3-4d1c-93ee-9d78aaf8afb1",

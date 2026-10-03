@@ -28,44 +28,24 @@
       "id": "d49d79ae-d02a-4296-9177-b8b36ca93aa3",
       "age": 4,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If trees could talk, what would you want to ask them?",
+      "prompt": "Imagine trees could talk. What would you ask a tree? Why?",
       "rubric": [
-        "3 - Asks a deep or imaginative question.",
-        "2 - Asks a simple question related to trees.",
-        "1 - Gives an unclear question hardly connected to trees.",
-        "0 - Does not answer the question."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "What secrets do you know?"
-        },
-        {
-          "key": "b",
-          "text": "How tall are you?"
-        },
-        {
-          "key": "c",
-          "text": "Can you dance?"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "engaging curiosity",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "asks a thoughtful question related to an imaginative situation",
-      "alignmentRationale": "This tests reasoning about an unfamiliar scenario and promotes expansive thinking about communication with inanimate objects."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "c5780a62-5a9c-4be8-9ef7-e10f6134e7b0",
@@ -117,44 +97,24 @@
       "id": "fd457c29-7613-4dcc-87fc-5ef381218e7c",
       "age": 4,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "Imagine there are flying fish. What would you do if you saw one?",
+      "prompt": "Imagine fish could fly. What would a flying fish do all day?",
       "rubric": [
-        "3 - Says a fun or unique action (like catching it!).",
-        "2 - Chooses a simple action (like watching it).",
-        "1 - Gives an unclear or unrelated answer.",
-        "0 - Does not answer the question."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Try to catch it!"
-        },
-        {
-          "key": "b",
-          "text": "Just look at it."
-        },
-        {
-          "key": "c",
-          "text": "Run away!"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "imagining actions",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
-      },
-      "targetEvidence": "chooses an interesting or plausible action regarding an unfamiliar creature",
-      "alignmentRationale": "This tests reasoning about an unfamiliar situation by asking what action to take with a novel thing, assessing creativity and engagement."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "01eb08a6-ca1f-498b-8214-8a6ea4579c33",
@@ -292,44 +252,24 @@
       "id": "6410ed22-33de-4a1f-ab0c-f3ad34daa3df",
       "age": 4,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If you had a pet dragon, what would you teach it to do?",
+      "prompt": "Imagine you have a pet dragon. What would you teach it to do? Why?",
       "rubric": [
-        "3 - You give a good idea for a fun activity or trick for the dragon.",
-        "2 - You suggest something that is only a little interesting, like just flying.",
-        "1 - You say something that is vague or unclear.",
-        "0 - You do not answer or say something not related."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Breathe fire!"
-        },
-        {
-          "key": "b",
-          "text": "Run fast."
-        },
-        {
-          "key": "c",
-          "text": "Make noise."
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "imagination for training a creature",
-      "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
-      },
-      "targetEvidence": "describes a unique action or skill to teach the dragon",
-      "alignmentRationale": "This task invites imaginative thinking and creativity in a fictional scenario."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "126328c1-4e40-4a43-87b0-c7d081f55e7c",
@@ -358,44 +298,24 @@
       "id": "b4c705ca-d1f2-401f-80d9-c9c3d73957db",
       "age": 4,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If a robot could help you with one thing, what would it do?",
+      "prompt": "Imagine a robot can help you with one thing. What should it do? Why?",
       "rubric": [
-        "3 - You pick an exciting or helpful task for the robot.",
-        "2 - You find something that is okay but not too interesting.",
-        "1 - You mention something that is unclear or unrelated.",
-        "0 - You do not answer."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Clean my room!"
-        },
-        {
-          "key": "b",
-          "text": "Say hello."
-        },
-        {
-          "key": "c",
-          "text": "Dance funny."
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "identifying helpful tasks for a tool",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "selects a specific helpful task for the robot",
-      "alignmentRationale": "This question involves reasoning about the potential uses of a tool in an imaginative context."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "ee912329-18b1-47e5-a6ee-138e950510d1",
@@ -516,44 +436,24 @@
       "id": "d462b555-168a-484e-9a14-caa8b0f106a3",
       "age": 4,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If you discovered a hidden treasure chest, what would you hope to find inside?",
+      "prompt": "Imagine you find a treasure chest. What do you hope is inside? Why?",
       "rubric": [
-        "3 - You choose something very exciting or interesting.",
-        "2 - You find something okay, but not very special.",
-        "1 - Your answer is vague or unclear.",
-        "0 - You do not answer."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Some rocks."
-        },
-        {
-          "key": "b",
-          "text": "Gold coins!"
-        },
-        {
-          "key": "c",
-          "text": "A map."
-        }
-      ],
-      "answerKey": "b",
-      "skillFacet": "conceptualizing treasure contents",
-      "optionScores": {
-        "a": 1,
-        "b": 3,
-        "c": 2
-      },
-      "targetEvidence": "selects a specific exciting item they would like to find",
-      "alignmentRationale": "This task prompts children to think creatively about what treasures might exist."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "97dd116c-cc68-4829-b419-9f8d4c21c2c3",
@@ -582,44 +482,24 @@
       "id": "b1290e6b-44c9-4a33-b3c6-f5e7d9deceed",
       "age": 4,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If you could have a magical tree that grows anything, what would you want it to grow?",
+      "prompt": "Imagine a magic tree that can grow anything. What would you want it to grow? Why?",
       "rubric": [
-        "3 - You choose something fun or useful to grow, like toys or fruits.",
-        "2 - You choose something less clear, that’s okay but not great, like books.",
-        "1 - You choose something strange or unrelated.",
-        "0 - You choose something impossible or silly."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Toys"
-        },
-        {
-          "key": "b",
-          "text": "Books"
-        },
-        {
-          "key": "c",
-          "text": "Dinosaurs"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "imagination about growth",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "The child suggests a plausible or creative item for a magical tree to grow.",
-      "alignmentRationale": "This question evaluates the child's ability to think beyond normal experiences about supernatural growth."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "10d4120c-5b65-4792-8003-9dd3b404205c",
@@ -648,87 +528,47 @@
       "id": "c7f82b25-863c-44b6-9395-d437dccd3dd9",
       "age": 5,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If you had a magic pen that drew food, what would it draw?",
+      "prompt": "Imagine a magic pen. Any food you draw becomes real! What would you draw? Who would you share it with?",
       "rubric": [
-        "3 - A food that is exciting, strange, or colorful, like rainbow spaghetti.",
-        "2 - A common food, like a pizza or sandwich, that many like.",
-        "1 - A simple food, like an apple or bread, that is not surprising.",
-        "0 - An answer that doesn’t name a food."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "rainbow spaghetti"
-        },
-        {
-          "key": "b",
-          "text": "pizza"
-        },
-        {
-          "key": "c",
-          "text": "apple"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "word for a food",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "Selects an imaginative food item that fits the magic pen scenario.",
-      "alignmentRationale": "This question assesses creativity and imagination with food beyond personal experience."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "5b2d390b-363f-452c-b130-692a80d26d70",
       "age": 5,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "In a world where it snows ice cream, what flavor would fall first?",
+      "prompt": "Imagine it snows ice cream! What flavour would you want? What would happen to the ground?",
       "rubric": [
-        "3 - The response gives a specific flavor that makes sense for ice cream.",
-        "2 - The response mentions a flavor but not quite sensibly.",
-        "1 - The response is vague and does not specify a flavor.",
-        "0 - The response does not relate to ice cream."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Chocolate"
-        },
-        {
-          "key": "b",
-          "text": "Broccoli"
-        },
-        {
-          "key": "c",
-          "text": "Vanilla"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "imagining food flavors",
-      "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
-      },
-      "targetEvidence": "chooses a plausible ice cream flavor for a novel scenario",
-      "alignmentRationale": "This task examines reasoning about flavors in a unique situation."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "c8287cae-c7c1-406b-97fa-a9f11bafec26",
@@ -823,44 +663,24 @@
       "id": "b580e6ee-c643-477c-92cb-b190d984cfd0",
       "age": 5,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If you woke up in a world where toys could talk, which toy would you talk to first?",
+      "prompt": "Imagine you wake up and your toys can talk! Which toy would you talk to first? What would you say?",
       "rubric": [
-        "3 - Chooses an imaginative toy like a robot or magic bear.",
-        "2 - Selects a typical toy, like a doll or action figure.",
-        "1 - Points to a regular object without character, like a block.",
-        "0 - An unrelated choice."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "magic bear"
-        },
-        {
-          "key": "b",
-          "text": "doll"
-        },
-        {
-          "key": "c",
-          "text": "block"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "word for a toy",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "Identifies a toy that suggests personality or character.",
-      "alignmentRationale": "Selecting toys shows creativity and the ability to imagine scenarios involving them."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "86493efd-4e35-4572-be06-665509a0f4b7",
@@ -889,87 +709,47 @@
       "id": "b493a3ff-9bc7-4894-8313-0dc2a67949d8",
       "age": 5,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If there was a forest full of giant flowers, which flower would you want to play near?",
+      "prompt": "Imagine a forest of giant flowers, taller than a house. What would you do there?",
       "rubric": [
-        "3 - Chooses an unusual and vibrant flower, like a rainbow flower.",
-        "2 - Selects a common flower, like a rose or sunflower.",
-        "1 - Picks a typical garden flower with no special quality.",
-        "0 - An unrelated or unclear answer."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "rainbow flower"
-        },
-        {
-          "key": "b",
-          "text": "rose"
-        },
-        {
-          "key": "c",
-          "text": "daisy"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "word for an imaginary flower",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "Identifies a flower that suggests imagination and wonder.",
-      "alignmentRationale": "This question encourages kids to think creatively about natural environments beyond their experience."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "b517c694-0f2d-453e-b2e4-b314a3d4819c",
       "age": 5,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If a panda could sing, what type of music would it like?",
+      "prompt": "Imagine a panda could sing. What kind of song would it sing? Why do you think so?",
       "rubric": [
-        "3 - The response clearly shows a fun choice that fits a panda's nature.",
-        "2 - The response gives a somewhat fitting music type but lacks clear connection.",
-        "1 - The response is vague about the type of music.",
-        "0 - The response does not answer the question."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Rock music"
-        },
-        {
-          "key": "b",
-          "text": "Classical music"
-        },
-        {
-          "key": "c",
-          "text": "Gentle lullabies"
-        }
-      ],
-      "answerKey": "c",
-      "skillFacet": "reasoning about preferences",
-      "optionScores": {
-        "a": 1,
-        "b": 2,
-        "c": 3
-      },
-      "targetEvidence": "chooses a type of music based on the panda's character",
-      "alignmentRationale": "This task measures the ability to think about others' preferences in new situations."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "3be76151-04f4-4002-8f62-e51607efc865",
@@ -1199,44 +979,24 @@
       "id": "5a41cb83-836f-40af-a11f-330f585dfa92",
       "age": 5,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If a cat could drive a car, where would it go?",
+      "prompt": "Imagine a cat could drive a car. Where would it go? Why?",
       "rubric": [
-        "3 - To the park to chase mice!",
-        "2 - To get food or a toy.",
-        "1 - It should not drive.",
-        "0 - Cats don't like to go anywhere."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "To the park"
-        },
-        {
-          "key": "b",
-          "text": "For food or toy"
-        },
-        {
-          "key": "c",
-          "text": "Cats shouldn't drive"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "reasoning about an unfamiliar role",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "child suggests a logical destination for a cat driving",
-      "alignmentRationale": "This examines the child's ability to ponder an unusual situation where a common animal takes on a new role."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "f255b1a5-ea5b-4ac7-8feb-49ce670f7d08",
@@ -1245,12 +1005,12 @@
       "type": "mcq",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "What happens if you shake a snow globe?",
+      "prompt": "Imagine you are tiny and live inside a snow globe. What happens when someone shakes it?",
       "rubric": [
-        "3 - The snow will swirl all around!",
-        "2 - It might make a little noise.",
-        "1 - Nothing special will happen.",
-        "0 - Shaking isn't good for it."
+        "3 - Chooses the swirling snow and imagines what it would be like inside",
+        "2 - Chooses the swirling snow without explaining",
+        "1 - Chooses 'Nothing moves at all'",
+        "0 - Chooses the sun coming out or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1260,26 +1020,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Swirl all around"
+          "text": "The sun comes out"
         },
         {
           "key": "b",
-          "text": "Make noise"
+          "text": "The snow swirls all around you"
         },
         {
           "key": "c",
-          "text": "Nothing special"
+          "text": "Nothing moves at all"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "reasoning about an imaginary object",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 0,
+        "b": 3,
         "c": 1
       },
-      "targetEvidence": "child predicts the effect of shaking a snow globe",
-      "alignmentRationale": "This evaluates the child's understanding of actions and their imaginative outcomes with an object they may have seen."
+      "skillFacet": "imagining a new viewpoint",
+      "targetEvidence": "Reasons about what a familiar event would be like from an impossible place.",
+      "alignmentRationale": "Puts the child in a situation they have never been in."
     },
     {
       "id": "19fec921-e976-4126-8af5-1f31fd8c8b9c",
@@ -1549,44 +1309,24 @@
       "id": "994e3159-a137-42c0-a41b-19e9a8309293",
       "age": 6,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "You find a strange, colorful rock on the street. If someone says it can grant wishes, what would you do?",
+      "prompt": "Imagine you find a colourful rock in your garden. A friend says it can grant wishes. How could you find out if that is true?",
       "rubric": [
-        "3 - You would take it to someone wise to ask about it.",
-        "2 - You would keep it and hope for a wish without checking.",
-        "1 - You would throw it away because it looks odd.",
-        "0 - You would ignore it and walk away."
+        "3 - Suggests a way to test the claim, like making a wish and checking, or asking a grown-up, and explains it",
+        "2 - Gives one idea to check, with no reason",
+        "1 - Just believes or rejects it without any idea of how to check",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         6,
         6
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Take it to someone wise"
-        },
-        {
-          "key": "b",
-          "text": "Keep it hope for a wish"
-        },
-        {
-          "key": "c",
-          "text": "Throw it away"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "evaluating unfamiliar objects",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "considers potential value of an unknown object and seeks guidance",
-      "alignmentRationale": "The task focuses on evaluating the utility of novel things."
+      "skillFacet": "reasoning about an unfamiliar claim",
+      "targetEvidence": "Plans how to check something they have never met before.",
+      "alignmentRationale": "Asks the child to reason about a magical claim outside everyday experience."
     },
     {
       "id": "83e077a6-a217-4f62-a068-40e2d5a80b9f",
@@ -1770,87 +1510,47 @@
       "id": "50993fa4-9dc0-4457-8008-beb62b366a82",
       "age": 6,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If you could help build a robot to do chores, what should it do first?",
+      "prompt": "Imagine you help build a robot to do chores at home. What job should it do first? Why?",
       "rubric": [
-        "3 - It should clean up toys to keep the house tidy.",
-        "2 - It could wash dishes sometimes.",
-        "1 - It can help cook food.",
-        "0 - It doesn't need to do any chores."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         6,
         6
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Clean up toys"
-        },
-        {
-          "key": "b",
-          "text": "Wash dishes"
-        },
-        {
-          "key": "c",
-          "text": "Help cook food"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "choosing activities for a new tool",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "prioritizes practical tasks for a fictional robot in a household",
-      "alignmentRationale": "This question tests reasoning about the function of a novel tool."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "a2888582-72ca-4883-99f3-699df1676f02",
       "age": 6,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "In a world where animals can talk, what would you ask a bird?",
+      "prompt": "Imagine animals can talk. What would you ask a bird? Why?",
       "rubric": [
-        "3 - You would ask about flying and what it's like.",
-        "2 - You might ask for a song to hear.",
-        "1 - You would ask about food.",
-        "0 - You wouldn't ask anything at all."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         6,
         6
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Ask about flying"
-        },
-        {
-          "key": "b",
-          "text": "Ask for a song"
-        },
-        {
-          "key": "c",
-          "text": "Ask about food"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "curiosity in novel interactions",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "expresses a desire to learn from a new creature in a creative setting",
-      "alignmentRationale": "This tests curiosity and open-endedness about interactions in a fictional world."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "fcbf07c6-32af-4cde-9cd2-d8c4fadbd630",
@@ -2057,44 +1757,24 @@
       "id": "ac037915-d5aa-4b1c-b17b-46601849be73",
       "age": 7,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If you found a talking tree in the forest, what would you want to learn from it?",
+      "prompt": "Imagine you find a talking tree in the forest. What would you want to learn from it? Why?",
       "rubric": [
-        "3 - You provide a thoughtful question to the tree, showing curiosity about nature or stories.",
-        "2 - You ask a question that's somewhat interesting but not deeply connected to the tree.",
-        "1 - You give a vague answer or a question that doesn’t fit well with the tree.",
-        "0 - You don't answer or your answer is not relevant."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "I would ask it about its age."
-        },
-        {
-          "key": "b",
-          "text": "I would ask it where the toys are."
-        },
-        {
-          "key": "c",
-          "text": "I would ask if it can fly."
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "constructing a question",
-      "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
-      },
-      "targetEvidence": "the child suggests a meaningful question related to the talking tree",
-      "alignmentRationale": "This question isolates the skill of generating curiosity-based questions about fictional entities."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "f067d2d9-5abc-4f9c-9b6a-ba68a9f8919f",
@@ -2169,87 +1849,47 @@
       "id": "3d71d8f6-de1b-45c4-8005-a7ac3bf4dbb1",
       "age": 7,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If you could make something magical happen in the sky, what would it be?",
+      "prompt": "If you could make one magic thing happen in the sky, what would it be? How would it change people's day?",
       "rubric": [
-        "3 - You provide a creative and specific idea for a magical sky event.",
-        "2 - You suggest something magical but it’s less imaginative.",
-        "1 - You mention an unrelated idea.",
-        "0 - You do not provide a relevant answer."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "I would make rainbow fireworks."
-        },
-        {
-          "key": "b",
-          "text": "I would make stars twinkle."
-        },
-        {
-          "key": "c",
-          "text": "I would make clouds change shapes."
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "imaginative event creation",
-      "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
-      },
-      "targetEvidence": "the child suggests a creative way to make magic in the sky",
-      "alignmentRationale": "The question prompts imaginative and magical scenarios involving the sky."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "b92f44e2-f869-447c-ad9c-b2dda06ae46e",
       "age": 7,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If you saw a friend drop their ice cream cone, what could you do to help them?",
+      "prompt": "Imagine you live on the Moon, where things float easily. Your friend's ice cream floats away! What could you do to help?",
       "rubric": [
-        "3 - You suggested sharing your own ice cream or buying them a new one.",
-        "2 - You said to give them a hug or cheer them up.",
-        "1 - You said to leave them alone.",
-        "0 - You did not suggest anything helpful."
+        "3 - Gives a kind idea that uses the floaty Moon world, like jumping to catch it or sharing a new treat, and explains it",
+        "2 - Gives a kind idea without using the Moon setting",
+        "1 - Gives an unclear or unhelpful idea",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "Share your ice cream"
-        },
-        {
-          "key": "b",
-          "text": "Help them find a place to sit"
-        },
-        {
-          "key": "c",
-          "text": "Ignore them"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "helpfulness in a new situation",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
-      },
-      "targetEvidence": "The child suggests a specific, helpful action to take.",
-      "alignmentRationale": "This question encourages the child to think about helping others in a new scenario rather than relying on personal experience."
+      "skillFacet": "helping in an unfamiliar world",
+      "targetEvidence": "Solves a problem in a setting they have never been in.",
+      "alignmentRationale": "Uses an imaginary Moon setting so the child reasons beyond everyday experience."
     },
     {
       "id": "c9433237-3311-4e90-b8c0-6b84a1d7a87d",
@@ -2367,44 +2007,24 @@
       "id": "8b306420-7870-4ea9-a8e7-b1047a951a96",
       "age": 7,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If you could build a playground made of candy, what fun thing would you want to add?",
+      "prompt": "Imagine a playground made of candy. What would you add to it? What might happen on a rainy day?",
       "rubric": [
-        "3 - You suggest a unique and enjoyable addition, showing creativity.",
-        "2 - You give a fun idea that's a bit common or expected.",
-        "1 - You mention something unrelated to fun or candy.",
-        "0 - You do not answer or provide an irrelevant response."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "I would add a slide made of chocolate."
-        },
-        {
-          "key": "b",
-          "text": "I would add swings."
-        },
-        {
-          "key": "c",
-          "text": "I would add a ball pit."
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "creative addition",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "the child proposes an imaginative and fun addition to the candy playground",
-      "alignmentRationale": "The question isolates creativity by prompting for unique ideas about a fictional playground."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "df3dfd94-ea65-425f-ad22-107ee382af76",
@@ -2456,44 +2076,24 @@
       "id": "5459fb4e-4ff4-46c9-a13c-1f9b9e3236b2",
       "age": 7,
       "reviewed": false,
-      "type": "mcq",
+      "type": "open",
       "trait": "beyond_experience",
       "format": "explanation",
-      "prompt": "If you could go to a park that has only animals that can talk, what would you ask one of them?",
+      "prompt": "Imagine a park where all the animals can talk. Which animal would you talk to, and what would you ask it?",
       "rubric": [
-        "3 - You asked what their favorite food is.",
-        "2 - You asked how they play with others.",
-        "1 - You asked what they do all day.",
-        "0 - You did not ask anything."
+        "3 - Gives an imaginative idea and a reason or result that fits the pretend world",
+        "2 - Gives an imaginative idea with little or no reason",
+        "1 - Gives a very short or off-topic answer",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "options": [
-        {
-          "key": "a",
-          "text": "What is your favorite food?"
-        },
-        {
-          "key": "b",
-          "text": "How do you play?"
-        },
-        {
-          "key": "c",
-          "text": "What do you do?"
-        }
-      ],
-      "answerKey": "a",
-      "skillFacet": "curiosity about fictional animals",
-      "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
-      },
-      "targetEvidence": "The child generates an engaging question about talking animals.",
-      "alignmentRationale": "This question invites the child to think beyond their experience in a creative context."
+      "skillFacet": "imagining an unfamiliar world",
+      "targetEvidence": "Describes an idea and a reason or result in a situation they have never been in.",
+      "alignmentRationale": "Any choice is fine; the score rewards reasoning about a new situation, not a particular answer."
     },
     {
       "id": "2035b2eb-19a0-40ab-8518-7d55b6ec37f0",

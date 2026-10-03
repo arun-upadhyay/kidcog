@@ -8,7 +8,7 @@
       "type": "open",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "You see these toys: robot, teddy bear, and train. Tell me another toy that is also fun to play with.",
+      "prompt": "Here are some toys: robot, teddy bear, and train. Tell me another toy that is also fun to play with.",
       "rubric": [
         "3 - Names a specific toy that is fun to play with.",
         "2 - Names a toy but is not specific or vague.",
@@ -31,7 +31,7 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these fruits: pear, peach, and plum. They all are fruits that can be juicy. Which fruit below can also be juicy?",
+      "prompt": "Here are some fruits: pear, peach, and plum. They all are fruits that can be juicy. Which fruit below can also be juicy?",
       "rubric": [
         "3 - Picks a juicy fruit.",
         "2 - Chooses a fruit that is not juicy but resembles one.",
@@ -117,12 +117,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Here are some shapes: square, crescent, and triangle. They all are shapes you can find in a park. Which shape below also can be found in a park?",
+      "prompt": "A square, a triangle and a star all have corners. Which shape has corners too?",
       "rubric": [
-        "3 - Correctly identifies a park shape.",
-        "2 - Chooses a shape that rarely appears in parks.",
-        "1 - Selects an unrelated object.",
-        "0 - No answer or irrelevant choice."
+        "3 - Chooses 'Rectangle'",
+        "2 - Chooses rectangle after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses circle or oval, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -132,26 +132,26 @@
       "options": [
         {
           "key": "a",
-          "text": "circle"
+          "text": "Circle"
         },
         {
           "key": "b",
-          "text": "star"
+          "text": "Rectangle"
         },
         {
           "key": "c",
-          "text": "diamond"
+          "text": "Oval"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognizing common shapes",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 2
+        "a": 0,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "Child selects a shape that is seen in parks.",
-      "alignmentRationale": "Choosing a park shape reflects understanding of common shapes."
+      "skillFacet": "extending a shape rule",
+      "targetEvidence": "Applies the corners rule to a new shape.",
+      "alignmentRationale": "Spots the shared feature and carries it to a new shape."
     },
     {
       "id": "9d9789dd-bf81-4f4c-b5ee-c32f35d2bc57",
@@ -160,12 +160,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these colors: pink, orange, and brown. They all are colors you might see in nature. Which color below also can be found in nature?",
+      "prompt": "Grass, leaves and frogs are all green. Which one is green too?",
       "rubric": [
-        "3 - Correctly identifies the natural color.",
-        "2 - Chooses a color that is rarely seen in nature.",
-        "1 - Selects a color that does not belong.",
-        "0 - No answer or irrelevant choice."
+        "3 - Chooses broccoli",
+        "2 - Chooses broccoli after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses sun or snow, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -175,26 +175,26 @@
       "options": [
         {
           "key": "a",
-          "text": "green"
+          "text": "☀️ Sun"
         },
         {
           "key": "b",
-          "text": "purple"
+          "text": "🥦 Broccoli"
         },
         {
           "key": "c",
-          "text": "grey"
+          "text": "❄️ Snow"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognizing natural elements",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "Child selects a color found in nature.",
-      "alignmentRationale": "Choosing a color that exists in nature shows understanding of natural elements."
+      "skillFacet": "extending a colour rule",
+      "targetEvidence": "Applies the green rule to a new thing.",
+      "alignmentRationale": "Spots the shared colour and carries it to a new case."
     },
     {
       "id": "fd4112a8-f876-4afe-bb50-4dad157e9ea4",
@@ -246,7 +246,7 @@
       "type": "open",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these snacks: chips, cookies, and candy. Tell me another snack that is tasty.",
+      "prompt": "Here are some snacks: chips, cookies, and candy. Tell me another snack that is tasty.",
       "rubric": [
         "3 - Names a specific tasty snack.",
         "2 - Names a snack that is not very specific.",
@@ -312,7 +312,7 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these animals: frog, lizard, and butterfly. They all can be found in gardens. Which animal below also can be found in a garden?",
+      "prompt": "Here are some animals: frog, lizard, and butterfly. They all can be found in gardens. Which animal below also can be found in a garden?",
       "rubric": [
         "3 - Correctly identifies an animal commonly found in gardens.",
         "2 - Picks an animal that might not typically be found in a garden but could be.",
@@ -355,12 +355,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these pets: dog, cat, and fish. They all live in our homes. Which pet below also lives in a home?",
+      "prompt": "A dog, a cat and a fish can live in our homes as pets. Which animal can live in a home too?",
       "rubric": [
-        "3 - Correctly identifies a valid pet that lives in a home.",
-        "2 - Chooses a plausible pet that may or may not live in a home.",
-        "1 - Selects an animal that does not live in a home.",
-        "0 - Makes an unrelated choice."
+        "3 - Chooses 'Hamster'",
+        "2 - Chooses hamster after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses lion or shark, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -370,26 +370,26 @@
       "options": [
         {
           "key": "a",
-          "text": "lion"
+          "text": "Lion"
         },
         {
           "key": "b",
-          "text": "parrot"
+          "text": "Hamster"
         },
         {
           "key": "c",
-          "text": "hamster"
+          "text": "Shark"
         }
       ],
-      "answerKey": "c",
-      "skillFacet": "home pet recognition",
+      "answerKey": "b",
       "optionScores": {
         "a": 0,
-        "b": 2,
-        "c": 3
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "identifies a pet that commonly lives in homes",
-      "alignmentRationale": "This task isolates generalization by requiring the identification of shared characteristics of pets related to their living environment."
+      "skillFacet": "extending a rule about pets",
+      "targetEvidence": "Applies the home-pet rule to a new animal.",
+      "alignmentRationale": "Spots the shared rule and carries it to a new case."
     },
     {
       "id": "72741128-d592-4599-ac8a-83c06e905e13",
@@ -441,7 +441,7 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these fruits: strawberry, blueberry, and raspberry. They all are berries. Which fruit below also is a berry?",
+      "prompt": "Here are some fruits: strawberry, blueberry, and raspberry. They all are berries. Which fruit below also is a berry?",
       "rubric": [
         "3 - Correctly identifies a valid berry.",
         "2 - Chooses a fruit that is similar but is not a berry.",
@@ -484,7 +484,7 @@
       "type": "open",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "You see these toys: truck, train, and plane. Tell me another toy that is also fun to play with.",
+      "prompt": "Here are some toys: truck, train, and plane. Tell me another toy that is also fun to play with.",
       "rubric": [
         "3 - Provides a correct and fun toy example.",
         "2 - Gives a toy that might be fun, but less clearly.",
@@ -507,7 +507,7 @@
       "type": "open",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these shapes: star, diamond, and rectangle. Name another shape that you know.",
+      "prompt": "Here are some shapes: star, diamond, and rectangle. Name another shape that you know.",
       "rubric": [
         "3 - Provides a correct shape name.",
         "2 - States a plausible but less familiar shape.",
@@ -530,7 +530,7 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these feelings: happy, sad, and scared. They all show how we feel. Which feeling below also shows how we feel?",
+      "prompt": "Here are some feelings: happy, sad, and scared. They all show how we feel. Which feeling below also shows how we feel?",
       "rubric": [
         "3 - Correctly identifies a feeling that expresses emotion.",
         "2 - Selects a plausible emotional word.",
@@ -616,12 +616,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these animals: dog, cat, and rabbit. They all have fur. Which animal below also has fur?",
+      "prompt": "A dog, a cat and a rabbit all have fur. Which animal has fur too?",
       "rubric": [
-        "3 - The child picks the correct answer and shows understanding of the shared rule about fur.",
-        "2 - The child selects a plausible option but doesn't fully explain why it fits.",
-        "1 - The child chooses an unrelated animal, showing some confusion about fur.",
-        "0 - The child does not make a choice or selects multiple options."
+        "3 - Chooses 'Bear'",
+        "2 - Chooses bear after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses fish or lizard, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -635,22 +635,22 @@
         },
         {
           "key": "b",
-          "text": "Lizard"
+          "text": "Bear"
         },
         {
           "key": "c",
-          "text": "Cat"
+          "text": "Lizard"
         }
       ],
-      "answerKey": "c",
-      "skillFacet": "generalization of characteristics",
+      "answerKey": "b",
       "optionScores": {
         "a": 0,
-        "b": 1,
-        "c": 3
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "Child identifies another animal with fur correctly.",
-      "alignmentRationale": "This question tests the ability to generalize characteristics shared by examples and apply them to a new case."
+      "skillFacet": "extending a rule about fur",
+      "targetEvidence": "Applies the fur rule to a new animal.",
+      "alignmentRationale": "Uses a new case instead of repeating an example."
     },
     {
       "id": "a9e01e98-6c59-4f08-aef7-e13de57b0985",
@@ -682,7 +682,7 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these activities: running, jumping, and swimming. They are all ways to play. Which activity below is also a way to play?",
+      "prompt": "Here are some activities: running, jumping, and swimming. They are all ways to play. Which activity below is also a way to play?",
       "rubric": [
         "3 - The child selects another activity that is play-like, showing understanding of play rules.",
         "2 - The child chooses an option that is less related to play or exercise.",
@@ -748,12 +748,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Here are some toys: a ball, a yo-yo, and a frisbee. They all roll. Which one rolls too?",
+      "prompt": "A ball, a marble and a wheel can all roll. Which one can roll too?",
       "rubric": [
-        "3 - Correctly identifies a toy like a car that also rolls.",
-        "2 - Chooses a toy like a doll that does not roll.",
-        "1 - Selects an object that has no rolling ability.",
-        "0 - Selects something unrelated or unclear."
+        "3 - Chooses 'Toy car'",
+        "2 - Chooses toy car after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses book or puzzle piece, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -763,26 +763,26 @@
       "options": [
         {
           "key": "a",
-          "text": "doll"
+          "text": "Book"
         },
         {
           "key": "b",
-          "text": "car"
+          "text": "Toy car"
         },
         {
           "key": "c",
-          "text": "puzzle"
+          "text": "Puzzle piece"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "movement",
       "optionScores": {
-        "a": 1,
+        "a": 0,
         "b": 3,
         "c": 0
       },
-      "targetEvidence": "chooses a toy that also rolls.",
-      "alignmentRationale": "Assesses understanding of rolling as motion by applying it to new examples."
+      "skillFacet": "extending a rule about movement",
+      "targetEvidence": "Applies the rolling rule to a new object.",
+      "alignmentRationale": "Spots the shared feature and carries it to a new case."
     },
     {
       "id": "f06a32e6-f8c6-4714-bd05-0154b7759f53",
@@ -857,12 +857,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Here are some birds: a sparrow, a crow, and a parrot. They can all fly. Which one can fly too?",
+      "prompt": "A sparrow, a crow and a parrot are birds that can fly. Which one can fly too?",
       "rubric": [
-        "3 - Correctly identifies a flying bird like a robin.",
-        "2 - Chooses a plausible but non-flying bird like a penguin.",
-        "1 - Identifies a non-bird like a bat.",
-        "0 - Chooses an unrelated or unclear option."
+        "3 - Chooses 'Robin'",
+        "2 - Chooses robin after help",
+        "1 - Chooses penguin, a bird that cannot fly",
+        "0 - Chooses dog or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -872,26 +872,26 @@
       "options": [
         {
           "key": "a",
-          "text": "penguin"
+          "text": "Penguin"
         },
         {
           "key": "b",
-          "text": "bat"
+          "text": "Robin"
         },
         {
           "key": "c",
-          "text": "robin"
+          "text": "Dog"
         }
       ],
-      "answerKey": "c",
-      "skillFacet": "action (flying)",
+      "answerKey": "b",
       "optionScores": {
         "a": 1,
-        "b": 0,
-        "c": 3
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "selects a new bird that can fly.",
-      "alignmentRationale": "Focuses on applying the rule of flying to identify a related example."
+      "skillFacet": "extending a rule about flying",
+      "targetEvidence": "Applies the flying rule to a new bird.",
+      "alignmentRationale": "Requires carrying a rule to a new example."
     },
     {
       "id": "5fc88387-38c0-4f2b-9601-0b215898ec0b",
@@ -900,12 +900,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Here are some drinks: water, juice, and milk. They are all healthy. Which drink is healthy too?",
+      "prompt": "Cheese, yogurt and butter are all made from milk. Which one is made from milk too?",
       "rubric": [
-        "3 - Correctly identifies a healthy drink like lemonade.",
-        "2 - Picks a drink like soda that is less healthy.",
-        "1 - Chooses a drink that is unhealthy like chocolate milk.",
-        "0 - Selects an unclear or unrelated option."
+        "3 - Chooses 'Ice cream'",
+        "2 - Chooses ice cream after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses apple or carrot, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -915,26 +915,26 @@
       "options": [
         {
           "key": "a",
-          "text": "soda"
+          "text": "Ice cream"
         },
         {
           "key": "b",
-          "text": "lemonade"
+          "text": "Apple"
         },
         {
           "key": "c",
-          "text": "chocolate milk"
+          "text": "Carrot"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "healthiness",
+      "answerKey": "a",
       "optionScores": {
-        "a": 1,
-        "b": 3,
+        "a": 3,
+        "b": 0,
         "c": 0
       },
-      "targetEvidence": "chooses a drink that is also healthy.",
-      "alignmentRationale": "Tests generalization of healthy drinks by applying the rule to a new example."
+      "skillFacet": "extending a rule about foods",
+      "targetEvidence": "Applies the made-from-milk rule to a new food.",
+      "alignmentRationale": "Carries an objective rule to a new case."
     },
     {
       "id": "f6980758-6eef-4a03-8a77-9e1a4ae99898",
@@ -966,12 +966,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Here are some vehicles: a bicycle, a bus, and a truck. They can all carry people. Which one can carry people too?",
+      "prompt": "A bicycle, a bus and a truck can all carry people. Which one can carry people too?",
       "rubric": [
-        "3 - Correctly identifies a car that carries people.",
-        "2 - Chooses a motorcycle which may carry one.",
-        "1 - Picks a vehicle like a train that is less common.",
-        "0 - Selects something unrelated or unclear."
+        "3 - Chooses 'Car'",
+        "2 - Chooses car after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses shoe or kite, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -981,26 +981,26 @@
       "options": [
         {
           "key": "a",
-          "text": "motorcycle"
+          "text": "Car"
         },
         {
           "key": "b",
-          "text": "car"
+          "text": "Shoe"
         },
         {
           "key": "c",
-          "text": "boat"
+          "text": "Kite"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "vehicle function",
+      "answerKey": "a",
       "optionScores": {
-        "a": 2,
-        "b": 3,
-        "c": 1
+        "a": 3,
+        "b": 0,
+        "c": 0
       },
-      "targetEvidence": "selects another vehicle that carries people.",
-      "alignmentRationale": "Isolates the notion of carrying people by applying it to new examples."
+      "skillFacet": "extending a rule about vehicles",
+      "targetEvidence": "Applies the carries-people rule to a new thing.",
+      "alignmentRationale": "Carries a rule from examples to a new case."
     },
     {
       "id": "7d181d81-cecb-4869-a0d9-31dc75be454f",
@@ -1161,12 +1161,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Here are some pets: a dog, a cat, and a rabbit. They all are furry. Which pet is furry too?",
+      "prompt": "A dog, a cat and a rabbit are furry pets. Which pet is furry too?",
       "rubric": [
-        "3 - Correctly identifies the furry pet.",
-        "2 - Chooses a pet that is partly furry.",
-        "1 - Picks a pet with no fur.",
-        "0 - Selects an unrelated option."
+        "3 - Chooses hamster",
+        "2 - Chooses hamster after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses turtle or fish, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1180,22 +1180,22 @@
         },
         {
           "key": "b",
-          "text": "🐰 Rabbit"
+          "text": "🐟 Fish"
         },
         {
           "key": "c",
-          "text": "🐦 Bird"
+          "text": "🐹 Hamster"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "recognizing fur in animals",
+      "answerKey": "c",
       "optionScores": {
         "a": 0,
-        "b": 3,
-        "c": 1
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "identifies a furry pet among examples",
-      "alignmentRationale": "The task derives from the characteristic shared by the given examples and applies it to identify another example."
+      "skillFacet": "extending a rule about fur",
+      "targetEvidence": "Applies the furry rule to a new pet.",
+      "alignmentRationale": "Uses a new case instead of repeating an example."
     },
     {
       "id": "6f7b11bd-bc16-42f1-82ad-cbdf6e4a5eca",
@@ -1204,12 +1204,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these animals: a lion, a tiger, and a bear. They all growl. Which one can growl too?",
+      "prompt": "A lion, a tiger and a bear can all growl. Which other animal can growl too?",
       "rubric": [
-        "3 - Correctly identifies the option that growls.",
-        "2 - Chooses an animal that is partly correct.",
-        "1 - Selects an option with a different sound.",
-        "0 - Picks any option unrelated to animal sounds."
+        "3 - Chooses 'Wolf'",
+        "2 - Chooses wolf after help, or names another growling animal",
+        "1 - Gives a partly related answer",
+        "0 - Chooses fish or butterfly, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1219,26 +1219,26 @@
       "options": [
         {
           "key": "a",
-          "text": "🐻 Bear"
+          "text": "🐟 Fish"
         },
         {
           "key": "b",
-          "text": "🐯 Tiger"
+          "text": "🦋 Butterfly"
         },
         {
           "key": "c",
-          "text": "🐶 Dog"
+          "text": "🐺 Wolf"
         }
       ],
-      "answerKey": "b",
-      "skillFacet": "recognizing sounds in animals",
+      "answerKey": "c",
       "optionScores": {
         "a": 0,
-        "b": 3,
-        "c": 1
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "identifies a growling animal among the options",
-      "alignmentRationale": "The task tests the ability to find a common characteristic (growing) among examples and apply it to a new case."
+      "skillFacet": "extending a rule about sounds",
+      "targetEvidence": "Applies the growling rule to a new animal.",
+      "alignmentRationale": "Spots what the examples share and carries it to a new case."
     },
     {
       "id": "2ac61a9d-fa58-41c7-96fe-35378fb80810",
@@ -1247,12 +1247,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "These fruits are yellow: banana and lemon. Which fruit is yellow too?",
+      "prompt": "A banana and a lemon are yellow. Which one is yellow too?",
       "rubric": [
-        "3 - Correctly identifies the yellow fruit.",
-        "2 - Chooses a fruit that is partly yellow.",
-        "1 - Selects a fruit that is not yellow at all.",
-        "0 - Picks any unrelated option."
+        "3 - Chooses sunflower",
+        "2 - Chooses sunflower after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses strawberry or grapes, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1262,26 +1262,26 @@
       "options": [
         {
           "key": "a",
-          "text": "🍏 Apple"
+          "text": "🍓 Strawberry"
         },
         {
           "key": "b",
-          "text": "🍊 Orange"
+          "text": "🌻 Sunflower"
         },
         {
           "key": "c",
-          "text": "🍌 Banana"
+          "text": "🍇 Grapes"
         }
       ],
-      "answerKey": "c",
-      "skillFacet": "finding color in objects",
+      "answerKey": "b",
       "optionScores": {
         "a": 0,
-        "b": 1,
-        "c": 3
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "states or chooses a yellow fruit from examples",
-      "alignmentRationale": "The task uses color to isolate the ability to generalize from the examples given."
+      "skillFacet": "extending a colour rule",
+      "targetEvidence": "Applies the yellow rule to a new thing.",
+      "alignmentRationale": "Uses a new case instead of repeating an example."
     },
     {
       "id": "8fc425e0-e7f1-48b0-9cdd-1fde857bbe4e",
@@ -1313,12 +1313,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these shapes: a star, a circle, and a triangle. They all have points. Which shape has points too?",
+      "prompt": "A star, a triangle and a diamond all have corners. Which shape has corners too?",
       "rubric": [
-        "3 - Correctly identifies the pointed shape.",
-        "2 - Chooses a shape that is partly pointed.",
-        "1 - Selects a shape with no points.",
-        "0 - Picks an unrelated option."
+        "3 - Chooses 'Square'",
+        "2 - Chooses square after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses circle or oval, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1328,26 +1328,26 @@
       "options": [
         {
           "key": "a",
-          "text": "⭐ Star"
+          "text": "Circle"
         },
         {
           "key": "b",
-          "text": "🔵 Circle"
+          "text": "Square"
         },
         {
           "key": "c",
-          "text": "🔶 Triangle"
+          "text": "Oval"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognizing features in shapes",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 0,
-        "c": 1
+        "a": 0,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "identifies a shape with points among examples",
-      "alignmentRationale": "The task tests the ability to find a shared feature (points) among examples and apply it to a new case."
+      "skillFacet": "extending a shape rule",
+      "targetEvidence": "Applies the corners rule to a new shape.",
+      "alignmentRationale": "Spots the shared feature and carries it to a new shape."
     },
     {
       "id": "047d1631-729d-4916-957f-23ccd91e659b",
@@ -1356,21 +1356,21 @@
       "type": "open",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Imagine a cupcake, a cookie, and a cake. Which one do you think is sweet?",
+      "prompt": "A cupcake, a cookie and a cake are all sweet treats. Can you name another sweet treat that fits this group?",
       "rubric": [
-        "3 - Response includes 'cupcake', 'cake', or acknowledges sweets in some form.",
-        "2 - Suggests a related dessert that may be perceived as sweet.",
-        "1 - Offers an unrelated food item, showing confusion.",
-        "0 - Did not answer or repeated the question without answering."
+        "3 - Names a new sweet treat and says it is sweet like the others",
+        "2 - Names a sweet treat but gives no reason",
+        "1 - Names a food that is not sweet",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         5,
         5
       ],
-      "skillFacet": "understanding common food characteristics",
-      "targetEvidence": "Indicates familiarity with the sweetness associated with desserts or junk food choices.",
-      "alignmentRationale": "Aims to understand children's perceptions of food categories related to sweetness, not just memorization."
+      "skillFacet": "extending a category",
+      "targetEvidence": "Names a new item that fits the group.",
+      "alignmentRationale": "Asks the child to carry the 'sweet treats' rule to a new case."
     },
     {
       "id": "63e8e961-8507-4392-875c-83503bb6dfbe",
@@ -1379,7 +1379,7 @@
       "type": "open",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these sounds: a dog barks, a cat meows, and a cow moos. What sound does a sheep make?",
+      "prompt": "Here are some sounds: a dog barks, a cat meows, and a cow moos. What sound does a sheep make?",
       "rubric": [
         "3 - Correctly states 'baa' or similar sound associated with a sheep.",
         "2 - Provides a different animal sound that still fits in context of common barn animals.",
@@ -1425,7 +1425,7 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these animals: a dog, a cat, and a rabbit. They all have soft fur. Which one has fur too? 🐻",
+      "prompt": "Here are some animals: a dog, a cat, and a rabbit. They all have soft fur. Which one has fur too? 🐻",
       "rubric": [
         "3 - The answer chosen correctly shows understanding that the animal has fur.",
         "2 - The answer chosen is a plausible animal but may not have fur.",
@@ -1534,12 +1534,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "You see a couch, a chair, and a table. Which piece of furniture belongs with these?",
+      "prompt": "A couch, a chair and a table are all furniture. Which one is furniture too?",
       "rubric": [
-        "3 - Indicates a suitable piece of furniture that aligns with home living.",
-        "2 - Suggests a piece of furniture but may not fit the exact purpose.",
-        "1 - Choice is irrelevant or mismatched with the provided category.",
-        "0 - No answer or unrelated suggestion."
+        "3 - Chooses 'Bed'",
+        "2 - Chooses bed after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses spoon or apple, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1549,26 +1549,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Bed"
+          "text": "Spoon"
         },
         {
           "key": "b",
-          "text": "Desk"
+          "text": "Bed"
         },
         {
           "key": "c",
-          "text": "Lamp"
+          "text": "Apple"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "recognizing furniture types",
       "optionScores": {
-        "a": 1,
+        "a": 0,
         "b": 3,
-        "c": 2
+        "c": 0
       },
-      "targetEvidence": "uses the shared purpose of home furniture to suggest an appropriate addition.",
-      "alignmentRationale": "This checks the child's ability to categorize home furniture pieces and apply that knowledge to suggest a corresponding piece."
+      "skillFacet": "extending a category",
+      "targetEvidence": "Applies the furniture group to a new item.",
+      "alignmentRationale": "Spots the group and carries it to a new case."
     },
     {
       "id": "d3d2802c-8ee6-4102-ac9a-5f3b7d90eacb",
@@ -1600,12 +1600,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "You have a banana, a cherry, and a peach. Which fruit fits well with these?",
+      "prompt": "A banana, a cherry and a peach are all fruits. Which one is a fruit too?",
       "rubric": [
-        "3 - The answer correctly identifies an appropriate fruit that shares a similar characteristic (like being small, soft, or sweet).",
-        "2 - The answer suggests a fruit that connects to one characteristic but misses another.",
-        "1 - The chosen fruit is unrelated to the given examples or doesn't make sense.",
-        "0 - No answer or an irrelevant choice."
+        "3 - Chooses 'Strawberry'",
+        "2 - Chooses strawberry after help",
+        "1 - Chooses carrot",
+        "0 - Chooses bread or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1615,11 +1615,11 @@
       "options": [
         {
           "key": "a",
-          "text": "Watermelon"
+          "text": "Carrot"
         },
         {
           "key": "b",
-          "text": "Blueberry"
+          "text": "Bread"
         },
         {
           "key": "c",
@@ -1627,14 +1627,14 @@
         }
       ],
       "answerKey": "c",
-      "skillFacet": "identifying shared characteristics",
       "optionScores": {
         "a": 1,
-        "b": 2,
+        "b": 0,
         "c": 3
       },
-      "targetEvidence": "states or uses the shared rule about fruit types or characteristics.",
-      "alignmentRationale": "This question tests observation of a specific category of fruits and applies it to a new example, distinct from mere recall or matching."
+      "skillFacet": "extending a category",
+      "targetEvidence": "Applies the fruit group to a new item.",
+      "alignmentRationale": "Spots the group and carries it to a new case."
     },
     {
       "id": "27465a27-783b-4a86-822d-226bb1396ae4",
@@ -1643,12 +1643,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "You see a cat, a hamster, and a fish. Which pet belongs with these?",
+      "prompt": "A cat, a hamster and a fish can be pets. Which animal can be a pet too?",
       "rubric": [
-        "3 - The answer identifies another pet that is also small and commonly kept indoors.",
-        "2 - The answer suggests a pet that is common but not quite fitting the shared characteristic.",
-        "1 - The chosen pet is unrelated or does not fit with the examples.",
-        "0 - No answer or entirely irrelevant choice."
+        "3 - Chooses 'Rabbit'",
+        "2 - Chooses rabbit after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses elephant or shark, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1666,18 +1666,18 @@
         },
         {
           "key": "c",
-          "text": "Bird"
+          "text": "Shark"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "recognizing pet types",
       "optionScores": {
-        "a": 1,
+        "a": 0,
         "b": 3,
-        "c": 2
+        "c": 0
       },
-      "targetEvidence": "states or uses the shared feature of indoor pets.",
-      "alignmentRationale": "This engages the child in finding common traits, applying knowledge to suggest an appropriate new example in a known category."
+      "skillFacet": "extending a rule about pets",
+      "targetEvidence": "Applies the pet rule to a new animal.",
+      "alignmentRationale": "Spots the shared rule and carries it to a new case."
     },
     {
       "id": "d8a4f9a8-ed54-4500-8f58-775d5aeb6587",
@@ -1709,12 +1709,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "You find a red shirt, a blue shirt, and a green shirt. What color shirt could we add?",
+      "prompt": "You have a red shirt, a blue shirt and a green shirt. Which could be another shirt colour?",
       "rubric": [
-        "3 - Correctly suggests a new shirt color that fits with the others.",
-        "2 - Suggests a color that partially fits but is less common for shirts.",
-        "1 - Suggests an unrelated color.",
-        "0 - Cannot answer or chooses unrelated options."
+        "3 - Chooses pink or brown, both colours",
+        "2 - Chooses a colour after help",
+        "1 - Gives an unclear answer",
+        "0 - Chooses carrot or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1736,14 +1736,14 @@
         }
       ],
       "answerKey": "a",
-      "skillFacet": "category extension",
       "optionScores": {
         "a": 3,
-        "b": 2,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "the child correctly identifies and extends color categories",
-      "alignmentRationale": "This question assesses generalization through colors and shirt types in a clear set."
+      "skillFacet": "extending a category",
+      "targetEvidence": "Recognises that the group is colours and picks a new colour.",
+      "alignmentRationale": "Spots the rule (colours) and applies it."
     },
     {
       "id": "3378cd45-db92-4a95-b493-084d45eaa6c3",
@@ -1752,12 +1752,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "You see a grape, an apple, and a banana. What fruit should we add next?",
+      "prompt": "A grape, an apple and a banana are all fruits. Which one is a fruit too?",
       "rubric": [
-        "3 - Correctly suggests a fruit not already listed, showing understanding of the category.",
-        "2 - Suggests a fruit but it’s less common or not typical.",
-        "1 - Suggests something that is not a fruit.",
-        "0 - Cannot answer or chooses unrelated items."
+        "3 - Chooses 'Orange'",
+        "2 - Chooses orange after help",
+        "1 - Chooses carrot",
+        "0 - Chooses bread or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1775,18 +1775,18 @@
         },
         {
           "key": "c",
-          "text": "Grapefruit"
+          "text": "Bread"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "generalization of categories",
       "optionScores": {
-        "a": 0,
+        "a": 1,
         "b": 3,
-        "c": 2
+        "c": 0
       },
-      "targetEvidence": "the child categorizes the fruit correctly and applies that to suggest another fruit",
-      "alignmentRationale": "This task isolates identifying and extending a clear category, which is essential for making generalizations."
+      "skillFacet": "extending a category",
+      "targetEvidence": "Applies the fruit group to a new item.",
+      "alignmentRationale": "Spots the group and carries it to a new case."
     },
     {
       "id": "a2f42529-10c2-4d8f-82ac-7cc98bf5615d",
@@ -1884,12 +1884,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "There are three types of weather: sunny, rainy, and windy. What type of weather could we add next?",
+      "prompt": "Sunny, rainy and windy are kinds of weather. Which one is a kind of weather too?",
       "rubric": [
-        "3 - Suggests a valid type of weather that fits the pattern.",
-        "2 - Suggests a weather type that is somewhat related.",
-        "1 - Suggests something unrelated to weather.",
-        "0 - Cannot answer or chooses unrelated options."
+        "3 - Chooses 'Snowy'",
+        "2 - Chooses snowy after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses sleepy or hungry, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1899,11 +1899,11 @@
       "options": [
         {
           "key": "a",
-          "text": "Tornado"
+          "text": "Sleepy"
         },
         {
           "key": "b",
-          "text": "Cloudy"
+          "text": "Hungry"
         },
         {
           "key": "c",
@@ -1911,14 +1911,14 @@
         }
       ],
       "answerKey": "c",
-      "skillFacet": "category extension",
       "optionScores": {
-        "a": 1,
-        "b": 2,
+        "a": 0,
+        "b": 0,
         "c": 3
       },
-      "targetEvidence": "the child identifies types of weather correctly and extends that category",
-      "alignmentRationale": "This tests generalization skills by assessing recognition of categories in weather types."
+      "skillFacet": "extending a category",
+      "targetEvidence": "Applies the weather group to a new word.",
+      "alignmentRationale": "Spots the group and carries it to a new case."
     },
     {
       "id": "0e67e7c2-569e-4ce1-8fcd-bda80eb3fdb6",
@@ -1927,7 +1927,7 @@
       "type": "open",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these items: a ball, a frisbee, and a kite. What other outdoor toy could we use for fun?",
+      "prompt": "Here are some items: a ball, a frisbee, and a kite. What other outdoor toy could we use for fun?",
       "rubric": [
         "3 - Successfully adds a playful outdoor toy and explains why it fits.",
         "2 - Adds an item that’s relevant but less common and explains briefly.",
@@ -2108,12 +2108,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "These items are all animals: elephant, giraffe, and lion. Which animal fits this group?",
+      "prompt": "An elephant, a giraffe and a lion all live in the wild in Africa. Which animal lives in the wild in Africa too?",
       "rubric": [
-        "3 - Correctly identifies another large animal like zebra.",
-        "2 - Identifies a related animal but not a large one.",
-        "1 - Chooses something that isn't an animal.",
-        "0 - No relevant mention."
+        "3 - Chooses 'Zebra'",
+        "2 - Chooses zebra after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses polar bear or kangaroo, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2123,26 +2123,26 @@
       "options": [
         {
           "key": "a",
-          "text": "zebra"
+          "text": "Polar bear"
         },
         {
           "key": "b",
-          "text": "squirrel"
+          "text": "Zebra"
         },
         {
           "key": "c",
-          "text": "chicken"
+          "text": "Kangaroo"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "item for an animal category",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
+        "a": 0,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "Identifies another example correctly fitting the animal category.",
-      "alignmentRationale": "Tests the ability to generalize from examples of large animals to another related one."
+      "skillFacet": "extending a narrower rule",
+      "targetEvidence": "Uses where the animals live to pick a new one.",
+      "alignmentRationale": "Requires noticing a narrower rule than just 'animals'."
     },
     {
       "id": "edb7e973-14ad-4367-8cde-ae0ab856a4ec",
@@ -2194,12 +2194,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "These colors: red, blue, and yellow are primary colors. Which of these is also a primary color?",
+      "prompt": "Red and yellow mix to make orange. Blue and yellow mix to make green. What do red and blue make?",
       "rubric": [
-        "3 - Correctly identifies red, a primary color.",
-        "2 - Identifies a color that's related but not primary.",
-        "1 - Mentions a color but not correct.",
-        "0 - Does not mention any valid colors."
+        "3 - Chooses 'Purple'",
+        "2 - Chooses purple after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses white or yellow, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2209,26 +2209,26 @@
       "options": [
         {
           "key": "a",
-          "text": "blue"
+          "text": "White"
         },
         {
           "key": "b",
-          "text": "cyan"
+          "text": "Purple"
         },
         {
           "key": "c",
-          "text": "brown"
+          "text": "Yellow"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "item for a color category",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 1,
+        "a": 0,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "Identifies a primary color from examples provided.",
-      "alignmentRationale": "This question assesses the understanding of color categories, focusing on identification of primary colors."
+      "skillFacet": "extending a colour-mixing pattern",
+      "targetEvidence": "Uses the mixing pattern to predict a new result.",
+      "alignmentRationale": "Spots the pattern from two examples and applies it to a new pair."
     },
     {
       "id": "72c0178d-bf5d-4f57-b8b3-8daf26390aa2",
@@ -2237,7 +2237,7 @@
       "type": "open",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "You see these toys: a doll, a puzzle, and a ball. What is a rule that fits these toys?",
+      "prompt": "Here are some toys: a doll, a puzzle, and a ball. What is a rule that fits these toys?",
       "rubric": [
         "3 - States a clear rule like 'They are all toys.'",
         "2 - Suggests a related idea but is not quite clear.",
@@ -2412,7 +2412,7 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "Look at these items: apple, banana, and orange. They are all fruits. Now, which of these is also a fruit?",
+      "prompt": "Here are some items: apple, banana, and orange. They are all fruits. Now, which of these is also a fruit?",
       "rubric": [
         "3 - Correctly identifies a fruit.",
         "2 - Chooses a food item but not fruit.",
@@ -2455,12 +2455,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "You see these shapes: circle, square, triangle. They are all shapes with different qualities. Which shape best fits this group?",
+      "prompt": "A square, a triangle and a rectangle have only straight sides. Which shape has only straight sides too?",
       "rubric": [
-        "3 - Correctly identifies a shape that shares similar qualities.",
-        "2 - Chooses a shape that relates but does not fit perfectly.",
-        "1 - Selects a shape that does not fit the category at all.",
-        "0 - Cannot choose or gives no answer."
+        "3 - Chooses 'Diamond'",
+        "2 - Chooses diamond after help",
+        "1 - Gives a partly related answer",
+        "0 - Chooses circle or oval, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2470,26 +2470,26 @@
       "options": [
         {
           "key": "a",
-          "text": "circle"
+          "text": "Diamond"
         },
         {
           "key": "b",
-          "text": "oval"
+          "text": "Circle"
         },
         {
           "key": "c",
-          "text": "rectangle"
+          "text": "Oval"
         }
       ],
-      "answerKey": "c",
-      "skillFacet": "identifying shared qualities",
+      "answerKey": "a",
       "optionScores": {
-        "a": 0,
-        "b": 1,
-        "c": 3
+        "a": 3,
+        "b": 0,
+        "c": 0
       },
-      "targetEvidence": "picks a shape that shares qualities with the others",
-      "alignmentRationale": "This question focuses on identifying common characteristics of shapes and applying that to select a correct example."
+      "skillFacet": "extending a shape rule",
+      "targetEvidence": "Applies the straight-sides rule to a new shape.",
+      "alignmentRationale": "Spots the shared feature and carries it to a new shape."
     },
     {
       "id": "f0c4e13d-688e-4025-b861-23eb10dbf621",
@@ -2541,21 +2541,21 @@
       "type": "open",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "How do friends help each other feel better?",
+      "prompt": "Sharing, helping and saying sorry are kind things friends do. Can you think of another kind thing that fits? Why does it fit?",
       "rubric": [
-        "3 - Provides a clear supportive action.",
-        "2 - Offers a reasonable idea, but lacks clarity.",
-        "1 - Suggests something not very helpful or unclear.",
-        "0 - Does not answer or gives an irrelevant response."
+        "3 - Names a new kind action and explains it fits because it is kind",
+        "2 - Names a kind action but gives no reason",
+        "1 - Names something not clearly kind",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "skillFacet": "recognizing supportive actions",
-      "targetEvidence": "provides a suggestion that supports friendship",
-      "alignmentRationale": "This question encourages thoughtful responses about supporting friendships rather than just listing actions."
+      "skillFacet": "extending a rule about kindness",
+      "targetEvidence": "Spots what the examples share and adds a new one.",
+      "alignmentRationale": "Turns the item into rule-finding from examples."
     },
     {
       "id": "10d1b39f-5aba-4b3c-846a-96caaf4eaeec",
@@ -2607,21 +2607,21 @@
       "type": "open",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "What is a rule for staying healthy?",
+      "prompt": "Washing hands, eating fruit and sleeping well help us stay healthy. Name another habit that fits this group. Why does it fit?",
       "rubric": [
-        "3 - Provides a clear, logical health rule.",
-        "2 - Offers a reasonable health idea, lacks clarity.",
-        "1 - States an idea without a clear connection to health.",
-        "0 - Does not answer or gives an irrelevant response."
+        "3 - Names a new healthy habit and explains how it helps the body",
+        "2 - Names a healthy habit but gives no reason",
+        "1 - Names something not clearly healthy",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "skillFacet": "generalizing health concepts",
-      "targetEvidence": "gives a sensible generalization about health",
-      "alignmentRationale": "This item looks for the child’s ability to think about health and apply a generalized rule."
+      "skillFacet": "extending a rule about health",
+      "targetEvidence": "Spots what the examples share and adds a new one.",
+      "alignmentRationale": "Asks the child to generalise from examples to a new case."
     },
     {
       "id": "d6e0d9b1-2edc-4739-b31a-5197997f4d8d",
@@ -2653,12 +2653,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "All the animals in this picture eat grass: cow, horse, sheep. Which new animal does also eat grass?",
+      "prompt": "These animals eat grass: cow, horse, sheep. Which other animal eats grass too?",
       "rubric": [
-        "3 - Correctly identifies the new grass-eating animal.",
-        "2 - Chooses a plausible animal but not well known for grass-eating.",
-        "1 - Selects an animal that does not eat grass from the options.",
-        "0 - Cannot choose or gives irrelevant reasoning."
+        "3 - Chooses 'Goat' and links it to the grass-eating rule",
+        "2 - Chooses goat but cannot explain",
+        "1 - Chooses cat",
+        "0 - Chooses shark or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2668,26 +2668,26 @@
       "options": [
         {
           "key": "a",
-          "text": "cat"
+          "text": "Cat"
         },
         {
           "key": "b",
-          "text": "dog"
+          "text": "Goat"
         },
         {
           "key": "c",
-          "text": "goat"
+          "text": "Shark"
         }
       ],
-      "answerKey": "c",
-      "skillFacet": "choosing a necessary category",
+      "answerKey": "b",
       "optionScores": {
-        "a": 0,
-        "b": 1,
-        "c": 3
+        "a": 1,
+        "b": 3,
+        "c": 0
       },
-      "targetEvidence": "chooses an animal that is known to eat grass",
-      "alignmentRationale": "This task requires identifying the generalization of grass-eating animals and applying it to a new example."
+      "skillFacet": "extending a rule about animals",
+      "targetEvidence": "Carries the 'eats grass' rule to a new animal.",
+      "alignmentRationale": "Spots the shared rule and applies it to a new case."
     },
     {
       "id": "132a5890-fb0f-4b27-b0ed-6c24a53b0666",
@@ -2805,12 +2805,12 @@
       "type": "mcq",
       "trait": "generalization",
       "format": "explanation",
-      "prompt": "These foods: pizza, pasta, and ice cream are all favorite foods. Which of these is also a favorite food?",
+      "prompt": "Pizza, pasta and bread are all made with flour. Which food is made with flour too?",
       "rubric": [
-        "3 - Correctly identifies another favorite food item.",
-        "2 - Chooses an option that is a food item but less popular.",
-        "1 - Selects an option that is not a food item but is a drink.",
-        "0 - Chooses something completely unrelated to food."
+        "3 - Chooses 'Pancake' and links it to flour",
+        "2 - Chooses pancake but cannot explain",
+        "1 - Gives a partly related answer",
+        "0 - Chooses grape or boiled egg, or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2820,26 +2820,26 @@
       "options": [
         {
           "key": "a",
-          "text": "zucchini"
+          "text": "Pancake"
         },
         {
           "key": "b",
-          "text": "soda"
+          "text": "Grape"
         },
         {
           "key": "c",
-          "text": "hamburger"
+          "text": "Boiled egg"
         }
       ],
-      "answerKey": "c",
-      "skillFacet": "generalization of food preferences",
+      "answerKey": "a",
       "optionScores": {
-        "a": 1,
+        "a": 3,
         "b": 0,
-        "c": 3
+        "c": 0
       },
-      "targetEvidence": "accurately identifies a food that fits the generalization",
-      "alignmentRationale": "This question tests the child's ability to identify a general category rule based on given food examples."
+      "skillFacet": "extending a rule about foods",
+      "targetEvidence": "Applies the made-with-flour rule to a new food.",
+      "alignmentRationale": "Carries an objective rule to a new case."
     }
   ]
 }

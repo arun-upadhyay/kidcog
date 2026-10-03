@@ -8,12 +8,12 @@
       "type": "mcq",
       "trait": "abstract_concepts",
       "format": "explanation",
-      "prompt": "If you see a friend feeling sad, what can you do to be friendly?",
+      "prompt": "Your friend looks sad. What is a friendly thing to do?",
       "rubric": [
-        "3 - Give them a hug",
-        "2 - Ask if they are okay",
-        "1 - Ignore them",
-        "0 - Laugh at them"
+        "3 - Chooses 'Ask if they are okay' and shows that being friendly means caring how someone feels",
+        "2 - Gives another kind idea, such as offering a hug if the friend wants one",
+        "1 - Chooses 'Walk away', which does not help the friend",
+        "0 - Chooses 'Laugh at them' or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -23,7 +23,7 @@
       "options": [
         {
           "key": "a",
-          "text": "Give them a hug"
+          "text": "Laugh at them"
         },
         {
           "key": "b",
@@ -31,18 +31,18 @@
         },
         {
           "key": "c",
-          "text": "Ignore them"
+          "text": "Walk away"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for being friendly",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 0,
+        "b": 3,
         "c": 1
       },
-      "targetEvidence": "Identifies a friendly action related to comforting.",
-      "alignmentRationale": "Tests the ability to understand friendship through supportive actions."
+      "skillFacet": "meaning of friendly",
+      "targetEvidence": "Connects the idea of being friendly to a caring action.",
+      "alignmentRationale": "Applies the abstract idea of friendliness to a concrete situation."
     },
     {
       "id": "56dffe53-e94f-4563-a3d9-13b6f5e6908e",
@@ -163,12 +163,12 @@
       "type": "mcq",
       "trait": "abstract_concepts",
       "format": "explanation",
-      "prompt": "If being nice helps everyone feel good, what else is nice?",
+      "prompt": "Being nice helps everyone feel good. Which one is a nice thing to do?",
       "rubric": [
-        "3 - Helping a friend who needs it",
-        "2 - Sharing toys with others",
-        "1 - Smiling at someone",
-        "0 - Ignoring people"
+        "3 - Chooses 'Helping a friend' and links it to the idea of being nice",
+        "2 - Picks helping only after the grown-up rereads the question",
+        "1 - Chooses 'Grabbing toys'",
+        "0 - Chooses 'Calling names' or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -178,26 +178,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Helping a friend who needs it"
+          "text": "Grabbing toys"
         },
         {
           "key": "b",
-          "text": "Sharing toys with others"
+          "text": "Calling names"
         },
         {
           "key": "c",
-          "text": "Smiling at someone"
+          "text": "Helping a friend"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for a nice action",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "Selects another action that reflects kindness in interactions.",
-      "alignmentRationale": "Assesses recognition of supportive behaviors in social activities."
+      "skillFacet": "meaning of nice",
+      "targetEvidence": "Picks the action that matches the idea of being nice.",
+      "alignmentRationale": "Uses the abstract idea of 'nice' to sort actions."
     },
     {
       "id": "67941271-e164-4477-8e0b-54c6e875f04d",
@@ -490,12 +490,12 @@
       "type": "mcq",
       "trait": "abstract_concepts",
       "format": "explanation",
-      "prompt": "A sunny day often makes people happy. What else makes people happy?",
+      "prompt": "A sunny day can make people happy. Which of these would make most people happy too?",
       "rubric": [
-        "3 - The child identifies another joyful event, like playing or celebrating.",
-        "2 - The child references something related but less joyful, like smiling.",
-        "1 - The child provides a vague answer not linked to joy.",
-        "0 - The child does not respond."
+        "3 - Chooses the hug and links it to feeling happy",
+        "2 - Chooses the hug but cannot say why",
+        "1 - Chooses losing a toy",
+        "0 - Chooses stubbing a toe or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -505,26 +505,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Playing games"
+          "text": "Stubbing your toe"
         },
         {
           "key": "b",
-          "text": "Reading quietly"
+          "text": "A hug from someone you love"
         },
         {
           "key": "c",
-          "text": "Being alone"
+          "text": "Losing your favourite toy"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "apply a concept of happiness",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 0
+        "a": 0,
+        "b": 3,
+        "c": 1
       },
-      "targetEvidence": "The child gives an example of something else that induces happiness.",
-      "alignmentRationale": "This question encourages the child to connect different actions or events that relate to happiness, testing their grasp on the abstract idea."
+      "skillFacet": "idea of happiness",
+      "targetEvidence": "Recognises another thing that fits the idea of 'makes people happy'.",
+      "alignmentRationale": "Works with the feeling 'happy' as an idea shared by different events."
     },
     {
       "id": "f191bd7b-d352-43e1-9e91-56d60baa0fed",
@@ -662,21 +662,21 @@
       "type": "open",
       "trait": "abstract_concepts",
       "format": "explanation",
-      "prompt": "Tell me a time when you felt happy. What was happening?",
+      "prompt": "What does the word happy mean? How can you tell when someone is happy?",
       "rubric": [
-        "3 - The child describes a clear, specific action or event that made them happy.",
-        "2 - The child speaks about happiness but lacks detail or relevance.",
-        "1 - The child’s answer is vague or linked loosely to happiness.",
-        "0 - The child does not respond."
+        "3 - Explains happy as a good feeling and gives a clue, like smiling or laughing",
+        "2 - Gives a clue or a simple meaning, but not both",
+        "1 - Gives a vague answer about happy",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         4,
         4
       ],
-      "skillFacet": "explain a happiness experience",
-      "targetEvidence": "The child shares an example of what made them happy.",
-      "alignmentRationale": "This question allows the child to demonstrate their understanding of happiness through a personal experience, connecting to the abstract concept of feeling happy."
+      "skillFacet": "meaning of a feeling word",
+      "targetEvidence": "Describes the idea of happiness and how it shows.",
+      "alignmentRationale": "Asks the child to explain a feeling as an idea, not just recall an event."
     },
     {
       "id": "5818f759-a9fd-4301-80a5-d943b438466f",
@@ -685,12 +685,12 @@
       "type": "mcq",
       "trait": "abstract_concepts",
       "format": "explanation",
-      "prompt": "If you feel sad, what could help you feel better?",
+      "prompt": "When you feel sad, what could help you feel better?",
       "rubric": [
-        "3 - The child suggests a comforting action, like talking to someone or playing.",
-        "2 - The child provides a somewhat helpful action, like eating.",
-        "1 - The child suggests something unrelated, like leaving.",
-        "0 - The child does not respond."
+        "3 - Chooses talking to someone or deep breathing and can say how it helps",
+        "2 - Chooses a helpful way but cannot say how it helps",
+        "1 - Gives an unclear idea about feelings",
+        "0 - Chooses throwing toys or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -700,26 +700,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Talk to a friend"
+          "text": "Talk to someone you love"
         },
         {
           "key": "b",
-          "text": "Sit quietly"
+          "text": "Take slow, deep breaths"
         },
         {
           "key": "c",
-          "text": "Close your eyes"
+          "text": "Throw your toys"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "apply a concept of comfort",
       "optionScores": {
         "a": 3,
-        "b": 1,
+        "b": 3,
         "c": 0
       },
-      "targetEvidence": "The child identifies an action that provides support when feeling sad.",
-      "alignmentRationale": "The focus here is on understanding the concept of emotional support and applying it to feelings, confirming recognition of abstract emotional responses."
+      "skillFacet": "coping with feelings",
+      "targetEvidence": "Identifies a healthy way to handle the feeling of sadness.",
+      "alignmentRationale": "Reasons about an inner feeling, which has no physical form."
     },
     {
       "id": "839a8ed3-3660-4278-817f-f182ef7bd823",
@@ -1012,12 +1012,12 @@
       "type": "mcq",
       "trait": "abstract_concepts",
       "format": "explanation",
-      "prompt": "Banana, apple, carrot. Which one is a fruit?",
+      "prompt": "Carrot, banana, potato. Which one is a fruit?",
       "rubric": [
-        "3 - Correctly identifies 'banana' as the fruit.",
-        "2 - Chooses 'apple' but does not recognize it's not the only option.",
-        "1 - Chooses 'carrot', showing some confusion about categories.",
-        "0 - Any incorrect or irrelevant choice."
+        "3 - Chooses 'Banana'",
+        "2 - Chooses banana after help, or says carrot and potato are vegetables",
+        "1 - Chooses carrot or potato",
+        "0 - Gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1027,26 +1027,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Banana"
+          "text": "Carrot"
         },
         {
           "key": "b",
-          "text": "Apple"
+          "text": "Banana"
         },
         {
           "key": "c",
-          "text": "Carrot"
+          "text": "Potato"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "category identification",
+      "answerKey": "b",
       "optionScores": {
-        "a": 3,
-        "b": 2,
+        "a": 1,
+        "b": 3,
         "c": 1
       },
-      "targetEvidence": "Chooses the correct example of a fruit from mixed options.",
-      "alignmentRationale": "This task assesses understanding of the abstract category of 'fruit' using a simple analogy."
+      "skillFacet": "fruit category",
+      "targetEvidence": "Correctly picks the only fruit.",
+      "alignmentRationale": "Uses the category 'fruit', an idea rather than a single object."
     },
     {
       "id": "63bf3780-b30b-47be-b800-fdf2c8ffc192",
@@ -1623,12 +1623,12 @@
       "type": "mcq",
       "trait": "abstract_concepts",
       "format": "explanation",
-      "prompt": "Which action is kind when someone gets hurt?",
+      "prompt": "A child falls and gets hurt. Which action is kind?",
       "rubric": [
-        "3 - Choosing to help them feel better.",
-        "2 - Saying kind words to them.",
-        "1 - Noticing they are hurt but doing nothing.",
-        "0 - Ignoring them completely."
+        "3 - Chooses asking if they are okay and getting a grown-up",
+        "2 - Gives a kind idea in their own words but picks another option",
+        "1 - Chooses 'Walk away'",
+        "0 - Chooses 'Laugh at them' or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1638,26 +1638,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Help them feel better."
+          "text": "Laugh at them"
         },
         {
           "key": "b",
-          "text": "Say kind words."
+          "text": "Walk away"
         },
         {
           "key": "c",
-          "text": "Do nothing."
+          "text": "Ask if they are okay and get a grown-up"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "choosing a kind action",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 2,
-        "c": 1
+        "a": 0,
+        "b": 1,
+        "c": 3
       },
-      "targetEvidence": "picking a helpful action towards someone in need",
-      "alignmentRationale": "Tests the ability to recognize and apply the abstract concept of kindness through action."
+      "skillFacet": "meaning of kindness",
+      "targetEvidence": "Applies the idea of kindness to someone who is hurt.",
+      "alignmentRationale": "Connects the abstract idea of kindness to a helping action."
     },
     {
       "id": "74bbb89d-0369-4ede-a10a-382d6921b6c7",
@@ -1841,12 +1841,12 @@
       "type": "mcq",
       "trait": "abstract_concepts",
       "format": "explanation",
-      "prompt": "Which example shows fairness? You play a game where everyone gets 3 turns.",
+      "prompt": "Four friends play a game. Which way of taking turns is fair?",
       "rubric": [
-        "3 - All players have equal turns, showing fairness.",
-        "2 - Most players have turns, but not the same amount.",
-        "1 - Some players didn’t get turns at all.",
-        "0 - Fairness is not shown. No idea given."
+        "3 - Chooses 'Every friend gets 3 turns' and says everyone gets the same",
+        "2 - Chooses the right answer but cannot explain",
+        "1 - Chooses the uneven turns",
+        "0 - Chooses leaving friends out or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -1856,26 +1856,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Everyone gets 3 turns."
+          "text": "One friend gets 5 turns, the others get 1"
         },
         {
           "key": "b",
-          "text": "One player gets 5 turns."
+          "text": "Only two friends get to play"
         },
         {
           "key": "c",
-          "text": "Only two players play."
+          "text": "Every friend gets 3 turns"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "word for fairness",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
-        "b": 1,
-        "c": 0
+        "a": 1,
+        "b": 0,
+        "c": 3
       },
-      "targetEvidence": "Identifies a clear example of fairness between players.",
-      "alignmentRationale": "This task requires the child to understand and select an example of fairness."
+      "skillFacet": "meaning of fairness",
+      "targetEvidence": "Identifies equal turns as fair.",
+      "alignmentRationale": "Applies the abstract idea of fairness to a game."
     },
     {
       "id": "710514fa-1953-4100-872c-77e3332efff9",
@@ -2297,12 +2297,12 @@
       "type": "mcq",
       "trait": "abstract_concepts",
       "format": "explanation",
-      "prompt": "If the rule is \"All shapes with three sides are triangles,\" which of these is a triangle?",
+      "prompt": "Rule: a shape with three straight sides is a triangle. Which one is a triangle?",
       "rubric": [
-        "3 - The answer correctly identifies a triangle based on the rule specified.",
-        "2 - The answer identifies a three-sided shape but may not be correct about it being a triangle.",
-        "1 - The answer suggests a shape but does not relate to three sides or triangles.",
-        "0 - The answer does not relate to shapes or triangles."
+        "3 - Chooses the sandwich half and counts its three sides",
+        "2 - Chooses the sandwich half without explaining",
+        "1 - Chooses the square napkin",
+        "0 - Chooses the round plate or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2312,26 +2312,26 @@
       "options": [
         {
           "key": "a",
-          "text": "A square"
+          "text": "A square napkin"
         },
         {
           "key": "b",
-          "text": "A triangle"
+          "text": "Half of a square sandwich, cut corner to corner"
         },
         {
           "key": "c",
-          "text": "A circle"
+          "text": "A round plate"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "identifying properties of shapes",
       "optionScores": {
-        "a": 0,
+        "a": 1,
         "b": 3,
         "c": 0
       },
-      "targetEvidence": "chooses a shape that is accurately recognized as a triangle based on its sides",
-      "alignmentRationale": "This question tests the child’s application of the rule regarding shapes by identifying a specific example."
+      "skillFacet": "applying a shape rule",
+      "targetEvidence": "Applies the three-sides rule to a described object.",
+      "alignmentRationale": "Requires using the abstract rule, not matching the word 'triangle'."
     },
     {
       "id": "16cad7bb-4bcb-4e25-bd23-4f57a6de25cd",
@@ -2472,12 +2472,12 @@
       "type": "mcq",
       "trait": "abstract_concepts",
       "format": "explanation",
-      "prompt": "If the rule is \"All fruits are sweet,\" which of these is a fruit?",
+      "prompt": "Rule: fruits have seeds inside. Which of these is a fruit?",
       "rubric": [
-        "3 - Correctly identifies 'apple' as a fruit.",
-        "2 - Identifies 'banana' but misses 'apple.'",
-        "1 - Chooses 'carrot,' a vegetable.",
-        "0 - Provides a completely different answer."
+        "3 - Chooses 'Apple' and mentions the seeds inside",
+        "2 - Chooses apple but does not link it to the rule",
+        "1 - Chooses carrot",
+        "0 - Chooses bread or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2487,26 +2487,26 @@
       "options": [
         {
           "key": "a",
-          "text": "apple"
+          "text": "Carrot"
         },
         {
           "key": "b",
-          "text": "carrot"
+          "text": "Bread"
         },
         {
           "key": "c",
-          "text": "banana"
+          "text": "Apple"
         }
       ],
-      "answerKey": "a",
-      "skillFacet": "recognizing categories",
+      "answerKey": "c",
       "optionScores": {
-        "a": 3,
+        "a": 1,
         "b": 0,
-        "c": 2
+        "c": 3
       },
-      "targetEvidence": "Identifies 'apple' as it fits the fruit category.",
-      "alignmentRationale": "This question tests the ability to recognize and apply the category of fruits."
+      "skillFacet": "applying a rule",
+      "targetEvidence": "Applies a true rule to find the matching item.",
+      "alignmentRationale": "Uses an abstract rule to sort concrete things."
     },
     {
       "id": "f145c116-3f3b-4a28-bc39-f3f3d4dfc823",
@@ -2515,12 +2515,12 @@
       "type": "mcq",
       "trait": "abstract_concepts",
       "format": "explanation",
-      "prompt": "Which of these actions shows fairness?",
+      "prompt": "Which of these shows fairness?",
       "rubric": [
-        "3 - Correctly selects 'sharing snacks equally.'",
-        "2 - Selects 'taking turns.' but misses 'sharing equally.'",
-        "1 - Chooses 'eating all snacks for themselves.'",
-        "0 - Provides a completely different answer."
+        "3 - Chooses taking turns and explains that everyone gets a chance",
+        "2 - Chooses taking turns but cannot explain why it is fair",
+        "1 - Chooses 'Always going first'",
+        "0 - Chooses eating all the snacks or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2530,26 +2530,26 @@
       "options": [
         {
           "key": "a",
-          "text": "sharing snacks equally"
+          "text": "Taking turns on the swing"
         },
         {
           "key": "b",
-          "text": "taking turns"
+          "text": "Eating all the snacks yourself"
         },
         {
           "key": "c",
-          "text": "eating all snacks for themselves"
+          "text": "Always going first"
         }
       ],
       "answerKey": "a",
-      "skillFacet": "understanding fairness",
       "optionScores": {
         "a": 3,
-        "b": 2,
-        "c": 0
+        "b": 0,
+        "c": 1
       },
-      "targetEvidence": "Identifies an example of fairness in action.",
-      "alignmentRationale": "This question evaluates understanding of the abstract concept of fairness through practical examples."
+      "skillFacet": "meaning of fairness",
+      "targetEvidence": "Recognises fairness as everyone getting an equal chance.",
+      "alignmentRationale": "Applies the abstract rule of fairness to everyday actions."
     },
     {
       "id": "1dd4f8df-88d9-4de1-91bc-5cc0eea01499",
@@ -2647,21 +2647,21 @@
       "type": "open",
       "trait": "abstract_concepts",
       "format": "explanation",
-      "prompt": "Think about a time when you learned something new. What did you learn?",
+      "prompt": "What does it mean to learn something? How do you know when you have learned it?",
       "rubric": [
-        "3 - Shares a specific example and what was learned.",
-        "2 - States 'I learned something,' but no example.",
-        "1 - Gives a vague answer about learning.",
-        "0 - Does not answer the question."
+        "3 - Explains learning as knowing or doing something new and gives a way to tell, like doing it without help",
+        "2 - Explains learning simply but gives no way to tell",
+        "1 - Gives a vague answer about school or learning",
+        "0 - Does not answer"
       ],
       "weight": 1,
       "ageBand": [
         7,
         7
       ],
-      "skillFacet": "describing learning experiences",
-      "targetEvidence": "Describes a significant learning experience with details.",
-      "alignmentRationale": "This task evaluates understanding of learning as an abstract concept."
+      "skillFacet": "meaning of learning",
+      "targetEvidence": "Explains learning as an idea and how it can be noticed.",
+      "alignmentRationale": "Works with the abstract idea of learning rather than one memory."
     },
     {
       "id": "ff28857a-edb9-4045-a1a6-c56bc38dfb60",
@@ -2845,12 +2845,12 @@
       "type": "mcq",
       "trait": "abstract_concepts",
       "format": "explanation",
-      "prompt": "If the rule is \"All types of fruits grow on trees,\" which of these is a fruit?",
+      "prompt": "Rule: apples grow on trees. Sam picks an apple. Where did it grow?",
       "rubric": [
-        "3 - Correctly identifies a fruit that grows on trees.",
-        "2 - Identifies some correct fruits but also includes non-fruits.",
-        "1 - Incorrectly identifies a non-fruit.",
-        "0 - Does not answer."
+        "3 - Chooses 'On a tree' and uses the rule",
+        "2 - Chooses the tree but cannot explain",
+        "1 - Chooses 'In a shop', mixing up where it was bought with where it grew",
+        "0 - Chooses under the ground or gives no answer"
       ],
       "weight": 1,
       "ageBand": [
@@ -2860,26 +2860,26 @@
       "options": [
         {
           "key": "a",
-          "text": "Carrot"
+          "text": "Under the ground"
         },
         {
           "key": "b",
-          "text": "Apple"
+          "text": "On a tree"
         },
         {
           "key": "c",
-          "text": "Potato"
+          "text": "In a shop"
         }
       ],
       "answerKey": "b",
-      "skillFacet": "recognizing types of categories",
       "optionScores": {
         "a": 0,
         "b": 3,
-        "c": 0
+        "c": 1
       },
-      "targetEvidence": "chooses an appropriate fruit from a selection",
-      "alignmentRationale": "This task checks understanding of categories in relation to examples."
+      "skillFacet": "applying a rule",
+      "targetEvidence": "Applies a stated rule to a new case.",
+      "alignmentRationale": "Uses an abstract rule to reason about a specific object."
     }
   ]
 }
