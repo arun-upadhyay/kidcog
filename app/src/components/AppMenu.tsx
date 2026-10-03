@@ -12,13 +12,16 @@ import { colors, spacing, type, column, GUTTER } from '../theme';
  * EXPO_PUBLIC_SUPPORT_STRIPE_URL and EXPO_PUBLIC_SUPPORT_PAYPAL_URL. Only the
  * ones set are shown, and nothing at all if neither is.
  *
- * Website only: the App Store and Google Play require tips inside apps to use
- * their own in-app purchases, so the phone apps leave this out. It lives in
- * this parent menu, never on a child's screen.
+ * Website by default. The App Store and Google Play restrict links to outside
+ * payment pages inside apps, so the phone apps show these only when
+ * EXPO_PUBLIC_SUPPORT_IN_APP=1 is set for the build (check the current store
+ * rules before turning it on). It lives in this parent menu, never on a
+ * child's screen.
  */
+const SUPPORT_HERE = Platform.OS === 'web' || process.env.EXPO_PUBLIC_SUPPORT_IN_APP === '1';
 function supportLink(value: string | undefined) {
   const url = (value ?? '').trim();
-  return Platform.OS === 'web' && /^https:\/\/\S+$/.test(url) ? url : null;
+  return SUPPORT_HERE && /^https:\/\/\S+$/.test(url) ? url : null;
 }
 const SUPPORT_OPTIONS = [
   { key: 'stripe', url: supportLink(process.env.EXPO_PUBLIC_SUPPORT_STRIPE_URL), title: 'Card', note: 'Also Apple Pay and Google Pay · by Stripe', icon: '💳' },
@@ -27,7 +30,7 @@ const SUPPORT_OPTIONS = [
 
 function openInNewTab(url: string) {
   // A new tab, so KidCog (and a child's round in progress) stays open.
-  if (typeof window !== 'undefined') window.open(url, '_blank', 'noopener,noreferrer');
+  if (Platform.OS === 'web' && typeof window !== 'undefined') window.open(url, '_blank', 'noopener,noreferrer');
   else void Linking.openURL(url);
 }
 
