@@ -124,6 +124,15 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
         </Pressable>
       ) : null}
 
+      <View style={[styles.playZone, styles.thinking]} accessibilityRole="header">
+        <Text style={styles.playZoneEmoji}>🧠</Text>
+        <View style={{ flex: 1 }}>
+          <Text style={[styles.playZoneTitle, styles.thinkingTitle]}>Thinking Activities</Text>
+          <Text style={[styles.playZoneSub, styles.thinkingSub]}>Pick one below to play together</Text>
+        </View>
+        <Text style={[styles.playZoneGo, styles.thinkingTitle]}>▼</Text>
+      </View>
+
       <View style={styles.lengthRow}>
         <Text style={styles.lengthLabel}>How many?</Text>
         <View style={styles.lengthPills}>
@@ -273,6 +282,9 @@ const styles = StyleSheet.create({
   animalsSub: { color: '#8A6420' },
   playZoneGo: { fontSize: 20, fontWeight: '900', color: '#4E3590' },
 
+  thinking: { backgroundColor: '#E5F5EA', borderColor: '#9FD0B0', marginTop: spacing(1) },
+  thinkingTitle: { color: '#235E46' },
+  thinkingSub: { color: '#3E6E55' },
   lengthRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1) },
   lengthLabel: { fontSize: 16, fontWeight: '900', color: '#513A27' },
   lengthPills: { flexDirection: 'row', gap: spacing(1) },
