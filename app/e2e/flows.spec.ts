@@ -80,6 +80,23 @@ for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw']
   });
 }
 
+test('Animal Explorer reveals and cycles fun facts after a question', async ({ page }) => {
+  await games(page);
+  await page.getByRole('button', { name: 'Play Animal Explorer', exact: true }).click();
+  await page.getByRole('button', { name: /Animal quiz/ }).click();
+  await page.getByRole('button', { name: '▶ Start', exact: true }).click();
+
+  const choices = page.getByTestId('animal-quiz-choice');
+  await expect(choices.first()).toBeVisible();
+  await choices.first().click();
+  if (await page.getByText('🤩 Did you know?', { exact: true }).count() === 0) await choices.nth(1).click();
+
+  await expect(page.getByText('🤩 Did you know?', { exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: '✨ Another fun fact', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '✨ Another fun fact', exact: true }).click();
+  await expect(page.getByText('2 of 3', { exact: true })).toBeVisible();
+});
+
 test('answers stay paired with questions and another category starts from results', async ({ page }) => {
   await prepare(page);
   await page.getByRole('radio', { name: 'Test Explorer, age 5', exact: true }).click();

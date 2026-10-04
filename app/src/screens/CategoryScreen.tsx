@@ -28,7 +28,7 @@ const ROUND_OPTIONS = [
  */
 const VIEW_KEY = 'kidcog.categoryView.v1';
 
-export default function CategoryScreen({ onSelect, onPreview, progress = null, onReport, onPlayZone, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
+export default function CategoryScreen({ onSelect, onPreview, progress = null, onReport, onPlayZone, onAnimals, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
   onSelect: (trait: TraitKey, count: number) => void;
   /** A category's sheet was opened: a chance to get its questions ready early. */
   onPreview?: (trait: TraitKey) => void;
@@ -40,6 +40,8 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
   onReport: () => void;
   /** Opens the Play Zone games (hidden when not given). */
   onPlayZone?: () => void;
+  /** Opens the Animal Explorer straight away. */
+  onAnimals?: () => void;
   onBack: () => void;
   /** The latest test's result, for the "View latest result" button. */
   report: Report | null;
@@ -108,6 +110,17 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
             <Text style={styles.playZoneSub}>Number Snake, Bubble Pop, mazes and tracing</Text>
           </View>
           <Text style={styles.playZoneGo}>▶</Text>
+        </Pressable>
+      ) : null}
+      {onAnimals ? (
+        <Pressable onPress={onAnimals} disabled={busy} accessibilityRole="button" accessibilityLabel="Open the Animal Explorer"
+          style={({ pressed }) => [styles.playZone, styles.animals, pressed && styles.pressed]}>
+          <Text style={styles.playZoneEmoji}>🦁</Text>
+          <View style={{ flex: 1 }}>
+            <Text style={[styles.playZoneTitle, styles.animalsTitle]}>Animal Explorer</Text>
+            <Text style={[styles.playZoneSub, styles.animalsSub]}>Animal quiz, animal sounds and your album</Text>
+          </View>
+          <Text style={[styles.playZoneGo, styles.animalsTitle]}>▶</Text>
         </Pressable>
       ) : null}
 
@@ -255,6 +268,9 @@ const styles = StyleSheet.create({
   playZoneEmoji: { fontSize: 30 },
   playZoneTitle: { fontSize: 18, fontWeight: '900', color: '#4E3590' },
   playZoneSub: { fontSize: 13, fontWeight: '700', color: '#6A58A0', marginTop: 1 },
+  animals: { backgroundColor: '#FFF4D6', borderColor: '#F4C966' },
+  animalsTitle: { color: '#7A4E08' },
+  animalsSub: { color: '#8A6420' },
   playZoneGo: { fontSize: 20, fontWeight: '900', color: '#4E3590' },
 
   lengthRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1) },

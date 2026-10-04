@@ -5,7 +5,7 @@ import Button from '../components/Button';
 import { colors, spacing, CONTENT_MAX_WIDTH, GUTTER } from '../theme';
 
 export type Dir = 'up' | 'down' | 'left' | 'right';
-export type GameKey = 'snake' | 'bubbles' | 'maze' | 'trace';
+export type GameKey = 'animals' | 'snake' | 'bubbles' | 'maze' | 'trace';
 export const useNative = Platform.OS !== 'web';
 
 /** The board size that fits the screen: full width on a phone, capped on a laptop. */

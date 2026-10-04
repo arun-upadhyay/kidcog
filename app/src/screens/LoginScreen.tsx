@@ -13,6 +13,8 @@ import {
 import * as AppleAuthentication from 'expo-apple-authentication';
 import Button from '../components/Button';
 import SocialButton from '../components/SocialButton';
+import Owl from '../components/Owl';
+import WelcomeScreen from './WelcomeScreen';
 import { useAuth } from '../auth/AuthContext';
 import { idleMinutes, takeIdleSignOutNotice } from '../auth/idle';
 import { PRIVACY_PATH, openPublicPage } from '../legal';
@@ -21,6 +23,8 @@ import { colors, spacing, type, column, GUTTER } from '../theme';
 export default function LoginScreen() {
   const { loading, configured, signIn, signInWithApple, signInWithEmail, signUpWithEmail, resendVerification } = useAuth();
   const [mode, setMode] = useState<'signIn' | 'create'>('signIn');
+  const [showWelcome, setShowWelcome] = useState(true);
+  const [chosenAdventure, setChosenAdventure] = useState<string | null>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -130,13 +134,29 @@ export default function LoginScreen() {
   }
 
   if (loading) return <View style={styles.center}><ActivityIndicator color={colors.primary} /></View>;
+  if (showWelcome && !verificationEmail) {
+    return <WelcomeScreen
+      onChoose={(title) => { setChosenAdventure(title); setShowWelcome(false); }}
+      onParentSignIn={() => { setChosenAdventure(null); setShowWelcome(false); }}
+    />;
+  }
   return (
     <KeyboardAvoidingView style={styles.screen} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
-          <Text style={styles.mascot}>🦉</Text>
-          <Text style={styles.title}>Welcome to KidCog</Text>
-          <Text style={styles.body}>Sign in as a parent to keep child nicknames and assessment sessions together.</Text>
+          <Pressable
+            onPress={() => { setShowWelcome(true); setChosenAdventure(null); setError(null); }}
+            accessibilityRole="button"
+            accessibilityLabel="Back to activities"
+            style={styles.backButton}
+          >
+            <Text style={styles.backButtonText}>← Activities</Text>
+          </Pressable>
+          <View style={styles.authOwl}><Owl size={76} /></View>
+          <Text style={styles.title}>{chosenAdventure ? `Unlock ${chosenAdventure}` : 'Welcome to KidCog'}</Text>
+          <Text style={styles.body}>{chosenAdventure
+            ? 'A parent or guardian signs in first. Then the adventure can begin!'
+            : 'Sign in as a parent to keep child nicknames, progress, and activities together.'}</Text>
 
           {!configured ? <Text style={styles.error}>Supabase is not configured. Copy app/.env.example to app/.env and add your project URL and public key.</Text> : null}
 
@@ -252,7 +272,9 @@ const styles = StyleSheet.create({
   center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   scroll: { flexGrow: 1, justifyContent: 'center', paddingVertical: spacing(3) },
   container: { paddingVertical: spacing(4), paddingHorizontal: GUTTER, ...column },
-  mascot: { fontSize: 54, textAlign: 'center' },
+  authOwl: { alignItems: 'center' },
+  backButton: { alignSelf: 'flex-start', minHeight: 44, justifyContent: 'center', paddingHorizontal: spacing(1), marginBottom: spacing(1) },
+  backButtonText: { color: colors.primary, fontSize: 15, fontWeight: '900' },
   title: { fontSize: 32, fontWeight: '800', textAlign: 'center', color: colors.primary, marginTop: spacing(1) },
   body: { ...type.body, textAlign: 'center', marginTop: spacing(2), marginBottom: spacing(3) },
   tabs: { flexDirection: 'row', backgroundColor: colors.primarySoft, borderRadius: 14, padding: 4, marginBottom: spacing(3) },

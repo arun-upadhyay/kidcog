@@ -20,7 +20,7 @@ import { AuthProvider, useAuth } from './src/auth/AuthContext';
 import { deleteAccount, deleteChildProfile, fetchTest, getParentReport, listChildren, prefetchRound, saveChild, submitAnswers, updateChildAvatar } from './src/api';
 import { supabase } from './src/auth/supabase';
 import { stopSpeaking } from './src/speech';
-import { forgetProgress, loadProgress, recordArcade, recordRound, type ChildProgress, type RoundReward } from './src/progress';
+import { forgetProgress, loadProgress, recordAnimalsFound, recordArcade, recordRound, type ChildProgress, type RoundReward } from './src/progress';
 import BreakSheet, { BREAK_AFTER_MS } from './src/components/BreakSheet';
 import { colors } from './src/theme';
 import type { ChildProfile, HistoricalAssessment, Report, ResponseInput, SavedChildProfile, TestPayload, TraitKey } from './src/types';
@@ -163,10 +163,20 @@ function KidCogApp() {
     setStage('categories');
   }, []);
 
+  const [playZoneGame, setPlayZoneGame] = useState<GameKey | null>(null);
   const openPlayZone = useCallback(() => {
     playStartedAt.current ??= Date.now();
+    setPlayZoneGame(null);
     setStage('playzone');
   }, []);
+  const openAnimals = useCallback(() => {
+    playStartedAt.current ??= Date.now();
+    setPlayZoneGame('animals');
+    setStage('playzone');
+  }, []);
+  const animalsFound = useCallback((keys: string[]) => {
+    if (child?.id) void recordAnimalsFound(child.id, keys).then(setProgress).catch(() => {});
+  }, [child?.id]);
 
   /** A Play Zone game was won: save its stars and level, and suggest a break after a long spell of play. */
   const finishGame = useCallback((game: GameKey, stars: number, nextLevel: number) => {
@@ -323,10 +333,10 @@ function KidCogApp() {
 
           {stage === 'historical_result' && historical && <ResultsScreen report={historical.report} sessionId={historical.id} childName={historical.childName} completedAt={historical.completedAt} historical onBackToHistory={() => setStage('history')} onRestart={restart} onChooseCategory={() => {}} onReassess={() => {}} remainingUnseen={0} busy={false} error={null} />}
 
-          {stage === 'categories' && <CategoryScreen initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} progress={progress} onReport={() => setStage('results')} onPlayZone={openPlayZone} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
+          {stage === 'categories' && <CategoryScreen initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} progress={progress} onReport={() => setStage('results')} onPlayZone={openPlayZone} onAnimals={openAnimals} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
 
           {stage === 'playzone' && (
-            <PlayZoneScreen childName={child?.firstName} age={child?.age} progress={progress} onBack={() => setStage('categories')} onFinish={finishGame} />
+            <PlayZoneScreen childName={child?.firstName} age={child?.age} progress={progress} onBack={() => setStage('categories')} onFinish={finishGame} onAnimalsFound={animalsFound} initialGame={playZoneGame} />
           )}
 
           {stage === 'quiz' && test && (

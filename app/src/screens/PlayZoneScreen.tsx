@@ -8,15 +8,19 @@ import NumberSnake from '../playzone/NumberSnake';
 import BubblePop from '../playzone/BubblePop';
 import MazeRunner from '../playzone/MazeRunner';
 import TraceDraw from '../playzone/TraceDraw';
+import AnimalExplorer from '../playzone/AnimalExplorer';
+import { ANIMALS } from '../explore/animals';
+import { defaultAnimalLevel } from '../explore/animalQuiz';
 
 /**
- * The Play Zone: four short learning games, kept apart from the thinking
+ * The Play Zone: the Animal Explorer and four short learning games, kept apart from the thinking
  * activities. Games are brain-breaks, not the main event, so two of them open
  * once a child has done some thinking activities, and the usual "time for a
  * break" reminder still applies (App.tsx).
  */
-type GameInfo = { key: GameKey; emoji: string; name: string; blurb: string; background: string; border: string; ink: string; unlockAfter: number };
+type GameInfo = { key: GameKey; emoji: string; name: string; blurb: string; background: string; border: string; ink: string; unlockAfter: number; isNew?: boolean };
 export const GAMES: GameInfo[] = [
+  { key: 'animals', emoji: '🦁', name: 'Animal Explorer', blurb: 'Animal quiz, sounds and your own album', background: '#FFF4D6', border: '#F4C966', ink: '#8A5A0A', unlockAfter: 0, isNew: true },
   { key: 'snake', emoji: '🐍', name: 'Number Snake', blurb: 'Eat the numbers in order', background: '#E5F5EA', border: '#63AA7D', ink: '#34734E', unlockAfter: 0 },
   { key: 'bubbles', emoji: '🫧', name: 'Bubble Pop', blurb: 'Pop the bubbles that match', background: '#E5F3FF', border: '#68A8D6', ink: '#2F6F9D', unlockAfter: 0 },
   { key: 'maze', emoji: '🦉', name: 'Maze Runner', blurb: 'Lead Owl to the flag', background: '#EEE9FF', border: '#A68AE2', ink: '#5D439B', unlockAfter: 1 },
@@ -32,18 +36,23 @@ export function startLevel(game: GameKey, progress: ChildProgress | null, age: n
   const saved = progress?.arcade?.[game]?.level;
   if (saved) return saved;
   if (game === 'trace') return (age ?? 4) >= 6 ? 3 : 1; // 6 and up start on letters
+  if (game === 'animals') return defaultAnimalLevel(age);
   return 1;
 }
 
-export default function PlayZoneScreen({ childName, age, progress, onBack, onFinish }: {
+export default function PlayZoneScreen({ childName, age, progress, onBack, onFinish, onAnimalsFound, initialGame = null }: {
   childName?: string;
   age?: number;
   progress: ChildProgress | null;
   onBack: () => void;
   /** A game was won: record the stars and the next level. */
   onFinish: (game: GameKey, stars: number, nextLevel: number) => void;
+  /** Animal Explorer: animals the child has just met, for their album. */
+  onAnimalsFound?: (keys: string[]) => void;
+  /** Open straight into one game (the Animal Explorer banner on the home screen). */
+  initialGame?: GameKey | null;
 }) {
-  const [playing, setPlaying] = useState<GameKey | null>(null);
+  const [playing, setPlaying] = useState<GameKey | null>(initialGame);
   const { width } = useWindowDimensions();
   const done = activitiesDone(progress);
 
@@ -55,6 +64,7 @@ export default function PlayZoneScreen({ childName, age, progress, onBack, onFin
     };
     return (
       <ScrollView style={styles.gameScroll} contentContainerStyle={styles.gameScreen}>
+        {playing === 'animals' ? <AnimalExplorer {...props} found={progress?.animals ?? []} onFound={keys => onAnimalsFound?.(keys)} /> : null}
         {playing === 'snake' ? <NumberSnake {...props} /> : null}
         {playing === 'bubbles' ? <BubblePop {...props} /> : null}
         {playing === 'maze' ? <MazeRunner {...props} /> : null}
@@ -102,7 +112,9 @@ export default function PlayZoneScreen({ childName, age, progress, onBack, onFin
                 </Text>
                 {!locked ? (
                   <View style={styles.cardMeta}>
-                    <Text style={styles.metaPill}>Level {startLevel(game.key, progress, age)}</Text>
+                    {game.isNew ? <Text style={[styles.metaPill, styles.newPill]}>NEW</Text> : null}
+                    {game.key === 'animals' ? <Text style={styles.metaPill}>📒 {progress?.animals?.length ?? 0}/{ANIMALS.length}</Text>
+                      : <Text style={styles.metaPill}>Level {startLevel(game.key, progress, age)}</Text>}
                     {score?.stars ? <Text style={styles.metaPill}>⭐ {score.stars}</Text> : null}
                   </View>
                 ) : null}
@@ -141,6 +153,7 @@ const styles = StyleSheet.create({
   cardName: { fontSize: 19, fontWeight: '900', textAlign: 'center' },
   cardBlurb: { fontSize: 14, fontWeight: '700', color: '#5E5249', textAlign: 'center' },
   cardMeta: { flexDirection: 'row', gap: spacing(0.75), marginTop: 2 },
+  newPill: { color: '#FFFFFF', backgroundColor: '#E8724F' },
   metaPill: { fontSize: 12, fontWeight: '900', color: '#6D5A49', backgroundColor: '#FFFFFF', borderRadius: 999, paddingHorizontal: spacing(1), paddingVertical: 3, overflow: 'hidden' },
   note: { fontSize: 13, lineHeight: 19, color: colors.inkSoft, textAlign: 'center', paddingHorizontal: spacing(1) },
 });

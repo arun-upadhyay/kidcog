@@ -21,6 +21,8 @@ export interface ChildProgress {
   lastTrait?: TraitKey;
   /** Play Zone games: the level to start at next time and the stars won there. */
   arcade?: Partial<Record<GameKey, { level: number; stars: number; plays: number }>>;
+  /** Animal Explorer: keys of the animals this child has met (their album). */
+  animals?: string[];
 }
 
 export interface RoundReward {
@@ -103,6 +105,17 @@ export async function recordRound(childId: string, trait: TraitKey, report: Repo
  * starts at the next level next time. No sticker (those stay for thinking
  * activities, so the games never become the quickest way to fill the book).
  */
+/** Animals the child has just met join their album (kept in the order they were met). */
+export async function recordAnimalsFound(childId: string, keys: string[]): Promise<ChildProgress> {
+  const progress = await loadProgress(childId);
+  const have = progress.animals ?? [];
+  const added = keys.filter(k => !have.includes(k));
+  if (added.length === 0) return progress;
+  const next: ChildProgress = { ...progress, animals: [...have, ...added] };
+  await saveProgress(childId, next);
+  return next;
+}
+
 export async function recordArcade(childId: string, game: GameKey, stars: number, nextLevel: number): Promise<ChildProgress> {
   const progress = await loadProgress(childId);
   const current = progress.arcade?.[game] ?? { level: 1, stars: 0, plays: 0 };
