@@ -23,6 +23,7 @@ export default function LoginScreen() {
   const [mode, setMode] = useState<'signIn' | 'create'>('signIn');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [busy, setBusy] = useState<'google' | 'apple' | 'facebook' | 'email' | 'resend' | null>(null);
   // Apple's own button on iPhone. On Android and web, Apple sign-in needs an
   // Apple "Services ID" set up in Supabase first, so it is shown only once
@@ -176,6 +177,7 @@ export default function LoginScreen() {
                 style={styles.input}
               />
               <Text style={styles.label}>PASSWORD</Text>
+              <View style={styles.passwordRow}>
               <TextInput
                 value={password}
                 onChangeText={setPassword}
@@ -185,10 +187,20 @@ export default function LoginScreen() {
                 autoCorrect={false}
                 autoComplete={mode === 'create' ? 'new-password' : 'current-password'}
                 textContentType={mode === 'create' ? 'newPassword' : 'password'}
-                secureTextEntry
+                secureTextEntry={!showPassword}
                 onSubmitEditing={() => void submitEmail()}
-                style={styles.input}
+                style={[styles.input, styles.passwordInput]}
               />
+              <Pressable
+                onPress={() => setShowPassword(v => !v)}
+                accessibilityRole="button"
+                accessibilityLabel={showPassword ? 'Hide password' : 'Show password'}
+                hitSlop={8}
+                style={styles.showPassword}
+              >
+                <Text style={styles.showPasswordText}>{showPassword ? 'Hide' : 'Show'}</Text>
+              </Pressable>
+              </View>
               {mode === 'create' ? <Text style={styles.helper}>We’ll email you a link to verify this parent account.</Text> : null}
               {error ? <Text style={styles.error}>{error}</Text> : null}
               {notice ? <Text style={styles.notice}>{notice}</Text> : null}
@@ -250,6 +262,10 @@ const styles = StyleSheet.create({
   tabTextActive: { color: colors.primary },
   label: { ...type.label, marginBottom: spacing(1) },
   input: { minHeight: 54, borderWidth: 1.5, borderColor: colors.line, borderRadius: 14, backgroundColor: colors.surface, color: colors.ink, fontSize: 17, paddingHorizontal: spacing(2), marginBottom: spacing(2) },
+  passwordRow: { position: 'relative' },
+  passwordInput: { paddingRight: 76 },
+  showPassword: { position: 'absolute', right: spacing(1), top: 0, height: 54, minWidth: 60, alignItems: 'center', justifyContent: 'center', paddingHorizontal: spacing(1) },
+  showPasswordText: { fontSize: 15, fontWeight: '800', color: colors.primary },
   helper: { ...type.soft, marginTop: -spacing(1), marginBottom: spacing(2) },
   signInHint: { ...type.soft, textAlign: 'center', marginTop: spacing(2) },
   error: { color: colors.danger, backgroundColor: '#FBE9E7', padding: spacing(2), borderRadius: 12, marginBottom: spacing(2) },
