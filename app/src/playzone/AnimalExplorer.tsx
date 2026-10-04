@@ -10,6 +10,7 @@ import { factsFor } from '../explore/funFacts';
 import { stopSpeaking } from '../speech';
 import { colors, spacing } from '../theme';
 import { WinCard } from './common';
+import SoundBoard from './SoundBoard';
 
 /**
  * Animal Explorer: a picture quiz about animals, a sound board, and an album
@@ -69,7 +70,7 @@ export default function AnimalExplorer({ level: startLevel, found, onBack, onFin
 
             <Tile emoji="❓" title="Animal quiz" sub={`${ROUND} picture questions · Level ${level}`} color="#FFE9E3" border="#E88970"
               onPress={() => setMode('quiz')} />
-            <Tile emoji="🔊" title="Animal sounds" sub="Tap an animal to hear it" color="#E5F3FF" border="#68A8D6"
+            <Tile emoji="🔊" title="Animal sounds" sub="Tap to listen, or play Guess who" color="#E5F3FF" border="#68A8D6"
               onPress={() => setMode('sounds')} />
             <Tile emoji="📒" title="My animal album" sub={`${met.size} of ${ANIMALS.length} animals met`} color="#E5F5EA" border="#63AA7D"
               onPress={() => setMode('album')} />
@@ -78,7 +79,7 @@ export default function AnimalExplorer({ level: startLevel, found, onBack, onFin
         ) : null}
 
         {mode === 'sounds' ? (
-          <Grid animals={ANIMALS.filter(a => a.says)} renderLabel={a => a.says!} onPress={a => playAnimal(a)} />
+          <SoundBoard />
         ) : null}
 
         {mode === 'album' ? (

@@ -136,8 +136,8 @@ export default function LoginScreen() {
   if (loading) return <View style={styles.center}><ActivityIndicator color={colors.primary} /></View>;
   if (showWelcome && !verificationEmail) {
     return <WelcomeScreen
-      onChoose={(title) => { setChosenAdventure(title); setShowWelcome(false); }}
-      onParentSignIn={() => { setChosenAdventure(null); setShowWelcome(false); }}
+      onChoose={(title) => { setChosenAdventure(title); setMode('create'); setError(null); setShowWelcome(false); }}
+      onParentSignIn={() => { setChosenAdventure(null); setMode('signIn'); setError(null); setShowWelcome(false); }}
     />;
   }
   return (
