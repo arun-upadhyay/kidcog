@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Linking, Modal, Platform, View, Text, TextInput, StyleSheet, Pressable, Switch } from 'react-native';
+import { AccessibilityInfo, Animated, Linking, Modal, Platform, View, Text, TextInput, StyleSheet, Pressable, Switch } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Button from './Button';
 import AboutSheet from './AboutSheet';
@@ -62,6 +62,7 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
   const [aboutOpen, setAboutOpen] = useState(false);
   const collapsed = useAppHeaderCollapsed();
   const collapse = useRef(new Animated.Value(collapsed ? 1 : 0)).current;
+  const [reduceMotion, setReduceMotion] = useState(false);
   const soundOn = useSoundEffects();
   const [menuOpen, setMenuOpen] = useState(false);
   const [changingPassword, setChangingPassword] = useState(false);
@@ -76,8 +77,14 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
   const [accountDeleted, setAccountDeleted] = useState<string | null>(null);
 
   useEffect(() => {
-    Animated.timing(collapse, { toValue: collapsed ? 1 : 0, duration: 190, useNativeDriver: false }).start();
-  }, [collapse, collapsed]);
+    Animated.timing(collapse, { toValue: collapsed ? 1 : 0, duration: reduceMotion ? 0 : 190, useNativeDriver: false }).start();
+  }, [collapse, collapsed, reduceMotion]);
+
+  useEffect(() => {
+    void AccessibilityInfo.isReduceMotionEnabled().then(setReduceMotion).catch(() => {});
+    const subscription = AccessibilityInfo.addEventListener?.('reduceMotionChanged', setReduceMotion);
+    return () => subscription?.remove();
+  }, []);
 
   // React Native Web scrolls inside divs. Capture every vertical scroller so
   // nested game and history screens compact the same shared header too.
