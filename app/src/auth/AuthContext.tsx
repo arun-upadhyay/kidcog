@@ -27,6 +27,16 @@ type AuthValue = {
 
 const AuthContext = createContext<AuthValue | null>(null);
 
+/**
+ * Web: after Google, Apple or Facebook sign-in (or an email link) the browser
+ * lands on /auth/callback. Once the session is in, show the plain home address
+ * instead, so a refresh or a bookmark doesn't keep that sign-in URL.
+ */
+function leaveCallbackUrl() {
+  if (Platform.OS !== 'web' || typeof window === 'undefined') return;
+  if (window.location.pathname.startsWith('/auth/callback')) window.history.replaceState(null, '', '/');
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
@@ -36,8 +46,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     void supabase.auth.getSession().then(({ data }) => {
       setSession(data.session);
       setLoading(false);
+      if (data.session) leaveCallbackUrl();
     });
-    const { data } = supabase.auth.onAuthStateChange((_event, next) => setSession(next));
+    const { data } = supabase.auth.onAuthStateChange((_event, next) => {
+      setSession(next);
+      if (next) leaveCallbackUrl();
+    });
     return () => data.subscription.unsubscribe();
   }, []);
 
