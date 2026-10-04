@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, StyleSheet, Text, View } from 'react-native';
+import { Animated, Pressable, StyleSheet, Text, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import type { GameSpec, PublicQuestion } from '../types';
 import { colors, scaled, spacing } from '../theme';
 import Owl, { type OwlMood } from '../components/Owl';
 import { playSound } from './sounds';
+import { SpeakerIcon } from '../components/Icons';
+import { speak, stopSpeaking } from '../speech';
 import { AddGame, CompareGame, CountGame, NumberLineGame, SubtractGame, TenFrameGame, TrueFalseGame } from './MathGames';
 import { MatchGame, OddOneOutGame, OrderGame, PatternGame, ShapesGame, SortGame } from './ThinkingGames';
 
@@ -180,6 +182,11 @@ export default function GameView({ question, uiScale: s, value, onDone }: {
               <Animated.Text style={[styles.star, { transform: [{ scale: cheer.interpolate({ inputRange: [0, 1], outputRange: [0.2, 1] }) }, { rotate: cheer.interpolate({ inputRange: [0, 1], outputRange: ['-90deg', '0deg'] }) }] }]}>⭐</Animated.Text>
             ) : null}
             <Text style={[styles.bannerText, { fontSize: scaled(17, s) }]}>{message}</Text>
+            {/* Pre-readers can hear the hint (only when they tap). */}
+            <Pressable onPress={() => { stopSpeaking(); void speak(message); }} accessibilityRole="button" accessibilityLabel={`Hear: ${message}`} hitSlop={8}
+              style={({ pressed }) => [styles.hear, { width: scaled(40, s), height: scaled(40, s), borderRadius: scaled(20, s) }, pressed && { transform: [{ scale: 0.9 }] }]}>
+              <SpeakerIcon size={scaled(20, s)} color="#5D439B" />
+            </Pressable>
           </View>
         ) : (
           <View style={[styles.banner, styles.bannerIdle]}>
@@ -202,6 +209,7 @@ const styles = StyleSheet.create({
   bannerSoft: { backgroundColor: colors.coolSoft, borderColor: '#A8CBE6' },
   bannerText: { flex: 1, fontWeight: '800', color: colors.ink, lineHeight: 24 },
   star: { fontSize: 30 },
+  hear: { backgroundColor: '#FFFFFF', borderWidth: 1.5, borderColor: '#CABAF0', alignItems: 'center', justifyContent: 'center' },
   doneCard: { marginTop: spacing(2), alignItems: 'center', gap: spacing(1), padding: spacing(3), borderRadius: 24, backgroundColor: colors.goSoft, borderWidth: 2, borderColor: '#8CCBA9' },
   doneCardSoft: { backgroundColor: colors.coolSoft, borderColor: '#A8CBE6' },
   doneText: { fontSize: 18, fontWeight: '900', color: colors.ink },

@@ -11,6 +11,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Alert,
+  Animated,
   BackHandler,
 } from 'react-native';
 import * as Haptics from 'expo-haptics';
@@ -24,6 +25,7 @@ import Figure, { CellView } from '../components/Figure';
 import { colors, spacing, type, scaled, OPTION_COLORS, PRAISE, column, GUTTER, CONTENT_MAX_WIDTH } from '../theme';
 import { speak, stopSpeaking, useSpeechState } from '../speech';
 import type { PublicQuestion, ResponseInput, TestPayload } from '../types';
+import { useAppHeaderScroll } from '../headerScroll';
 
 export interface QuizScreenProps {
   test: TestPayload;
@@ -55,6 +57,7 @@ function ProgressDots({ total, current, scale }: { total: number; current: numbe
 }
 
 export default function QuizScreen({ test, onFinish, onExit, submitting, error }: QuizScreenProps) {
+  const onHeaderScroll = useAppHeaderScroll(4);
   const speechState = useSpeechState();
   const speechBusy = speechState !== 'idle';
   const { profile } = test;
@@ -184,11 +187,24 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
     setElapsed((e) => ({ ...e, [q.id]: Math.round((Date.now() - startedAt.current) / 1000) }));
   }
 
-  // Stars so far this round: games solved, shown in the header.
+  // Stars so far this round, the same way the reward counts them: one for
+  // every answer given (never for being "right"), and one per game solved.
   const stars = sequence.filter((q) => {
-    if (q.type !== 'game' || !answers[q.id]) return false;
-    try { return (JSON.parse(answers[q.id]!) as { solved?: boolean }).solved === true; } catch { return false; }
+    const a = answers[q.id];
+    if (!a || !a.trim()) return false;
+    if (q.type !== 'game') return true;
+    try { return (JSON.parse(a) as { solved?: boolean }).solved === true; } catch { return false; }
   }).length;
+  // The star pill pops each time a star is won.
+  const starPop = useRef(new Animated.Value(1)).current;
+  const lastStars = useRef(stars);
+  useEffect(() => {
+    if (stars > lastStars.current) {
+      starPop.setValue(1.5);
+      Animated.spring(starPop, { toValue: 1, friction: 3, tension: 140, useNativeDriver: Platform.OS !== 'web' }).start();
+    }
+    lastStars.current = stars;
+  }, [stars, starPop]);
 
   function gameDone(answer: string, solved: boolean) {
     const q = question!;
@@ -271,8 +287,8 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
                 </View>
               )}
             </View>
-            {sequence.some((q) => q.type === 'game') ? (
-              <Text style={styles.starCount} accessibilityLabel={`${stars} stars so far`}>⭐ {stars}</Text>
+            {profile.celebrateEachAnswer || sequence.some((q) => q.type === 'game') ? (
+              <Animated.Text style={[styles.starCount, { transform: [{ scale: starPop }] }]} accessibilityLabel={`${stars} stars so far`}>⭐ {stars}</Animated.Text>
             ) : remaining !== null ? (
               <Text style={[styles.timer, remaining <= 20 && { color: colors.warn }]}>
                 {String(Math.floor(remaining / 60)).padStart(2, '0')}:{String(remaining % 60).padStart(2, '0')}
@@ -287,7 +303,7 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
         contentContainerStyle={styles.body}
         keyboardShouldPersistTaps="handled"
         scrollEventThrottle={32}
-        onScroll={e => { const down = e.nativeEvent.contentOffset.y > 4; if (down !== scrolled) setScrolled(down); }}
+        onScroll={e => { const down = e.nativeEvent.contentOffset.y > 4; if (down !== scrolled) setScrolled(down); onHeaderScroll(e); }}
       >
         {test.poolExhausted ? <Text style={[type.soft, { marginBottom: spacing(1.5) }]}>This round uses the {test.questionCount} available questions in this category for your age.</Text> : null}
         {question.figure ? (
@@ -315,10 +331,9 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
           {profile.readAloud && (
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel={speechBusy ? (speechState === 'loading' ? 'Loading audio' : 'Reading question') : 'Read the question aloud'}
-              disabled={speechBusy}
-              accessibilityState={{ disabled: speechBusy, busy: speechBusy }}
-              onPress={() => void speak(question.speechText || question.prompt)}
+              accessibilityLabel={speechBusy ? 'Stop reading' : 'Read the question aloud'}
+              accessibilityState={{ busy: speechBusy }}
+              onPress={() => { if (speechBusy) stopSpeaking(); else void speak(question.speechText || question.prompt); }}
               style={({ pressed }) => [styles.listen, pressed && { transform: [{ scale: 0.95 }] }]}
             >
               <View style={[styles.listenCircle, { width: scaled(listenSize, s), height: scaled(listenSize, s), borderRadius: scaled(listenSize / 2, s) }, speechBusy && styles.listenCircleBusy]}>
@@ -326,7 +341,7 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
                   ? <ActivityIndicator color="#FFFFFF" />
                   : <SpeakerIcon size={scaled(Math.round(listenSize * 0.53), s)} color="#FFFFFF" />}
               </View>
-              <Text style={styles.listenLabel}>{speechState === 'loading' ? 'Loading…' : speechBusy ? 'Playing…' : 'Listen'}</Text>
+              <Text style={styles.listenLabel}>{speechState === 'loading' ? 'Loading…' : speechBusy ? 'Stop' : 'Listen'}</Text>
             </Pressable>
           )}
         </View>
@@ -376,6 +391,18 @@ export default function QuizScreen({ test, onFinish, onExit, submitting, error }
                   )}
                   <Text style={[styles.optionText, { fontSize: answerSize, lineHeight: Math.round(answerSize * 1.3) }]}>{opt.text}</Text>
                   {selected ? <Text style={{ fontSize: scaled(22, s) }}>✓</Text> : null}
+                  {profile.readAloud ? (
+                    // Pre-readers hear each choice on its own, so they know which button is which.
+                    <Pressable
+                      onPress={() => { stopSpeaking(); void speak(opt.text); }}
+                      accessibilityRole="button"
+                      accessibilityLabel={`Hear: ${opt.text}`}
+                      hitSlop={6}
+                      style={({ pressed }) => [styles.optionSpeaker, { width: scaled(40, s), height: scaled(40, s), borderRadius: scaled(20, s) }, pressed && { transform: [{ scale: 0.9 }] }]}
+                    >
+                      <SpeakerIcon size={scaled(20, s)} color="#5D439B" />
+                    </Pressable>
+                  ) : null}
                 </Pressable>
               );
             })}
@@ -479,6 +506,7 @@ const styles = StyleSheet.create({
   progressTrack: { height: 6, backgroundColor: colors.line, borderRadius: 3, overflow: 'hidden' },
   progressFill: { height: 6, backgroundColor: colors.go },
   headerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  optionSpeaker: { backgroundColor: '#EEE9FF', borderWidth: 1.5, borderColor: '#CABAF0', alignItems: 'center', justifyContent: 'center' },
   starCount: { width: 96, textAlign: 'center', fontSize: 16, fontWeight: '900', color: '#8A5A0A', backgroundColor: colors.happySoft, paddingVertical: 4, borderRadius: 999, overflow: 'hidden' },
   body: { paddingTop: spacing(2), paddingHorizontal: GUTTER, paddingBottom: spacing(4), ...column },
   visualCard: {

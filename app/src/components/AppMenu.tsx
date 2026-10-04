@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Linking, Modal, Platform, View, Text, TextInput, StyleSheet, Pressable, Switch } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, Linking, Modal, Platform, View, Text, TextInput, StyleSheet, Pressable, Switch } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Button from './Button';
 import AboutSheet from './AboutSheet';
 import { setSoundEffects, useSoundEffects } from '../games/sounds';
 import { colors, spacing, type, column, GUTTER } from '../theme';
+import { setAppHeaderCollapsed, useAppHeaderCollapsed } from '../headerScroll';
 
 /**
  * "Support KidCog" links for parents who want to chip in: a Stripe Payment Link
@@ -59,6 +60,8 @@ export interface AppMenuProps {
 export default function AppMenu({ accountEmail, accountProviders, accountVerified, accountCreatedAt, onChangePassword, onSignOut, onDeleteAccount, onHome }: AppMenuProps) {
   const insets = useSafeAreaInsets();
   const [aboutOpen, setAboutOpen] = useState(false);
+  const collapsed = useAppHeaderCollapsed();
+  const collapse = useRef(new Animated.Value(collapsed ? 1 : 0)).current;
   const soundOn = useSoundEffects();
   const [menuOpen, setMenuOpen] = useState(false);
   const [changingPassword, setChangingPassword] = useState(false);
@@ -71,6 +74,24 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
   const [supporting, setSupporting] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState('');
   const [accountDeleted, setAccountDeleted] = useState<string | null>(null);
+
+  useEffect(() => {
+    Animated.timing(collapse, { toValue: collapsed ? 1 : 0, duration: 190, useNativeDriver: false }).start();
+  }, [collapse, collapsed]);
+
+  // React Native Web scrolls inside divs. Capture every vertical scroller so
+  // nested game and history screens compact the same shared header too.
+  useEffect(() => {
+    if (Platform.OS !== 'web' || typeof document === 'undefined') return;
+    const watch = (event: Event) => {
+      const target = event.target;
+      const y = target === document ? globalThis.scrollY ?? 0
+        : target instanceof Element ? target.scrollTop : 0;
+      setAppHeaderCollapsed(y > 24);
+    };
+    document.addEventListener('scroll', watch, true);
+    return () => document.removeEventListener('scroll', watch, true);
+  }, []);
 
   function closeMenu() {
     setMenuOpen(false);
@@ -120,15 +141,18 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
 
   return (
     <>
-      <View style={styles.bar}>
-        <View style={styles.barInner}>
+      <Animated.View testID="app-header" style={[styles.bar, {
+        backgroundColor: collapse.interpolate({ inputRange: [0, 1], outputRange: ['rgba(255,248,239,1)', 'rgba(255,255,255,0.82)'] }),
+        shadowOpacity: collapse.interpolate({ inputRange: [0, 1], outputRange: [0, 0.12] }),
+      }, Platform.OS === 'web' ? styles.webBlur : null]}>
+        <Animated.View style={[styles.barInner, { paddingVertical: collapse.interpolate({ inputRange: [0, 1], outputRange: [8, 3] }) }]}>
           <Pressable
             onPress={() => setMenuOpen(true)}
             accessibilityRole="button"
             accessibilityLabel="Open parent account menu"
             style={({ pressed }) => [styles.menuButton, pressed && styles.menuButtonPressed]}
           >
-            <Text style={styles.menuIcon}>☰</Text>
+            <Animated.Text style={[styles.menuIcon, { fontSize: collapse.interpolate({ inputRange: [0, 1], outputRange: [25, 21] }) }]}>☰</Animated.Text>
           </Pressable>
           <Pressable
             onPress={onHome}
@@ -137,10 +161,10 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
             accessibilityLabel={onHome ? 'KidCog, go to the home page' : 'KidCog'}
             style={({ pressed }) => [styles.brand, pressed && styles.menuButtonPressed]}
           >
-            <Text style={styles.brandText}>🦉 KidCog</Text>
+            <Animated.Text style={[styles.brandText, { fontSize: collapse.interpolate({ inputRange: [0, 1], outputRange: [20, 17] }) }]}>🦉 KidCog</Animated.Text>
           </Pressable>
-        </View>
-      </View>
+        </Animated.View>
+      </Animated.View>
 
       <Modal visible={menuOpen} transparent animationType="fade" onRequestClose={closeMenu}>
         <View style={styles.modalRoot}>
@@ -272,7 +296,8 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
 }
 
 const styles = StyleSheet.create({
-  bar: { backgroundColor: '#FFF8EF', borderBottomWidth: 1, borderBottomColor: '#EEDFCB' },
+  bar: { borderBottomWidth: 1, borderBottomColor: 'rgba(222,205,184,0.78)', zIndex: 50, shadowColor: '#4A3728', shadowRadius: 10, shadowOffset: { width: 0, height: 4 }, elevation: 7 },
+  webBlur: { backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' } as any,
   barInner: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.25), ...column, paddingHorizontal: GUTTER, paddingVertical: spacing(1) },
   brand: { paddingVertical: spacing(0.5), paddingHorizontal: spacing(0.5), borderRadius: 10 },
   brandText: { fontSize: 20, fontWeight: '900', color: '#6B4BB0' },

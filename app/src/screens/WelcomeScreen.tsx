@@ -115,6 +115,53 @@ function Floater({ item, index, still }: { item: typeof FLOATERS[number]; index:
   );
 }
 
+function PreviewTile({ tile, compact, still, onPress }: { tile: Tile; compact: boolean; still: boolean; onPress: () => void }) {
+  const motion = useRef(new Animated.Value(0)).current;
+  const hovering = useRef(false);
+  const [hovered, setHovered] = useState(false);
+  const animate = (toValue: number) => {
+    if (still) { motion.setValue(toValue); return; }
+    Animated.spring(motion, { toValue, damping: 11, stiffness: 250, mass: 0.65, useNativeDriver: true }).start();
+  };
+  const hoverIn = () => { hovering.current = true; setHovered(true); animate(1); };
+  const hoverOut = () => { hovering.current = false; setHovered(false); animate(0); };
+  return (
+    <Animated.View style={{
+      transform: [
+        { translateY: motion.interpolate({ inputRange: [0, 1], outputRange: [0, -9] }) },
+        { scale: motion.interpolate({ inputRange: [0, 1], outputRange: [1, 1.035] }) },
+      ],
+    }}>
+      <Pressable
+        onPress={onPress}
+        onHoverIn={hoverIn}
+        onHoverOut={hoverOut}
+        onPressIn={() => animate(1)}
+        onPressOut={() => animate(hovering.current ? 1 : 0)}
+        accessibilityRole="button"
+        accessibilityLabel={`${tile.name}. Parent sign-in required to start.`}
+        style={({ pressed }) => [
+          styles.tile,
+          { backgroundColor: tile.background, borderColor: tile.border },
+          hovered && styles.tileHovered,
+          pressed && styles.tilePressed,
+        ]}
+      >
+        <Animated.View style={[styles.tileBubble, compact && styles.tileBubbleCompact, { borderColor: tile.border }, {
+          transform: [
+            { scale: motion.interpolate({ inputRange: [0, 1], outputRange: [1, 1.14] }) },
+            { rotate: motion.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '-6deg'] }) },
+          ],
+        }]}>
+          <Text style={[styles.tileIcon, compact && styles.tileIconCompact]}>{tile.icon}</Text>
+        </Animated.View>
+        <Text style={[styles.tileName, compact && styles.tileNameCompact]} numberOfLines={3}>{tile.name}</Text>
+        <Animated.Text accessibilityElementsHidden style={[styles.tileSparkle, { opacity: motion, transform: [{ scale: motion }] }]}>✨</Animated.Text>
+      </Pressable>
+    </Animated.View>
+  );
+}
+
 function Background({ still }: { still: boolean }) {
   return (
     <View style={styles.background} pointerEvents="none" importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
@@ -226,11 +273,7 @@ export default function WelcomeScreen({ onChoose, onParentSignIn }: {
               <View style={styles.grid}>
                 {section.tiles.map((t, i) => (
                   <Pop key={t.key} index={i} still={still} style={{ width: `${100 / columns}%`, padding: spacing(0.75) }}>
-                    <Pressable onPress={() => onChoose(t.name)} accessibilityRole="button" accessibilityLabel={`${t.name}. Parent sign-in required to start.`}
-                      style={({ pressed }) => [styles.tile, { backgroundColor: t.background, borderColor: t.border }, pressed && styles.tilePressed]}>
-                      <View style={[styles.tileBubble, compact && styles.tileBubbleCompact, { borderColor: t.border }]}><Text style={[styles.tileIcon, compact && styles.tileIconCompact]}>{t.icon}</Text></View>
-                      <Text style={[styles.tileName, compact && styles.tileNameCompact]} numberOfLines={3}>{t.name}</Text>
-                    </Pressable>
+                    <PreviewTile tile={t} compact={compact} still={still} onPress={() => onChoose(t.name)} />
                   </Pop>
                 ))}
               </View>
@@ -320,7 +363,8 @@ const styles = StyleSheet.create({
   section: { marginTop: spacing(2) },
   sectionTitle: { fontSize: 20, fontWeight: '900', color: '#3F3126', marginBottom: spacing(0.5), paddingHorizontal: spacing(0.75) },
   grid: { flexDirection: 'row', flexWrap: 'wrap' },
-  tile: { aspectRatio: 1, borderRadius: 24, borderWidth: 2.5, alignItems: 'center', justifyContent: 'center', padding: spacing(1), gap: spacing(0.75) },
+  tile: { aspectRatio: 1, borderRadius: 24, borderWidth: 2.5, alignItems: 'center', justifyContent: 'center', padding: spacing(1), gap: spacing(0.75), shadowColor: '#4A3728', shadowOpacity: 0.05, shadowRadius: 6, shadowOffset: { width: 0, height: 2 }, elevation: 1 },
+  tileHovered: { borderWidth: 4, shadowOpacity: 0.24, shadowRadius: 16, shadowOffset: { width: 0, height: 9 }, elevation: 8 },
   tilePressed: { transform: [{ scale: 0.93 }] },
   tileBubble: { width: 64, height: 64, borderRadius: 32, backgroundColor: '#FFFFFF', borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
   tileIcon: { fontSize: 34 },
@@ -328,6 +372,7 @@ const styles = StyleSheet.create({
   tileIconCompact: { fontSize: 27 },
   tileNameCompact: { fontSize: 13, lineHeight: 16 },
   tileName: { fontSize: 14, lineHeight: 18, fontWeight: '900', color: '#3F3126', textAlign: 'center' },
+  tileSparkle: { position: 'absolute', right: 9, bottom: 7, fontSize: 18 },
 
   steps: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing(1.5), marginTop: spacing(4) },
   step: { width: '100%', backgroundColor: 'rgba(255,255,255,0.92)', borderRadius: 24, borderWidth: 1.5, borderColor: colors.line, padding: spacing(2), alignItems: 'center', gap: 4 },

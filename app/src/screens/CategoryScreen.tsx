@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, Pressable, StyleSheet, useWindowDimensions } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { AccessibilityInfo, Animated, View, Text, ScrollView, Pressable, StyleSheet, useWindowDimensions } from 'react-native';
 import Sheet from '../components/Sheet';
 import { CATEGORY_GROUPS } from '../categoryGroups';
 import { CATEGORY_NAMES, CATEGORY_VISUALS, GAME_CATEGORIES, GROUP_NAMES, GROUP_VISUALS } from '../categoryVisuals';
@@ -10,6 +10,7 @@ import Button from '../components/Button';
 import { fetchCategories } from '../api';
 import { colors, spacing, column, GUTTER, CONTENT_MAX_WIDTH } from '../theme';
 import type { TraitKey, TraitMetaPublic, Report } from '../types';
+import { useAppHeaderScroll } from '../headerScroll';
 
 type GroupKey = (typeof CATEGORY_GROUPS)[number]['key'];
 
@@ -27,6 +28,79 @@ const ROUND_OPTIONS = [
  * the tiles, so the screen stays mostly pictures.
  */
 const VIEW_KEY = 'kidcog.categoryView.v1';
+
+function ActivityTile({ title, visual, done, game, stars, width, disabled, reduceMotion, onPress }: {
+  title: string;
+  visual: { icon: string; background: string; border: string };
+  done: boolean;
+  game: boolean;
+  stars: number;
+  width: `${number}%`;
+  disabled: boolean;
+  reduceMotion: boolean;
+  onPress: () => void;
+}) {
+  const motion = useRef(new Animated.Value(0)).current;
+  const hovering = useRef(false);
+  const [hovered, setHovered] = useState(false);
+
+  const animate = (toValue: number) => {
+    if (reduceMotion) { motion.setValue(toValue); return; }
+    Animated.spring(motion, {
+      toValue,
+      damping: 12,
+      stiffness: 230,
+      mass: 0.7,
+      useNativeDriver: true,
+    }).start();
+  };
+  const hoverIn = () => { hovering.current = true; setHovered(true); animate(1); };
+  const hoverOut = () => { hovering.current = false; setHovered(false); animate(0); };
+
+  return (
+    <Animated.View style={[styles.tileWrap, { width }, {
+      transform: [
+        { translateY: motion.interpolate({ inputRange: [0, 1], outputRange: [0, -7] }) },
+        { scale: motion.interpolate({ inputRange: [0, 1], outputRange: [1, 1.025] }) },
+      ],
+    }]}>
+      <Pressable
+        onPress={onPress}
+        onHoverIn={hoverIn}
+        onHoverOut={hoverOut}
+        onPressIn={() => animate(1)}
+        onPressOut={() => animate(hovering.current ? 1 : 0)}
+        disabled={disabled}
+        accessibilityRole="button"
+        accessibilityLabel={`${title}${done ? ', played before' : ''}`}
+        accessibilityHint="Opens this activity"
+        style={({ pressed }) => [
+          styles.tile,
+          { backgroundColor: visual.background, borderColor: visual.border },
+          hovered && styles.tileHovered,
+          pressed && styles.tilePressed,
+        ]}
+      >
+        <Animated.View style={[styles.tileIcon, { borderColor: visual.border }, {
+          transform: [
+            { scale: motion.interpolate({ inputRange: [0, 1], outputRange: [1, 1.12] }) },
+            { rotate: motion.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '-5deg'] }) },
+          ],
+        }]}>
+          <Text style={styles.tileEmoji}>{visual.icon}</Text>
+        </Animated.View>
+        <Text style={styles.tileName} numberOfLines={2}>{title}</Text>
+        <Animated.Text accessibilityElementsHidden style={[styles.hoverSparkle, {
+          opacity: motion,
+          transform: [{ scale: motion.interpolate({ inputRange: [0, 1], outputRange: [0.6, 1] }) }],
+        }]}>✨</Animated.Text>
+        {done ? <View style={styles.doneBadge}><Text style={styles.doneText}>✓</Text></View> : null}
+        {game ? <View style={styles.gameChip}><Text style={styles.gameChipText}>🎮 Games</Text></View> : null}
+        {stars > 0 ? <Text style={styles.tileStars}>⭐ {stars}</Text> : null}
+      </Pressable>
+    </Animated.View>
+  );
+}
 
 export default function CategoryScreen({ onSelect, onPreview, progress = null, onReport, onPlayZone, onAnimals, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
   onSelect: (trait: TraitKey, count: number) => void;
@@ -50,6 +124,7 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
   busy: boolean;
   error: string | null;
 }) {
+  const onHeaderScroll = useAppHeaderScroll();
   const [categories, setCategories] = useState<TraitMetaPublic[]>([]);
   const [count, setCount] = useState(initialCount);
   const [tab, setTab] = useState<GroupKey>('intellectual');
@@ -60,7 +135,13 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
   const [attempt, setAttempt] = useState(0);
   // Picture tiles or the adventure map; remembered on this device.
   const [view, setView] = useState<'tiles' | 'map'>('tiles');
+  const [reduceMotion, setReduceMotion] = useState(false);
   useEffect(() => { AsyncStorage.getItem(VIEW_KEY).then(v => { if (v === 'map') setView('map'); }).catch(() => {}); }, []);
+  useEffect(() => {
+    void AccessibilityInfo.isReduceMotionEnabled().then(setReduceMotion);
+    const subscription = AccessibilityInfo.addEventListener?.('reduceMotionChanged', setReduceMotion);
+    return () => subscription?.remove();
+  }, []);
   const chooseView = (next: 'tiles' | 'map') => { setView(next); AsyncStorage.setItem(VIEW_KEY, next).catch(() => {}); };
 
   // Two tiles per row on a phone, three when there is room.
@@ -95,7 +176,7 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
   }
 
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.container}>
+    <ScrollView style={styles.screen} contentContainerStyle={styles.container} onScroll={onHeaderScroll} scrollEventThrottle={16}>
       <View style={styles.hero}>
         <View style={styles.heroBubble}><Text style={styles.heroEmoji}>🌈</Text></View>
         <Text style={styles.heroTitle}>What shall we explore?</Text>
@@ -199,21 +280,18 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
           const visual = CATEGORY_VISUALS[category.key];
           const done = tried(category.key);
           return (
-            <View key={category.key} style={[styles.tileWrap, { width: tileWidth }]}>
-              <Pressable
-                onPress={() => openActivity(category.key)}
-                disabled={busy}
-                accessibilityRole="button"
-                accessibilityLabel={`${CATEGORY_NAMES[category.key]}${done ? ', played before' : ''}`}
-                style={({ pressed }) => [styles.tile, { backgroundColor: visual.background, borderColor: visual.border }, pressed && styles.pressed]}
-              >
-                <View style={[styles.tileIcon, { borderColor: visual.border }]}><Text style={styles.tileEmoji}>{visual.icon}</Text></View>
-                <Text style={styles.tileName} numberOfLines={2}>{CATEGORY_NAMES[category.key]}</Text>
-                {done ? <View style={styles.doneBadge}><Text style={styles.doneText}>✓</Text></View> : null}
-                {GAME_CATEGORIES.has(category.key) ? <View style={styles.gameChip}><Text style={styles.gameChipText}>🎮 Games</Text></View> : null}
-                {(progress?.visited[category.key]?.stars ?? 0) > 0 ? <Text style={styles.tileStars}>⭐ {progress!.visited[category.key]!.stars}</Text> : null}
-              </Pressable>
-            </View>
+            <ActivityTile
+              key={category.key}
+              title={CATEGORY_NAMES[category.key]}
+              visual={visual}
+              done={done}
+              game={GAME_CATEGORIES.has(category.key)}
+              stars={progress?.visited[category.key]?.stars ?? 0}
+              width={tileWidth}
+              disabled={busy}
+              reduceMotion={reduceMotion}
+              onPress={() => openActivity(category.key)}
+            />
           );
         })}
       </View>
@@ -310,9 +388,12 @@ const styles = StyleSheet.create({
   tileStars: { marginTop: 4, fontSize: 13, fontWeight: '900', color: '#8A5A0A' },
   tileWrap: { padding: spacing(0.75) },
   tile: { minHeight: 150, borderRadius: 24, borderWidth: 2, alignItems: 'center', justifyContent: 'center', padding: spacing(1.5), shadowColor: '#4A3728', shadowOpacity: 0.07, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 2 },
+  tileHovered: { borderWidth: 3, shadowOpacity: 0.2, shadowRadius: 15, shadowOffset: { width: 0, height: 8 }, elevation: 7 },
+  tilePressed: { opacity: 0.9, transform: [{ scale: 0.98 }] },
   tileIcon: { width: 72, height: 72, borderRadius: 36, backgroundColor: '#FFFFFF', borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
   tileEmoji: { fontSize: 38 },
   tileName: { fontSize: 16, lineHeight: 20, fontWeight: '900', color: '#3F3126', textAlign: 'center', marginTop: spacing(1) },
+  hoverSparkle: { position: 'absolute', right: 12, bottom: 10, fontSize: 19 },
   doneBadge: { position: 'absolute', right: 10, top: 10, width: 26, height: 26, borderRadius: 13, backgroundColor: colors.go, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: '#FFFFFF' },
   doneText: { color: '#FFFFFF', fontSize: 14, fontWeight: '900' },
 

@@ -90,6 +90,8 @@ export async function recordRound(childId: string, trait: TraitKey, report: Repo
 
   const visit = progress.visited[trait] ?? { stars: 0, plays: 0 };
   const next: ChildProgress = {
+    // Keep everything else (Play Zone levels, the animal album) as it was.
+    ...progress,
     stars: progress.stars + stars,
     stickers: sticker ? [...progress.stickers, sticker] : progress.stickers,
     levels: { ...progress.levels, [trait]: current + levelChange },

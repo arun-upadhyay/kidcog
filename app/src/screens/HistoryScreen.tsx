@@ -4,6 +4,7 @@ import { deleteAssessmentSession, fetchHistoricalAssessment, listAssessmentSessi
 import Button from '../components/Button';
 import { colors, spacing, type, column, GUTTER } from '../theme';
 import type { AssessmentSessionSummary, HistoricalAssessment, SavedChildProfile } from '../types';
+import { useAppHeaderScroll } from '../headerScroll';
 
 type Props = {
   child: SavedChildProfile;
@@ -16,6 +17,7 @@ function displayDate(value: string) {
 }
 
 export default function HistoryScreen({ child, onBack, onOpen }: Props) {
+  const onHeaderScroll = useAppHeaderScroll();
   const [sessions, setSessions] = useState<AssessmentSessionSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
@@ -64,7 +66,7 @@ export default function HistoryScreen({ child, onBack, onOpen }: Props) {
     ]);
   }
 
-  return <ScrollView contentContainerStyle={styles.container}>
+  return <ScrollView contentContainerStyle={styles.container} onScroll={onHeaderScroll} scrollEventThrottle={16}>
     <Pressable onPress={onBack} accessibilityRole="button"><Text style={styles.back}>← Back</Text></Pressable>
     <Text style={type.label}>PREVIOUS ASSESSMENTS</Text>
     <Text style={[type.title, styles.title]}>{child.nickname}</Text>

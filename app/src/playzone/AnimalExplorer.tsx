@@ -10,6 +10,7 @@ import { factsFor } from '../explore/funFacts';
 import { stopSpeaking } from '../speech';
 import { colors, spacing } from '../theme';
 import { WinCard } from './common';
+import { useAppHeaderScroll } from '../headerScroll';
 import SoundBoard from './SoundBoard';
 
 /**
@@ -31,6 +32,7 @@ export default function AnimalExplorer({ level: startLevel, found, onBack, onFin
   onFinish: (stars: number, nextLevel: number) => void;
   onFound: (keys: string[]) => void;
 }) {
+  const onHeaderScroll = useAppHeaderScroll();
   const [mode, setMode] = useState<Mode>('hub');
   const [level, setLevel] = useState(Math.max(1, Math.min(4, startLevel)));
   const [card, setCard] = useState<Animal | null>(null);
@@ -54,7 +56,7 @@ export default function AnimalExplorer({ level: startLevel, found, onBack, onFin
     <View style={styles.screen}>
       <TopBar title={mode === 'album' ? '📒 My animal album' : mode === 'sounds' ? '🔊 Animal sounds' : '🦁 Animal Explorer'}
         backLabel={mode === 'hub' ? '← Games' : '← Explorer'} onBack={mode === 'hub' ? () => { stopSpeaking(); onBack(); } : leave} />
-      <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollBody}>
+      <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollBody} onScroll={onHeaderScroll} scrollEventThrottle={16}>
         {mode === 'hub' ? (
           <>
             <Pressable onPress={() => { meet(today.key); setCard(today); }} accessibilityRole="button"
@@ -106,6 +108,7 @@ function Quiz({ level, onExit, onBack, onMeet, onDone, onLevel }: {
   level: number; onExit: () => void; onBack: () => void; onMeet: (key: string) => void;
   onDone: (stars: number, firstTry: number) => number; onLevel: (level: number) => void;
 }) {
+  const onHeaderScroll = useAppHeaderScroll();
   const [round, setRound] = useState(() => makeRound(level, ROUND));
   const [index, setIndex] = useState(0);
   const [started, setStarted] = useState(false);
@@ -166,7 +169,7 @@ function Quiz({ level, onExit, onBack, onMeet, onDone, onLevel }: {
   return (
     <View style={styles.screen}>
       <TopBar title="❓ Animal quiz" backLabel="← Explorer" onBack={onExit} right={`${index + 1} / ${round.length}`} />
-      <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollBody}>
+      <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollBody} onScroll={onHeaderScroll} scrollEventThrottle={16}>
         {!started ? (
           <View style={styles.startCard}>
             <Owl mood="happy" size={88} />

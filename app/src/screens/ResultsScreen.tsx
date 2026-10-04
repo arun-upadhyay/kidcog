@@ -10,6 +10,7 @@ import Button from '../components/Button';
 import { colors, spacing, type, column, GUTTER } from '../theme';
 import { speak, stopSpeaking, useSpeechState, lastSpeechError } from '../speech';
 import type { ParentReport as ParentReportType, Report, ScoredResponse, TraitKey, TraitReport } from '../types';
+import { useAppHeaderScroll } from '../headerScroll';
 
 export interface ResultsScreenProps {
   report: Report;
@@ -277,6 +278,7 @@ export default function ResultsScreen({
   reward,
   sessionId,
 }: ResultsScreenProps) {
+  const onHeaderScroll = useAppHeaderScroll();
   // The grown-up "Report this note" sheet (the note is written by AI).
   const [reportingNote, setReportingNote] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
@@ -298,7 +300,7 @@ export default function ResultsScreen({
   }
 
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.container}>
+    <ScrollView style={styles.screen} contentContainerStyle={styles.container} onScroll={onHeaderScroll} scrollEventThrottle={16}>
       {historical && onBackToHistory ? <Pressable onPress={onBackToHistory} accessibilityRole="button"><Text style={styles.historyBack}>← Previous results</Text></Pressable> : null}
 
       {/* Same header shape as "What shall we explore?", with the owl. */}

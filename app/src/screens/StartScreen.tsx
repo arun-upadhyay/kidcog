@@ -10,6 +10,7 @@ import { avatarEmoji, defaultAvatarKey, avatarName, firstFreeAvatar } from '../a
 import { AvatarBrowser, AvatarQuickPick } from '../components/AvatarPicker';
 import { AVATARS } from '../avatars';
 import { loadProgress, type ChildProgress } from '../progress';
+import { useAppHeaderScroll } from '../headerScroll';
 
 export interface StartScreenProps {
   onStart: (profile: ChildProfile) => void;
@@ -23,6 +24,8 @@ export interface StartScreenProps {
 
 /** Shown once, the first time a parent reaches this screen on this device. */
 const ABOUT_SEEN_KEY = 'kidcog.aboutSeen.v1';
+/** The grown-up's agreement, remembered on this device so it isn't asked every visit. */
+const CONSENT_KEY = 'kidcog.parentConsent.v1';
 
 /**
  * Ages as tappable chips rather than a keyboard.
@@ -36,6 +39,7 @@ const AGE_ICONS: Record<(typeof AGES)[number], string> = { 4: '🐣', 5: '⭐', 
 const PROFILE_COLORS = ['#E5F3FF', '#FFF0D9', '#E5F5EA', '#F2EAFE'] as const;
 
 export default function StartScreen({ onStart, loading, error, savedChildren, onViewHistory, onDeleteChild, onChangeAvatar }: StartScreenProps) {
+  const onHeaderScroll = useAppHeaderScroll();
   const [firstName, setFirstName] = useState('');
   const [age, setAge] = useState<number | null>(5);
   const [consent, setConsent] = useState(false);
@@ -61,7 +65,12 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
 
   useEffect(() => {
     AsyncStorage.getItem(ABOUT_SEEN_KEY).then(seen => { if (!seen) setAboutOpen(true); }).catch(() => {});
+    AsyncStorage.getItem(CONSENT_KEY).then(saved => { if (saved === '1') setConsent(true); }).catch(() => {});
   }, []);
+  function changeConsent(on: boolean) {
+    setConsent(on);
+    (on ? AsyncStorage.setItem(CONSENT_KEY, '1') : AsyncStorage.removeItem(CONSENT_KEY)).catch(() => {});
+  }
   function closeAbout() {
     setAboutOpen(false);
     AsyncStorage.setItem(ABOUT_SEEN_KEY, '1').catch(() => {});
@@ -93,6 +102,8 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
     setAdding(false);
     setFirstName(child.nickname);
     if (child.age !== null) setAge(child.age);
+    // Once a grown-up has agreed on this device, one tap on a player starts.
+    if (consent && !loading && child.age !== null) onStart({ firstName: child.nickname, age: child.age });
   }
 
   async function removeChild(child: SavedChildProfile) {
@@ -129,7 +140,7 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
 
 
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
+    <ScrollView style={styles.screen} contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled" onScroll={onHeaderScroll} scrollEventThrottle={16}>
       <View style={styles.hello}>
         <View style={styles.helloOwl}><Text style={styles.helloOwlText}>🦉</Text></View>
         <View style={{ flex: 1 }}>
@@ -234,7 +245,7 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
       ) : null}
 
       <View style={styles.consentRow}>
-        <Switch value={consent} onValueChange={setConsent} trackColor={{ true: colors.go, false: colors.line }} accessibilityLabel="I'm the parent or guardian and agree to how KidCog checks answers" />
+        <Switch value={consent} onValueChange={changeConsent} trackColor={{ true: colors.go, false: colors.line }} accessibilityLabel="I'm the parent or guardian and agree to how KidCog checks answers" />
         <Text style={styles.consentText}>
           I’m the parent or guardian and agree to how KidCog checks answers.{' '}
           <Text style={styles.learnMore} onPress={() => setAboutOpen(true)} accessibilityRole="link">Learn more</Text>

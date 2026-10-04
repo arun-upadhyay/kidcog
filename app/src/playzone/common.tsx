@@ -1,12 +1,28 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, PanResponder, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import Owl from '../components/Owl';
 import Button from '../components/Button';
 import { colors, spacing, CONTENT_MAX_WIDTH, GUTTER } from '../theme';
+import { speak, stopSpeaking } from '../speech';
 
 export type Dir = 'up' | 'down' | 'left' | 'right';
 export type GameKey = 'animals' | 'snake' | 'bubbles' | 'maze' | 'trace';
 export const useNative = Platform.OS !== 'web';
+
+/**
+ * Games sit inside a scrolling page (so small screens can still reach every
+ * control). While a finger is on a game board the page must not scroll, or a
+ * swipe or a traced line would move the page instead of the snake or the pen.
+ * Boards call lock(true) when touched and lock(false) when the finger lifts.
+ */
+export const ScrollLockContext = createContext<(locked: boolean) => void>(() => {});
+/** A stable lock function (safe to call from PanResponders created once). */
+export function useScrollLock() {
+  const lock = useContext(ScrollLockContext);
+  const ref = useRef(lock);
+  ref.current = lock;
+  return useMemo(() => (locked: boolean) => ref.current(locked), []);
+}
 
 /** The board size that fits the screen: full width on a phone, capped on a laptop. */
 export function useBoardSize(max = 460) {
@@ -84,14 +100,19 @@ export function useArrowKeys(onDir: (dir: Dir) => void, enabled = true) {
 export function useSwipe(onDir: (dir: Dir) => void) {
   const handler = useRef(onDir);
   handler.current = onDir;
+  const lock = useScrollLock();
   return useMemo(() => PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onMoveShouldSetPanResponder: (_e, g) => Math.abs(g.dx) + Math.abs(g.dy) > 8,
+    onPanResponderTerminationRequest: () => false,
+    onPanResponderGrant: () => lock(true),
+    onPanResponderTerminate: () => lock(false),
     onPanResponderRelease: (_e, g) => {
+      lock(false);
       if (Math.max(Math.abs(g.dx), Math.abs(g.dy)) < 18) return;
       handler.current(Math.abs(g.dx) > Math.abs(g.dy) ? (g.dx > 0 ? 'right' : 'left') : (g.dy > 0 ? 'down' : 'up'));
     },
-  }), []);
+  }), [lock]);
 }
 
 /** Big arrow buttons for small fingers (and anyone without a keyboard). */
@@ -123,7 +144,17 @@ export function GameFrame({ emoji, title, level, onBack, children, hint }: {
         <Text style={styles.title} numberOfLines={1}>{emoji} {title}</Text>
         <Text style={styles.level}>Level {level}</Text>
       </View>
-      {hint ? <Text style={styles.hint}>{hint}</Text> : null}
+      {hint ? (
+        <View style={styles.hintRow}>
+          <Text style={styles.hint}>{hint}</Text>
+          {/* Tap to hear the rule: most players can't read it yet. */}
+          <Pressable onPress={() => { stopSpeaking(); void speak(hint.replace(/\p{Extended_Pictographic}|\uFE0F/gu, '').trim()); }}
+            accessibilityRole="button" accessibilityLabel={`Hear: ${hint}`} hitSlop={8}
+            style={({ pressed }) => [styles.hintSpeaker, pressed && { transform: [{ scale: 0.9 }] }]}>
+            <Text style={styles.hintSpeakerText}>🔊</Text>
+          </Pressable>
+        </View>
+      ) : null}
       {children}
     </View>
   );
@@ -166,7 +197,10 @@ const styles = StyleSheet.create({
   backText: { fontSize: 14, fontWeight: '800', color: colors.inkSoft },
   title: { flex: 1, fontSize: 20, fontWeight: '900', color: '#3F3126', textAlign: 'center' },
   level: { fontSize: 13, fontWeight: '900', color: '#4E3590', backgroundColor: '#EEE9FF', borderRadius: 999, paddingHorizontal: spacing(1.25), paddingVertical: 4, overflow: 'hidden' },
-  hint: { fontSize: 16, fontWeight: '800', color: '#513A27', textAlign: 'center' },
+  hintRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing(1), alignSelf: 'stretch' },
+  hintSpeaker: { width: 40, height: 40, borderRadius: 20, backgroundColor: '#EEE9FF', borderWidth: 1.5, borderColor: '#CABAF0', alignItems: 'center', justifyContent: 'center' },
+  hintSpeakerText: { fontSize: 18 },
+  hint: { flexShrink: 1, fontSize: 16, fontWeight: '800', color: '#513A27', textAlign: 'center' },
   pad: { alignItems: 'center', gap: spacing(1) },
   padRow: { flexDirection: 'row', gap: spacing(1) },
   padKey: { width: 56, height: 56, borderRadius: 16, backgroundColor: '#EEE9FF', borderWidth: 2, borderColor: '#CABAF0', alignItems: 'center', justifyContent: 'center' },

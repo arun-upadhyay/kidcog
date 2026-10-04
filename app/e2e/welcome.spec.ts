@@ -9,8 +9,11 @@ test('activity preview leads to parent sign-up and back', async ({ page }) => {
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 
-  // Any activity leads to the parent sign-up for it.
-  await page.getByRole('button', { name: /^Number Snake/ }).click();
+  // The real public-grid tile visibly responds, then leads to parent sign-up.
+  const numberSnake = page.getByRole('button', { name: /^Number Snake/ });
+  await numberSnake.hover();
+  await expect.poll(() => numberSnake.evaluate(element => getComputedStyle(element).borderTopWidth)).toBe('4px');
+  await numberSnake.click();
   await expect(page.getByText('Unlock Number Snake', { exact: true })).toBeVisible({ timeout: 1000 });
   await expect(page.getByRole('button', { name: 'Create parent account' })).toBeVisible();
 

@@ -22,6 +22,7 @@ import { supabase } from './src/auth/supabase';
 import { stopSpeaking } from './src/speech';
 import { forgetProgress, loadProgress, recordAnimalsFound, recordArcade, recordRound, type ChildProgress, type RoundReward } from './src/progress';
 import BreakSheet, { BREAK_AFTER_MS } from './src/components/BreakSheet';
+import RoundDoneOverlay from './src/components/RoundDoneOverlay';
 import { colors } from './src/theme';
 import type { ChildProfile, HistoricalAssessment, Report, ResponseInput, SavedChildProfile, TestPayload, TraitKey } from './src/types';
 
@@ -58,6 +59,8 @@ function KidCogApp() {
   // Stars, stickers and game difficulty for the child playing (kept on this device).
   const [progress, setProgress] = useState<ChildProgress | null>(null);
   const [reward, setReward] = useState<RoundReward | null>(null);
+  // Stars to celebrate while a finished round is being checked (null = not finishing).
+  const [finishing, setFinishing] = useState<number | null>(null);
   // A friendly "time for a break" after about 15 minutes of play.
   const playStartedAt = useRef<number | null>(null);
   const [breakOpen, setBreakOpen] = useState(false);
@@ -191,6 +194,14 @@ function KidCogApp() {
     async (responses: ResponseInput[]) => {
       setBusy(true);
       setError(null);
+      // Celebrate at once, counting stars the way the reward does: one per
+      // answer given, and games only when solved.
+      const all = [...(test?.questions ?? []), ...Object.values(test?.followUpQuestions ?? {})];
+      setFinishing(responses.filter(resp => {
+        if (!resp.answer.trim()) return false;
+        if (all.find(q => q.id === resp.questionId)?.type !== 'game') return true;
+        try { return (JSON.parse(resp.answer) as { solved?: boolean }).solved === true; } catch { return false; }
+      }).length);
       try {
         // Only this test's answers: the result describes the test just taken.
         if (!sessionId) throw new Error('This assessment session is missing. Start a new session.');
@@ -219,6 +230,7 @@ function KidCogApp() {
         setError(messageOf(err));
       } finally {
         setBusy(false);
+        setFinishing(null);
       }
     },
     [child, test, sessionId, roundCategory]
@@ -342,6 +354,7 @@ function KidCogApp() {
           {stage === 'quiz' && test && (
             <QuizScreen test={test} onFinish={finish} onExit={leaveQuiz} submitting={busy} error={error} />
           )}
+          {stage === 'quiz' && finishing !== null ? <RoundDoneOverlay childName={child?.firstName} stars={finishing} /> : null}
 
           {stage === 'results' && report && (
             <ResultsScreen

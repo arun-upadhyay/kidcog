@@ -3,7 +3,7 @@ import { Animated, PanResponder, Platform, Pressable, StyleSheet, Text, View, us
 import Svg, { Circle, Polyline } from 'react-native-svg';
 import { playSound } from '../games/sounds';
 import { colors, spacing } from '../theme';
-import { GameSurface, GameStartCard, GameFrame, WinCard, useNative } from './common';
+import { GameSurface, GameStartCard, GameFrame, WinCard, useNative, useScrollLock } from './common';
 
 /**
  * Trace & Draw: follow the dotted guide with a finger (or the mouse) to write
@@ -161,12 +161,16 @@ export default function TraceDraw({ level: startLevel, onBack, onFinish }: {
   }, [checkpoints, finishGlyph]);
 
   const toUnits = useCallback((lx: number, ly: number): Pt => [(lx / size) * 100, (ly / size) * 100], [size]);
+  const lockScroll = useScrollLock();
   const responder = useMemo(() => PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onStartShouldSetPanResponderCapture: () => true,
     onMoveShouldSetPanResponder: () => true,
     onPanResponderTerminationRequest: () => false,
+    onPanResponderRelease: () => lockScroll(false),
+    onPanResponderTerminate: () => lockScroll(false),
     onPanResponderGrant: e => {
+      lockScroll(true);
       const p = toUnits(e.nativeEvent.locationX, e.nativeEvent.locationY);
       setInk(list => [...list, [p]]);
       touch(p[0], p[1]);
@@ -181,7 +185,7 @@ export default function TraceDraw({ level: startLevel, onBack, onFinish }: {
       });
       touch(p[0], p[1]);
     },
-  }), [toUnits, touch]);
+  }), [toUnits, touch, lockScroll]);
 
   const next = checkpoints[stroke]?.[done];
   const color = INK[index % INK.length]!;

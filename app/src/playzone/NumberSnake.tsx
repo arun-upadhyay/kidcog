@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { PanResponder, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { playSound } from '../games/sounds';
 import { colors, spacing } from '../theme';
-import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, randomInt, shuffle, useArrowKeys, type Dir } from './common';
+import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, randomInt, shuffle, useArrowKeys, useScrollLock, type Dir } from './common';
 
 /**
  * Number Snake: steer the snake to eat the numbers in order. It grows with each
@@ -40,7 +40,7 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
   const [running, setRunning] = useState(false);
   const [won, setWon] = useState<number | null>(null);
   const [oops, setOops] = useState<number | null>(null);
-  const game = useRef({ snake: [] as Cell[], dir: 'right' as Dir, queued: [] as Dir[], food: [] as Food[], next: 0, grow: 0, mistakes: 0, foodId: 0 });
+  const game = useRef({ snake: [] as Cell[], dir: 'right' as Dir, queued: [] as Dir[], food: [] as Food[], next: 0, grow: 0, mistakes: 0, foodId: 0, placedAt: 0, missed: false });
 
   const freeCell = useCallback((taken: Cell[]): Cell => {
     for (let tries = 0; tries < 200; tries++) {
@@ -55,6 +55,7 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
     const g = game.current;
     const target = cfg.sequence[g.next];
     if (target === undefined) { g.food = []; return; }
+    g.placedAt = Date.now(); g.missed = false;
     const others = shuffle(cfg.sequence.filter(v => v !== target && !cfg.sequence.slice(0, g.next).includes(v))).slice(0, 2);
     const decoys = others.length ? others : [target + 1, target + 2];
     const taken: Cell[] = [...g.snake];
@@ -63,7 +64,7 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
 
   const reset = useCallback(() => {
     const mid = Math.floor(cfg.grid / 2);
-    game.current = { snake: [{ x: 2, y: mid }, { x: 1, y: mid }, { x: 0, y: mid }], dir: 'right', queued: [], food: [], next: 0, grow: 0, mistakes: 0, foodId: 0 };
+    game.current = { snake: [{ x: 2, y: mid }, { x: 1, y: mid }, { x: 0, y: mid }], dir: 'right', queued: [], food: [], next: 0, grow: 0, mistakes: 0, foodId: 0, placedAt: 0, missed: false };
     placeFood();
     setWon(null); setRunning(false); render(n => n + 1);
   }, [cfg.grid, placeFood]);
@@ -81,13 +82,16 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
   // Measure each segment, so a child can turn repeatedly without lifting a finger.
   const turnRef = useRef(turn);
   turnRef.current = turn;
+  const lockScroll = useScrollLock();
   const swipe = useMemo(() => {
     let anchorX = 0, anchorY = 0;
     return PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,
       onPanResponderTerminationRequest: () => false,
-      onPanResponderGrant: () => { anchorX = 0; anchorY = 0; },
+      onPanResponderGrant: () => { anchorX = 0; anchorY = 0; lockScroll(true); },
+      onPanResponderRelease: () => lockScroll(false),
+      onPanResponderTerminate: () => lockScroll(false),
       onPanResponderMove: (_event, gesture) => {
         const dx = gesture.dx - anchorX, dy = gesture.dy - anchorY;
         if (Math.max(Math.abs(dx), Math.abs(dy)) < 12) return;
@@ -96,7 +100,7 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
         anchorX = gesture.dx; anchorY = gesture.dy;
       },
     });
-  }, []);
+  }, [lockScroll]);
 
   useEffect(() => {
     if (!running) return;
@@ -121,6 +125,7 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
           } else placeFood();
         } else {
           g.mistakes++;
+          g.missed = true;
           playSound('oops');
           setOops(eaten.value);
           setTimeout(() => setOops(null), 900);
@@ -136,6 +141,9 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
 
   const g = game.current;
   const target = cfg.sequence[g.next];
+  // The right number glows only when it helps: always on level 1, otherwise
+  // after a wrong bite or about 8 seconds of searching, so children count.
+  const glow = level === 1 || g.missed || (running && Date.now() - g.placedAt > 8000);
   return (
     <GameFrame emoji="🐍" title="Number Snake" level={level} onBack={onBack}
       hint={won === null ? (oops !== null ? `Oops, that's ${oops}! Find ${target}.` : `Eat the numbers in order: find ${target ?? ''}`) : ''}>
@@ -151,7 +159,7 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
           {Array.from({ length: cfg.grid * cfg.grid }, (_, i) => <View key={i} style={{ position: 'absolute', left: (i % cfg.grid) * cellWidth, top: Math.floor(i / cfg.grid) * cellHeight, width: cellWidth, height: cellHeight, backgroundColor: (i % cfg.grid + Math.floor(i / cfg.grid)) % 2 ? '#E0F1CF' : '#EBF7DE', borderWidth: 0.5, borderColor: '#D8EBC9' }} />)}
         </View>
         {g.food.map(f => (
-          <View key={f.id} style={[styles.food, { left: f.x * cellWidth + (cellWidth - cell) / 2 + 2, top: f.y * cellHeight + (cellHeight - cell) / 2 + 2, width: cell - 4, height: cell - 4, borderRadius: cell / 2 }, f.value === target ? styles.foodTarget : null]}>
+          <View key={f.id} style={[styles.food, { left: f.x * cellWidth + (cellWidth - cell) / 2 + 2, top: f.y * cellHeight + (cellHeight - cell) / 2 + 2, width: cell - 4, height: cell - 4, borderRadius: cell / 2 }, f.value === target && glow ? styles.foodTarget : null]}>
             <Text style={[styles.foodText, { fontSize: Math.max(11, cell * 0.42) }]}>{f.value}</Text>
           </View>
         ))}

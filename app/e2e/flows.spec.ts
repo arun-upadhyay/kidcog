@@ -80,6 +80,56 @@ for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw']
   });
 }
 
+test('Play Zone cards react to hover and still open', async ({ page }) => {
+  await games(page);
+  const card = page.getByRole('button', { name: 'Play Animal Explorer', exact: true });
+  await card.hover();
+  await expect.poll(() => card.evaluate(element => getComputedStyle(element).borderTopWidth)).toBe('3px');
+  await card.click();
+  await expect(page.getByRole('button', { name: /Animal quiz/ })).toBeVisible();
+});
+
+test('activity cards react to hover and still open', async ({ page }) => {
+  await prepare(page);
+  await page.getByRole('radio', { name: 'Test Explorer, age 5', exact: true }).click();
+  await page.getByRole('switch').click();
+  await page.getByRole('button', { name: /Choose an adventure/ }).click();
+
+  const tile = page.getByRole('button', { name: /^Big ideas/ });
+  await tile.hover();
+  await expect.poll(() => tile.evaluate(element => getComputedStyle(element).borderTopWidth)).toBe('3px');
+  await tile.click();
+  await expect(page.getByRole('button', { name: /Let’s play/ })).toBeVisible();
+});
+
+test('shared app header compacts on scroll and expands at the top', async ({ page }) => {
+  await prepare(page);
+  const viewport = page.viewportSize()!;
+  // Preserve each responsive width while ensuring the small mocked category
+  // list can actually scroll even in the tall tablet project.
+  await page.setViewportSize({ width: viewport.width, height: Math.min(viewport.height, 500) });
+  await page.getByRole('radio', { name: 'Test Explorer, age 5', exact: true }).click();
+  await page.getByRole('switch').click();
+  await page.getByRole('button', { name: /Choose an adventure/ }).click();
+
+  const header = page.getByTestId('app-header');
+  await expect(header).toBeVisible();
+  const expandedHeight = await header.evaluate(element => element.getBoundingClientRect().height);
+
+  await page.mouse.wheel(0, 900);
+  await expect.poll(
+    () => header.evaluate(element => element.getBoundingClientRect().height),
+  ).toBeLessThan(expandedHeight - 5);
+  await expect.poll(
+    () => header.evaluate(element => getComputedStyle(element).backdropFilter),
+  ).toContain('blur');
+
+  await page.mouse.wheel(0, -2000);
+  await expect.poll(
+    () => header.evaluate(element => element.getBoundingClientRect().height),
+  ).toBeGreaterThan(expandedHeight - 2);
+});
+
 test('Animal Explorer reveals and cycles fun facts after a question', async ({ page }) => {
   await games(page);
   await page.getByRole('button', { name: 'Play Animal Explorer', exact: true }).click();
