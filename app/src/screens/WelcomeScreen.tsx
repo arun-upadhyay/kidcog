@@ -29,7 +29,7 @@ type Tile = { key: string; icon: string; name: string; background: string; borde
 
 const FEATURED = [
   { key: 'animals', title: 'Animal Explorer', line: '79 animals, real sounds and fun facts', icons: ['🦁', '🐘', '🐧', '🦋'], background: '#FFF1C9', border: '#E7B23C', ink: '#7A4E08' },
-  { key: 'playzone', title: 'Play Zone', line: 'Snake, bubbles, mazes and tracing', icons: ['🐍', '🫧', '🦉', '✏️'], background: '#EEE8FF', border: '#9B7EDE', ink: '#4E3590' },
+  { key: 'playzone', title: 'Play Zone', line: 'Snake, bubbles, mazes, tracing and dots', icons: ['🐍', '🫧', '🖍️', '✏️'], background: '#EEE8FF', border: '#9B7EDE', ink: '#4E3590' },
 ] as const;
 
 const GAMES: Tile[] = [
@@ -37,6 +37,7 @@ const GAMES: Tile[] = [
   { key: 'bubbles', icon: '🫧', name: 'Bubble Pop', background: '#E5F3FF', border: '#68A8D6' },
   { key: 'maze', icon: '🌀', name: 'Maze Runner', background: '#EEE9FF', border: '#A68AE2' },
   { key: 'trace', icon: '✏️', name: 'Trace & Draw', background: '#FFE9E3', border: '#E88970' },
+  { key: 'dots', icon: '🖍️', name: 'Connect the Dots', background: '#E3F1FB', border: '#5B9BD0' },
   { key: 'animal-quiz', icon: '🦒', name: 'Animal quiz', background: '#FFF3CE', border: '#DDAE35' },
   { key: 'animal-sounds', icon: '🐮', name: 'Animal sounds', background: '#FDE6E8', border: '#D87882' },
 ];
@@ -195,6 +196,8 @@ export default function WelcomeScreen({ onChoose, onParentSignIn }: {
   const { width } = useWindowDimensions();
   const still = useReduceMotion();
   const wide = width >= 720;
+  // Owl beside the headline only where both fit (iPad mini/Air portrait stack them).
+  const sideHero = width >= 900;
   const columns = width < 360 ? 2 : width < 600 ? 3 : width < 860 ? 4 : 6;
   // Phone tiles are about 110px wide: smaller picture so two-line names fit.
   const compact = columns === 3;
@@ -217,17 +220,17 @@ export default function WelcomeScreen({ onChoose, onParentSignIn }: {
           </View>
 
           {/* Hero */}
-          <View style={[styles.hero, wide && styles.heroWide]}>
+          <View style={[styles.hero, sideHero && styles.heroWide]}>
             <View style={styles.owlStage}>
               <View style={styles.bubble}><Text style={styles.bubbleText}>Hoo! Let's play! 🎉</Text></View>
               <Animated.View style={{ transform: [{ translateY: owlBob.interpolate({ inputRange: [0, 1], outputRange: [0, -12] }) }] }}>
                 <Owl size={wide ? 150 : 118} mood="happy" />
               </Animated.View>
             </View>
-            <View style={[styles.heroCopy, wide && styles.heroCopyWide]}>
-              <Text accessibilityRole="header" style={[styles.title, wide && styles.titleWide]}>Ready for a little adventure?</Text>
-              <Text style={[styles.subtitle, wide && styles.leftText]}>Games, animals, stories and puzzles for curious 4 to 7 year olds.</Text>
-              <View style={[styles.ctaRow, wide && styles.ctaRowWide]}>
+            <View style={[styles.heroCopy, sideHero && styles.heroCopyWide]}>
+              <Text accessibilityRole="header" style={[styles.title, sideHero && styles.titleWide]}>Ready for a little adventure?</Text>
+              <Text style={[styles.subtitle, sideHero && styles.leftText]}>Games, animals, stories and puzzles for curious 4 to 7 year olds.</Text>
+              <View style={[styles.ctaRow, sideHero && styles.ctaRowWide]}>
                 <Pressable onPress={() => onChoose('every adventure')} accessibilityRole="button" accessibilityLabel="Start playing, free"
                   style={({ pressed }) => [styles.cta, pressed && styles.pressed]}>
                   <Text style={styles.ctaText}>▶  Start playing, free</Text>
@@ -237,7 +240,7 @@ export default function WelcomeScreen({ onChoose, onParentSignIn }: {
                   <Text style={styles.ctaSecondaryText}>I have an account</Text>
                 </Pressable>
               </View>
-              <View style={[styles.promiseRow, wide && styles.ctaRowWide]}>
+              <View style={[styles.promiseRow, sideHero && styles.ctaRowWide]}>
                 {[['⏱️', 'A few minutes'], ['🌈', 'No wrong ideas'], ['🚫', 'No ads'], ['🛡️', 'Grown-up guided']].map(([icon, text]) => (
                   <View key={text} style={styles.promise}><Text style={styles.promiseIcon}>{icon}</Text><Text style={styles.promiseText}>{text}</Text></View>
                 ))}
@@ -329,7 +332,7 @@ const styles = StyleSheet.create({
   bubble: { backgroundColor: '#FFFFFF', borderRadius: 18, paddingHorizontal: spacing(1.75), paddingVertical: spacing(1), borderWidth: 2, borderColor: '#F4C966', marginBottom: spacing(1) },
   bubbleText: { fontSize: 15, fontWeight: '900', color: '#7A4E08' },
   heroCopy: { alignItems: 'center', maxWidth: 560 },
-  heroCopyWide: { alignItems: 'flex-start' },
+  heroCopyWide: { alignItems: 'flex-start', flexShrink: 1 },
   title: { color: colors.ink, textAlign: 'center', fontSize: 34, lineHeight: 40, fontWeight: '900' },
   titleWide: { fontSize: 48, lineHeight: 54, textAlign: 'left' },
   subtitle: { color: colors.inkSoft, textAlign: 'center', fontSize: 18, lineHeight: 26, marginTop: spacing(1) },

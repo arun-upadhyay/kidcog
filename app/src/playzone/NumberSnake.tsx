@@ -33,7 +33,7 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
   const { height: viewportHeight } = useWindowDimensions();
   const cellWidth = (board - BORDER * 2) / cfg.grid;
   // Preserve the full panel width while reserving vertical space for controls.
-  const boardHeight = Math.min(board, viewportHeight < 450 ? Math.max(120, viewportHeight - 245) : Math.max(160, viewportHeight - 450));
+  const boardHeight = Math.min(board, viewportHeight < 450 ? Math.max(100, viewportHeight - 280) : Math.max(150, viewportHeight - 462));
   const cellHeight = (boardHeight - BORDER * 2) / cfg.grid;
   const cell = Math.min(cellWidth, cellHeight);
   const [, render] = useState(0);

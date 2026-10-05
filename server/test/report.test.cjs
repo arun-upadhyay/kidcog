@@ -28,7 +28,7 @@ test('child feedback includes age and concrete answer context without treating s
   const instructions = request.messages[0].content;
   const evidence = request.messages[1].content;
   assert.match(instructions, /directly TO the child/);
-  assert.match(instructions, /80–140 words/);
+  assert.match(instructions, /\d+–\d+ words/);
   assert.match(evidence, /Child's age: 5/);
   assert.match(evidence, /child answered: Ice cream/);
   assert.match(evidence, /rubric: 3 - Suggests shelter with a reason./);

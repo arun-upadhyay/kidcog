@@ -26,7 +26,7 @@ export default function RewardCard({ reward }: { reward: RoundReward }) {
         <Text style={styles.bigStar}>⭐</Text>
         <View style={{ flex: 1 }}>
           <Text style={styles.title}>+{reward.stars} {reward.stars === 1 ? 'star' : 'stars'}!</Text>
-          <Text style={styles.sub}>{reward.totalStars} stars altogether</Text>
+          <Text style={styles.sub}>{reward.totalStars} {reward.totalStars === 1 ? 'star' : 'stars'} altogether</Text>
         </View>
       </View>
       {reward.sticker ? (

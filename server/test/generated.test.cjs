@@ -7,7 +7,7 @@ const ts=require('typescript');
 function load(name, modules, extras={}) {
  const exports={};
  const source=fs.readFileSync(path.join(__dirname, '../src/'+name+'.ts'),'utf8');
- vm.runInNewContext(ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{exports,require:n=>modules[n]??require(n),process:{env:{OPENAI_API_KEY:'sk-test'}},console,...extras});
+ vm.runInNewContext(ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{exports,require:n=>modules[n]??(n.startsWith('./')?load(n.slice(2).replace(/\.js$/,''),modules,extras):require(n)),process:{env:{OPENAI_API_KEY:'sk-test'}},console,...extras});
  return exports;
 }
 test('fresh AI questions retain private rubrics, grade using AI, and expire', async()=>{

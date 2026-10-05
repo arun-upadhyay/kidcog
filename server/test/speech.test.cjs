@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const ts = require('typescript');
+const tick = () => new Promise(resolve => setImmediate(resolve));
 
 test('concurrent identical speech requests share generation; failures allow retry', async () => {
   let count = 0, resolve, reject;
@@ -11,6 +12,7 @@ test('concurrent identical speech requests share generation; failures allow retr
     'node:crypto': require('node:crypto'),
     openai: { default: class { audio = { speech: { create: () => { count++; return new Promise((yes, no) => { resolve = yes; reject = no; }); } } }; } },
     './grader.js': { apiKeyProblem: () => null },
+    './supabase.js': { supabaseAdmin: null, supabaseReady: () => false },
   };
   const exports = {};
   const source = fs.readFileSync(path.join(__dirname, '../src/speak.ts'), 'utf8');
@@ -18,6 +20,7 @@ test('concurrent identical speech requests share generation; failures allow retr
     { exports, require: name => modules[name], process: { env: {} }, Buffer });
   const first = exports.synthesizeSpeech('Same question');
   const second = exports.synthesizeSpeech('Same question');
+  await tick();
   assert.equal(count, 1);
   resolve({ arrayBuffer: async () => new Uint8Array([1, 2, 3]).buffer });
   const [a, b] = await Promise.all([first, second]);
@@ -25,9 +28,11 @@ test('concurrent identical speech requests share generation; failures allow retr
   assert.equal((await exports.synthesizeSpeech('Same question')).cached, true);
   assert.equal(count, 1);
   const failed = exports.synthesizeSpeech('Retry me');
+  await tick();
   reject(new Error('offline'));
   await assert.rejects(failed, /offline/);
   const retry = exports.synthesizeSpeech('Retry me');
+  await tick();
   assert.equal(count, 3);
   resolve({ arrayBuffer: async () => new ArrayBuffer(1) });
   await retry;

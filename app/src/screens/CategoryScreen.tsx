@@ -188,7 +188,7 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
           <Text style={styles.playZoneEmoji}>🎮</Text>
           <View style={{ flex: 1 }}>
             <Text style={styles.playZoneTitle}>Play Zone</Text>
-            <Text style={styles.playZoneSub}>Number Snake, Bubble Pop, mazes and tracing</Text>
+            <Text style={styles.playZoneSub}>Number Snake, Bubble Pop, mazes, tracing and dots</Text>
           </View>
           <Text style={styles.playZoneGo}>▶</Text>
         </Pressable>

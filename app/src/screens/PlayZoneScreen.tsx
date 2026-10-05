@@ -8,6 +8,8 @@ import NumberSnake from '../playzone/NumberSnake';
 import BubblePop from '../playzone/BubblePop';
 import MazeRunner from '../playzone/MazeRunner';
 import TraceDraw from '../playzone/TraceDraw';
+import DotToDot from '../playzone/DotToDot';
+import { defaultDotLevel } from '../playzone/dotPictures';
 import AnimalExplorer from '../playzone/AnimalExplorer';
 import { ANIMALS } from '../explore/animals';
 import { defaultAnimalLevel } from '../explore/animalQuiz';
@@ -26,6 +28,7 @@ export const GAMES: GameInfo[] = [
   { key: 'bubbles', emoji: '🫧', name: 'Bubble Pop', blurb: 'Pop the bubbles that match', background: '#E5F3FF', border: '#68A8D6', ink: '#2F6F9D', unlockAfter: 0 },
   { key: 'maze', emoji: '🦉', name: 'Maze Runner', blurb: 'Lead Owl to the flag', background: '#EEE9FF', border: '#A68AE2', ink: '#5D439B', unlockAfter: 1 },
   { key: 'trace', emoji: '✏️', name: 'Trace & Draw', blurb: 'Write numbers and letters', background: '#FFE9E3', border: '#E88970', ink: '#A84733', unlockAfter: 3 },
+  { key: 'dots', emoji: '🖍️', name: 'Connect the Dots', blurb: 'Join 1, 2, 3… and a picture appears', background: '#E3F1FB', border: '#5B9BD0', ink: '#286A98', unlockAfter: 0, isNew: true },
 ];
 
 function GameCard({ game, locked, score, level, remaining, albumCount, width, reduceMotion, onPress }: {
@@ -87,6 +90,7 @@ export function startLevel(game: GameKey, progress: ChildProgress | null, age: n
   if (saved) return saved;
   if (game === 'trace') return (age ?? 4) >= 6 ? 3 : 1; // 6 and up start on letters
   if (game === 'animals') return defaultAnimalLevel(age);
+  if (game === 'dots') return defaultDotLevel(age);
   return 1;
 }
 
@@ -130,6 +134,7 @@ export default function PlayZoneScreen({ childName, age, progress, onBack, onFin
         {playing === 'bubbles' ? <BubblePop {...props} /> : null}
         {playing === 'maze' ? <MazeRunner {...props} /> : null}
         {playing === 'trace' ? <TraceDraw {...props} /> : null}
+        {playing === 'dots' ? <DotToDot {...props} /> : null}
       </ScrollView>
       </ScrollLockContext.Provider>
     );

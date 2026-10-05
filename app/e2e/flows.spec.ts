@@ -1,4 +1,5 @@
 import { test, expect, type Page, type Locator } from '@playwright/test';
+import { DOT_PICTURES } from '../src/playzone/dotPictures';
 const categories = ['abstract_concepts', 'cause_effect'].map(key => ({ key, label: key === 'abstract_concepts' ? 'Big ideas' : 'What happens next?', group: 'intellectual', blurb: 'Test activity', measurable: 'direct' }));
 const child = { id: 'e2e-child', nickname: 'Test Explorer', age: 5, avatar: 'bear', createdAt: '2026-01-01' };
 async function prepare(page: Page, fail = false) {
@@ -60,7 +61,7 @@ test('profile failure can be retried without showing an empty form', async ({ pa
   await page.getByRole('button', { name: 'Try again', exact: true }).click();
   await expect(page.getByRole('radio', { name: 'Test Explorer, age 5' })).toBeVisible();
 });
-for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw']) {
+for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw', 'Connect the Dots']) {
   test(`${name}: board, controls and return navigation`, async ({ page }, info) => {
     await games(page);
     await page.getByRole('button', { name: `Play ${name}`, exact: true }).click();
@@ -74,6 +75,7 @@ for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw']
       for (const dir of ['up', 'down', 'left', 'right']) await inViewport(page, page.getByRole('button', { name: `Go ${dir}`, exact: true }));
     }
     if (name === 'Trace & Draw') await inViewport(page, page.getByRole('button', { name: /Skip/ }));
+    if (name === 'Connect the Dots') await inViewport(page, page.getByRole('button', { name: '↺ Start again', exact: true }));
     await page.screenshot({ path: info.outputPath('layout.png') });
     await page.getByRole('button', { name: 'Back to the Play Zone', exact: true }).click();
     await expect(page.getByRole('button', { name: `Play ${name}`, exact: true })).toBeVisible();
@@ -130,7 +132,7 @@ test('shared app header compacts on scroll and expands at the top', async ({ pag
   ).toBeGreaterThan(expandedHeight - 2);
 });
 
-test('Animal Explorer reveals and cycles fun facts after a question', async ({ page }) => {
+test('Animal Explorer reveals a fun fact with a read-aloud button after a question', async ({ page }) => {
   await games(page);
   await page.getByRole('button', { name: 'Play Animal Explorer', exact: true }).click();
   await page.getByRole('button', { name: /Animal quiz/ }).click();
@@ -142,9 +144,10 @@ test('Animal Explorer reveals and cycles fun facts after a question', async ({ p
   if (await page.getByText('🤩 Did you know?', { exact: true }).count() === 0) await choices.nth(1).click();
 
   await expect(page.getByText('🤩 Did you know?', { exact: true })).toBeVisible();
-  await expect(page.getByRole('button', { name: '✨ Another fun fact', exact: true })).toBeVisible();
-  await page.getByRole('button', { name: '✨ Another fun fact', exact: true }).click();
-  await expect(page.getByText('2 of 3', { exact: true })).toBeVisible();
+  // One fact per answer; the 🔊 reads it only when tapped (no auto-speech).
+  await expect(page.getByRole('button', { name: 'Read the fact aloud', exact: true }).first()).toBeVisible();
+  await expect(page.getByRole('button', { name: /Another fun fact/ })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /Next/ }).first()).toBeVisible();
 });
 
 test('answers stay paired with questions and another category starts from results', async ({ page }) => {
@@ -177,7 +180,7 @@ test('repeated game switching leaves no runtime errors or horizontal overflow', 
   page.on('pageerror', error => errors.push(error.message));
   await games(page);
   for (let round = 0; round < 2; round++) {
-    for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw']) {
+    for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw', 'Connect the Dots']) {
       await page.getByRole('button', { name: `Play ${name}`, exact: true }).click();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
       if (name === 'Number Snake' || name === 'Bubble Pop') {
@@ -209,4 +212,22 @@ test('generation failure retries the selected category without duplicate request
   await page.getByRole('button', { name: /Try again/ }).click();
   await expect(page.getByText('Test question 1', { exact: true })).toBeVisible();
   expect(requests).toBe(2);
+});
+
+test('Connect the Dots: wrong dots wiggle, joining every dot reveals the picture', async ({ page }) => {
+  await games(page);
+  await page.getByRole('button', { name: 'Play Connect the Dots', exact: true }).click();
+  // The test child is 5, so the game starts on level 2: the heart comes first.
+  const board = page.getByLabel(/^Dot board/);
+  await expect(board).toHaveAccessibleName('Dot board. Next dot: 2');
+  const box = (await board.boundingBox())!;
+  const tap = ([x, y]: [number, number]) => page.mouse.click(box.x + (x / 100) * box.width, box.y + (y / 100) * box.height);
+  const dots = DOT_PICTURES.heart!.dots;
+  await tap(dots[5]!);
+  await expect(board).toHaveAccessibleName('Dot board. Next dot: 2');
+  for (const dot of dots.slice(1)) await tap(dot);
+  await expect(page.getByText("It's a heart! 🎉", { exact: true })).toBeVisible();
+  await inViewport(page, page.getByRole('button', { name: 'Next picture ▶', exact: true }));
+  await page.getByRole('button', { name: 'Next picture ▶', exact: true }).click();
+  await expect(page.getByLabel(/^Dot board/)).toHaveAccessibleName('Dot board. Next dot: 2');
 });

@@ -20,7 +20,7 @@ function setup() {
         return { addListener: (_name, cb) => { status = cb; return { remove() {} }; }, play() {}, remove() { calls.removed++; } };
       },
     },
-    './api': { API_BASE_URL: 'http://test' },
+    './api': { API_BASE_URL: 'http://test', registerSpeech: async text => `key-${text.length}` },
   };
   const exports = {};
   vm.runInNewContext(ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText, {
@@ -50,11 +50,12 @@ test('silent until called; rapid taps create one request and stay locked through
   assert.equal(h.api.useSpeechState(), 'playing');
   h.status({ didJustFinish: true });
   assert.equal(h.api.useSpeechState(), 'idle');
-  assert.equal(h.calls.revoked, 1);
+  // The audio stays cached so a replay is instant and needs no network.
+  assert.equal(h.calls.revoked, 0);
   assert.equal(h.timers.size, 0);
   const replay = h.api.speak('Question'); await tick();
-  assert.equal(h.calls.requests, 2);
-  h.respond(); await replay; h.api.stopSpeaking();
+  assert.equal(h.calls.requests, 1);
+  await replay; h.api.stopSpeaking();
 });
 
 test('navigation aborts pending speech and stale responses cannot play or unlock a new request', async () => {
@@ -87,7 +88,8 @@ test('quiz and celebration only invoke speech in explicit press handlers', () =>
     const calls = text.split('\n').filter(line => /\bspeak\(/.test(line));
     assert.ok(calls.length > 0);
     assert.ok(calls.every(line => line.includes('onPress=')), name);
-    assert.ok(text.includes('disabled={speechBusy}'), name);
+    // Busy speech either disables the button or turns it into a Stop button.
+    assert.ok(text.includes('disabled={speechBusy}') || text.includes('if (speechBusy) stopSpeaking()'), name);
   }
 });
 

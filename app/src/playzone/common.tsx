@@ -6,7 +6,7 @@ import { colors, spacing, CONTENT_MAX_WIDTH, GUTTER } from '../theme';
 import { speak, stopSpeaking } from '../speech';
 
 export type Dir = 'up' | 'down' | 'left' | 'right';
-export type GameKey = 'animals' | 'snake' | 'bubbles' | 'maze' | 'trace';
+export type GameKey = 'animals' | 'snake' | 'bubbles' | 'maze' | 'trace' | 'dots';
 export const useNative = Platform.OS !== 'web';
 
 /**
@@ -149,7 +149,7 @@ export function GameFrame({ emoji, title, level, onBack, children, hint }: {
           <Text style={styles.hint}>{hint}</Text>
           {/* Tap to hear the rule: most players can't read it yet. */}
           <Pressable onPress={() => { stopSpeaking(); void speak(hint.replace(/\p{Extended_Pictographic}|\uFE0F/gu, '').trim()); }}
-            accessibilityRole="button" accessibilityLabel={`Hear: ${hint}`} hitSlop={8}
+            accessibilityRole="button" accessibilityLabel={`Hear: ${hint}`} hitSlop={12}
             style={({ pressed }) => [styles.hintSpeaker, pressed && { transform: [{ scale: 0.9 }] }]}>
             <Text style={styles.hintSpeakerText}>🔊</Text>
           </Pressable>
@@ -198,8 +198,10 @@ const styles = StyleSheet.create({
   title: { flex: 1, fontSize: 20, fontWeight: '900', color: '#3F3126', textAlign: 'center' },
   level: { fontSize: 13, fontWeight: '900', color: '#4E3590', backgroundColor: '#EEE9FF', borderRadius: 999, paddingHorizontal: spacing(1.25), paddingVertical: 4, overflow: 'hidden' },
   hintRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing(1), alignSelf: 'stretch' },
-  hintSpeaker: { width: 40, height: 40, borderRadius: 20, backgroundColor: '#EEE9FF', borderWidth: 1.5, borderColor: '#CABAF0', alignItems: 'center', justifyContent: 'center' },
-  hintSpeakerText: { fontSize: 18 },
+  // Negative margin: the speaker sits beside the hint without making the row
+  // taller, so the games keep their board and controls on screen.
+  hintSpeaker: { width: 32, height: 32, marginVertical: -6, borderRadius: 16, backgroundColor: '#EEE9FF', borderWidth: 1.5, borderColor: '#CABAF0', alignItems: 'center', justifyContent: 'center' },
+  hintSpeakerText: { fontSize: 15 },
   hint: { flexShrink: 1, fontSize: 16, fontWeight: '800', color: '#513A27', textAlign: 'center' },
   pad: { alignItems: 'center', gap: spacing(1) },
   padRow: { flexDirection: 'row', gap: spacing(1) },

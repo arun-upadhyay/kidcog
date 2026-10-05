@@ -61,7 +61,9 @@ export default function MazeRunner({ level: startLevel, onBack, onFinish }: {
   const size = SIZES[level - 1]!;
   const [availableWidth, setBoardWidth] = useState(320);
   const { height: screenHeight } = useWindowDimensions();
-  const board = Math.min(availableWidth, Math.max(240, screenHeight - 380));
+  // Room for the app bar, game header and controls; short screens (small phones,
+  // landscape) get a smaller board so the controls stay on screen.
+  const board = Math.min(availableWidth, screenHeight < 450 ? Math.max(140, screenHeight - 300) : Math.max(200, screenHeight - 400));
   const cell = Math.floor((board - 3) / size);
   const [round, setRound] = useState(0);
   const walls = useMemo(() => makeMaze(size), [size, round]); // eslint-disable-line react-hooks/exhaustive-deps

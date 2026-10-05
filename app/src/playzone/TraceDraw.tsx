@@ -102,7 +102,9 @@ export default function TraceDraw({ level: startLevel, onBack, onFinish }: {
   const cfg = TRACE_LEVELS[level - 1]!;
   const [availableWidth, setBoardWidth] = useState(320);
   const { height: screenHeight } = useWindowDimensions();
-  const size = Math.min(availableWidth, Math.max(240, screenHeight - 380));
+  // Room for the app bar, game header and controls; short screens (small phones,
+  // landscape) get a smaller board so the controls stay on screen.
+  const size = Math.min(availableWidth, screenHeight < 450 ? Math.max(130, screenHeight - 300) : Math.max(200, screenHeight - 400));
   const [index, setIndex] = useState(0);
   const [skipped, setSkipped] = useState(0);
   const [won, setWon] = useState<number | null>(null);
