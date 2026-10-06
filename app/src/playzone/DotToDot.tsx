@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, Easing, PanResponder, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import Svg, { Circle, Line, Polygon, Polyline, Text as SvgText } from 'react-native-svg';
+import Svg, { Circle, Line, Polyline, Text as SvgText } from 'react-native-svg';
 import { playSound } from '../games/sounds';
 import { stopSpeaking } from '../speech';
 import { colors, spacing } from '../theme';
 import { GameFrame, GameSurface, WinCard, useNative, useScrollLock } from './common';
-import { DOT_LEVELS, DOT_PICTURES, dotLabel, type Extra, type Pt } from './dotPictures';
+import { DOT_LEVELS, DOT_PICTURES, dotLabel, type Pt } from './dotPictures';
+import { CRAYONS, PictureArt, coloursFor, regionAt } from './dotArt';
 
 /**
  * Connect the Dots: tap 1, 2, 3… (or slide a finger from dot to dot) and a
@@ -15,20 +16,14 @@ import { DOT_LEVELS, DOT_PICTURES, dotLabel, type Extra, type Pt } from './dotPi
  *
  * Gentle by design: a wrong dot just wiggles and the next dot glows, there is
  * no timer, and the youngest level always shows which dot comes next.
+ *
+ * Every finished picture goes on the child's wall (My pictures). "Colour it"
+ * lets them pick crayons and fill each part their way; that version is saved.
  */
 const HIT = 9; // grid units (of 100) a tap can land from a dot's centre
 const pts = (list: Pt[]) => list.map(([x, y]) => `${x},${y}`).join(' ');
 // The app's sans-serif on the web too (SVG text otherwise falls back to a serif font there).
 const LABEL_FONT = Platform.OS === 'web' ? 'system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif' : undefined;
-
-function ExtraShape({ extra }: { extra: Extra }) {
-  if ('circle' in extra) return <Circle cx={extra.circle[0]} cy={extra.circle[1]} r={extra.circle[2]} fill={extra.fill} />;
-  if ('line' in extra) {
-    const [x1, y1, x2, y2] = extra.line;
-    return <Line x1={x1} y1={y1} x2={x2} y2={y2} stroke={extra.color} strokeWidth={extra.width ?? 1.5} strokeLinecap="round" />;
-  }
-  return <Polygon points={pts(extra.shape)} fill={extra.fill} />;
-}
 
 /** Where a dot's label goes: just outside the picture, away from its middle. */
 function labelSpot(dot: Pt, centre: Pt): Pt {
@@ -38,8 +33,12 @@ function labelSpot(dot: Pt, centre: Pt): Pt {
   return [Math.min(96, Math.max(4, x)), Math.min(98, Math.max(5, y))];
 }
 
-export default function DotToDot({ level: startLevel, onBack, onFinish }: {
+export default function DotToDot({ level: startLevel, onBack, onFinish, wall, onPicture }: {
   level: number; onBack: () => void; onFinish: (stars: number, nextLevel: number) => void;
+  /** Pictures already on the child's wall, with their colours. */
+  wall?: Record<string, string[]>;
+  /** A picture was finished (no colours) or coloured in (its colours). */
+  onPicture?: (key: string, colours?: string[]) => void;
 }) {
   const [level, setLevel] = useState(Math.min(DOT_LEVELS.length, Math.max(1, startLevel)));
   const cfg = DOT_LEVELS[level - 1]!;
@@ -48,7 +47,18 @@ export default function DotToDot({ level: startLevel, onBack, onFinish }: {
   const [availableWidth, setBoardWidth] = useState(320);
   const { height: screenHeight } = useWindowDimensions();
   // Same room as the other games: app bar, game header and the button row below.
-  const size = Math.min(availableWidth, screenHeight < 450 ? Math.max(130, screenHeight - 300) : Math.max(200, screenHeight - 400));
+  const [colouring, setColouring] = useState(false);
+  // While colouring, the crayon box sits under the board, so the board gives it some room.
+  // (smaller still on small phones, so the Done button stays on screen).
+  const reserve = colouring ? 72 : 0;
+  const size = Math.min(availableWidth, screenHeight < 450
+    ? Math.max(colouring ? 80 : 130, screenHeight - 300 - reserve)
+    : Math.max(colouring ? 140 : 200, screenHeight - 400 - reserve));
+  const [colours, setColours] = useState<string[]>([]);
+  const [crayon, setCrayon] = useState(CRAYONS[0]!);
+  const [onWall, setOnWall] = useState(false);
+  const paintRef = useRef({ colouring: false, crayon: CRAYONS[0]! });
+  paintRef.current = { colouring, crayon };
 
   const [joined, setJoined] = useState(1); // dot 1 is where you start
   const [complete, setComplete] = useState(false);
@@ -73,6 +83,7 @@ export default function DotToDot({ level: startLevel, onBack, onFinish }: {
   const resetPicture = useCallback(() => {
     live.current = { ...live.current, joined: 1, complete: false };
     setJoined(1); setComplete(false); setMissed(false); setWrong(null); setIdle(false); setFinger(null); setTrail([]); reveal.setValue(0);
+    setColouring(false); setOnWall(false);
   }, [reveal]);
   useEffect(() => { resetPicture(); }, [picture, resetPicture]);
   useEffect(() => { setIndex(0); setWon(null); live.current.mistakes = 0; }, [level]);
@@ -99,9 +110,24 @@ export default function DotToDot({ level: startLevel, onBack, onFinish }: {
   const finishPicture = useCallback(() => {
     live.current.complete = true;
     setComplete(true);
+    setColours(coloursFor(picture, wall?.[picture.key]));
+    onPicture?.(picture.key);
     playSound('yay');
     Animated.timing(reveal, { toValue: 1, duration: 700, easing: Easing.out(Easing.back(1.4)), useNativeDriver: useNative }).start();
-  }, [reveal]);
+  }, [reveal, picture, wall, onPicture]);
+
+  /** Colouring: fill the part under the finger with the chosen crayon. */
+  const paint = useCallback((x: number, y: number) => {
+    const region = regionAt(picture, x, y);
+    if (region < 0) return;
+    setColours(list => { const copy = list.slice(); copy[region] = paintRef.current.crayon; return copy; });
+    playSound('pop');
+  }, [picture]);
+  const doneColouring = useCallback(() => {
+    setColouring(false); setOnWall(true);
+    onPicture?.(picture.key, colours);
+    playSound('yay');
+  }, [onPicture, picture, colours]);
 
   /** A finger landed on (or slid over) a spot on the board. */
   const touch = useCallback((x: number, y: number, tapped: boolean) => {
@@ -142,15 +168,17 @@ export default function DotToDot({ level: startLevel, onBack, onFinish }: {
     onPanResponderGrant: e => {
       lockScroll(true);
       const p = toUnits(e.nativeEvent.locationX, e.nativeEvent.locationY);
+      if (paintRef.current.colouring) { paint(p[0], p[1]); return; }
       setFinger(p); setTrail([p]);
       touch(p[0], p[1], true);
     },
     onPanResponderMove: e => {
+      if (paintRef.current.colouring) return;
       const p = toUnits(e.nativeEvent.locationX, e.nativeEvent.locationY);
       setFinger(p); setTrail(t => [...t.slice(-60), p]);
       touch(p[0], p[1], false);
     },
-  }), [toUnits, touch, lockScroll]);
+  }), [toUnits, touch, paint, lockScroll]);
 
   const nextPicture = useCallback(() => {
     stopSpeaking();
@@ -165,7 +193,9 @@ export default function DotToDot({ level: startLevel, onBack, onFinish }: {
   const path = dots.slice(0, joined);
   const next = dots[joined];
   const nextLabel = complete ? '' : dotLabel(joined, cfg.labels);
-  const hint = won !== null ? '' : complete ? `${picture.spoken} 🎉`
+  const hint = won !== null ? '' : colouring ? 'Pick a crayon, then tap a part of the picture.'
+    : onWall ? `Your ${picture.name.toLowerCase()} is on your wall! 🖼️`
+    : complete ? `${picture.spoken} 🎉`
     : joined === 1 ? `Start at ${dotLabel(0, cfg.labels)}, then tap ${dotLabel(1, cfg.labels)}.`
     : `Now find ${nextLabel}.`;
   const ring = pulse.interpolate({ inputRange: [0, 1], outputRange: [(9 / 100) * size, (14 / 100) * size] });
@@ -184,7 +214,7 @@ export default function DotToDot({ level: startLevel, onBack, onFinish }: {
           ))}
         </View>
         <Animated.View style={[styles.canvas, { width: size, height: size, transform: [{ translateX: shake }] }]}>
-          <View pointerEvents="none" style={StyleSheet.absoluteFill}>
+          {colouring ? null : <View pointerEvents="none" style={StyleSheet.absoluteFill}>
             <Svg width={size} height={size} viewBox="0 0 100 100">
               {/* Lines joined so far. */}
               {path.length > 1 ? <Polyline points={pts(path)} fill="none" stroke={picture.outline} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" /> : null}
@@ -212,7 +242,7 @@ export default function DotToDot({ level: startLevel, onBack, onFinish }: {
                 );
               })}
             </Svg>
-          </View>
+          </View>}
           {glow && next ? (
             <Animated.View pointerEvents="none" style={[styles.ringWrap, { left: (next[0] / 100) * size, top: (next[1] / 100) * size }]}>
               <Animated.View style={[styles.ring, {
@@ -224,22 +254,34 @@ export default function DotToDot({ level: startLevel, onBack, onFinish }: {
           {/* The finished picture: coloured in, with its details. */}
           {complete ? (
             <Animated.View pointerEvents="none" style={[StyleSheet.absoluteFill, { opacity: reveal, transform: [{ scale: pop }] }]}>
-              <Svg width={size} height={size} viewBox="0 0 100 100">
-                {picture.closed ? <Polygon points={pts(dots)} fill={picture.fill} stroke={picture.outline} strokeWidth={1.8} strokeLinejoin="round" /> : null}
-                {(picture.extras ?? []).map((e, i) => <ExtraShape key={i} extra={e} />)}
-              </Svg>
+              <PictureArt picture={picture} colours={colours} size={size} />
             </Animated.View>
           ) : null}
           {/* An empty layer on top takes the touches, measured from the board corner. */}
           <View style={[StyleSheet.absoluteFill, Platform.OS === 'web' ? ({ touchAction: 'none', cursor: 'pointer' } as object) : null]} {...responder.panHandlers}
-            accessible accessibilityRole="adjustable" accessibilityLabel={complete ? picture.spoken : `Dot board. Next dot: ${nextLabel}`}
+            accessible accessibilityRole="adjustable" accessibilityLabel={colouring ? `Colouring the ${picture.name.toLowerCase()}` : complete ? picture.spoken : `Dot board. Next dot: ${nextLabel}`}
             accessibilityActions={[{ name: 'increment', label: 'Join the next dot' }]}
             onAccessibilityAction={() => { if (next) touch(next[0], next[1], true); }} />
         </Animated.View>
-        {complete ? (
+        {colouring ? (
+          <View style={styles.crayonBox}>
+            <View style={styles.crayons} accessibilityRole="radiogroup" accessibilityLabel="Crayons">
+              {CRAYONS.map(c => (
+                <Pressable key={c} onPress={() => setCrayon(c)} accessibilityRole="radio" accessibilityState={{ selected: crayon === c }} accessibilityLabel={`Crayon ${CRAYON_NAMES[c] ?? ''}`}
+                  hitSlop={4} style={[styles.crayon, { backgroundColor: c }, crayon === c && styles.crayonOn]} />
+              ))}
+            </View>
+            <Pressable onPress={doneColouring} accessibilityRole="button" style={({ pressed }) => [styles.next, styles.doneButton, pressed && styles.pressed]}>
+              <Text style={styles.nextText}>✓ Done</Text>
+            </Pressable>
+          </View>
+        ) : complete ? (
           <View style={styles.doneRow}>
+            <Pressable onPress={() => { stopSpeaking(); setColouring(true); }} accessibilityRole="button" style={({ pressed }) => [styles.action, styles.colourButton, pressed && styles.pressed]}>
+              <Text style={styles.colourText}>🎨 Colour it</Text>
+            </Pressable>
             <Pressable onPress={nextPicture} accessibilityRole="button" style={({ pressed }) => [styles.next, pressed && styles.pressed]}>
-              <Text style={styles.nextText}>{index + 1 < cfg.pictures.length ? 'Next picture ▶' : 'Finish ⭐'}</Text>
+              <Text style={styles.nextText}>{index + 1 < cfg.pictures.length ? 'Next ▶' : 'Finish ⭐'}</Text>
             </Pressable>
           </View>
         ) : (
@@ -273,4 +315,17 @@ const styles = StyleSheet.create({
   action: { minHeight: 44, justifyContent: 'center', paddingHorizontal: spacing(2), borderRadius: 999, borderWidth: 1.5, borderColor: colors.line, backgroundColor: colors.surface },
   actionText: { fontSize: 15, fontWeight: '800', color: colors.inkSoft },
   pressed: { opacity: 0.8, transform: [{ scale: 0.96 }] },
+  colourButton: { borderColor: '#B9A6EA', backgroundColor: '#F3EEFF' },
+  colourText: { fontSize: 16, fontWeight: '900', color: '#5D439B' },
+  // Crayons and Done share one row where there's room (tablets, a phone on its side) and wrap on a phone.
+  crayonBox: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: spacing(1) },
+  crayons: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 8, maxWidth: 330 },
+  crayon: { width: 30, height: 30, borderRadius: 15, borderWidth: 2, borderColor: 'rgba(42,33,24,0.25)' },
+  crayonOn: { borderWidth: 4, borderColor: '#2A2118', transform: [{ scale: 1.15 }] },
+  doneButton: { minWidth: 120, alignItems: 'center' },
 });
+
+const CRAYON_NAMES: Record<string, string> = {
+  '#E8524F': 'red', '#F2994A': 'orange', '#F4C930': 'yellow', '#6CC08B': 'green', '#3FA7D6': 'blue',
+  '#7B61D1': 'purple', '#F48AB8': 'pink', '#8A5A2B': 'brown', '#FFFFFF': 'white', '#3F3126': 'black',
+};

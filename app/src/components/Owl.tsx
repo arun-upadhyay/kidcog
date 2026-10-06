@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Easing, View } from 'react-native';
 import Svg, { Circle, Ellipse, Path } from 'react-native-svg';
+import type { OwlOutfit } from '../progress';
+import { OwlAccessories, useOwlOutfit } from './owlOutfits';
 
 export type OwlMood = 'idle' | 'happy' | 'oops' | 'thinking';
 
@@ -10,7 +12,13 @@ export type OwlMood = 'idle' | 'happy' | 'oops' | 'thinking';
  * "almost". Plain SVG and the built-in Animated API, so it runs the same on
  * iPhone, Android and the web with no extra libraries.
  */
-export default function Owl({ mood = 'idle', size = 72 }: { mood?: OwlMood; size?: number }) {
+/**
+ * `outfit`: what Owl wears. Left out, Owl wears the current child's outfit
+ * (OwlOutfitContext); pass null for plain Owl.
+ */
+export default function Owl({ mood = 'idle', size = 72, outfit }: { mood?: OwlMood; size?: number; outfit?: OwlOutfit | null }) {
+  const childOutfit = useOwlOutfit();
+  const wearing = outfit === undefined ? childOutfit : outfit;
   const lift = useRef(new Animated.Value(0)).current;
   const tilt = useRef(new Animated.Value(0)).current;
   const [blink, setBlink] = useState(false);
@@ -89,6 +97,7 @@ export default function Owl({ mood = 'idle', size = 72 }: { mood?: OwlMood; size
           )}
           <Path d="M470 640 L554 640 L512 712 Z" fill="#E8724F" stroke="#E8724F" strokeWidth={18} strokeLinejoin="round" />
           {mood === 'oops' ? <Path d="M470 740 q42 -26 84 0" fill="none" stroke="#4E3590" strokeWidth={16} strokeLinecap="round" /> : null}
+          {wearing ? <OwlAccessories outfit={wearing} /> : null}
         </Svg>
       </Animated.View>
     </View>

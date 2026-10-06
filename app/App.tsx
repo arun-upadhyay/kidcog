@@ -20,7 +20,8 @@ import { AuthProvider, useAuth } from './src/auth/AuthContext';
 import { deleteAccount, deleteChildProfile, fetchTest, getParentReport, listChildren, prefetchRound, saveChild, submitAnswers, updateChildAvatar } from './src/api';
 import { supabase } from './src/auth/supabase';
 import { stopSpeaking } from './src/speech';
-import { forgetProgress, loadProgress, recordAnimalsFound, recordArcade, recordRound, type ChildProgress, type RoundReward } from './src/progress';
+import { forgetProgress, loadProgress, recordAnimalsFound, recordArcade, recordOwlOutfit, recordPicture, recordRound, type ChildProgress, type OwlOutfit, type RoundReward } from './src/progress';
+import { OwlOutfitContext } from './src/components/owlOutfits';
 import BreakSheet, { BREAK_AFTER_MS } from './src/components/BreakSheet';
 import RoundDoneOverlay from './src/components/RoundDoneOverlay';
 import { colors } from './src/theme';
@@ -180,6 +181,15 @@ function KidCogApp() {
   const animalsFound = useCallback((keys: string[]) => {
     if (child?.id) void recordAnimalsFound(child.id, keys).then(setProgress).catch(() => {});
   }, [child?.id]);
+  /** Connect the Dots: a finished (or freshly coloured) picture goes on the child's wall. */
+  const pictureDone = useCallback((key: string, colours?: string[]) => {
+    if (child?.id) void recordPicture(child.id, key, colours).then(setProgress).catch(() => {});
+  }, [child?.id]);
+  const dressOwl = useCallback((outfit: OwlOutfit) => {
+    if (!child?.id) return;
+    setProgress(p => (p ? { ...p, owl: outfit } : p)); // show it straight away
+    void recordOwlOutfit(child.id, outfit).then(setProgress).catch(() => {});
+  }, [child?.id]);
 
   /** A Play Zone game was won: save its stars and level, and suggest a break after a long spell of play. */
   const finishGame = useCallback((game: GameKey, stars: number, nextLevel: number) => {
@@ -300,13 +310,23 @@ function KidCogApp() {
     setChild(current => current?.id === updated.id ? { ...current, avatar: updated.avatar ?? undefined } : current);
   }, []);
 
-  if (authLoading || !session) return <LoginScreen />;
+  // The welcome and sign-in pages sit inside the safe area too, so on an iPhone
+  // the top of the page stays below the notch / Dynamic Island and the clock.
+  if (authLoading || !session) return (
+    <SafeAreaProvider>
+      <StatusBar style="dark" />
+      <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
+        <LoginScreen />
+      </SafeAreaView>
+    </SafeAreaProvider>
+  );
 
   return (
     <SafeAreaProvider>
       <StatusBar style="dark" />
       {/* Signs the parent out after 30 minutes with no taps or clicks. */}
       <IdleGuard signedInAt={session.user.last_sign_in_at} onTimeout={logout}>
+      <OwlOutfitContext.Provider value={child?.id ? progress?.owl ?? null : null}>
       <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
         {/* Outside every screen's scroll view, so it is always visible. */}
         <AppMenu
@@ -348,7 +368,7 @@ function KidCogApp() {
           {stage === 'categories' && <CategoryScreen initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} progress={progress} onReport={() => setStage('results')} onPlayZone={openPlayZone} onAnimals={openAnimals} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
 
           {stage === 'playzone' && (
-            <PlayZoneScreen childName={child?.firstName} age={child?.age} progress={progress} onBack={() => setStage('categories')} onFinish={finishGame} onAnimalsFound={animalsFound} initialGame={playZoneGame} />
+            <PlayZoneScreen childName={child?.firstName} age={child?.age} progress={progress} onBack={() => setStage('categories')} onFinish={finishGame} onAnimalsFound={animalsFound} onPicture={pictureDone} onOutfit={dressOwl} initialGame={playZoneGame} />
           )}
 
           {stage === 'quiz' && test && (
@@ -375,6 +395,7 @@ function KidCogApp() {
         </View>
         <BreakSheet visible={breakOpen} onClose={() => setBreakOpen(false)} />
       </SafeAreaView>
+      </OwlOutfitContext.Provider>
       </IdleGuard>
     </SafeAreaProvider>
   );

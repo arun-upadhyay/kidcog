@@ -10,6 +10,8 @@ import MazeRunner from '../playzone/MazeRunner';
 import TraceDraw from '../playzone/TraceDraw';
 import DotToDot from '../playzone/DotToDot';
 import { defaultDotLevel } from '../playzone/dotPictures';
+import CollectionShelf from '../playzone/Collections';
+import type { OwlOutfit } from '../progress';
 import AnimalExplorer from '../playzone/AnimalExplorer';
 import { ANIMALS } from '../explore/animals';
 import { defaultAnimalLevel } from '../explore/animalQuiz';
@@ -94,7 +96,7 @@ export function startLevel(game: GameKey, progress: ChildProgress | null, age: n
   return 1;
 }
 
-export default function PlayZoneScreen({ childName, age, progress, onBack, onFinish, onAnimalsFound, initialGame = null }: {
+export default function PlayZoneScreen({ childName, age, progress, onBack, onFinish, onAnimalsFound, onPicture, onOutfit, initialGame = null }: {
   childName?: string;
   age?: number;
   progress: ChildProgress | null;
@@ -103,6 +105,10 @@ export default function PlayZoneScreen({ childName, age, progress, onBack, onFin
   onFinish: (game: GameKey, stars: number, nextLevel: number) => void;
   /** Animal Explorer: animals the child has just met, for their album. */
   onAnimalsFound?: (keys: string[]) => void;
+  /** Connect the Dots: a picture was finished or coloured in, for the child's wall. */
+  onPicture?: (key: string, colours?: string[]) => void;
+  /** Owl's new outfit (Dress up Owl). */
+  onOutfit?: (outfit: OwlOutfit) => void;
   /** Open straight into one game (the Animal Explorer banner on the home screen). */
   initialGame?: GameKey | null;
 }) {
@@ -134,7 +140,7 @@ export default function PlayZoneScreen({ childName, age, progress, onBack, onFin
         {playing === 'bubbles' ? <BubblePop {...props} /> : null}
         {playing === 'maze' ? <MazeRunner {...props} /> : null}
         {playing === 'trace' ? <TraceDraw {...props} /> : null}
-        {playing === 'dots' ? <DotToDot {...props} /> : null}
+        {playing === 'dots' ? <DotToDot {...props} wall={progress?.pictures} onPicture={onPicture} /> : null}
       </ScrollView>
       </ScrollLockContext.Provider>
     );
@@ -157,6 +163,8 @@ export default function PlayZoneScreen({ childName, age, progress, onBack, onFin
           <Text style={styles.starText}>⭐ {progress?.stars ?? 0}</Text>
         </View>
       </View>
+
+      <CollectionShelf progress={progress} childName={childName} onOutfit={outfit => onOutfit?.(outfit)} />
 
       <View style={styles.grid}>
         {GAMES.map(game => {

@@ -225,9 +225,43 @@ test('Connect the Dots: wrong dots wiggle, joining every dot reveals the picture
   const dots = DOT_PICTURES.heart!.dots;
   await tap(dots[5]!);
   await expect(board).toHaveAccessibleName('Dot board. Next dot: 2');
+  await page.waitForTimeout(400); // let the "not that one" wiggle finish before measuring taps again
   for (const dot of dots.slice(1)) await tap(dot);
   await expect(page.getByText("It's a heart! 🎉", { exact: true })).toBeVisible();
-  await inViewport(page, page.getByRole('button', { name: 'Next picture ▶', exact: true }));
-  await page.getByRole('button', { name: 'Next picture ▶', exact: true }).click();
+  await inViewport(page, page.getByRole('button', { name: 'Next ▶', exact: true }));
+
+  // Colour it in: pick a crayon, tap the heart, and it goes on the wall in that colour.
+  await page.getByRole('button', { name: '🎨 Colour it', exact: true }).click();
+  await page.getByRole('radio', { name: 'Crayon blue' }).click();
+  const art = (await page.getByLabel('Colouring the heart').boundingBox())!;
+  await page.mouse.click(art.x + art.width * 0.5, art.y + art.height * 0.6);
+  await inViewport(page, page.getByRole('button', { name: '✓ Done', exact: true }));
+  await page.getByRole('button', { name: '✓ Done', exact: true }).click();
+  await expect(page.getByText('Your heart is on your wall! 🖼️', { exact: true })).toBeVisible();
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('kidcog.progress.v1.e2e-child') ?? '{}').pictures?.heart);
+  expect(saved?.[0]).toBe('#3FA7D6');
+
+  await page.getByRole('button', { name: 'Next ▶', exact: true }).click();
   await expect(page.getByLabel(/^Dot board/)).toHaveAccessibleName('Dot board. Next dot: 2');
+});
+
+test('Play Zone shelf: sticker book, picture wall and dressing up Owl', async ({ page }) => {
+  await games(page);
+  await page.getByRole('button', { name: /^My pictures, 0 of 12/ }).click();
+  await expect(page.getByText('0 of 12 on the wall', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Close', exact: true }).click();
+
+  await page.getByRole('button', { name: /^Sticker book/ }).click();
+  await expect(page.getByText(/stickers$/).first()).toBeVisible();
+  await page.getByRole('button', { name: 'Close', exact: true }).click();
+
+  // The test child has 3 stars: the bow tie (1) and flower (3) are open, the party hat (10) is not.
+  await page.getByRole('button', { name: 'Dress up Owl', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Party hat, unlocks at 10 stars' })).toBeVisible();
+  await page.getByRole('button', { name: 'Bow tie', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Bow tie, wearing' })).toBeVisible();
+  await page.getByRole('button', { name: 'Party hat, unlocks at 10 stars' }).click();
+  await expect(page.getByRole('button', { name: /^Party hat, wearing/ })).toHaveCount(0);
+  const owl = await page.evaluate(() => JSON.parse(localStorage.getItem('kidcog.progress.v1.e2e-child') ?? '{}').owl);
+  expect(owl).toEqual({ neck: 'bow' });
 });

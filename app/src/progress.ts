@@ -23,7 +23,14 @@ export interface ChildProgress {
   arcade?: Partial<Record<GameKey, { level: number; stars: number; plays: number }>>;
   /** Animal Explorer: keys of the animals this child has met (their album). */
   animals?: string[];
+  /** Connect the Dots pictures this child has finished, with the colours they chose (their wall). */
+  pictures?: Record<string, string[]>;
+  /** What Owl is wearing for this child (see playzone/owlOutfits.ts). */
+  owl?: OwlOutfit;
 }
+
+/** Owl's dress-up: one item per slot, by key. Unlocked by total stars, never spent. */
+export type OwlOutfit = { hat?: string; eyes?: string; neck?: string };
 
 export interface RoundReward {
   stars: number;
@@ -126,6 +133,27 @@ export async function recordArcade(childId: string, game: GameKey, stars: number
     stars: progress.stars + stars,
     arcade: { ...progress.arcade, [game]: { level: Math.max(current.level, nextLevel), stars: current.stars + stars, plays: current.plays + 1 } },
   };
+  await saveProgress(childId, next);
+  return next;
+}
+
+/**
+ * A Connect the Dots picture is finished (or re-coloured): it goes on the
+ * child's wall. Without `colours`, a picture already on the wall keeps its own.
+ */
+export async function recordPicture(childId: string, key: string, colours?: string[]): Promise<ChildProgress> {
+  const progress = await loadProgress(childId);
+  const wall = progress.pictures ?? {};
+  if (!colours && wall[key]) return progress;
+  const next: ChildProgress = { ...progress, pictures: { ...wall, [key]: colours ?? [] } };
+  await saveProgress(childId, next);
+  return next;
+}
+
+/** Owl's outfit for this child. */
+export async function recordOwlOutfit(childId: string, outfit: OwlOutfit): Promise<ChildProgress> {
+  const progress = await loadProgress(childId);
+  const next: ChildProgress = { ...progress, owl: outfit };
   await saveProgress(childId, next);
   return next;
 }
