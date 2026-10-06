@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { AccessibilityInfo, Animated, Linking, Modal, Platform, View, Text, TextInput, StyleSheet, Pressable, Switch } from 'react-native';
+import { AccessibilityInfo, Animated, Linking, Modal, Platform, View, Text, TextInput, StyleSheet, Pressable, Switch, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Button from './Button';
 import AboutSheet from './AboutSheet';
 import { setSoundEffects, useSoundEffects } from '../games/sounds';
 import { colors, spacing, type, column, GUTTER } from '../theme';
 import { setAppHeaderCollapsed, useAppHeaderCollapsed } from '../headerScroll';
+import FeedbackSheet from './FeedbackSheet';
 
 /**
  * "Support KidCog" links for parents who want to chip in: a Stripe Payment Link
@@ -45,6 +46,8 @@ function openInNewTab(url: string) {
  * to the account) from any other screen.
  */
 export interface AppMenuProps {
+  /** Current screen name, included with feedback to make reports actionable. */
+  screen: string;
   accountEmail: string;
   accountProviders: string[];
   accountVerified: boolean;
@@ -57,9 +60,12 @@ export interface AppMenuProps {
   onHome?: () => void;
 }
 
-export default function AppMenu({ accountEmail, accountProviders, accountVerified, accountCreatedAt, onChangePassword, onSignOut, onDeleteAccount, onHome }: AppMenuProps) {
+export default function AppMenu({ screen, accountEmail, accountProviders, accountVerified, accountCreatedAt, onChangePassword, onSignOut, onDeleteAccount, onHome }: AppMenuProps) {
   const insets = useSafeAreaInsets();
+  const { width } = useWindowDimensions();
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const [feedbackHovered, setFeedbackHovered] = useState(false);
   const collapsed = useAppHeaderCollapsed();
   const collapse = useRef(new Animated.Value(collapsed ? 1 : 0)).current;
   const [reduceMotion, setReduceMotion] = useState(false);
@@ -170,8 +176,35 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
           >
             <Animated.Text style={[styles.brandText, { fontSize: collapse.interpolate({ inputRange: [0, 1], outputRange: [20, 17] }) }]}>🦉 KidCog</Animated.Text>
           </Pressable>
+          {width < 900 ? (
+            <Pressable
+              testID="header-feedback"
+              onPress={() => setFeedbackOpen(true)}
+              accessibilityRole="button"
+              accessibilityLabel="Give feedback"
+              style={({ pressed }) => [styles.headerFeedback, pressed && styles.menuButtonPressed]}
+            ><Text style={styles.headerFeedbackIcon}>💬</Text></Pressable>
+          ) : null}
         </Animated.View>
       </Animated.View>
+
+      {width >= 900 ? (
+        <View style={[styles.sideFeedbackDock, Platform.OS === 'web' ? styles.sideFeedbackWeb : null]} pointerEvents="box-none">
+          {feedbackHovered ? <View testID="side-feedback-prompt" style={styles.sideFeedbackPrompt}><Text style={styles.sideFeedbackPromptText}>Share an idea</Text></View> : null}
+          <Pressable
+            testID="side-feedback"
+            onPress={() => setFeedbackOpen(true)}
+            onHoverIn={() => setFeedbackHovered(true)}
+            onHoverOut={() => setFeedbackHovered(false)}
+            accessibilityRole="button"
+            accessibilityLabel="Give feedback"
+            style={({ pressed }) => [styles.sideFeedback, pressed && styles.sideFeedbackPressed]}
+          >
+            <Text style={styles.sideFeedbackIcon}>💬</Text>
+            <Text testID="side-feedback-label" style={styles.sideFeedbackLabel}>Feedback</Text>
+          </Pressable>
+        </View>
+      ) : null}
 
       <Modal visible={menuOpen} transparent animationType="fade" onRequestClose={closeMenu}>
         <View style={styles.modalRoot}>
@@ -275,6 +308,9 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
                 <Pressable onPress={() => { closeMenu(); setAboutOpen(true); }} accessibilityRole="button" accessibilityLabel="About KidCog" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
                   <Text style={styles.menuActionIcon}>ⓘ</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>About KidCog</Text><Text style={type.soft}>How it works and privacy</Text></View><Text style={styles.chevron}>›</Text>
                 </Pressable>
+                <Pressable onPress={() => { closeMenu(); setFeedbackOpen(true); }} accessibilityRole="button" accessibilityLabel="Open feedback form" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
+                  <Text style={styles.menuActionIcon}>💬</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>Feedback</Text><Text style={type.soft}>Share an idea or report a problem</Text></View><Text style={styles.chevron}>›</Text>
+                </Pressable>
                 {canChangePassword ? (
                   <Pressable onPress={() => { setChangingPassword(true); setAccountMessage(null); }} accessibilityRole="button" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
                     <Text style={styles.menuActionIcon}>🔐</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>Change password</Text><Text style={type.soft}>Update the parent account password</Text></View><Text style={styles.chevron}>›</Text>
@@ -298,6 +334,7 @@ export default function AppMenu({ accountEmail, accountProviders, accountVerifie
         </View>
       </Modal>
       <AboutSheet visible={aboutOpen} onClose={() => setAboutOpen(false)} />
+      <FeedbackSheet visible={feedbackOpen} screen={screen} onClose={() => setFeedbackOpen(false)} />
     </>
   );
 }
@@ -306,11 +343,21 @@ const styles = StyleSheet.create({
   bar: { borderBottomWidth: 1, borderBottomColor: 'rgba(222,205,184,0.78)', zIndex: 50, shadowColor: '#4A3728', shadowRadius: 10, shadowOffset: { width: 0, height: 4 }, elevation: 7 },
   webBlur: { backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' } as any,
   barInner: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.25), ...column, paddingHorizontal: GUTTER, paddingVertical: spacing(1) },
+  headerFeedback: { marginLeft: 'auto', width: 42, height: 42, borderRadius: 21, alignItems: 'center', justifyContent: 'center', backgroundColor: '#EEE9FF', borderWidth: 1.5, borderColor: '#CABAF0' },
+  headerFeedbackIcon: { fontSize: 20 },
   brand: { paddingVertical: spacing(0.5), paddingHorizontal: spacing(0.5), borderRadius: 10 },
   brandText: { fontSize: 20, fontWeight: '900', color: '#6B4BB0' },
   menuButton: { width: 46, height: 46, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#CABAF0' },
   menuButtonPressed: { opacity: 0.7, transform: [{ scale: 0.96 }] },
   menuIcon: { fontSize: 25, color: '#6B4BB0', fontWeight: '800', marginTop: -2 },
+  sideFeedbackDock: { position: 'absolute', right: 0, top: '42%', zIndex: 90, flexDirection: 'row', alignItems: 'center' },
+  sideFeedbackWeb: { position: 'fixed' } as any,
+  sideFeedbackPrompt: { marginRight: 8, paddingVertical: 9, paddingHorizontal: 13, borderRadius: 12, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#D9CDF5', shadowColor: '#2A2118', shadowOpacity: 0.13, shadowRadius: 10, shadowOffset: { width: 0, height: 4 } },
+  sideFeedbackPromptText: { color: '#56389A', fontSize: 13, fontWeight: '800' },
+  sideFeedback: { width: 50, height: 152, paddingVertical: 10, borderTopLeftRadius: 18, borderBottomLeftRadius: 18, backgroundColor: '#7650C7', borderWidth: 2, borderRightWidth: 0, borderColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center', gap: 5, overflow: 'visible', shadowColor: '#2A2118', shadowOpacity: 0.2, shadowRadius: 12, shadowOffset: { width: -3, height: 5 }, elevation: 9 },
+  sideFeedbackPressed: { backgroundColor: '#60439B', transform: [{ scale: 0.97 }] },
+  sideFeedbackIcon: { fontSize: 19 },
+  sideFeedbackLabel: { color: '#FFFFFF', fontSize: 14, lineHeight: 18, fontWeight: '900', writingDirection: 'ltr', transform: [{ rotate: '-90deg' }], width: 94, height: 20, textAlign: 'center', flexShrink: 0 },
   modalRoot: { flex: 1, backgroundColor: 'rgba(42,33,24,0.25)' },
   backdrop: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 },
   // In normal flow (not absolute): an absolute column with top/bottom 0 collapsed

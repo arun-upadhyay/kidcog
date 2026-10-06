@@ -15,11 +15,12 @@ import { registerSpeech, speechForKey, synthesizeSpeech, SPEECH_MIME } from './s
 import { scoreSubmission } from './scoring.js';
 import { generateParentReport, apiKeyProblem } from './grader.js';
 import type { PublicQuestion, TestPayload } from './types.js';
-import { supabaseReady, userIdFromBearer } from './supabase.js';
+import { parentEmailForId, supabaseReady, userIdFromBearer } from './supabase.js';
 import { isAccountDeleted, scheduleAccountDeletion, startPurgeSchedule, PURGE_AFTER_DAYS } from './accountDeletion.js';
 import { storeAppleAuthorizationCode } from './appleSignIn.js';
-import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, updateChildAvatar, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, bankQuestionReporterCount, saveContentReport, saveGeneratedQuestions, saveParentReport, saveReport } from './repository.js';
+import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, updateChildAvatar, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, bankQuestionReporterCount, saveContentReport, saveProductFeedback, saveGeneratedQuestions, saveParentReport, saveReport } from './repository.js';
 import type { Report } from './types.js';
+import { sendFeedbackEmail } from './feedbackEmail.js';
 
 /**
  * Raw error text (database messages, stack details) helps while developing
@@ -420,6 +421,39 @@ const SubmissionSchema = z.object({
 const REPORTS_TO_RETIRE = Math.max(1, Number(process.env.REPORTS_TO_RETIRE) || 2);
 
 const pendingReports = new Map<string, { parentId: string; work: Promise<Report> }>();
+
+const FeedbackBody = z.object({
+  category: z.enum(['idea', 'problem', 'praise', 'other']),
+  rating: z.number().int().min(1).max(5).nullable(),
+  message: z.string().trim().min(10).max(2000),
+  allowContact: z.boolean(),
+  platform: z.string().trim().min(1).max(30),
+  appVersion: z.string().trim().min(1).max(30),
+  screen: z.string().trim().min(1).max(50),
+}).strict();
+const feedbackQuota = limiter(5, 60 * 60_000);
+
+app.post('/api/feedback', requireParent, async (req: AuthRequest, res: Response) => {
+  const parsed = FeedbackBody.safeParse(req.body);
+  if (!parsed.success) { res.status(400).json({ error: 'Please check your feedback and try again.' }); return; }
+  const parentId = req.parentId!;
+  if (!feedbackQuota(parentId)) { res.status(429).json({ error: 'Thanks for sharing so much. Please wait a little before sending another message.' }); return; }
+  try {
+    const id = await saveProductFeedback({ parentId, ...parsed.data });
+    let emailed = false;
+    try {
+      const accountEmail = parsed.data.allowContact ? await parentEmailForId(parentId) : null;
+      emailed = await sendFeedbackEmail({ id, accountEmail, ...parsed.data });
+    } catch (emailError) {
+      // The database remains the reliable copy. A mail-provider outage should
+      // not make the parent retry and create duplicate feedback rows.
+      console.warn('  ⚠ Feedback saved but email notification failed:', emailError instanceof Error ? emailError.message : emailError);
+    }
+    res.status(201).json({ ok: true, emailed });
+  } catch (err) {
+    res.status(500).json({ error: 'We could not save your feedback. Please try again.', detail: errorDetail(err) });
+  }
+});
 
 /**
  * A parent reports AI-made content: a question, or the written note. Google

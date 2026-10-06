@@ -27,6 +27,7 @@ async function prepare(page: Page, fail = false) {
     if (path === '/api/submit') return route.fulfill({ json: { version: 2, generatedAt: new Date().toISOString(), overall: { earned: 6, possible: 6, percent: 100 },
       traits: categories.map((t,i) => ({ ...t, questionCount: i ? 0 : 2, earned: i ? 0 : 6, possible: i ? 0 : 6, percent: i ? 0 : 100, band: 'Explored', formScale: i ? null : { value: 5, label: 'Observed' }, evidence: 'Test evidence' })), strongest: null, growthArea: null, responses: [], seenQuestionIds: ['q1','q2'], graderFailed: null, disclaimer: 'Test report' } });
     if (path === '/api/prefetch') return route.fulfill({ json: {} });
+    if (path === '/api/feedback') return route.fulfill({ status: 201, json: { ok: true, emailed: true } });
     return route.fulfill({ status: 500, json: { error: `Unmocked endpoint: ${path}` } });
   });
   await page.goto('/');
@@ -60,6 +61,49 @@ test('profile failure can be retried without showing an empty form', async ({ pa
   await prepare(page, true);
   await page.getByRole('button', { name: 'Try again', exact: true }).click();
   await expect(page.getByRole('radio', { name: 'Test Explorer, age 5' })).toBeVisible();
+});
+
+test('parent can send feedback from the shared menu', async ({ page }) => {
+  await prepare(page);
+  await page.getByRole('button', { name: 'Open parent account menu' }).click();
+  await page.getByRole('button', { name: 'Open feedback form' }).click();
+  await expect(page.getByRole('heading', { name: 'Help us improve KidCog' })).toBeVisible();
+  await page.getByRole('radio', { name: 'A problem' }).click();
+  await page.getByRole('radio', { name: '4 out of 5 stars' }).click();
+  await page.getByLabel('Feedback message').fill('The activity worked, but this button was hard to find.');
+  await page.getByRole('checkbox').click();
+  const submitted = page.waitForRequest(request => new URL(request.url()).pathname === '/api/feedback');
+  await page.getByRole('button', { name: 'Send feedback', exact: true }).click();
+  expect((await submitted).postDataJSON()).toMatchObject({ category: 'problem', rating: 4, allowContact: true, screen: 'start' });
+  await expect(page.getByText('Thank you!', { exact: true })).toBeVisible();
+});
+
+test('feedback has a responsive one-tap entry point', async ({ page }) => {
+  await prepare(page);
+  const viewport = page.viewportSize()!;
+  const entry = page.getByRole('button', { name: 'Give feedback' });
+  await inViewport(page, entry);
+  if (viewport.width >= 900) {
+    await expect(page.getByTestId('side-feedback')).toBeVisible();
+    await expect(page.getByTestId('header-feedback')).toHaveCount(0);
+    const box = await entry.boundingBox();
+    expect(Math.abs(viewport.width - (box!.x + box!.width))).toBeLessThanOrEqual(1);
+    expect(box!.width).toBeLessThanOrEqual(52);
+    expect(box!.height).toBeGreaterThan(box!.width * 2);
+    const labelBox = await page.getByTestId('side-feedback-label').boundingBox();
+    expect(labelBox).not.toBeNull();
+    expect(labelBox!.x).toBeGreaterThanOrEqual(box!.x);
+    expect(labelBox!.y).toBeGreaterThanOrEqual(box!.y);
+    expect(labelBox!.x + labelBox!.width).toBeLessThanOrEqual(box!.x + box!.width);
+    expect(labelBox!.y + labelBox!.height).toBeLessThanOrEqual(box!.y + box!.height);
+    await entry.hover();
+    await expect(page.getByTestId('side-feedback-prompt')).toBeVisible();
+  } else {
+    await expect(page.getByTestId('header-feedback')).toBeVisible();
+    await expect(page.getByTestId('side-feedback')).toHaveCount(0);
+  }
+  await entry.click();
+  await expect(page.getByRole('heading', { name: 'Help us improve KidCog' })).toBeVisible();
 });
 for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw', 'Connect the Dots']) {
   test(`${name}: board, controls and return navigation`, async ({ page }, info) => {

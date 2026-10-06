@@ -46,6 +46,8 @@ function resolveBaseUrl(): string {
 
 export const API_BASE_URL = resolveBaseUrl();
 
+export type FeedbackCategory = 'idea' | 'problem' | 'praise' | 'other';
+
 /**
  * A store or website build must talk to a real https server. Without this, a
  * build made without EXPO_PUBLIC_API_URL would silently point at localhost
@@ -227,6 +229,25 @@ export function reportContent(input: {
   details?: string;
 }): Promise<{ ok: true; removed: boolean }> {
   return request('/api/reports', { method: 'POST', timeoutMs: 20000, body: JSON.stringify(input) });
+}
+
+/** Product feedback from a signed-in parent. */
+export function submitFeedback(input: {
+  category: FeedbackCategory;
+  rating: number | null;
+  message: string;
+  allowContact: boolean;
+  screen: string;
+}): Promise<{ ok: true; emailed: boolean }> {
+  return request('/api/feedback', {
+    method: 'POST',
+    timeoutMs: 20000,
+    body: JSON.stringify({
+      ...input,
+      platform: Platform.OS,
+      appVersion: Constants.expoConfig?.version ?? 'unknown',
+    }),
+  });
 }
 
 /** A code for reading `text` aloud; the audio is then fetched by code (see speech.ts). */

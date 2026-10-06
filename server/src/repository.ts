@@ -167,6 +167,20 @@ export async function saveContentReport(report: ContentReport) {
   fail(error);
 }
 
+export async function saveProductFeedback(input: {
+  parentId: string; category: 'idea' | 'problem' | 'praise' | 'other'; rating: number | null;
+  message: string; allowContact: boolean; platform: string; appVersion: string; screen: string;
+}) {
+  const { data, error } = await supabaseAdmin.from('product_feedback').insert({
+    parent_id: input.parentId, category: input.category, rating: input.rating,
+    message: input.message, allow_contact: input.allowContact, platform: input.platform,
+    app_version: input.appVersion, screen: input.screen,
+  }).select('id').single();
+  fail(error);
+  if (!data?.id) throw new Error('Feedback was saved without an ID.');
+  return data.id as string;
+}
+
 /** How many different parents have reported this bank question. */
 export async function bankQuestionReporterCount(bankQuestionId: string): Promise<number> {
   const { data, error } = await supabaseAdmin.from('content_reports').select('parent_id').eq('bank_question_id', bankQuestionId).limit(1000);

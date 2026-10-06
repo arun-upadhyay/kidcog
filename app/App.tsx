@@ -330,6 +330,7 @@ function KidCogApp() {
       <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
         {/* Outside every screen's scroll view, so it is always visible. */}
         <AppMenu
+          screen={stage}
           accountEmail={session.user.email ?? 'Signed-in parent'}
           accountProviders={Array.isArray(session.user.app_metadata.providers)
             ? session.user.app_metadata.providers.filter((provider: unknown): provider is string => typeof provider === 'string')

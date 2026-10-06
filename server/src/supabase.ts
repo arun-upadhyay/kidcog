@@ -15,3 +15,11 @@ export async function userIdFromBearer(header?: string): Promise<string | null> 
   const { data, error } = await supabaseAdmin.auth.getUser(token);
   return error ? null : data.user?.id ?? null;
 }
+
+/** Account email used as Reply-To only when the parent permits contact. */
+export async function parentEmailForId(parentId: string): Promise<string | null> {
+  if (!supabaseReady()) return null;
+  const { data, error } = await supabaseAdmin.auth.admin.getUserById(parentId);
+  if (error) throw new Error(error.message);
+  return data.user?.email ?? null;
+}
