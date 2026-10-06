@@ -11,6 +11,8 @@
     "typecheck": "tsc --noEmit",
     "test:e2e": "playwright test",
     "test:e2e:report": "playwright show-report",
+    "test:screens": "playwright test -c playwright.screens.config.ts",
+    "test:screens:gallery": "open screens-report/index.html",
     "eas:login": "npx --yes eas-cli@latest login",
     "env:check": "npx --yes eas-cli@latest env:list --environment production && npx --yes eas-cli@latest env:list --environment preview",
     "test:android": "npm run typecheck && npx --yes eas-cli@latest build --platform android --profile preview",

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { playSound } from '../games/sounds';
 import { colors } from '../theme';
-import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, shuffle, useArrowKeys, useSwipe, type Dir } from './common';
+import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, shuffle, useArrowKeys, useSwipe, type Dir, useUsableHeight } from './common';
 
 /**
  * Maze Runner: help the owl through the maze to the flag, picking up stars on
@@ -60,7 +60,7 @@ export default function MazeRunner({ level: startLevel, onBack, onFinish }: {
   const [level, setLevel] = useState(Math.min(MAZE_LEVELS, Math.max(1, startLevel)));
   const size = SIZES[level - 1]!;
   const [availableWidth, setBoardWidth] = useState(320);
-  const { height: screenHeight } = useWindowDimensions();
+  const screenHeight = useUsableHeight();
   // Room for the app bar, game header and controls; short screens (small phones,
   // landscape) get a smaller board so the controls stay on screen.
   const board = Math.min(availableWidth, screenHeight < 450 ? Math.max(140, screenHeight - 300) : Math.max(200, screenHeight - 400));

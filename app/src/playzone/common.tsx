@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, PanResponder, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Owl from '../components/Owl';
 import Button from '../components/Button';
 import { colors, spacing, CONTENT_MAX_WIDTH, GUTTER } from '../theme';
@@ -8,6 +9,17 @@ import { speak, stopSpeaking } from '../speech';
 export type Dir = 'up' | 'down' | 'left' | 'right';
 export type GameKey = 'animals' | 'snake' | 'bubbles' | 'maze' | 'trace' | 'dots';
 export const useNative = Platform.OS !== 'web';
+
+/**
+ * The height a game can really use: the window minus the status bar / notch
+ * and the home bar. Sizing boards from the whole window put the controls under
+ * the home bar on notched iPhones and most Androids.
+ */
+export function useUsableHeight() {
+  const { height } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
+  return height - insets.top - insets.bottom;
+}
 
 /**
  * Games sit inside a scrolling page (so small screens can still reach every
@@ -26,7 +38,8 @@ export function useScrollLock() {
 
 /** The board size that fits the screen: full width on a phone, capped on a laptop. */
 export function useBoardSize(max = 460) {
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
+  const height = useUsableHeight();
   return Math.floor(Math.min(width - GUTTER * 2, max, CONTENT_MAX_WIDTH - GUTTER * 2, height * 0.55));
 }
 
@@ -36,7 +49,7 @@ export function GameSurface({ theme, eyebrow, title, badgeLabel, badge, onWidth,
   badgeLabel: string; badge: string | number; onWidth: (width: number) => void; children: React.ReactNode;
 }) {
   const [panelWidth, setPanelWidth] = useState(320);
-  const { height } = useWindowDimensions();
+  const height = useUsableHeight();
   const compact = height < 650;
   const landscape = height < 450;
   // Fill the panel inside its 12px padding on either side.
@@ -64,7 +77,7 @@ export function GameSurface({ theme, eyebrow, title, badgeLabel, badge, onWidth,
 export function GameStartCard({ emoji, title, hint, onStart, resume = false }: {
   emoji: string; title: string; hint: string; onStart: () => void; resume?: boolean;
 }) {
-  const { height } = useWindowDimensions();
+  const height = useUsableHeight();
   const compact = height < 650;
   return <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(235,245,240,0.35)', alignItems: 'center', justifyContent: 'center' }]}>
     <View style={{ width: '86%', maxWidth: 330, padding: 12, gap: 8, alignItems: 'center', borderRadius: 26, backgroundColor: '#FFFCF3', borderWidth: 2, borderColor: '#FFFFFF' }}>

@@ -3,7 +3,7 @@ import { Animated, PanResponder, Platform, Pressable, StyleSheet, Text, View, us
 import Svg, { Circle, Polyline } from 'react-native-svg';
 import { playSound } from '../games/sounds';
 import { colors, spacing } from '../theme';
-import { GameSurface, GameStartCard, GameFrame, WinCard, useNative, useScrollLock } from './common';
+import { GameSurface, GameStartCard, GameFrame, WinCard, useNative, useScrollLock, useUsableHeight } from './common';
 
 /**
  * Trace & Draw: follow the dotted guide with a finger (or the mouse) to write
@@ -101,7 +101,7 @@ export default function TraceDraw({ level: startLevel, onBack, onFinish }: {
   const [level, setLevel] = useState(Math.min(TRACE_LEVELS.length, Math.max(1, startLevel)));
   const cfg = TRACE_LEVELS[level - 1]!;
   const [availableWidth, setBoardWidth] = useState(320);
-  const { height: screenHeight } = useWindowDimensions();
+  const screenHeight = useUsableHeight();
   // Room for the app bar, game header and controls; short screens (small phones,
   // landscape) get a smaller board so the controls stay on screen.
   const size = Math.min(availableWidth, screenHeight < 450 ? Math.max(130, screenHeight - 300) : Math.max(200, screenHeight - 400));

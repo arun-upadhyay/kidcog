@@ -9,3 +9,7 @@ drafts/
 .vscode/
 .DS_Store
 logs/
+
+# Screen-size suite (npm run test:screens)
+screens-report/
+dist-screens/

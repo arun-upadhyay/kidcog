@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { PanResponder, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { playSound } from '../games/sounds';
 import { colors, spacing } from '../theme';
-import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, randomInt, shuffle, useArrowKeys, useScrollLock, type Dir } from './common';
+import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, randomInt, shuffle, useArrowKeys, useScrollLock, type Dir, useUsableHeight } from './common';
 
 /**
  * Number Snake: steer the snake to eat the numbers in order. It grows with each
@@ -30,10 +30,10 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
   const cfg = LEVELS[level - 1]!;
   const [availableWidth, setAvailableWidth] = useState(320);
   const board = Math.min(availableWidth, 760);
-  const { height: viewportHeight } = useWindowDimensions();
+  const viewportHeight = useUsableHeight();
   const cellWidth = (board - BORDER * 2) / cfg.grid;
   // Preserve the full panel width while reserving vertical space for controls.
-  const boardHeight = Math.min(board, viewportHeight < 450 ? Math.max(100, viewportHeight - 280) : Math.max(150, viewportHeight - 462));
+  const boardHeight = Math.min(board, viewportHeight < 450 ? Math.max(100, viewportHeight - 280) : Math.max(130, viewportHeight - 520));
   const cellHeight = (boardHeight - BORDER * 2) / cfg.grid;
   const cell = Math.min(cellWidth, cellHeight);
   const [, render] = useState(0);

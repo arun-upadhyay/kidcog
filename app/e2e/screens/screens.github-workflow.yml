@@ -1,0 +1,48 @@
+# Checks every screen of the app on 15 phone and tablet sizes (iPhone, iPad,
+# Android) whenever app code changes. Runs app/e2e/screens with fake data: no
+# secrets, real server, sign-in or AI are needed.
+#
+# Results: open the run on GitHub → "Artifacts" → screens-report → index.html
+# (a gallery of every screen on every device, with any problems listed).
+name: Screen sizes
+
+on:
+  push:
+    branches: [main]
+    paths: ['app/**', '.github/workflows/screens.yml']
+  pull_request:
+    paths: ['app/**', '.github/workflows/screens.yml']
+  workflow_dispatch:
+
+concurrency:
+  group: screens-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  screens:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npx playwright install --with-deps chromium
+      - name: Check every screen on every device
+        run: npm run test:screens
+        env:
+          CI_WORKERS: '4'
+      - name: Keep the gallery
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screens-report
+          path: app/screens-report
+          retention-days: 14

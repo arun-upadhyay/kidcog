@@ -4,7 +4,7 @@ import Svg, { Circle, Line, Polyline, Text as SvgText } from 'react-native-svg';
 import { playSound } from '../games/sounds';
 import { stopSpeaking } from '../speech';
 import { colors, spacing } from '../theme';
-import { GameFrame, GameSurface, WinCard, useNative, useScrollLock } from './common';
+import { GameFrame, GameSurface, WinCard, useNative, useScrollLock, useUsableHeight } from './common';
 import { DOT_LEVELS, DOT_PICTURES, dotLabel, type Pt } from './dotPictures';
 import { CRAYONS, PictureArt, coloursFor, regionAt } from './dotArt';
 
@@ -45,7 +45,7 @@ export default function DotToDot({ level: startLevel, onBack, onFinish, wall, on
   const [index, setIndex] = useState(0);
   const picture = DOT_PICTURES[cfg.pictures[index]!]!;
   const [availableWidth, setBoardWidth] = useState(320);
-  const { height: screenHeight } = useWindowDimensions();
+  const screenHeight = useUsableHeight();
   // Same room as the other games: app bar, game header and the button row below.
   const [colouring, setColouring] = useState(false);
   // While colouring, the crayon box sits under the board, so the board gives it some room.
@@ -53,7 +53,7 @@ export default function DotToDot({ level: startLevel, onBack, onFinish, wall, on
   const reserve = colouring ? 72 : 0;
   const size = Math.min(availableWidth, screenHeight < 450
     ? Math.max(colouring ? 80 : 130, screenHeight - 300 - reserve)
-    : Math.max(colouring ? 140 : 200, screenHeight - 400 - reserve));
+    : Math.max(colouring ? 120 : 200, screenHeight - 400 - reserve));
   const [colours, setColours] = useState<string[]>([]);
   const [crayon, setCrayon] = useState(CRAYONS[0]!);
   const [onWall, setOnWall] = useState(false);

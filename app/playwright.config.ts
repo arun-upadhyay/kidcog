@@ -1,6 +1,7 @@
 import { defineConfig } from '@playwright/test';
 export default defineConfig({
-  testDir: './e2e', timeout: 45000, fullyParallel: false, workers: 1,
+  testDir: './e2e', testIgnore: ['**/screens/**'], // the screen-size suite has its own config (playwright.screens.config.ts)
+  timeout: 45000, fullyParallel: false, workers: 1,
   reporter: [['list'], ['html', { open: 'never' }]],
   use: { baseURL: 'http://localhost:8091', trace: 'retain-on-failure', screenshot: 'only-on-failure' },
   projects: [
