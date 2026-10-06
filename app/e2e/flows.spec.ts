@@ -91,6 +91,25 @@ test('Play Zone cards react to hover and still open', async ({ page }) => {
   await expect(page.getByRole('button', { name: /Animal quiz/ })).toBeVisible();
 });
 
+test('Animal Sounds plays a real local recording without speech fallback', async ({ page }) => {
+  await games(page);
+  await page.getByRole('button', { name: 'Play Animal Explorer', exact: true }).click();
+  await page.getByRole('button', { name: /Animal sounds/ }).click();
+
+  const spokenRequests: string[] = [];
+  page.on('request', request => {
+    if (/\/api\/(speech|speak)/.test(new URL(request.url()).pathname)) spokenRequests.push(request.url());
+  });
+  const dogAudio = page.waitForResponse(response => /dog[^/]*\.wav(?:\?|$)/.test(response.url()));
+  await page.getByRole('button', { name: 'Play real dog sound', exact: true }).click();
+  expect((await dogAudio).ok()).toBe(true);
+  expect(spokenRequests).toEqual([]);
+
+  // Animals without a verified recording are left off this sound activity.
+  await expect(page.getByRole('button', { name: /real parrot sound/i })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /real bee sound/i })).toHaveCount(0);
+});
+
 test('activity cards react to hover and still open', async ({ page }) => {
   await prepare(page);
   await page.getByRole('radio', { name: 'Test Explorer, age 5', exact: true }).click();

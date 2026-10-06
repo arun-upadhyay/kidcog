@@ -3,17 +3,19 @@ import { Animated, Easing, Pressable, StyleSheet, Text, View, useWindowDimension
 import { playSound } from '../games/sounds';
 import { ANIMALS, type Animal } from '../explore/animals';
 import { soundKey } from '../explore/animalQuiz';
-import { playAnimal, playRecording, say } from '../explore/animalSounds';
+import { hasRecording, playRecording } from '../explore/animalSounds';
 import { colors, spacing } from '../theme';
 import { useNative } from './common';
 
 /**
  * Animal sounds, two ways to play:
- *  - Free play: tap an animal, it jumps, says its sound in a speech bubble and plays it.
+ *  - Free play: tap an animal, it jumps and plays its real recorded call.
  *  - Guess who: a mystery sound plays; find the animal that makes it.
  * Sounds play only when the child taps (no surprise audio).
  */
-const SINGERS = ANIMALS.filter(a => a.says);
+// Never put a text-to-speech imitation on this sound board. An animal appears
+// only when the app bundles a real recording for it.
+const SINGERS = ANIMALS.filter(a => a.says && hasRecording(a.key));
 const GROUPS: { title: string; test: (a: Animal) => boolean }[] = [
   { title: '🏡 Farm and home', test: a => a.homes[0] === 'farm' || a.homes[0] === 'house' },
   { title: '🐦 Birds', test: a => a.kind === 'bird' && a.homes[0] !== 'farm' },
@@ -68,7 +70,7 @@ function Cell({ animal, pulse, onPress, width }: { animal: Animal; pulse: Pulse 
       }]} pointerEvents="none">
         <Text style={styles.bubbleText} numberOfLines={1}>{bubbleText}</Text>
       </Animated.View>
-      <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel={`${animal.name}, says ${animal.says}`}
+      <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel={`Play real ${animal.name} sound`}
         style={({ pressed }) => [styles.cell, pulse?.kind === 'right' && styles.cellRight, pressed && styles.cellPressed]}>
         <Animated.Text style={[styles.cellEmoji, {
           transform: [
@@ -129,7 +131,7 @@ export default function SoundBoard() {
 
   const playMystery = (a: Animal) => {
     // The sound only, never the name.
-    if (!playRecording(a.key)) say(`${a.says}! ${a.says}!`);
+    playRecording(a.key);
   };
   const nextMystery = () => {
     const pool = SINGERS.filter(a => a.key !== mystery?.key);
@@ -141,7 +143,7 @@ export default function SoundBoard() {
   const tap = (a: Animal) => {
     if (mode === 'free' || !mystery) {
       pulse(a.key, 'sing');
-      playAnimal(a);
+      playRecording(a.key);
       return;
     }
     if (found) return;
@@ -197,7 +199,7 @@ export default function SoundBoard() {
           {score > 0 ? <Text style={styles.score} accessibilityLabel={`${score} found`}>{'⭐'.repeat(Math.min(score, 10))}{score > 10 ? ` ${score}` : ''}</Text> : null}
         </View>
       ) : (
-        <Text style={styles.freeHint}>Tap any animal to hear it! 👂</Text>
+        <Text style={styles.freeHint}>Tap any animal to hear a real recording! 👂</Text>
       )}
 
       {grouped.map(g => (

@@ -5,7 +5,7 @@ import Owl from '../components/Owl';
 import { playSound } from '../games/sounds';
 import { ANIMALS, ANIMAL_BY_KEY, HOME_WORDS, animalOfTheDay, withArticle, type Animal } from '../explore/animals';
 import { makeRound } from '../explore/animalQuiz';
-import { playAnimal, playRecording, say } from '../explore/animalSounds';
+import { hasRecording, playAnimal, playRecording, say } from '../explore/animalSounds';
 import { factsFor } from '../explore/funFacts';
 import { stopSpeaking } from '../speech';
 import { colors, spacing } from '../theme';
@@ -228,9 +228,11 @@ function Quiz({ level, onExit, onBack, onMeet, onDone, onLevel }: {
                 <Text style={styles.factHead}>{solved === 'shown' ? `It's the ${about.name}!` : solved === 'first' ? '⭐ Yes, well done!' : '👍 You got it!'}</Text>
                 <FunFact animal={about} index={factIndex} />
                 <View style={styles.factButtons}>
-                  <Pressable onPress={() => playAnimal(about)} accessibilityRole="button" style={({ pressed }) => [styles.smallButton, pressed && styles.pressed]}>
-                    <Text style={styles.smallButtonText}>🔊 Hear the {about.name}</Text>
-                  </Pressable>
+                  {hasRecording(about.key) ? (
+                    <Pressable onPress={() => playAnimal(about)} accessibilityRole="button" style={({ pressed }) => [styles.smallButton, pressed && styles.pressed]}>
+                      <Text style={styles.smallButtonText}>🔊 Hear the {about.name}</Text>
+                    </Pressable>
+                  ) : null}
                 </View>
                 <Button title={index + 1 >= round.length ? 'See my stars ⭐' : 'Next ▶'} onPress={next} />
               </View>
@@ -344,7 +346,7 @@ function AnimalCard({ animal, onClose }: { animal: Animal; onClose: () => void }
         <Text style={styles.cardFact}>{fact}</Text>
         <View style={styles.chips}>{facts.map(f => <Text key={f} style={styles.chip}>{f}</Text>)}</View>
         <View style={{ alignSelf: 'stretch', gap: spacing(1) }}>
-          <Button title="🔊 Hear it" onPress={() => playAnimal(animal)} />
+          {hasRecording(animal.key) ? <Button title="🔊 Hear it" onPress={() => playAnimal(animal)} /> : null}
           <Pressable onPress={onClose} accessibilityRole="button" style={styles.close}><Text style={styles.closeText}>Close</Text></Pressable>
         </View>
       </View>
