@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
-import Sheet from './Sheet';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Sheet, { CENTERED_FROM_WIDTH } from './Sheet';
 import Button from './Button';
 import { submitFeedback, type FeedbackCategory } from '../api';
-import { colors, spacing, type } from '../theme';
+import { colors, spacing, type, GUTTER } from '../theme';
 
 const CATEGORIES: { key: FeedbackCategory; icon: string; label: string }[] = [
   { key: 'idea', icon: '💡', label: 'An idea' },
@@ -13,7 +14,13 @@ const CATEGORIES: { key: FeedbackCategory; icon: string; label: string }[] = [
 ];
 
 export default function FeedbackSheet({ visible, screen, onClose }: { visible: boolean; screen: string; onClose: () => void }) {
-  const { height } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
+  // Fit the form inside the panel (a centred card on wide screens, a bottom
+  // sheet on phones), so its last button is never cut off at the bottom.
+  const centered = width >= CENTERED_FROM_WIDTH;
+  const panelSide = centered ? spacing(3) : GUTTER;
+  const scrollMax = centered ? height * 0.88 - spacing(6) - 4 : height * 0.9 - 30 - insets.bottom - spacing(3) - 4;
   const [category, setCategory] = useState<FeedbackCategory>('idea');
   const [rating, setRating] = useState<number | null>(null);
   const [message, setMessage] = useState('');
@@ -43,7 +50,10 @@ export default function FeedbackSheet({ visible, screen, onClose }: { visible: b
   return (
     <Sheet visible={visible} onClose={busy ? () => {} : onClose} closeLabel="Close feedback">
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.keyboard}>
-        <ScrollView style={[styles.scroll, { maxHeight: Math.max(260, height * 0.82) }]} keyboardShouldPersistTaps="handled" contentContainerStyle={styles.content} showsVerticalScrollIndicator>
+        {/* The scroll area reaches the panel's edges (content padded back in), so the
+            scroll bar sits at the panel's edge instead of over the text boxes. */}
+        <ScrollView style={[styles.scroll, { maxHeight: Math.max(260, scrollMax), marginHorizontal: -panelSide }]} keyboardShouldPersistTaps="handled"
+          contentContainerStyle={[styles.content, { paddingHorizontal: panelSide }]} showsVerticalScrollIndicator>
           {sent ? (
             <View style={styles.success} accessibilityLiveRegion="polite">
               <View style={styles.successIcon}><Text style={styles.successEmoji}>🦉</Text></View>

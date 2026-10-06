@@ -78,29 +78,19 @@ test('parent can send feedback from the shared menu', async ({ page }) => {
   await expect(page.getByText('Thank you!', { exact: true })).toBeVisible();
 });
 
-test('feedback has a responsive one-tap entry point', async ({ page }) => {
+test('feedback has a one-tap entry point in the top bar', async ({ page }) => {
   await prepare(page);
   const viewport = page.viewportSize()!;
   const entry = page.getByRole('button', { name: 'Give feedback' });
   await inViewport(page, entry);
-  if (viewport.width >= 900) {
-    await expect(page.getByTestId('side-feedback')).toBeVisible();
-    await expect(page.getByTestId('header-feedback')).toHaveCount(0);
-    const box = await entry.boundingBox();
-    expect(Math.abs(viewport.width - (box!.x + box!.width))).toBeLessThanOrEqual(1);
-    expect(box!.width).toBeLessThanOrEqual(52);
-    expect(box!.height).toBeGreaterThan(box!.width * 2);
-    const labelBox = await page.getByTestId('side-feedback-label').boundingBox();
-    expect(labelBox).not.toBeNull();
-    expect(labelBox!.x).toBeGreaterThanOrEqual(box!.x);
-    expect(labelBox!.y).toBeGreaterThanOrEqual(box!.y);
-    expect(labelBox!.x + labelBox!.width).toBeLessThanOrEqual(box!.x + box!.width);
-    expect(labelBox!.y + labelBox!.height).toBeLessThanOrEqual(box!.y + box!.height);
-    await entry.hover();
-    await expect(page.getByTestId('side-feedback-prompt')).toBeVisible();
-  } else {
-    await expect(page.getByTestId('header-feedback')).toBeVisible();
-    await expect(page.getByTestId('side-feedback')).toHaveCount(0);
+  await expect(page.getByTestId('header-feedback')).toBeVisible();
+  if (viewport.width >= 600) {
+    // The word "Feedback" shows in full inside the button.
+    const box = (await entry.boundingBox())!;
+    const label = (await page.getByTestId('header-feedback-label').boundingBox())!;
+    expect(label.x).toBeGreaterThanOrEqual(box.x);
+    expect(label.x + label.width).toBeLessThanOrEqual(box.x + box.width);
+    expect(await page.getByTestId('header-feedback-label').evaluate(e => e.scrollWidth <= e.clientWidth + 1)).toBe(true);
   }
   await entry.click();
   await expect(page.getByRole('heading', { name: 'Help us improve KidCog' })).toBeVisible();
