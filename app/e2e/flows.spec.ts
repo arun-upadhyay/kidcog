@@ -95,7 +95,7 @@ test('feedback has a one-tap entry point in the top bar', async ({ page }) => {
   await entry.click();
   await expect(page.getByRole('heading', { name: 'Help us improve KidCog' })).toBeVisible();
 });
-for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw', 'Connect the Dots']) {
+for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw', 'Connect the Dots', 'Magic Add']) {
   test(`${name}: board, controls and return navigation`, async ({ page }, info) => {
     await games(page);
     await page.getByRole('button', { name: `Play ${name}`, exact: true }).click();
@@ -110,6 +110,10 @@ for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw',
     }
     if (name === 'Trace & Draw') await inViewport(page, page.getByRole('button', { name: /Skip/ }));
     if (name === 'Connect the Dots') await inViewport(page, page.getByRole('button', { name: '↺ Start again', exact: true }));
+    if (name === 'Magic Add') {
+      await inViewport(page, page.getByTestId('magic-stone').last());
+      await inViewport(page, page.getByRole('button', { name: '↺ New stones', exact: true }));
+    }
     await page.screenshot({ path: info.outputPath('layout.png') });
     await page.getByRole('button', { name: 'Back to the Play Zone', exact: true }).click();
     await expect(page.getByRole('button', { name: `Play ${name}`, exact: true })).toBeVisible();
@@ -237,7 +241,7 @@ test('repeated game switching leaves no runtime errors or horizontal overflow', 
   page.on('pageerror', error => errors.push(error.message));
   await games(page);
   for (let round = 0; round < 2; round++) {
-    for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw', 'Connect the Dots']) {
+    for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw', 'Connect the Dots', 'Magic Add']) {
       await page.getByRole('button', { name: `Play ${name}`, exact: true }).click();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
       if (name === 'Number Snake' || name === 'Bubble Pop') {
@@ -269,6 +273,48 @@ test('generation failure retries the selected category without duplicate request
   await page.getByRole('button', { name: /Try again/ }).click();
   await expect(page.getByText('Test question 1', { exact: true })).toBeVisible();
   expect(requests).toBe(2);
+});
+
+/** Which stones (by position) add up to the target, if any. */
+function stonesFor(values: number[], target: number): number[] | null {
+  const ways = new Map<number, number[]>([[0, []]]);
+  values.forEach((v, i) => {
+    for (const [sum, used] of [...ways]) if (sum + v <= target && !ways.has(sum + v)) ways.set(sum + v, [...used, i]);
+  });
+  return ways.get(target) ?? null;
+}
+
+test('Magic Add: numbers that make the magic number fill the star jar; too much just resets', async ({ page }) => {
+  await games(page);
+  await page.getByRole('button', { name: 'Play Magic Add', exact: true }).click();
+  const jar = page.getByLabel(/stars in the jar$/);
+  const stones = page.getByTestId('magic-stone');
+  const read = async () => ({
+    target: Number((await page.getByRole('heading', { name: /^Make \d+$/ }).getAttribute('aria-label'))!.replace('Make ', '')),
+    values: await stones.evaluateAll(els => els.map(el => Number(el.getAttribute('aria-label')!.replace('Number ', '')))),
+  });
+  await expect(jar).toHaveAttribute('aria-label', '0 of 5 stars in the jar');
+
+  // Too much: the tapped stones wobble and let go, and nothing is lost.
+  let { target, values } = await read();
+  const order = values.map((v, i) => [v, i] as const).sort((a, b) => b[0] - a[0]);
+  let total = 0; const over: number[] = [];
+  for (const [v, i] of order) { total += v; over.push(i); if (total >= target) break; }
+  if (total > target) {
+    for (const i of over) await stones.nth(i).click();
+    await expect(page.getByText('Too much! Try again 🙂', { exact: true })).toBeVisible();
+    await expect(page.getByText('🫕 Tap the numbers!', { exact: true })).toBeVisible();
+  }
+
+  for (let made = 1; made <= 2; made++) {
+    ({ target, values } = await read());
+    const pick = stonesFor(values, target);
+    expect(pick, `stones that make ${target} in ${values.join(',')}`).not.toBeNull();
+    await page.getByText('🫕 Tap the numbers!', { exact: true }).waitFor();
+    for (const i of pick!) await stones.nth(i).click();
+    await expect(jar).toHaveAttribute('aria-label', `${made} of 5 stars in the jar`);
+    await expect(stones).toHaveCount(values.length);
+  }
 });
 
 test('Connect the Dots: wrong dots wiggle, joining every dot reveals the picture', async ({ page }) => {

@@ -1,3 +1,4 @@
+import { ACTIVITIES as ART_ACTIVITIES } from '../playzone/artContent';
 import { LEARNING_GAMES } from '../playzone/learningContent';
 import React, { useEffect, useRef, useState } from 'react';
 import {
@@ -32,8 +33,9 @@ import { colors, spacing } from '../theme';
 type Tile = { key: string; icon: string; name: string; background: string; border: string };
 
 const FEATURED = [
+  { key: 'art-music', title: 'Art & Music', line: 'Paint, draw, trace, play piano and build beats', icons: ['🎨', '🎹', '🥁', '🌈'], background: '#F5E6FF', border: '#B28BCD', ink: '#684389', ribbon: '🎨 CREATE SOMETHING', ribbonColour: 'grape' },
   { key: 'animals', title: 'Animal Explorer', line: '79 animals, real sounds and fun facts', icons: ['🦁', '🐘', '🐧', '🦋'], background: '#FFF1C9', border: '#E7B23C', ink: '#7A4E08', ribbon: '🔊 REAL ANIMAL SOUNDS', ribbonColour: 'coral' },
-  { key: 'playzone', title: 'Play Zone', line: 'Snake, bubbles, mazes, tracing and dots', icons: ['🐍', '🫧', '🖍️', '✏️'], background: '#EEE8FF', border: '#9B7EDE', ink: '#4E3590', ribbon: '🆕 CONNECT THE DOTS', ribbonColour: 'grape' },
+  { key: 'playzone', title: 'Play Zone', line: 'Snake, bubbles, mazes, dots and magic adding', icons: ['🐍', '🫧', '🪄', '🖍️'], background: '#EEE8FF', border: '#9B7EDE', ink: '#4E3590', ribbon: '🆕 MAGIC ADD', ribbonColour: 'grape' },
 ] as const;
 
 const GAMES: Tile[] = [
@@ -43,6 +45,7 @@ const GAMES: Tile[] = [
   { key: 'maze', icon: '🌀', name: 'Maze Runner', background: '#EEE9FF', border: '#A68AE2' },
   { key: 'trace', icon: '✏️', name: 'Trace & Draw', background: '#FFE9E3', border: '#E88970' },
   { key: 'dots', icon: '🖍️', name: 'Connect the Dots', background: '#E3F1FB', border: '#5B9BD0' },
+  { key: 'add', icon: '🪄', name: 'Magic Add', background: '#F3EEFF', border: '#9B7EDE' },
   { key: 'animal-quiz', icon: '🦒', name: 'Animal quiz', background: '#FFF3CE', border: '#DDAE35' },
   { key: 'animal-sounds', icon: '🐮', name: 'Animal sounds', background: '#FDE6E8', border: '#D87882' },
 ];
@@ -50,6 +53,7 @@ const GAMES: Tile[] = [
 const tiles = (keys: TraitKey[]): Tile[] => keys.map(key => ({ key, icon: CATEGORY_VISUALS[key].icon, name: CATEGORY_NAMES[key], background: CATEGORY_VISUALS[key].background, border: CATEGORY_VISUALS[key].border }));
 
 const SECTIONS: { title: string; icon: string; tiles: Tile[] }[] = [
+  { title: 'Art & Music', icon: '🎨', tiles: ART_ACTIVITIES.map(a => ({ key: `art-${a.key}`, icon: a.emoji, name: a.name, background: '#F5E6FF', border: '#B28BCD' })) },
   { title: 'Games', icon: '🎮', tiles: GAMES },
   { title: 'Thinking', icon: '🧠', tiles: tiles(['abstract_concepts', 'beyond_experience', 'generalization', 'cause_effect', 'challenge_seeking', 'curiosity', 'original_methods', 'observant']) },
   { title: 'Feelings', icon: '💛', tiles: tiles(['perfectionism', 'strong_ideas', 'questions_authority', 'motivation_focus', 'humor', 'sensitivity_others']) },

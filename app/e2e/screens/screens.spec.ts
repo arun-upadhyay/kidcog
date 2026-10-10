@@ -145,6 +145,13 @@ test('games: boards and controls fit', async ({ page, device }) => {
   await check(page, device, 'Connect the Dots (colouring)', [button('✓ Done'), page.getByRole('radio', { name: 'Crayon red' })]);
   await button('✓ Done').click();
   await back();
+
+  await button('Play Magic Add').click();
+  const stones = page.getByTestId('magic-stone');
+  await check(page, device, 'Magic Add', [stones.first(), stones.last(), button('↺ New stones')]);
+  await stones.first().click();
+  await check(page, device, 'Magic Add (a stone picked)', [stones.last()]);
+  await back();
 });
 
 test('Animal Explorer', async ({ page, device }) => {

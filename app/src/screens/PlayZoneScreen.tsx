@@ -1,3 +1,4 @@
+import ArtMusic from '../playzone/ArtMusic';
 import LearningGames from '../playzone/LearningGames';
 import { LEARNING_GAMES, type LearningKey } from '../playzone/learningContent';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
@@ -11,6 +12,7 @@ import BubblePop from '../playzone/BubblePop';
 import MazeRunner from '../playzone/MazeRunner';
 import TraceDraw from '../playzone/TraceDraw';
 import DotToDot from '../playzone/DotToDot';
+import MagicAdd, { defaultAddLevel } from '../playzone/MagicAdd';
 import { defaultDotLevel } from '../playzone/dotPictures';
 import CollectionShelf from '../playzone/Collections';
 import type { OwlOutfit } from '../progress';
@@ -34,6 +36,7 @@ export const GAMES: GameInfo[] = [
   { key: 'maze', emoji: '🦉', name: 'Maze Runner', blurb: 'Lead Owl to the flag', background: '#EEE9FF', border: '#A68AE2', ink: '#5D439B', unlockAfter: 1 },
   { key: 'trace', emoji: '✏️', name: 'Trace & Draw', blurb: 'Write numbers and letters', background: '#FFE9E3', border: '#E88970', ink: '#A84733', unlockAfter: 3 },
   { key: 'dots', emoji: '🖍️', name: 'Connect the Dots', blurb: 'Join 1, 2, 3… and a picture appears', background: '#E3F1FB', border: '#5B9BD0', ink: '#286A98', unlockAfter: 0, isNew: true },
+  { key: 'add', emoji: '🪄', name: 'Magic Add', blurb: 'Tap numbers that make the magic number', background: '#F3EEFF', border: '#9B7EDE', ink: '#4E3590', unlockAfter: 0, isNew: true },
 ];
 
 function GameCard({ game, locked, score, level, remaining, albumCount, width, reduceMotion, onPress }: {
@@ -96,10 +99,12 @@ export function startLevel(game: GameKey, progress: ChildProgress | null, age: n
   if (game === 'trace') return (age ?? 4) >= 6 ? 3 : 1; // 6 and up start on letters
   if (game === 'animals') return defaultAnimalLevel(age);
   if (game === 'dots') return defaultDotLevel(age);
+  if (game === 'add') return defaultAddLevel(age);
   return 1;
 }
 
-export default function PlayZoneScreen({ childName, age, progress, onBack, onFinish, onAnimalsFound, onPicture, onOutfit, initialGame = null }: {
+export default function PlayZoneScreen({ childId, childName, age, progress, onBack, onFinish, onAnimalsFound, onPicture, onOutfit, initialGame = null }: {
+  childId?: string;
   childName?: string;
   age?: number;
   progress: ChildProgress | null;
@@ -139,12 +144,14 @@ export default function PlayZoneScreen({ childName, age, progress, onBack, onFin
       <ScrollLockContext.Provider value={lockScroll}>
       <ScrollView style={styles.gameScroll} contentContainerStyle={styles.gameScreen} scrollEnabled={scrollOn} onScroll={onHeaderScroll} scrollEventThrottle={16}>
         {LEARNING_GAMES.some(game => game.key === playing) ? <LearningGames key={playing} kind={playing as LearningKey} {...props} /> : null}
+        {playing === 'art-music' ? <ArtMusic childId={childId ?? 'guest'} onBack={() => setPlaying(null)} onDots={() => setPlaying('dots')} /> : null}
         {playing === 'animals' ? <AnimalExplorer {...props} found={progress?.animals ?? []} onFound={keys => onAnimalsFound?.(keys)} /> : null}
         {playing === 'snake' ? <NumberSnake {...props} /> : null}
         {playing === 'bubbles' ? <BubblePop {...props} /> : null}
         {playing === 'maze' ? <MazeRunner {...props} /> : null}
         {playing === 'trace' ? <TraceDraw {...props} /> : null}
         {playing === 'dots' ? <DotToDot {...props} wall={progress?.pictures} onPicture={onPicture} /> : null}
+        {playing === 'add' ? <MagicAdd {...props} /> : null}
       </ScrollView>
       </ScrollLockContext.Provider>
     );
@@ -167,6 +174,11 @@ export default function PlayZoneScreen({ childName, age, progress, onBack, onFin
           <Text style={styles.starText}>⭐ {progress?.stars ?? 0}</Text>
         </View>
       </View>
+
+      <Pressable accessibilityRole="button" accessibilityLabel="Open Art & Music" onPress={() => setPlaying('art-music')} style={[styles.hero, { backgroundColor: '#F5E6FF', flexWrap: 'wrap' }]}>
+        <Text style={{ fontSize: 40 }}>🎨 🎵</Text>
+        <View style={{ flex: 1, minWidth: 150 }}><Text style={styles.heroTitle}>Art & Music</Text><Text style={styles.heroSub}>Draw, paint, trace and make a little music. 9 creative activities →</Text></View>
+      </Pressable>
 
       <CollectionShelf progress={progress} childName={childName} onOutfit={outfit => onOutfit?.(outfit)} />
 

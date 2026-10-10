@@ -103,7 +103,7 @@ function ActivityTile({ title, visual, done, game, stars, width, disabled, reduc
   );
 }
 
-export default function CategoryScreen({ onSelect, onPreview, progress = null, onReport, onPlayZone, onAnimals, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
+export default function CategoryScreen({ onSelect, onPreview, progress = null, onReport, onPlayZone, onAnimals, onArtMusic, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
   onSelect: (trait: TraitKey, count: number) => void;
   /** A category's sheet was opened: a chance to get its questions ready early. */
   onPreview?: (trait: TraitKey) => void;
@@ -117,6 +117,7 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
   onPlayZone?: () => void;
   /** Opens the Animal Explorer straight away. */
   onAnimals?: () => void;
+  onArtMusic?: () => void;
   onBack: () => void;
   /** The latest test's result, for the "View latest result" button. */
   report: Report | null;
@@ -181,7 +182,7 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
   const compactCards = width < 560;
   const stageWidth = wideHero ? 260 : height < 700 ? 150 : Math.min(180, width - spacing(10));
   const adventures = [
-    onPlayZone ? { key: 'play', onPress: onPlayZone, label: 'Open the Play Zone games', ribbon: '🎮 GAMES', colour: 'grape' as const, icons: ['🐍', '🫧', '🌀', '🖍️'], title: 'Play Zone', line: 'Number Snake, Bubble Pop, mazes, tracing and dots', background: '#F1EBFF', ink: '#4E3590' } : null,
+    onPlayZone ? { key: 'play', onPress: onPlayZone, label: 'Open the Play Zone games', ribbon: '🎮 GAMES', colour: 'grape' as const, icons: ['🐍', '🫧', '🪄', '🖍️'], title: 'Play Zone', line: 'Number Snake, Bubble Pop, Magic Add, mazes and dots', background: '#F1EBFF', ink: '#4E3590' } : null,
     onAnimals ? { key: 'animals', onPress: onAnimals, label: 'Open the Animal Explorer', ribbon: '🔊 ANIMALS', colour: 'sun' as const, icons: ['🦁', '🐘', '🐧', '🦋'], title: 'Animal Explorer', line: 'Animal quiz, animal sounds and your album', background: '#FFF6DA', ink: '#6E4706' } : null,
   ].filter(<T,>(a: T | null): a is T => a !== null);
 
@@ -218,6 +219,11 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
       ) : null}
 
       {/* Thinking activities */}
+      {onArtMusic ? <Pressable accessibilityRole="button" accessibilityLabel="Open Art & Music studio" disabled={busy} onPress={onArtMusic} style={{ marginVertical: 16, padding: 20, borderRadius: 24, backgroundColor: '#F5E6FF', borderWidth: 2, borderColor: '#B28BCD' }}>
+        <Text style={{ fontSize: 24, fontWeight: '900', color: '#684389' }}>🎨 Art & Music 🎵</Text>
+        <Text style={{ fontSize: 16, color: '#684389', marginTop: 6 }}>Draw, color, trace and make your own music →</Text>
+      </Pressable> : null}
+
       <WaveBand colour={PLAY.grass.face} bottom>
         <View style={styles.band} accessibilityRole="header">
           <Text style={styles.bandEmoji}>🧠</Text>

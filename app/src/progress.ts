@@ -64,7 +64,10 @@ async function saveProgress(childId: string, progress: ChildProgress) {
 }
 
 export async function forgetProgress(childId: string) {
-  try { await AsyncStorage.removeItem(keyFor(childId)); } catch { /* best effort */ }
+  try {
+    const artKeys = (await AsyncStorage.getAllKeys()).filter(key => key.startsWith(`kidcog.art.v1.${childId}.`));
+    await AsyncStorage.multiRemove([keyFor(childId), ...artKeys]);
+  } catch { /* best effort */ }
 }
 
 /**
