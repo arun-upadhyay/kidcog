@@ -6,7 +6,9 @@ import { AccessibilityInfo, Animated, Pressable, ScrollView, StyleSheet, Text, V
 import Owl from '../components/Owl';
 import type { ChildProgress } from '../progress';
 import { colors, column, spacing, GUTTER } from '../theme';
-import { ScrollLockContext, type GameKey } from '../playzone/common';
+import { GameScene, ScrollLockContext, type GameKey } from '../playzone/common';
+import { useGameMusic, type MusicTrack } from '../playzone/gameMusic';
+import { setImmersive } from '../immersive';
 import NumberSnake from '../playzone/NumberSnake';
 import BubblePop from '../playzone/BubblePop';
 import MazeRunner from '../playzone/MazeRunner';
@@ -27,6 +29,9 @@ import { useAppHeaderScroll } from '../headerScroll';
  * once a child has done some thinking activities, and the usual "time for a
  * break" reminder still applies (App.tsx).
  */
+/** Background music per game: calm for drawing, none where the game makes its own sounds. */
+const MUSIC: Partial<Record<GameKey, MusicTrack | null>> = { trace: 'calm', dots: 'calm', animals: null, 'art-music': null };
+
 type GameInfo = { key: GameKey; emoji: string; name: string; blurb: string; background: string; border: string; ink: string; unlockAfter: number; isNew?: boolean };
 export const GAMES: GameInfo[] = [
   ...LEARNING_GAMES,
@@ -133,6 +138,10 @@ export default function PlayZoneScreen({ childId, childName, age, progress, onBa
     const subscription = AccessibilityInfo.addEventListener?.('reduceMotionChanged', setReduceMotion);
     return () => subscription?.remove();
   }, []);
+  // A game gets the whole screen: the app bar steps aside until the child leaves it.
+  useEffect(() => { setImmersive(playing !== null); }, [playing]);
+  useEffect(() => () => setImmersive(false), []);
+  useGameMusic(playing === null ? null : MUSIC[playing] === undefined ? 'playful' : MUSIC[playing]!);
 
   if (playing) {
     const props = {
@@ -142,6 +151,8 @@ export default function PlayZoneScreen({ childId, childName, age, progress, onBa
     };
     return (
       <ScrollLockContext.Provider value={lockScroll}>
+      <View style={styles.gameStage}>
+      <GameScene />
       <ScrollView style={styles.gameScroll} contentContainerStyle={styles.gameScreen} scrollEnabled={scrollOn} onScroll={onHeaderScroll} scrollEventThrottle={16}>
         {LEARNING_GAMES.some(game => game.key === playing) ? <LearningGames key={playing} kind={playing as LearningKey} {...props} /> : null}
         {playing === 'art-music' ? <ArtMusic childId={childId ?? 'guest'} onBack={() => setPlaying(null)} onDots={() => setPlaying('dots')} /> : null}
@@ -153,6 +164,7 @@ export default function PlayZoneScreen({ childId, childName, age, progress, onBa
         {playing === 'dots' ? <DotToDot {...props} wall={progress?.pictures} onPicture={onPicture} /> : null}
         {playing === 'add' ? <MagicAdd {...props} /> : null}
       </ScrollView>
+      </View>
       </ScrollLockContext.Provider>
     );
   }
@@ -213,8 +225,10 @@ export default function PlayZoneScreen({ childId, childName, age, progress, onBa
 const styles = StyleSheet.create({
   screen: { backgroundColor: '#FFF8EF' },
   container: { padding: GUTTER, paddingBottom: spacing(6), gap: spacing(2), ...column },
-  gameScroll: { flex: 1, backgroundColor: '#FFF8EF' },
-  gameScreen: { flexGrow: 1, paddingBottom: spacing(6), backgroundColor: '#FFF8EF', padding: GUTTER, paddingTop: spacing(1.5), ...column },
+  gameStage: { flex: 1, backgroundColor: '#D8F1FB' },
+  gameScroll: { flex: 1, backgroundColor: 'transparent' },
+  // Full width: a game uses the whole window (boards still size themselves to fit).
+  gameScreen: { flexGrow: 1, width: '100%', maxWidth: 1180, alignSelf: 'center', padding: GUTTER, paddingTop: spacing(1.5), paddingBottom: spacing(6) },
   pressed: { opacity: 0.85, transform: [{ scale: 0.97 }] },
   back: { alignSelf: 'flex-start', minHeight: 40, justifyContent: 'center', paddingHorizontal: spacing(1.5), borderRadius: 999, borderWidth: 1.5, borderColor: colors.line, backgroundColor: colors.surface },
   backText: { fontSize: 14, fontWeight: '800', color: colors.inkSoft },

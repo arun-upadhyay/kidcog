@@ -8,6 +8,7 @@ import { colors, spacing, type, column, GUTTER } from '../theme';
 import { setAppHeaderCollapsed, useAppHeaderCollapsed } from '../headerScroll';
 import FeedbackSheet from './FeedbackSheet';
 import Logo from './Logo';
+import { useImmersive } from '../immersive';
 
 /**
  * "Support KidCog" links for parents who want to chip in: a Stripe Payment Link
@@ -153,9 +154,11 @@ export default function AppMenu({ screen, accountEmail, accountProviders, accoun
   const created = new Date(accountCreatedAt);
   const memberSince = Number.isNaN(created.getTime()) ? '—' : created.toLocaleDateString(undefined, { month: 'short', year: 'numeric' });
 
+  // A game is open: it gets the whole screen (and has its own ✕ to leave).
+  const immersive = useImmersive();
   return (
     <>
-      <Animated.View testID="app-header" style={[styles.bar, {
+      {immersive ? null : <Animated.View testID="app-header" style={[styles.bar, {
         backgroundColor: collapse.interpolate({ inputRange: [0, 1], outputRange: ['rgba(255,248,239,1)', 'rgba(255,255,255,0.82)'] }),
         shadowOpacity: collapse.interpolate({ inputRange: [0, 1], outputRange: [0, 0.12] }),
       }, Platform.OS === 'web' ? styles.webBlur : null]}>
@@ -193,7 +196,7 @@ export default function AppMenu({ screen, accountEmail, accountProviders, accoun
             {width >= 600 ? <Text testID="header-feedback-label" style={styles.headerFeedbackText}>Feedback</Text> : null}
           </Pressable>
         </Animated.View>
-      </Animated.View>
+      </Animated.View>}
 
 
       <Modal visible={menuOpen} transparent animationType="fade" onRequestClose={closeMenu}>

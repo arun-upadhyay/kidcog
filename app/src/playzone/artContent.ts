@@ -4,6 +4,9 @@ export const PALETTE = [
   { name: 'Blue', hex: '#63A9E6' }, { name: 'Purple', hex: '#9472CE' },
 ];
 export const ACTIVITIES = [
+  { key: 'book', name: 'Coloring Book', emoji: '📚', group: 'Art', text: '39 pictures to colour: animals, space, music, food and more!' },
+  { key: 'rainbow', name: 'Rainbow Letters', emoji: '🌈', group: 'Art', text: 'Trace ABC, abc, numbers, words and shapes in rainbow ink.' },
+  { key: 'calm', name: 'Calm Bubbles', emoji: '🫧', group: 'Music', text: 'Pop soft bubbles, hear their colours and breathe slowly.' },
   { key: 'color', name: 'Coloring Studio', emoji: '🖍️', group: 'Art', text: 'Make a rocket, garden or ocean your own.' },
   { key: 'numbers', name: 'Paint by Number', emoji: '🔢', group: 'Art', text: 'Match the number to its color.' },
   { key: 'words', name: 'Paint by Word', emoji: '📖', group: 'Art', text: 'Find little words and reveal a picture.' },
@@ -46,4 +49,11 @@ export const SONGS = [
  {name:'Colors in the Sky',emoji:'🌈',lines:['Red and orange, reach up high!','Yellow sunshine in the sky.','Green and blue, now sway with me.','Purple makes our rainbow complete!'], notes:[0,2,4,4,3,2,1,0,2,3,4,5,4,2,1,0]},
  {name:'Little Shape Parade',emoji:'🔷',lines:['Circle arms go round and round.','Triangle fingers point from the ground.','Square takes four big steps today.','Wave your star hands, hip hooray!'], notes:[0,0,2,4,3,3,1,0,4,4,5,7,6,4,2,0]},
  {name:'Garden Beat',emoji:'🌱',lines:['Tap your knees: one, two, three, four.','Clap your hands and tap some more.','Stretch up tall, a growing tree.','Take a breath and sway with me.'], notes:[0,2,0,2,4,4,2,0,3,5,3,5,4,2,1,0]},
+ // Original KidCog sing-alongs (words and tunes written for KidCog).
+ {name:'Zoo Parade',emoji:'🦁',friends:['🦁','🐘','🦒','🐒'],lines:['The lion goes ROAR and shakes his hair.','The elephant stomps here and there.','The giraffe stretches up so tall.','The monkey swings and waves to all!'], notes:[0,2,4,4,5,4,2,0,4,4,5,7,5,4,2,0]},
+ {name:'Up and Down Opposites',emoji:'🔁',friends:['⬆️','⬇️','🐢','🐇'],lines:['Hands go up, then hands go down.','Big and tall, then small and round.','Slow like a turtle, fast like a hare.','Open and shut, then stop right there!'], notes:[4,7,4,0,2,4,2,0,0,0,4,4,5,4,2,0]},
+ {name:'Crunchy Veggies',emoji:'🥕',friends:['🥕','🥦','🌽','🍅'],lines:['Carrots crunch, crunch, orange and bright.','Broccoli trees, take a little bite.','Yellow corn goes pop, pop, pop.','Red tomatoes, we never stop!'], notes:[0,0,2,2,4,4,2,2,3,3,5,5,4,2,1,0]},
+ {name:'Counting Stars',emoji:'⭐',friends:['⭐','🌙','✨','🌟'],lines:['One little star, two little stars,','Three little stars shine near and far.','Four and five, they wink at me.','Count them all: how many can you see?'], notes:[0,4,4,5,5,4,3,3,2,2,1,1,0,2,4,0]},
+ {name:'Shape Hunt',emoji:'🔷',friends:['🔵','🟥','🔺','⭐'],lines:['A circle like the big round sun.','A square box, now that is fun!','A triangle, a slice of cheese.','A star up high, say shapes, please!'], notes:[2,4,2,0,2,4,5,4,7,5,4,2,4,2,1,0]},
+ {name:'Brush Brush Brush',emoji:'🪥',friends:['🪥','😁','💧','🫧'],lines:['Brush, brush, brush the top.','Brush, brush, never stop!','Round and round on every tooth.','A sparkly smile, that is the truth!'], notes:[4,4,4,2,4,4,4,2,5,4,2,0,2,4,2,0]},
 ];
