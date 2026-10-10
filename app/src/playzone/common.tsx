@@ -7,7 +7,7 @@ import { colors, spacing, CONTENT_MAX_WIDTH, GUTTER } from '../theme';
 import { speak, stopSpeaking } from '../speech';
 
 export type Dir = 'up' | 'down' | 'left' | 'right';
-export type GameKey = 'animals' | 'snake' | 'bubbles' | 'maze' | 'trace' | 'dots';
+export type GameKey = import('./learningContent').LearningKey | 'animals' | 'snake' | 'bubbles' | 'maze' | 'trace' | 'dots';
 export const useNative = Platform.OS !== 'web';
 
 /**

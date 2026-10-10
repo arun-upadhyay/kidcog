@@ -1,3 +1,4 @@
+import { LEARNING_GAMES } from '../playzone/learningContent';
 import React, { useEffect, useRef, useState } from 'react';
 import {
   AccessibilityInfo,
@@ -11,6 +12,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import Owl from '../components/Owl';
+import Logo from '../components/Logo';
 import { ChunkyButton, OwlStage, PLAY, Ribbon, WaveBand, type PlayColour } from '../components/Playful';
 import { PRIVACY_PATH, openPublicPage } from '../legal';
 import { CATEGORY_NAMES, CATEGORY_VISUALS } from '../categoryVisuals';
@@ -35,6 +37,7 @@ const FEATURED = [
 ] as const;
 
 const GAMES: Tile[] = [
+  ...LEARNING_GAMES.map(game => ({ key: game.key, icon: game.emoji, name: game.name, background: game.background, border: game.border })),
   { key: 'snake', icon: '🐍', name: 'Number Snake', background: '#E5F5EA', border: '#63AA7D' },
   { key: 'bubbles', icon: '🫧', name: 'Bubble Pop', background: '#E5F3FF', border: '#68A8D6' },
   { key: 'maze', icon: '🌀', name: 'Maze Runner', background: '#EEE9FF', border: '#A68AE2' },
@@ -218,8 +221,7 @@ export default function WelcomeScreen({ onChoose, onParentSignIn }: {
         <View style={styles.topBar}>
           <View style={styles.topBarInner}>
             <View style={styles.topBrand}>
-              <Owl size={wide ? 42 : 36} />
-              <Text style={[styles.topBrandName, !wide && styles.topBrandNameSmall]}>Kid<Text style={styles.topBrandPop}>Cog</Text></Text>
+              <Logo size={wide ? 30 : 24} />
             </View>
             <View style={styles.topActions}>
               {width >= 400 ? (
@@ -359,9 +361,6 @@ const styles = StyleSheet.create({
   topBar: { backgroundColor: '#FFFFFF', borderBottomWidth: 3, borderBottomColor: '#E3EFFD' },
   topBarInner: { width: '100%', maxWidth: 1040, alignSelf: 'center', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1), paddingHorizontal: spacing(2), paddingVertical: spacing(1) },
   topBrand: { flexDirection: 'row', alignItems: 'center', gap: spacing(0.75), flexShrink: 1 },
-  topBrandName: { color: '#5D439B', fontSize: 26, fontWeight: '900' },
-  topBrandNameSmall: { fontSize: 22 },
-  topBrandPop: { color: PLAY.coral.face },
   topActions: { flexDirection: 'row', alignItems: 'center', gap: spacing(1) },
 
   hero: { alignItems: 'center', paddingTop: spacing(2), paddingBottom: spacing(1) },

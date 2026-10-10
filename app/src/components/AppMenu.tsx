@@ -7,6 +7,7 @@ import { setSoundEffects, useSoundEffects } from '../games/sounds';
 import { colors, spacing, type, column, GUTTER } from '../theme';
 import { setAppHeaderCollapsed, useAppHeaderCollapsed } from '../headerScroll';
 import FeedbackSheet from './FeedbackSheet';
+import Logo from './Logo';
 
 /**
  * "Support KidCog" links for parents who want to chip in: a Stripe Payment Link
@@ -174,7 +175,9 @@ export default function AppMenu({ screen, accountEmail, accountProviders, accoun
             accessibilityLabel={onHome ? 'KidCog, go to the home page' : 'KidCog'}
             style={({ pressed }) => [styles.brand, pressed && styles.menuButtonPressed]}
           >
-            <Animated.Text style={[styles.brandText, { fontSize: collapse.interpolate({ inputRange: [0, 1], outputRange: [20, 17] }) }]}>🦉 KidCog</Animated.Text>
+            <Animated.View style={{ transform: [{ scale: collapse.interpolate({ inputRange: [0, 1], outputRange: [1, 0.86] }) }] }}>
+              <Logo size={22} tight decorative />
+            </Animated.View>
           </Pressable>
           {/* Feedback lives at the right end of the top bar on every screen size:
               always in the same place, never covering the page, and readable
@@ -339,7 +342,6 @@ const styles = StyleSheet.create({
   headerFeedbackIcon: { fontSize: 18 },
   headerFeedbackText: { fontSize: 15, fontWeight: '900', color: '#FFFFFF' },
   brand: { paddingVertical: spacing(0.5), paddingHorizontal: spacing(0.5), borderRadius: 10 },
-  brandText: { fontSize: 20, fontWeight: '900', color: '#6B4BB0' },
   menuButton: { width: 46, height: 46, borderRadius: 23, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#CABAF0' },
   menuButtonPressed: { opacity: 0.7, transform: [{ scale: 0.96 }] },
   menuIcon: { fontSize: 25, color: '#6B4BB0', fontWeight: '800', marginTop: -2 },

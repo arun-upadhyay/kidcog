@@ -9,13 +9,12 @@ import {
   Text,
   TextInput,
   View,
-  useWindowDimensions,
 } from 'react-native';
 import * as AppleAuthentication from 'expo-apple-authentication';
 import Button from '../components/Button';
 import SocialButton from '../components/SocialButton';
-import { ChunkyButton, OwlStage, PLAY, Ribbon, type PlayColour } from '../components/Playful';
-import WelcomeScreen, { Background, useReduceMotion, useWave } from './WelcomeScreen';
+import { ChunkyButton, PLAY, Ribbon, type PlayColour } from '../components/Playful';
+import WelcomeScreen, { Background, useReduceMotion } from './WelcomeScreen';
 import { useAuth } from '../auth/AuthContext';
 import { idleMinutes, takeIdleSignOutNotice } from '../auth/idle';
 import { PRIVACY_PATH, openPublicPage } from '../legal';
@@ -25,7 +24,6 @@ export default function LoginScreen() {
   const { loading, configured, signIn, signInWithApple, signInWithEmail, signUpWithEmail, resendVerification } = useAuth();
   const [mode, setMode] = useState<'signIn' | 'create'>('signIn');
   const [showWelcome, setShowWelcome] = useState(true);
-  const [chosenAdventure, setChosenAdventure] = useState<string | null>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -134,16 +132,13 @@ export default function LoginScreen() {
     }
   }
 
-  // Owl bobs gently (still when the device asks for reduced motion).
   const still = useReduceMotion();
-  const bob = useWave(1600, still);
-  const { width } = useWindowDimensions();
 
   if (loading) return <View style={styles.center}><ActivityIndicator color={colors.primary} /></View>;
   if (showWelcome && !verificationEmail) {
     return <WelcomeScreen
-      onChoose={(title) => { setChosenAdventure(title); setMode('create'); setError(null); setShowWelcome(false); }}
-      onParentSignIn={() => { setChosenAdventure(null); setMode('signIn'); setError(null); setShowWelcome(false); }}
+      onChoose={() => { setMode('create'); setError(null); setShowWelcome(false); }}
+      onParentSignIn={() => { setMode('signIn'); setError(null); setShowWelcome(false); }}
     />;
   }
   // Sign in is sky blue; making a new account is green ("growing" a family account).
@@ -156,43 +151,13 @@ export default function LoginScreen() {
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
           <Pressable
-            onPress={() => { setShowWelcome(true); setChosenAdventure(null); setError(null); }}
+            onPress={() => { setShowWelcome(true); setError(null); }}
             accessibilityRole="button"
             accessibilityLabel="Back to activities"
             style={({ pressed }) => [styles.backButton, pressed && styles.backPressed]}
           >
             <Text style={styles.backButtonText}>← Back to the games</Text>
           </Pressable>
-
-          <OwlStage
-            width={Math.min(300, width - spacing(6))}
-            owlSize={88}
-            bob={bob}
-            tint={joining ? 'grass' : 'sky'}
-            bubble={chosenAdventure ? 'Almost there! 🎉' : joining ? 'A new friend! 🌱' : 'Welcome back! 👋'}
-          />
-          <Text style={[styles.eyebrow, { color: tint.lip }]}>{joining ? '✨ NEW FAMILY? HOORAY! ✨' : '✨ HI, GROWN-UP! ✨'}</Text>
-          <Text accessibilityRole="header" style={[styles.title, { color: joining ? '#1F7042' : '#1D57A6' }]}>{chosenAdventure ? `Unlock ${chosenAdventure}` : 'Welcome to KidCog'}</Text>
-          <Text style={styles.body}>{chosenAdventure
-            ? 'A grown-up signs in first, then the adventure can begin!'
-            : joining
-              ? 'Make a free parent account. Every game, star and sticker is saved for your kids!'
-              : 'A grown-up signs in here. Then every game, star and sticker is saved for your kids!'}</Text>
-
-          {joining ? (
-            // Sign-up: show the short road ahead.
-            <View style={styles.road} accessibilityRole="text" accessibilityLabel="Three steps: make an account, add your child, play and earn stars.">
-              {([['1', 'Sign up', 'grass'], ['2', 'Add child', 'sun'], ['3', 'Play! ⭐', 'coral']] as const).map(([n, text, colour], i) => (
-                <React.Fragment key={n}>
-                  {i > 0 && width >= 380 ? <Text style={styles.roadArrow}>›</Text> : null}
-                  <View style={[styles.roadStep, i === 0 && { borderColor: PLAY[colour].face, backgroundColor: PLAY[colour].soft }]}>
-                    <View style={[styles.roadNumber, { backgroundColor: PLAY[colour].face, borderColor: PLAY[colour].lip }]}><Text style={[styles.roadNumberText, { color: PLAY[colour].text }]}>{n}</Text></View>
-                    <Text style={styles.roadText}>{text}</Text>
-                  </View>
-                </React.Fragment>
-              ))}
-            </View>
-          ) : null}
 
           {!configured ? <Text style={styles.error}>Supabase is not configured. Copy app/.env.example to app/.env and add your project URL and public key.</Text> : null}
 
@@ -321,17 +286,6 @@ const styles = StyleSheet.create({
   backButton: { alignSelf: 'flex-start', minHeight: 44, justifyContent: 'center', paddingHorizontal: spacing(1.75), borderRadius: 999, backgroundColor: '#FFFFFF', borderWidth: 2.5, borderBottomWidth: 4, borderColor: '#F3D9C9' },
   backPressed: { borderBottomWidth: 2, marginTop: 2 },
   backButtonText: { color: colors.primary, fontSize: 15, fontWeight: '900' },
-  eyebrow: { fontSize: 13, letterSpacing: 1.4, fontWeight: '900', textAlign: 'center', marginTop: spacing(0.5) },
-  title: { fontSize: 32, lineHeight: 38, fontWeight: '900', textAlign: 'center', marginTop: 4 },
-  body: { ...type.body, textAlign: 'center', marginTop: spacing(1), color: '#4A3728' },
-
-  road: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: 4, marginTop: spacing(2) },
-  roadStep: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: colors.line, borderRadius: 999, paddingLeft: 4, paddingRight: spacing(1.25), paddingVertical: 4 },
-  roadNumber: { width: 26, height: 26, borderRadius: 13, borderBottomWidth: 2, alignItems: 'center', justifyContent: 'center' },
-  roadNumberText: { fontSize: 13, fontWeight: '900' },
-  roadText: { fontSize: 13, fontWeight: '800', color: colors.ink },
-  roadArrow: { fontSize: 20, fontWeight: '900', color: '#B5A898' },
-
   card: { marginTop: spacing(4.5), backgroundColor: '#FFFFFF', borderRadius: 30, borderWidth: 4, borderBottomWidth: 9, padding: spacing(2.5), paddingTop: spacing(4) },
   sticker: { position: 'absolute', fontSize: 30 },
   stickerLeft: { top: -20, left: -12, transform: [{ rotate: '-14deg' }] },

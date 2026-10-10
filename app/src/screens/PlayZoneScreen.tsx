@@ -1,3 +1,5 @@
+import LearningGames from '../playzone/LearningGames';
+import { LEARNING_GAMES, type LearningKey } from '../playzone/learningContent';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AccessibilityInfo, Animated, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import Owl from '../components/Owl';
@@ -25,6 +27,7 @@ import { useAppHeaderScroll } from '../headerScroll';
  */
 type GameInfo = { key: GameKey; emoji: string; name: string; blurb: string; background: string; border: string; ink: string; unlockAfter: number; isNew?: boolean };
 export const GAMES: GameInfo[] = [
+  ...LEARNING_GAMES,
   { key: 'animals', emoji: '🦁', name: 'Animal Explorer', blurb: 'Animal quiz, sounds and your own album', background: '#FFF4D6', border: '#F4C966', ink: '#8A5A0A', unlockAfter: 0, isNew: true },
   { key: 'snake', emoji: '🐍', name: 'Number Snake', blurb: 'Eat the numbers in order', background: '#E5F5EA', border: '#63AA7D', ink: '#34734E', unlockAfter: 0 },
   { key: 'bubbles', emoji: '🫧', name: 'Bubble Pop', blurb: 'Pop the bubbles that match', background: '#E5F3FF', border: '#68A8D6', ink: '#2F6F9D', unlockAfter: 0 },
@@ -135,6 +138,7 @@ export default function PlayZoneScreen({ childName, age, progress, onBack, onFin
     return (
       <ScrollLockContext.Provider value={lockScroll}>
       <ScrollView style={styles.gameScroll} contentContainerStyle={styles.gameScreen} scrollEnabled={scrollOn} onScroll={onHeaderScroll} scrollEventThrottle={16}>
+        {LEARNING_GAMES.some(game => game.key === playing) ? <LearningGames key={playing} kind={playing as LearningKey} {...props} /> : null}
         {playing === 'animals' ? <AnimalExplorer {...props} found={progress?.animals ?? []} onFound={keys => onAnimalsFound?.(keys)} /> : null}
         {playing === 'snake' ? <NumberSnake {...props} /> : null}
         {playing === 'bubbles' ? <BubblePop {...props} /> : null}
