@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import JourneyMap from '../components/JourneyMap';
 import type { ChildProgress } from '../progress';
 import Button from '../components/Button';
+import { ChunkyButton, OwlStage, PLAY, Ribbon, WaveBand } from '../components/Playful';
 import { fetchCategories } from '../api';
 import { colors, spacing, column, GUTTER, CONTENT_MAX_WIDTH } from '../theme';
 import type { TraitKey, TraitMetaPublic, Report } from '../types';
@@ -145,7 +146,7 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
   const chooseView = (next: 'tiles' | 'map') => { setView(next); AsyncStorage.setItem(VIEW_KEY, next).catch(() => {}); };
 
   // Two tiles per row on a phone, three when there is room.
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const inner = Math.min(width, CONTENT_MAX_WIDTH) - GUTTER * 2;
   const tileWidth = inner >= 480 ? '33.333%' : '50%';
 
@@ -175,47 +176,61 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
     onSelect(key, count);
   }
 
+  const wideHero = width >= 640;
+  // The two big adventures sit side by side (smaller on phones, so the activities stay near).
+  const compactCards = width < 560;
+  const stageWidth = wideHero ? 260 : height < 700 ? 150 : Math.min(180, width - spacing(10));
+  const adventures = [
+    onPlayZone ? { key: 'play', onPress: onPlayZone, label: 'Open the Play Zone games', ribbon: '🎮 GAMES', colour: 'grape' as const, icons: ['🐍', '🫧', '🌀', '🖍️'], title: 'Play Zone', line: 'Number Snake, Bubble Pop, mazes, tracing and dots', background: '#F1EBFF', ink: '#4E3590' } : null,
+    onAnimals ? { key: 'animals', onPress: onAnimals, label: 'Open the Animal Explorer', ribbon: '🔊 ANIMALS', colour: 'sun' as const, icons: ['🦁', '🐘', '🐧', '🦋'], title: 'Animal Explorer', line: 'Animal quiz, animal sounds and your album', background: '#FFF6DA', ink: '#6E4706' } : null,
+  ].filter(<T,>(a: T | null): a is T => a !== null);
+
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.container} onScroll={onHeaderScroll} scrollEventThrottle={16}>
-      <View style={styles.hero}>
-        <View style={styles.heroBubble}><Text style={styles.heroEmoji}>🌈</Text></View>
-        <Text style={styles.heroTitle}>What shall we explore?</Text>
-      </View>
-
-      {onPlayZone ? (
-        <Pressable onPress={onPlayZone} disabled={busy} accessibilityRole="button" accessibilityLabel="Open the Play Zone games"
-          style={({ pressed }) => [styles.playZone, pressed && styles.pressed]}>
-          <Text style={styles.playZoneEmoji}>🎮</Text>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.playZoneTitle}>Play Zone</Text>
-            <Text style={styles.playZoneSub}>Number Snake, Bubble Pop, mazes, tracing and dots</Text>
-          </View>
-          <Text style={styles.playZoneGo}>▶</Text>
-        </Pressable>
-      ) : null}
-      {onAnimals ? (
-        <Pressable onPress={onAnimals} disabled={busy} accessibilityRole="button" accessibilityLabel="Open the Animal Explorer"
-          style={({ pressed }) => [styles.playZone, styles.animals, pressed && styles.pressed]}>
-          <Text style={styles.playZoneEmoji}>🦁</Text>
-          <View style={{ flex: 1 }}>
-            <Text style={[styles.playZoneTitle, styles.animalsTitle]}>Animal Explorer</Text>
-            <Text style={[styles.playZoneSub, styles.animalsSub]}>Animal quiz, animal sounds and your album</Text>
-          </View>
-          <Text style={[styles.playZoneGo, styles.animalsTitle]}>▶</Text>
-        </Pressable>
-      ) : null}
-
-      <View style={[styles.playZone, styles.thinking]} accessibilityRole="header">
-        <Text style={styles.playZoneEmoji}>🧠</Text>
-        <View style={{ flex: 1 }}>
-          <Text style={[styles.playZoneTitle, styles.thinkingTitle]}>Thinking Activities</Text>
-          <Text style={[styles.playZoneSub, styles.thinkingSub]}>Pick one below to play together</Text>
+      {/* Owl asks the big question */}
+      <View style={[styles.hero, wideHero && styles.heroWide]}>
+        <OwlStage width={stageWidth} owlSize={Math.round(stageWidth * 0.3)} tint="sun" bubble="What’s next? 🌈" />
+        <View style={[styles.heroCopy, wideHero && styles.heroCopyWide]}>
+          <Text style={[styles.eyebrow, wideHero && styles.leftText]}>✨ PICK AN ADVENTURE ✨</Text>
+          <Text accessibilityRole="header" style={[styles.heroTitle, wideHero && styles.heroTitleWide]}>What shall we explore?</Text>
         </View>
-        <Text style={[styles.playZoneGo, styles.thinkingTitle]}>▼</Text>
       </View>
+
+      {/* The two big adventures */}
+      {adventures.length ? (
+        <View style={styles.adventures}>
+          {adventures.map(a => {
+            const c = PLAY[a.colour];
+            return (
+              <Pressable key={a.key} onPress={a.onPress} disabled={busy} accessibilityRole="button" accessibilityLabel={a.label}
+                style={({ pressed }) => [styles.adventure, compactCards && styles.adventureCompact, { backgroundColor: a.background, borderColor: c.face }, pressed && styles.pressed]}>
+                <Ribbon text={width < 360 ? a.ribbon.replace(/^\S+ /, '') : a.ribbon} colour={a.colour} />
+                <View style={styles.adventureIcons}>
+                  {(compactCards ? a.icons.slice(0, 2) : a.icons).map((icon, j) => <Text key={icon} style={[styles.adventureIcon, compactCards && styles.adventureIconCompact, { transform: [{ rotate: `${(j - 1.5) * 9}deg` }] }]}>{icon}</Text>)}
+                </View>
+                <Text style={[styles.adventureTitle, compactCards && styles.adventureTitleCompact, { color: a.ink }]} numberOfLines={2}>{a.title}</Text>
+                <Text style={[styles.adventureLine, compactCards && styles.adventureLineCompact, { color: a.ink }]} numberOfLines={compactCards ? 3 : 2}>{a.line}</Text>
+                <View style={[styles.playPill, { backgroundColor: c.face, borderColor: c.lip }]}><Text style={[styles.playPillText, { color: c.text }]}>▶ Play</Text></View>
+              </Pressable>
+            );
+          })}
+        </View>
+      ) : null}
+
+      {/* Thinking activities */}
+      <WaveBand colour={PLAY.grass.face} bottom>
+        <View style={styles.band} accessibilityRole="header">
+          <Text style={styles.bandEmoji}>🧠</Text>
+          <View style={{ flexShrink: 1 }}>
+            <Text style={styles.bandTitle}>Thinking Activities</Text>
+            <Text style={styles.bandSub}>Pick one below to play together</Text>
+          </View>
+          <Text style={styles.bandArrow}>▼</Text>
+        </View>
+      </WaveBand>
 
       <View style={styles.lengthRow}>
-        <Text style={styles.lengthLabel}>How many?</Text>
+        <Text style={styles.lengthLabel}>🔢  How many?</Text>
         <View style={styles.lengthPills}>
           {ROUND_OPTIONS.map(option => {
             const on = count === option.count;
@@ -248,10 +263,10 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
               accessibilityState={{ selected: on }}
               accessibilityLabel={`${GROUP_NAMES[group.key]} activities`}
               onPress={() => setTab(group.key)}
-              style={({ pressed }) => [styles.tab, on && { backgroundColor: visual.background, borderColor: visual.border }, pressed && styles.pressed]}
+              style={({ pressed }) => [styles.tab, { borderColor: visual.border }, on && [styles.tabOn, { backgroundColor: visual.background }], pressed && styles.pressed]}
             >
-              <Text style={styles.tabEmoji}>{visual.icon}</Text>
-              <Text style={[styles.tabText, on && { color: visual.ink }]} numberOfLines={1}>{GROUP_NAMES[group.key]}</Text>
+              <Text style={[styles.tabEmoji, on && styles.tabEmojiOn]}>{visual.icon}</Text>
+              <Text style={[styles.tabText, { color: visual.ink }]} numberOfLines={1}>{GROUP_NAMES[group.key]}</Text>
             </Pressable>
           );
         })}
@@ -265,7 +280,7 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
       ) : null}
 
       <View style={styles.viewSwitch} accessibilityRole="tablist">
-        {([['tiles', '▦  Pictures'], ['map', '🗺️  Adventure map']] as const).map(([key, label]) => (
+        {([['tiles', '🖼️  Pictures'], ['map', '🗺️  Adventure map']] as const).map(([key, label]) => (
           <Pressable key={key} onPress={() => chooseView(key)} accessibilityRole="tab" accessibilityState={{ selected: view === key }}
             style={({ pressed }) => [styles.viewOption, view === key && styles.viewOptionOn, pressed && styles.pressed]}>
             <Text style={[styles.viewText, view === key && styles.viewTextOn]}>{label}</Text>
@@ -300,8 +315,8 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
 
       <View style={{ marginTop: spacing(1) }}>
         {report
-          ? <Button title="View latest result" variant="secondary" onPress={onReport} disabled={busy} />
-          : <Button title="← Back" variant="secondary" onPress={onBack} disabled={busy} />}
+          ? <ChunkyButton colour="white" size="md" title="View latest result" onPress={onReport} disabled={busy} />
+          : <ChunkyButton colour="white" size="md" title="← Back" onPress={onBack} disabled={busy} />}
       </View>
 
       {/* Tap a tile: the details and one big Play button slide up. */}
@@ -323,12 +338,12 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
                   {tried(open.key) ? <Text style={styles.sheetMetaText}>✓ Played before</Text> : null}
                 </View>
                 {failed ? <Text style={styles.problemText}>{error}</Text> : null}
-                <Button
+                <ChunkyButton
+                  colour={failed ? 'sky' : 'coral'}
                   title={starting ? 'Making your questions…' : failed ? 'Try again ↻' : '▶  Let’s play!'}
                   onPress={() => play(open.key)}
                   loading={starting}
                   disabled={busy}
-                  uiScale={1.15}
                 />
                 <Pressable onPress={() => setOpenKey(null)} disabled={busy} accessibilityRole="button" style={styles.notNow}>
                   <Text style={styles.notNowText}>Not now</Text>
@@ -343,67 +358,80 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
 
 const styles = StyleSheet.create({
   screen: { backgroundColor: '#FFF8EF' },
-  container: { padding: GUTTER, paddingBottom: spacing(6), gap: spacing(2), ...column },
-  pressed: { opacity: 0.8, transform: [{ scale: 0.96 }] },
+  container: { padding: GUTTER, paddingBottom: spacing(6), gap: spacing(2.5), ...column },
+  pressed: { opacity: 0.85, transform: [{ scale: 0.96 }] },
+  leftText: { textAlign: 'left' },
 
-  hero: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), backgroundColor: '#FFF0C9', borderRadius: 24, padding: spacing(2), borderWidth: 2, borderColor: '#F4C966' },
-  heroBubble: { width: 56, height: 56, borderRadius: 28, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#F4C966', transform: [{ rotate: '-5deg' }] },
-  heroEmoji: { fontSize: 32 },
-  heroTitle: { flex: 1, fontSize: 23, lineHeight: 28, fontWeight: '900', color: '#633E12' },
+  hero: { alignItems: 'center', backgroundColor: '#FFF4D2', borderRadius: 30, borderWidth: 3, borderBottomWidth: 8, borderColor: '#FFC83D', paddingTop: spacing(1.5), paddingBottom: spacing(2), paddingHorizontal: spacing(2) },
+  heroWide: { flexDirection: 'row', justifyContent: 'center', gap: spacing(3), paddingVertical: spacing(2) },
+  heroCopy: { alignItems: 'center', marginTop: spacing(0.5) },
+  heroCopyWide: { alignItems: 'flex-start', flexShrink: 1 },
+  eyebrow: { fontSize: 13, letterSpacing: 1.4, fontWeight: '900', color: PLAY.coral.face, textAlign: 'center' },
+  heroTitle: { fontSize: 30, lineHeight: 36, fontWeight: '900', color: '#633E12', textAlign: 'center', marginTop: 2 },
+  heroTitleWide: { fontSize: 38, lineHeight: 44, textAlign: 'left' },
 
-  playZone: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), backgroundColor: '#EEE9FF', borderRadius: 20, paddingVertical: spacing(1.25), paddingHorizontal: spacing(2), borderWidth: 2, borderColor: '#CABAF0' },
-  playZoneEmoji: { fontSize: 30 },
-  playZoneTitle: { fontSize: 18, fontWeight: '900', color: '#4E3590' },
-  playZoneSub: { fontSize: 13, fontWeight: '700', color: '#6A58A0', marginTop: 1 },
-  animals: { backgroundColor: '#FFF4D6', borderColor: '#F4C966' },
-  animalsTitle: { color: '#7A4E08' },
-  animalsSub: { color: '#8A6420' },
-  playZoneGo: { fontSize: 20, fontWeight: '900', color: '#4E3590' },
+  adventures: { flexDirection: 'row', gap: spacing(1.5), marginTop: spacing(2) },
+  adventure: { flex: 1, borderRadius: 28, borderWidth: 4, borderBottomWidth: 9, alignItems: 'center', paddingHorizontal: spacing(2), paddingTop: spacing(3.5), paddingBottom: spacing(2), gap: 4 },
+  adventureCompact: { borderRadius: 24, borderWidth: 3, borderBottomWidth: 7, paddingHorizontal: spacing(1), paddingTop: spacing(3), paddingBottom: spacing(1.5) },
+  adventureIconCompact: { fontSize: 30 },
+  adventureTitleCompact: { fontSize: 18, lineHeight: 22 },
+  adventureLineCompact: { fontSize: 12, lineHeight: 16 },
+  adventureIcons: { flexDirection: 'row', gap: spacing(0.5), marginBottom: 2 },
+  adventureIcon: { fontSize: 40 },
+  adventureTitle: { fontSize: 25, fontWeight: '900', textAlign: 'center' },
+  adventureLine: { fontSize: 14, fontWeight: '700', textAlign: 'center', opacity: 0.9 },
+  playPill: { borderRadius: 999, borderBottomWidth: 4, paddingHorizontal: spacing(3), paddingVertical: spacing(0.875), marginTop: spacing(1) },
+  playPillText: { fontSize: 17, fontWeight: '900' },
 
-  thinking: { backgroundColor: '#E5F5EA', borderColor: '#9FD0B0', marginTop: spacing(1) },
-  thinkingTitle: { color: '#235E46' },
-  thinkingSub: { color: '#3E6E55' },
-  lengthRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1) },
-  lengthLabel: { fontSize: 16, fontWeight: '900', color: '#513A27' },
+  band: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), paddingHorizontal: spacing(2), paddingVertical: spacing(0.5) },
+  bandEmoji: { fontSize: 34 },
+  bandTitle: { fontSize: 22, fontWeight: '900', color: '#FFFFFF' },
+  bandSub: { fontSize: 14, fontWeight: '800', color: '#E1F4E8', marginTop: 1 },
+  bandArrow: { marginLeft: 'auto', fontSize: 20, fontWeight: '900', color: '#FFFFFF' },
+
+  lengthRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: spacing(1) },
+  lengthLabel: { fontSize: 18, fontWeight: '900', color: '#513A27' },
   lengthPills: { flexDirection: 'row', gap: spacing(1) },
-  lengthPill: { flexDirection: 'row', alignItems: 'center', gap: 4, minHeight: 44, paddingHorizontal: spacing(1.75), borderRadius: 999, borderWidth: 2, borderColor: colors.line, backgroundColor: '#FFFFFF' },
-  lengthPillOn: { borderColor: colors.primary, backgroundColor: colors.primarySoft },
+  lengthPill: { flexDirection: 'row', alignItems: 'center', gap: 4, minHeight: 48, paddingHorizontal: spacing(1.75), borderRadius: 999, borderWidth: 2.5, borderBottomWidth: 5, borderColor: '#F3B7A9', backgroundColor: '#FFFFFF' },
+  lengthPillOn: { borderColor: PLAY.coral.lip, backgroundColor: PLAY.coral.face, transform: [{ translateY: -2 }] },
   lengthIcon: { fontSize: 18 },
-  lengthNumber: { fontSize: 17, fontWeight: '900', color: '#6D5A49' },
-  lengthNumberOn: { color: colors.primary },
+  lengthNumber: { fontSize: 19, fontWeight: '900', color: PLAY.coral.lip },
+  lengthNumberOn: { color: '#FFFFFF' },
 
   tabs: { flexDirection: 'row', gap: spacing(1) },
-  tab: { flex: 1, alignItems: 'center', paddingVertical: spacing(1.25), borderRadius: 18, borderWidth: 2, borderColor: colors.line, backgroundColor: '#FFFFFF' },
-  tabEmoji: { fontSize: 26 },
-  tabText: { fontSize: 13, fontWeight: '800', color: colors.inkSoft, marginTop: 2 },
+  tab: { flex: 1, alignItems: 'center', paddingVertical: spacing(1.25), borderRadius: 22, borderWidth: 2.5, borderBottomWidth: 5, backgroundColor: '#FFFFFF' },
+  tabOn: { borderWidth: 3, borderBottomWidth: 8, transform: [{ translateY: -3 }] },
+  tabEmoji: { fontSize: 28 },
+  tabEmojiOn: { fontSize: 34 },
+  tabText: { fontSize: 14, fontWeight: '900', marginTop: 2 },
 
   grid: { flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: -spacing(0.75) },
-  viewSwitch: { flexDirection: 'row', alignSelf: 'center', backgroundColor: '#F3EADB', borderRadius: 999, padding: 4, gap: 4 },
-  viewOption: { paddingVertical: 8, paddingHorizontal: 16, borderRadius: 999 },
-  viewOptionOn: { backgroundColor: '#FFFFFF', shadowColor: '#000', shadowOpacity: 0.08, shadowRadius: 4, shadowOffset: { width: 0, height: 1 }, elevation: 1 },
-  viewText: { fontSize: 14, fontWeight: '800', color: colors.inkSoft },
-  viewTextOn: { color: colors.ink },
+  viewSwitch: { flexDirection: 'row', alignSelf: 'center', backgroundColor: '#E3EFFD', borderRadius: 999, padding: 5, gap: 4 },
+  viewOption: { minHeight: 44, justifyContent: 'center', paddingHorizontal: 18, borderRadius: 999 },
+  viewOptionOn: { backgroundColor: PLAY.sky.face, borderBottomWidth: 4, borderColor: PLAY.sky.lip },
+  viewText: { fontSize: 15, fontWeight: '900', color: PLAY.sky.lip },
+  viewTextOn: { color: '#FFFFFF' },
   gameChip: { position: 'absolute', left: 10, top: 10, backgroundColor: '#FFFFFF', borderRadius: 999, paddingHorizontal: 8, paddingVertical: 2 },
   gameChipText: { fontSize: 11, fontWeight: '900', color: '#4E3590' },
   tileStars: { marginTop: 4, fontSize: 13, fontWeight: '900', color: '#8A5A0A' },
   tileWrap: { padding: spacing(0.75) },
-  tile: { minHeight: 150, borderRadius: 24, borderWidth: 2, alignItems: 'center', justifyContent: 'center', padding: spacing(1.5), shadowColor: '#4A3728', shadowOpacity: 0.07, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 2 },
-  tileHovered: { borderWidth: 3, shadowOpacity: 0.2, shadowRadius: 15, shadowOffset: { width: 0, height: 8 }, elevation: 7 },
+  tile: { minHeight: 160, borderRadius: 26, borderWidth: 2.5, borderBottomWidth: 7, alignItems: 'center', justifyContent: 'center', padding: spacing(1.5) },
+  tileHovered: { borderWidth: 3, borderBottomWidth: 9, shadowColor: '#4A3728', shadowOpacity: 0.2, shadowRadius: 15, shadowOffset: { width: 0, height: 8 }, elevation: 7 },
   tilePressed: { opacity: 0.9, transform: [{ scale: 0.98 }] },
-  tileIcon: { width: 72, height: 72, borderRadius: 36, backgroundColor: '#FFFFFF', borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
+  tileIcon: { width: 76, height: 76, borderRadius: 38, backgroundColor: '#FFFFFF', borderWidth: 3, alignItems: 'center', justifyContent: 'center' },
   tileEmoji: { fontSize: 38 },
   tileName: { fontSize: 16, lineHeight: 20, fontWeight: '900', color: '#3F3126', textAlign: 'center', marginTop: spacing(1) },
   hoverSparkle: { position: 'absolute', right: 12, bottom: 10, fontSize: 19 },
-  doneBadge: { position: 'absolute', right: 10, top: 10, width: 26, height: 26, borderRadius: 13, backgroundColor: colors.go, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: '#FFFFFF' },
+  doneBadge: { position: 'absolute', right: 10, top: 10, width: 28, height: 28, borderRadius: 14, backgroundColor: PLAY.grass.face, alignItems: 'center', justifyContent: 'center', borderBottomWidth: 3, borderColor: PLAY.grass.lip },
   doneText: { color: '#FFFFFF', fontSize: 14, fontWeight: '900' },
 
   problem: { gap: spacing(1.5) },
   problemText: { color: colors.danger, backgroundColor: '#FBE9E7', padding: spacing(1.5), borderRadius: 12, fontSize: 14, lineHeight: 20 },
 
   sheetBody: { gap: spacing(1.5) },
-  sheetIcon: { alignSelf: 'center', width: 104, height: 104, borderRadius: 52, borderWidth: 3, alignItems: 'center', justifyContent: 'center', marginTop: spacing(1) },
+  sheetIcon: { alignSelf: 'center', width: 112, height: 112, borderRadius: 56, borderWidth: 4, borderBottomWidth: 8, alignItems: 'center', justifyContent: 'center', marginTop: spacing(1) },
   sheetEmoji: { fontSize: 56 },
-  sheetTitle: { fontSize: 26, fontWeight: '900', color: '#3F3126', textAlign: 'center' },
+  sheetTitle: { fontSize: 28, fontWeight: '900', color: '#5D439B', textAlign: 'center' },
   sheetOfficial: { fontSize: 12, fontWeight: '700', color: colors.inkSoft, textAlign: 'center', marginTop: -spacing(1) },
   sheetBlurb: { fontSize: 15, lineHeight: 22, color: '#5E5249', textAlign: 'center' },
   sheetMeta: { flexDirection: 'row', justifyContent: 'center', gap: spacing(1.5) },

@@ -16,7 +16,7 @@ export type OwlMood = 'idle' | 'happy' | 'oops' | 'thinking';
  * `outfit`: what Owl wears. Left out, Owl wears the current child's outfit
  * (OwlOutfitContext); pass null for plain Owl.
  */
-export default function Owl({ mood = 'idle', size = 72, outfit }: { mood?: OwlMood; size?: number; outfit?: OwlOutfit | null }) {
+export default function Owl({ mood = 'idle', size = 72, outfit, still = false }: { mood?: OwlMood; size?: number; outfit?: OwlOutfit | null; /** No hop or bob (a calm, steady Owl). */ still?: boolean }) {
   const childOutfit = useOwlOutfit();
   const wearing = outfit === undefined ? childOutfit : outfit;
   const lift = useRef(new Animated.Value(0)).current;
@@ -37,7 +37,9 @@ export default function Owl({ mood = 'idle', size = 72, outfit }: { mood?: OwlMo
     tilt.stopAnimation();
     tilt.setValue(0);
     let loop: Animated.CompositeAnimation | null = null;
-    if (mood === 'happy') {
+    if (still) {
+      lift.setValue(0);
+    } else if (mood === 'happy') {
       Animated.sequence([
         Animated.timing(lift, { toValue: -size * 0.22, duration: 180, easing: Easing.out(Easing.quad), useNativeDriver: true }),
         Animated.timing(lift, { toValue: 0, duration: 260, easing: Easing.bounce, useNativeDriver: true }),
@@ -61,7 +63,7 @@ export default function Owl({ mood = 'idle', size = 72, outfit }: { mood?: OwlMo
       loop.start();
     }
     return () => loop?.stop();
-  }, [mood, lift, tilt, size]);
+  }, [mood, lift, tilt, size, still]);
 
   const rotate = tilt.interpolate({ inputRange: [-1, 1], outputRange: ['-12deg', '12deg'] });
   const happy = mood === 'happy';

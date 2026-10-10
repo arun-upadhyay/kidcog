@@ -169,6 +169,10 @@ test('shared app header compacts on scroll and expands at the top', async ({ pag
 
   const header = page.getByTestId('app-header');
   await expect(header).toBeVisible();
+  // Reaching the button scrolls the player page, which shrinks the bar; let it
+  // grow back on the new screen before measuring it.
+  await expect(page.getByRole('button', { name: 'Open the Play Zone games' })).toBeVisible();
+  await page.waitForTimeout(400);
   const expandedHeight = await header.evaluate(element => element.getBoundingClientRect().height);
 
   await page.mouse.wheel(0, 900);

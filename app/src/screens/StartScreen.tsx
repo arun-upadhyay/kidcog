@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Platform, View, Text, TextInput, StyleSheet, ScrollView, Switch, Pressable } from 'react-native';
+import { Alert, Platform, View, Text, TextInput, StyleSheet, ScrollView, Switch, Pressable, useWindowDimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AboutSheet from '../components/AboutSheet';
 import Sheet from '../components/Sheet';
-import Button from '../components/Button';
+import { ChunkyButton, OwlStage, PLAY, Ribbon, type PlayColour } from '../components/Playful';
 import { colors, spacing, type, column, GUTTER } from '../theme';
 import type { ChildProfile, SavedChildProfile } from '../types';
 import { avatarEmoji, defaultAvatarKey, avatarName, firstFreeAvatar } from '../avatars';
@@ -36,7 +36,17 @@ const CONSENT_KEY = 'kidcog.parentConsent.v1';
  */
 const AGES = [4, 5, 6, 7] as const;
 const AGE_ICONS: Record<(typeof AGES)[number], string> = { 4: '🐣', 5: '⭐', 6: '🚀', 7: '🦄' };
-const PROFILE_COLORS = ['#E5F3FF', '#FFF0D9', '#E5F5EA', '#F2EAFE'] as const;
+const TILE_COLOURS: PlayColour[] = ['sky', 'sun', 'grass', 'grape', 'coral'];
+const AGE_COLOURS: PlayColour[] = ['coral', 'sun', 'sky', 'grape'];
+/** Still bits of confetti along the edges of the page. */
+const CONFETTI = [
+  { icon: '⭐', left: 2, top: 30, size: 22, turn: -12 },
+  { icon: '🎈', left: 92, top: 120, size: 28, turn: 10 },
+  { icon: '✨', left: 4, top: 300, size: 20, turn: 0 },
+  { icon: '🌈', left: 90, top: 420, size: 26, turn: -8 },
+  { icon: '🧩', left: 3, top: 560, size: 22, turn: 14 },
+  { icon: '⭐', left: 93, top: 700, size: 20, turn: 18 },
+];
 
 export default function StartScreen({ onStart, loading, error, savedChildren, onViewHistory, onDeleteChild, onChangeAvatar }: StartScreenProps) {
   const onHeaderScroll = useAppHeaderScroll();
@@ -80,7 +90,11 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
   const selected = showNewForm ? undefined : savedChildren.find(c => c.nickname.trim().toLowerCase() === firstName.trim().toLowerCase());
   const needsAge = showNewForm || (selected !== undefined && selected.age === null);
   const canStart = consent && !loading && (showNewForm || selected !== undefined);
-  const young = age !== null && age <= 7;
+  const { width, height } = useWindowDimensions();
+  const wide = width >= 640;
+  const columns = width >= 640 ? 4 : width >= 440 ? 3 : 2;
+  // Owl's stage: smaller on short phones so the players stay near the top.
+  const stageWidth = wide ? 300 : height < 700 ? 190 : Math.min(240, width - spacing(8));
 
   function handleStart() {
     const profile: ChildProfile = {};
@@ -140,129 +154,148 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
 
 
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled" onScroll={onHeaderScroll} scrollEventThrottle={16}>
-      <View style={styles.hello}>
-        <View style={styles.helloOwl}><Text style={styles.helloOwlText}>🦉</Text></View>
-        <View style={{ flex: 1 }}>
-          <Text style={styles.helloTitle}>Who’s playing today?</Text>
-          <Text style={styles.helloHint}>{showNewForm ? 'Add a player to start' : 'Tap a player to start'}</Text>
-        </View>
-        <Pressable onPress={() => setAboutOpen(true)} accessibilityRole="button" accessibilityLabel="About KidCog" hitSlop={8} style={({ pressed }) => [styles.infoButton, pressed && styles.pressed]}>
-          <Text style={styles.infoText}>ⓘ</Text>
-        </Pressable>
+    <View style={styles.screen}>
+      {/* Still confetti along the sides (no motion here, so nothing distracts while choosing). */}
+      <View style={styles.confetti} pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+        {CONFETTI.map((c, i) => <Text key={i} style={[styles.confettiBit, { left: `${c.left}%`, top: c.top, fontSize: c.size, transform: [{ rotate: `${c.turn}deg` }] }]}>{c.icon}</Text>)}
       </View>
-
-      {!showNewForm ? (
-        <View style={styles.tiles}>
-          {savedChildren.map((saved, index) => {
-            const on = selected?.id === saved.id;
-            return (
-              <View key={saved.id} style={styles.tileWrap}>
-                <Pressable
-                  onPress={() => chooseSaved(saved)}
-                  accessibilityRole="radio"
-                  accessibilityState={{ checked: on }}
-                  accessibilityLabel={`${saved.nickname}${saved.age !== null ? `, age ${saved.age}` : ''}`}
-                  style={({ pressed }) => [styles.tile, { backgroundColor: PROFILE_COLORS[index % PROFILE_COLORS.length] }, on && styles.tileOn, pressed && styles.pressed]}
-                >
-                  <Text style={styles.tileAvatar}>{avatarEmoji(saved.avatar, index)}</Text>
-                  <Text style={styles.tileName} numberOfLines={1}>{saved.nickname}</Text>
-                  {saved.age !== null ? <Text style={styles.tileAge}>Age {saved.age}</Text> : null}
-                  {(progressById[saved.id]?.stars ?? 0) > 0 ? <Text style={styles.tileStars}>⭐ {progressById[saved.id]!.stars}</Text> : null}
-                  {on ? <View style={styles.tileCheck}><Text style={styles.tileCheckText}>✓</Text></View> : null}
-                </Pressable>
-                <Pressable
-                  onPress={() => setActionsFor(saved)}
-                  accessibilityRole="button"
-                  accessibilityLabel={`More options for ${saved.nickname}`}
-                  hitSlop={6}
-                  style={({ pressed }) => [styles.moreButton, pressed && styles.pressed]}
-                >
-                  <Text style={styles.moreText}>{deletingId === saved.id ? '⏳' : '⋯'}</Text>
-                </Pressable>
-              </View>
-            );
-          })}
-          <View style={styles.tileWrap}>
-            <Pressable onPress={startAdding} accessibilityRole="button" accessibilityLabel="Add a child" style={({ pressed }) => [styles.tile, styles.addTile, pressed && styles.pressed]}>
-              <Text style={styles.addPlus}>＋</Text>
-              <Text style={styles.addText}>Add a child</Text>
-            </Pressable>
+      <ScrollView style={styles.scrollArea} contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled" onScroll={onHeaderScroll} scrollEventThrottle={16}>
+        {/* Hello from Owl */}
+        <View style={[styles.hero, wide && styles.heroWide]}>
+          <OwlStage still width={stageWidth} owlSize={Math.round(stageWidth * 0.3)} tint="grape" bubble={showNewForm ? 'New friend! 🎉' : 'Hi there! 👋'} />
+          <View style={[styles.heroCopy, wide && styles.heroCopyWide]}>
+            <Text style={[styles.eyebrow, wide && styles.leftText]}>{showNewForm ? '✨ NEW PLAYER ✨' : '✨ PICK YOUR PLAYER ✨'}</Text>
+            <Text accessibilityRole="header" style={[styles.helloTitle, wide && styles.leftText, wide && styles.helloTitleWide]}>Who’s playing today?</Text>
+            <Text style={[styles.helloHint, wide && styles.leftText]}>{showNewForm ? 'Add a player to start' : 'Tap a player to start'}</Text>
           </View>
+          <Pressable onPress={() => setAboutOpen(true)} accessibilityRole="button" accessibilityLabel="About KidCog" hitSlop={8} style={({ pressed }) => [styles.infoButton, pressed && styles.infoPressed]}>
+            <Text style={styles.infoText}>i</Text>
+          </Pressable>
         </View>
-      ) : (
-        <View style={styles.newCard}>
-          <View style={styles.newTop}>
-            <View style={styles.previewCircle} accessibilityLabel={`Picture: ${avatarName(avatar)}`}>
-              <Text style={styles.previewEmoji}>{avatarEmoji(avatar)}</Text>
-            </View>
-            <View style={{ flex: 1 }}>
-          <Text style={styles.label}>Nickname</Text>
-          <TextInput
-            style={styles.input}
-            value={firstName}
-            onChangeText={setFirstName}
-            placeholder="e.g. Aanya"
-            placeholderTextColor={colors.inkSoft}
-            autoCapitalize="words"
-            maxLength={60}
-          />
-            </View>
-          </View>
-          <Text style={[styles.label, { marginTop: spacing(2) }]}>Pick a picture</Text>
-          <AvatarQuickPick selected={avatar} onPick={setAvatar} />
-        </View>
-      )}
 
-      {needsAge ? (
-        <View style={styles.ageBlock}>
-          <Text style={styles.label}>Age</Text>
-          <View style={styles.chips}>
-            {AGES.map((a) => {
-              const on = age === a;
+        {!showNewForm ? (
+          <View style={styles.tiles}>
+            {savedChildren.map((saved, index) => {
+              const on = selected?.id === saved.id;
+              const c = PLAY[TILE_COLOURS[index % TILE_COLOURS.length]!];
+              const stars = progressById[saved.id]?.stars ?? 0;
               return (
-                <Pressable
-                  key={a}
-                  accessibilityRole="radio"
-                  accessibilityState={{ selected: on }}
-                  accessibilityLabel={`Age ${a}`}
-                  onPress={() => setAge(a)}
-                  style={({ pressed }) => [styles.chip, on && styles.chipOn, pressed && styles.pressed]}
-                >
-                  <Text style={styles.ageIcon}>{AGE_ICONS[a]}</Text>
-                  <Text style={[styles.chipText, on && styles.chipTextOn]}>{a}</Text>
-                </Pressable>
+                <View key={saved.id} style={[styles.tileWrap, { width: `${100 / columns}%` }]}>
+                  <Pressable
+                    onPress={() => chooseSaved(saved)}
+                    accessibilityRole="radio"
+                    accessibilityState={{ checked: on }}
+                    accessibilityLabel={`${saved.nickname}${saved.age !== null ? `, age ${saved.age}` : ''}`}
+                    style={({ pressed }) => [styles.tile, { backgroundColor: c.soft, borderColor: c.face }, on && styles.tileOn, pressed && styles.tilePressed]}
+                  >
+                    <View style={[styles.avatarBubble, { borderColor: c.face }]}>
+                      <Text style={styles.tileAvatar}>{avatarEmoji(saved.avatar, index)}</Text>
+                    </View>
+                    <Text style={styles.tileName} numberOfLines={1}>{saved.nickname}</Text>
+                    <View style={styles.pills}>
+                      {saved.age !== null ? <View style={[styles.agePill, { backgroundColor: c.face, borderColor: c.lip }]}><Text style={[styles.agePillText, { color: c.text }]}>Age {saved.age}</Text></View> : null}
+                      {stars > 0 ? <View style={styles.starPill}><Text style={styles.starPillText}>⭐ {stars}</Text></View> : null}
+                    </View>
+                    {on ? <View style={styles.tileCheck}><Text style={styles.tileCheckText}>✓</Text></View> : null}
+                  </Pressable>
+                  <Pressable
+                    onPress={() => setActionsFor(saved)}
+                    accessibilityRole="button"
+                    accessibilityLabel={`More options for ${saved.nickname}`}
+                    hitSlop={6}
+                    style={({ pressed }) => [styles.moreButton, pressed && styles.infoPressed]}
+                  >
+                    <Text style={styles.moreText}>{deletingId === saved.id ? '⏳' : '⋯'}</Text>
+                  </Pressable>
+                </View>
               );
             })}
+            <View style={[styles.tileWrap, { width: `${100 / columns}%` }]}>
+              <Pressable onPress={startAdding} accessibilityRole="button" accessibilityLabel="Add a child" style={({ pressed }) => [styles.tile, styles.addTile, pressed && styles.tilePressed]}>
+                <View style={styles.addCircle}><Text style={styles.addPlus}>+</Text></View>
+                <Text style={styles.addText}>Add a child</Text>
+              </Pressable>
+            </View>
+          </View>
+        ) : (
+          <View style={styles.newCard}>
+            <Ribbon text="🌟 NEW PLAYER" colour="sun" />
+            <View style={styles.newTop}>
+              <View style={styles.previewCircle} accessibilityLabel={`Picture: ${avatarName(avatar)}`}>
+                <Text style={styles.previewEmoji}>{avatarEmoji(avatar)}</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.label}>✏️  Nickname</Text>
+                <TextInput
+                  style={styles.input}
+                  value={firstName}
+                  onChangeText={setFirstName}
+                  placeholder="e.g. Aanya"
+                  placeholderTextColor={colors.inkSoft}
+                  autoCapitalize="words"
+                  maxLength={60}
+                />
+              </View>
+            </View>
+            <Text style={[styles.label, { marginTop: spacing(2) }]}>🎨  Pick a picture</Text>
+            <AvatarQuickPick selected={avatar} onPick={setAvatar} />
+          </View>
+        )}
+
+        {needsAge ? (
+          <View>
+            <Text style={styles.label}>🎂  How old?</Text>
+            <View style={styles.chips}>
+              {AGES.map((a, i) => {
+                const on = age === a;
+                const c = PLAY[AGE_COLOURS[i]!];
+                return (
+                  <Pressable
+                    key={a}
+                    accessibilityRole="radio"
+                    accessibilityState={{ selected: on }}
+                    accessibilityLabel={`Age ${a}`}
+                    onPress={() => setAge(a)}
+                    style={({ pressed }) => [styles.chip, { borderColor: c.face }, on && { backgroundColor: c.face, borderColor: c.lip }, on && styles.chipOn, pressed && styles.tilePressed]}
+                  >
+                    <Text style={styles.ageIcon}>{AGE_ICONS[a]}</Text>
+                    <Text style={[styles.chipText, { color: on ? c.text : c.lip }]}>{a}</Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </View>
+        ) : null}
+
+        {showNewForm && savedChildren.length > 0 ? (
+          <Pressable onPress={() => setAdding(false)} accessibilityRole="button" style={({ pressed }) => [styles.backLink, pressed && styles.infoPressed]}>
+            <Text style={styles.backLinkText}>← Back to saved players</Text>
+          </Pressable>
+        ) : null}
+
+        <View style={styles.consentRow}>
+          <View style={styles.grownUpTag}><Text style={styles.grownUpTagText}>👪 FOR GROWN-UPS</Text></View>
+          <View style={styles.consentInner}>
+            <Switch value={consent} onValueChange={changeConsent} trackColor={{ true: PLAY.grass.face, false: colors.line }} accessibilityLabel="I'm the parent or guardian and agree to how KidCog checks answers" />
+            <Text style={styles.consentText}>
+              I’m the parent or guardian and agree to how KidCog checks answers.{' '}
+              <Text style={styles.learnMore} onPress={() => setAboutOpen(true)} accessibilityRole="link">Learn more</Text>
+            </Text>
           </View>
         </View>
-      ) : null}
 
-      {showNewForm && savedChildren.length > 0 ? (
-        <Pressable onPress={() => setAdding(false)} accessibilityRole="button" style={styles.backLink}>
-          <Text style={styles.backLinkText}>← Back to saved players</Text>
-        </Pressable>
-      ) : null}
+        {error ? <Text style={styles.errorBanner}>{error}</Text> : null}
 
-      <View style={styles.consentRow}>
-        <Switch value={consent} onValueChange={changeConsent} trackColor={{ true: colors.go, false: colors.line }} accessibilityLabel="I'm the parent or guardian and agree to how KidCog checks answers" />
-        <Text style={styles.consentText}>
-          I’m the parent or guardian and agree to how KidCog checks answers.{' '}
-          <Text style={styles.learnMore} onPress={() => setAboutOpen(true)} accessibilityRole="link">Learn more</Text>
-        </Text>
-      </View>
+        <ChunkyButton
+          title={loading ? 'Getting ready…' : 'Choose an adventure →'}
+          onPress={handleStart}
+          disabled={!canStart}
+          loading={loading}
+          style={styles.go}
+        />
+        <Text style={styles.parade} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">🦁 🐘 🐧 🦋 🐸 🚀</Text>
 
-      {error ? <Text style={styles.errorBanner}>{error}</Text> : null}
-
-      <Button
-        title={loading ? 'Getting ready…' : 'Choose an adventure →'}
-        onPress={handleStart}
-        disabled={!canStart}
-        loading={loading}
-        uiScale={young ? 1.2 : 1}
-      />
-
-      <AboutSheet visible={aboutOpen} onClose={closeAbout} />
+        <AboutSheet visible={aboutOpen} onClose={closeAbout} />
 
       {/* ⋯ on a player: past results or delete, kept off the tiles themselves. */}
       <Sheet visible={actionsFor !== null} onClose={() => setActionsFor(null)} closeLabel="Close options">
@@ -341,30 +374,77 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
           <Text style={styles.sheetCancelText}>Cancel</Text>
         </Pressable>
       </Sheet>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: { backgroundColor: '#FFF8EF' },
-  container: { padding: GUTTER, paddingBottom: spacing(6), ...column, gap: spacing(2) },
-  pressed: { opacity: 0.8, transform: [{ scale: 0.97 }] },
+  screen: { flex: 1, backgroundColor: '#FFF8EF' },
+  scrollArea: { flex: 1 },
+  container: { padding: GUTTER, paddingBottom: spacing(6), ...column, gap: spacing(2.5) },
+  confetti: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' },
+  confettiBit: { position: 'absolute', opacity: 0.45 },
+  leftText: { textAlign: 'left' },
 
-  hello: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), backgroundColor: '#EEE9FF', borderRadius: 24, borderWidth: 2, borderColor: '#CABAF0', padding: spacing(2) },
-  helloOwl: { width: 58, height: 58, borderRadius: 29, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#CABAF0', alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '-4deg' }] },
-  helloOwlText: { fontSize: 34 },
-  helloTitle: { fontSize: 22, lineHeight: 27, fontWeight: '900', color: '#6B4BB0' },
-  helloHint: { fontSize: 14, color: '#6D5B91', marginTop: 2 },
-  infoButton: { width: 40, height: 40, borderRadius: 20, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#CABAF0', alignItems: 'center', justifyContent: 'center' },
-  infoText: { fontSize: 20, color: '#6B4BB0', fontWeight: '800' },
+  hero: { alignItems: 'center', backgroundColor: '#F3EEFF', borderRadius: 30, borderWidth: 3, borderBottomWidth: 8, borderColor: '#B9A3EC', paddingTop: spacing(1.5), paddingBottom: spacing(2), paddingHorizontal: spacing(2) },
+  heroWide: { flexDirection: 'row', justifyContent: 'center', gap: spacing(3), paddingVertical: spacing(2) },
+  heroCopy: { alignItems: 'center', marginTop: spacing(0.5) },
+  heroCopyWide: { alignItems: 'flex-start', flexShrink: 1 },
+  eyebrow: { fontSize: 13, letterSpacing: 1.4, fontWeight: '900', color: PLAY.coral.face, textAlign: 'center' },
+  helloTitle: { fontSize: 30, lineHeight: 36, fontWeight: '900', color: '#5D439B', textAlign: 'center', marginTop: 2 },
+  helloTitleWide: { fontSize: 38, lineHeight: 44 },
+  helloHint: { fontSize: 17, fontWeight: '700', color: '#6D5B91', marginTop: 4, textAlign: 'center' },
+  infoButton: { position: 'absolute', top: spacing(1.25), right: spacing(1.25), width: 40, height: 40, borderRadius: 20, backgroundColor: '#FFFFFF', borderWidth: 2.5, borderBottomWidth: 4, borderColor: '#B9A3EC', alignItems: 'center', justifyContent: 'center' },
+  infoPressed: { opacity: 0.85, transform: [{ scale: 0.94 }] },
+  infoText: { fontSize: 20, color: '#5D439B', fontWeight: '900', fontStyle: 'italic' },
 
   tiles: { flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: -spacing(0.75) },
-  tileWrap: { width: '50%', padding: spacing(0.75), maxWidth: 200 },
-  tile: { minHeight: 132, borderRadius: 22, borderWidth: 3, borderColor: 'transparent', alignItems: 'center', justifyContent: 'center', padding: spacing(1.5) },
-  tileOn: { borderColor: colors.primary, shadowColor: colors.primary, shadowOpacity: 0.2, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 3 },
-  tileAvatar: { fontSize: 44 },
-  tileName: { fontSize: 18, fontWeight: '900', color: '#513A27', marginTop: spacing(0.5), maxWidth: '100%' },
-  tileStars: { fontSize: 13, fontWeight: '900', color: '#8A5A0A', marginTop: 2 },
+  tileWrap: { padding: spacing(0.75), maxWidth: 240 },
+  tile: { minHeight: 170, borderRadius: 26, borderWidth: 3, borderBottomWidth: 8, alignItems: 'center', justifyContent: 'center', paddingHorizontal: spacing(1), paddingVertical: spacing(1.5) },
+  tileOn: { borderWidth: 4, borderBottomWidth: 9, borderColor: PLAY.coral.face, transform: [{ scale: 1.03 }] },
+  tilePressed: { transform: [{ scale: 0.95 }] },
+  avatarBubble: { width: 76, height: 76, borderRadius: 38, backgroundColor: '#FFFFFF', borderWidth: 3, alignItems: 'center', justifyContent: 'center' },
+  tileAvatar: { fontSize: 46 },
+  tileName: { fontSize: 20, fontWeight: '900', color: '#3F3126', marginTop: spacing(0.75), maxWidth: '100%' },
+  pills: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 5, marginTop: 5 },
+  agePill: { borderRadius: 999, borderBottomWidth: 3, paddingHorizontal: 10, paddingVertical: 3 },
+  agePillText: { fontSize: 13, fontWeight: '900' },
+  starPill: { borderRadius: 999, backgroundColor: '#FFF4D2', borderWidth: 2, borderColor: '#FFC83D', paddingHorizontal: 9, paddingVertical: 2 },
+  starPillText: { fontSize: 13, fontWeight: '900', color: '#7A4E08' },
+  tileCheck: { position: 'absolute', left: 10, top: 10, width: 30, height: 30, borderRadius: 15, backgroundColor: PLAY.grass.face, borderBottomWidth: 3, borderColor: PLAY.grass.lip, alignItems: 'center', justifyContent: 'center' },
+  tileCheckText: { color: '#FFFFFF', fontSize: 16, fontWeight: '900' },
+  moreButton: { position: 'absolute', right: spacing(1.75), top: spacing(1.75), width: 34, height: 34, borderRadius: 17, backgroundColor: '#FFFFFF', borderWidth: 2, borderBottomWidth: 3, borderColor: '#DDD3C6', alignItems: 'center', justifyContent: 'center' },
+  moreText: { fontSize: 18, fontWeight: '900', color: '#6F655D', marginTop: -4 },
+  addTile: { backgroundColor: '#FFFFFF', borderColor: '#F3B7A9', borderStyle: 'dashed', borderBottomWidth: 3 },
+  addCircle: { width: 64, height: 64, borderRadius: 32, backgroundColor: PLAY.coral.face, borderBottomWidth: 5, borderColor: PLAY.coral.lip, alignItems: 'center', justifyContent: 'center' },
+  addPlus: { fontSize: 40, lineHeight: 44, color: '#FFFFFF', fontWeight: '900' },
+  addText: { fontSize: 17, fontWeight: '900', color: PLAY.coral.lip, marginTop: spacing(1) },
+
+  newTop: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5) },
+  previewCircle: { width: 84, height: 84, borderRadius: 42, backgroundColor: '#FFF4D2', borderWidth: 3, borderBottomWidth: 6, borderColor: '#FFC83D', alignItems: 'center', justifyContent: 'center' },
+  previewEmoji: { fontSize: 48 },
+  newCard: { backgroundColor: '#FFFFFF', borderWidth: 3, borderBottomWidth: 8, borderColor: '#FFC83D', borderRadius: 28, padding: spacing(2), paddingTop: spacing(3.5), marginTop: spacing(1) },
+  label: { fontSize: 16, fontWeight: '900', color: '#5D439B', marginBottom: spacing(1) },
+  input: { backgroundColor: '#FFFDF8', borderWidth: 2.5, borderColor: '#E8D5BA', borderRadius: 18, paddingHorizontal: spacing(2), paddingVertical: spacing(1.75), fontSize: 19, fontWeight: '700', color: colors.ink },
+  chips: { flexDirection: 'row', gap: spacing(1) },
+  chip: { flex: 1, height: 84, borderRadius: 22, backgroundColor: '#FFFFFF', borderWidth: 3, borderBottomWidth: 6, alignItems: 'center', justifyContent: 'center' },
+  chipOn: { transform: [{ translateY: -3 }] },
+  ageIcon: { fontSize: 28 },
+  chipText: { fontSize: 20, fontWeight: '900', marginTop: 2 },
+  backLink: { alignSelf: 'flex-start', minHeight: 44, justifyContent: 'center', paddingHorizontal: spacing(1.75), borderRadius: 999, backgroundColor: '#FFFFFF', borderWidth: 2.5, borderBottomWidth: 4, borderColor: '#F3D9C9' },
+  backLinkText: { color: colors.primary, fontWeight: '900', fontSize: 15 },
+
+  consentRow: { backgroundColor: '#EAF7EF', borderRadius: 22, borderWidth: 2.5, borderBottomWidth: 5, borderColor: '#8FD0A8', paddingVertical: spacing(1.25), paddingHorizontal: spacing(1.5), marginTop: spacing(1) },
+  grownUpTag: { position: 'absolute', top: -13, left: spacing(2), backgroundColor: PLAY.grass.face, borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3 },
+  grownUpTagText: { color: '#FFFFFF', fontSize: 11, fontWeight: '900', letterSpacing: 1 },
+  consentInner: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), marginTop: 4 },
+  consentText: { flex: 1, fontSize: 14, lineHeight: 20, color: '#2B6A45', fontWeight: '700' },
+  learnMore: { color: '#1D57A6', fontWeight: '900', textDecorationLine: 'underline' },
+  errorBanner: { backgroundColor: '#FBE9E7', color: colors.danger, padding: spacing(2), borderRadius: 12, fontSize: 15 },
+  go: { minHeight: 68 },
+  parade: { fontSize: 22, letterSpacing: 3, textAlign: 'center', opacity: 0.85, marginTop: -spacing(1) },
+
   sheetCount: { fontSize: 15, fontWeight: '900', color: colors.inkSoft },
   bookSub: { textAlign: 'center', fontSize: 14, fontWeight: '700', color: colors.inkSoft, marginTop: -spacing(1), marginBottom: spacing(1.5) },
   bookGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 8, paddingBottom: spacing(1) },
@@ -373,36 +453,6 @@ const styles = StyleSheet.create({
   bookEmoji: { fontSize: 30 },
   bookEmojiLocked: { fontSize: 18, fontWeight: '900', color: '#C9BBA7' },
   bookHint: { textAlign: 'center', fontSize: 13, fontWeight: '700', color: colors.inkSoft, marginTop: spacing(1) },
-  tileAge: { fontSize: 13, fontWeight: '700', color: '#75695F', marginTop: 1 },
-  tileCheck: { position: 'absolute', left: 10, top: 10, width: 24, height: 24, borderRadius: 12, backgroundColor: colors.go, alignItems: 'center', justifyContent: 'center' },
-  tileCheckText: { color: '#FFFFFF', fontSize: 14, fontWeight: '900' },
-  moreButton: { position: 'absolute', right: spacing(1.5), top: spacing(1.5), width: 32, height: 32, borderRadius: 16, backgroundColor: 'rgba(255,255,255,0.85)', alignItems: 'center', justifyContent: 'center' },
-  moreText: { fontSize: 18, fontWeight: '900', color: '#6F655D', marginTop: -4 },
-  addTile: { backgroundColor: '#FFFFFF', borderColor: '#E3D4BF', borderStyle: 'dashed', borderWidth: 2 },
-  addPlus: { fontSize: 34, color: colors.primary, fontWeight: '700' },
-  addText: { fontSize: 15, fontWeight: '800', color: colors.primary, marginTop: spacing(0.5) },
-
-  newTop: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5) },
-  previewCircle: { width: 76, height: 76, borderRadius: 38, backgroundColor: '#FFF0D9', borderWidth: 3, borderColor: colors.happy, alignItems: 'center', justifyContent: 'center' },
-  previewEmoji: { fontSize: 44 },
-  newCard: { backgroundColor: '#FFFFFF', borderWidth: 1.5, borderColor: '#EEDFCB', borderRadius: 22, padding: spacing(2) },
-  label: { fontSize: 13, fontWeight: '800', letterSpacing: 0.5, color: '#8B7460', marginBottom: spacing(1) },
-  input: { backgroundColor: '#FFF9F0', borderWidth: 2, borderColor: '#E8D5BA', borderRadius: 16, paddingHorizontal: spacing(2), paddingVertical: spacing(1.75), fontSize: 18, color: colors.ink },
-  ageBlock: { },
-  chips: { flexDirection: 'row', gap: spacing(1) },
-  chip: { flex: 1, height: 76, borderRadius: 18, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: colors.line, alignItems: 'center', justifyContent: 'center' },
-  chipOn: { backgroundColor: colors.happySoft, borderColor: colors.happy },
-  ageIcon: { fontSize: 26 },
-  chipText: { fontSize: 16, fontWeight: '900', color: colors.inkSoft, marginTop: 2 },
-  chipTextOn: { color: '#8A5A0A' },
-  backLink: { alignSelf: 'flex-start', paddingVertical: spacing(0.5) },
-  backLinkText: { color: colors.primary, fontWeight: '800', fontSize: 14 },
-
-  consentRow: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), backgroundColor: '#E5F5EA', borderRadius: 18, borderWidth: 1.5, borderColor: '#A9D7B8', paddingVertical: spacing(1.25), paddingHorizontal: spacing(1.5) },
-  consentText: { flex: 1, fontSize: 14, lineHeight: 20, color: '#34734E', fontWeight: '600' },
-  learnMore: { color: '#2F6F9D', fontWeight: '800', textDecorationLine: 'underline' },
-  errorBanner: { backgroundColor: '#FBE9E7', color: colors.danger, padding: spacing(2), borderRadius: 12, fontSize: 15 },
-
   sheetTitle: { fontSize: 20, fontWeight: '900', color: '#513A27', textAlign: 'center', marginBottom: spacing(1.5) },
   sheetAction: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), minHeight: 58, paddingHorizontal: spacing(1.5), borderRadius: 16 },
   sheetActionPressed: { backgroundColor: colors.bg },

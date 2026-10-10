@@ -9,12 +9,13 @@ import {
   Text,
   TextInput,
   View,
+  useWindowDimensions,
 } from 'react-native';
 import * as AppleAuthentication from 'expo-apple-authentication';
 import Button from '../components/Button';
 import SocialButton from '../components/SocialButton';
-import Owl from '../components/Owl';
-import WelcomeScreen from './WelcomeScreen';
+import { ChunkyButton, OwlStage, PLAY, Ribbon, type PlayColour } from '../components/Playful';
+import WelcomeScreen, { Background, useReduceMotion, useWave } from './WelcomeScreen';
 import { useAuth } from '../auth/AuthContext';
 import { idleMinutes, takeIdleSignOutNotice } from '../auth/idle';
 import { PRIVACY_PATH, openPublicPage } from '../legal';
@@ -133,6 +134,11 @@ export default function LoginScreen() {
     }
   }
 
+  // Owl bobs gently (still when the device asks for reduced motion).
+  const still = useReduceMotion();
+  const bob = useWave(1600, still);
+  const { width } = useWindowDimensions();
+
   if (loading) return <View style={styles.center}><ActivityIndicator color={colors.primary} /></View>;
   if (showWelcome && !verificationEmail) {
     return <WelcomeScreen
@@ -140,26 +146,60 @@ export default function LoginScreen() {
       onParentSignIn={() => { setChosenAdventure(null); setMode('signIn'); setError(null); setShowWelcome(false); }}
     />;
   }
+  // Sign in is sky blue; making a new account is green ("growing" a family account).
+  const joining = mode === 'create' && !verificationEmail;
+  const theme: PlayColour = joining ? 'grass' : 'sky';
+  const tint = PLAY[theme];
   return (
     <KeyboardAvoidingView style={styles.screen} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+      <Background still={still} />
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
           <Pressable
             onPress={() => { setShowWelcome(true); setChosenAdventure(null); setError(null); }}
             accessibilityRole="button"
             accessibilityLabel="Back to activities"
-            style={styles.backButton}
+            style={({ pressed }) => [styles.backButton, pressed && styles.backPressed]}
           >
-            <Text style={styles.backButtonText}>← Activities</Text>
+            <Text style={styles.backButtonText}>← Back to the games</Text>
           </Pressable>
-          <View style={styles.authOwl}><Owl size={76} /></View>
-          <Text style={styles.title}>{chosenAdventure ? `Unlock ${chosenAdventure}` : 'Welcome to KidCog'}</Text>
+
+          <OwlStage
+            width={Math.min(300, width - spacing(6))}
+            owlSize={88}
+            bob={bob}
+            tint={joining ? 'grass' : 'sky'}
+            bubble={chosenAdventure ? 'Almost there! 🎉' : joining ? 'A new friend! 🌱' : 'Welcome back! 👋'}
+          />
+          <Text style={[styles.eyebrow, { color: tint.lip }]}>{joining ? '✨ NEW FAMILY? HOORAY! ✨' : '✨ HI, GROWN-UP! ✨'}</Text>
+          <Text accessibilityRole="header" style={[styles.title, { color: joining ? '#1F7042' : '#1D57A6' }]}>{chosenAdventure ? `Unlock ${chosenAdventure}` : 'Welcome to KidCog'}</Text>
           <Text style={styles.body}>{chosenAdventure
-            ? 'A parent or guardian signs in first. Then the adventure can begin!'
-            : 'Sign in as a parent to keep child nicknames, progress, and activities together.'}</Text>
+            ? 'A grown-up signs in first, then the adventure can begin!'
+            : joining
+              ? 'Make a free parent account. Every game, star and sticker is saved for your kids!'
+              : 'A grown-up signs in here. Then every game, star and sticker is saved for your kids!'}</Text>
+
+          {joining ? (
+            // Sign-up: show the short road ahead.
+            <View style={styles.road} accessibilityRole="text" accessibilityLabel="Three steps: make an account, add your child, play and earn stars.">
+              {([['1', 'Sign up', 'grass'], ['2', 'Add child', 'sun'], ['3', 'Play! ⭐', 'coral']] as const).map(([n, text, colour], i) => (
+                <React.Fragment key={n}>
+                  {i > 0 && width >= 380 ? <Text style={styles.roadArrow}>›</Text> : null}
+                  <View style={[styles.roadStep, i === 0 && { borderColor: PLAY[colour].face, backgroundColor: PLAY[colour].soft }]}>
+                    <View style={[styles.roadNumber, { backgroundColor: PLAY[colour].face, borderColor: PLAY[colour].lip }]}><Text style={[styles.roadNumberText, { color: PLAY[colour].text }]}>{n}</Text></View>
+                    <Text style={styles.roadText}>{text}</Text>
+                  </View>
+                </React.Fragment>
+              ))}
+            </View>
+          ) : null}
 
           {!configured ? <Text style={styles.error}>Supabase is not configured. Copy app/.env.example to app/.env and add your project URL and public key.</Text> : null}
 
+          <View style={[styles.card, { borderColor: tint.face }]}>
+            <Ribbon text={verificationEmail ? '📬 ONE MORE STEP' : joining ? '🌱 FREE FAMILY ACCOUNT' : '🔐 GROWN-UPS SIGN IN HERE'} colour={verificationEmail ? 'sun' : theme} />
+            <Text style={[styles.sticker, styles.stickerLeft]} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">⭐</Text>
+            <Text style={[styles.sticker, styles.stickerRight]} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">{joining ? '🎈' : '🧩'}</Text>
           {verificationEmail ? (
             <View style={styles.verifyCard}>
               <Text style={styles.verifyIcon}>✉️</Text>
@@ -174,16 +214,16 @@ export default function LoginScreen() {
             </View>
           ) : (
             <>
-              <View style={styles.tabs}>
-                <Pressable onPress={() => { setMode('signIn'); setError(null); }} style={[styles.tab, mode === 'signIn' && styles.tabActive]} accessibilityRole="tab" accessibilityState={{ selected: mode === 'signIn' }}>
-                  <Text style={[styles.tabText, mode === 'signIn' && styles.tabTextActive]}>Sign in</Text>
+              <View style={[styles.tabs, { backgroundColor: tint.soft }]}>
+                <Pressable onPress={() => { setMode('signIn'); setError(null); }} style={[styles.tab, mode === 'signIn' && [styles.tabActive, { backgroundColor: PLAY.sky.face, borderColor: PLAY.sky.lip }]]} accessibilityRole="tab" accessibilityState={{ selected: mode === 'signIn' }}>
+                  <Text style={styles.tabIcon}>🔑</Text><Text style={[styles.tabText, mode === 'signIn' && styles.tabTextActive]}>Sign in</Text>
                 </Pressable>
-                <Pressable onPress={() => { setMode('create'); setError(null); }} style={[styles.tab, mode === 'create' && styles.tabActive]} accessibilityRole="tab" accessibilityState={{ selected: mode === 'create' }}>
-                  <Text style={[styles.tabText, mode === 'create' && styles.tabTextActive]}>Create account</Text>
+                <Pressable onPress={() => { setMode('create'); setError(null); }} style={[styles.tab, mode === 'create' && [styles.tabActive, { backgroundColor: PLAY.grass.face, borderColor: PLAY.grass.lip }]]} accessibilityRole="tab" accessibilityState={{ selected: mode === 'create' }}>
+                  <Text style={styles.tabIcon}>🌱</Text><Text style={[styles.tabText, mode === 'create' && styles.tabTextActive]}>Create account</Text>
                 </Pressable>
               </View>
 
-              <Text style={styles.label}>EMAIL</Text>
+              <Text style={[styles.label, { color: tint.lip }]}>📧  Grown-up’s email</Text>
               <TextInput
                 value={email}
                 onChangeText={setEmail}
@@ -194,9 +234,9 @@ export default function LoginScreen() {
                 autoComplete="email"
                 keyboardType="email-address"
                 textContentType="emailAddress"
-                style={styles.input}
+                style={[styles.input, { borderColor: tint.face + '55' }]}
               />
-              <Text style={styles.label}>PASSWORD</Text>
+              <Text style={[styles.label, { color: tint.lip }]}>🔒  Password</Text>
               <View style={styles.passwordRow}>
               <TextInput
                 value={password}
@@ -209,7 +249,7 @@ export default function LoginScreen() {
                 textContentType={mode === 'create' ? 'newPassword' : 'password'}
                 secureTextEntry={!showPassword}
                 onSubmitEditing={() => void submitEmail()}
-                style={[styles.input, styles.passwordInput]}
+                style={[styles.input, styles.passwordInput, { borderColor: tint.face + '55' }]}
               />
               <Pressable
                 onPress={() => setShowPassword(v => !v)}
@@ -218,13 +258,14 @@ export default function LoginScreen() {
                 hitSlop={8}
                 style={styles.showPassword}
               >
-                <Text style={styles.showPasswordText}>{showPassword ? 'Hide' : 'Show'}</Text>
+                <Text style={[styles.showPasswordText, { color: tint.lip }]}>{showPassword ? 'Hide' : 'Show'}</Text>
               </Pressable>
               </View>
               {mode === 'create' ? <Text style={styles.helper}>We’ll email you a link to verify this parent account.</Text> : null}
               {error ? <Text style={styles.error}>{error}</Text> : null}
               {notice ? <Text style={styles.notice}>{notice}</Text> : null}
-              <Button
+              <ChunkyButton
+                colour={mode === 'create' ? 'coral' : 'sky'}
                 title={busy === 'email' ? (mode === 'create' ? 'Creating account…' : 'Signing in…') : (mode === 'create' ? 'Create parent account' : 'Sign in with email')}
                 onPress={() => void submitEmail()}
                 disabled={!configured || busy !== null}
@@ -257,6 +298,11 @@ export default function LoginScreen() {
               ) : null}
             </>
           )}
+          </View>
+          <View style={styles.kidNote}>
+            <Text style={styles.kidNoteIcon}>🧒</Text>
+            <Text style={styles.kidNoteText}>Kids: ask a grown-up to help with this page!</Text>
+          </View>
           <Text style={[type.soft, styles.note]}>This account belongs to the parent or guardian. Children do not sign in.</Text>
           <Pressable onPress={() => openPublicPage(PRIVACY_PATH)} accessibilityRole="link" style={styles.privacyLink}>
             <Text style={styles.privacyText}>Privacy policy</Text>
@@ -268,26 +314,43 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: colors.bg },
+  screen: { flex: 1, backgroundColor: colors.bg, overflow: 'hidden' },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  scroll: { flexGrow: 1, justifyContent: 'center', paddingVertical: spacing(3) },
-  container: { paddingVertical: spacing(4), paddingHorizontal: GUTTER, ...column },
-  authOwl: { alignItems: 'center' },
-  backButton: { alignSelf: 'flex-start', minHeight: 44, justifyContent: 'center', paddingHorizontal: spacing(1), marginBottom: spacing(1) },
+  scroll: { flexGrow: 1, justifyContent: 'center', paddingVertical: spacing(2) },
+  container: { paddingVertical: spacing(2), paddingHorizontal: GUTTER, ...column, maxWidth: 540 },
+  backButton: { alignSelf: 'flex-start', minHeight: 44, justifyContent: 'center', paddingHorizontal: spacing(1.75), borderRadius: 999, backgroundColor: '#FFFFFF', borderWidth: 2.5, borderBottomWidth: 4, borderColor: '#F3D9C9' },
+  backPressed: { borderBottomWidth: 2, marginTop: 2 },
   backButtonText: { color: colors.primary, fontSize: 15, fontWeight: '900' },
-  title: { fontSize: 32, fontWeight: '800', textAlign: 'center', color: colors.primary, marginTop: spacing(1) },
-  body: { ...type.body, textAlign: 'center', marginTop: spacing(2), marginBottom: spacing(3) },
-  tabs: { flexDirection: 'row', backgroundColor: colors.primarySoft, borderRadius: 14, padding: 4, marginBottom: spacing(3) },
-  tab: { flex: 1, minHeight: 46, alignItems: 'center', justifyContent: 'center', borderRadius: 11 },
-  tabActive: { backgroundColor: colors.surface },
-  tabText: { fontSize: 15, fontWeight: '700', color: colors.inkSoft },
-  tabTextActive: { color: colors.primary },
-  label: { ...type.label, marginBottom: spacing(1) },
-  input: { minHeight: 54, borderWidth: 1.5, borderColor: colors.line, borderRadius: 14, backgroundColor: colors.surface, color: colors.ink, fontSize: 17, paddingHorizontal: spacing(2), marginBottom: spacing(2) },
+  eyebrow: { fontSize: 13, letterSpacing: 1.4, fontWeight: '900', textAlign: 'center', marginTop: spacing(0.5) },
+  title: { fontSize: 32, lineHeight: 38, fontWeight: '900', textAlign: 'center', marginTop: 4 },
+  body: { ...type.body, textAlign: 'center', marginTop: spacing(1), color: '#4A3728' },
+
+  road: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: 4, marginTop: spacing(2) },
+  roadStep: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: colors.line, borderRadius: 999, paddingLeft: 4, paddingRight: spacing(1.25), paddingVertical: 4 },
+  roadNumber: { width: 26, height: 26, borderRadius: 13, borderBottomWidth: 2, alignItems: 'center', justifyContent: 'center' },
+  roadNumberText: { fontSize: 13, fontWeight: '900' },
+  roadText: { fontSize: 13, fontWeight: '800', color: colors.ink },
+  roadArrow: { fontSize: 20, fontWeight: '900', color: '#B5A898' },
+
+  card: { marginTop: spacing(4.5), backgroundColor: '#FFFFFF', borderRadius: 30, borderWidth: 4, borderBottomWidth: 9, padding: spacing(2.5), paddingTop: spacing(4) },
+  sticker: { position: 'absolute', fontSize: 30 },
+  stickerLeft: { top: -20, left: -12, transform: [{ rotate: '-14deg' }] },
+  stickerRight: { bottom: -22, right: -10, transform: [{ rotate: '12deg' }] },
+  tabIcon: { fontSize: 16 },
+  kidNote: { flexDirection: 'row', alignItems: 'center', gap: spacing(1), alignSelf: 'center', marginTop: spacing(3.5), paddingVertical: spacing(1), paddingHorizontal: spacing(2), borderRadius: 999, backgroundColor: '#FFF4D2', borderWidth: 2.5, borderBottomWidth: 4, borderColor: '#FFC83D' },
+  kidNoteIcon: { fontSize: 20 },
+  kidNoteText: { flexShrink: 1, fontSize: 14, fontWeight: '800', color: '#7A4E08' },
+  tabs: { flexDirection: 'row', borderRadius: 999, padding: 5, marginBottom: spacing(2.5), gap: 4 },
+  tab: { flex: 1, minHeight: 50, flexDirection: 'row', gap: 6, alignItems: 'center', justifyContent: 'center', borderRadius: 999 },
+  tabActive: { borderBottomWidth: 4 },
+  tabText: { fontSize: 15, fontWeight: '900', color: '#4A5A70' },
+  tabTextActive: { color: '#FFFFFF' },
+  label: { fontSize: 15, fontWeight: '900', marginBottom: spacing(1) },
+  input: { minHeight: 56, borderWidth: 2.5, borderRadius: 18, backgroundColor: '#FFFDF8', color: colors.ink, fontSize: 17, paddingHorizontal: spacing(2), marginBottom: spacing(2) },
   passwordRow: { position: 'relative' },
   passwordInput: { paddingRight: 76 },
-  showPassword: { position: 'absolute', right: spacing(1), top: 0, height: 54, minWidth: 60, alignItems: 'center', justifyContent: 'center', paddingHorizontal: spacing(1) },
-  showPasswordText: { fontSize: 15, fontWeight: '800', color: colors.primary },
+  showPassword: { position: 'absolute', right: spacing(1), top: 0, height: 56, minWidth: 60, alignItems: 'center', justifyContent: 'center', paddingHorizontal: spacing(1) },
+  showPasswordText: { fontSize: 15, fontWeight: '900' },
   helper: { ...type.soft, marginTop: -spacing(1), marginBottom: spacing(2) },
   signInHint: { ...type.soft, textAlign: 'center', marginTop: spacing(2) },
   error: { color: colors.danger, backgroundColor: '#FBE9E7', padding: spacing(2), borderRadius: 12, marginBottom: spacing(2) },
@@ -295,17 +358,17 @@ const styles = StyleSheet.create({
   privacyText: { fontSize: 14, fontWeight: '800', color: colors.inkSoft, textDecorationLine: 'underline' },
   notice: { color: colors.accent, backgroundColor: colors.accentSoft, padding: spacing(2), borderRadius: 12, marginBottom: spacing(2) },
   divider: { flexDirection: 'row', alignItems: 'center', marginVertical: spacing(3) },
-  rule: { flex: 1, height: 1, backgroundColor: colors.line },
+  rule: { flex: 1, height: 2, borderRadius: 1, backgroundColor: colors.line },
   or: { ...type.label, marginHorizontal: spacing(2) },
   // Same height as the other buttons, so Apple is at least as prominent as Google (App Review 4.8).
   appleWrap: { marginBottom: spacing(1.5) },
   appleButton: { width: '100%', height: 52 },
   appleBusy: { opacity: 0.5 },
-  verifyCard: { backgroundColor: colors.surface, borderColor: colors.line, borderWidth: 1.5, borderRadius: 20, padding: spacing(3) },
+  verifyCard: { paddingVertical: spacing(1) },
   verifyIcon: { fontSize: 42, textAlign: 'center', marginBottom: spacing(1) },
   cardTitle: { ...type.heading, textAlign: 'center', marginBottom: spacing(1) },
   cardBody: { ...type.body, textAlign: 'center', marginBottom: spacing(3) },
   textButton: { minHeight: 44, alignItems: 'center', justifyContent: 'center', marginTop: spacing(1) },
   textButtonLabel: { color: colors.accent, fontSize: 15, fontWeight: '700' },
-  note: { textAlign: 'center', marginTop: spacing(3) },
+  note: { textAlign: 'center', marginTop: spacing(1.5) },
 });
