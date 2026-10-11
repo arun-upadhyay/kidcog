@@ -16,21 +16,30 @@ export type OwlMood = 'idle' | 'happy' | 'oops' | 'thinking';
  * `outfit`: what Owl wears. Left out, Owl wears the current child's outfit
  * (OwlOutfitContext); pass null for plain Owl.
  */
-export default function Owl({ mood = 'idle', size = 72, outfit, still = false }: { mood?: OwlMood; size?: number; outfit?: OwlOutfit | null; /** No hop or bob (a calm, steady Owl). */ still?: boolean }) {
+export default function Owl({ mood = 'idle', size = 72, outfit, still = false, talking = false }: { talking?: boolean; mood?: OwlMood; size?: number; outfit?: OwlOutfit | null; /** No hop or bob (a calm, steady Owl). */ still?: boolean }) {
   const childOutfit = useOwlOutfit();
   const wearing = outfit === undefined ? childOutfit : outfit;
   const lift = useRef(new Animated.Value(0)).current;
   const tilt = useRef(new Animated.Value(0)).current;
   const [blink, setBlink] = useState(false);
+  const [beakOpen, setBeakOpen] = useState(false);
+  useEffect(() => {
+    setBeakOpen(false);
+    if (!talking || still) return;
+    const timer = setInterval(() => setBeakOpen(v => !v), 180);
+    return () => clearInterval(timer);
+  }, [talking, still]);
 
   // Blink every few seconds, like it's alive.
   useEffect(() => {
+    if (still) { setBlink(false); return; }
+    let blinkTimer: ReturnType<typeof setTimeout>;
     const timer = setInterval(() => {
       setBlink(true);
-      setTimeout(() => setBlink(false), 140);
+      blinkTimer = setTimeout(() => setBlink(false), 140);
     }, 3200);
-    return () => clearInterval(timer);
-  }, []);
+    return () => { clearInterval(timer); clearTimeout(blinkTimer); };
+  }, [still]);
 
   useEffect(() => {
     lift.stopAnimation();
@@ -97,7 +106,7 @@ export default function Owl({ mood = 'idle', size = 72, outfit, still = false }:
               <Circle cx="642" cy="506" r="20" fill="#FFFFFF" />
             </>
           )}
-          <Path d="M470 640 L554 640 L512 712 Z" fill="#E8724F" stroke="#E8724F" strokeWidth={18} strokeLinejoin="round" />
+          <Path d={beakOpen ? "M470 640 L554 640 L512 738 Z" : "M470 640 L554 640 L512 712 Z"} fill="#E8724F" stroke="#E8724F" strokeWidth={18} strokeLinejoin="round" />
           {mood === 'oops' ? <Path d="M470 740 q42 -26 84 0" fill="none" stroke="#4E3590" strokeWidth={16} strokeLinecap="round" /> : null}
           {wearing ? <OwlAccessories outfit={wearing} /> : null}
         </Svg>

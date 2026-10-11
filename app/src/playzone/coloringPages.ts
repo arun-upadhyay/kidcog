@@ -7,9 +7,10 @@
  */
 export type Part = { d: string; at: [number, number] };
 export type ColoringPage = { key: string; name: string; emoji: string; group: GroupKey; parts: Part[]; lines?: string[]; caption?: string };
-export type GroupKey = 'abc' | 'animals' | 'space' | 'music' | 'shapes' | 'go' | 'yummy' | 'seasons';
+export type GroupKey = 'people' | 'abc' | 'animals' | 'space' | 'music' | 'shapes' | 'go' | 'yummy' | 'seasons';
 
 export const GROUPS: { key: GroupKey; name: string; emoji: string }[] = [
+  { key: 'people', name: 'People', emoji: '🦸' },
   { key: 'abc', name: 'ABC', emoji: '🔤' },
   { key: 'animals', name: 'Animals', emoji: '🦁' },
   { key: 'space', name: 'Space', emoji: '🚀' },
@@ -298,6 +299,72 @@ export const PAGES: ColoringPage[] = [
     heart(50, 48, 22),
     heart(24, 24, 6), heart(76, 76, 6),
   ] },
+  // People & dress-up: detailed chibi characters to colour. Original KidCog art.
+  { key: 'hero', name: 'Superhero', emoji: '🦸', group: 'people', parts: [
+    poly([[37, 46], [27, 90], [50, 82], [73, 90], [63, 46]]),
+    rect(41, 62, 7, 22, 3), rect(52, 62, 7, 22, 3),
+    rect(39, 80, 10, 12, 3), rect(51, 80, 10, 12, 3),
+    rect(26, 46, 9, 18, 4), rect(65, 46, 9, 18, 4),
+    circle(30, 64, 5), circle(70, 64, 5),
+    rect(35, 44, 30, 20, 9),
+    rect(37, 60, 26, 10, 4),
+    rect(35, 58, 30, 5, 2),
+    star(50, 52, 6),
+    rect(46, 39, 8, 6, 1),
+    circle(50, 26, 16),
+    path('M34 24 Q50 15 66 24 Q66 31 59 31 Q54 27 50 29 Q46 27 41 31 Q34 31 34 24Z', [50, 25]),
+  ], lines: ['M44 25.5 a1.4 1.4 0 1 0 0.1 0', 'M56 25.5 a1.4 1.4 0 1 0 0.1 0', 'M45 34 Q50 38 55 34'] },
+  { key: 'princess', name: 'Princess', emoji: '👑', group: 'people', parts: [
+    path('M33 20 Q50 5 67 20 Q70 42 61 48 L58 30 Q50 22 42 30 L39 48 Q30 42 33 20Z', [50, 30]),
+    poly([[37, 52], [27, 86], [73, 86], [63, 52]]),
+    rect(40, 44, 20, 11, 4),
+    circle(35, 48, 6), circle(65, 48, 6),
+    rect(31, 50, 6, 13, 3), rect(63, 50, 6, 13, 3),
+    circle(34, 63, 3.8), circle(66, 63, 3.8),
+    ellipse(44, 85, 5, 3), ellipse(56, 85, 5, 3),
+    rect(46, 39, 8, 6, 1),
+    circle(50, 27, 15),
+    poly([[40, 14], [43, 8], [47, 14], [50, 6], [53, 14], [57, 8], [60, 14], [60, 18], [40, 18]], [50, 13]),
+  ], lines: ['M45 27 a1.4 1.4 0 1 0 0.1 0', 'M55 27 a1.4 1.4 0 1 0 0.1 0', 'M46 33 Q50 37 54 33', 'M30 80 Q50 74 70 80'] },
+  { key: 'astronaut', name: 'Astronaut', emoji: '🚀', group: 'people', parts: [
+    rect(33, 43, 34, 24, 6),
+    rect(37, 43, 26, 24, 8),
+    rect(27, 46, 9, 18, 4), rect(64, 46, 9, 18, 4),
+    circle(30, 64, 5), circle(70, 64, 5),
+    rect(41, 65, 8, 19, 3), rect(51, 65, 8, 19, 3),
+    rect(39, 81, 10, 11, 3), rect(51, 81, 10, 11, 3),
+    rect(37, 61, 26, 5, 2),
+    circle(50, 52, 5),
+    circle(50, 25, 18),
+    ellipse(50, 26, 12, 10),
+  ], lines: ['M43 21 Q46 19 49 21', 'M62 11 L66 6', 'M66 6 a2 2 0 1 0 0.1 0'] },
+  { key: 'robot', name: 'Robot', emoji: '🤖', group: 'people', parts: [
+    circle(50, 8, 3),
+    rect(35, 13, 30, 25, 5),
+    rect(41, 20, 7, 7, 1), rect(52, 20, 7, 7, 1),
+    rect(42, 30, 16, 4, 1),
+    rect(46, 38, 8, 5, 1),
+    rect(32, 43, 36, 26, 6),
+    rect(40, 48, 20, 14, 2),
+    circle(45, 53, 2.5), circle(55, 53, 2.5),
+    rect(24, 45, 8, 18, 3), rect(68, 45, 8, 18, 3),
+    rect(22, 61, 11, 8, 2), rect(67, 61, 11, 8, 2),
+    rect(40, 69, 8, 15, 2), rect(52, 69, 8, 15, 2),
+    rect(37, 82, 12, 8, 2), rect(51, 82, 12, 8, 2),
+  ], lines: ['M50 13 L50 11', 'M46 30 L46 34 M50 30 L50 34 M54 30 L54 34', 'M50 59 a4 4 0 1 0 0.1 0'] },
+  { key: 'pirate', name: 'Pirate', emoji: '🏴‍☠️', group: 'people', parts: [
+    circle(50, 29, 15),
+    path('M34 16 Q50 11 66 16 L66 25 Q50 29 34 25Z', [50, 20]),
+    poly([[65, 17], [75, 13], [73, 22], [78, 27], [68, 25]], [71, 20]),
+    rect(36, 45, 28, 22, 8),
+    rect(27, 47, 9, 18, 4), rect(64, 47, 9, 18, 4),
+    circle(31, 64, 4.5), circle(69, 64, 4.5),
+    rect(41, 65, 8, 18, 3), rect(51, 65, 8, 18, 3),
+    rect(38, 81, 11, 11, 3), rect(51, 81, 11, 11, 3),
+    rect(36, 58, 28, 5, 2),
+    rect(47, 57, 6, 7, 1),
+    ellipse(44, 28, 4, 3),
+  ], lines: ['M48 25 L58 21', 'M56 29 a1.4 1.4 0 1 0 0.1 0', 'M47 35 Q51 38 55 35', 'M50 45 L50 58', 'M46 19 a1 1 0 1 0 0.1 0', 'M54 19 a1 1 0 1 0 0.1 0'] },
 ];
 
 /** The crayons: bright, with names a child knows. */

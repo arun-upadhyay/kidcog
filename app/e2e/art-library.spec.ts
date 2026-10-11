@@ -61,7 +61,7 @@ async function artMusic(page: Page) {
 test('Coloring Book: pick a picture, colour it, and it is saved on the shelf', async ({ page }, info) => {
   await artMusic(page);
   await page.getByRole('button', { name: 'Open Coloring Book', exact: true }).click();
-  await expect(page.getByRole('button', { name: /^Colour / })).toHaveCount(PAGES.filter(p => p.group === 'abc').length);
+  await expect(page.getByRole('button', { name: /^Colour / })).toHaveCount(PAGES.filter(p => p.group === 'people').length);
   await page.getByRole('tab', { name: /Space/ }).click();
   await expect(page.getByRole('button', { name: 'Colour Rocket', exact: true })).toBeVisible();
   await page.getByRole('tab', { name: /ABC/ }).click();
@@ -69,12 +69,10 @@ test('Coloring Book: pick a picture, colour it, and it is saved on the shelf', a
   await page.getByRole('radio', { name: 'Crayon blue' }).click();
   const apple = PAGES.find(p => p.key === 'apple')!;
   const canvas = (await page.getByTestId('coloring-canvas').boundingBox())!;
-  const pad = 8 + 3; // canvas padding + border
-  const size = canvas.width - pad * 2;
   const [x, y] = apple.parts[0]!.at;
-  await page.mouse.click(canvas.x + pad + (x / 100) * size, canvas.y + pad + (y / 100) * size);
+  await page.mouse.click(canvas.x + (x / 100) * canvas.width, canvas.y + (y / 100) * canvas.height);
   await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem('kidcog.coloring.v1.e2e-child') ?? '{}').apple?.[0])).toBe('#3E7EE0');
-  await page.getByRole('button', { name: '✨ Surprise me!' }).click();
+  await page.getByRole('button', { name: 'Surprise me!' }).click();
   await expect(page.getByText('✨ Ta-da! A surprise picture!')).toBeVisible();
   await page.screenshot({ path: info.outputPath('coloring.png') });
   await page.getByRole('button', { name: 'Back to the coloring book' }).click();
@@ -192,4 +190,19 @@ test('Alphabet Paint paints, erases, undoes, redoes and reopens saved artwork', 
   const overflow = await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth);
   expect(overflow).toBe(false);
   expect(errors).toEqual([]);
+});
+
+test('Coloring Book: character pages can be scribbled on in Draw mode', async ({ page }) => {
+  await artMusic(page);
+  await page.getByRole('button', { name: 'Open Coloring Book', exact: true }).click();
+  // "People" is the default group; it holds the character pages.
+  await page.getByRole('button', { name: 'Colour Superhero', exact: true }).click();
+  await page.getByRole('radio', { name: 'Crayon red' }).click();
+  await page.getByRole('button', { name: 'Draw', exact: true }).click();
+  const c = (await page.getByTestId('coloring-canvas').boundingBox())!;
+  await page.mouse.move(c.x + c.width * 0.3, c.y + c.height * 0.4);
+  await page.mouse.down();
+  await page.mouse.move(c.x + c.width * 0.6, c.y + c.height * 0.6, { steps: 8 });
+  await page.mouse.up();
+  await expect.poll(() => page.evaluate(() => (JSON.parse(localStorage.getItem('kidcog.coloring.draw.v1.e2e-child') ?? '{}').hero ?? []).length)).toBeGreaterThan(0);
 });

@@ -1,58 +1,88 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import Svg, { Path, Text as SvgText } from 'react-native-svg';
+import { Animated, Pressable, StyleSheet, Text, View, useWindowDimensions, type GestureResponderEvent } from 'react-native';
+import Svg, { Path, Polyline, Text as SvgText } from 'react-native-svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { playSound } from '../games/sounds';
+import { playSound, useSoundEffects } from '../games/sounds';
 import { speak, stopSpeaking } from '../speech';
 import { CRAYONS, GROUPS, PAGES, type ColoringPage, type GroupKey } from './coloringPages';
-import { useNative, useUsableHeight } from './common';
+import { useNative, useScrollLock, useUsableHeight } from './common';
 import { useBackHandler } from '../backHandler';
 
 /**
- * The Coloring Book: pick a picture, pick a crayon, tap a part to colour it.
- * Big crayons (each says its colour when tapped), Undo, Start over, and a
- * "Surprise me!" that colours the whole picture at once. Every picture is
- * saved on this device for the child as they go, and shows its colours on
- * the book's shelf.
+ * The Coloring Book: pick a picture, pick a crayon, and either tap a part to
+ * fill it (🪣 Fill) or scribble over the picture with the pencil (✏️ Draw).
+ * The colours live in a strip down the right of a big canvas, so little hands
+ * never scroll to reach them. Owl says what to do when a picture opens. Both
+ * the fills and the scribbles are saved on this device for the child.
  */
+type Stroke = { color: string; points: [number, number][] };
 type Saved = Record<string, string[]>;
+type Draws = Record<string, Stroke[]>;
 const storeKey = (childId: string) => `kidcog.coloring.v1.${childId}`;
+const drawKey = (childId: string) => `kidcog.coloring.draw.v1.${childId}`;
 
-function Picture({ page, fills, size, onPart }: { page: ColoringPage; fills: string[]; size: number; onPart?: (i: number) => void }) {
+function Picture({ page, fills, strokes, size, onPart }: { page: ColoringPage; fills: string[]; strokes?: Stroke[]; size: number; onPart?: (i: number) => void }) {
+  const sw = size < 120 ? 1.6 : 1.1;
   return (
     <Svg width={size} height={size} viewBox="0 0 100 100">
       {page.parts.map((part, i) => (
-        <Path key={i} d={part.d} fill={fills[i] ?? '#FFFFFF'} stroke="#3F3550" strokeWidth={size < 120 ? 1.6 : 1.1} strokeLinejoin="round" onPress={onPart ? () => onPart(i) : undefined} />
+        <Path key={i} d={part.d} fill={fills[i] ?? '#FFFFFF'} stroke="#3F3550" strokeWidth={sw} strokeLinejoin="round" onPress={onPart ? () => onPart(i) : undefined} />
       ))}
-      {page.lines?.map((d, i) => <Path key={`l${i}`} d={d} fill="none" stroke="#3F3550" strokeWidth={size < 120 ? 1.6 : 1.1} strokeLinecap="round" />)}
+      {strokes?.map((s, i) => <Polyline key={`s${i}`} points={s.points.map(p => p.join(',')).join(' ')} fill="none" stroke={s.color} strokeWidth={3.6} strokeLinecap="round" strokeLinejoin="round" />)}
+      {page.lines?.map((d, i) => <Path key={`l${i}`} d={d} fill="none" stroke="#3F3550" strokeWidth={sw} strokeLinecap="round" />)}
       {page.caption && size >= 120 ? <SvgText x={50} y={8} fontSize={6.5} fontWeight="900" fontFamily="Arial, Helvetica, sans-serif" fill="#3F3550" textAnchor="middle">{page.caption}</SvgText> : null}
     </Svg>
+  );
+}
+
+/** A picture button for a tool (kids read the icon, grown-ups the word). */
+function Tool({ icon, label, onPress, on, off, danger, done, style }: { icon: string; label: string; onPress: () => void; on?: boolean; off?: boolean; danger?: boolean; done?: boolean; style?: object }) {
+  return (
+    <Pressable onPress={onPress} disabled={off} accessibilityRole="button" accessibilityLabel={label} accessibilityState={{ selected: !!on, disabled: !!off }}
+      style={({ pressed }) => [styles.tool, on && styles.toolOn, danger && styles.toolMagic, done && styles.toolDone, off && styles.toolOff, style, pressed && styles.pressed]}>
+      <Text style={styles.toolIcon}>{icon}</Text>
+      <Text style={[styles.toolText, (on || danger || done) && { color: '#FFFFFF' }]}>{label}</Text>
+    </Pressable>
   );
 }
 
 export default function ColoringBook({ childId }: { childId: string }) {
   const { width } = useWindowDimensions();
   const height = useUsableHeight();
-  const [group, setGroup] = useState<GroupKey>('abc');
+  const lock = useScrollLock();
+  const sounds = useSoundEffects();
+  const [group, setGroup] = useState<GroupKey>('people');
   const [open, setOpen] = useState<ColoringPage | null>(null);
   useBackHandler(4, () => setOpen(null), open !== null);
   const [saved, setSaved] = useState<Saved>({});
+  const [draws, setDraws] = useState<Draws>({});
   const [crayon, setCrayon] = useState(0);
+  const [mode, setMode] = useState<'fill' | 'draw'>('fill');
   const [history, setHistory] = useState<string[][]>([]);
   const [notice, setNotice] = useState<string | null>(null);
+  const [panelW, setPanelW] = useState(0);
   const sparkle = useRef(new Animated.Value(0)).current;
+  const live = useRef(true);
+  useEffect(() => { live.current = true; return () => { live.current = false; lock(false); stopSpeaking(); }; }, [lock]);
 
   useEffect(() => {
     AsyncStorage.getItem(storeKey(childId)).then(raw => { if (raw) setSaved(JSON.parse(raw) as Saved); }).catch(() => {});
+    AsyncStorage.getItem(drawKey(childId)).then(raw => { if (raw) setDraws(JSON.parse(raw) as Draws); }).catch(() => {});
   }, [childId]);
   const save = (next: Saved) => { setSaved(next); AsyncStorage.setItem(storeKey(childId), JSON.stringify(next)).catch(() => {}); };
+  const saveDraws = (next: Draws) => { setDraws(next); AsyncStorage.setItem(drawKey(childId), JSON.stringify(next)).catch(() => {}); };
+
+  // A short spoken "how to" when a picture opens (device voice, only when sound is on).
+  useEffect(() => {
+    if (!open || !sounds) return;
+    const t = setTimeout(() => void speak('Pick a colour, then tap a part to fill it. Or use the pencil to draw!', { voice: 'device' }), 450);
+    return () => { clearTimeout(t); stopSpeaking(); };
+  }, [open?.key, sounds]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fills = open ? saved[open.key] ?? [] : [];
+  const strokes = open ? draws[open.key] ?? [] : [];
   const setFills = (next: string[]) => { if (open) { setHistory(h => [...h.slice(-30), fills]); save({ ...saved, [open.key]: next }); } };
-  const pop = () => {
-    sparkle.setValue(0);
-    Animated.timing(sparkle, { toValue: 1, duration: 600, useNativeDriver: useNative }).start();
-  };
+  const pop = () => { sparkle.setValue(0); Animated.timing(sparkle, { toValue: 1, duration: 600, useNativeDriver: useNative }).start(); };
 
   function colour(i: number) {
     const next = [...fills]; next[i] = CRAYONS[crayon]!.hex;
@@ -64,10 +94,39 @@ export default function ColoringBook({ childId }: { childId: string }) {
     setFills(open.parts.map(() => CRAYONS[Math.floor(Math.random() * 10)]!.hex));
     playSound('whoosh'); setNotice('✨ Ta-da! A surprise picture!'); pop();
   }
-  function pickCrayon(i: number) {
-    setCrayon(i);
-    stopSpeaking(); void speak(CRAYONS[i]!.name, { voice: 'device' });
+  function pickCrayon(i: number) { setCrayon(i); stopSpeaking(); void speak(CRAYONS[i]!.name, { voice: 'device' }); }
+
+  // Free scribbling (✏️ Draw): drags become coloured lines over the picture.
+  const canvasSize = useRef(300);
+  const at = (e: GestureResponderEvent): [number, number] => [
+    Math.max(0, Math.min(100, (e.nativeEvent.locationX / canvasSize.current) * 100)),
+    Math.max(0, Math.min(100, (e.nativeEvent.locationY / canvasSize.current) * 100)),
+  ];
+  function beginStroke(e: GestureResponderEvent) {
+    if (!open) return;
+    lock(true);
+    const p = at(e);
+    saveDraws({ ...draws, [open.key]: [...strokes, { color: CRAYONS[crayon]!.hex, points: [p, [p[0] + 0.1, p[1] + 0.1]] }] });
+    setNotice(null);
   }
+  function moveStroke(e: GestureResponderEvent) {
+    if (!open) return;
+    const p = at(e);
+    const last = strokes[strokes.length - 1];
+    if (!last || last.points.length > 400) return;
+    saveDraws({ ...draws, [open.key]: [...strokes.slice(0, -1), { ...last, points: [...last.points, p] }] });
+  }
+  function undo() {
+    if (!open) return;
+    if (mode === 'draw' && strokes.length) { saveDraws({ ...draws, [open.key]: strokes.slice(0, -1) }); return; }
+    const prev = history[history.length - 1];
+    if (prev) { save({ ...saved, [open.key]: prev }); setHistory(h => h.slice(0, -1)); }
+  }
+  function startOver() {
+    if (!open) return;
+    setFills([]); saveDraws({ ...draws, [open.key]: [] }); setNotice('A fresh page!');
+  }
+  function done() { playSound('yay'); setOpen(null); }
 
   if (!open) {
     const pages = PAGES.filter(p => p.group === group);
@@ -76,6 +135,7 @@ export default function ColoringBook({ childId }: { childId: string }) {
     return (
       <View style={styles.panel}>
         <Text style={styles.title}>🖍️ Pick a picture to colour!</Text>
+        <Text style={styles.subtitle}>Tap a picture, then fill it in with colours or draw with the pencil ✏️</Text>
         <View style={styles.groups}>
           {GROUPS.map(g => (
             <Pressable key={g.key} onPress={() => setGroup(g.key)} accessibilityRole="tab" accessibilityState={{ selected: g.key === group }}
@@ -87,9 +147,9 @@ export default function ColoringBook({ childId }: { childId: string }) {
         </View>
         <View style={styles.shelf}>
           {pages.map(page => (
-            <Pressable key={page.key} onPress={() => { setOpen(page); setHistory([]); setNotice(null); }} accessibilityRole="button" accessibilityLabel={`Colour ${page.name}`}
+            <Pressable key={page.key} onPress={() => { setOpen(page); setHistory([]); setNotice(null); setMode('fill'); }} accessibilityRole="button" accessibilityLabel={`Colour ${page.name}`}
               style={({ pressed }) => [styles.pageTile, { width: tile }, pressed && styles.pressed]}>
-              <View style={styles.pageArt}><Picture page={page} fills={saved[page.key] ?? []} size={tile - 24} /></View>
+              <View style={styles.pageArt}><Picture page={page} fills={saved[page.key] ?? []} strokes={draws[page.key]} size={tile - 24} /></View>
               <Text style={styles.pageName} numberOfLines={1}>{page.emoji} {page.name}</Text>
             </Pressable>
           ))}
@@ -98,43 +158,64 @@ export default function ColoringBook({ childId }: { childId: string }) {
     );
   }
 
-  const canvas = Math.floor(Math.max(220, Math.min(width - 48, 560, height - 300)));
+  // Coloring a picture: big canvas on the left, colours + pencil down the right.
+  const railW = width >= 560 ? 176 : width >= 400 ? 116 : 96;
+  const swatch = width >= 560 ? 48 : 40;
+  const availW = (panelW || Math.min(width, 840)) - 28 - railW - 12;
+  const canvas = Math.floor(Math.max(220, Math.min(availW, height - 150, 820)));
+  canvasSize.current = canvas;
   return (
-    <View style={styles.panel}>
+    <View style={styles.panel} onLayout={e => setPanelW(e.nativeEvent.layout.width)}>
       <View style={styles.topRow}>
-        <Pressable onPress={() => setOpen(null)} accessibilityRole="button" accessibilityLabel="Back to the coloring book" style={({ pressed }) => [styles.tool, pressed && styles.pressed]}>
-          <Text style={styles.toolText}>📚 Book</Text>
+        <Pressable onPress={() => setOpen(null)} accessibilityRole="button" accessibilityLabel="Back to the coloring book" style={({ pressed }) => [styles.backBtn, pressed && styles.pressed]}>
+          <Text style={styles.toolIcon}>📚</Text><Text style={styles.toolText}>Book</Text>
         </Pressable>
         <Text style={styles.pageTitle} numberOfLines={1}>{open.emoji} {open.name}</Text>
       </View>
 
-      <View style={[styles.canvas, { width: canvas + 16, height: canvas + 16 }]} accessibilityLabel={`Colouring ${open.name}`} testID="coloring-canvas">
-        <Picture page={open} fills={fills} size={canvas} onPart={colour} />
-        <Animated.Text pointerEvents="none" style={[styles.sparkle, { opacity: sparkle.interpolate({ inputRange: [0, 0.2, 1], outputRange: [0, 1, 0] }), transform: [{ scale: sparkle.interpolate({ inputRange: [0, 1], outputRange: [0.6, 1.6] }) }] }]}>✨</Animated.Text>
-      </View>
+      <View style={styles.studio}>
+        <View style={styles.canvasFrame}>
+          <View
+            style={{ width: canvas, height: canvas, overflow: 'hidden' }}
+            accessibilityLabel={`Colouring ${open.name}`}
+            testID="coloring-canvas"
+            onStartShouldSetResponder={() => mode === 'draw'}
+            onMoveShouldSetResponder={() => mode === 'draw'}
+            onResponderGrant={beginStroke}
+            onResponderMove={moveStroke}
+            onResponderRelease={() => lock(false)}
+            onResponderTerminate={() => lock(false)}
+            onResponderTerminationRequest={() => false}
+          >
+            <Picture page={open} fills={fills} strokes={strokes} size={canvas} onPart={mode === 'fill' ? colour : undefined} />
+            <Animated.Text pointerEvents="none" style={[styles.sparkle, { opacity: sparkle.interpolate({ inputRange: [0, 0.2, 1], outputRange: [0, 1, 0] }), transform: [{ scale: sparkle.interpolate({ inputRange: [0, 1], outputRange: [0.6, 1.6] }) }] }]}>✨</Animated.Text>
+          </View>
+        </View>
 
-      <View style={styles.crayons} accessibilityRole="radiogroup">
-        {CRAYONS.map((c, i) => (
-          <Pressable key={c.name} onPress={() => pickCrayon(i)} accessibilityRole="radio" accessibilityLabel={`Crayon ${c.name}`} accessibilityState={{ checked: i === crayon }}
-            style={[styles.crayon, { backgroundColor: c.hex }, c.hex === '#FFFFFF' && styles.crayonWhite, i === crayon && styles.crayonOn]}>
-            {i === crayon ? <Text style={[styles.crayonTick, c.hex === '#FFFFFF' || c.hex === '#FFD54A' ? { color: '#3F3550' } : null]}>✓</Text> : null}
-          </Pressable>
-        ))}
+        {/* The right rail: pencil / bucket, then every colour — always on screen. */}
+        <View style={[styles.rail, { width: railW }]}>
+          <View style={styles.modeRow}>
+            <Tool icon="🪣" label="Fill" on={mode === 'fill'} onPress={() => setMode('fill')} style={styles.modeBtn} />
+            <Tool icon="✏️" label="Draw" on={mode === 'draw'} onPress={() => setMode('draw')} style={styles.modeBtn} />
+          </View>
+          <View style={styles.palette} accessibilityRole="radiogroup">
+            {CRAYONS.map((c, i) => (
+              <Pressable key={c.name} onPress={() => pickCrayon(i)} accessibilityRole="radio" accessibilityLabel={`Crayon ${c.name}`} accessibilityState={{ checked: i === crayon }}
+                style={[styles.crayon, { width: swatch, height: swatch, borderRadius: swatch / 2, backgroundColor: c.hex }, c.hex === '#FFFFFF' && styles.crayonWhite, i === crayon && styles.crayonOn]}>
+                {i === crayon ? <Text style={[styles.crayonTick, c.hex === '#FFFFFF' || c.hex === '#FFD54A' ? { color: '#3F3550' } : null]}>✓</Text> : null}
+              </Pressable>
+            ))}
+          </View>
+        </View>
       </View>
 
       <View style={styles.tools}>
-        <Pressable onPress={() => { const prev = history[history.length - 1]; if (prev && open) { save({ ...saved, [open.key]: prev }); setHistory(h => h.slice(0, -1)); } }}
-          disabled={!history.length} accessibilityRole="button" style={({ pressed }) => [styles.tool, !history.length && styles.toolOff, pressed && styles.pressed]}>
-          <Text style={styles.toolText}>↶ Undo</Text>
-        </Pressable>
-        <Pressable onPress={() => { setFills([]); setNotice('A fresh page!'); }} accessibilityRole="button" style={({ pressed }) => [styles.tool, pressed && styles.pressed]}>
-          <Text style={styles.toolText}>🧽 Start over</Text>
-        </Pressable>
-        <Pressable onPress={surprise} accessibilityRole="button" style={({ pressed }) => [styles.tool, styles.toolMagic, pressed && styles.pressed]}>
-          <Text style={[styles.toolText, { color: '#FFFFFF' }]}>✨ Surprise me!</Text>
-        </Pressable>
+        <Tool icon="↩️" label="Undo" off={mode === 'draw' ? !strokes.length : !history.length} onPress={undo} />
+        <Tool icon="🧽" label="Start over" onPress={startOver} />
+        <Tool icon="✨" label="Surprise me!" danger onPress={surprise} />
+        <Tool icon="✓" label="Done" done onPress={done} />
       </View>
-      <Text style={styles.notice} accessibilityLiveRegion="polite">{notice ?? 'Pick a crayon, then tap the picture. Your colours are saved!'}</Text>
+      <Text style={styles.notice} accessibilityLiveRegion="polite">{notice ?? (mode === 'draw' ? 'Scribble on the picture with your pencil! ✏️' : 'Pick a colour, then tap a part to fill it. 🪣')}</Text>
     </View>
   );
 }
@@ -143,8 +224,9 @@ export default function ColoringBook({ childId }: { childId: string }) {
 export const PAGE_BY_KEY = Object.fromEntries(PAGES.map(p => [p.key, p]));
 
 const styles = StyleSheet.create({
-  panel: { alignItems: 'center', gap: 14, backgroundColor: 'rgba(255,255,255,0.88)', borderRadius: 28, padding: 14 },
+  panel: { alignItems: 'center', gap: 12, backgroundColor: 'rgba(255,255,255,0.88)', borderRadius: 28, padding: 14 },
   title: { fontSize: 22, fontWeight: '900', color: '#53347E', textAlign: 'center' },
+  subtitle: { fontSize: 15, fontWeight: '700', color: '#6A58A0', textAlign: 'center', marginTop: -6 },
   groups: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 8 },
   group: { alignItems: 'center', minWidth: 74, paddingVertical: 6, paddingHorizontal: 10, borderRadius: 20, backgroundColor: '#FFFFFF', borderWidth: 2.5, borderBottomWidth: 5, borderColor: '#D9CCFA' },
   groupOn: { backgroundColor: '#7650C7', borderColor: '#54369A' },
@@ -156,19 +238,27 @@ const styles = StyleSheet.create({
   pageArt: { borderRadius: 14, overflow: 'hidden', backgroundColor: '#FFFFFF' },
   pageName: { fontSize: 14, fontWeight: '900', color: '#3F3126', maxWidth: '100%' },
   topRow: { alignSelf: 'stretch', flexDirection: 'row', alignItems: 'center', gap: 10 },
-  pageTitle: { flex: 1, fontSize: 22, fontWeight: '900', color: '#53347E', textAlign: 'center' },
-  canvas: { padding: 8, backgroundColor: '#FFFFFF', borderRadius: 24, borderWidth: 3, borderBottomWidth: 7, borderColor: '#D9CCFA', alignItems: 'center', justifyContent: 'center' },
-  sparkle: { position: 'absolute', fontSize: 120 },
-  crayons: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 8, maxWidth: 560 },
-  crayon: { width: 46, height: 46, borderRadius: 23, borderWidth: 3, borderColor: 'rgba(0,0,0,0.12)', alignItems: 'center', justifyContent: 'center' },
+  pageTitle: { flex: 1, minWidth: 120, fontSize: 22, fontWeight: '900', color: '#53347E', textAlign: 'center' },
+  studio: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'center', gap: 12, alignSelf: 'stretch' },
+  rail: { alignItems: 'center', gap: 10 },
+  modeRow: { flexDirection: 'row', gap: 8, flexWrap: 'wrap', justifyContent: 'center' },
+  modeBtn: { minWidth: 54 },
+  palette: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 8 },
+  canvasFrame: { padding: 0, backgroundColor: '#FFFFFF', borderRadius: 24, borderWidth: 3, borderBottomWidth: 7, borderColor: '#D9CCFA', overflow: 'hidden' },
+  sparkle: { position: 'absolute', fontSize: 120, alignSelf: 'center', top: '30%' },
+  crayon: { borderWidth: 3, borderColor: 'rgba(0,0,0,0.12)', alignItems: 'center', justifyContent: 'center' },
   crayonWhite: { borderColor: '#D9CCFA' },
-  crayonOn: { borderColor: '#3F3550', borderWidth: 4, transform: [{ scale: 1.15 }] },
+  crayonOn: { borderColor: '#3F3550', borderWidth: 4, transform: [{ scale: 1.12 }] },
   crayonTick: { fontSize: 20, fontWeight: '900', color: '#FFFFFF' },
   tools: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 10 },
-  tool: { minHeight: 48, justifyContent: 'center', paddingHorizontal: 16, borderRadius: 999, backgroundColor: '#FFFFFF', borderWidth: 2.5, borderBottomWidth: 5, borderColor: '#D9CCFA' },
+  tool: { minWidth: 72, minHeight: 60, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 12, borderRadius: 18, backgroundColor: '#FFFFFF', borderWidth: 2.5, borderBottomWidth: 5, borderColor: '#D9CCFA' },
+  toolOn: { backgroundColor: '#7650C7', borderColor: '#54369A' },
   toolMagic: { backgroundColor: '#E5533D', borderColor: '#B23A27' },
+  toolDone: { backgroundColor: '#2F9A5B', borderColor: '#1F7042' },
   toolOff: { opacity: 0.45 },
-  toolText: { fontSize: 16, fontWeight: '900', color: '#53347E' },
+  toolIcon: { fontSize: 24 },
+  toolText: { fontSize: 13, fontWeight: '900', color: '#53347E' },
+  backBtn: { minHeight: 48, flexDirection: 'row', alignItems: 'center', gap: 4, justifyContent: 'center', paddingHorizontal: 14, borderRadius: 999, backgroundColor: '#FFFFFF', borderWidth: 2.5, borderBottomWidth: 5, borderColor: '#D9CCFA' },
   notice: { fontSize: 16, fontWeight: '800', color: '#5A4B66', textAlign: 'center' },
   pressed: { transform: [{ scale: 0.95 }] },
 });

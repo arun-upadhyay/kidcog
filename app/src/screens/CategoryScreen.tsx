@@ -8,7 +8,8 @@ import JourneyMap from '../components/JourneyMap';
 import type { ChildProgress } from '../progress';
 import Button from '../components/Button';
 import PlayerBar from '../components/PlayerBar';
-import { ChunkyButton, OwlStage, PLAY, Ribbon, WaveBand } from '../components/Playful';
+import AdventureGuide from '../components/AdventureGuide';
+import { ChunkyButton, PLAY, Ribbon, WaveBand } from '../components/Playful';
 import { fetchCategories } from '../api';
 import { colors, spacing, column, GUTTER, CONTENT_MAX_WIDTH } from '../theme';
 import type { TraitKey, TraitMetaPublic, Report } from '../types';
@@ -196,7 +197,7 @@ export default function CategoryScreen({ childName, childAvatar, onSelect, onPre
 
       {/* Owl asks the big question */}
       <View style={[styles.hero, wideHero && styles.heroWide]}>
-        <OwlStage width={stageWidth} owlSize={Math.round(stageWidth * 0.3)} tint="sun" bubble="What’s next? 🌈" />
+        <AdventureGuide name={childName} width={stageWidth} reduceMotion={reduceMotion} games={!!onPlayZone} animals={!!onAnimals} art={!!onArtMusic} />
         <View style={[styles.heroCopy, wideHero && styles.heroCopyWide]}>
           <Text style={[styles.eyebrow, wideHero && styles.leftText]}>✨ PICK AN ADVENTURE ✨</Text>
           <Text accessibilityRole="header" style={[styles.heroTitle, wideHero && styles.heroTitleWide]}>What shall we explore?</Text>
