@@ -1,3 +1,4 @@
+import CorrectAnswerCelebration from '../components/CorrectAnswerCelebration';
 import React, { useMemo, useState } from 'react';
 import { Modal, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import Button from '../components/Button';
@@ -116,6 +117,7 @@ function Quiz({ level, onExit, onBack, onMeet, onDone, onLevel }: {
   const [solved, setSolved] = useState<'first' | 'later' | 'shown' | null>(null);
   // A different fun fact each time (all are true; variety keeps it fresh).
   const [factIndex, setFactIndex] = useState(randomFact);
+  const [celebration, setCelebration] = useState(0);
   const [firstTry, setFirstTry] = useState(0);
   const [won, setWon] = useState<number | null>(null);
   const { width } = useWindowDimensions();
@@ -127,6 +129,7 @@ function Quiz({ level, onExit, onBack, onMeet, onDone, onLevel }: {
     if (solved || wrong.includes(key)) return;
     if (key === q.answer) {
       playSound('yay');
+      setCelebration(n => n + 1);
       setSolved(wrong.length === 0 ? 'first' : 'later');
       if (wrong.length === 0) setFirstTry(n => n + 1);
       onMeet(q.about);
@@ -168,6 +171,7 @@ function Quiz({ level, onExit, onBack, onMeet, onDone, onLevel }: {
 
   return (
     <View style={styles.screen}>
+      <CorrectAnswerCelebration nonce={celebration} />
       <TopBar title="❓ Animal quiz" backLabel="← Explorer" onBack={onExit} right={`${index + 1} / ${round.length}`} />
       <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollBody} onScroll={onHeaderScroll} scrollEventThrottle={16}>
         {!started ? (

@@ -381,3 +381,21 @@ test('switching player is one tap away on the activities and Play Zone pages', a
   await page.getByRole('button', { name: 'Switch player', exact: true }).click();
   await expect(page.getByRole('radio', { name: 'Test Explorer, age 5', exact: true })).toBeVisible();
 });
+
+test('correct mystery answers celebrate across the viewport and can be dismissed', async ({ page }) => {
+  await games(page);
+  await page.getByRole('button', { name: 'Play Animal Explorer', exact: true }).click();
+  await page.getByRole('button', { name: /Animal sounds\. Tap/ }).click();
+  await page.getByRole('tab', { name: /Guess who/ }).click();
+  await page.getByRole('button', { name: /Play a mystery sound/ }).click();
+  const choices = page.getByRole('button', { name: /^Play real .* sound$/ });
+  const reward = page.getByRole('button', { name: 'Great job! Continue', exact: true });
+  for (let i = 0; i < await choices.count(); i++) {
+    await choices.nth(i).click();
+    try { await expect(reward).toBeVisible({ timeout: 350 }); break; } catch { /* Try the next animal after an incorrect answer. */ }
+  }
+  await inViewport(page, reward);
+  await page.screenshot({ path: '/private/tmp/kidcog-celebration-' + test.info().project.name + '.png' });
+  await reward.click();
+  await expect(reward).toBeHidden();
+});

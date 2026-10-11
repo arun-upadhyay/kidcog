@@ -1,3 +1,4 @@
+import CorrectAnswerCelebration from '../components/CorrectAnswerCelebration';
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Easing, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { playSound } from '../games/sounds';
@@ -47,7 +48,8 @@ function Cell({ animal, pulse, onPress, width }: { animal: Animal; pulse: Pulse 
         Animated.timing(shake, { toValue: 0, duration: 60, useNativeDriver: useNative }))).start();
       return;
     }
-    setBubbleText(pulse.kind === 'right' ? '🎉 Yes!' : `${animal.says}!`);
+    if (pulse.kind === 'right') return;
+    setBubbleText(`${animal.says}!`);
     jump.setValue(0); bubble.setValue(0);
     Animated.parallel([
       Animated.sequence([
@@ -81,35 +83,6 @@ function Cell({ animal, pulse, onPress, width }: { animal: Animal; pulse: Pulse 
         }]}>{animal.emoji}</Animated.Text>
         <Text style={styles.cellLabel} numberOfLines={1}>{animal.name}</Text>
       </Pressable>
-    </View>
-  );
-}
-
-/** A little burst of stars when a mystery animal is found. */
-function Burst({ id }: { id: number }) {
-  const t = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    if (!id) return;
-    t.setValue(0);
-    Animated.timing(t, { toValue: 1, duration: 900, easing: Easing.out(Easing.cubic), useNativeDriver: useNative }).start();
-  }, [id, t]);
-  if (!id) return null;
-  const bits = ['⭐', '🎉', '✨', '🌟', '🎈', '✨', '⭐', '🎉'];
-  return (
-    <View style={styles.burst} pointerEvents="none">
-      {bits.map((b, i) => {
-        const angle = (i / bits.length) * Math.PI * 2;
-        return (
-          <Animated.Text key={i} style={[styles.burstBit, {
-            opacity: t.interpolate({ inputRange: [0, 0.7, 1], outputRange: [1, 1, 0] }),
-            transform: [
-              { translateX: t.interpolate({ inputRange: [0, 1], outputRange: [0, Math.cos(angle) * 120] }) },
-              { translateY: t.interpolate({ inputRange: [0, 1], outputRange: [0, Math.sin(angle) * 90] }) },
-              { scale: t.interpolate({ inputRange: [0, 0.3, 1], outputRange: [0.4, 1.3, 1] }) },
-            ],
-          }]}>{b}</Animated.Text>
-        );
-      })}
     </View>
   );
 }
@@ -160,6 +133,7 @@ export default function SoundBoard() {
 
   return (
     <View style={{ gap: spacing(1.5) }}>
+      <CorrectAnswerCelebration nonce={burst} />
       <View style={styles.modes} accessibilityRole="tablist">
         {([['free', '🎵 Tap and listen'], ['guess', '❓ Guess who']] as const).map(([key, label]) => (
           <Pressable key={key} onPress={() => { setMode(key); setMystery(null); setFound(false); }} accessibilityRole="tab" accessibilityState={{ selected: mode === key }}
@@ -171,7 +145,7 @@ export default function SoundBoard() {
 
       {mode === 'guess' ? (
         <View style={styles.guessCard}>
-          <Burst id={burst} />
+
           {!mystery ? (
             <>
               <Text style={styles.guessTitle}>Listen to a mystery sound, then find the animal!</Text>
