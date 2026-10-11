@@ -6,6 +6,7 @@ import * as AppleAuthentication from 'expo-apple-authentication';
 import * as Crypto from 'expo-crypto';
 import type { Provider, Session } from '@supabase/supabase-js';
 import { supabase, supabaseConfigured } from './supabase';
+import { callbackErrorFromUrl, describeAuthError } from './callbackError';
 import { saveAppleAuthorizationCode } from '../api';
 import { clearIdleNotice, markActive } from './idle';
 
@@ -15,6 +16,8 @@ type AuthValue = {
   session: Session | null;
   loading: boolean;
   configured: boolean;
+  callbackError: string | null;
+  clearCallbackError: () => void;
   signIn: (provider: Extract<Provider, 'google' | 'apple' | 'facebook'>) => Promise<void>;
   /** Native Apple sheet on iPhone; browser sign-in elsewhere. Resolves quietly if the parent cancels. */
   signInWithApple: () => Promise<void>;
@@ -40,19 +43,35 @@ function leaveCallbackUrl() {
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  const [callbackError, setCallbackError] = useState<string | null>(() =>
+    Platform.OS === 'web' && typeof window !== 'undefined' ? callbackErrorFromUrl(window.location.href) : null);
+
 
   useEffect(() => {
     if (!supabaseConfigured) { setLoading(false); return; }
-    void supabase.auth.getSession().then(({ data }) => {
+    let active = true;
+    void (async () => {
+      // getSession() alone does not expose failures from the initial OAuth code exchange.
+      const initialized = await supabase.auth.initialize();
+      const { data, error } = await supabase.auth.getSession();
+      if (!active) return;
       setSession(data.session);
+      if (data.session) {
+        setCallbackError(null);
+        leaveCallbackUrl();
+      } else if (initialized.error || error) {
+        setCallbackError(describeAuthError(initialized.error || error));
+      }
       setLoading(false);
-      if (data.session) leaveCallbackUrl();
+    })().catch(error => {
+      if (active) { setCallbackError(describeAuthError(error)); setLoading(false); }
     });
     const { data } = supabase.auth.onAuthStateChange((_event, next) => {
+      if (!active) return;
       setSession(next);
-      if (next) leaveCallbackUrl();
+      if (next) { setCallbackError(null); leaveCallbackUrl(); }
     });
-    return () => data.subscription.unsubscribe();
+    return () => { active = false; data.subscription.unsubscribe(); };
   }, []);
 
   useEffect(() => {
@@ -64,7 +83,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const code = typeof parsed.queryParams?.code === 'string' ? parsed.queryParams.code : null;
       if (!code) return;
       const { error } = await supabase.auth.exchangeCodeForSession(code);
-      if (error) console.warn('Could not finish email verification:', error.message);
+      if (error) setCallbackError(describeAuthError(error));
     }
 
     void Linking.getInitialURL().then(finishEmailVerification);
@@ -77,6 +96,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   async function signIn(provider: Extract<Provider, 'google' | 'apple' | 'facebook'>) {
     if (!supabaseConfigured) throw new Error('Add the Supabase public settings to app/.env first.');
     // Signing in counts as activity for the automatic sign-out (see idle.ts).
+    setCallbackError(null);
     markActive(true); void clearIdleNotice();
     const redirectTo = Linking.createURL('auth/callback');
     const { data, error } = await supabase.auth.signInWithOAuth({
@@ -88,6 +108,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (Platform.OS === 'web' || !data.url) return;
     const result = await WebBrowser.openAuthSessionAsync(data.url, redirectTo);
     if (result.type !== 'success') return;
+    const failure = callbackErrorFromUrl(result.url);
+    if (failure) throw new Error(failure);
     const parsed = Linking.parse(result.url);
     const code = typeof parsed.queryParams?.code === 'string' ? parsed.queryParams.code : null;
     if (!code) throw new Error('The sign-in provider did not return an authorization code.');
@@ -177,13 +199,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   const value = useMemo<AuthValue>(() => ({
-    session, loading, configured: supabaseConfigured, signIn, signInWithApple,
+    session, loading, callbackError, clearCallbackError: () => setCallbackError(null), configured: supabaseConfigured, signIn, signInWithApple,
     signInWithEmail,
     signUpWithEmail,
     resendVerification,
     updatePassword,
     signOut: async () => { const { error } = await supabase.auth.signOut(); if (error) throw error; },
-  }), [session, loading]);
+  }), [session, loading, callbackError]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

@@ -22,9 +22,9 @@ import { colors, spacing, type, column, GUTTER } from '../theme';
 import { useBackHandler } from '../backHandler';
 
 export default function LoginScreen() {
-  const { loading, configured, signIn, signInWithApple, signInWithEmail, signUpWithEmail, resendVerification } = useAuth();
+  const { loading, configured, callbackError, clearCallbackError, signIn, signInWithApple, signInWithEmail, signUpWithEmail, resendVerification } = useAuth();
   const [mode, setMode] = useState<'signIn' | 'create'>('signIn');
-  const [showWelcome, setShowWelcome] = useState(true);
+  const [showWelcome, setShowWelcome] = useState(() => !callbackError);
   // Browser Back on the sign-in page returns to the welcome page instead of leaving the site.
   useBackHandler(1, () => { setShowWelcome(true); setError(null); }, !showWelcome);
   const [email, setEmail] = useState('');
@@ -45,7 +45,10 @@ export default function LoginScreen() {
   const showFacebook = process.env.EXPO_PUBLIC_FACEBOOK_SIGNIN === '1';
   const socialNames = [showApple && 'Apple', 'Google', showFacebook && 'Facebook'].filter(Boolean) as string[];
   const socialList = socialNames.length > 1 ? `${socialNames.slice(0, -1).join(', ')} or ${socialNames[socialNames.length - 1]}` : socialNames[0]!;
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(callbackError);
+  useEffect(() => {
+    if (callbackError) { setError(callbackError); setMode('signIn'); setShowWelcome(false); }
+  }, [callbackError]);
   const [verificationEmail, setVerificationEmail] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   // Explain an automatic sign-out once, so it does not look like a fault.
@@ -73,27 +76,28 @@ export default function LoginScreen() {
   }
 
   async function startApple() {
-    setBusy('apple'); setError(null); setNotice(null);
+    setBusy('apple'); clearCallbackError(); setError(null); setNotice(null);
     try { await signInWithApple(); }
     catch (err) { showError(err); }
     finally { setBusy(null); }
   }
 
   async function startGoogle() {
-    setBusy('google'); setError(null); setNotice(null);
+    setBusy('google'); clearCallbackError(); setError(null); setNotice(null);
     try { await signIn('google'); }
     catch (err) { showError(err); }
     finally { setBusy(null); }
   }
 
   async function startFacebook() {
-    setBusy('facebook'); setError(null); setNotice(null);
+    setBusy('facebook'); clearCallbackError(); setError(null); setNotice(null);
     try { await signIn('facebook'); }
     catch (err) { showError(err); }
     finally { setBusy(null); }
   }
 
   async function submitEmail() {
+    clearCallbackError();
     const normalizedEmail = email.trim().toLowerCase();
     setError(null); setNotice(null);
     if (!/^\S+@\S+\.\S+$/.test(normalizedEmail)) {

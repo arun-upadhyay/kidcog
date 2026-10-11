@@ -14,7 +14,7 @@ test('activity preview leads to parent sign-up and back', async ({ page }) => {
   await numberSnake.hover();
   await expect.poll(() => numberSnake.evaluate(element => getComputedStyle(element).borderTopWidth)).toBe('4px');
   await numberSnake.click();
-  await expect(page.getByText('Unlock Number Snake', { exact: true })).toBeVisible({ timeout: 1000 });
+  await expect(page.getByRole('tab', { name: '🌱 Create account', exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Create parent account' })).toBeVisible();
 
   await page.getByRole('button', { name: 'Back to activities' }).click();
@@ -22,7 +22,7 @@ test('activity preview leads to parent sign-up and back', async ({ page }) => {
   const parentSignIn = page.getByRole('button', { name: 'Parent sign in', exact: true });
   await expect(parentSignIn).toHaveCount(2);
   await parentSignIn.first().click();
-  await expect(page.getByText('Welcome to KidCog', { exact: true })).toBeVisible();
+  await expect(page.getByRole('tab', { name: '🔑 Sign in', exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Sign in with email' })).toBeVisible();
 });
 
