@@ -68,9 +68,11 @@ test('Coloring Book: pick a picture, colour it, and it is saved on the shelf', a
   await page.getByRole('button', { name: 'Colour A is for Apple', exact: true }).click();
   await page.getByRole('radio', { name: 'Crayon blue' }).click();
   const apple = PAGES.find(p => p.key === 'apple')!;
-  const canvas = (await page.getByTestId('coloring-canvas').boundingBox())!;
+  const canvasEl = page.getByTestId('coloring-canvas');
+  await canvasEl.scrollIntoViewIfNeeded();
+  const canvas = (await canvasEl.boundingBox())!;
   const [x, y] = apple.parts[0]!.at;
-  await page.mouse.click(canvas.x + (x / 100) * canvas.width, canvas.y + (y / 100) * canvas.height);
+  await canvasEl.click({ position: { x: (x / 100) * canvas.width, y: (y / 100) * canvas.height } });
   await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem('kidcog.coloring.v1.e2e-child') ?? '{}').apple?.[0])).toBe('#3E7EE0');
   await page.getByRole('button', { name: 'Surprise me!' }).click();
   await expect(page.getByText('✨ Ta-da! A surprise picture!')).toBeVisible();
@@ -199,10 +201,32 @@ test('Coloring Book: character pages can be scribbled on in Draw mode', async ({
   await page.getByRole('button', { name: 'Colour Superhero', exact: true }).click();
   await page.getByRole('radio', { name: 'Crayon red' }).click();
   await page.getByRole('button', { name: 'Draw', exact: true }).click();
-  const c = (await page.getByTestId('coloring-canvas').boundingBox())!;
+  const drawCanvas = page.getByTestId('coloring-canvas');
+  await drawCanvas.scrollIntoViewIfNeeded();
+  const c = (await drawCanvas.boundingBox())!;
   await page.mouse.move(c.x + c.width * 0.3, c.y + c.height * 0.4);
   await page.mouse.down();
   await page.mouse.move(c.x + c.width * 0.6, c.y + c.height * 0.6, { steps: 8 });
   await page.mouse.up();
   await expect.poll(() => page.evaluate(() => (JSON.parse(localStorage.getItem('kidcog.coloring.draw.v1.e2e-child') ?? '{}').hero ?? []).length)).toBeGreaterThan(0);
+});
+
+test('Coloring Book: the rainbow picker fills with a custom colour', async ({ page }) => {
+  await artMusic(page);
+  await page.getByRole('button', { name: 'Open Coloring Book', exact: true }).click();
+  await page.getByRole('tab', { name: /ABC/ }).click();
+  await page.getByRole('button', { name: 'Colour A is for Apple', exact: true }).click();
+  await page.getByRole('button', { name: 'More colours', exact: true }).click();
+  const shade = page.getByRole('button', { name: /^Colour #/ }).nth(20);
+  const hex = (await shade.getAttribute('aria-label'))!.replace('Colour ', '').toLowerCase();
+  await shade.click();
+  // The picker closes; the chosen colour is now the one in hand.
+  await expect(page.getByRole('button', { name: 'More colours', exact: true })).toBeVisible();
+  const canvasEl = page.getByTestId('coloring-canvas');
+  await canvasEl.scrollIntoViewIfNeeded();
+  const box = (await canvasEl.boundingBox())!;
+  const apple = PAGES.find(p => p.key === 'apple')!;
+  const [x, y] = apple.parts[0]!.at;
+  await canvasEl.click({ position: { x: (x / 100) * box.width, y: (y / 100) * box.height } });
+  await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem('kidcog.coloring.v1.e2e-child') ?? '{}').apple?.[0]?.toLowerCase())).toBe(hex);
 });
