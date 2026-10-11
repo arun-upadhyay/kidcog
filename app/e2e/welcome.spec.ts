@@ -25,3 +25,11 @@ test('activity preview leads to parent sign-up and back', async ({ page }) => {
   await expect(page.getByText('Welcome to KidCog', { exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Sign in with email' })).toBeVisible();
 });
+
+test('browser Back from the sign-in page returns to the welcome page', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Parent sign in', exact: true }).first().click();
+  await expect(page.getByRole('button', { name: 'Sign in with email' })).toBeVisible();
+  await page.goBack();
+  await expect(page.getByRole('heading', { name: 'Ready for a little adventure?' })).toBeVisible();
+});

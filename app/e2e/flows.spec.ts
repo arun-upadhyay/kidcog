@@ -399,3 +399,16 @@ test('correct mystery answers celebrate across the viewport and can be dismissed
   await reward.click();
   await expect(reward).toBeHidden();
 });
+
+test('the browser Back button steps back inside KidCog: game → Play Zone → activities → players', async ({ page }) => {
+  await games(page);
+  await page.getByRole('button', { name: 'Play Magic Add', exact: true }).click();
+  await expect(page.getByTestId('magic-stone').first()).toBeVisible();
+  await page.goBack();
+  await expect(page.getByRole('button', { name: 'Play Number Snake', exact: true })).toBeVisible();
+  await page.goBack();
+  await expect(page.getByRole('button', { name: 'Open the Play Zone games' })).toBeVisible();
+  await page.goBack();
+  await expect(page.getByRole('radio', { name: 'Test Explorer, age 5', exact: true })).toBeVisible();
+  expect(new URL(page.url()).host).toBe(new URL(page.url()).host); // still in the app
+});

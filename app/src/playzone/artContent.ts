@@ -4,6 +4,7 @@ export const PALETTE = [
   { name: 'Blue', hex: '#63A9E6' }, { name: 'Purple', hex: '#9472CE' },
 ];
 export const ACTIVITIES = [
+  { key: 'alphabet', name: 'Alphabet Paint', emoji: '🎨', group: 'Art', text: 'Color big letters and pictures with a brush, pencil and paint bucket.' },
   { key: 'book', name: 'Coloring Book', emoji: '📚', group: 'Art', text: '39 pictures to colour: animals, space, music, food and more!' },
   { key: 'rainbow', name: 'Rainbow Letters', emoji: '🌈', group: 'Art', text: 'Trace ABC, abc, numbers, words and shapes in rainbow ink.' },
   { key: 'calm', name: 'Calm Bubbles', emoji: '🫧', group: 'Music', text: 'Pop soft bubbles, hear their colours and breathe slowly.' },

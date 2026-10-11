@@ -6,6 +6,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AccessibilityInfo, Animated, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import Owl from '../components/Owl';
 import PlayerBar from '../components/PlayerBar';
+import { useBackHandler } from '../backHandler';
 import type { ChildProgress } from '../progress';
 import { colors, column, spacing, GUTTER } from '../theme';
 import { GameScene, ScrollLockContext, type GameKey } from '../playzone/common';
@@ -158,6 +159,8 @@ export default function PlayZoneScreen({ childId, childName, childAvatar, onSwit
 
   // A game opened straight from the activities page goes back there; one picked here goes back to this list.
   const leaveGame = () => { if (initialGame && playing === initialGame) onBack(); else setPlaying(null); };
+  // Browser Back / Android back inside a game: leave the game (see backHandler.ts).
+  useBackHandler(2, leaveGame, playing !== null);
 
   if (playing) {
     const props = {

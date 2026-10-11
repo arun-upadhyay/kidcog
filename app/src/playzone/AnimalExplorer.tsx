@@ -13,6 +13,7 @@ import { colors, spacing } from '../theme';
 import { WinCard } from './common';
 import { useAppHeaderScroll } from '../headerScroll';
 import SoundBoard from './SoundBoard';
+import { useBackHandler } from '../backHandler';
 
 /**
  * Animal Explorer: a picture quiz about animals, a sound board, and an album
@@ -42,6 +43,7 @@ export default function AnimalExplorer({ level: startLevel, found, onBack, onFin
 
   const meet = (key: string) => { if (!met.has(key)) onFound([key]); };
   const leave = () => { stopSpeaking(); setMode('hub'); };
+  useBackHandler(3, leave, mode !== 'hub');
 
   if (mode === 'quiz') {
     return <Quiz level={level} onExit={leave} onBack={onBack} onMeet={meet}

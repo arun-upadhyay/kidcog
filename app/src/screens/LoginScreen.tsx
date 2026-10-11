@@ -19,11 +19,14 @@ import { useAuth } from '../auth/AuthContext';
 import { idleMinutes, takeIdleSignOutNotice } from '../auth/idle';
 import { PRIVACY_PATH, openPublicPage } from '../legal';
 import { colors, spacing, type, column, GUTTER } from '../theme';
+import { useBackHandler } from '../backHandler';
 
 export default function LoginScreen() {
   const { loading, configured, signIn, signInWithApple, signInWithEmail, signUpWithEmail, resendVerification } = useAuth();
   const [mode, setMode] = useState<'signIn' | 'create'>('signIn');
   const [showWelcome, setShowWelcome] = useState(true);
+  // Browser Back on the sign-in page returns to the welcome page instead of leaving the site.
+  useBackHandler(1, () => { setShowWelcome(true); setError(null); }, !showWelcome);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);

@@ -1,3 +1,4 @@
+import AlphabetPaint from './AlphabetPaint';
 import { isAudioFocused } from '../audioFocus';
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Easing } from 'react-native';
@@ -13,6 +14,7 @@ import { useReduceMotion } from '../screens/WelcomeScreen';
 import ColoringBook from './ColoringBook';
 import RainbowLetters from './RainbowLetters';
 import CalmBubbles from './CalmBubbles';
+import { useBackHandler } from '../backHandler';
 
 function Action({ title, onPress, selected = false, disabled = false }: { title: string; onPress: () => void; selected?: boolean; disabled?: boolean }) {
  return <Pressable accessibilityRole="button" accessibilityState={{ selected, disabled }} aria-selected={selected} disabled={disabled} onPress={onPress} style={[styles.action, selected && styles.selected, disabled && { opacity: .4 }]}><Text style={styles.actionText}>{title}</Text></Pressable>;
@@ -136,8 +138,10 @@ function MusicStudio({ mode }: {mode:'piano'|'beats'|'songs'}) {
  </View>;
 }
 export default function ArtMusic({childId,onBack,onDots}:{childId:string;onBack:()=>void;onDots:()=>void}) {
- const [activity,setActivity]=useState<Activity|null>(null);const [filter,setFilter]=useState('All'); const {width}=useWindowDimensions();
+ const [activity,setActivity]=useState<Activity|null>(null);
+ useBackHandler(3, () => setActivity(null), activity !== null);const [filter,setFilter]=useState('All'); const {width}=useWindowDimensions();
  const selected=ACTIVITIES.find(a=>a.key===activity);
+ if(activity==='alphabet')return <View style={[styles.root,{maxWidth:1180}]}><AlphabetPaint childId={childId} onBack={()=>setActivity(null)}/></View>;
  return <View style={styles.root}>
   <Action title={activity?'← Art & Music':'← Games'} onPress={()=>activity?setActivity(null):onBack()}/>
   <View style={styles.hero}><Text style={styles.heroIcon}>{selected?.emoji??'🎨 🎵'}</Text><Text accessibilityRole="header" style={styles.heading}>{selected?.name??'Art & Music'}</Text><Text style={styles.subtitle}>{selected?.text??'A little imagination. A whole world to make.'}</Text></View>

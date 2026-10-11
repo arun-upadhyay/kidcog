@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Modal, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useReduceMotion } from '../screens/WelcomeScreen';
 
-/** Viewport-wide reward, visible even when the answer is far down a scroll view. */
-export default function CorrectAnswerCelebration({ nonce }: { nonce: number }) {
+/** Viewport-wide reward, visible even when the answer is far down a scroll view. */export default function CorrectAnswerCelebration({ nonce, message = "You got it right!" }: { nonce: number; message?: string }) {
   const [visible, setVisible] = useState(false);
   const motion = useRef(new Animated.Value(0)).current;
   const still = useReduceMotion();
@@ -32,7 +31,7 @@ export default function CorrectAnswerCelebration({ nonce }: { nonce: number }) {
       <Pressable accessibilityRole="button" accessibilityLabel="Great job! Continue" onPress={() => setVisible(false)} style={styles.card}>
         <Text style={styles.bigStar}>🌟</Text>
         <Text accessibilityRole="header" accessibilityLiveRegion="polite" style={styles.title}>Great job!</Text>
-        <Text style={styles.subtitle}>You got it right!</Text>
+        <Text style={styles.subtitle}>{message}</Text>
         <Text style={styles.hint}>Tap to continue</Text>
       </Pressable>
     </View>

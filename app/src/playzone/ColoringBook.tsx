@@ -6,6 +6,7 @@ import { playSound } from '../games/sounds';
 import { speak, stopSpeaking } from '../speech';
 import { CRAYONS, GROUPS, PAGES, type ColoringPage, type GroupKey } from './coloringPages';
 import { useNative, useUsableHeight } from './common';
+import { useBackHandler } from '../backHandler';
 
 /**
  * The Coloring Book: pick a picture, pick a crayon, tap a part to colour it.
@@ -34,6 +35,7 @@ export default function ColoringBook({ childId }: { childId: string }) {
   const height = useUsableHeight();
   const [group, setGroup] = useState<GroupKey>('abc');
   const [open, setOpen] = useState<ColoringPage | null>(null);
+  useBackHandler(4, () => setOpen(null), open !== null);
   const [saved, setSaved] = useState<Saved>({});
   const [crayon, setCrayon] = useState(0);
   const [history, setHistory] = useState<string[][]>([]);

@@ -24,6 +24,7 @@ import { forgetProgress, loadProgress, recordAnimalsFound, recordArcade, recordO
 import { OwlOutfitContext } from './src/components/owlOutfits';
 import BreakSheet, { BREAK_AFTER_MS } from './src/components/BreakSheet';
 import RoundDoneOverlay from './src/components/RoundDoneOverlay';
+import { useBackHandler } from './src/backHandler';
 import { colors } from './src/theme';
 import type { ChildProfile, HistoricalAssessment, Report, ResponseInput, SavedChildProfile, TestPayload, TraitKey } from './src/types';
 
@@ -287,6 +288,25 @@ function KidCogApp() {
       { text: 'Leave', style: 'destructive', onPress: leave },
     ]);
   }, [busy, stage, restart]);
+
+  /**
+   * The browser's Back button and Android's back button go one step back
+   * inside KidCog instead of leaving it: Play Zone → activities → "Who's
+   * playing today?". Leaving a round asks first, like the quiz's Leave button.
+   */
+  const stepBack = useCallback(() => {
+    if (busy) return;
+    if (stage === 'quiz') {
+      const message = 'Answers so far will not be saved.';
+      if (Platform.OS === 'web') { if (globalThis.confirm(`Leave this activity?\n\n${message}`)) leaveQuiz(); return; }
+      Alert.alert('Leave this activity?', message, [{ text: 'Keep playing', style: 'cancel' }, { text: 'Leave', style: 'destructive', onPress: leaveQuiz }]);
+      return;
+    }
+    if (stage === 'playzone' || stage === 'results') { stopSpeaking(); setStage('categories'); return; }
+    if (stage === 'historical_result') { setStage('history'); return; }
+    restart();
+  }, [busy, stage, leaveQuiz, restart]);
+  useBackHandler(1, stepBack, stage !== 'start');
   /** Delete the parent account, then leave this device signed out. */
   const removeAccount = useCallback(async () => {
     const result = await deleteAccount();
