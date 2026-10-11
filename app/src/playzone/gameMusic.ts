@@ -1,3 +1,4 @@
+import { isAudioFocused, subscribeAudioFocus } from '../audioFocus';
 import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createAudioPlayer, type AudioPlayer } from 'expo-audio';
@@ -49,9 +50,13 @@ export function useGameMusic(track: MusicTrack | null) {
       player = createAudioPlayer(TRACKS[track]);
       player.loop = true;
       player.volume = VOLUME;
-      player.play();
+      if (isAudioFocused()) player.play();
     } catch { /* music is a nice-to-have; never break a game over it */ }
+    const unsubscribe = subscribeAudioFocus(active => {
+      try { if (active) player?.play(); else player?.pause(); } catch { /* Optional audio. */ }
+    });
     return () => {
+      unsubscribe();
       try { player?.pause(); player?.remove(); } catch { /* ignore */ }
     };
   }, [playing, track]);

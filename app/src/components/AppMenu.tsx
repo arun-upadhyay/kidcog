@@ -293,7 +293,7 @@ export default function AppMenu({ screen, accountEmail, accountProviders, accoun
               <>
                 {onHome ? (
                   <Pressable onPress={() => { closeMenu(); onHome(); }} accessibilityRole="button" accessibilityLabel="Go to the home page" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
-                    <Text style={styles.menuActionIcon}>🏠</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>Home</Text><Text style={type.soft}>Back to choosing a child</Text></View><Text style={styles.chevron}>›</Text>
+                    <Text style={styles.menuActionIcon}>👥</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>Switch player</Text><Text style={type.soft}>Back to “Who’s playing today?”</Text></View><Text style={styles.chevron}>›</Text>
                   </Pressable>
                 ) : null}
                 <View style={styles.menuAction}>

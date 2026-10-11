@@ -121,3 +121,25 @@ test('Music & Movement has the new sing-alongs', async ({ page }) => {
   await page.getByRole('button', { name: 'Zoo Parade', exact: true }).click();
   await expect(page.getByText('The lion goes ROAR and shakes his hair.')).toBeVisible();
 });
+
+test('Rainbow Tracing: tools sit beside the canvas, thick ink, and stars fall when a shape is traced', async ({ page }, info) => {
+  await artMusic(page);
+  await page.getByRole('button', { name: 'Open Rainbow Tracing', exact: true }).click();
+  await page.getByRole('button', { name: 'Star', exact: true }).click();
+  const canvas = page.getByTestId('art-canvas');
+  await canvas.scrollIntoViewIfNeeded();
+  const box = (await canvas.boundingBox())!;
+  // The tools are right next to the canvas: no scrolling needed to reach them.
+  for (const name of ['Thin brush', 'Thick brush', 'Eraser', 'Undo', 'Start over', 'Save picture', 'Load saved picture']) {
+    await expect(page.getByRole('button', { name, exact: true })).toBeInViewport();
+  }
+  const star = Array.from({ length: 11 }, (_, i) => { const a = (i * 36 - 90) * Math.PI / 180; const r = i % 2 ? 18 : 39; return [50 + Math.cos(a) * r, 50 + Math.sin(a) * r]; });
+  const at = ([x, y]: number[]) => [box.x + (x! / 100) * box.width, box.y + (y! / 100) * box.height] as const;
+  await page.mouse.move(...at(star[0]!));
+  await page.mouse.down();
+  for (const p of star.slice(1)) await page.mouse.move(...at(p), { steps: 6 });
+  await page.mouse.up();
+  await expect(page.getByText('⭐ Great tracing! You traced Star!')).toBeVisible();
+  await page.waitForTimeout(500);
+  await page.screenshot({ path: info.outputPath('tracing.png') });
+});

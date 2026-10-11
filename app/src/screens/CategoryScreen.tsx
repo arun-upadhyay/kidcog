@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import JourneyMap from '../components/JourneyMap';
 import type { ChildProgress } from '../progress';
 import Button from '../components/Button';
+import PlayerBar from '../components/PlayerBar';
 import { ChunkyButton, OwlStage, PLAY, Ribbon, WaveBand } from '../components/Playful';
 import { fetchCategories } from '../api';
 import { colors, spacing, column, GUTTER, CONTENT_MAX_WIDTH } from '../theme';
@@ -103,7 +104,10 @@ function ActivityTile({ title, visual, done, game, stars, width, disabled, reduc
   );
 }
 
-export default function CategoryScreen({ onSelect, onPreview, progress = null, onReport, onPlayZone, onAnimals, onArtMusic, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
+export default function CategoryScreen({ childName, childAvatar, onSelect, onPreview, progress = null, onReport, onPlayZone, onAnimals, onArtMusic, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
+  /** Who is playing (shown at the top, with Switch player). */
+  childName?: string;
+  childAvatar?: string | null;
   onSelect: (trait: TraitKey, count: number) => void;
   /** A category's sheet was opened: a chance to get its questions ready early. */
   onPreview?: (trait: TraitKey) => void;
@@ -188,6 +192,8 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.container} onScroll={onHeaderScroll} scrollEventThrottle={16}>
+      <PlayerBar name={childName} avatar={childAvatar} onSwitch={onBack} />
+
       {/* Owl asks the big question */}
       <View style={[styles.hero, wideHero && styles.heroWide]}>
         <OwlStage width={stageWidth} owlSize={Math.round(stageWidth * 0.3)} tint="sun" bubble="What’s next? 🌈" />
@@ -320,9 +326,8 @@ export default function CategoryScreen({ onSelect, onPreview, progress = null, o
       {error && !openKey ? <Text style={styles.problemText}>{error}</Text> : null}
 
       <View style={{ marginTop: spacing(1) }}>
-        {report
-          ? <ChunkyButton colour="white" size="md" title="View latest result" onPress={onReport} disabled={busy} />
-          : <ChunkyButton colour="white" size="md" title="← Back" onPress={onBack} disabled={busy} />}
+        {report ? <ChunkyButton colour="white" size="md" title="View latest result" onPress={onReport} disabled={busy} style={{ marginBottom: spacing(1.5) }} /> : null}
+        <ChunkyButton colour="white" size="md" title="👥 Switch player" label="Choose another player" onPress={onBack} disabled={busy} />
       </View>
 
       {/* Tap a tile: the details and one big Play button slide up. */}

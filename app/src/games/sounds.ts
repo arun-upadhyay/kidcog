@@ -1,3 +1,4 @@
+import { isAudioFocused, subscribeAudioFocus } from '../audioFocus';
 /**
  * Little sound effects for the games: a happy chime, a soft "oops", a pop.
  *
@@ -42,8 +43,11 @@ export function useSoundEffects(): boolean {
 }
 
 const players = new Map<SoundName, AudioPlayer>();
+subscribeAudioFocus(active => {
+  if (!active) players.forEach(player => { try { player.pause(); } catch {} });
+});
 export function playSound(name: SoundName) {
-  if (!enabled) return;
+  if (!enabled || !isAudioFocused()) return;
   try {
     let player = players.get(name);
     if (!player) {

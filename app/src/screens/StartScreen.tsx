@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Platform, View, Text, TextInput, StyleSheet, ScrollView, Switch, Pressable, useWindowDimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AboutSheet from '../components/AboutSheet';
@@ -10,7 +10,7 @@ import { avatarEmoji, defaultAvatarKey, avatarName, firstFreeAvatar } from '../a
 import { AvatarBrowser, AvatarQuickPick } from '../components/AvatarPicker';
 import { AVATARS } from '../avatars';
 import { loadProgress, type ChildProgress } from '../progress';
-import { useAppHeaderScroll } from '../headerScroll';
+import { setAppHeaderCollapsed, useAppHeaderScroll } from '../headerScroll';
 
 export interface StartScreenProps {
   onStart: (profile: ChildProfile) => void;
@@ -50,6 +50,7 @@ const CONFETTI = [
 
 export default function StartScreen({ onStart, loading, error, savedChildren, onViewHistory, onDeleteChild, onChangeAvatar }: StartScreenProps) {
   const onHeaderScroll = useAppHeaderScroll();
+  const scrollRef = useRef<ScrollView>(null);
   const [firstName, setFirstName] = useState('');
   const [age, setAge] = useState<number | null>(5);
   const [consent, setConsent] = useState(false);
@@ -87,6 +88,10 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
   }
 
   const showNewForm = adding || savedChildren.length === 0;
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ y: 0, animated: false });
+    setAppHeaderCollapsed(false);
+  }, [showNewForm]);
   const selected = showNewForm ? undefined : savedChildren.find(c => c.nickname.trim().toLowerCase() === firstName.trim().toLowerCase());
   const needsAge = showNewForm || (selected !== undefined && selected.age === null);
   const canStart = consent && !loading && (showNewForm || selected !== undefined);
@@ -159,7 +164,13 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
       <View style={styles.confetti} pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
         {CONFETTI.map((c, i) => <Text key={i} style={[styles.confettiBit, { left: `${c.left}%`, top: c.top, fontSize: c.size, transform: [{ rotate: `${c.turn}deg` }] }]}>{c.icon}</Text>)}
       </View>
-      <ScrollView style={styles.scrollArea} contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled" onScroll={onHeaderScroll} scrollEventThrottle={16}>
+      <ScrollView ref={scrollRef} style={styles.scrollArea} contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled" onScroll={onHeaderScroll} scrollEventThrottle={16}>
+        {showNewForm && savedChildren.length > 0 ? (
+          <Pressable onPress={() => setAdding(false)} accessibilityRole="button" style={({ pressed }) => [styles.backLink, pressed && styles.infoPressed]}>
+            <Text style={styles.backLinkText}>← Back to saved players</Text>
+          </Pressable>
+        ) : null}
+
         {/* Hello from Owl */}
         <View style={[styles.hero, wide && styles.heroWide]}>
           <OwlStage still width={stageWidth} owlSize={Math.round(stageWidth * 0.3)} tint="grape" bubble={showNewForm ? 'New friend! 🎉' : 'Hi there! 👋'} />
@@ -265,12 +276,6 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
               })}
             </View>
           </View>
-        ) : null}
-
-        {showNewForm && savedChildren.length > 0 ? (
-          <Pressable onPress={() => setAdding(false)} accessibilityRole="button" style={({ pressed }) => [styles.backLink, pressed && styles.infoPressed]}>
-            <Text style={styles.backLinkText}>← Back to saved players</Text>
-          </Pressable>
         ) : null}
 
         <View style={styles.consentRow}>

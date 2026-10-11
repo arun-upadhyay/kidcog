@@ -1,3 +1,4 @@
+import { isAudioFocused, subscribeAudioFocus } from './audioFocus';
 import { useSyncExternalStore } from 'react';
 import { Platform } from 'react-native';
 import * as Speech from 'expo-speech';
@@ -51,6 +52,21 @@ function forgetAudio(text: string) {
 let request: AbortController | null = null;
 let deadline: ReturnType<typeof setTimeout> | null = null;
 let generation = 0;
+type SpeechOptions = { voice?: 'device' | 'generated'; allowDeviceFallback?: boolean };
+let currentSpeech: { text: string; options: SpeechOptions } | null = null;
+let resumeSpeech: { text: string; options: SpeechOptions } | null = null;
+subscribeAudioFocus(active => {
+  if (!active) {
+    const interrupted = currentSpeech;
+    stopSpeaking();
+    resumeSpeech = interrupted;
+  } else if (resumeSpeech) {
+    const pending = resumeSpeech;
+    resumeSpeech = null;
+    // Restart the interrupted sentence: device voices cannot pause on Android.
+    void speak(pending.text, pending.options);
+  }
+});
 export let lastSpeechError: string | null = null;
 
 function clearDeadline() {
@@ -78,6 +94,7 @@ function finish(mine: number) {
   clearDeadline();
   releasePlayer();
   request = null;
+  currentSpeech = null;
   setState('idle');
 }
 function fallback(text: string, mine: number) {
@@ -114,9 +131,10 @@ function speakUrl(key: string): string {
 }
 
 /** Tap-only playback. The synchronous lock rejects even same-frame double taps. */
-export async function speak(text: string, options: { voice?: 'device' | 'generated'; allowDeviceFallback?: boolean } = {}): Promise<void> {
+export async function speak(text: string, options: SpeechOptions = {}): Promise<void> {
   const trimmed = text.trim();
-  if (!trimmed || state !== 'idle') return;
+  if (!trimmed || state !== 'idle' || !isAudioFocused()) return;
+  currentSpeech = { text: trimmed, options };
   const mine = ++generation;
   setState('loading');
   lastSpeechError = null;
@@ -200,6 +218,8 @@ export async function speak(text: string, options: { voice?: 'device' | 'generat
 
 /** Cancel pending audio and playback on navigation or when recording begins. */
 export function stopSpeaking(): void {
+  currentSpeech = null;
+  resumeSpeech = null;
   generation++;
   request?.abort();
   request = null;

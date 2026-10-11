@@ -1,9 +1,11 @@
+import { stopSpeaking } from '../speech';
 import ArtMusic from '../playzone/ArtMusic';
 import LearningGames from '../playzone/LearningGames';
 import { LEARNING_GAMES, type LearningKey } from '../playzone/learningContent';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AccessibilityInfo, Animated, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import Owl from '../components/Owl';
+import PlayerBar from '../components/PlayerBar';
 import type { ChildProgress } from '../progress';
 import { colors, column, spacing, GUTTER } from '../theme';
 import { GameScene, ScrollLockContext, type GameKey } from '../playzone/common';
@@ -108,12 +110,15 @@ export function startLevel(game: GameKey, progress: ChildProgress | null, age: n
   return 1;
 }
 
-export default function PlayZoneScreen({ childId, childName, age, progress, onBack, onFinish, onAnimalsFound, onPicture, onOutfit, initialGame = null }: {
+export default function PlayZoneScreen({ childId, childName, childAvatar, onSwitchPlayer, age, progress, onBack, onFinish, onAnimalsFound, onPicture, onOutfit, initialGame = null }: {
   childId?: string;
   childName?: string;
   age?: number;
   progress: ChildProgress | null;
   onBack: () => void;
+  childAvatar?: string | null;
+  /** Back to “Who’s playing today?” to choose another child. */
+  onSwitchPlayer?: () => void;
   /** A game was won: record the stars and the next level. */
   onFinish: (game: GameKey, stars: number, nextLevel: number) => void;
   /** Animal Explorer: animals the child has just met, for their album. */
@@ -138,24 +143,35 @@ export default function PlayZoneScreen({ childId, childName, age, progress, onBa
     const subscription = AccessibilityInfo.addEventListener?.('reduceMotionChanged', setReduceMotion);
     return () => subscription?.remove();
   }, []);
+  // Each activity starts at the top with a usable scroll area. Cancel an old
+  // prompt on game changes, including one waiting for the tab to regain focus.
+  const gameScrollRef = useRef<ScrollView>(null);
+  useEffect(() => {
+    setScrollOn(true);
+    gameScrollRef.current?.scrollTo({ y: 0, animated: false });
+    return () => stopSpeaking();
+  }, [playing]);
   // A game gets the whole screen: the app bar steps aside until the child leaves it.
   useEffect(() => { setImmersive(playing !== null); }, [playing]);
   useEffect(() => () => setImmersive(false), []);
   useGameMusic(playing === null ? null : MUSIC[playing] === undefined ? 'playful' : MUSIC[playing]!);
 
+  // A game opened straight from the activities page goes back there; one picked here goes back to this list.
+  const leaveGame = () => { if (initialGame && playing === initialGame) onBack(); else setPlaying(null); };
+
   if (playing) {
     const props = {
       level: startLevel(playing, progress, age),
-      onBack: () => setPlaying(null),
+      onBack: leaveGame,
       onFinish: (stars: number, nextLevel: number) => onFinish(playing, stars, nextLevel),
     };
     return (
       <ScrollLockContext.Provider value={lockScroll}>
       <View style={styles.gameStage}>
       <GameScene />
-      <ScrollView style={styles.gameScroll} contentContainerStyle={styles.gameScreen} scrollEnabled={scrollOn} onScroll={onHeaderScroll} scrollEventThrottle={16}>
+      <ScrollView ref={gameScrollRef} style={styles.gameScroll} contentContainerStyle={styles.gameScreen} scrollEnabled={scrollOn} onScroll={onHeaderScroll} scrollEventThrottle={16}>
         {LEARNING_GAMES.some(game => game.key === playing) ? <LearningGames key={playing} kind={playing as LearningKey} {...props} /> : null}
-        {playing === 'art-music' ? <ArtMusic childId={childId ?? 'guest'} onBack={() => setPlaying(null)} onDots={() => setPlaying('dots')} /> : null}
+        {playing === 'art-music' ? <ArtMusic childId={childId ?? 'guest'} onBack={leaveGame} onDots={() => setPlaying('dots')} /> : null}
         {playing === 'animals' ? <AnimalExplorer {...props} found={progress?.animals ?? []} onFound={keys => onAnimalsFound?.(keys)} /> : null}
         {playing === 'snake' ? <NumberSnake {...props} /> : null}
         {playing === 'bubbles' ? <BubblePop {...props} /> : null}
@@ -172,9 +188,16 @@ export default function PlayZoneScreen({ childId, childName, age, progress, onBa
   const twoColumns = width >= 420;
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.container} onScroll={onHeaderScroll} scrollEventThrottle={16}>
-      <Pressable onPress={onBack} accessibilityRole="button" hitSlop={8} style={({ pressed }) => [styles.back, pressed && { opacity: 0.6 }]}>
-        <Text style={styles.backText}>← Activities</Text>
-      </Pressable>
+      {onSwitchPlayer ? (
+        <PlayerBar name={childName} avatar={childAvatar} onSwitch={onSwitchPlayer} left={
+          <Pressable onPress={onBack} accessibilityRole="button" hitSlop={8} style={({ pressed }) => [styles.back, pressed && { opacity: 0.6 }]}>
+            <Text style={styles.backText}>← Activities</Text>
+          </Pressable>} />
+      ) : (
+        <Pressable onPress={onBack} accessibilityRole="button" hitSlop={8} style={({ pressed }) => [styles.back, pressed && { opacity: 0.6 }]}>
+          <Text style={styles.backText}>← Activities</Text>
+        </Pressable>
+      )}
 
       <View style={styles.hero}>
         <Owl mood="happy" size={64} />
@@ -189,7 +212,7 @@ export default function PlayZoneScreen({ childId, childName, age, progress, onBa
 
       <Pressable accessibilityRole="button" accessibilityLabel="Open Art & Music" onPress={() => setPlaying('art-music')} style={[styles.hero, { backgroundColor: '#F5E6FF', flexWrap: 'wrap' }]}>
         <Text style={{ fontSize: 40 }}>🎨 🎵</Text>
-        <View style={{ flex: 1, minWidth: 150 }}><Text style={styles.heroTitle}>Art & Music</Text><Text style={styles.heroSub}>Draw, paint, trace and make a little music. 9 creative activities →</Text></View>
+        <View style={{ flex: 1, minWidth: 150 }}><Text style={styles.heroTitle}>Art & Music</Text><Text style={styles.heroSub}>Draw, paint, trace and make a little music. 12 creative activities →</Text></View>
       </Pressable>
 
       <CollectionShelf progress={progress} childName={childName} onOutfit={outfit => onOutfit?.(outfit)} />
@@ -230,7 +253,7 @@ const styles = StyleSheet.create({
   // Full width: a game uses the whole window (boards still size themselves to fit).
   gameScreen: { flexGrow: 1, width: '100%', maxWidth: 1180, alignSelf: 'center', padding: GUTTER, paddingTop: spacing(1.5), paddingBottom: spacing(6) },
   pressed: { opacity: 0.85, transform: [{ scale: 0.97 }] },
-  back: { alignSelf: 'flex-start', minHeight: 40, justifyContent: 'center', paddingHorizontal: spacing(1.5), borderRadius: 999, borderWidth: 1.5, borderColor: colors.line, backgroundColor: colors.surface },
+  back: { alignSelf: 'flex-start', minHeight: 46, justifyContent: 'center', paddingHorizontal: spacing(1.75), borderRadius: 999, borderWidth: 2.5, borderBottomWidth: 5, borderColor: '#B9A3EC', backgroundColor: colors.surface },
   backText: { fontSize: 14, fontWeight: '800', color: colors.inkSoft },
   hero: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), backgroundColor: '#EEE9FF', borderRadius: 24, padding: spacing(2), borderWidth: 2, borderColor: '#CABAF0' },
   heroTitle: { fontSize: 24, fontWeight: '900', color: '#4E3590' },

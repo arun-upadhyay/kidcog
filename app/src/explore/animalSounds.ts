@@ -1,3 +1,4 @@
+import { isAudioFocused, subscribeAudioFocus } from '../audioFocus';
 /**
  * Animal sounds. These functions never substitute a spoken imitation for an
  * animal recording: callers can use hasRecording() to decide whether to show
@@ -45,11 +46,15 @@ export const hasRecording = (key: string) => key in RECORDINGS;
 const players = new Map<string, AudioPlayer>();
 let activePlayer: AudioPlayer | null = null;
 let audioModeSet = false;
+subscribeAudioFocus(active => {
+  // Calls are short effects; do not replay an old animal call on returning.
+  if (!active) { try { activePlayer?.pause(); } catch {} }
+});
 
 /** Play an animal's real recording. Returns false when there is none. */
 export function playRecording(key: string): boolean {
   const file = RECORDINGS[key];
-  if (!file) return false;
+  if (!file || !isAudioFocused()) return false;
   stopSpeaking();
   try {
     if (!audioModeSet && Platform.OS !== 'web') {

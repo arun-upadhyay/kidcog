@@ -118,7 +118,10 @@ function KidCogApp() {
     }
   }, []);
 
+  const playerStartLock = useRef(false);
   const start = useCallback(async (profile: ChildProfile) => {
+    if (playerStartLock.current) return;
+    playerStartLock.current = true;
     setBusy(true); setError(null);
     try {
       const nickname = profile.firstName?.trim() || 'My child';
@@ -129,7 +132,7 @@ function KidCogApp() {
       setSessionId(null);
       setStage('categories');
     } catch (err) { setError(messageOf(err)); }
-    finally { setBusy(false); }
+    finally { playerStartLock.current = false; setBusy(false); }
   }, []);
 
   // Opening a category's sheet starts question-making in the background, so the
@@ -366,10 +369,10 @@ function KidCogApp() {
 
           {stage === 'historical_result' && historical && <ResultsScreen report={historical.report} sessionId={historical.id} childName={historical.childName} completedAt={historical.completedAt} historical onBackToHistory={() => setStage('history')} onRestart={restart} onChooseCategory={() => {}} onReassess={() => {}} remainingUnseen={0} busy={false} error={null} />}
 
-          {stage === 'categories' && <CategoryScreen initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} progress={progress} onReport={() => setStage('results')} onPlayZone={openPlayZone} onAnimals={openAnimals} onArtMusic={() => { stopSpeaking(); setPlayZoneGame('art-music'); playStartedAt.current ??= Date.now(); setStage('playzone'); }} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
+          {stage === 'categories' && <CategoryScreen childName={child?.firstName} childAvatar={child?.avatar} initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} progress={progress} onReport={() => setStage('results')} onPlayZone={openPlayZone} onAnimals={openAnimals} onArtMusic={() => { stopSpeaking(); setPlayZoneGame('art-music'); playStartedAt.current ??= Date.now(); setStage('playzone'); }} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
 
           {stage === 'playzone' && (
-            <PlayZoneScreen childId={child?.id} childName={child?.firstName} age={child?.age} progress={progress} onBack={() => setStage('categories')} onFinish={finishGame} onAnimalsFound={animalsFound} onPicture={pictureDone} onOutfit={dressOwl} initialGame={playZoneGame} />
+            <PlayZoneScreen childId={child?.id} childName={child?.firstName} childAvatar={child?.avatar} onSwitchPlayer={goHome} age={child?.age} progress={progress} onBack={() => setStage('categories')} onFinish={finishGame} onAnimalsFound={animalsFound} onPicture={pictureDone} onOutfit={dressOwl} initialGame={playZoneGame} />
           )}
 
           {stage === 'quiz' && test && (

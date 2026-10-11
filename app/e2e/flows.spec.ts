@@ -368,3 +368,16 @@ test('Play Zone shelf: sticker book, picture wall and dressing up Owl', async ({
   const owl = await page.evaluate(() => JSON.parse(localStorage.getItem('kidcog.progress.v1.e2e-child') ?? '{}').owl);
   expect(owl).toEqual({ neck: 'bow' });
 });
+
+test('switching player is one tap away on the activities and Play Zone pages', async ({ page }) => {
+  await prepare(page);
+  await page.getByRole('radio', { name: 'Test Explorer, age 5', exact: true }).click();
+  await page.getByRole('switch').click();
+  await page.getByRole('button', { name: /Choose an adventure/ }).click();
+  await expect(page.getByText('Test Explorer’s turn!')).toBeVisible();
+  await inViewport(page, page.getByRole('button', { name: 'Switch player', exact: true }));
+  await page.getByRole('button', { name: 'Open the Play Zone games' }).click();
+  await inViewport(page, page.getByRole('button', { name: 'Switch player', exact: true }));
+  await page.getByRole('button', { name: 'Switch player', exact: true }).click();
+  await expect(page.getByRole('radio', { name: 'Test Explorer, age 5', exact: true })).toBeVisible();
+});
