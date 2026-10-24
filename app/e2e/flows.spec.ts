@@ -78,21 +78,11 @@ test('parent can send feedback from the shared menu', async ({ page }) => {
   await expect(page.getByText('Thank you!', { exact: true })).toBeVisible();
 });
 
-test('feedback has a one-tap entry point in the top bar', async ({ page }) => {
+test('grown-up feedback is available from the parent menu', async ({ page }) => {
   await prepare(page);
-  const viewport = page.viewportSize()!;
-  const entry = page.getByRole('button', { name: 'Give feedback' });
-  await inViewport(page, entry);
-  await expect(page.getByTestId('header-feedback')).toBeVisible();
-  if (viewport.width >= 600) {
-    // The word "Feedback" shows in full inside the button.
-    const box = (await entry.boundingBox())!;
-    const label = (await page.getByTestId('header-feedback-label').boundingBox())!;
-    expect(label.x).toBeGreaterThanOrEqual(box.x);
-    expect(label.x + label.width).toBeLessThanOrEqual(box.x + box.width);
-    expect(await page.getByTestId('header-feedback-label').evaluate(e => e.scrollWidth <= e.clientWidth + 1)).toBe(true);
-  }
-  await entry.click();
+  await expect(page.getByRole('button', { name: 'Give feedback', exact: true })).toHaveCount(0);
+  await page.getByRole('button', { name: 'Grown-ups', exact: true }).click();
+  await page.getByRole('button', { name: 'Open feedback form', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Help us improve KidCog' })).toBeVisible();
 });
 for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw', 'Connect the Dots', 'Magic Add']) {
@@ -480,4 +470,21 @@ test('Snake is compact and a tap above its head steers upward', async ({ page })
   const moved = (await page.getByTestId('snake-head').boundingBox())!;
   expect(moved.y).toBeLessThan(head.y);
   expect(Math.abs(moved.x - head.x)).toBeLessThan(2);
+});
+
+test('dashboard has four matching destinations and a working Thinking shortcut', async ({ page }, info) => {
+  await prepare(page);
+  await page.getByRole('radio', { name: 'Test Explorer, age 5', exact: true }).click();
+  await page.getByRole('switch').click();
+  await page.getByRole('button', { name: /Choose an adventure/ }).click();
+  const cards = ['Open the Play Zone games', 'Open the Animal Explorer', 'Open the Art & Music studio', 'Open Thinking Activities'];
+  const boxes = [];
+  for (const name of cards) boxes.push((await page.getByRole('button', { name, exact: true }).boundingBox())!);
+  expect(Math.abs(boxes[0]!.y - boxes[1]!.y)).toBeLessThan(2);
+  expect(Math.abs(boxes[2]!.y - boxes[3]!.y)).toBeLessThan(2);
+  expect(boxes[2]!.y).toBeGreaterThan(boxes[0]!.y);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: info.outputPath('dashboard.png'), fullPage: true });
+  await page.getByRole('button', { name: cards[3], exact: true }).click();
+  await expect(page.getByRole('tab', { name: 'Thinking activities', exact: true })).toBeInViewport();
 });

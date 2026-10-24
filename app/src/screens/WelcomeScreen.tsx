@@ -6,6 +6,7 @@ import {
   Animated,
   Easing,
   Pressable,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -220,9 +221,9 @@ export default function WelcomeScreen({ onChoose, onParentSignIn }: {
   return (
     <View style={styles.screen}>
       <Background still={still} />
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+      <ScrollView testID="welcome-scroll" stickyHeaderIndices={[0]} contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         {/* Top bar */}
-        <View style={styles.topBar}>
+        <View testID="welcome-header" style={[styles.topBar, Platform.OS === 'web' ? ({ backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)' } as object) : null]}>
           <View style={styles.topBarInner}>
             <View style={styles.topBrand}>
               <Logo size={wide ? 30 : 24} />
@@ -362,7 +363,7 @@ const styles = StyleSheet.create({
   container: { width: '100%', maxWidth: 1040, alignSelf: 'center', paddingHorizontal: spacing(2), paddingBottom: spacing(3) },
   pressed: { opacity: 0.85, transform: [{ scale: 0.97 }] },
 
-  topBar: { backgroundColor: '#FFFFFF', borderBottomWidth: 3, borderBottomColor: '#E3EFFD' },
+  topBar: { backgroundColor: 'rgba(255,255,255,0.94)', borderBottomWidth: 1, borderBottomColor: '#DDD5EB', shadowColor: '#392957', shadowOpacity: 0.08, shadowRadius: 10, shadowOffset: { width: 0, height: 3 }, elevation: 4, zIndex: 10 },
   topBarInner: { width: '100%', maxWidth: 1040, alignSelf: 'center', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing(1), paddingHorizontal: spacing(2), paddingVertical: spacing(1) },
   topBrand: { flexDirection: 'row', alignItems: 'center', gap: spacing(0.75), flexShrink: 1 },
   topActions: { flexDirection: 'row', alignItems: 'center', gap: spacing(1) },

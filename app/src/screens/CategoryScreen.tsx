@@ -10,7 +10,7 @@ import type { ChildProgress } from '../progress';
 import Button from '../components/Button';
 import PlayerBar from '../components/PlayerBar';
 import AdventureGuide from '../components/AdventureGuide';
-import { ChunkyButton, PLAY, Ribbon, WaveBand } from '../components/Playful';
+import { ChunkyButton, PLAY, WaveBand } from '../components/Playful';
 import { fetchCategories } from '../api';
 import { colors, spacing, column, GUTTER, CONTENT_MAX_WIDTH } from '../theme';
 import type { TraitKey, TraitMetaPublic, Report } from '../types';
@@ -106,7 +106,7 @@ function ActivityTile({ title, visual, done, game, stars, width, disabled, reduc
   );
 }
 
-type Adventure = { key: string; onPress: () => void; label: string; ribbon: string; colour: 'grape' | 'sun' | 'coral'; icons: string[]; title: string; line: string; background: string; ink: string };
+type Adventure = { key: string; onPress: () => void; label: string; ribbon: string; colour: 'grape' | 'sun' | 'coral' | 'grass'; icons: string[]; title: string; line: string; background: string; ink: string };
 
 /**
  * A big, friendly destination card (Play Zone, Animal Explorer, Art & Music).
@@ -114,35 +114,15 @@ type Adventure = { key: string; onPress: () => void; label: string; ribbon: stri
  * phone they stack into a tidy list — icons on the left, name and line in the
  * middle, a Play button on the right — so they stay easy to scan and tap.
  */
-function AdventureCard({ a, list, busy }: { a: Adventure; list: boolean; busy: boolean }) {
+function AdventureCard({ a, busy }: { a: Adventure; busy: boolean }) {
   const c = PLAY[a.colour];
-  if (list) {
-    return (
-      <Pressable onPress={a.onPress} disabled={busy} accessibilityRole="button" accessibilityLabel={a.label}
-        style={({ pressed }) => [styles.advListCard, { backgroundColor: a.background, borderColor: c.face }, pressed && styles.pressed]}>
-        <View style={styles.advListIcons}>
-          {a.icons.slice(0, 2).map((icon, j) => <Text key={icon} style={[styles.advListIcon, { transform: [{ rotate: `${(j - 0.5) * 12}deg` }] }]}>{icon}</Text>)}
-        </View>
-        <View style={styles.advListText}>
-          <Text style={[styles.advListTitle, { color: a.ink }]} numberOfLines={1}>{a.title}</Text>
-          <Text style={[styles.advListLine, { color: a.ink }]} numberOfLines={2}>{a.line}</Text>
-        </View>
-        <View style={[styles.playPill, styles.playPillList, { backgroundColor: c.face, borderColor: c.lip }]}><Text style={[styles.playPillText, { color: c.text }]}>▶ Play</Text></View>
-      </Pressable>
-    );
-  }
-  return (
-    <Pressable onPress={a.onPress} disabled={busy} accessibilityRole="button" accessibilityLabel={a.label}
-      style={({ pressed }) => [styles.adventure, { backgroundColor: a.background, borderColor: c.face }, pressed && styles.pressed]}>
-      <Ribbon text={a.ribbon} colour={a.colour} />
-      <View style={styles.adventureIcons}>
-        {a.icons.map((icon, j) => <Text key={icon} style={[styles.adventureIcon, { transform: [{ rotate: `${(j - 1.5) * 9}deg` }] }]}>{icon}</Text>)}
-      </View>
-      <Text style={[styles.adventureTitle, { color: a.ink }]} numberOfLines={2}>{a.title}</Text>
-      <Text style={[styles.adventureLine, { color: a.ink }]} numberOfLines={2}>{a.line}</Text>
-      <View style={[styles.playPill, { backgroundColor: c.face, borderColor: c.lip }]}><Text style={[styles.playPillText, { color: c.text }]}>▶ Play</Text></View>
-    </Pressable>
-  );
+  return <Pressable onPress={a.onPress} disabled={busy} accessibilityRole="button" accessibilityLabel={a.label}
+    style={({ pressed }) => [styles.adventure, { backgroundColor: a.background, borderColor: c.face }, pressed && styles.pressed]}>
+    <Text style={styles.adventureIcon}>{a.icons[0]}</Text>
+    <Text style={[styles.adventureTitle, { color: a.ink }]}>{a.title}</Text>
+    <Text style={[styles.adventureLine, { color: a.ink }]}>{a.line}</Text>
+    <View style={[styles.playPill, { backgroundColor: c.face, borderColor: c.lip }]}><Text style={[styles.playPillText, { color: c.text }]}>Explore →</Text></View>
+  </Pressable>;
 }
 
 export default function CategoryScreen({ childName, childAvatar, onSelect, onPreview, progress = null, onReport, onPlayZone, onAnimals, onArtMusic, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
@@ -172,6 +152,8 @@ export default function CategoryScreen({ childName, childAvatar, onSelect, onPre
   error: string | null;
 }) {
   const onHeaderScroll = useAppHeaderScroll();
+  const scroll = useRef<ScrollView>(null);
+  const thinkingY = useRef(0);
   const [categories, setCategories] = useState<TraitMetaPublic[]>([]);
   const [count, setCount] = useState(initialCount);
   const [tab, setTab] = useState<GroupKey>('intellectual');
@@ -192,7 +174,7 @@ export default function CategoryScreen({ childName, childAvatar, onSelect, onPre
   const chooseView = (next: 'tiles' | 'map') => { setView(next); AsyncStorage.setItem(VIEW_KEY, next).catch(() => {}); };
 
   // Two tiles per row on a phone, three when there is room.
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const inner = Math.min(width, CONTENT_MAX_WIDTH) - GUTTER * 2;
   const tileWidth = inner >= 480 ? '33.333%' : '50%';
 
@@ -227,38 +209,31 @@ export default function CategoryScreen({ childName, childAvatar, onSelect, onPre
     onSelect(key, count);
   }
 
-  const wideHero = width >= 640;
-  // The three big adventures sit in one tidy row on a roomy screen, and stack
-  // into a neat list on a phone — so they always read as one matching set.
-  const listCards = width < 600;
-  const stageWidth = wideHero ? 260 : height < 700 ? 150 : Math.min(180, width - spacing(10));
   const adventures: Adventure[] = [
-    onPlayZone ? { key: 'play', onPress: onPlayZone, label: 'Open the Play Zone games', ribbon: '🎮 GAMES', colour: 'grape' as const, icons: ['🐍', '🫧', '🪄', '🖍️'], title: 'Play Zone', line: 'Number Snake, Bubble Pop, Magic Add, mazes and dots', background: '#F1EBFF', ink: '#4E3590' } : null,
-    onAnimals ? { key: 'animals', onPress: onAnimals, label: 'Open the Animal Explorer', ribbon: '🔊 ANIMALS', colour: 'sun' as const, icons: ['🦁', '🐘', '🐧', '🦋'], title: 'Animal Explorer', line: 'Animal quiz, animal sounds and your album', background: '#FFF6DA', ink: '#6E4706' } : null,
-    onArtMusic ? { key: 'art', onPress: onArtMusic, label: 'Open the Art & Music studio', ribbon: '🎨 ART', colour: 'coral' as const, icons: ['🎨', '🖌️', '🎵', '🎹'], title: 'Art & Music', line: 'Draw, colour, trace and make your own music', background: '#FFE7E1', ink: '#8A2F1E' } : null,
+    onPlayZone ? { key: 'play', onPress: onPlayZone, label: 'Open the Play Zone games', ribbon: '🎮 GAMES', colour: 'grape' as const, icons: ['🐍', '🫧', '🪄', '🖍️'], title: 'Games', line: 'Pop, count & play', background: '#F1EBFF', ink: '#4E3590' } : null,
+    onAnimals ? { key: 'animals', onPress: onAnimals, label: 'Open the Animal Explorer', ribbon: '🔊 ANIMALS', colour: 'sun' as const, icons: ['🦁', '🐘', '🐧', '🦋'], title: 'Animals', line: 'Meet & listen', background: '#FFF6DA', ink: '#6E4706' } : null,
+    onArtMusic ? { key: 'art', onPress: onArtMusic, label: 'Open the Art & Music studio', ribbon: '🎨 ART', colour: 'coral' as const, icons: ['🎨', '🖌️', '🎵', '🎹'], title: 'Art & Music', line: 'Draw & make music', background: '#FFE7E1', ink: '#8A2F1E' } : null,
+    { key: 'thinking', onPress: () => scroll.current?.scrollTo({ y: thinkingY.current, animated: !reduceMotion }), label: 'Open Thinking Activities', ribbon: 'THINK', colour: 'grass' as const, icons: ['🧩'], title: 'Thinking', line: 'Discover & solve', background: '#E7F5EC', ink: '#226443' },
   ].filter(<T,>(a: T | null): a is T => a !== null);
 
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.container} onScroll={onHeaderScroll} scrollEventThrottle={16}>
+    <ScrollView ref={scroll} style={styles.screen} contentContainerStyle={styles.container} onScroll={onHeaderScroll} scrollEventThrottle={16}>
       <PlayerBar name={childName} avatar={childAvatar} onSwitch={onBack} />
 
-      {/* Owl asks the big question */}
-      <View style={[styles.hero, wideHero && styles.heroWide]}>
-        <AdventureGuide name={childName} width={stageWidth} reduceMotion={reduceMotion} games={!!onPlayZone} animals={!!onAnimals} art={!!onArtMusic} />
-        <View style={[styles.heroCopy, wideHero && styles.heroCopyWide]}>
-          <Text style={[styles.eyebrow, wideHero && styles.leftText]}>✨ PICK AN ADVENTURE ✨</Text>
-          <Text accessibilityRole="header" style={[styles.heroTitle, wideHero && styles.heroTitleWide]}>What shall we explore?</Text>
-        </View>
+      <View style={styles.welcomeRow}>
+        <View style={{ flex: 1 }}><Text accessibilityRole="header" style={styles.welcomeTitle}>Hi {childName || 'explorer'}! 👋</Text><Text style={styles.welcomeSubtitle}>What shall we play?</Text></View>
+        <AdventureGuide compact name={childName} width={90} reduceMotion={reduceMotion} games={!!onPlayZone} animals={!!onAnimals} art={!!onArtMusic} />
       </View>
 
       {/* The three big adventures — one matching set (row on wide, list on phone) */}
       {adventures.length ? (
-        <View style={listCards ? styles.adventuresList : styles.adventuresRow}>
-          {adventures.map(a => <AdventureCard key={a.key} a={a} list={listCards} busy={busy} />)}
+        <View style={styles.adventuresRow}>
+          {adventures.map(a => <AdventureCard key={a.key} a={a} busy={busy} />)}
         </View>
       ) : null}
 
       {/* Thinking activities */}
+      <View onLayout={e => { thinkingY.current = e.nativeEvent.layout.y; }}>
       <WaveBand colour={PLAY.grass.face} bottom>
         <View style={styles.band} accessibilityRole="header">
           <Text style={styles.bandEmoji}>🧠</Text>
@@ -266,9 +241,9 @@ export default function CategoryScreen({ childName, childAvatar, onSelect, onPre
             <Text style={styles.bandTitle}>Thinking Activities</Text>
             <Text style={styles.bandSub}>Pick one below to play together</Text>
           </View>
-          <Text style={styles.bandArrow}>▼</Text>
         </View>
       </WaveBand>
+      </View>
 
       <View style={styles.lengthRow}>
         <Text style={styles.lengthLabel}>🔢  How many?</Text>
@@ -403,6 +378,9 @@ const styles = StyleSheet.create({
   pressed: { opacity: 0.85, transform: [{ scale: 0.96 }] },
   leftText: { textAlign: 'left' },
 
+  welcomeRow: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 14, backgroundColor: '#FFF4D2', borderRadius: 24 },
+  welcomeTitle: { fontSize: 24, fontWeight: '900', color: '#633E12' },
+  welcomeSubtitle: { fontSize: 17, color: '#633E12', marginTop: 5 },
   hero: { alignItems: 'center', backgroundColor: '#FFF4D2', borderRadius: 30, borderWidth: 3, borderBottomWidth: 8, borderColor: '#FFC83D', paddingTop: spacing(1.5), paddingBottom: spacing(2), paddingHorizontal: spacing(2) },
   heroWide: { flexDirection: 'row', justifyContent: 'center', gap: spacing(3), paddingVertical: spacing(2) },
   heroCopy: { alignItems: 'center', marginTop: spacing(0.5) },
@@ -412,14 +390,14 @@ const styles = StyleSheet.create({
   heroTitleWide: { fontSize: 38, lineHeight: 44, textAlign: 'left' },
 
   // Three-in-a-row picture cards (roomy screens).
-  adventuresRow: { flexDirection: 'row', alignItems: 'stretch', gap: spacing(1.25), marginTop: spacing(2) },
-  adventure: { flex: 1, minWidth: 0, borderRadius: 26, borderWidth: 4, borderBottomWidth: 9, alignItems: 'center', paddingHorizontal: spacing(1.25), paddingTop: spacing(3.25), paddingBottom: spacing(1.75), gap: 4 },
+  adventuresRow: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 14 },
+  adventure: { width: '48%', minHeight: 180, borderRadius: 26, borderWidth: 4, borderBottomWidth: 9, alignItems: 'center', paddingHorizontal: spacing(1.25), paddingTop: spacing(1.5), paddingBottom: spacing(1.75), gap: 4 },
   adventureIcons: { flexDirection: 'row', gap: spacing(0.5), marginBottom: 2 },
-  adventureIcon: { fontSize: 32 },
-  adventureTitle: { fontSize: 21, lineHeight: 25, fontWeight: '900', textAlign: 'center' },
+  adventureIcon: { fontSize: 44 },
+  adventureTitle: { fontSize: 19, lineHeight: 24, fontWeight: '900', textAlign: 'center' },
   adventureLine: { fontSize: 13, lineHeight: 17, fontWeight: '700', textAlign: 'center', opacity: 0.9 },
-  playPill: { borderRadius: 999, borderBottomWidth: 4, paddingHorizontal: spacing(2.5), paddingVertical: spacing(0.875), marginTop: spacing(1) },
-  playPillText: { fontSize: 16, fontWeight: '900' },
+  playPill: { borderRadius: 999, borderBottomWidth: 4, paddingHorizontal: spacing(1.25), paddingVertical: spacing(0.875), marginTop: spacing(1) },
+  playPillText: { fontSize: 14, fontWeight: '900' },
 
   // Stacked list cards (phones): icons · name/line · Play.
   adventuresList: { gap: spacing(1.25), marginTop: spacing(2) },

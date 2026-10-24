@@ -6,8 +6,8 @@ import { OwlStage, ChunkyButton } from './Playful';
 import { speak, stopSpeaking, useSpeechState, lastSpeechError } from '../speech';
 
 /** A tap-to-talk host. Uses the shared narrator so focus, cancellation and caching stay consistent. */
-export default function AdventureGuide({ name, width, reduceMotion, games, animals, art }: {
-  name?: string; width: number; reduceMotion: boolean; games: boolean; animals: boolean; art: boolean;
+export default function AdventureGuide({ name, width, reduceMotion, games, animals, art, compact = false }: {
+  compact?: boolean; name?: string; width: number; reduceMotion: boolean; games: boolean; animals: boolean; art: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const ownsSpeech = useRef(false);
@@ -28,8 +28,8 @@ export default function AdventureGuide({ name, width, reduceMotion, games, anima
   const close = () => { stopSpeaking(); ownsSpeech.current = false; setOpen(false); };
   return <>
     <Pressable accessibilityRole="button" accessibilityLabel="Say hello to Owl" accessibilityHint="Hear a welcome and discover what you can play" onPress={() => { setOpen(true); play(); }} style={styles.launch}>
-      <OwlStage width={width} owlSize={Math.round(width * .3)} tint="sun" still={reduceMotion} bubble="Hello, explorer! 👋" />
-      <Text style={styles.tap}>🔊 Tap Owl to say hello</Text>
+      {compact ? <Owl size={64} still={reduceMotion} /> : <OwlStage width={width} owlSize={Math.round(width * .3)} tint="sun" still={reduceMotion} bubble="Hello, explorer! 👋" />}
+      <Text style={styles.tap}>{compact ? '🔊 Hello!' : '🔊 Tap Owl to say hello'}</Text>
     </Pressable>
     <Sheet visible={open} onClose={close} closeLabel="Close Owl's welcome">
       <ScrollView contentContainerStyle={styles.content}>

@@ -184,18 +184,8 @@ export default function AppMenu({ screen, accountEmail, accountProviders, accoun
               <Logo size={22} tight decorative />
             </Animated.View>
           </Pressable>
-          {/* Feedback lives at the right end of the top bar on every screen size:
-              always in the same place, never covering the page, and readable
-              (a sideways tab cut its own label off). On narrow phones it's just 💬. */}
-          <Pressable
-            testID="header-feedback"
-            onPress={() => setFeedbackOpen(true)}
-            accessibilityRole="button"
-            accessibilityLabel="Give feedback"
-            style={({ pressed, hovered }: { pressed: boolean; hovered?: boolean }) => [styles.headerFeedback, width >= 600 && styles.headerFeedbackWide, (pressed || hovered) && styles.headerFeedbackActive]}
-          >
-            <Text style={styles.headerFeedbackIcon}>💬</Text>
-            {width >= 600 ? <Text testID="header-feedback-label" style={styles.headerFeedbackText}>Feedback</Text> : null}
+          <Pressable onPress={() => setMenuOpen(true)} accessibilityRole="button" accessibilityLabel="Grown-ups" style={[styles.headerFeedback, { paddingHorizontal: 12, marginLeft: 'auto' }]}>
+            <Text style={{ color: '#53347E', fontWeight: '800' }}>Grown-ups</Text>
           </Pressable>
         </Animated.View>
       </Animated.View>}

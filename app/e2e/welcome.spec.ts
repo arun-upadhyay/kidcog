@@ -33,3 +33,17 @@ test('browser Back from the sign-in page returns to the welcome page', async ({ 
   await page.goBack();
   await expect(page.getByRole('heading', { name: 'Ready for a little adventure?' })).toBeVisible();
 });
+
+
+test('welcome header stays at the top while scrolling and sign-in remains usable', async ({ page }) => {
+  await page.goto('/');
+  const header = page.getByTestId('welcome-header');
+  const before = (await header.boundingBox())!;
+  await page.getByTestId('welcome-scroll').evaluate(element => { element.scrollTop = 900; });
+  await expect.poll(() => page.getByTestId('welcome-scroll').evaluate(element => element.scrollTop)).toBeGreaterThan(800);
+  await expect.poll(async () => Math.abs((await header.boundingBox())!.y - before.y)).toBeLessThan(2);
+  const signIn = header.getByRole('button', { name: 'Parent sign in', exact: true });
+  await expect(signIn).toBeInViewport();
+  await signIn.click();
+  await expect(page.getByRole('button', { name: 'Sign in with email' })).toBeVisible();
+});
