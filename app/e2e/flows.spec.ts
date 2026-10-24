@@ -106,7 +106,12 @@ for (const name of ['Number Snake', 'Bubble Pop', 'Maze Runner', 'Trace & Draw',
       await page.getByRole('button', { name: /Pause/ }).click();
     }
     if (name === 'Number Snake' || name === 'Maze Runner') {
-      for (const dir of ['up', 'down', 'left', 'right']) await inViewport(page, page.getByRole('button', { name: `Go ${dir}`, exact: true }));
+      await page.getByRole('button', { name: 'Arrow controls', exact: true }).click();
+      for (const dir of ['up', 'down', 'left', 'right']) {
+        const arrow = page.getByRole('button', { name: `Go ${dir}`, exact: true });
+        await arrow.scrollIntoViewIfNeeded();
+        await inViewport(page, arrow);
+      }
     }
     if (name === 'Trace & Draw') await inViewport(page, page.getByRole('button', { name: /Skip/ }));
     if (name === 'Connect the Dots') await inViewport(page, page.getByRole('button', { name: '↺ Start again', exact: true }));
@@ -411,4 +416,50 @@ test('the browser Back button steps back inside KidCog: game → Play Zone → a
   await page.goBack();
   await expect(page.getByRole('radio', { name: 'Test Explorer, age 5', exact: true })).toBeVisible();
   expect(new URL(page.url()).host).toBe(new URL(page.url()).host); // still in the app
+});
+
+test('Maze lets children move directly on the board with optional arrow controls', async ({ page }) => {
+  await games(page);
+  await page.getByRole('button', { name: 'Play Maze Runner', exact: true }).click();
+  const board = page.getByTestId('maze-board');
+  const before = await board.getAttribute('aria-label');
+  await expect(page.getByRole('button', { name: 'Go up', exact: true })).toHaveCount(0);
+  await page.getByRole('button', { name: /^Move Owl / }).first().click();
+  await expect(board).not.toHaveAttribute('aria-label', before!);
+  await page.getByRole('button', { name: 'Arrow controls', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Go up', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Arrow controls', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Go up', exact: true })).toHaveCount(0);
+});
+
+for (const name of ['Number Snake', 'Bubble Pop']) {
+  test(`${name} pauses when leaving the app and waits for the child to resume`, async ({ page }) => {
+    await games(page);
+    await page.getByRole('button', { name: `Play ${name}`, exact: true }).click();
+    await page.getByRole('button', { name: '▶ Tap to start', exact: true }).click();
+    await expect(page.getByRole('button', { name: /Pause/ })).toBeVisible();
+    await page.evaluate(() => window.dispatchEvent(new Event('blur')));
+    await expect(page.getByRole('button', { name: /Pause/ })).toHaveCount(0);
+    await page.evaluate(() => window.dispatchEvent(new Event('focus')));
+    await expect(page.getByRole('button', { name: /Pause/ })).toHaveCount(0);
+    await page.getByRole('button', { name: /^▶ (Keep going|Tap to start)$/ }).click();
+    await expect(page.getByRole('button', { name: /Pause/ })).toBeVisible();
+  });
+}
+
+test('activity details keep play and close reachable on a short screen', async ({ page }) => {
+  await page.setViewportSize({ width: 844, height: 390 });
+  await prepare(page);
+  await page.getByRole('radio', { name: 'Test Explorer, age 5', exact: true }).click();
+  await page.getByRole('switch').click();
+  await page.getByRole('button', { name: /Choose an adventure/ }).click();
+  await page.getByRole('button', { name: /^Big ideas/ }).click();
+  const play = page.getByRole('button', { name: '▶  Let’s play!', exact: true });
+  await play.scrollIntoViewIfNeeded();
+  await inViewport(page, play);
+  const close = page.getByRole('button', { name: 'Not now', exact: true });
+  await close.scrollIntoViewIfNeeded();
+  await inViewport(page, close);
+  await close.click();
+  await expect(close).toHaveCount(0);
 });

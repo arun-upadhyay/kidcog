@@ -361,7 +361,7 @@ export default function CategoryScreen({ childName, childAvatar, onSelect, onPre
             const starting = busy && startedFrom === open.key;
             const failed = !busy && !!error && startedFrom === open.key;
             return (
-              <View style={styles.sheetBody}>
+              <ScrollView contentContainerStyle={styles.sheetBody} keyboardShouldPersistTaps="handled">
                 <View style={[styles.sheetIcon, { backgroundColor: visual.background, borderColor: visual.border }]}>
                   <Text style={styles.sheetEmoji}>{visual.icon}</Text>
                 </View>
@@ -383,7 +383,7 @@ export default function CategoryScreen({ childName, childAvatar, onSelect, onPre
                 <Pressable onPress={() => setOpenKey(null)} disabled={busy} accessibilityRole="button" style={styles.notNow}>
                   <Text style={styles.notNowText}>Not now</Text>
                 </Pressable>
-              </View>
+              </ScrollView>
             );
           })() : null}
       </Sheet>

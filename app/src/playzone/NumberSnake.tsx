@@ -1,3 +1,4 @@
+import { usePauseWhenAway } from './common';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { PanResponder, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { playSound } from '../games/sounds';
@@ -38,6 +39,7 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
   const cell = Math.min(cellWidth, cellHeight);
   const [, render] = useState(0);
   const [running, setRunning] = useState(false);
+  usePauseWhenAway(() => setRunning(false));
   const [won, setWon] = useState<number | null>(null);
   const [oops, setOops] = useState<number | null>(null);
   const game = useRef({ snake: [] as Cell[], dir: 'right' as Dir, queued: [] as Dir[], food: [] as Food[], next: 0, grow: 0, mistakes: 0, foodId: 0, placedAt: 0, missed: false });
@@ -169,13 +171,13 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
           </View>
         ))}
         {!running && won === null ? (
-          <GameStartCard emoji="🐍" title="Ready, little explorer?" hint="Slide your finger, click the arrow buttons, or use your keyboard arrows." onStart={() => setRunning(true)} resume={g.next > 0} />
+          <GameStartCard emoji="🐍" title="Ready, little explorer?" hint="Swipe on the board to steer. Find the next number!" onStart={() => setRunning(true)} resume={g.next > 0} />
         ) : null}
       </View>
       {viewportHeight >= 650 && <Text style={styles.tip}>🌼 {g.next} / {cfg.sequence.length} collected · Friendly walls: pop out the other side!</Text>}
       {viewportHeight >= 650 && <Text style={styles.startSub}>Slide to steer, or use the arrows below</Text>}
       <View style={styles.controls}>
-        <DirPad onDir={turn} disabled={won !== null} />
+        <DirPad optional onDir={turn} disabled={won !== null} />
         {running ? <Pressable onPress={() => setRunning(false)} style={styles.pause} accessibilityRole="button"><Text style={styles.pauseText}>⏸ Pause</Text></Pressable> : null}
       </View>
       </GameSurface>

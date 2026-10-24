@@ -1,3 +1,4 @@
+import { usePauseWhenAway } from './common';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Animated, Easing, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { playSound } from '../games/sounds';
@@ -54,6 +55,7 @@ export default function BubblePop({ level: startLevel, onBack, onFinish }: {
   const [popped, setPopped] = useState(0);
   const [mistakes, setMistakes] = useState(0);
   const [running, setRunning] = useState(false);
+  usePauseWhenAway(() => setRunning(false));
   const [won, setWon] = useState<number | null>(null);
   const nextId = useRef(0);
   const sinceTarget = useRef(0);

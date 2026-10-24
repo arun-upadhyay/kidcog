@@ -8,6 +8,17 @@ import { setMusicOn, useMusicOn } from './gameMusic';
 import Button from '../components/Button';
 import { colors, spacing, CONTENT_MAX_WIDTH, GUTTER } from '../theme';
 import { speak, stopSpeaking } from '../speech';
+import { isAudioFocused, subscribeAudioFocus } from '../audioFocus';
+
+/** Active games stop when a child switches tabs/apps; resuming is deliberate. */
+export function usePauseWhenAway(pause: () => void) {
+  const latest = useRef(pause);
+  latest.current = pause;
+  useEffect(() => {
+    if (!isAudioFocused()) latest.current();
+    return subscribeAudioFocus(active => { if (!active) latest.current(); });
+  }, []);
+}
 
 export type Dir = 'up' | 'down' | 'left' | 'right';
 export type GameKey = import('./learningContent').LearningKey | 'animals' | 'snake' | 'bubbles' | 'maze' | 'trace' | 'dots' | 'add' | 'states' | 'art-music';
@@ -120,12 +131,12 @@ export function useArrowKeys(onDir: (dir: Dir) => void, enabled = true) {
 }
 
 /** Swipe in any direction on the board. */
-export function useSwipe(onDir: (dir: Dir) => void) {
+export function useSwipe(onDir: (dir: Dir) => void, allowChildPress = false) {
   const handler = useRef(onDir);
   handler.current = onDir;
   const lock = useScrollLock();
   return useMemo(() => PanResponder.create({
-    onStartShouldSetPanResponder: () => true,
+    onStartShouldSetPanResponder: () => !allowChildPress,
     onMoveShouldSetPanResponder: (_e, g) => Math.abs(g.dx) + Math.abs(g.dy) > 8,
     onPanResponderTerminationRequest: () => false,
     onPanResponderGrant: () => lock(true),
@@ -135,11 +146,12 @@ export function useSwipe(onDir: (dir: Dir) => void) {
       if (Math.max(Math.abs(g.dx), Math.abs(g.dy)) < 18) return;
       handler.current(Math.abs(g.dx) > Math.abs(g.dy) ? (g.dx > 0 ? 'right' : 'left') : (g.dy > 0 ? 'down' : 'up'));
     },
-  }), [lock]);
+  }), [lock, allowChildPress]);
 }
 
 /** Big arrow buttons for small fingers (and anyone without a keyboard). */
-export function DirPad({ onDir, disabled }: { onDir: (dir: Dir) => void; disabled?: boolean }) {
+export function DirPad({ onDir, disabled, optional = false }: { onDir: (dir: Dir) => void; disabled?: boolean; optional?: boolean }) {
+  const [expanded, setExpanded] = useState(false);
   const key = (dir: Dir, label: string) => (
     <Pressable key={dir} onPress={() => onDir(dir)} disabled={disabled} accessibilityRole="button" accessibilityLabel={`Go ${dir}`}
       style={({ pressed }) => [styles.padKey, pressed && styles.padKeyPressed, disabled && { opacity: 0.4 }]}>
@@ -148,7 +160,11 @@ export function DirPad({ onDir, disabled }: { onDir: (dir: Dir) => void; disable
   );
   return (
     <View style={styles.pad}>
-      <View style={styles.padRow}>{key('left', '◀')}{key('up', '▲')}{key('down', '▼')}{key('right', '▶')}</View>
+      {optional ? <Pressable accessibilityRole="button" accessibilityLabel="Arrow controls" accessibilityState={{ expanded }} onPress={() => setExpanded(v => !v)} style={{ minHeight: 44, paddingHorizontal: 16, justifyContent: 'center' }}><Text style={{ color: '#5D439B', fontWeight: '700' }}>{expanded ? 'Hide arrows ▴' : 'Use arrows ▾'}</Text></Pressable> : null}
+      {!optional || expanded ? <>
+        <View style={styles.padRow}>{key('up', '▲')}</View>
+        <View style={styles.padRow}>{key('left', '◀')}{key('down', '▼')}{key('right', '▶')}</View>
+      </> : null}
     </View>
   );
 }
@@ -157,7 +173,7 @@ export function DirPad({ onDir, disabled }: { onDir: (dir: Dir) => void; disable
 const INTROS: Record<string, string> = {
   'Number Snake': 'Hi, I am Owl! Help the snake eat the numbers in order: one, then two, then three. Use the arrows, or swipe!',
   'Bubble Pop': 'Bubbles are floating up! Listen to the rule, then pop only the bubbles that match.',
-  'Maze Runner': 'Help me find my way to the flag! Use the arrows, and pick up the stars on the way.',
+  'Maze Runner': 'Help me find my way to the flag! Tap a glowing space beside me, or swipe to move. Pick up stars on the way.',
   'Trace & Draw': 'Let us write! Put your finger on the green dot and follow the line.',
   'Dot to Dot': 'Join the dots: one, then two, then three. Watch a picture appear!',
   'Magic Add': 'Abracadabra! Tap the numbers that add up to my magic number. Too much? Just try again!',
