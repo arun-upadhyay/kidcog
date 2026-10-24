@@ -463,3 +463,21 @@ test('activity details keep play and close reachable on a short screen', async (
   await close.click();
   await expect(close).toHaveCount(0);
 });
+
+test('Snake is compact and a tap above its head steers upward', async ({ page }) => {
+  await games(page);
+  await page.getByRole('button', { name: 'Play Number Snake', exact: true }).click();
+  await page.clock.install();
+  await page.getByRole('button', { name: '▶ Tap to start', exact: true }).click();
+  const board = (await page.getByTestId('snake-board').boundingBox())!;
+  const head = (await page.getByTestId('snake-head').boundingBox())!;
+  expect(Math.abs(board.width - board.height)).toBeLessThan(2);
+  expect(Math.abs(head.width - head.height)).toBeLessThan(2);
+  expect(head.width).toBeLessThan(board.width / 8);
+  await expect(page.getByTestId('snake-segment')).toHaveCount(1);
+  await page.mouse.click(head.x + head.width / 2, head.y - (board.width - 6) / 8);
+  await page.clock.fastForward(650);
+  const moved = (await page.getByTestId('snake-head').boundingBox())!;
+  expect(moved.y).toBeLessThan(head.y);
+  expect(Math.abs(moved.x - head.x)).toBeLessThan(2);
+});

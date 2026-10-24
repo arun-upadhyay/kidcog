@@ -1,6 +1,7 @@
 import { usePauseWhenAway } from './common';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { PanResponder, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
 import { playSound } from '../games/sounds';
 import { colors, spacing } from '../theme';
 import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, randomInt, shuffle, useArrowKeys, useScrollLock, type Dir, useUsableHeight } from './common';
@@ -11,11 +12,11 @@ import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, randomInt, shuf
  * snake can cross itself, and a wrong number just wiggles away — no game over.
  */
 const LEVELS = [
-  { name: 'Count to 5', sequence: [1, 2, 3, 4, 5], grid: 8, speed: 460 },
-  { name: 'Count to 10', sequence: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], grid: 9, speed: 410 },
-  { name: 'Count to 15', sequence: Array.from({ length: 15 }, (_, i) => i + 1), grid: 10, speed: 370 },
-  { name: 'Count by 2s', sequence: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20], grid: 10, speed: 340 },
-  { name: 'Count by 5s', sequence: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50], grid: 11, speed: 310 },
+  { name: 'Count to 5', sequence: [1, 2, 3, 4, 5], grid: 8, speed: 650 },
+  { name: 'Count to 10', sequence: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], grid: 9, speed: 580 },
+  { name: 'Count to 15', sequence: Array.from({ length: 15 }, (_, i) => i + 1), grid: 10, speed: 520 },
+  { name: 'Count by 2s', sequence: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20], grid: 10, speed: 470 },
+  { name: 'Count by 5s', sequence: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50], grid: 11, speed: 430 },
 ];
 
 type Cell = { x: number; y: number };
@@ -30,13 +31,14 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
   const [level, setLevel] = useState(Math.min(LEVELS.length, Math.max(1, startLevel)));
   const cfg = LEVELS[level - 1]!;
   const [availableWidth, setAvailableWidth] = useState(320);
-  const board = Math.min(availableWidth, 760);
   const viewportHeight = useUsableHeight();
+  // Square cells keep the snake compact and movement equal in both directions.
+  const board = Math.floor(Math.min(availableWidth, 460, Math.max(180, viewportHeight - (viewportHeight >= 650 ? 420 : 360))));
+  const boardHeight = board;
   const cellWidth = (board - BORDER * 2) / cfg.grid;
-  // Preserve the full panel width while reserving vertical space for controls.
-  const boardHeight = Math.min(board, viewportHeight < 450 ? Math.max(100, viewportHeight - 280) : Math.max(130, viewportHeight - 520));
-  const cellHeight = (boardHeight - BORDER * 2) / cfg.grid;
-  const cell = Math.min(cellWidth, cellHeight);
+  const cellHeight = cellWidth;
+  const cell = cellWidth;
+  const bodySize = cell * 0.72;
   const [, render] = useState(0);
   const [running, setRunning] = useState(false);
   usePauseWhenAway(() => setRunning(false));
@@ -66,7 +68,7 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
 
   const reset = useCallback(() => {
     const mid = Math.floor(cfg.grid / 2);
-    game.current = { snake: [{ x: 2, y: mid }, { x: 1, y: mid }, { x: 0, y: mid }], dir: 'right', queued: [], food: [], next: 0, grow: 0, mistakes: 0, foodId: 0, placedAt: 0, missed: false };
+    game.current = { snake: [{ x: 2, y: mid }, { x: 1, y: mid }], dir: 'right', queued: [], food: [], next: 0, grow: 0, mistakes: 0, foodId: 0, placedAt: 0, missed: false };
     placeFood();
     setWon(null); setRunning(false); render(n => n + 1);
   }, [cfg.grid, placeFood]);
@@ -92,7 +94,16 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
       onMoveShouldSetPanResponder: () => true,
       onPanResponderTerminationRequest: () => false,
       onPanResponderGrant: () => { anchorX = 0; anchorY = 0; lockScroll(true); },
-      onPanResponderRelease: () => lockScroll(false),
+      onPanResponderRelease: (event, gesture) => {
+        lockScroll(false);
+        if (Math.max(Math.abs(gesture.dx), Math.abs(gesture.dy)) >= 12) return;
+        const head = game.current.snake[0];
+        if (!head) return;
+        const dx = event.nativeEvent.locationX - (head.x + .5) * cellWidth;
+        const dy = event.nativeEvent.locationY - (head.y + .5) * cellHeight;
+        if (Math.max(Math.abs(dx), Math.abs(dy)) < cell * .5) return;
+        turnRef.current(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
+      },
       onPanResponderTerminate: () => lockScroll(false),
       onPanResponderMove: (_event, gesture) => {
         const dx = gesture.dx - anchorX, dy = gesture.dy - anchorY;
@@ -102,7 +113,7 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
         anchorX = gesture.dx; anchorY = gesture.dy;
       },
     });
-  }, [lockScroll]);
+  }, [lockScroll, cellWidth, cellHeight, cell]);
 
   useEffect(() => {
     if (!running) return;
@@ -117,7 +128,7 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
       const eaten = g.food.find(f => f.x === next.x && f.y === next.y);
       if (eaten) {
         if (eaten.value === cfg.sequence[g.next]) {
-          g.next++; g.grow++;
+          g.next++; if (g.snake.length < 5) g.grow++;
           playSound('pop');
           if (g.next >= cfg.sequence.length) {
             setRunning(false);
@@ -156,26 +167,44 @@ export default function NumberSnake({ level: startLevel, onBack, onFinish }: {
         ))}
       </View>
       <View style={styles.journey}><View style={[styles.journeyFill, { width: `${g.next / cfg.sequence.length * 100}%` }]} /></View>
-      <View {...(running ? swipe.panHandlers : {})} style={[styles.board, { width: board, height: boardHeight }, running && Platform.OS === 'web' ? ({ touchAction: 'none', userSelect: 'none' } as object) : null]} accessibilityLabel={`Snake board. Find number ${target}.`}>
+      <View testID="snake-board" {...(running ? swipe.panHandlers : {})} style={[styles.board, { width: board, height: boardHeight }, running && Platform.OS === 'web' ? ({ touchAction: 'none', userSelect: 'none' } as object) : null]} accessibilityLabel={`Snake board. Find number ${target}.`}>
         <View pointerEvents="none" style={StyleSheet.absoluteFill}>
           {Array.from({ length: cfg.grid * cfg.grid }, (_, i) => <View key={i} style={{ position: 'absolute', left: (i % cfg.grid) * cellWidth, top: Math.floor(i / cfg.grid) * cellHeight, width: cellWidth, height: cellHeight, backgroundColor: (i % cfg.grid + Math.floor(i / cfg.grid)) % 2 ? '#E0F1CF' : '#EBF7DE', borderWidth: 0.5, borderColor: '#D8EBC9' }} />)}
         </View>
         {g.food.map(f => (
-          <View key={f.id} style={[styles.food, { left: f.x * cellWidth + (cellWidth - cell) / 2 + 2, top: f.y * cellHeight + (cellHeight - cell) / 2 + 2, width: cell - 4, height: cell - 4, borderRadius: cell / 2 }, f.value === target && glow ? styles.foodTarget : null]}>
+          <View pointerEvents="none" key={f.id} style={[styles.food, { left: f.x * cellWidth + (cellWidth - cell) / 2 + 2, top: f.y * cellHeight + (cellHeight - cell) / 2 + 2, width: cell - 4, height: cell - 4, borderRadius: cell / 2 }, f.value === target && glow ? styles.foodTarget : null]}>
             <Text style={[styles.foodText, { fontSize: Math.max(11, cell * 0.42) }]}>{f.value}</Text>
           </View>
         ))}
+        <View pointerEvents="none" style={StyleSheet.absoluteFill}>
+          <Svg width={board - BORDER * 2} height={boardHeight - BORDER * 2}>
+            {g.snake.slice(1).map((tail, i) => {
+              const head = g.snake[i]!;
+              const x1 = (head.x + .5) * cell, y1 = (head.y + .5) * cell;
+              const x2 = (tail.x + .5) * cell, y2 = (tail.y + .5) * cell;
+              const edge = cell * cfg.grid;
+              // A wrapped pair joins through the two edges, never across the board.
+              let d = `M ${x1} ${y1} L ${x2} ${y2}`;
+              if (Math.abs(head.x - tail.x) > 1) {
+                d = `M ${x1} ${y1} L ${head.x === 0 ? -cell : edge + cell} ${y1} M ${x2} ${y2} L ${tail.x === 0 ? -cell : edge + cell} ${y2}`;
+              } else if (Math.abs(head.y - tail.y) > 1) {
+                d = `M ${x1} ${y1} L ${x1} ${head.y === 0 ? -cell : edge + cell} M ${x2} ${y2} L ${x2} ${tail.y === 0 ? -cell : edge + cell}`;
+              }
+              return <Path key={i} d={d} fill="none" stroke="#43B883" strokeWidth={bodySize} strokeLinecap="round" strokeLinejoin="round" />;
+            })}
+          </Svg>
+        </View>
         {g.snake.map((s, i) => (
-          <View key={i} style={[styles.body, { left: s.x * cellWidth + 1, top: s.y * cellHeight + 1, width: cellWidth - 2, height: cellHeight - 2, borderRadius: i === 0 ? cell / 2.5 : cell / 3.5, backgroundColor: i === 0 ? '#147C60' : i % 2 ? '#43B883' : '#75CD80', borderBottomWidth: 4, borderBottomColor: '#23895E' }]}>
+          <View pointerEvents="none" testID={i === 0 ? "snake-head" : "snake-segment"} key={i} style={[styles.body, { left: s.x * cellWidth + (cell - bodySize) / 2, top: s.y * cellHeight + (cell - bodySize) / 2, width: bodySize, height: bodySize, borderRadius: bodySize / 2, backgroundColor: i === 0 ? '#147C60' : '#43B883' }]}>
             {i === 0 ? <Text style={{ fontSize: cell * 0.45 }}>👀</Text> : null}
           </View>
         ))}
         {!running && won === null ? (
-          <GameStartCard emoji="🐍" title="Ready, little explorer?" hint="Swipe on the board to steer. Find the next number!" onStart={() => setRunning(true)} resume={g.next > 0} />
+          <GameStartCard emoji="🐍" title="Ready, little explorer?" hint="Tap ahead of Snake or swipe to turn. Find the next number!" onStart={() => setRunning(true)} resume={g.next > 0} />
         ) : null}
       </View>
       {viewportHeight >= 650 && <Text style={styles.tip}>🌼 {g.next} / {cfg.sequence.length} collected · Friendly walls: pop out the other side!</Text>}
-      {viewportHeight >= 650 && <Text style={styles.startSub}>Slide to steer, or use the arrows below</Text>}
+      {viewportHeight >= 650 && <Text style={styles.startSub}>Tap ahead or swipe to steer</Text>}
       <View style={styles.controls}>
         <DirPad optional onDir={turn} disabled={won !== null} />
         {running ? <Pressable onPress={() => setRunning(false)} style={styles.pause} accessibilityRole="button"><Text style={styles.pauseText}>⏸ Pause</Text></Pressable> : null}
