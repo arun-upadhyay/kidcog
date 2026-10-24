@@ -8,7 +8,7 @@ import Svg, { Path, Polyline } from 'react-native-svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ACTIVITIES, PALETTE, SCENES, SONGS, WORDS, type Activity, type Stroke } from './artContent';
 import { useMusicAudio } from './musicAudio';
-import { useScrollLock, useUsableHeight } from './common';
+import { drawingTouchStyle, useScrollLock, useUsableHeight } from './common';
 import { GLYPHS } from './TraceDraw';
 import { useReduceMotion } from '../screens/WelcomeScreen';
 import ColoringBook from './ColoringBook';
@@ -82,7 +82,7 @@ function ArtStudio({ mode, childId }: { mode: 'color'|'numbers'|'words'|'draw'|'
   <View style={styles.row}>{drawing ? mode==='trace' && TRACES.map(t=><Action key={t} title={t} selected={trace===t} onPress={()=>{setTrace(t);setStrokes([]);setNotice('');setTraced(false);}} />) : SCENES.map((p,i)=><Action key={p.name} title={`${p.emoji} ${p.name}`} selected={scene===i} onPress={()=>{setScene(i);setFills([]);setHistory([]);setNotice('');}} />)}</View>
   <View style={styles.row}>{PALETTE.map((p,i)=><Pressable key={p.name} accessibilityRole="button" accessibilityLabel={`${mode==='numbers' ? `${i+1} ` : mode==='words' ? `${WORDS[i]} ` : ''}${p.name}`} accessibilityState={{selected:color===i&&!erase}} aria-selected={color===i&&!erase} onPress={()=>{setColor(i);setErase(false);}} style={[styles.swatch,{backgroundColor:p.hex},color===i&&!erase&&styles.swatchSelected]}><Text style={styles.swatchText}>{mode==='numbers'?i+1:mode==='words'?WORDS[i]:color===i&&!erase?'✓':''}</Text></Pressable>)}</View>
   <View style={[styles.bench, wide && styles.benchWide]}>
-  <View testID="art-canvas" onLayout={e=>setWidth(e.nativeEvent.layout.width)} style={[styles.canvas, wide && styles.canvasWide, wide && { maxWidth: canvasMax }]}
+  <View testID="art-canvas" onLayout={e=>setWidth(e.nativeEvent.layout.width)} style={[styles.canvas, drawingTouchStyle, wide && styles.canvasWide, wide && { maxWidth: canvasMax }]}
    onStartShouldSetResponder={()=>drawing} onMoveShouldSetResponder={()=>drawing} onResponderGrant={begin} onResponderMove={move} onResponderRelease={finish} onResponderTerminate={()=>lock(false)} onResponderTerminationRequest={()=>false}>
    <Svg pointerEvents={drawing?'none':'auto'} width="100%" height="100%" viewBox="0 0 100 100">
     {drawing ? <>

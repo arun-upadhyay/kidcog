@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { playSound, useSoundEffects } from '../games/sounds';
 import { speak, stopSpeaking } from '../speech';
 import { CRAYONS, GROUPS, PAGES, type ColoringPage, type GroupKey } from './coloringPages';
-import { useNative, useScrollLock, useUsableHeight } from './common';
+import { drawingTouchStyle, useNative, useScrollLock, useUsableHeight } from './common';
 import { useBackHandler } from '../backHandler';
 
 /**
@@ -220,7 +220,7 @@ export default function ColoringBook({ childId }: { childId: string }) {
       <View style={[styles.studio, toolsInRail && { alignItems: 'center' }]}>
         <View style={[styles.canvasFrame, { flexGrow: 1, flexShrink: 1, flexBasis: 0, maxWidth: maxCanvas }]}>
           <View
-            style={{ width: '100%', aspectRatio: 1, overflow: 'hidden' }}
+            style={[{ width: '100%', aspectRatio: 1, overflow: 'hidden' }, drawingTouchStyle]}
             accessibilityLabel={`Colouring ${open.name}`}
             testID="coloring-canvas"
             onLayout={e => { const w = Math.round(e.nativeEvent.layout.width); if (w > 0 && Math.abs(w - canvas) > 1) setCanvas(w); }}

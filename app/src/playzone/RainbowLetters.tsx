@@ -5,6 +5,7 @@ import Owl from '../components/Owl';
 import { playSound } from '../games/sounds';
 import { speak, stopSpeaking } from '../speech';
 import { useNative, useScrollLock, useUsableHeight } from './common';
+import { drawingTouchStyle } from './common';
 
 /**
  * Rainbow Letters: trace big letters, numbers, little words and shapes with
@@ -98,7 +99,7 @@ export default function RainbowLetters() {
       </View>
 
       <View testID="rainbow-board" accessibilityLabel={`Tracing board for ${item}`}
-        style={[styles.board, { width: board, height: board }]}
+        style={[styles.board, drawingTouchStyle, { width: board, height: board }]}
         onStartShouldSetResponder={() => true} onMoveShouldSetResponder={() => true}
         onResponderGrant={begin} onResponderMove={move} onResponderRelease={end} onResponderTerminate={end} onResponderTerminationRequest={() => false}>
         <Svg width={board} height={board} viewBox="0 0 100 100" pointerEvents="none">

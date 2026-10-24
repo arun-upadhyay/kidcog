@@ -230,3 +230,27 @@ test('Coloring Book: the rainbow picker fills with a custom colour', async ({ pa
   await canvasEl.click({ position: { x: (x / 100) * box.width, y: (y / 100) * box.height } });
   await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem('kidcog.coloring.v1.e2e-child') ?? '{}').apple?.[0]?.toLowerCase())).toBe(hex);
 });
+
+
+test('Touch drawing keeps the coloring canvas stationary and saves the stroke', async ({ page, context }, info) => {
+  test.skip(!info.project.use.isMobile, 'Real touch gesture regression');
+  await artMusic(page);
+  await page.getByRole('button', { name: 'Open Coloring Book', exact: true }).click();
+  await page.getByRole('button', { name: 'Colour Superhero', exact: true }).click();
+  await page.getByRole('button', { name: 'Draw', exact: true }).click();
+  const canvas = page.getByTestId('coloring-canvas');
+  await canvas.scrollIntoViewIfNeeded();
+  await expect(canvas).toHaveCSS('touch-action', 'none');
+  const box = (await canvas.boundingBox())!;
+  const client = await context.newCDPSession(page);
+  const x = box.x + box.width * .5;
+  const startY = box.y + box.height * .65;
+  await client.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y: startY }] });
+  for (let i = 1; i <= 10; i++) {
+    await client.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x, y: startY - i * 8 }] });
+  }
+  await client.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  expect(Math.abs((await canvas.boundingBox())!.y - box.y)).toBeLessThan(2);
+  await expect.poll(() => page.evaluate(() => (JSON.parse(localStorage.getItem('kidcog.coloring.draw.v1.e2e-child') ?? '{}').hero ?? []).some((stroke: { points: unknown[] }) => stroke.points.length > 3))).toBe(true);
+  await client.detach();
+});

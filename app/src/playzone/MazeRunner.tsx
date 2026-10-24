@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { playSound } from '../games/sounds';
 import { colors } from '../theme';
-import { DirPad, GameSurface, GameStartCard, GameFrame, WinCard, shuffle, useArrowKeys, useSwipe, type Dir, useUsableHeight } from './common';
+import { drawingTouchStyle, DirPad, GameSurface, GameStartCard, GameFrame, WinCard, shuffle, useArrowKeys, useSwipe, type Dir, useUsableHeight } from './common';
 
 /**
  * Maze Runner: help the owl through the maze to the flag, picking up stars on
@@ -104,7 +104,7 @@ export default function MazeRunner({ level: startLevel, onBack, onFinish }: {
       hint={won === null ? `Help Owl reach the flag 🏁 — grab the stars! (${got.length} of 3)` : ''}>
       <GameSurface theme="purple" eyebrow="THE STAR TRAIL" title="An owl adventure 🦉" badgeLabel="STARS" badge={`${got.length} / 3`} onWidth={setBoardWidth}>
       <View {...swipe.panHandlers} accessibilityLabel={`Maze, ${size} by ${size}. Owl is at column ${pos.x + 1}, row ${pos.y + 1}.`}
-        style={[styles.board, { width: cell * size + line, height: cell * size + line }, bump && styles.bump]}>
+        style={[styles.board, drawingTouchStyle, { width: cell * size + line, height: cell * size + line }, bump && styles.bump]}>
         {trail.map(k => {
           const [x, y] = k.split(',').map(Number) as [number, number];
           return <View key={k} style={[styles.trail, { left: x * cell + cell * 0.3, top: y * cell + cell * 0.3, width: cell * 0.4, height: cell * 0.4, borderRadius: cell }]} />;

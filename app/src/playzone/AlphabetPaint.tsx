@@ -4,7 +4,7 @@ import Svg, { Defs, G, Mask, Path, Polyline, Rect, Text as SvgText } from 'react
 import { CRAYONS } from './coloringPages';
 import { PAINT_PAGES, type PaintPage } from './alphabetPaintPages';
 import { blankArt, loadPaint, paintKey, savePaint, type PaintArt, type PaintStroke } from './alphabetPaintArt';
-import { useScrollLock } from './common';
+import { drawingTouchStyle, useScrollLock } from './common';
 import CorrectAnswerCelebration from '../components/CorrectAnswerCelebration';
 
 type Tool = 'brush' | 'pencil' | 'marker' | 'fill' | 'eraser';
@@ -163,9 +163,9 @@ function PaintEditor({childId,page,onBack,onPictures}: {childId:string;page:Pain
       <Pressable disabled={!ready} accessibilityRole="button" accessibilityLabel="Finished painting" onPress={()=>{if(saveError)save(artRef.current);setCelebrate(n=>n+1);}} style={[styles.finish,!ready&&styles.disabled]}><Text style={styles.finishText}>✓ Finished!</Text></Pressable>
     </View>
     <View style={[styles.workspace,wide&&styles.workspaceWide]}>
-      <View style={[styles.paper,{width:canvasWidth,height:canvasHeight}]} testID="alphabet-canvas">
+      <View style={[drawingTouchStyle,styles.paper,{width:canvasWidth,height:canvasHeight}]} testID="alphabet-canvas">
         <Picture page={page} art={art} width={canvasWidth} height={canvasHeight} onFill={fill}><Ink page={page} strokes={[...art.strokes,...(draft?[draft]:[])]}/></Picture>
-        {tool!=='fill'?<View testID="paint-drawing-surface" style={StyleSheet.absoluteFill} onStartShouldSetResponder={()=>ready} onMoveShouldSetResponder={()=>ready} onResponderGrant={startStroke} onResponderMove={moveStroke} onResponderRelease={finishStroke} onResponderTerminate={finishStroke} onResponderTerminationRequest={()=>false}/>:null}
+        {tool!=='fill'?<View testID="paint-drawing-surface" style={[StyleSheet.absoluteFill, drawingTouchStyle]} onStartShouldSetResponder={()=>ready} onMoveShouldSetResponder={()=>ready} onResponderGrant={startStroke} onResponderMove={moveStroke} onResponderRelease={finishStroke} onResponderTerminate={finishStroke} onResponderTerminationRequest={()=>false}/>:null}
       </View>
       {palette}{tools}
     </View>

@@ -22,6 +22,7 @@ import { defaultDotLevel } from '../playzone/dotPictures';
 import CollectionShelf from '../playzone/Collections';
 import type { OwlOutfit } from '../progress';
 import AnimalExplorer from '../playzone/AnimalExplorer';
+import UsaMap from '../playzone/UsaMap';
 import { ANIMALS } from '../explore/animals';
 import { defaultAnimalLevel } from '../explore/animalQuiz';
 import { useAppHeaderScroll } from '../headerScroll';
@@ -39,6 +40,7 @@ type GameInfo = { key: GameKey; emoji: string; name: string; blurb: string; back
 export const GAMES: GameInfo[] = [
   ...LEARNING_GAMES,
   { key: 'animals', emoji: '🦁', name: 'Animal Explorer', blurb: 'Animal quiz, sounds and your own album', background: '#FFF4D6', border: '#F4C966', ink: '#8A5A0A', unlockAfter: 0, isNew: true },
+  { key: 'states', emoji: '🗺️', name: 'USA Map', blurb: 'Find the state on the map', background: '#E6F4FB', border: '#5AA9D6', ink: '#24658F', unlockAfter: 0, isNew: true },
   { key: 'snake', emoji: '🐍', name: 'Number Snake', blurb: 'Eat the numbers in order', background: '#E5F5EA', border: '#63AA7D', ink: '#34734E', unlockAfter: 0 },
   { key: 'bubbles', emoji: '🫧', name: 'Bubble Pop', blurb: 'Pop the bubbles that match', background: '#E5F3FF', border: '#68A8D6', ink: '#2F6F9D', unlockAfter: 0 },
   { key: 'maze', emoji: '🦉', name: 'Maze Runner', blurb: 'Lead Owl to the flag', background: '#EEE9FF', border: '#A68AE2', ink: '#5D439B', unlockAfter: 1 },
@@ -182,6 +184,7 @@ export default function PlayZoneScreen({ childId, childName, childAvatar, onSwit
         {playing === 'trace' ? <TraceDraw {...props} /> : null}
         {playing === 'dots' ? <DotToDot {...props} wall={progress?.pictures} onPicture={onPicture} /> : null}
         {playing === 'add' ? <MagicAdd {...props} /> : null}
+        {playing === 'states' ? <UsaMap {...props} /> : null}
       </ScrollView>
       </View>
       </ScrollLockContext.Provider>

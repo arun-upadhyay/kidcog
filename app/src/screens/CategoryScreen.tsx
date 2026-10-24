@@ -105,6 +105,45 @@ function ActivityTile({ title, visual, done, game, stars, width, disabled, reduc
   );
 }
 
+type Adventure = { key: string; onPress: () => void; label: string; ribbon: string; colour: 'grape' | 'sun' | 'coral'; icons: string[]; title: string; line: string; background: string; ink: string };
+
+/**
+ * A big, friendly destination card (Play Zone, Animal Explorer, Art & Music).
+ * On a roomy screen three of these sit in a row as tall picture cards; on a
+ * phone they stack into a tidy list — icons on the left, name and line in the
+ * middle, a Play button on the right — so they stay easy to scan and tap.
+ */
+function AdventureCard({ a, list, busy }: { a: Adventure; list: boolean; busy: boolean }) {
+  const c = PLAY[a.colour];
+  if (list) {
+    return (
+      <Pressable onPress={a.onPress} disabled={busy} accessibilityRole="button" accessibilityLabel={a.label}
+        style={({ pressed }) => [styles.advListCard, { backgroundColor: a.background, borderColor: c.face }, pressed && styles.pressed]}>
+        <View style={styles.advListIcons}>
+          {a.icons.slice(0, 2).map((icon, j) => <Text key={icon} style={[styles.advListIcon, { transform: [{ rotate: `${(j - 0.5) * 12}deg` }] }]}>{icon}</Text>)}
+        </View>
+        <View style={styles.advListText}>
+          <Text style={[styles.advListTitle, { color: a.ink }]} numberOfLines={1}>{a.title}</Text>
+          <Text style={[styles.advListLine, { color: a.ink }]} numberOfLines={2}>{a.line}</Text>
+        </View>
+        <View style={[styles.playPill, styles.playPillList, { backgroundColor: c.face, borderColor: c.lip }]}><Text style={[styles.playPillText, { color: c.text }]}>▶ Play</Text></View>
+      </Pressable>
+    );
+  }
+  return (
+    <Pressable onPress={a.onPress} disabled={busy} accessibilityRole="button" accessibilityLabel={a.label}
+      style={({ pressed }) => [styles.adventure, { backgroundColor: a.background, borderColor: c.face }, pressed && styles.pressed]}>
+      <Ribbon text={a.ribbon} colour={a.colour} />
+      <View style={styles.adventureIcons}>
+        {a.icons.map((icon, j) => <Text key={icon} style={[styles.adventureIcon, { transform: [{ rotate: `${(j - 1.5) * 9}deg` }] }]}>{icon}</Text>)}
+      </View>
+      <Text style={[styles.adventureTitle, { color: a.ink }]} numberOfLines={2}>{a.title}</Text>
+      <Text style={[styles.adventureLine, { color: a.ink }]} numberOfLines={2}>{a.line}</Text>
+      <View style={[styles.playPill, { backgroundColor: c.face, borderColor: c.lip }]}><Text style={[styles.playPillText, { color: c.text }]}>▶ Play</Text></View>
+    </Pressable>
+  );
+}
+
 export default function CategoryScreen({ childName, childAvatar, onSelect, onPreview, progress = null, onReport, onPlayZone, onAnimals, onArtMusic, onBack, report, explored, busy, error, initialCategory = 'abstract_concepts', initialCount = 2 }: {
   /** Who is playing (shown at the top, with Switch player). */
   childName?: string;
@@ -183,12 +222,14 @@ export default function CategoryScreen({ childName, childAvatar, onSelect, onPre
   }
 
   const wideHero = width >= 640;
-  // The two big adventures sit side by side (smaller on phones, so the activities stay near).
-  const compactCards = width < 560;
+  // The three big adventures sit in one tidy row on a roomy screen, and stack
+  // into a neat list on a phone — so they always read as one matching set.
+  const listCards = width < 600;
   const stageWidth = wideHero ? 260 : height < 700 ? 150 : Math.min(180, width - spacing(10));
-  const adventures = [
+  const adventures: Adventure[] = [
     onPlayZone ? { key: 'play', onPress: onPlayZone, label: 'Open the Play Zone games', ribbon: '🎮 GAMES', colour: 'grape' as const, icons: ['🐍', '🫧', '🪄', '🖍️'], title: 'Play Zone', line: 'Number Snake, Bubble Pop, Magic Add, mazes and dots', background: '#F1EBFF', ink: '#4E3590' } : null,
     onAnimals ? { key: 'animals', onPress: onAnimals, label: 'Open the Animal Explorer', ribbon: '🔊 ANIMALS', colour: 'sun' as const, icons: ['🦁', '🐘', '🐧', '🦋'], title: 'Animal Explorer', line: 'Animal quiz, animal sounds and your album', background: '#FFF6DA', ink: '#6E4706' } : null,
+    onArtMusic ? { key: 'art', onPress: onArtMusic, label: 'Open the Art & Music studio', ribbon: '🎨 ART', colour: 'coral' as const, icons: ['🎨', '🖌️', '🎵', '🎹'], title: 'Art & Music', line: 'Draw, colour, trace and make your own music', background: '#FFE7E1', ink: '#8A2F1E' } : null,
   ].filter(<T,>(a: T | null): a is T => a !== null);
 
   return (
@@ -204,33 +245,14 @@ export default function CategoryScreen({ childName, childAvatar, onSelect, onPre
         </View>
       </View>
 
-      {/* The two big adventures */}
+      {/* The three big adventures — one matching set (row on wide, list on phone) */}
       {adventures.length ? (
-        <View style={styles.adventures}>
-          {adventures.map(a => {
-            const c = PLAY[a.colour];
-            return (
-              <Pressable key={a.key} onPress={a.onPress} disabled={busy} accessibilityRole="button" accessibilityLabel={a.label}
-                style={({ pressed }) => [styles.adventure, compactCards && styles.adventureCompact, { backgroundColor: a.background, borderColor: c.face }, pressed && styles.pressed]}>
-                <Ribbon text={width < 360 ? a.ribbon.replace(/^\S+ /, '') : a.ribbon} colour={a.colour} />
-                <View style={styles.adventureIcons}>
-                  {(compactCards ? a.icons.slice(0, 2) : a.icons).map((icon, j) => <Text key={icon} style={[styles.adventureIcon, compactCards && styles.adventureIconCompact, { transform: [{ rotate: `${(j - 1.5) * 9}deg` }] }]}>{icon}</Text>)}
-                </View>
-                <Text style={[styles.adventureTitle, compactCards && styles.adventureTitleCompact, { color: a.ink }]} numberOfLines={2}>{a.title}</Text>
-                <Text style={[styles.adventureLine, compactCards && styles.adventureLineCompact, { color: a.ink }]} numberOfLines={compactCards ? 3 : 2}>{a.line}</Text>
-                <View style={[styles.playPill, { backgroundColor: c.face, borderColor: c.lip }]}><Text style={[styles.playPillText, { color: c.text }]}>▶ Play</Text></View>
-              </Pressable>
-            );
-          })}
+        <View style={listCards ? styles.adventuresList : styles.adventuresRow}>
+          {adventures.map(a => <AdventureCard key={a.key} a={a} list={listCards} busy={busy} />)}
         </View>
       ) : null}
 
       {/* Thinking activities */}
-      {onArtMusic ? <Pressable accessibilityRole="button" accessibilityLabel="Open Art & Music studio" disabled={busy} onPress={onArtMusic} style={{ marginVertical: 16, padding: 20, borderRadius: 24, backgroundColor: '#F5E6FF', borderWidth: 2, borderColor: '#B28BCD' }}>
-        <Text style={{ fontSize: 24, fontWeight: '900', color: '#684389' }}>🎨 Art & Music 🎵</Text>
-        <Text style={{ fontSize: 16, color: '#684389', marginTop: 6 }}>Draw, color, trace and make your own music →</Text>
-      </Pressable> : null}
-
       <WaveBand colour={PLAY.grass.face} bottom>
         <View style={styles.band} accessibilityRole="header">
           <Text style={styles.bandEmoji}>🧠</Text>
@@ -326,10 +348,11 @@ export default function CategoryScreen({ childName, childAvatar, onSelect, onPre
 
       {error && !openKey ? <Text style={styles.problemText}>{error}</Text> : null}
 
-      <View style={{ marginTop: spacing(1) }}>
-        {report ? <ChunkyButton colour="white" size="md" title="View latest result" onPress={onReport} disabled={busy} style={{ marginBottom: spacing(1.5) }} /> : null}
-        <ChunkyButton colour="white" size="md" title="👥 Switch player" label="Choose another player" onPress={onBack} disabled={busy} />
-      </View>
+      {report ? (
+        <View style={{ marginTop: spacing(1) }}>
+          <ChunkyButton colour="white" size="md" title="View latest result" onPress={onReport} disabled={busy} />
+        </View>
+      ) : null}
 
       {/* Tap a tile: the details and one big Play button slide up. */}
       <Sheet visible={openKey !== null} onClose={() => { if (!busy) setOpenKey(null); }}>
@@ -382,18 +405,25 @@ const styles = StyleSheet.create({
   heroTitle: { fontSize: 30, lineHeight: 36, fontWeight: '900', color: '#633E12', textAlign: 'center', marginTop: 2 },
   heroTitleWide: { fontSize: 38, lineHeight: 44, textAlign: 'left' },
 
-  adventures: { flexDirection: 'row', gap: spacing(1.5), marginTop: spacing(2) },
-  adventure: { flex: 1, borderRadius: 28, borderWidth: 4, borderBottomWidth: 9, alignItems: 'center', paddingHorizontal: spacing(2), paddingTop: spacing(3.5), paddingBottom: spacing(2), gap: 4 },
-  adventureCompact: { borderRadius: 24, borderWidth: 3, borderBottomWidth: 7, paddingHorizontal: spacing(1), paddingTop: spacing(3), paddingBottom: spacing(1.5) },
-  adventureIconCompact: { fontSize: 30 },
-  adventureTitleCompact: { fontSize: 18, lineHeight: 22 },
-  adventureLineCompact: { fontSize: 12, lineHeight: 16 },
+  // Three-in-a-row picture cards (roomy screens).
+  adventuresRow: { flexDirection: 'row', alignItems: 'stretch', gap: spacing(1.25), marginTop: spacing(2) },
+  adventure: { flex: 1, minWidth: 0, borderRadius: 26, borderWidth: 4, borderBottomWidth: 9, alignItems: 'center', paddingHorizontal: spacing(1.25), paddingTop: spacing(3.25), paddingBottom: spacing(1.75), gap: 4 },
   adventureIcons: { flexDirection: 'row', gap: spacing(0.5), marginBottom: 2 },
-  adventureIcon: { fontSize: 40 },
-  adventureTitle: { fontSize: 25, fontWeight: '900', textAlign: 'center' },
-  adventureLine: { fontSize: 14, fontWeight: '700', textAlign: 'center', opacity: 0.9 },
-  playPill: { borderRadius: 999, borderBottomWidth: 4, paddingHorizontal: spacing(3), paddingVertical: spacing(0.875), marginTop: spacing(1) },
-  playPillText: { fontSize: 17, fontWeight: '900' },
+  adventureIcon: { fontSize: 32 },
+  adventureTitle: { fontSize: 21, lineHeight: 25, fontWeight: '900', textAlign: 'center' },
+  adventureLine: { fontSize: 13, lineHeight: 17, fontWeight: '700', textAlign: 'center', opacity: 0.9 },
+  playPill: { borderRadius: 999, borderBottomWidth: 4, paddingHorizontal: spacing(2.5), paddingVertical: spacing(0.875), marginTop: spacing(1) },
+  playPillText: { fontSize: 16, fontWeight: '900' },
+
+  // Stacked list cards (phones): icons · name/line · Play.
+  adventuresList: { gap: spacing(1.25), marginTop: spacing(2) },
+  advListCard: { flexDirection: 'row', alignItems: 'center', alignSelf: 'stretch', gap: spacing(1.5), borderRadius: 22, borderWidth: 3, borderBottomWidth: 6, paddingHorizontal: spacing(1.75), paddingVertical: spacing(1.5) },
+  advListIcons: { flexDirection: 'row', width: 58, justifyContent: 'center' },
+  advListIcon: { fontSize: 30, marginHorizontal: -2 },
+  advListText: { flex: 1, gap: 2 },
+  advListTitle: { fontSize: 19, fontWeight: '900' },
+  advListLine: { fontSize: 13, lineHeight: 17, fontWeight: '700', opacity: 0.9 },
+  playPillList: { marginTop: 0, paddingHorizontal: spacing(2) },
 
   band: { flexDirection: 'row', alignItems: 'center', gap: spacing(1.5), paddingHorizontal: spacing(2), paddingVertical: spacing(0.5) },
   bandEmoji: { fontSize: 34 },
