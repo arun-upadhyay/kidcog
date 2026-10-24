@@ -17,7 +17,9 @@ import AppMenu from './src/components/AppMenu';
 import IdleGuard from './src/components/IdleGuard';
 import GetAppBanner from './src/components/GetAppBanner';
 import { AuthProvider, useAuth } from './src/auth/AuthContext';
-import { deleteAccount, deleteChildProfile, fetchTest, getParentReport, listChildren, prefetchRound, saveChild, submitAnswers, updateChildAvatar } from './src/api';
+import { deleteAccount, deleteChildProfile, errorCode, fetchTest, getParentReport, listChildren, prefetchRound, reportPlay, saveChild, submitAnswers, updateChildAvatar } from './src/api';
+import SubscriptionProvider, { useSubscription } from './src/subscription/SubscriptionProvider';
+import { gameLocked } from './src/subscription/entitlement';
 import { supabase } from './src/auth/supabase';
 import { stopSpeaking } from './src/speech';
 import { forgetProgress, loadProgress, recordAnimalsFound, recordArcade, recordOwlOutfit, recordPicture, recordRound, type ChildProgress, type OwlOutfit, type RoundReward } from './src/progress';
@@ -54,6 +56,8 @@ function KidCogApp() {
   const [profilesError, setProfilesError] = useState<string | null>(null);
   const [profilesAttempt, setProfilesAttempt] = useState(0);
   const parentId = session?.user.id;
+  // Explore first, subscribe later: what this family has unlocked (all open when switched off on the server).
+  const { entitlement, refresh: refreshEntitlement, setEntitlement, askGrownUp } = useSubscription();
 
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [historyChild, setHistoryChild] = useState<SavedChildProfile | null>(null);
@@ -88,6 +92,9 @@ function KidCogApp() {
     return () => { active = false; };
   }, [parentId, profilesAttempt]);
 
+  // Back on "Who's playing today?": fresh counts for the parent's invite card.
+  useEffect(() => { if (stage === 'start') refreshEntitlement(); }, [stage, refreshEntitlement]);
+
   /** Start a test. Every test is its own session with its own result. */
   const beginRound = useCallback(async (profile: ChildProfile, trait: TraitKey, count: number) => {
     if (generationLock.current) return;
@@ -112,12 +119,14 @@ function KidCogApp() {
       playStartedAt.current ??= Date.now();
       setStage('quiz');
     } catch (err) {
-      setError(messageOf(err));
+      // Free plan, today's thinking activities used up: Owl asks for a grown-up instead of an error.
+      if (errorCode(err) === 'plan_required') { askGrownUp('activities'); refreshEntitlement(); }
+      else setError(messageOf(err));
     } finally {
       generationLock.current = false;
       setBusy(false);
     }
-  }, []);
+  }, [askGrownUp, refreshEntitlement]);
 
   const playerStartLock = useRef(false);
   const start = useCallback(async (profile: ChildProfile) => {
@@ -178,10 +187,11 @@ function KidCogApp() {
     setStage('playzone');
   }, []);
   const openAnimals = useCallback(() => {
+    if (gameLocked(entitlement, 'animals')) { askGrownUp('game'); return; }
     playStartedAt.current ??= Date.now();
     setPlayZoneGame('animals');
     setStage('playzone');
-  }, []);
+  }, [entitlement, askGrownUp]);
   const animalsFound = useCallback((keys: string[]) => {
     if (child?.id) void recordAnimalsFound(child.id, keys).then(setProgress).catch(() => {});
   }, [child?.id]);
@@ -198,11 +208,12 @@ function KidCogApp() {
   /** A Play Zone game was won: save its stars and level, and suggest a break after a long spell of play. */
   const finishGame = useCallback((game: GameKey, stars: number, nextLevel: number) => {
     if (child?.id) void recordArcade(child.id, game, stars, nextLevel).then(setProgress).catch(() => {});
+    void reportPlay(game).then(setEntitlement).catch(() => {});
     if (playStartedAt.current !== null && Date.now() - playStartedAt.current >= BREAK_AFTER_MS) {
       setBreakOpen(true);
       playStartedAt.current = Date.now();
     }
-  }, [child?.id]);
+  }, [child?.id, setEntitlement]);
 
   const finish = useCallback(
     async (responses: ResponseInput[]) => {
@@ -221,6 +232,7 @@ function KidCogApp() {
         if (!sessionId) throw new Error('This assessment session is missing. Start a new session.');
         const r = await submitAnswers({ sessionId, child, responses });
         setReport(r);
+        refreshEntitlement();
         if (child?.id) {
           void recordRound(child.id, roundCategory, r, child.age).then(({ progress: next, reward: won }) => { setProgress(next); setReward(won); }).catch(() => {});
         }
@@ -247,7 +259,7 @@ function KidCogApp() {
         setFinishing(null);
       }
     },
-    [child, test, sessionId, roundCategory]
+    [child, test, sessionId, roundCategory, refreshEntitlement]
   );
 
   /** Another round for the same child, allowing repeated questions. */
@@ -389,7 +401,7 @@ function KidCogApp() {
 
           {stage === 'historical_result' && historical && <ResultsScreen report={historical.report} sessionId={historical.id} childName={historical.childName} completedAt={historical.completedAt} historical onBackToHistory={() => setStage('history')} onRestart={restart} onChooseCategory={() => {}} onReassess={() => {}} remainingUnseen={0} busy={false} error={null} />}
 
-          {stage === 'categories' && <CategoryScreen childName={child?.firstName} childAvatar={child?.avatar} initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} progress={progress} onReport={() => setStage('results')} onPlayZone={openPlayZone} onAnimals={openAnimals} onArtMusic={() => { stopSpeaking(); setPlayZoneGame('art-music'); playStartedAt.current ??= Date.now(); setStage('playzone'); }} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
+          {stage === 'categories' && <CategoryScreen childName={child?.firstName} childAvatar={child?.avatar} initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} progress={progress} onReport={() => setStage('results')} onPlayZone={openPlayZone} onAnimals={openAnimals} onArtMusic={() => { if (gameLocked(entitlement, 'art-music')) { askGrownUp('game'); return; } stopSpeaking(); setPlayZoneGame('art-music'); playStartedAt.current ??= Date.now(); setStage('playzone'); }} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
 
           {stage === 'playzone' && (
             <PlayZoneScreen childId={child?.id} childName={child?.firstName} childAvatar={child?.avatar} onSwitchPlayer={goHome} age={child?.age} progress={progress} onBack={() => setStage('categories')} onFinish={finishGame} onAnimalsFound={animalsFound} onPicture={pictureDone} onOutfit={dressOwl} initialGame={playZoneGame} />
@@ -425,6 +437,12 @@ function KidCogApp() {
   );
 }
 
+/** Plans and locks for the signed-in parent's account (src/subscription). */
+function SubscribedApp() {
+  const { session } = useAuth();
+  return <SafeAreaProvider><SubscriptionProvider parentId={session?.user.id}><KidCogApp /></SubscriptionProvider></SafeAreaProvider>;
+}
+
 export default function App() {
   // Stripe and PayPal send parents to /thank-you after a support payment.
   const [thankYou, setThankYou] = useState(isThankYouPage);
@@ -433,7 +451,7 @@ export default function App() {
   const home = () => { globalThis.history?.replaceState(null, '', '/'); setThankYou(false); setLegal(null); };
   const page = thankYou ? <ThankYouScreen onContinue={home} />
     : legal ? <LegalScreen page={legal} onContinue={home} />
-    : <AuthProvider><KidCogApp /></AuthProvider>;
+    : <AuthProvider><SubscribedApp /></AuthProvider>;
   // On a phone's web browser, a small "Get the KidCog app" bar sits on top.
   return <View style={styles.page}><GetAppBanner /><View style={styles.page}>{page}</View></View>;
 }

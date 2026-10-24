@@ -26,6 +26,8 @@ import UsaMap from '../playzone/UsaMap';
 import { ANIMALS } from '../explore/animals';
 import { defaultAnimalLevel } from '../explore/animalQuiz';
 import { useAppHeaderScroll } from '../headerScroll';
+import { useSubscription } from '../subscription/SubscriptionProvider';
+import { gameLocked } from '../subscription/entitlement';
 
 /**
  * The Play Zone: the Animal Explorer and four short learning games, kept apart from the thinking
@@ -49,8 +51,10 @@ export const GAMES: GameInfo[] = [
   { key: 'add', emoji: '🪄', name: 'Magic Add', blurb: 'Tap numbers that make the magic number', background: '#F3EEFF', border: '#9B7EDE', ink: '#4E3590', unlockAfter: 0, isNew: true },
 ];
 
-function GameCard({ game, locked, score, level, remaining, albumCount, width, reduceMotion, onPress }: {
-  game: GameInfo; locked: boolean; score?: { stars: number; level: number }; level: number; remaining: number; albumCount: number;
+function GameCard({ game, locked, plusOnly = false, score, level, remaining, albumCount, width, reduceMotion, onPress }: {
+  game: GameInfo; locked: boolean;
+  /** Free plan: the card still opens, but Owl asks for a grown-up (no prices on a child's screen). */
+  plusOnly?: boolean; score?: { stars: number; level: number }; level: number; remaining: number; albumCount: number;
   width: '50%' | '100%'; reduceMotion: boolean; onPress: () => void;
 }) {
   const motion = useRef(new Animated.Value(0)).current;
@@ -76,7 +80,7 @@ function GameCard({ game, locked, score, level, remaining, albumCount, width, re
         onPressOut={() => animate(hovering.current ? 1 : 0)}
         disabled={locked}
         accessibilityRole="button"
-        accessibilityLabel={locked ? `${game.name}, locked` : `Play ${game.name}`}
+        accessibilityLabel={locked ? `${game.name}, locked` : plusOnly ? `${game.name}, ask a grown-up` : `Play ${game.name}`}
         style={({ pressed }) => [styles.card, { backgroundColor: game.background, borderColor: game.border }, locked && styles.cardLocked, hovered && styles.cardHovered, pressed && styles.pressed]}
       >
         <Animated.View style={[styles.cardIcon, { borderColor: game.border }, { transform: [
@@ -84,9 +88,10 @@ function GameCard({ game, locked, score, level, remaining, albumCount, width, re
           { rotate: motion.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '-5deg'] }) },
         ] }]}>
           <Text style={styles.cardEmoji}>{locked ? '🔒' : game.emoji}</Text>
+          {plusOnly ? <Text style={styles.cardLock} accessibilityElementsHidden>🔒</Text> : null}
         </Animated.View>
         <Text style={[styles.cardName, { color: game.ink }]}>{game.name}</Text>
-        <Text style={styles.cardBlurb}>{locked ? `Opens after ${left} more ${left === 1 ? 'activity' : 'activities'}` : game.blurb}</Text>
+        <Text style={styles.cardBlurb}>{locked ? `Opens after ${left} more ${left === 1 ? 'activity' : 'activities'}` : plusOnly ? 'Ask a grown-up to open this one' : game.blurb}</Text>
         {!locked ? <View style={styles.cardMeta}>
           {game.isNew ? <Text style={[styles.metaPill, styles.newPill]}>NEW</Text> : null}
           {game.key === 'animals' ? <Text style={styles.metaPill}>📒 {albumCount}/{ANIMALS.length}</Text> : <Text style={styles.metaPill}>Level {level}</Text>}
@@ -134,6 +139,9 @@ export default function PlayZoneScreen({ childId, childName, childAvatar, onSwit
   initialGame?: GameKey | null;
 }) {
   const onHeaderScroll = useAppHeaderScroll();
+  const { entitlement, askGrownUp } = useSubscription();
+  const plusOnly = (game: GameKey) => gameLocked(entitlement, game);
+  const open = (game: GameKey) => { if (plusOnly(game)) askGrownUp('game'); else setPlaying(game); };
   const [playing, setPlaying] = useState<GameKey | null>(initialGame);
   // Off while a finger is on a game board (see ScrollLockContext).
   const [scrollOn, setScrollOn] = useState(true);
@@ -216,7 +224,7 @@ export default function PlayZoneScreen({ childId, childName, childAvatar, onSwit
         </View>
       </View>
 
-      <Pressable accessibilityRole="button" accessibilityLabel="Open Art & Music" onPress={() => setPlaying('art-music')} style={[styles.hero, { backgroundColor: '#F5E6FF', flexWrap: 'wrap' }]}>
+      <Pressable accessibilityRole="button" accessibilityLabel="Open Art & Music" onPress={() => open('art-music')} style={[styles.hero, { backgroundColor: '#F5E6FF', flexWrap: 'wrap' }]}>
         <Text style={{ fontSize: 40 }}>🎨 🎵</Text>
         <View style={{ flex: 1, minWidth: 150 }}><Text style={styles.heroTitle}>Art & Music</Text><Text style={styles.heroSub}>Draw, paint, trace and make a little music. 12 creative activities →</Text></View>
       </Pressable>
@@ -232,13 +240,14 @@ export default function PlayZoneScreen({ childId, childName, childAvatar, onSwit
               key={game.key}
               game={game}
               locked={locked}
+              plusOnly={!locked && plusOnly(game.key)}
               score={score}
               level={locked ? 0 : startLevel(game.key, progress, age)}
               remaining={Math.max(0, game.unlockAfter - done)}
               albumCount={progress?.animals?.length ?? 0}
               width={twoColumns ? '50%' : '100%'}
               reduceMotion={reduceMotion}
-              onPress={() => !locked && setPlaying(game.key)}
+              onPress={() => !locked && open(game.key)}
             />
           );
         })}
@@ -273,6 +282,7 @@ const styles = StyleSheet.create({
   cardHovered: { borderWidth: 3, shadowOpacity: 0.2, shadowRadius: 15, shadowOffset: { width: 0, height: 8 }, elevation: 7 },
   cardIcon: { width: 76, height: 76, borderRadius: 38, backgroundColor: '#FFFFFF', borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
   cardEmoji: { fontSize: 40 },
+  cardLock: { position: 'absolute', right: -6, bottom: -6, fontSize: 20 },
   cardSparkle: { position: 'absolute', right: 12, bottom: 10, fontSize: 20 },
   cardName: { fontSize: 19, fontWeight: '900', textAlign: 'center' },
   cardBlurb: { fontSize: 14, fontWeight: '700', color: '#5E5249', textAlign: 'center' },

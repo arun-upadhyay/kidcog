@@ -21,6 +21,8 @@ import { storeAppleAuthorizationCode } from './appleSignIn.js';
 import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, updateChildAvatar, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, bankQuestionReporterCount, saveContentReport, saveProductFeedback, saveGeneratedQuestions, saveParentReport, saveReport } from './repository.js';
 import type { Report } from './types.js';
 import { sendFeedbackEmail } from './feedbackEmail.js';
+import { readEntitlement, trackUsage } from './usage.js';
+import { entitlementConfig } from './entitlement.js';
 
 /**
  * Raw error text (database messages, stack details) helps while developing
@@ -139,6 +141,24 @@ app.get('/health', (_req: Request, res: Response) => {
   });
 });
 
+/**
+ * Explore first, subscribe later (server/src/entitlement.ts). What this family
+ * has unlocked, how much they have played, and whether to show the parent the
+ * KidCog Plus invite. With SUBSCRIPTIONS_ENABLED off every account is 'open'.
+ */
+app.get('/api/entitlement', requireParent, async (req: AuthRequest, res: Response) => {
+  res.json(await readEntitlement(req.parentId!));
+});
+
+/** A finished Play Zone game. Play Zone runs on the device, so it reports here to count towards the invite. */
+const playQuota = limiter(120, 60 * 60_000);
+app.post('/api/usage/play', requireParent, async (req: AuthRequest, res: Response) => {
+  const parsed = z.object({ game: z.string().regex(/^[a-z][a-z-]{1,30}$/) }).safeParse(req.body);
+  if (!parsed.success) { res.status(400).json({ error: 'Unknown game.' }); return; }
+  if (!playQuota(req.parentId!)) { res.json(await readEntitlement(req.parentId!)); return; }
+  res.json(await trackUsage(req.parentId!, 'play_round'));
+});
+
 app.get('/api/categories', requireParent, (_req: Request, res: Response) => {
   res.json(TRAIT_ORDER.map((key) => ({ ...TRAITS[key], group: TRAITS[key].group ?? 'intellectual' })));
 });
@@ -254,6 +274,16 @@ app.post('/api/test', requireParent, async (req: AuthRequest, res: Response) => 
     if (!await childBelongsTo(req.parentId!, childProfileId)) { res.status(404).json({ error: 'Child profile was not found.' }); return; }
     let work = pendingRounds.get(key);
     if (!work) {
+      // Free tier: a few thinking activities a day. A retried request (same
+      // requestId) reuses the round above and is not counted twice.
+      if (entitlementConfig().enabled) {
+        const entitlement = await readEntitlement(req.parentId!);
+        if (!entitlement.full && (entitlement.activitiesLeftToday ?? 1) <= 0) {
+          res.status(402).json({ error: 'That’s all the thinking activities for today on the free plan.', code: 'plan_required', entitlement });
+          return;
+        }
+      }
+      void trackUsage(req.parentId!, 'activity_started');
       work = (async () => {
         const began = Date.now();
         const sessionId = await getOrCreateSession(req.parentId!, childProfileId, age, requestedSessionId);
@@ -550,7 +580,20 @@ app.post('/api/submit', requireParent, aiQuota('submit'), async (req: AuthReques
     if (ownedQuestions.length !== responses.length) { res.status(410).json({ error: 'These questions do not belong to this parent session.' }); return; }
     ownedQuestions.forEach(rememberGeneratedQuestion);
     const began = Date.now();
+    // Counted while scoring runs, so it adds no waiting.
+    const counted = trackUsage(req.parentId!, 'activity_completed');
     const report = await scoreSubmission(responses);
+    const entitlement = await counted;
+    if (!entitlement.full) {
+      // Free tier: scores and stars as usual; the AI-written note for the grown-up is part of KidCog Plus.
+      report.parentReportPending = false;
+      report.parentReport = null;
+      report.parentReportError = 'The written note for grown-ups comes with KidCog Plus.';
+      await saveReport(req.parentId!, sessionId, responses, report);
+      console.info(`[submit] scored ${responses.length} answers in ${Date.now() - began}ms (free plan, no written note)`);
+      res.json(report);
+      return;
+    }
 
     // Scores go back as soon as they exist; the written note for the grown-up
     // is written afterwards and fetched by the app (GET .../parent-report).

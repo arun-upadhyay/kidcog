@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import InviteCard from '../subscription/InviteCard';
 import { Alert, Platform, View, Text, TextInput, StyleSheet, ScrollView, Switch, Pressable, useWindowDimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AboutSheet from '../components/AboutSheet';
@@ -299,6 +300,9 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
           style={styles.go}
         />
         <Text style={styles.parade} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">🦁 🐘 🐧 🦋 🐸 🚀</Text>
+
+        {/* Grown-ups: the early-supporter invite, once the family has explored (hidden when subscriptions are off). */}
+        {showNewForm ? null : <InviteCard />}
 
         <AboutSheet visible={aboutOpen} onClose={closeAbout} />
 

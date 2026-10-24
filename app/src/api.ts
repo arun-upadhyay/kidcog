@@ -4,6 +4,7 @@ import { Platform } from 'react-native';
 
 import type { ChildProfile, Report, ResponseInput, TestPayload } from './types';
 import type { AssessmentSessionSummary, HistoricalAssessment, SavedChildProfile } from './types';
+import type { Entitlement } from './subscription/entitlement';
 import { supabase } from './auth/supabase';
 
 /**
@@ -111,7 +112,8 @@ async function request<T>(path: string, options: RequestOptions = {}): Promise<T
       const record = typeof body === 'object' && body !== null ? (body as Record<string, unknown>) : {};
       const headline = 'error' in record ? String(record.error) : `Request failed (${res.status}).`;
       const detail = 'detail' in record ? String(record.detail) : '';
-      throw new Error(detail ? `${headline} — ${detail}` : headline);
+      // Keep the server's code (for example 'plan_required') so screens can react to it.
+      throw Object.assign(new Error(detail ? `${headline} — ${detail}` : headline), { status: res.status, code: typeof record.code === 'string' ? record.code : undefined });
     }
 
     return body as T;
@@ -148,6 +150,19 @@ async function request<T>(path: string, options: RequestOptions = {}): Promise<T
 export function fetchCategories(): Promise<TraitMetaPublic[]> {
   return request<TraitMetaPublic[]>('/api/categories');
 }
+
+/** What this family has unlocked (explore first, subscribe later). See server/src/entitlement.ts. */
+export function fetchEntitlement(): Promise<Entitlement> {
+  return request<Entitlement>('/api/entitlement', { timeoutMs: 15000 });
+}
+
+/** A finished Play Zone game, counted towards the KidCog Plus invite. */
+export function reportPlay(game: string): Promise<Entitlement> {
+  return request<Entitlement>('/api/usage/play', { method: 'POST', timeoutMs: 15000, body: JSON.stringify({ game }) });
+}
+
+/** The server's code on a failed request, such as 'plan_required'. */
+export const errorCode = (err: unknown): string | undefined => (err as { code?: unknown } | null)?.code as string | undefined;
 
 export function listChildren(): Promise<SavedChildProfile[]> {
   return request<SavedChildProfile[]>('/api/children');

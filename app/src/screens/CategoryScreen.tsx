@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useSubscription } from '../subscription/SubscriptionProvider';
 import { AccessibilityInfo, Animated, View, Text, ScrollView, Pressable, StyleSheet, useWindowDimensions } from 'react-native';
 import Sheet from '../components/Sheet';
 import { CATEGORY_GROUPS } from '../categoryGroups';
@@ -215,8 +216,13 @@ export default function CategoryScreen({ childName, childAvatar, onSelect, onPre
   const tabCategories = categories.filter(c => (c.group ?? 'intellectual') === tab);
   const open = openKey ? categories.find(c => c.key === openKey) : undefined;
 
+  // Free plan with today's thinking activities used up: Owl asks for a grown-up (and this pop-up steps aside).
+  const { entitlement, askGrownUp, lockCount } = useSubscription();
+  useEffect(() => { if (lockCount) setOpenKey(null); }, [lockCount]);
+
   function play(key: TraitKey) {
     if (busy) return;
+    if (entitlement.enabled && !entitlement.full && entitlement.activitiesLeftToday === 0) { askGrownUp('activities'); return; }
     setStartedFrom(key);
     onSelect(key, count);
   }

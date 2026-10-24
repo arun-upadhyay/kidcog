@@ -9,6 +9,7 @@ import { setAppHeaderCollapsed, useAppHeaderCollapsed } from '../headerScroll';
 import FeedbackSheet from './FeedbackSheet';
 import Logo from './Logo';
 import { useImmersive } from '../immersive';
+import { useSubscription } from '../subscription/SubscriptionProvider';
 
 /**
  * "Support KidCog" links for parents who want to chip in: a Stripe Payment Link
@@ -82,6 +83,7 @@ export default function AppMenu({ screen, accountEmail, accountProviders, accoun
   const [supporting, setSupporting] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState('');
   const [accountDeleted, setAccountDeleted] = useState<string | null>(null);
+  const { entitlement, openPlans } = useSubscription();
 
   useEffect(() => {
     Animated.timing(collapse, { toValue: collapsed ? 1 : 0, duration: reduceMotion ? 0 : 190, useNativeDriver: false }).start();
@@ -300,6 +302,11 @@ export default function AppMenu({ screen, accountEmail, accountProviders, accoun
                   <Text style={styles.menuActionIcon}>{soundOn ? '🔊' : '🔇'}</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>Sound effects</Text><Text style={type.soft}>Chimes and pops in the games</Text></View>
                   <Switch value={soundOn} onValueChange={setSoundEffects} trackColor={{ true: colors.go, false: colors.line }} accessibilityLabel="Sound effects" />
                 </View>
+                {entitlement.enabled && entitlement.canSubscribe ? (
+                  <Pressable onPress={() => { closeMenu(); openPlans(); }} accessibilityRole="button" accessibilityLabel="KidCog Plus early-supporter plan" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
+                    <Text style={styles.menuActionIcon}>⭐</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>KidCog Plus</Text><Text style={type.soft}>{entitlement.status === 'premium' ? 'Thank you for supporting KidCog' : `Early supporter · ${entitlement.plan.price}`}</Text></View><Text style={styles.chevron}>›</Text>
+                  </Pressable>
+                ) : null}
                 <Pressable onPress={() => { closeMenu(); setAboutOpen(true); }} accessibilityRole="button" accessibilityLabel="About KidCog" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
                   <Text style={styles.menuActionIcon}>ⓘ</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>About KidCog</Text><Text style={type.soft}>How it works and privacy</Text></View><Text style={styles.chevron}>›</Text>
                 </Pressable>
