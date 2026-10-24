@@ -43,8 +43,8 @@ export const GAMES: GameInfo[] = [
   { key: 'states', emoji: '🗺️', name: 'USA Map', blurb: 'Find the state on the map', background: '#E6F4FB', border: '#5AA9D6', ink: '#24658F', unlockAfter: 0, isNew: true },
   { key: 'snake', emoji: '🐍', name: 'Number Snake', blurb: 'Eat the numbers in order', background: '#E5F5EA', border: '#63AA7D', ink: '#34734E', unlockAfter: 0 },
   { key: 'bubbles', emoji: '🫧', name: 'Bubble Pop', blurb: 'Pop the bubbles that match', background: '#E5F3FF', border: '#68A8D6', ink: '#2F6F9D', unlockAfter: 0 },
-  { key: 'maze', emoji: '🦉', name: 'Maze Runner', blurb: 'Lead Owl to the flag', background: '#EEE9FF', border: '#A68AE2', ink: '#5D439B', unlockAfter: 1 },
-  { key: 'trace', emoji: '✏️', name: 'Trace & Draw', blurb: 'Write numbers and letters', background: '#FFE9E3', border: '#E88970', ink: '#A84733', unlockAfter: 3 },
+  { key: 'maze', emoji: '🦉', name: 'Maze Runner', blurb: 'Lead Owl to the flag', background: '#EEE9FF', border: '#A68AE2', ink: '#5D439B', unlockAfter: 0 },
+  { key: 'trace', emoji: '✏️', name: 'Trace & Draw', blurb: 'Write numbers and letters', background: '#FFE9E3', border: '#E88970', ink: '#A84733', unlockAfter: 0 },
   { key: 'dots', emoji: '🖍️', name: 'Connect the Dots', blurb: 'Join 1, 2, 3… and a picture appears', background: '#E3F1FB', border: '#5B9BD0', ink: '#286A98', unlockAfter: 0, isNew: true },
   { key: 'add', emoji: '🪄', name: 'Magic Add', blurb: 'Tap numbers that make the magic number', background: '#F3EEFF', border: '#9B7EDE', ink: '#4E3590', unlockAfter: 0, isNew: true },
 ];
