@@ -66,6 +66,7 @@ test('Coloring Book: pick a picture, colour it, and it is saved on the shelf', a
   await expect(page.getByRole('button', { name: 'Colour Rocket', exact: true })).toBeVisible();
   await page.getByRole('tab', { name: /ABC/ }).click();
   await page.getByRole('button', { name: 'Colour A is for Apple', exact: true }).click();
+  await page.mouse.move(2, 2); // leave the tools: a resting mouse there brings the crayons out
   await page.getByRole('button', { name: 'Choose a colour' }).click();
   await page.getByRole('radio', { name: 'Crayon blue' }).click();
   // Move the mouse off the tools so the crayons tuck away before using the picture.
@@ -207,6 +208,7 @@ test('Coloring Book: character pages can be scribbled on in Draw mode', async ({
   await page.getByRole('button', { name: 'Open Coloring Book', exact: true }).click();
   // "People" is the default group; it holds the character pages.
   await page.getByRole('button', { name: 'Colour Superhero', exact: true }).click();
+  await page.mouse.move(2, 2); // leave the tools: a resting mouse there brings the crayons out
   await page.getByRole('button', { name: 'Brush', exact: true }).click();
   await page.getByRole('radio', { name: 'Crayon red' }).click();
   // Move the mouse off the tools so the crayons tuck away before using the picture.
@@ -227,6 +229,7 @@ test('Coloring Book: the rainbow picker fills with a custom colour', async ({ pa
   await page.getByRole('button', { name: 'Open Coloring Book', exact: true }).click();
   await page.getByRole('tab', { name: /ABC/ }).click();
   await page.getByRole('button', { name: 'Colour A is for Apple', exact: true }).click();
+  await page.mouse.move(2, 2); // leave the tools: a resting mouse there brings the crayons out
   await page.getByRole('button', { name: 'Choose a colour' }).click();
   await page.getByRole('button', { name: 'More colours', exact: true }).click();
   const shade = page.getByRole('button', { name: /^Colour #/ }).nth(20);
@@ -250,6 +253,7 @@ test('Touch drawing keeps the coloring canvas stationary and saves the stroke', 
   await artMusic(page);
   await page.getByRole('button', { name: 'Open Coloring Book', exact: true }).click();
   await page.getByRole('button', { name: 'Colour Superhero', exact: true }).click();
+  await page.mouse.move(2, 2); // leave the tools: a resting mouse there brings the crayons out
   // With a finger: tapping a tool slides the crayons out; picking one tucks them away again.
   await page.getByRole('button', { name: 'Pencil', exact: true }).tap();
   await page.getByRole('radio', { name: 'Crayon green' }).tap();

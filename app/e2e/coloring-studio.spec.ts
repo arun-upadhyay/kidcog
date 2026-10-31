@@ -98,6 +98,8 @@ test('with a finger: the colour chip brings the crayons out and a pick tucks the
   test.skip(!info.project.use.hasTouch, 'Touch');
   const errors: string[] = [];
   await openApple(page, errors);
+  await page.mouse.move(2, 2); // a resting mouse over the tools would bring the crayons out
+  await expect(page.getByTestId('crayon-drawer')).toHaveCount(0);
   const viewport = page.viewportSize()!;
   for (const name of ['Brush', 'Pencil', 'Marker', 'Paint bucket', 'Eraser', 'Choose a colour', 'Done', 'Undo', 'Back to the coloring book']) {
     const b = (await page.getByRole('button', { name, exact: true }).boundingBox())!;
@@ -149,5 +151,21 @@ test('every drawing activity uses the studio layout', async ({ page }, info) => 
     await page.getByRole('button', { name: close, exact: true }).click();
     if (name === 'Coloring Book') await page.getByRole('button', { name: '← Art & Music', exact: true }).click();
   }
+  expect(errors).toEqual([]);
+});
+
+test('a tall picture fills a phone screen', async ({ page }, info) => {
+  const errors: string[] = [];
+  await openApple(page, errors);
+  await page.getByRole('button', { name: 'Back to the coloring book', exact: true }).click();
+  await page.getByRole('tab', { name: /People/ }).click();
+  await page.getByRole('button', { name: 'Colour Superhero', exact: true }).click();
+  await page.mouse.move(2, 2);
+  const box = (await page.getByTestId('coloring-canvas').boundingBox())!;
+  const viewport = page.viewportSize()!;
+  expect(box.y + box.height).toBeLessThanOrEqual(viewport.height + 1);
+  // Upright phones: the canvas is taller than wide, so the figure is drawn big.
+  if (viewport.height > viewport.width * 1.25 && viewport.width < 600) expect(box.height).toBeGreaterThan(box.width * 1.2);
+  await page.screenshot({ path: info.outputPath('hero.png') });
   expect(errors).toEqual([]);
 });

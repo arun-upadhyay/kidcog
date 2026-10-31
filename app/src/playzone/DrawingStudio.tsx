@@ -134,13 +134,15 @@ export default function DrawingStudio({
   };
 
   // ── Sizes
-  const studioW = Math.min(width - GUTTER * 2, STUDIO_MAX) - 20;
   const small = width < 480;
+  // A phone keeps only a thin frame round the studio, so the picture gets every pixel it can.
+  const pad = small ? 6 : 10;
+  const studioW = Math.min(width - GUTTER * 2 + (small ? GUTTER - 6 : 0) * 2, STUDIO_MAX) - pad * 2;
   const n = actions.length + 2;
   const topSize = Math.max(36, Math.min(small ? 46 : 54, Math.floor((studioW - (n - 1) * 8) / n)));
   const portrait = width < 600 && height > width * 1.25;
   const slots = tools.length + 1;
-  const free = height - topSize - 60 - reserve;
+  const free = height - topSize - pad * 2 - 24 - reserve;
   let railW: number, railH: number, toolSize: number, boxW: number, boxH: number, doneOnSide = false;
   if (portrait) {
     toolSize = Math.max(34, Math.min(58, Math.floor((studioW - 16) / slots) - 8));
@@ -172,7 +174,7 @@ export default function DrawingStudio({
   const scroll = (by: number) => list.current?.scrollTo({ y: Math.max(0, listAt.current + by), animated: true });
 
   return (
-    <View testID={testID} style={styles.panel}>
+    <View testID={testID} style={[styles.panel, { padding: pad }, small && { marginHorizontal: -(GUTTER - 6) }]}>
       <View style={styles.topBar}>
         <RoundTool icon="✕" label={closeLabel} tone="close" onPress={() => { setDrawer(false); onClose(); }} size={topSize} />
         <View style={styles.topMiddle}>

@@ -7,6 +7,7 @@ import { speak, stopSpeaking } from '../speech';
 import { CRAYONS, GROUPS, PAGES, type ColoringPage, type GroupKey } from './coloringPages';
 import { drawingTouchStyle, useNative, useScrollLock } from './common';
 import DrawingStudio from './DrawingStudio';
+import { PAGE_BOUNDS } from './coloringBounds';
 export { STUDIO_MAX } from './DrawingStudio';
 import { useBackHandler } from '../backHandler';
 
@@ -52,13 +53,13 @@ const PICKER_COLORS: string[] = [
   ...[97, 80, 62, 45, 28, 10].map(l => hsl(0, 0, l)),
 ];
 
-function Picture({ page, fills, strokes, size, onPart, fill }: { page: ColoringPage; fills: string[]; strokes?: Stroke[]; size: number; onPart?: (i: number) => void; fill?: boolean }) {
+function Picture({ page, fills, strokes, size, onPart, fill, viewBox = '0 0 100 100' }: { page: ColoringPage; fills: string[]; strokes?: Stroke[]; size: number; onPart?: (i: number) => void; fill?: boolean; /** Zoom to part of the 100 × 100 box (the studio zooms to the picture itself). */ viewBox?: string }) {
   const sw = size < 120 ? 1.6 : 1.1;
   // `fill` makes the drawing fill its box exactly (open canvas), so rendered
   // parts always match the laid-out size — taps land on the right region even
   // before the box has finished measuring. The shelf tiles use a fixed size.
   return (
-    <Svg width={fill ? '100%' : size} height={fill ? '100%' : size} viewBox="0 0 100 100">
+    <Svg width={fill ? '100%' : size} height={fill ? '100%' : size} viewBox={viewBox}>
       {page.parts.map((part, i) => (
         <Path key={i} d={part.d} fill={fills[i] ?? '#FFFFFF'} stroke="#3F3550" strokeWidth={sw} strokeLinejoin="round" onPress={onPart ? () => onPart(i) : undefined} />
       ))}
@@ -151,10 +152,13 @@ export default function ColoringBook({ childId, onStudio }: { childId: string; /
   function choosePicked(hex: string) { setCustom(hex); setCrayon(CRAYONS.length); setPickerOpen(false); playSound('pop'); if (tool === 'eraser') setTool('fill'); }
 
   // Drawing and erasing: drags on the picture.
-  const canvasSize = useRef(300);
+  // The picture is zoomed to where its drawing sits (coloringBounds.ts), so a
+  // touch maps from the canvas to that part of the 100 × 100 drawing box.
+  const view = (open && PAGE_BOUNDS[open.key]) || ([0, 0, 100, 100] as [number, number, number, number]);
+  const canvasSize = useRef({ width: 300, height: 300 });
   const at = (e: GestureResponderEvent): [number, number] => [
-    Math.max(0, Math.min(100, (e.nativeEvent.locationX / canvasSize.current) * 100)),
-    Math.max(0, Math.min(100, (e.nativeEvent.locationY / canvasSize.current) * 100)),
+    Math.max(0, Math.min(100, view[0] + (e.nativeEvent.locationX / canvasSize.current.width) * view[2])),
+    Math.max(0, Math.min(100, view[1] + (e.nativeEvent.locationY / canvasSize.current.height) * view[3])),
   ];
   const erased = useRef(false);
   const drawing = tool === 'brush' || tool === 'pencil' || tool === 'marker';
@@ -254,11 +258,12 @@ export default function ColoringBook({ childId, onStudio }: { childId: string; /
       onColour={pickCrayon}
       more={{ hex: custom, onPress: () => setPickerOpen(true) }}
       notice={notice}
-      renderCanvas={size => {
-        canvasSize.current = size;
+      aspect={view[2] / view[3]}
+      renderCanvas={(w, h) => {
+        canvasSize.current = { width: w, height: h };
         return (
           <View
-            style={[{ width: size, height: size, overflow: 'hidden' }, drawingTouchStyle]}
+            style={[{ width: w, height: h, overflow: 'hidden' }, drawingTouchStyle]}
             accessibilityLabel={`Colouring ${open.name}`}
             testID="coloring-canvas"
             onStartShouldSetResponder={() => drawing}
@@ -269,7 +274,7 @@ export default function ColoringBook({ childId, onStudio }: { childId: string; /
             onResponderTerminate={() => lock(false)}
             onResponderTerminationRequest={() => false}
           >
-            <Picture page={open} fills={fills} strokes={strokes} size={size} fill onPart={tool === 'fill' || tool === 'eraser' ? tapPart : undefined} />
+            <Picture page={open} fills={fills} strokes={strokes} size={Math.max(w, h)} fill viewBox={view.join(' ')} onPart={tool === 'fill' || tool === 'eraser' ? tapPart : undefined} />
             <Animated.Text pointerEvents="none" style={[styles.sparkle, { opacity: sparkle.interpolate({ inputRange: [0, 0.2, 1], outputRange: [0, 1, 0] }), transform: [{ scale: sparkle.interpolate({ inputRange: [0, 1], outputRange: [0.6, 1.6] }) }] }]}>✨</Animated.Text>
           </View>
         );
