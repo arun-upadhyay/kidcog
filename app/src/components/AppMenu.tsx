@@ -11,6 +11,7 @@ import Logo from './Logo';
 import Cog from './Cog';
 import { useImmersive } from '../immersive';
 import { useSubscription } from '../subscription/SubscriptionProvider';
+import type { Entitlement } from '../subscription/entitlement';
 
 /**
  * "Support KidCog" links for parents who want to chip in: a Stripe Payment Link
@@ -62,6 +63,18 @@ export interface AppMenuProps {
   onDeleteAccount: () => Promise<{ purgeAfter: string; graceDays: number }>;
   /** Go to the home page. Absent on the home page itself. */
   onHome?: () => void;
+}
+
+/**
+ * The KidCog Plus line in the parent menu. Always there while subscriptions are
+ * switched on, so a parent can find the plan, see how long the free explore
+ * period lasts, and (once payments are connected) restore a purchase.
+ */
+function planLine(e: Entitlement): string {
+  if (e.status === 'premium') return 'Thank you for supporting KidCog 💛';
+  if (e.status === 'free') return `Free plan · everything for ${e.plan.price}`;
+  const days = e.exploreEndsAt ? Math.max(0, Math.ceil((new Date(e.exploreEndsAt).getTime() - Date.now()) / 86_400_000)) : null;
+  return days !== null ? `Everything free for ${days} more ${days === 1 ? 'day' : 'days'} · then ${e.plan.price}` : `Early supporter · ${e.plan.price}`;
 }
 
 export default function AppMenu({ screen, accountEmail, accountProviders, accountVerified, accountCreatedAt, onChangePassword, onSignOut, onDeleteAccount, onHome }: AppMenuProps) {
@@ -293,9 +306,9 @@ export default function AppMenu({ screen, accountEmail, accountProviders, accoun
                   <Text style={styles.menuActionIcon}>{soundOn ? '🔊' : '🔇'}</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>Sound effects</Text><Text style={type.soft}>Chimes and pops in the games</Text></View>
                   <Switch value={soundOn} onValueChange={setSoundEffects} trackColor={{ true: colors.go, false: colors.line }} accessibilityLabel="Sound effects" />
                 </View>
-                {entitlement.enabled && entitlement.canSubscribe ? (
+                {entitlement.enabled ? (
                   <Pressable onPress={() => { closeMenu(); openPlans(); }} accessibilityRole="button" accessibilityLabel="KidCog Plus early-supporter plan" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>
-                    <Text style={styles.menuActionIcon}>⭐</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>KidCog Plus</Text><Text style={type.soft}>{entitlement.status === 'premium' ? 'Thank you for supporting KidCog' : `Early supporter · ${entitlement.plan.price}`}</Text></View><Text style={styles.chevron}>›</Text>
+                    <Text style={styles.menuActionIcon}>⭐</Text><View style={styles.menuActionCopy}><Text style={styles.menuActionTitle}>KidCog Plus</Text><Text style={type.soft}>{planLine(entitlement)}</Text></View><Text style={styles.chevron}>›</Text>
                   </Pressable>
                 ) : null}
                 <Pressable onPress={() => { closeMenu(); setAboutOpen(true); }} accessibilityRole="button" accessibilityLabel="About KidCog" style={({ pressed }) => [styles.menuAction, pressed && styles.menuActionPressed]}>

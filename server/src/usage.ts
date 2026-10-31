@@ -33,10 +33,30 @@ function warnOnce(err: unknown) {
   console.warn('    Run the migration supabase/migrations/202610240001_explore_and_subscribe.sql (npm run migrate -- --yes).');
 }
 
-/** Full access, used whenever usage cannot be read. */
+/**
+ * Used whenever usage cannot be read. Still says whether subscriptions are
+ * switched on (so parents can see the plan), but nothing is locked or counted.
+ */
 function failOpen(parentId: string): Entitlement {
   const config = entitlementConfig();
-  return computeEntitlement(parentId, null, { ...config, enabled: false });
+  const e = computeEntitlement(parentId, null, config);
+  return e.status === 'premium' ? { ...e, usageReady: false } : { ...e, status: config.enabled ? 'exploring' : 'open', full: true, canSubscribe: false, activitiesLeftToday: null, usageReady: false };
+}
+
+/** For /health: is subscriptions switched on, and can the usage table be read? */
+let lastCheck: { at: number; ready: boolean; problem: string | null } | null = null;
+export async function subscriptionHealth() {
+  const config = entitlementConfig();
+  if (!config.enabled) return { enabled: false, usageTable: 'not needed' as const, problem: null };
+  if (!lastCheck || Date.now() - lastCheck.at > 60_000) {
+    try {
+      const { error } = await supabaseAdmin.from('account_usage').select('parent_id').limit(1);
+      lastCheck = { at: Date.now(), ready: !error, problem: error ? `${error.message} — run supabase/migrations/202610240001_explore_and_subscribe.sql (npm run migrate -- --yes)` : null };
+    } catch (err) {
+      lastCheck = { at: Date.now(), ready: false, problem: err instanceof Error ? err.message : String(err) };
+    }
+  }
+  return { enabled: true, usageTable: lastCheck.ready ? 'ok' as const : 'missing' as const, problem: lastCheck.problem, exploreDays: config.exploreDays, plan: config.plan };
 }
 
 /**

@@ -20,6 +20,8 @@ export type Entitlement = {
   premiumGames: string[];
   premiumUntil: string | null;
   plan: { name: string; price: string };
+  /** False while the server can't read usage yet: everything stays open. */
+  usageReady?: boolean;
 };
 
 /** Used before the server answers, or if it can't be reached: never lock a child out. */

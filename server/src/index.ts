@@ -21,7 +21,7 @@ import { storeAppleAuthorizationCode } from './appleSignIn.js';
 import { childBelongsTo, deleteAssessmentSession, deleteChildProfile, findOrCreateChild, updateChildAvatar, getOrCreateSession, historicalAssessment, listChildren, listCompletedSessions, loadGeneratedQuestions, bankQuestionReporterCount, saveContentReport, saveProductFeedback, saveGeneratedQuestions, saveParentReport, saveReport } from './repository.js';
 import type { Report } from './types.js';
 import { sendFeedbackEmail } from './feedbackEmail.js';
-import { readEntitlement, trackUsage } from './usage.js';
+import { readEntitlement, subscriptionHealth, trackUsage } from './usage.js';
 import { entitlementConfig } from './entitlement.js';
 
 /**
@@ -126,7 +126,7 @@ function aiQuota(kind: AiKind) {
   };
 }
 
-app.get('/health', (_req: Request, res: Response) => {
+app.get('/health', async (_req: Request, res: Response) => {
   const mock = false;
   const keyProblem = mock ? null : apiKeyProblem();
   res.json({
@@ -138,6 +138,8 @@ app.get('/health', (_req: Request, res: Response) => {
     // having to submit a session to find out.
     aiReady: mock || keyProblem === null,
     keyProblem,
+    // Explore first, subscribe later: switched on? usage table there?
+    subscriptions: await subscriptionHealth(),
   });
 });
 
@@ -646,6 +648,12 @@ app.listen(port, () => {
     console.log('  Questions: written by AI (no reviewed files in server/questions yet, or QUESTION_SOURCE=ai).');
   }
 
+
+  void subscriptionHealth().then(h => {
+    if (!h.enabled) console.log('  Subscriptions: off (SUBSCRIPTIONS_ENABLED is not 1). Everything is open for every family.');
+    else if (h.usageTable === 'ok') console.log(`  Subscriptions: on — ${h.exploreDays} days to explore, then ${h.plan?.price}.`);
+    else console.warn(`  ⚠ Subscriptions are switched on, but usage can't be read, so nothing is limited yet: ${h.problem}`);
+  });
 
   const problem = apiKeyProblem();
   if (problem) {

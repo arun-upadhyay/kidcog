@@ -55,6 +55,8 @@ export type Entitlement = {
   premiumGames: string[];
   premiumUntil: string | null;
   plan: { name: string; price: string };
+  /** False when usage could not be read (table missing or database down): full access, no limits, nothing counted. */
+  usageReady: boolean;
 };
 
 const number = (value: string | undefined, fallback: number, min = 0) => {
@@ -87,7 +89,7 @@ export function computeEntitlement(parentId: string, usage: Usage | null, config
     playRounds: usage?.playRounds ?? 0,
     activeDays: usage?.activeDays ?? 0,
   };
-  const base = { enabled: config.enabled, usage: counts, freeActivitiesPerDay: config.freeActivitiesPerDay, premiumGames: config.premiumGames, plan: config.plan };
+  const base = { enabled: config.enabled, usage: counts, freeActivitiesPerDay: config.freeActivitiesPerDay, premiumGames: config.premiumGames, plan: config.plan, usageReady: true };
   if (!config.enabled) {
     return { ...base, status: 'open', full: true, canSubscribe: false, exploreEndsAt: null, activitiesLeftToday: null, premiumUntil: null };
   }

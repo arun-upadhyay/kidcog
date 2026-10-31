@@ -71,10 +71,22 @@ test('switched off: no invite, no plan in the menu, every game opens', async ({ 
   expect(errors).toEqual([]);
 });
 
-test('exploring: everything open and nothing to buy yet', async ({ page }) => {
+test('exploring: everything open, no invite yet, but the plan is easy for a parent to find', async ({ page }) => {
   const errors: string[] = [];
   await open(page, 'exploring', errors);
   await expect(page.getByTestId('invite-card')).toHaveCount(0);
+  // The parent menu always shows KidCog Plus while subscriptions are on, with how long exploring lasts.
+  await page.getByRole('button', { name: 'Open parent account menu' }).click();
+  await expect(page.getByText(/^Everything free for \d+ more days? · then \$1 a month$/)).toBeVisible();
+  await page.getByRole('button', { name: 'KidCog Plus early-supporter plan' }).click();
+  await expect(page.getByText('Please answer to continue')).toBeVisible();
+  const q = (await page.getByTestId('gate-question').textContent())!.match(/(\d+) × (\d+)/)!;
+  await page.getByLabel('Answer', { exact: true }).fill(String(Number(q[1]) * Number(q[2])));
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await expect(page.getByText('$1 a month', { exact: true })).toBeVisible();
+  await expect(page.getByText(/^Everything is open for you until /)).toBeVisible();
+  await page.getByRole('button', { name: 'Close', exact: true }).click();
+  await page.reload();
   await toPlayZone(page);
   await expect(page.getByRole('button', { name: 'Play USA Map', exact: true })).toBeVisible();
   await expect(page.getByText('Ask a grown-up to open this one')).toHaveCount(0);
