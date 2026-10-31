@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import Button from '../components/Button';
-import Owl from '../components/Owl';
+import Cog from '../components/Cog';
 import Sheet from '../components/Sheet';
 import { fetchEntitlement } from '../api';
 import { colors, spacing, type } from '../theme';
@@ -12,7 +12,7 @@ import { purchaseAvailable, restorePurchases, startEarlySupporterPurchase } from
  * Explore first, subscribe later: holds what this family has unlocked and the
  * three pop-ups around it.
  *
- *   askGrownUp(reason)  a child reached something locked: Owl asks for a grown-up
+ *   askGrownUp(reason)  a child reached something locked: Cog asks for a grown-up
  *   openPlans()         the early-supporter plan, always behind a parental gate
  *
  * With SUBSCRIPTIONS_ENABLED off on the server, `entitlement.enabled` is false
@@ -27,7 +27,7 @@ type Ctx = {
   setEntitlement: (next: Entitlement) => void;
   askGrownUp: (reason: LockReason) => void;
   openPlans: () => void;
-  /** Goes up each time Owl asks for a grown-up, so open pop-ups elsewhere can close first. */
+  /** Goes up each time Cog asks for a grown-up, so open pop-ups elsewhere can close first. */
   lockCount: number;
 };
 const SubscriptionContext = createContext<Ctx>({ entitlement: OPEN, refresh: () => {}, setEntitlement: () => {}, askGrownUp: () => {}, openPlans: () => {}, lockCount: 0 });
@@ -79,12 +79,12 @@ function SheetBody({ children }: { children: React.ReactNode }) {
   return <ScrollView style={{ maxHeight: Math.max(240, height * 0.8) }} keyboardShouldPersistTaps="handled">{children}</ScrollView>;
 }
 
-/** What a child sees on something locked: no prices, just Owl asking for a grown-up. */
+/** What a child sees on something locked: no prices, just Cog asking for a grown-up. */
 function AskGrownUp({ reason, entitlement, onGrownUp, onClose }: { reason: LockReason; entitlement: Entitlement; onGrownUp: () => void; onClose: () => void }) {
   return (
     <View style={styles.center} accessibilityLiveRegion="polite">
-      <Owl mood="happy" size={88} />
-      <Text style={styles.kidTitle} accessibilityRole="header">Ask a grown-up! 🦉</Text>
+      <Cog mood="happy" size={88} />
+      <Text style={styles.kidTitle} accessibilityRole="header">Ask a grown-up! 👋</Text>
       <Text style={styles.kidText}>
         {reason === 'activities'
           ? 'That’s all the thinking games for today. Come back tomorrow for more — or ask a grown-up.'

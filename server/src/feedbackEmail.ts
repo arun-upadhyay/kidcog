@@ -61,7 +61,7 @@ export async function sendFeedbackEmail(input: FeedbackEmailInput): Promise<bool
       <div style="background:#fff9f0;padding:28px;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:#2a2118">
         <div style="max-width:640px;margin:0 auto;background:#fff;border:1px solid #eadfd0;border-radius:22px;overflow:hidden;box-shadow:0 12px 32px rgba(74,55,40,.08)">
           <div style="padding:22px 24px;background:linear-gradient(135deg,#7650c7,#60439b);color:#fff">
-            <div style="font-size:13px;font-weight:800;letter-spacing:.8px;text-transform:uppercase">🦉 KidCog</div>
+            <div style="font-size:13px;font-weight:800;letter-spacing:.8px;text-transform:uppercase">⭐ KidCog</div>
             <div style="font-size:24px;font-weight:900;margin-top:5px">New ${escapeHtml(category.toLowerCase())}</div>
           </div>
           <div style="padding:24px">

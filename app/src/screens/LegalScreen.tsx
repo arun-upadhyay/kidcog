@@ -1,9 +1,9 @@
 import React from 'react';
 import { Linking, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import Owl from '../components/Owl';
+import Cog from '../components/Cog';
 import Button from '../components/Button';
 import { colors, spacing, column, GUTTER } from '../theme';
-import { COMPANY, CONTACT_EMAIL, DELETE_ACCOUNT_PATH, POLICY_UPDATED, PRIVACY_PATH, WEB_URL } from '../legal';
+import { COMPANY, CONTACT_EMAIL, COPYRIGHT, DELETE_ACCOUNT_PATH, POLICY_UPDATED, PRIVACY_PATH, WEB_URL } from '../legal';
 
 type Section = { title: string; paragraphs?: string[]; bullets?: string[] };
 
@@ -86,7 +86,7 @@ export default function LegalScreen({ page, onContinue }: { page: 'privacy' | 'd
   return (
     <ScrollView style={styles.page} contentContainerStyle={styles.content}>
       <View style={styles.hero}>
-        <View style={styles.heroBubble}><Owl mood="idle" size={44} /></View>
+        <View style={styles.heroBubble}><Cog mood="idle" size={44} /></View>
         <View style={{ flex: 1 }}>
           <Text style={styles.eyebrow}>KIDCOG</Text>
           <Text style={styles.title} accessibilityRole="header">{page === 'privacy' ? 'Privacy policy' : 'Delete your KidCog account'}</Text>
@@ -112,6 +112,7 @@ export default function LegalScreen({ page, onContinue }: { page: 'privacy' | 'd
         {page === 'privacy' ? `See also: how to delete your account — ${WEB_URL}${DELETE_ACCOUNT_PATH}` : `See also: privacy policy — ${WEB_URL}${PRIVACY_PATH}`}
       </Text>
       <Button title="Go to KidCog" variant="secondary" onPress={onContinue} />
+      <Text style={styles.small}>{COPYRIGHT}</Text>
     </ScrollView>
   );
 }

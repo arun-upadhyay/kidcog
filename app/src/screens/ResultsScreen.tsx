@@ -5,7 +5,7 @@ import RewardCard from '../components/RewardCard';
 import ReportSheet, { ReportLink } from '../components/ReportSheet';
 import type { RoundReward } from '../progress';
 import { CATEGORY_NAMES, CATEGORY_VISUALS, GROUP_NAMES, GROUP_VISUALS } from '../categoryVisuals';
-import Owl from '../components/Owl';
+import Cog from '../components/Cog';
 import Button from '../components/Button';
 import { colors, spacing, type, column, GUTTER } from '../theme';
 import { speak, stopSpeaking, useSpeechState, lastSpeechError } from '../speech';
@@ -303,9 +303,9 @@ export default function ResultsScreen({
     <ScrollView style={styles.screen} contentContainerStyle={styles.container} onScroll={onHeaderScroll} scrollEventThrottle={16}>
       {historical && onBackToHistory ? <Pressable onPress={onBackToHistory} accessibilityRole="button"><Text style={styles.historyBack}>← Previous results</Text></Pressable> : null}
 
-      {/* Same header shape as "What shall we explore?", with the owl. */}
+      {/* Same header shape as "What shall we explore?", with Cog. */}
       <View style={styles.hero}>
-        <View style={styles.heroBubble}><Owl mood="happy" size={46} /></View>
+        <View style={styles.heroBubble}><Cog mood="happy" size={46} /></View>
         <View style={styles.heroCopy}>
           <Text style={styles.eyebrow}>{historical ? 'SAVED RESULT' : 'ROUND COMPLETE'}</Text>
           <Text style={styles.pageTitle}>{historical ? (childName ? `${childName}’s results` : 'Results') : (childName ? `Great job, ${childName}!` : 'Great job!')}</Text>

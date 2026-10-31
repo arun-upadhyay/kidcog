@@ -3,6 +3,7 @@ import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Sheet, { CENTERED_FROM_WIDTH } from './Sheet';
 import Button from './Button';
+import Cog from './Cog';
 import { submitFeedback, type FeedbackCategory } from '../api';
 import { colors, spacing, type, GUTTER } from '../theme';
 
@@ -56,7 +57,7 @@ export default function FeedbackSheet({ visible, screen, onClose }: { visible: b
           contentContainerStyle={[styles.content, { paddingHorizontal: panelSide }]} showsVerticalScrollIndicator>
           {sent ? (
             <View style={styles.success} accessibilityLiveRegion="polite">
-              <View style={styles.successIcon}><Text style={styles.successEmoji}>🦉</Text></View>
+              <View style={styles.successIcon}><Cog size={56} mood="happy" outfit={null} /></View>
               <Text style={styles.successTitle}>Thank you!</Text>
               <Text style={styles.successBody}>Your feedback helps make KidCog better for every family.</Text>
               <Button title="Done" onPress={onClose} />

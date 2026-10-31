@@ -5,7 +5,7 @@ import type { TraitKey, TraitMetaPublic } from '../types';
 import type { ChildProgress } from '../progress';
 import { CATEGORY_NAMES, CATEGORY_VISUALS } from '../categoryVisuals';
 import { colors, spacing } from '../theme';
-import Owl from './Owl';
+import Cog from './Cog';
 
 const ROW = 128;
 const NODE = 74;
@@ -15,7 +15,7 @@ const LANES = [0.22, 0.5, 0.78, 0.5];
 /**
  * The adventure map: one winding path per group of activities. Each stop is
  * an activity; the ones already played are coloured in with their stars, and
- * the owl stands on the last one played (or on the first, saying "Start here").
+ * Cog stands on the last one played (or on the first, saying "Start here").
  */
 export default function JourneyMap({ categories, progress, disabled, onOpen }: {
   categories: TraitMetaPublic[];
@@ -31,12 +31,12 @@ export default function JourneyMap({ categories, progress, disabled, onOpen }: {
     const midY = (prev.y + p.y) / 2;
     return `${d} C ${prev.x} ${midY}, ${p.x} ${midY}, ${p.x} ${p.y}`;
   }, '');
-  // The owl stands on the stop played last; if that was in another group, it
+  // Cog stands on the stop played last; if that was in another group, it
   // waits at the first stop here not played yet, suggesting where to go next.
   const here = categories.findIndex(c => c.key === progress?.lastTrait);
   const nextUp = categories.findIndex(c => !(progress?.visited[c.key]?.plays));
-  const owlAt = here >= 0 ? here : nextUp >= 0 ? nextUp : 0;
-  const owlSays = here >= 0 ? null : nextUp < 0 ? null : categories.some(c => progress?.visited[c.key]?.plays) ? 'Try me!' : 'Start here!';
+  const cogAt = here >= 0 ? here : nextUp >= 0 ? nextUp : 0;
+  const cogSays = here >= 0 ? null : nextUp < 0 ? null : categories.some(c => progress?.visited[c.key]?.plays) ? 'Try me!' : 'Start here!';
   const height = ROW * Math.max(1, categories.length) + 24;
 
   return (
@@ -54,10 +54,10 @@ export default function JourneyMap({ categories, progress, disabled, onOpen }: {
         const p = points[i]!;
         return (
           <View key={category.key} style={[styles.stop, { left: p.x - 60, top: p.y - NODE / 2 }]}>
-            {i === owlAt ? (
+            {i === cogAt ? (
               <View style={[styles.owl, p.x > width * 0.6 ? { right: 96 } : { left: 96 }]}>
-                <Owl mood="idle" size={50} />
-                {owlSays ? <Text style={styles.startHere}>{owlSays}</Text> : null}
+                <Cog mood="idle" size={50} />
+                {cogSays ? <Text style={styles.startHere}>{cogSays}</Text> : null}
               </View>
             ) : null}
             <Pressable onPress={() => onOpen(category.key)} disabled={disabled}

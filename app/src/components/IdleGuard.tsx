@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AppState, Platform, StyleSheet, Text, View } from 'react-native';
 import Sheet from './Sheet';
 import Button from './Button';
-import Owl from './Owl';
+import Cog from './Cog';
 import { IDLE_LIMIT_MS, IDLE_WARNING_MS, idleMinutes, lastActivity, markActive, rememberIdleSignOut } from '../auth/idle';
 import { colors, spacing } from '../theme';
 
@@ -79,7 +79,7 @@ export default function IdleGuard({ signedInAt, onTimeout, children }: {
       {children}
       <Sheet visible={warning} onClose={stay} closeLabel="Stay signed in">
         <View style={styles.body}>
-          <Owl mood="idle" size={84} />
+          <Cog mood="idle" size={84} />
           <Text style={styles.title}>Still there?</Text>
           <Text style={styles.text}>
             Nothing has happened for a while, so KidCog will sign you out in <Text style={styles.count}>{countdown}</Text> to keep your family’s account safe.

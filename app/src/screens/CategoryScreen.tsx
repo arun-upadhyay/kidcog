@@ -198,7 +198,7 @@ export default function CategoryScreen({ childName, childAvatar, onSelect, onPre
   const tabCategories = categories.filter(c => (c.group ?? 'intellectual') === tab);
   const open = openKey ? categories.find(c => c.key === openKey) : undefined;
 
-  // Free plan with today's thinking activities used up: Owl asks for a grown-up (and this pop-up steps aside).
+  // Free plan with today's thinking activities used up: Cog asks for a grown-up (and this pop-up steps aside).
   const { entitlement, askGrownUp, lockCount } = useSubscription();
   useEffect(() => { if (lockCount) setOpenKey(null); }, [lockCount]);
 

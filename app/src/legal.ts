@@ -12,6 +12,14 @@ export const CONTACT_EMAIL = process.env.EXPO_PUBLIC_CONTACT_EMAIL || 'info@ritv
 export const COMPANY = 'Ritvik Global LLC';
 export const POLICY_UPDATED = 'September 28, 2026';
 
+/**
+ * The copyright line shown in About KidCog and on the public pages. KidCog's
+ * name, the Cog mascot and all artwork in the app are original work of the
+ * company (see assets/BRAND.md). The year follows the clock, starting 2026.
+ */
+const YEAR = new Date().getFullYear();
+export const COPYRIGHT = `© ${YEAR > 2026 ? `2026–${YEAR}` : '2026'} ${COMPANY}. KidCog, the Cog character and all KidCog artwork are original works of ${COMPANY}. All rights reserved.`;
+
 export const PRIVACY_PATH = '/privacy';
 export const DELETE_ACCOUNT_PATH = '/delete-account';
 

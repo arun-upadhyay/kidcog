@@ -13,9 +13,9 @@ import {
   View,
   useWindowDimensions,
 } from 'react-native';
-import Owl from '../components/Owl';
+import Cog from '../components/Cog';
 import Logo from '../components/Logo';
-import { ChunkyButton, OwlStage, PLAY, Ribbon, WaveBand, type PlayColour } from '../components/Playful';
+import { ChunkyButton, CogStage, PLAY, Ribbon, WaveBand, type PlayColour } from '../components/Playful';
 import { PRIVACY_PATH, openPublicPage } from '../legal';
 import { CATEGORY_NAMES, CATEGORY_VISUALS } from '../categoryVisuals';
 import type { TraitKey } from '../types';
@@ -180,7 +180,7 @@ export function Background({ still }: { still: boolean }) {
       <View style={[styles.blob, { backgroundColor: '#FFE3D6', width: 380, height: 380, top: -120, left: -140 }]} />
       <View style={[styles.blob, { backgroundColor: '#E8E0FF', width: 420, height: 420, top: '30%', right: -180 }]} />
       <View style={[styles.blob, { backgroundColor: '#DDF2E5', width: 360, height: 360, bottom: -140, left: '20%' }]} />
-      {/* Only along the sides, so nothing drifts across the words or Owl. */}
+      {/* Only along the sides, so nothing drifts across the words or Cog. */}
       {FLOATERS.map((item, i) => (item.left <= 14 || item.left >= 78) ? <Floater key={item.icon + i} item={item} index={i} still={still} /> : null)}
     </View>
   );
@@ -210,12 +210,12 @@ export default function WelcomeScreen({ onChoose, onParentSignIn }: {
   const { width } = useWindowDimensions();
   const still = useReduceMotion();
   const wide = width >= 720;
-  // Owl beside the headline only where both fit (iPad mini/Air portrait stack them).
+  // Cog beside the headline only where both fit (iPad mini/Air portrait stack them).
   const sideHero = width >= 900;
   const columns = width < 360 ? 2 : width < 600 ? 3 : width < 860 ? 4 : 6;
   // Phone tiles are about 110px wide: smaller picture so two-line names fit.
   const compact = columns === 3;
-  const owlBob = useWave(1700, still);
+  const cogBob = useWave(1700, still);
   const stageWidth = Math.min(sideHero ? 440 : wide ? 400 : 320, width - spacing(4));
 
   return (
@@ -240,13 +240,13 @@ export default function WelcomeScreen({ onChoose, onParentSignIn }: {
         {/* Hero */}
         <View style={styles.container}>
           <View style={[styles.hero, sideHero && styles.heroWide]}>
-            <OwlStage width={stageWidth} owlSize={sideHero ? 150 : wide ? 136 : 108} bob={owlBob} bubble="Hoo! Let's play! 🎉" />
+            <CogStage width={stageWidth} cogSize={sideHero ? 150 : wide ? 136 : 108} bob={cogBob} bubble="Whee! Let's play! 🎉" />
             <View style={[styles.heroCopy, sideHero && styles.heroCopyWide]}>
               <Text style={[styles.heroEyebrow, sideHero && styles.leftText]}>FOR CURIOUS 4 TO 7 YEAR OLDS</Text>
               <Text accessibilityRole="header" style={[styles.title, sideHero && styles.titleWide]}>
                 Ready for a little <Text style={styles.titlePop}>adventure</Text>?
               </Text>
-              <Text style={[styles.subtitle, sideHero && styles.leftText]}>Games, animals, stories and puzzles, with Owl cheering you on.</Text>
+              <Text style={[styles.subtitle, sideHero && styles.leftText]}>Games, animals, stories and puzzles, with Cog cheering you on.</Text>
               <View style={[styles.ctaRow, sideHero && styles.ctaRowWide]}>
                 <ChunkyButton title="▶  Start playing, free" label="Start playing, free" onPress={() => onChoose('every adventure')} />
                 <ChunkyButton colour="white" size="md" title="I have an account" label="I already have an account" onPress={onParentSignIn} style={styles.ctaSecondary} />

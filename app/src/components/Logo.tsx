@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Owl from './Owl';
+import Cog from './Cog';
 import { PLAY, type PlayColour } from './Playful';
 
 /**
  * The KidCog name, drawn as a toy: every letter its own colour, bouncing a
- * little up and down, with Owl's face as the "o" and a star dotting the "i".
+ * little up and down, with Cog as the "o" and a star dotting the "i".
  * Plain text and views, so it is crisp at any size on iPhone, Android and web.
  * `size` is roughly the letter height in points. Pass `decorative` when the
  * parent (a button) already says "KidCog".
@@ -29,10 +29,10 @@ export default function Logo({ size = 28, decorative = false, tight = false }: {
     >
       {LETTERS.map(({ ch, colour }, i) => {
         if (ch === 'o') {
-          // Owl's face is the "o".
+          // Cog is the "o".
           return (
             <View key={i} style={{ marginHorizontal: size * 0.02, transform: [{ translateY: size * 0.08 }, { rotate: '-4deg' }] }}>
-              <Owl size={size * 0.82} still outfit={null} mood="happy" />
+              <Cog size={size * 0.82} still outfit={null} mood="happy" />
             </View>
           );
         }

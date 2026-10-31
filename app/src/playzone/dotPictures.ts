@@ -91,7 +91,7 @@ export const DOT_PICTURES: Record<string, DotPicture> = {
     ],
   },
   owl: {
-    key: 'owl', name: 'Owl', spoken: "It's an owl, just like me!", emoji: '🦉', fill: '#8B6CC9', outline: '#4E3590', closed: true,
+    key: 'owl', name: 'Owl', spoken: "It's an owl! Hoo hoo!", emoji: '🦉', fill: '#8B6CC9', outline: '#4E3590', closed: true,
     dots: [[26, 10], [40, 24], [60, 24], [74, 10], [79, 34], [85, 56], [78, 78], [64, 90], [36, 90], [22, 78], [15, 56], [21, 34]],
     extras: [
       { shape: [[30, 54], [50, 46], [70, 54], [64, 84], [36, 84]], fill: '#FFF3DC' },

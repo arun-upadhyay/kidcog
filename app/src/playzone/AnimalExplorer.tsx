@@ -2,7 +2,7 @@ import CorrectAnswerCelebration from '../components/CorrectAnswerCelebration';
 import React, { useMemo, useState } from 'react';
 import { Modal, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import Button from '../components/Button';
-import Owl from '../components/Owl';
+import Cog from '../components/Cog';
 import { playSound } from '../games/sounds';
 import { ANIMALS, ANIMAL_BY_KEY, HOME_WORDS, animalOfTheDay, withArticle, type Animal } from '../explore/animals';
 import { makeRound } from '../explore/animalQuiz';
@@ -178,7 +178,7 @@ function Quiz({ level, onExit, onBack, onMeet, onDone, onLevel }: {
       <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollBody} onScroll={onHeaderScroll} scrollEventThrottle={16}>
         {!started ? (
           <View style={styles.startCard}>
-            <Owl mood="happy" size={88} />
+            <Cog mood="happy" size={88} />
             <Text style={styles.startTitle}>Ready to explore?</Text>
             <Text style={styles.startText}>Tap 🔊 to hear a question, then tap the right animal. You get two tries!</Text>
             <Button title="▶ Start" onPress={() => setStarted(true)} />

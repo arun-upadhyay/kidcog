@@ -4,7 +4,7 @@ import { Alert, Platform, View, Text, TextInput, StyleSheet, ScrollView, Switch,
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AboutSheet from '../components/AboutSheet';
 import Sheet from '../components/Sheet';
-import { ChunkyButton, OwlStage, PLAY, Ribbon, type PlayColour } from '../components/Playful';
+import { ChunkyButton, CogStage, PLAY, Ribbon, type PlayColour } from '../components/Playful';
 import { colors, spacing, type, column, GUTTER } from '../theme';
 import type { ChildProfile, SavedChildProfile } from '../types';
 import { avatarEmoji, defaultAvatarKey, avatarName, firstFreeAvatar } from '../avatars';
@@ -99,7 +99,7 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
   const { width, height } = useWindowDimensions();
   const wide = width >= 640;
   const columns = width >= 640 ? 4 : width >= 440 ? 3 : 2;
-  // Owl's stage: smaller on short phones so the players stay near the top.
+  // Cog's stage: smaller on short phones so the players stay near the top.
   const stageWidth = wide ? 300 : height < 700 ? 190 : Math.min(240, width - spacing(8));
 
   function handleStart() {
@@ -172,9 +172,9 @@ export default function StartScreen({ onStart, loading, error, savedChildren, on
           </Pressable>
         ) : null}
 
-        {/* Hello from Owl */}
+        {/* Hello from Cog */}
         <View style={[styles.hero, wide && styles.heroWide]}>
-          <OwlStage still width={stageWidth} owlSize={Math.round(stageWidth * 0.3)} tint="grape" bubble={showNewForm ? 'New friend! 🎉' : 'Hi there! 👋'} />
+          <CogStage still width={stageWidth} cogSize={Math.round(stageWidth * 0.3)} tint="grape" bubble={showNewForm ? 'New friend! 🎉' : 'Hi there! 👋'} />
           <View style={[styles.heroCopy, wide && styles.heroCopyWide]}>
             <Text style={[styles.eyebrow, wide && styles.leftText]}>{showNewForm ? '✨ NEW PLAYER ✨' : '✨ PICK YOUR PLAYER ✨'}</Text>
             <Text accessibilityRole="header" style={[styles.helloTitle, wide && styles.leftText, wide && styles.helloTitleWide]}>Who’s playing today?</Text>

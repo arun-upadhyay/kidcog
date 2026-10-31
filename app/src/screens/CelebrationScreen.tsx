@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native';
 import Button from '../components/Button';
-import Owl from '../components/Owl';
+import Cog from '../components/Cog';
 import RewardCard from '../components/RewardCard';
 import type { RoundReward } from '../progress';
 import { colors, spacing, type, column, GUTTER } from '../theme';
@@ -65,7 +65,7 @@ export default function CelebrationScreen({
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Owl mood="happy" size={112} />
+      <Cog mood="happy" size={112} />
       <Text style={styles.big}>
         {childName ? `Great job, ${childName}!` : 'Great job!'}
       </Text>

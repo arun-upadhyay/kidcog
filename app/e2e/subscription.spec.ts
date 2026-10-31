@@ -115,17 +115,17 @@ test('free plan: Plus games and used-up activities ask for a grown-up, never sho
   await expect(map).toBeVisible();
   await expect(page.getByRole('button', { name: 'Play Number Snake', exact: true })).toBeVisible();
   await map.click();
-  await expect(page.getByText('Ask a grown-up! 🦉')).toBeVisible();
+  await expect(page.getByText('Ask a grown-up! 👋')).toBeVisible();
   await expect(page.getByText('$1 a month')).toHaveCount(0);
   await page.screenshot({ path: info.outputPath('ask-grown-up.png') });
   await page.getByRole('button', { name: 'Keep playing' }).click();
-  await expect(page.getByText('Ask a grown-up! 🦉')).toHaveCount(0);
+  await expect(page.getByText('Ask a grown-up! 👋')).toHaveCount(0);
 
   // A thinking activity when today's free ones are used up.
   await page.getByRole('button', { name: '← Activities' }).click();
   await page.getByRole('button', { name: /^Big ideas/ }).click();
   await page.getByRole('button', { name: /Let’s play/ }).click();
-  await expect(page.getByText('Ask a grown-up! 🦉')).toBeVisible();
+  await expect(page.getByText('Ask a grown-up! 👋')).toBeVisible();
   await expect(page.getByText('That’s all the thinking games for today.', { exact: false })).toBeVisible();
   await page.getByRole('button', { name: 'I’m a grown-up' }).click();
   await passGate(page);
@@ -133,7 +133,7 @@ test('free plan: Plus games and used-up activities ask for a grown-up, never sho
   expect(errors).toEqual([]);
 });
 
-test('free plan: when the server refuses a round, the activity pop-up closes and Owl asks for a grown-up', async ({ page }) => {
+test('free plan: when the server refuses a round, the activity pop-up closes and Cog asks for a grown-up', async ({ page }) => {
   const errors: string[] = [];
   const calls: string[] = [];
   await open(page, 'freeStale', errors, calls);
@@ -141,10 +141,10 @@ test('free plan: when the server refuses a round, the activity pop-up closes and
   await page.getByRole('button', { name: '← Activities' }).click();
   await page.getByRole('button', { name: /^Big ideas/ }).click();
   await page.getByRole('button', { name: /Let’s play/ }).click();
-  await expect(page.getByText('Ask a grown-up! 🦉')).toBeVisible();
+  await expect(page.getByText('Ask a grown-up! 👋')).toBeVisible();
   await expect(page.getByRole('button', { name: /Let’s play|Try again/ })).toHaveCount(0);
   expect(calls).toContain('/api/test');
   await page.getByRole('button', { name: 'Keep playing' }).click();
-  await expect(page.getByText('Ask a grown-up! 🦉')).toHaveCount(0);
+  await expect(page.getByText('Ask a grown-up! 👋')).toHaveCount(0);
   expect(errors).toEqual([]);
 });

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import Owl from './Owl';
+import Cog from './Cog';
 import Sheet from './Sheet';
-import { OwlStage, ChunkyButton } from './Playful';
+import { CogStage, ChunkyButton } from './Playful';
 import { speak, stopSpeaking, useSpeechState, lastSpeechError } from '../speech';
 
 /** A tap-to-talk host. Uses the shared narrator so focus, cancellation and caching stay consistent. */
@@ -12,7 +12,7 @@ export default function AdventureGuide({ name, width, reduceMotion, games, anima
   const [open, setOpen] = useState(false);
   const ownsSpeech = useRef(false);
   const speech = useSpeechState();
-  const greeting = `Hi${name?.trim() ? `, ${name.trim()}` : ', friend'}! Welcome to KidCog! I'm Owl, your adventure buddy.`;
+  const greeting = `Hi${name?.trim() ? `, ${name.trim()}` : ', friend'}! Welcome to KidCog! I'm Cog, your adventure buddy.`;
   const message = [greeting,
     games && 'Pop bubbles and play number games in the Play Zone.',
     animals && 'Meet amazing animals and listen to their sounds in Animal Explorer.',
@@ -27,21 +27,21 @@ export default function AdventureGuide({ name, width, reduceMotion, games, anima
   };
   const close = () => { stopSpeaking(); ownsSpeech.current = false; setOpen(false); };
   return <>
-    <Pressable accessibilityRole="button" accessibilityLabel="Say hello to Owl" accessibilityHint="Hear a welcome and discover what you can play" onPress={() => { setOpen(true); play(); }} style={styles.launch}>
-      {compact ? <Owl size={64} still={reduceMotion} /> : <OwlStage width={width} owlSize={Math.round(width * .3)} tint="sun" still={reduceMotion} bubble="Hello, explorer! 👋" />}
-      <Text style={styles.tap}>{compact ? '🔊 Hello!' : '🔊 Tap Owl to say hello'}</Text>
+    <Pressable accessibilityRole="button" accessibilityLabel="Say hello to Cog" accessibilityHint="Hear a welcome and discover what you can play" onPress={() => { setOpen(true); play(); }} style={styles.launch}>
+      {compact ? <Cog size={64} still={reduceMotion} /> : <CogStage width={width} cogSize={Math.round(width * .3)} tint="sun" still={reduceMotion} bubble="Hello, explorer! 👋" />}
+      <Text style={styles.tap}>{compact ? '🔊 Hello!' : '🔊 Tap Cog to say hello'}</Text>
     </Pressable>
-    <Sheet visible={open} onClose={close} closeLabel="Close Owl's welcome">
+    <Sheet visible={open} onClose={close} closeLabel="Close Cog's welcome">
       <ScrollView contentContainerStyle={styles.content}>
         <Text accessibilityRole="header" style={styles.title}>Your adventure buddy</Text>
-        <View style={styles.stage}><Owl size={140} talking={speech === 'playing'} still={reduceMotion || speech !== 'playing'} /></View>
+        <View style={styles.stage}><Cog size={140} talking={speech === 'playing'} still={reduceMotion || speech !== 'playing'} /></View>
         <View style={styles.bubble}><Text style={styles.greeting}>{greeting}</Text><Text style={styles.copy}>{message.slice(greeting.length).trim()}</Text></View>
-        <Text accessibilityLiveRegion="polite" style={styles.status}>{speech === 'loading' ? 'Owl is getting ready…' : speech === 'playing' ? 'Owl is speaking…' : lastSpeechError ? 'Owl’s voice is resting. You can read along or try again.' : 'Ready for an adventure?'}</Text>
+        <Text accessibilityLiveRegion="polite" style={styles.status}>{speech === 'loading' ? 'Cog is getting ready…' : speech === 'playing' ? 'Cog is speaking…' : lastSpeechError ? 'Cog’s voice is resting. You can read along or try again.' : 'Ready for an adventure?'}</Text>
         <View style={styles.controls}>
           <ChunkyButton size="md" colour="grape" title={speech === 'idle' ? '🔊 Hear again' : '■ Stop voice'} onPress={speech === 'idle' ? play : stopSpeaking} />
           <ChunkyButton size="md" colour="grass" title="Let’s explore! →" onPress={close} />
         </View>
-        <Text style={styles.disclosure}>Owl uses an AI-generated voice.</Text>
+        <Text style={styles.disclosure}>Cog uses an AI-generated voice.</Text>
       </ScrollView>
     </Sheet>
   </>;

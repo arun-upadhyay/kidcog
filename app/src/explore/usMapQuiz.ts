@@ -23,7 +23,7 @@ export function makeStateRound(size = 8, random: () => number = Math.random): St
   });
 }
 
-/** What Owl reads out: the question, then the four names. */
+/** What Cog reads out: the question, then the four names. */
 export function questionSpeech(q: StateQuestion) {
   const names = q.choices.map(code => STATE_BY_CODE[code]!.name);
   return `Which state is coloured in? Is it ${names.slice(0, -1).join(', ')}, or ${names[names.length - 1]}?`;

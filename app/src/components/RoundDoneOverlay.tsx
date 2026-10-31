@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Animated, Easing, Platform, StyleSheet, Text, View } from 'react-native';
-import Owl from './Owl';
+import Cog from './Cog';
 import { playSound } from '../games/sounds';
 import { colors, spacing } from '../theme';
 
@@ -8,7 +8,7 @@ const native = Platform.OS !== 'web';
 
 /**
  * Shown the moment a child taps "I'm finished!", while the answers are being
- * checked: the owl cheers and the round's stars pop in one by one, so the
+ * checked: Cog cheers and the round's stars pop in one by one, so the
  * child celebrates straight away instead of watching a spinner. The results
  * screen replaces it as soon as it is ready.
  */
@@ -37,7 +37,7 @@ export default function RoundDoneOverlay({ childName, stars }: { childName?: str
   return (
     <View style={styles.overlay} accessibilityViewIsModal accessibilityLiveRegion="polite">
       <Animated.View style={{ transform: [{ translateY: hop.interpolate({ inputRange: [0, 1], outputRange: [0, -22] }) }] }}>
-        <Owl mood="happy" size={120} />
+        <Cog mood="happy" size={120} />
       </Animated.View>
       <Text style={styles.title}>{childName ? `Great job, ${childName}!` : 'Great job!'}</Text>
       <Text style={styles.sub}>You finished! 🎉</Text>

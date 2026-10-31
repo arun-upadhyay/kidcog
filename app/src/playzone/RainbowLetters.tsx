@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Pressable, StyleSheet, Text, View, useWindowDimensions, type GestureResponderEvent } from 'react-native';
 import Svg, { Circle, Polyline } from 'react-native-svg';
-import Owl from '../components/Owl';
+import Cog from '../components/Cog';
 import { playSound } from '../games/sounds';
 import { speak, stopSpeaking } from '../speech';
 import { useNative, useScrollLock, useUsableHeight } from './common';
@@ -9,7 +9,7 @@ import { drawingTouchStyle } from './common';
 
 /**
  * Rainbow Letters: trace big letters, numbers, little words and shapes with
- * rainbow ink. Follow the fat grey path; when most of it is covered, Owl
+ * rainbow ink. Follow the fat grey path; when most of it is covered, Cog
  * cheers, stars burst and the next one comes up. No timer, no wrong answers.
  */
 import { GLYPHS } from './TraceDraw';
@@ -90,7 +90,7 @@ export default function RainbowLetters() {
       </View>
 
       <View style={styles.head}>
-        <Owl size={52} mood={done ? 'happy' : 'idle'} still={!done} />
+        <Cog size={52} mood={done ? 'happy' : 'idle'} still={!done} />
         <Text style={styles.prompt} accessibilityRole="header">{done ? `⭐ You traced ${item}!` : `Trace ${item.length > 1 && !SHAPES[item] ? `“${item}”` : item}`}</Text>
         <Pressable onPress={() => { stopSpeaking(); void speak(SHAPES[item] ? `Trace the ${item.toLowerCase()}` : `Trace ${say(item)}`); }}
           accessibilityRole="button" accessibilityLabel={`Hear: trace ${item}`} style={({ pressed }) => [styles.speaker, pressed && styles.pressed]}>

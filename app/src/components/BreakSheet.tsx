@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Sheet from './Sheet';
-import Owl from './Owl';
+import Cog from './Cog';
 import Button from './Button';
 import { colors, spacing } from '../theme';
 
@@ -12,7 +12,7 @@ export default function BreakSheet({ visible, onClose }: { visible: boolean; onC
   return (
     <Sheet visible={visible} onClose={onClose} closeLabel="Okay">
       <View style={styles.body}>
-        <Owl mood="happy" size={96} />
+        <Cog mood="happy" size={96} />
         <Text style={styles.title}>Time for a little break!</Text>
         <Text style={styles.text}>You’ve been playing for a while. Stand up, stretch up high 🙆, wiggle your fingers and have a drink of water. Your stars will be here when you come back!</Text>
         <View style={{ alignSelf: 'stretch' }}>

@@ -2,8 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import Sheet from './Sheet';
 import Button from './Button';
+import Cog from './Cog';
 import { colors, spacing } from '../theme';
-import { DELETE_ACCOUNT_PATH, PRIVACY_PATH, openPublicPage } from '../legal';
+import { COPYRIGHT, DELETE_ACCOUNT_PATH, PRIVACY_PATH, openPublicPage } from '../legal';
 
 /**
  * "About KidCog": everything a parent should know, kept off the main screens so
@@ -32,7 +33,7 @@ export default function AboutSheet({ visible, onClose }: { visible: boolean; onC
   return (
     <Sheet visible={visible} onClose={onClose} closeLabel="Close About KidCog">
           <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-            <Text style={styles.owl}>🦉</Text>
+            <View style={styles.mascot}><Cog size={64} still outfit={null} mood="happy" /></View>
             <Text style={styles.title}>About KidCog</Text>
             {SECTIONS.map(section => (
               <View key={section.title} style={styles.section}>
@@ -48,6 +49,7 @@ export default function AboutSheet({ visible, onClose }: { visible: boolean; onC
               <Text style={styles.dot}>·</Text>
               <Pressable onPress={() => openPublicPage(DELETE_ACCOUNT_PATH)} accessibilityRole="link" hitSlop={6}><Text style={styles.link}>Deleting your data</Text></Pressable>
             </View>
+            <Text style={styles.copyright}>{COPYRIGHT}</Text>
             <View style={{ marginTop: spacing(2) }}>
               <Button title="Got it" onPress={onClose} />
             </View>
@@ -61,7 +63,8 @@ const styles = StyleSheet.create({
   links: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: spacing(1), marginTop: spacing(2), flexWrap: 'wrap' },
   link: { fontSize: 14, fontWeight: '800', color: colors.primary, textDecorationLine: 'underline' },
   dot: { color: colors.inkSoft },
-  owl: { fontSize: 40, textAlign: 'center' },
+  mascot: { alignItems: 'center' },
+  copyright: { fontSize: 12, lineHeight: 17, color: colors.inkSoft, textAlign: 'center', marginTop: spacing(1.5) },
   title: { fontSize: 24, fontWeight: '900', color: '#6B4BB0', textAlign: 'center', marginBottom: spacing(1.5) },
   section: { flexDirection: 'row', gap: spacing(1.5), paddingVertical: spacing(1.5), borderTopWidth: 1, borderTopColor: colors.line },
   sectionIcon: { fontSize: 26, width: 34, textAlign: 'center' },

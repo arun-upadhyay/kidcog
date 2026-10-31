@@ -8,6 +8,7 @@ import { colors, spacing, type, column, GUTTER } from '../theme';
 import { setAppHeaderCollapsed, useAppHeaderCollapsed } from '../headerScroll';
 import FeedbackSheet from './FeedbackSheet';
 import Logo from './Logo';
+import Cog from './Cog';
 import { useImmersive } from '../immersive';
 import { useSubscription } from '../subscription/SubscriptionProvider';
 
@@ -202,7 +203,7 @@ export default function AppMenu({ screen, accountEmail, accountProviders, accoun
             {/* Scrolls on short screens, so Sign out and Delete account are never under the home bar. */}
             <ScrollView bounces={false} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
             <View style={styles.accountHeader}>
-              <View style={styles.avatar}><Text style={styles.avatarText}>🦉</Text></View>
+              <View style={styles.avatar}><Cog size={36} still outfit={null} mood="happy" /></View>
               <View style={styles.accountHeading}>
                 <Text style={styles.accountTitle}>Parent account</Text>
                 <Text style={styles.accountEmail} numberOfLines={1}>{accountEmail}</Text>

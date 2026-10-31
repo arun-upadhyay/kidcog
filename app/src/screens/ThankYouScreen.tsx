@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
-import Owl from '../components/Owl';
+import Cog from '../components/Cog';
 import Button from '../components/Button';
 import { colors, spacing, column, GUTTER } from '../theme';
 
@@ -20,7 +20,7 @@ export default function ThankYouScreen({ onContinue }: { onContinue: () => void 
   return (
     <ScrollView style={styles.page} contentContainerStyle={styles.content}>
       <View style={styles.card}>
-        <Owl mood="happy" size={120} />
+        <Cog mood="happy" size={120} />
         <Text style={styles.heart} accessible={false}>💛</Text>
         <Text style={styles.title} accessibilityRole="header">Thank you so much!</Text>
         <Text style={styles.body}>

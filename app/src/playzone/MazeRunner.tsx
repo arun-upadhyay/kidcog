@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { playSound } from '../games/sounds';
+import Cog from '../components/Cog';
 import { colors } from '../theme';
 import { drawingTouchStyle, DirPad, GameSurface, GameStartCard, GameFrame, WinCard, shuffle, useArrowKeys, useSwipe, type Dir, useUsableHeight } from './common';
 
 /**
- * Maze Runner: help the owl through the maze to the flag, picking up stars on
- * the way. No timer and no way to lose: a wall just stops the owl. Bigger mazes
+ * Maze Runner: help Cog through the maze to the flag, picking up stars on
+ * the way. No timer and no way to lose: a wall just stops Cog. Bigger mazes
  * at higher levels.
  */
 const SIZES = [5, 6, 7, 8, 9];
@@ -100,10 +101,10 @@ export default function MazeRunner({ level: startLevel, onBack, onFinish }: {
   const line = 3;
   const wallColor = '#6B4FB8';
   return (
-    <GameFrame emoji="🦉" title="Maze Runner" level={level} onBack={onBack}
-      hint={won === null ? `Tap a glowing space beside Owl. Find the flag 🏁! (${got.length} of 3)` : ''}>
-      <GameSurface theme="purple" eyebrow="THE STAR TRAIL" title="An owl adventure 🦉" badgeLabel="STARS" badge={`${got.length} / 3`} onWidth={setBoardWidth}>
-      <View testID="maze-board" {...swipe.panHandlers} accessibilityLabel={`Maze, ${size} by ${size}. Owl is at column ${pos.x + 1}, row ${pos.y + 1}.`}
+    <GameFrame emoji="🏁" title="Maze Runner" level={level} onBack={onBack}
+      hint={won === null ? `Tap a glowing space beside Cog. Find the flag 🏁! (${got.length} of 3)` : ''}>
+      <GameSurface theme="purple" eyebrow="THE STAR TRAIL" title="Cog's big adventure ⭐" badgeLabel="STARS" badge={`${got.length} / 3`} onWidth={setBoardWidth}>
+      <View testID="maze-board" {...swipe.panHandlers} accessibilityLabel={`Maze, ${size} by ${size}. Cog is at column ${pos.x + 1}, row ${pos.y + 1}.`}
         style={[styles.board, drawingTouchStyle, { width: cell * size + line, height: cell * size + line }, bump && styles.bump]}>
         {trail.map(k => {
           const [x, y] = k.split(',').map(Number) as [number, number];
@@ -121,10 +122,10 @@ export default function MazeRunner({ level: startLevel, onBack, onFinish }: {
           <Text key={`s${i}`} style={[styles.piece, { left: s.x * cell, top: s.y * cell, width: cell, lineHeight: cell, fontSize: cell * 0.5 }]}>⭐</Text>
         ))}
         <Text style={[styles.piece, { left: (size - 1) * cell, top: (size - 1) * cell, width: cell, lineHeight: cell, fontSize: cell * 0.55 }]}>🏁</Text>
-        <Text style={[styles.piece, { left: pos.x * cell, top: pos.y * cell, width: cell, lineHeight: cell, fontSize: cell * 0.62 }]}>🦉</Text>
+        <View style={[styles.piece, { left: pos.x * cell + cell * 0.12, top: pos.y * cell + cell * 0.04, width: cell * 0.76 }]} accessibilityElementsHidden><Cog size={cell * 0.76} still mood="happy" /></View>
         {won === null ? (Object.keys(STEP) as Dir[]).filter(dir => !walls[pos.y]![pos.x]![dir]).map(dir => {
           const next = { x: pos.x + STEP[dir].x, y: pos.y + STEP[dir].y };
-          return <Pressable key={dir} accessibilityRole="button" accessibilityLabel={`Move Owl ${dir}`} onPress={() => move(dir)}
+          return <Pressable key={dir} accessibilityRole="button" accessibilityLabel={`Move Cog ${dir}`} onPress={() => move(dir)}
             style={({ pressed }) => ({ position: 'absolute', left: next.x * cell + 3, top: next.y * cell + 3, width: cell - 3, height: cell - 3, borderRadius: 10, backgroundColor: pressed ? 'rgba(120,80,210,0.35)' : 'rgba(120,80,210,0.15)', borderWidth: 2, borderColor: '#A68AE2', alignItems: 'center', justifyContent: 'center' })}>
             <Text style={{ color: '#5D439B', fontSize: Math.max(16, cell * .32), fontWeight: '900' }}>{ { up: '↑', down: '↓', left: '←', right: '→' }[dir]}</Text>
           </Pressable>;
@@ -133,7 +134,7 @@ export default function MazeRunner({ level: startLevel, onBack, onFinish }: {
       <DirPad optional onDir={move} disabled={won !== null} />
       </GameSurface>
       {won !== null ? (
-        <WinCard stars={won} message={won === 3 ? 'Out of the maze with every star!' : 'You helped Owl find the flag! Hooray!'}
+        <WinCard stars={won} message={won === 3 ? 'Out of the maze with every star!' : 'You helped Cog find the flag! Hooray!'}
           onExit={onBack} onAgain={() => setRound(r => r + 1)}
           onNext={level < MAZE_LEVELS ? () => setLevel(level + 1) : () => setRound(r => r + 1)} nextLabel={level < MAZE_LEVELS ? 'Bigger maze ▶' : 'New maze ▶'} />
       ) : null}

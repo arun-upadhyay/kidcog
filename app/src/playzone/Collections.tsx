@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import Owl from '../components/Owl';
+import Cog from '../components/Cog';
 import Sheet from '../components/Sheet';
-import { OWL_ITEMS, OWL_SLOTS, isUnlocked, nextUnlock, type OwlItem } from '../components/owlOutfits';
+import { COG_ITEMS, COG_SLOTS, isUnlocked, nextUnlock, type CogItem } from '../components/cogOutfits';
 import { AVATARS } from '../avatars';
 import { playSound } from '../games/sounds';
-import type { ChildProgress, OwlOutfit } from '../progress';
+import type { ChildProgress, CogOutfit } from '../progress';
 import { colors, spacing } from '../theme';
 import { PictureArt } from './dotArt';
 import { DOT_PICTURES } from './dotPictures';
 
 /**
  * The child's own things, at the top of the Play Zone: the sticker book, the
- * wall of pictures they have finished (and coloured), and Owl's dress-up box.
+ * wall of pictures they have finished (and coloured), and Cog's dress-up box.
  * Every game they finish adds to one of these.
  */
 const PICTURES = Object.values(DOT_PICTURES);
@@ -20,7 +20,7 @@ const PICTURES = Object.values(DOT_PICTURES);
 export default function CollectionShelf({ progress, childName, onOutfit }: {
   progress: ChildProgress | null;
   childName?: string;
-  onOutfit: (outfit: OwlOutfit) => void;
+  onOutfit: (outfit: CogOutfit) => void;
 }) {
   const [open, setOpen] = useState<'stickers' | 'pictures' | 'owl' | null>(null);
   // Each panel scrolls as a whole, so it fits short screens (a phone on its side).
@@ -48,9 +48,9 @@ export default function CollectionShelf({ progress, childName, onOutfit }: {
           <Text style={styles.tileTitle}>My pictures</Text>
           <Text style={styles.tileCount}>{finished.length}/{PICTURES.length}</Text>
         </Tile>
-        <Tile onPress={() => setOpen('owl')} label="Dress up Owl" color="#EEE9FF" border="#A68AE2">
-          <Owl size={38} />
-          <Text style={styles.tileTitle}>Dress up Owl</Text>
+        <Tile onPress={() => setOpen('owl')} label="Dress up Cog" color="#EEE9FF" border="#A68AE2">
+          <Cog size={38} />
+          <Text style={styles.tileTitle}>Dress up Cog</Text>
           <Text style={styles.tileCount} numberOfLines={1}>{upcoming ? `${upcoming.emoji} at ⭐${upcoming.stars}` : 'All unlocked!'}</Text>
         </Tile>
       </View>
@@ -97,17 +97,17 @@ export default function CollectionShelf({ progress, childName, onOutfit }: {
 
       {open === 'owl' ? <Sheet visible onClose={close} closeLabel="Close dress up">
         <ScrollView style={{ maxHeight: bodyMax }} contentContainerStyle={{ paddingBottom: 4 }}>
-        <Text style={styles.sheetTitle}>Dress up Owl</Text>
-        <View style={styles.preview}><Owl mood="happy" size={120} outfit={outfit} /></View>
+        <Text style={styles.sheetTitle}>Dress up Cog</Text>
+        <View style={styles.preview}><Cog mood="happy" size={120} outfit={outfit} /></View>
         <Text style={styles.sheetSub}>
           ⭐ {stars} stars{upcoming ? ` · ${upcoming.stars - stars} more for the ${upcoming.name.toLowerCase()} ${upcoming.emoji}` : ' · everything unlocked!'}
         </Text>
         <View>
-          {OWL_SLOTS.map(({ slot, title }) => (
+          {COG_SLOTS.map(({ slot, title }) => (
             <View key={slot} style={styles.slotRow}>
               <Text style={styles.slotTitle}>{title}</Text>
               <View style={styles.items}>
-                {OWL_ITEMS.filter(i => i.slot === slot).map(item => (
+                {COG_ITEMS.filter(i => i.slot === slot).map(item => (
                   <ItemButton key={item.key} item={item} stars={stars} wearing={outfit[slot] === item.key}
                     onPress={() => {
                       if (!isUnlocked(item, stars)) { playSound('oops'); return; }
@@ -136,7 +136,7 @@ function Tile({ children, onPress, label, color, border }: { children: React.Rea
   );
 }
 
-function ItemButton({ item, stars, wearing, onPress }: { item: OwlItem; stars: number; wearing: boolean; onPress: () => void }) {
+function ItemButton({ item, stars, wearing, onPress }: { item: CogItem; stars: number; wearing: boolean; onPress: () => void }) {
   const open = isUnlocked(item, stars);
   return (
     <Pressable onPress={onPress} accessibilityRole="button" accessibilityState={{ selected: wearing, disabled: !open }}

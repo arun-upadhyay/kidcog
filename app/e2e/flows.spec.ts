@@ -343,7 +343,7 @@ test('Connect the Dots: wrong dots wiggle, joining every dot reveals the picture
   await expect(page.getByLabel(/^Dot board/)).toHaveAccessibleName('Dot board. Next dot: 2');
 });
 
-test('Play Zone shelf: sticker book, picture wall and dressing up Owl', async ({ page }) => {
+test('Play Zone shelf: sticker book, picture wall and dressing up Cog', async ({ page }) => {
   await games(page);
   await page.getByRole('button', { name: /^My pictures, 0 of 12/ }).click();
   await expect(page.getByText('0 of 12 on the wall', { exact: true })).toBeVisible();
@@ -354,7 +354,7 @@ test('Play Zone shelf: sticker book, picture wall and dressing up Owl', async ({
   await page.getByRole('button', { name: 'Close', exact: true }).click();
 
   // The test child has 3 stars: the bow tie (1) and flower (3) are open, the party hat (10) is not.
-  await page.getByRole('button', { name: 'Dress up Owl', exact: true }).click();
+  await page.getByRole('button', { name: 'Dress up Cog', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Party hat, unlocks at 10 stars' })).toBeVisible();
   await page.getByRole('button', { name: 'Bow tie', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Bow tie, wearing' })).toBeVisible();
@@ -414,7 +414,7 @@ test('Maze lets children move directly on the board with optional arrow controls
   const board = page.getByTestId('maze-board');
   const before = await board.getAttribute('aria-label');
   await expect(page.getByRole('button', { name: 'Go up', exact: true })).toHaveCount(0);
-  await page.getByRole('button', { name: /^Move Owl / }).first().click();
+  await page.getByRole('button', { name: /^Move Cog / }).first().click();
   await expect(board).not.toHaveAttribute('aria-label', before!);
   await page.getByRole('button', { name: 'Arrow controls', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Go up', exact: true })).toBeVisible();

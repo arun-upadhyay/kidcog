@@ -22,8 +22,8 @@ import SubscriptionProvider, { useSubscription } from './src/subscription/Subscr
 import { gameLocked } from './src/subscription/entitlement';
 import { supabase } from './src/auth/supabase';
 import { stopSpeaking } from './src/speech';
-import { forgetProgress, loadProgress, recordAnimalsFound, recordArcade, recordOwlOutfit, recordPicture, recordRound, type ChildProgress, type OwlOutfit, type RoundReward } from './src/progress';
-import { OwlOutfitContext } from './src/components/owlOutfits';
+import { forgetProgress, loadProgress, recordAnimalsFound, recordArcade, recordCogOutfit, recordPicture, recordRound, type ChildProgress, type CogOutfit, type RoundReward } from './src/progress';
+import { CogOutfitContext } from './src/components/cogOutfits';
 import BreakSheet, { BREAK_AFTER_MS } from './src/components/BreakSheet';
 import RoundDoneOverlay from './src/components/RoundDoneOverlay';
 import { useBackHandler } from './src/backHandler';
@@ -119,7 +119,7 @@ function KidCogApp() {
       playStartedAt.current ??= Date.now();
       setStage('quiz');
     } catch (err) {
-      // Free plan, today's thinking activities used up: Owl asks for a grown-up instead of an error.
+      // Free plan, today's thinking activities used up: Cog asks for a grown-up instead of an error.
       if (errorCode(err) === 'plan_required') { askGrownUp('activities'); refreshEntitlement(); }
       else setError(messageOf(err));
     } finally {
@@ -199,10 +199,10 @@ function KidCogApp() {
   const pictureDone = useCallback((key: string, colours?: string[]) => {
     if (child?.id) void recordPicture(child.id, key, colours).then(setProgress).catch(() => {});
   }, [child?.id]);
-  const dressOwl = useCallback((outfit: OwlOutfit) => {
+  const dressCog = useCallback((outfit: CogOutfit) => {
     if (!child?.id) return;
     setProgress(p => (p ? { ...p, owl: outfit } : p)); // show it straight away
-    void recordOwlOutfit(child.id, outfit).then(setProgress).catch(() => {});
+    void recordCogOutfit(child.id, outfit).then(setProgress).catch(() => {});
   }, [child?.id]);
 
   /** A Play Zone game was won: save its stars and level, and suggest a break after a long spell of play. */
@@ -361,7 +361,7 @@ function KidCogApp() {
       <StatusBar style="dark" />
       {/* Signs the parent out after 30 minutes with no taps or clicks. */}
       <IdleGuard signedInAt={session.user.last_sign_in_at} onTimeout={logout}>
-      <OwlOutfitContext.Provider value={child?.id ? progress?.owl ?? null : null}>
+      <CogOutfitContext.Provider value={child?.id ? progress?.owl ?? null : null}>
       <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
         {/* Outside every screen's scroll view, so it is always visible. */}
         <AppMenu
@@ -404,7 +404,7 @@ function KidCogApp() {
           {stage === 'categories' && <CategoryScreen childName={child?.firstName} childAvatar={child?.avatar} initialCategory={roundCategory} initialCount={roundLength} onSelect={chooseRound} onPreview={previewCategory} progress={progress} onReport={() => setStage('results')} onPlayZone={openPlayZone} onAnimals={openAnimals} onArtMusic={() => { if (gameLocked(entitlement, 'art-music')) { askGrownUp('game'); return; } stopSpeaking(); setPlayZoneGame('art-music'); playStartedAt.current ??= Date.now(); setStage('playzone'); }} onBack={restart} report={report} explored={explored} busy={busy} error={error} />}
 
           {stage === 'playzone' && (
-            <PlayZoneScreen childId={child?.id} childName={child?.firstName} childAvatar={child?.avatar} onSwitchPlayer={goHome} age={child?.age} progress={progress} onBack={() => setStage('categories')} onFinish={finishGame} onAnimalsFound={animalsFound} onPicture={pictureDone} onOutfit={dressOwl} initialGame={playZoneGame} />
+            <PlayZoneScreen childId={child?.id} childName={child?.firstName} childAvatar={child?.avatar} onSwitchPlayer={goHome} age={child?.age} progress={progress} onBack={() => setStage('categories')} onFinish={finishGame} onAnimalsFound={animalsFound} onPicture={pictureDone} onOutfit={dressCog} initialGame={playZoneGame} />
           )}
 
           {stage === 'quiz' && test && (
@@ -431,7 +431,7 @@ function KidCogApp() {
         </View>
         <BreakSheet visible={breakOpen} onClose={() => setBreakOpen(false)} />
       </SafeAreaView>
-      </OwlOutfitContext.Provider>
+      </CogOutfitContext.Provider>
       </IdleGuard>
     </SafeAreaProvider>
   );

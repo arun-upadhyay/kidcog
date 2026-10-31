@@ -3,7 +3,7 @@ import { Animated, Pressable, StyleSheet, Text, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import type { GameSpec, PublicQuestion } from '../types';
 import { colors, scaled, spacing } from '../theme';
-import Owl, { type OwlMood } from '../components/Owl';
+import Cog, { type CogMood } from '../components/Cog';
 import { playSound } from './sounds';
 import { SpeakerIcon } from '../components/Icons';
 import { speak, stopSpeaking } from '../speech';
@@ -79,7 +79,7 @@ export default function GameView({ question, uiScale: s, value, onDone }: {
   const [previous] = useState(() => { try { return value ? JSON.parse(value) as { solved?: boolean } : null; } catch { return null; } });
   const [status, setStatus] = useState<Status>(previous ? (previous.solved ? 'right' : 'failed') : 'playing');
   const [tried, setTried] = useState<unknown[]>([]);
-  const [mood, setMood] = useState<OwlMood>('idle');
+  const [mood, setMood] = useState<CogMood>('idle');
   const [message, setMessage] = useState<string | null>(null);
   const mistakes = useRef(0);
   const done = status === 'right' || status === 'failed';
@@ -175,7 +175,7 @@ export default function GameView({ question, uiScale: s, value, onDone }: {
     <View style={{ marginTop: spacing(2) }}>
       {body}
       <View style={styles.feedbackRow} accessibilityLiveRegion="polite">
-        <Owl mood={mood} size={scaled(60, s)} />
+        <Cog mood={mood} size={scaled(60, s)} />
         {message ? (
           <View style={[styles.banner, tone]}>
             {status === 'right' ? (

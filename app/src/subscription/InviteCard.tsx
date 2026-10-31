@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Owl from '../components/Owl';
+import Cog from '../components/Cog';
 import { colors, spacing, type } from '../theme';
 import { useSubscription } from './SubscriptionProvider';
 
@@ -30,7 +30,7 @@ export default function InviteCard() {
   return (
     <View style={styles.card} testID="invite-card">
       <View style={styles.row}>
-        <Owl mood="happy" size={56} still />
+        <Cog mood="happy" size={56} still />
         <View style={{ flex: 1, gap: 2 }}>
           <Text style={type.label}>FOR GROWN-UPS</Text>
           <Text style={styles.title}>{free ? 'Thanks for exploring KidCog!' : 'Your family is loving KidCog! 🎉'}</Text>

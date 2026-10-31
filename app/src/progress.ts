@@ -25,12 +25,12 @@ export interface ChildProgress {
   animals?: string[];
   /** Connect the Dots pictures this child has finished, with the colours they chose (their wall). */
   pictures?: Record<string, string[]>;
-  /** What Owl is wearing for this child (see playzone/owlOutfits.ts). */
-  owl?: OwlOutfit;
+  /** What Cog is wearing for this child (see components/cogOutfits.tsx). Stored as `owl` so saved outfits keep working. */
+  owl?: CogOutfit;
 }
 
-/** Owl's dress-up: one item per slot, by key. Unlocked by total stars, never spent. */
-export type OwlOutfit = { hat?: string; eyes?: string; neck?: string };
+/** Cog's dress-up (stored as `owl` so saved outfits keep working): one item per slot, by key. Unlocked by total stars, never spent. */
+export type CogOutfit = { hat?: string; eyes?: string; neck?: string };
 
 export interface RoundReward {
   stars: number;
@@ -153,8 +153,8 @@ export async function recordPicture(childId: string, key: string, colours?: stri
   return next;
 }
 
-/** Owl's outfit for this child. */
-export async function recordOwlOutfit(childId: string, outfit: OwlOutfit): Promise<ChildProgress> {
+/** Cog's outfit for this child. */
+export async function recordCogOutfit(childId: string, outfit: CogOutfit): Promise<ChildProgress> {
   const progress = await loadProgress(childId);
   const next: ChildProgress = { ...progress, owl: outfit };
   await saveProgress(childId, next);

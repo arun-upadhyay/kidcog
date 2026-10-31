@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useMemo, useRef, useState 
 import { Animated, PanResponder, Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Defs, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
-import Owl from '../components/Owl';
+import Cog from '../components/Cog';
 import { useSoundEffects } from '../games/sounds';
 import { setMusicOn, useMusicOn } from './gameMusic';
 import Button from '../components/Button';
@@ -169,9 +169,9 @@ export function DirPad({ onDir, disabled, optional = false }: { onDir: (dir: Dir
   );
 }
 
-/** What Owl says when a game opens (and again on ?). Games with a hint use it. */
+/** What Cog says when a game opens (and again on ?). Games with a hint use it. */
 const INTROS: Record<string, string> = {
-  'Number Snake': 'Hi, I am Owl! Help the snake eat the numbers in order: one, then two, then three. Use the arrows, or swipe!',
+  'Number Snake': 'Hi, I am Cog! Help the snake eat the numbers in order: one, then two, then three. Use the arrows, or swipe!',
   'Bubble Pop': 'Bubbles are floating up! Listen to the rule, then pop only the bubbles that match.',
   'Maze Runner': 'Help me find my way to the flag! Tap a glowing space beside me, or swipe to move. Pick up stars on the way.',
   'Trace & Draw': 'Let us write! Put your finger on the green dot and follow the line.',
@@ -191,11 +191,11 @@ function RoundButton({ icon, label, colour, lip, onPress, size }: { icon: string
 }
 
 /**
- * Owl pops up in the corner and tells the child what to do (spoken out loud
+ * Cog pops up in the corner and tells the child what to do (spoken out loud
  * when the game opens, and again on ?). It never blocks the game: taps go
  * straight through it, and it slides away after a few seconds.
  */
-function OwlIntro({ text, nonce, top }: { text: string; nonce: number; top: number }) {
+function CogIntro({ text, nonce, top }: { text: string; nonce: number; top: number }) {
   const slide = useRef(new Animated.Value(0)).current;
   const [shown, setShown] = useState(false);
   const { width } = useWindowDimensions();
@@ -214,7 +214,7 @@ function OwlIntro({ text, nonce, top }: { text: string; nonce: number; top: numb
     <Animated.View pointerEvents="none" accessibilityLiveRegion="polite" style={[styles.intro, { top, maxWidth: Math.min(460, width - 24), opacity: slide, transform: [
       { translateY: slide.interpolate({ inputRange: [0, 1], outputRange: [-40, 0] }) },
     ] }]}>
-      <Owl mood="happy" size={width < 400 ? 54 : 72} />
+      <Cog mood="happy" size={width < 400 ? 54 : 72} />
       <View style={styles.introBubble}><Text style={[styles.introText, width < 400 && styles.introTextSmall]}>{text}</Text></View>
     </Animated.View>
   );
@@ -222,12 +222,12 @@ function OwlIntro({ text, nonce, top }: { text: string; nonce: number; top: numb
 
 /**
  * The frame around every game: a big ✕ to leave, the game's name and level,
- * ? to hear how to play again, and 🎵 for the music. When the game opens, Owl
+ * ? to hear how to play again, and 🎵 for the music. When the game opens, Cog
  * pops up and says how to play.
  */
 export function GameFrame({ emoji, title, level, onBack, children, hint, intro }: {
   emoji: string; title: string; level: number; onBack: () => void; children: React.ReactNode; hint?: string;
-  /** What Owl says when the game opens; defaults to the game's usual words, then the hint. */
+  /** What Cog says when the game opens; defaults to the game's usual words, then the hint. */
   intro?: string;
 }) {
   const { width } = useWindowDimensions();
@@ -255,7 +255,7 @@ export function GameFrame({ emoji, title, level, onBack, children, hint, intro }
     setIntroNonce(n => n + 1);
     if (out && words) { stopSpeaking(); void speak(plain(words)); }
   };
-  // Owl explains the game as it opens (the tap that opened it lets the browser play sound).
+  // Cog explains the game as it opens (the tap that opened it lets the browser play sound).
   useEffect(() => { sayIntro(sounds); return () => stopSpeaking(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <View style={styles.frame}>
@@ -281,7 +281,7 @@ export function GameFrame({ emoji, title, level, onBack, children, hint, intro }
         </View>
       ) : null}
       {children}
-      {words ? <OwlIntro text={words} nonce={introNonce} top={size + 8} /> : null}
+      {words ? <CogIntro text={words} nonce={introNonce} top={size + 8} /> : null}
     </View>
   );
 }
@@ -313,7 +313,7 @@ export function GameScene() {
   );
 }
 
-/** "You did it!" with the happy owl, 1–3 stars and what to do next. */
+/** "You did it!" with happy Cog, 1–3 stars and what to do next. */
 export function WinCard({ stars, message, onNext, nextLabel = 'Next level ▶', onAgain, onExit }: {
   stars: number; message: string; onNext?: () => void; nextLabel?: string; onAgain: () => void; onExit: () => void;
 }) {
@@ -322,7 +322,7 @@ export function WinCard({ stars, message, onNext, nextLabel = 'Next level ▶', 
   return (
     <View style={styles.overlay} accessibilityViewIsModal>
       <Animated.View style={[styles.winCard, { transform: [{ scale: pop }] }]}>
-        <Owl mood="happy" size={96} />
+        <Cog mood="happy" size={96} />
         <Text style={styles.winTitle}>You did it!</Text>
         <Text style={styles.winStars} accessibilityLabel={`${stars} stars`}>{'⭐'.repeat(stars)}{'☆'.repeat(3 - stars)}</Text>
         <Text style={styles.winText}>{message}</Text>

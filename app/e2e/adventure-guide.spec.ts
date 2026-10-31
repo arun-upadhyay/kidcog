@@ -32,7 +32,7 @@ async function prepare(page: Page, fail = false) {
   await page.goto('/');
 }
 
-test('Owl welcomes the selected player only on tap, and can be stopped and dismissed', async ({ page }) => {
+test('Cog welcomes the selected player only on tap, and can be stopped and dismissed', async ({ page }) => {
   await prepare(page);
   const texts: string[] = [];
   await page.route('**/api/speech-key', async route => {
@@ -44,7 +44,7 @@ test('Owl welcomes the selected player only on tap, and can be stopped and dismi
   await page.getByRole('radio', { name: 'Test Explorer, age 5', exact: true }).click();
   await page.getByRole('switch').click();
   await page.getByRole('button', { name: /Choose an adventure/ }).click();
-  const hello = page.getByRole('button', { name: 'Say hello to Owl', exact: true });
+  const hello = page.getByRole('button', { name: 'Say hello to Cog', exact: true });
   await expect(hello).toBeVisible();
   expect(texts).toEqual([]);
   await hello.click();
@@ -56,6 +56,6 @@ test('Owl welcomes the selected player only on tap, and can be stopped and dismi
   await page.getByRole('button', { name: 'Let’s explore! →', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Your adventure buddy', exact: true })).not.toBeVisible();
   await hello.click();
-  await expect(page.getByText('Owl’s voice is resting. You can read along or try again.')).toBeVisible();
+  await expect(page.getByText('Cog’s voice is resting. You can read along or try again.')).toBeVisible();
   await page.getByRole('button', { name: 'Let’s explore! →', exact: true }).click();
 });

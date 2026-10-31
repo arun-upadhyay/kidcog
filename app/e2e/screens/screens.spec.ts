@@ -97,7 +97,7 @@ test('activities, a round and the results', async ({ page, device }) => {
 test('Play Zone and the collection shelf', async ({ page, device }) => {
   await toPlayZone(page);
   await check(page, device, 'play zone');
-  for (const [tile, screen] of [[/^Sticker book/, 'sticker book'], [/^My pictures/, 'my pictures'], [/^Dress up Owl$/, 'dress up owl']] as const) {
+  for (const [tile, screen] of [[/^Sticker book/, 'sticker book'], [/^My pictures/, 'my pictures'], [/^Dress up Cog$/, 'dress up cog']] as const) {
     await page.getByRole('button', { name: tile }).click();
     const close = page.getByRole('button', { name: 'Close', exact: true });
     await expect(close).toBeVisible();

@@ -1,12 +1,12 @@
 import React from 'react';
 import { ActivityIndicator, Animated, Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Ellipse, G, Path, Rect, Text as SvgText } from 'react-native-svg';
-import Owl from './Owl';
+import Cog from './Cog';
 
 /**
  * The bright, chunky pieces the front pages are built from: buttons with a
  * thick "lip" that squash when pressed, ribbon labels that sit on a card's
- * border, and the little stage Owl stands on. All drawn here (plain views and
+ * border, and the little stage Cog stands on. All drawn here (plain views and
  * SVG), no images, so they look the same on iPhone, Android and the web.
  */
 
@@ -90,10 +90,10 @@ function Block({ x, y, size, fill, edge, label, turn }: { x: number; y: number; 
 }
 
 /**
- * The scene behind Owl: a tilted stage, the sun, a cloud, toy blocks and
- * sparkles. `bob` (0 → 1) lifts Owl gently; leave it out for a still Owl.
+ * The scene behind Cog: a tilted stage, the sun, a cloud, toy blocks and
+ * sparkles. `bob` (0 → 1) lifts Cog gently; leave it out for a still Cog.
  */
-export function OwlStage({ width, owlSize, bob, bubble, tint = 'sky', still }: { width: number; owlSize: number; bob?: Animated.Value; bubble?: string; still?: boolean; tint?: 'sky' | 'grass' | 'coral' | 'grape' | 'sun' }) {
+export function CogStage({ width, cogSize, bob, bubble, tint = 'sky', still }: { width: number; cogSize: number; bob?: Animated.Value; bubble?: string; still?: boolean; tint?: 'sky' | 'grass' | 'coral' | 'grape' | 'sun' }) {
   const height = width * 0.62;
   const stage = { sky: ['#5DA9F6', '#2F7BDB', '#A9D3FF'], grass: ['#5CC487', '#2F9A5B', '#B4E8C8'], coral: ['#FF8A73', '#E5533D', '#FFC9BC'], grape: ['#9B7EDE', '#7650C7', '#D9CCFA'], sun: ['#FFD25E', '#E0A514', '#FFF0B8'] }[tint];
   return (
@@ -110,7 +110,7 @@ export function OwlStage({ width, owlSize, bob, bubble, tint = 'sky', still }: {
             <Ellipse cx={62} cy={30} rx={18} ry={14} fill="#FFFFFF" />
             <Ellipse cx={36} cy={32} rx={13} ry={10} fill="#FFFFFF" />
           </G>
-          {/* the stage Owl stands on */}
+          {/* the stage Cog stands on */}
           <G transform="rotate(-7 150 150)">
             <Rect x={52} y={128} width={196} height={50} rx={25} fill={stage[1]} />
             <Rect x={52} y={120} width={196} height={50} rx={25} fill={stage[0]} />
@@ -124,9 +124,9 @@ export function OwlStage({ width, owlSize, bob, bubble, tint = 'sky', still }: {
           <Path d={sparkle(214, 20, 6)} fill="#5DA9F6" />
           <Path d={sparkle(110, 14, 5)} fill="#7650C7" />
         </Svg>
-        <Animated.View style={[styles.owlSpot, { bottom: height * 0.33, zIndex: 1, marginLeft: -owlSize / 2 },
+        <Animated.View style={[styles.cogSpot, { bottom: height * 0.33, zIndex: 1, marginLeft: -cogSize / 2 },
           bob ? { transform: [{ translateY: bob.interpolate({ inputRange: [0, 1], outputRange: [0, -10] }) }] } : null]}>
-          <Owl size={owlSize} mood="happy" still={still} />
+          <Cog size={cogSize} mood="happy" still={still} />
         </Animated.View>
       </View>
     </View>
@@ -169,5 +169,5 @@ const styles = StyleSheet.create({
   ribbonText: { fontSize: 13, fontWeight: '900', letterSpacing: 1 },
   bubble: { backgroundColor: '#FFFFFF', borderRadius: 999, borderWidth: 2.5, borderColor: '#FFC83D', paddingHorizontal: 16, paddingVertical: 6, marginBottom: -6, zIndex: 1 },
   bubbleText: { fontSize: 16, fontWeight: '900', color: '#7A4E08' },
-  owlSpot: { position: 'absolute', left: '50%' },
+  cogSpot: { position: 'absolute', left: '50%' },
 });

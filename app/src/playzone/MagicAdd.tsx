@@ -1,16 +1,16 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Animated, Easing, Pressable, StyleSheet, Text, View } from 'react-native';
-import Owl, { type OwlMood } from '../components/Owl';
+import Cog, { type CogMood } from '../components/Cog';
 import { playSound } from '../games/sounds';
 import { spacing } from '../theme';
 import { GameFrame, GameSurface, WinCard, randomInt, useNative, useUsableHeight } from './common';
 
 /**
- * Magic Add: Owl the wizard asks for a magic number ("Make 5!"). The child
+ * Magic Add: Cog the wizard asks for a magic number ("Make 5!"). The child
  * taps number stones that add up to it: 2 + 3, or 1 + 1 + 3. When the total
  * is just right the stones vanish in a puff of sparkles and new ones drop in.
- * Too much? The stones wobble, Owl says "oops", and the child simply tries
- * again. Five magic numbers fill Owl's star jar and win the level.
+ * Too much? The stones wobble, Cog says "oops", and the child simply tries
+ * again. Five magic numbers fill Cog's star jar and win the level.
  *
  * The board always holds at least one pair that makes the number, so a child
  * is never stuck (and "New stones" reshuffles if they want a fresh start).
@@ -97,7 +97,7 @@ export default function MagicAdd({ level: startLevel, onBack, onFinish }: {
   const [picked, setPicked] = useState<number[]>([]); // stone ids, in the order tapped
   const [made, setMade] = useState(0);
   const [overs, setOvers] = useState(0);
-  const [mood, setMood] = useState<OwlMood>('idle');
+  const [mood, setMood] = useState<CogMood>('idle');
   const [message, setMessage] = useState<string | null>(null);
   const [won, setWon] = useState<number | null>(null);
   const [busy, setBusy] = useState(false);
@@ -192,9 +192,9 @@ export default function MagicAdd({ level: startLevel, onBack, onFinish }: {
       <GameSurface theme="purple" eyebrow="OWL'S MAGIC POT" title="Make the magic number! 🪄" badgeLabel="MADE" badge={`${made} / ${MAKES_PER_LEVEL}`} onWidth={setBoardWidth}>
         <View style={[styles.play, side && styles.playSide]}>
           <View style={[styles.side, side && styles.sideColumn]}>
-            {/* The magic number, Owl the wizard and the star jar */}
+            {/* The magic number, Cog the wizard and the star jar */}
             <View style={[styles.head, side && styles.headSide]}>
-              <Owl size={compact ? 44 : 64} mood={mood} outfit={{ hat: 'wizard' }} />
+              <Cog size={compact ? 44 : 64} mood={mood} outfit={{ hat: 'wizard' }} />
               <View style={[styles.targetBox, compact && styles.targetBoxCompact]} accessible accessibilityRole="header" accessibilityLabel={`Make ${target}`}>
                 <Text style={styles.targetLabel}>MAKE</Text>
                 <Text style={[styles.target, compact && styles.targetCompact]}>{target}</Text>

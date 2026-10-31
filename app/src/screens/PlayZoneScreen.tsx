@@ -4,7 +4,7 @@ import LearningGames from '../playzone/LearningGames';
 import { LEARNING_GAMES, type LearningKey } from '../playzone/learningContent';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AccessibilityInfo, Animated, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import Owl from '../components/Owl';
+import Cog from '../components/Cog';
 import PlayerBar from '../components/PlayerBar';
 import { useBackHandler } from '../backHandler';
 import type { ChildProgress } from '../progress';
@@ -20,7 +20,7 @@ import DotToDot from '../playzone/DotToDot';
 import MagicAdd, { defaultAddLevel } from '../playzone/MagicAdd';
 import { defaultDotLevel } from '../playzone/dotPictures';
 import CollectionShelf from '../playzone/Collections';
-import type { OwlOutfit } from '../progress';
+import type { CogOutfit } from '../progress';
 import AnimalExplorer from '../playzone/AnimalExplorer';
 import UsaMap from '../playzone/UsaMap';
 import { ANIMALS } from '../explore/animals';
@@ -45,7 +45,7 @@ export const GAMES: GameInfo[] = [
   { key: 'states', emoji: '🗺️', name: 'USA Map', blurb: 'Find the state on the map', background: '#E6F4FB', border: '#5AA9D6', ink: '#24658F', unlockAfter: 0, isNew: true },
   { key: 'snake', emoji: '🐍', name: 'Number Snake', blurb: 'Eat the numbers in order', background: '#E5F5EA', border: '#63AA7D', ink: '#34734E', unlockAfter: 0 },
   { key: 'bubbles', emoji: '🫧', name: 'Bubble Pop', blurb: 'Pop the bubbles that match', background: '#E5F3FF', border: '#68A8D6', ink: '#2F6F9D', unlockAfter: 0 },
-  { key: 'maze', emoji: '🦉', name: 'Maze Runner', blurb: 'Lead Owl to the flag', background: '#EEE9FF', border: '#A68AE2', ink: '#5D439B', unlockAfter: 0 },
+  { key: 'maze', emoji: '🏁', name: 'Maze Runner', blurb: 'Lead Cog to the flag', background: '#EEE9FF', border: '#A68AE2', ink: '#5D439B', unlockAfter: 0 },
   { key: 'trace', emoji: '✏️', name: 'Trace & Draw', blurb: 'Write numbers and letters', background: '#FFE9E3', border: '#E88970', ink: '#A84733', unlockAfter: 0 },
   { key: 'dots', emoji: '🖍️', name: 'Connect the Dots', blurb: 'Join 1, 2, 3… and a picture appears', background: '#E3F1FB', border: '#5B9BD0', ink: '#286A98', unlockAfter: 0, isNew: true },
   { key: 'add', emoji: '🪄', name: 'Magic Add', blurb: 'Tap numbers that make the magic number', background: '#F3EEFF', border: '#9B7EDE', ink: '#4E3590', unlockAfter: 0, isNew: true },
@@ -53,7 +53,7 @@ export const GAMES: GameInfo[] = [
 
 function GameCard({ game, locked, plusOnly = false, score, level, remaining, albumCount, width, reduceMotion, onPress }: {
   game: GameInfo; locked: boolean;
-  /** Free plan: the card still opens, but Owl asks for a grown-up (no prices on a child's screen). */
+  /** Free plan: the card still opens, but Cog asks for a grown-up (no prices on a child's screen). */
   plusOnly?: boolean; score?: { stars: number; level: number }; level: number; remaining: number; albumCount: number;
   width: '50%' | '100%'; reduceMotion: boolean; onPress: () => void;
 }) {
@@ -133,8 +133,8 @@ export default function PlayZoneScreen({ childId, childName, childAvatar, onSwit
   onAnimalsFound?: (keys: string[]) => void;
   /** Connect the Dots: a picture was finished or coloured in, for the child's wall. */
   onPicture?: (key: string, colours?: string[]) => void;
-  /** Owl's new outfit (Dress up Owl). */
-  onOutfit?: (outfit: OwlOutfit) => void;
+  /** Cog's new outfit (Dress up Cog). */
+  onOutfit?: (outfit: CogOutfit) => void;
   /** Open straight into one game (the Animal Explorer banner on the home screen). */
   initialGame?: GameKey | null;
 }) {
@@ -214,7 +214,7 @@ export default function PlayZoneScreen({ childId, childName, childAvatar, onSwit
       )}
 
       <View style={styles.hero}>
-        <Owl mood="happy" size={64} />
+        <Cog mood="happy" size={64} />
         <View style={{ flex: 1 }}>
           <Text style={styles.heroTitle}>🎮 Play Zone</Text>
           <Text style={styles.heroSub}>{childName ? `Pick a game, ${childName}!` : 'Pick a game!'}</Text>
@@ -254,7 +254,7 @@ export default function PlayZoneScreen({ childId, childName, childAvatar, onSwit
       </View>
 
       <Text style={styles.note}>
-        For grown-ups: each game takes a few minutes and has no timers, ads or buying. Stars won here join the child's star total, and Owl suggests a break after a while of play.
+        For grown-ups: each game takes a few minutes and has no timers, ads or buying. Stars won here join the child's star total, and Cog suggests a break after a while of play.
       </Text>
     </ScrollView>
   );
