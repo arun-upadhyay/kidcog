@@ -8,23 +8,17 @@ import Svg, { Path, Polyline } from 'react-native-svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ACTIVITIES, PALETTE, SCENES, SONGS, WORDS, type Activity, type Stroke } from './artContent';
 import { useMusicAudio } from './musicAudio';
-import { drawingTouchStyle, useScrollLock, useUsableHeight } from './common';
+import { drawingTouchStyle, useScrollLock } from './common';
 import { GLYPHS } from './TraceDraw';
 import { useReduceMotion } from '../screens/WelcomeScreen';
 import ColoringBook from './ColoringBook';
+import DrawingStudio, { STUDIO_MAX } from './DrawingStudio';
 import RainbowLetters from './RainbowLetters';
 import CalmBubbles from './CalmBubbles';
 import { useBackHandler } from '../backHandler';
 
 function Action({ title, onPress, selected = false, disabled = false }: { title: string; onPress: () => void; selected?: boolean; disabled?: boolean }) {
  return <Pressable accessibilityRole="button" accessibilityState={{ selected, disabled }} aria-selected={selected} disabled={disabled} onPress={onPress} style={[styles.action, selected && styles.selected, disabled && { opacity: .4 }]}><Text style={styles.actionText}>{title}</Text></Pressable>;
-}
-/** A big picture button for the drawing tools: kids read the icon, grown-ups the word under it. */
-function Tool({ icon, title, onPress, selected = false, disabled = false, wide }: { icon: string; title: string; onPress: () => void; selected?: boolean; disabled?: boolean; wide: boolean }) {
- return <Pressable accessibilityRole="button" accessibilityLabel={title} accessibilityState={{ selected, disabled }} aria-selected={selected} disabled={disabled} onPress={onPress}
-  style={({ pressed }) => [styles.tool, wide && styles.toolWide, selected && styles.toolOn, disabled && { opacity: .4 }, pressed && { transform: [{ scale: .94 }] }]}>
-  <Text style={styles.toolIcon}>{icon}</Text><Text style={[styles.toolLabel, selected && { color: '#FFFFFF' }]} numberOfLines={1}>{title.replace(' picture', '').replace('Load saved', 'Open')}</Text>
- </Pressable>;
 }
 /** Stars that tumble down over the canvas when a trace is finished. */
 function FallingStars({ nonce }: { nonce: number }) {
@@ -52,37 +46,70 @@ function guides(label: string): [number, number][][] {
  if (label === 'Heart') return [Array.from({length:65},(_,i)=>{const t=i*Math.PI/32; return [50+2.3*16*Math.pow(Math.sin(t),3),48-2.3*(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))];})];
  return [...label].flatMap((letter, i) => (GLYPHS[letter] ?? []).map(stroke => stroke.map(([x,y]) => [(x + i * 100) / label.length, 20 + y * .6] as [number,number])));
 }
-function ArtStudio({ mode, childId }: { mode: 'color'|'numbers'|'words'|'draw'|'trace'; childId: string }) {
+/**
+ * Coloring Studio, Paint by Number, Paint by Word, Free Draw and Rainbow
+ * Tracing, all in the shared drawing layout (DrawingStudio): the picture big
+ * in the middle, the actions along the top, the tools down the side and the
+ * paints tucked away until needed.
+ */
+function ArtStudio({ mode, childId, onBack }: { mode: 'color'|'numbers'|'words'|'draw'|'trace'; childId: string; onBack: () => void }) {
  const [scene, setScene] = useState(0); const [trace, setTrace] = useState('A'); const [color, setColor] = useState(0);
- const [fills, setFills] = useState<string[]>([]); const [history, setHistory] = useState<string[][]>([]);
- const [strokes, setStrokes] = useState<Stroke[]>([]); const [brush, setBrush] = useState(5); const [erase, setErase] = useState(false);
- const [notice, setNotice] = useState(''); const [saving, setSaving] = useState(false); const [confirmClear, setConfirmClear] = useState(false);
- const [width, setWidth] = useState(280); const drawing = mode === 'draw' || mode === 'trace'; const lock = useScrollLock();
- const { width: screen } = useWindowDimensions(); const wide = screen >= 700; const tall = useUsableHeight(); const canvasMax = Math.max(260, Math.min(560, tall - 110)); const [stars, setStars] = useState(0); const [traced, setTraced] = useState(false);
+ const [fills, setFills] = useState<string[]>([]); const [strokes, setStrokes] = useState<Stroke[]>([]);
+ // One undo stack for fills and lines alike: the picture just before each change.
+ const [history, setHistory] = useState<{ fills: string[]; strokes: Stroke[] }[]>([]);
+ const [brush, setBrush] = useState(5); const [erase, setErase] = useState(false);
+ const [notice, setNotice] = useState(''); const [saving, setSaving] = useState(false); const [confirmClear, setConfirmClear] = useState(false); const [choosing, setChoosing] = useState(false);
+ const drawing = mode === 'draw' || mode === 'trace'; const lock = useScrollLock();
+ const [stars, setStars] = useState(0); const [traced, setTraced] = useState(false);
+ const size = useRef(300);
  const paint = SCENES[scene]!; const key = `kidcog.art.v1.${childId}.${mode}.${drawing ? trace : scene}`;
  const live = useRef(true); useEffect(() => { live.current = true; return () => { live.current = false; lock(false); }; }, [lock]);
+ useEffect(() => { if (!notice) return; const t = setTimeout(() => { if (live.current) setNotice(''); }, 2800); return () => clearTimeout(t); }, [notice]);
+ const remember = () => setHistory(h => [...h.slice(-39), { fills, strokes }]);
  function fill(index: number) {
   const region = paint.regions[index]!;
   if (mode !== 'color' && color !== region.color) { setNotice(`Find ${mode === 'numbers' ? `number ${region.color+1}` : `the word “${WORDS[region.color]}”`} on the palette.`); return; }
-  setHistory(h => [...h.slice(-39), fills]); setFills(f => { const next = [...f]; next[index] = PALETTE[color]!.hex; return next; }); setNotice('Lovely color!');
+  remember(); setFills(f => { const next = [...f]; next[index] = PALETTE[color]!.hex; return next; }); setNotice('Lovely color!'); playSound('pop');
  }
- function point(e: GestureResponderEvent): [number,number] { return [Math.max(0,Math.min(100,e.nativeEvent.locationX/width*100)),Math.max(0,Math.min(100,e.nativeEvent.locationY/width*100))]; }
- function begin(e: GestureResponderEvent) { lock(true); const p=point(e); setStrokes(s => [...s.slice(-199), { color: erase ? '#FFFFFF' : PALETTE[color]!.hex, width: erase ? 14 : brush, points:[p,[p[0]+.05,p[1]+.05]] }]); }
+ function point(e: GestureResponderEvent): [number,number] { return [Math.max(0,Math.min(100,e.nativeEvent.locationX/size.current*100)),Math.max(0,Math.min(100,e.nativeEvent.locationY/size.current*100))]; }
+ function begin(e: GestureResponderEvent) { lock(true); remember(); const p=point(e); setStrokes(s => [...s.slice(-199), { color: erase ? '#FFFFFF' : PALETTE[color]!.hex, width: erase ? 14 : brush, points:[p,[p[0]+.05,p[1]+.05]] }]); }
  function move(e: GestureResponderEvent) { const p=point(e); setStrokes(s => {const last=s[s.length-1]; if(!last || last.points.length>=600) return s; return [...s.slice(0,-1), {...last,points:[...last.points,p]}];}); }
  function finish() {
   lock(false);
   if (mode !== 'trace' || traced) return;
   if (coverage(guides(trace), strokes) >= 0.85) { setTraced(true); setStars(n => n + 1); playSound('yay'); setNotice(`⭐ Great tracing! You traced ${trace}!`); }
  }
+ function undo() { const prev = history[history.length - 1]; if (!prev) return; setFills(prev.fills); setStrokes(prev.strokes); setHistory(h => h.slice(0, -1)); }
  async function save() { setSaving(true); try { await AsyncStorage.setItem(key,JSON.stringify({fills,strokes})); if(live.current) setNotice('Saved on this device for this child.'); } catch { if(live.current) setNotice('Could not save. Please try again.'); } finally { if(live.current) setSaving(false); } }
  async function load() { try { const raw=await AsyncStorage.getItem(key); if(!live.current) return; if(!raw) {setNotice('No saved picture here yet.');return;} const data=JSON.parse(raw); if(!Array.isArray(data.fills)||!Array.isArray(data.strokes)) throw Error(); setFills(data.fills);setStrokes(data.strokes);setHistory([]);setNotice('Your saved picture is back!'); } catch { if(live.current) setNotice('Could not open this picture.'); } }
- const label = mode==='numbers' ? 'Match numbers on the picture and palette.' : mode==='words' ? 'Match words on the picture and palette.' : drawing ? 'Draw with your finger or mouse. Pick a color to begin.' : 'Choose a color, then tap a part of your picture.';
- return <View style={styles.panel}>
-  <Text style={styles.hint}>{label}</Text>
-  <View style={styles.row}>{drawing ? mode==='trace' && TRACES.map(t=><Action key={t} title={t} selected={trace===t} onPress={()=>{setTrace(t);setStrokes([]);setNotice('');setTraced(false);}} />) : SCENES.map((p,i)=><Action key={p.name} title={`${p.emoji} ${p.name}`} selected={scene===i} onPress={()=>{setScene(i);setFills([]);setHistory([]);setNotice('');}} />)}</View>
-  <View style={styles.row}>{PALETTE.map((p,i)=><Pressable key={p.name} accessibilityRole="button" accessibilityLabel={`${mode==='numbers' ? `${i+1} ` : mode==='words' ? `${WORDS[i]} ` : ''}${p.name}`} accessibilityState={{selected:color===i&&!erase}} aria-selected={color===i&&!erase} onPress={()=>{setColor(i);setErase(false);}} style={[styles.swatch,{backgroundColor:p.hex},color===i&&!erase&&styles.swatchSelected]}><Text style={styles.swatchText}>{mode==='numbers'?i+1:mode==='words'?WORDS[i]:color===i&&!erase?'✓':''}</Text></Pressable>)}</View>
-  <View style={[styles.bench, wide && styles.benchWide]}>
-  <View testID="art-canvas" onLayout={e=>setWidth(e.nativeEvent.layout.width)} style={[styles.canvas, drawingTouchStyle, wide && styles.canvasWide, wide && { maxWidth: canvasMax }]}
+ const choices = mode === 'trace' ? TRACES.map(t => ({ key: t, title: t, on: trace === t, pick: () => { setTrace(t); setStrokes([]); setHistory([]); setTraced(false); } }))
+  : mode === 'draw' ? [] : SCENES.map((p, i) => ({ key: p.name, title: `${p.emoji} ${p.name}`, on: scene === i, pick: () => { setScene(i); setFills([]); setHistory([]); } }));
+ const brushTool = erase ? 'eraser' : brush === 9 ? 'thick' : 'thin';
+ return <DrawingStudio
+  testID="art-studio"
+  closeLabel="Back to Art & Music"
+  onClose={onBack}
+  actions={[
+   ...(choices.length ? [{ key: 'pictures', icon: mode === 'trace' ? '🔤' : '🖼️', label: mode === 'trace' ? 'Choose what to trace' : 'Pictures', onPress: () => setChoosing(true) }] : []),
+   { key: 'undo', icon: '↶', label: 'Undo', onPress: undo, disabled: !history.length },
+   { key: 'clear', icon: '🗑️', label: 'Start over', onPress: () => setConfirmClear(true), disabled: !fills.length && !strokes.length },
+   { key: 'save', icon: '💾', label: saving ? 'Saving…' : 'Save picture', onPress: () => void save(), disabled: saving },
+   { key: 'load', icon: '📂', label: 'Load saved picture', onPress: () => void load() },
+  ]}
+  tools={drawing ? [
+   { key: 'thin', icon: '✏️', label: 'Thin brush', usesColour: true },
+   { key: 'thick', icon: '🖌️', label: 'Thick brush', usesColour: true },
+   { key: 'eraser', icon: '🧽', label: 'Eraser' },
+  ] : [{ key: 'bucket', icon: '🪣', label: 'Paint bucket', usesColour: true }]}
+  tool={drawing ? brushTool : 'bucket'}
+  onTool={k => { if (k === 'eraser') setErase(true); else if (k === 'thin' || k === 'thick') { setBrush(k === 'thick' ? 9 : 5); setErase(false); } }}
+  colours={PALETTE.map((p, i) => ({ key: p.name, hex: p.hex, role: 'button' as const,
+   label: `${mode==='numbers' ? `${i+1} ` : mode==='words' ? `${WORDS[i]} ` : ''}${p.name}`,
+   tag: mode === 'numbers' ? String(i + 1) : mode === 'words' ? WORDS[i] : undefined }))}
+  colour={color}
+  onColour={i => { setColor(i); setErase(false); }}
+  notice={notice || null}
+  renderCanvas={w => { size.current = w; return <View testID="art-canvas" style={[{ width: w, height: w }, drawingTouchStyle]}
    onStartShouldSetResponder={()=>drawing} onMoveShouldSetResponder={()=>drawing} onResponderGrant={begin} onResponderMove={move} onResponderRelease={finish} onResponderTerminate={()=>lock(false)} onResponderTerminationRequest={()=>false}>
    <Svg pointerEvents={drawing?'none':'auto'} width="100%" height="100%" viewBox="0 0 100 100">
     {drawing ? <>
@@ -93,16 +120,15 @@ function ArtStudio({ mode, childId }: { mode: 'color'|'numbers'|'words'|'draw'|'
    </Svg>
    {!drawing && paint.regions.map((r,i)=><Pressable key={i} accessibilityRole="button" accessibilityLabel={`Paint region ${i+1}${mode==='numbers'?`, number ${r.color+1}`:mode==='words'?`, word ${WORDS[r.color]}`:''}`} onPress={()=>fill(i)} style={[styles.region,{left:`${r.x}%`,top:`${r.y}%`}]}><Text style={styles.regionText}>{mode==='numbers'?r.color+1:mode==='words'?WORDS[r.color]:'●'}</Text></Pressable>)}
    <FallingStars nonce={stars} />
-  </View>
-  <View style={[styles.toolbar, wide && styles.toolbarWide, wide && tall < 760 && styles.toolbarTwo]}>
-   {drawing && <><Tool wide={wide} icon="✏️" title="Thin brush" selected={brush===5&&!erase} onPress={()=>{setBrush(5);setErase(false);}}/><Tool wide={wide} icon="🖌️" title="Thick brush" selected={brush===9&&!erase} onPress={()=>{setBrush(9);setErase(false);}}/><Tool wide={wide} icon="🧽" title="Eraser" selected={erase} onPress={()=>setErase(true)}/></>}
-   <Tool wide={wide} icon="↩️" title="Undo" disabled={drawing?!strokes.length:!history.length} onPress={()=>{if(drawing)setStrokes(s=>s.slice(0,-1));else{setFills(history[history.length-1]!);setHistory(h=>h.slice(0,-1));}}}/>
-   <Tool wide={wide} icon="🗑️" title="Start over" onPress={()=>setConfirmClear(true)}/><Tool wide={wide} icon="💾" title={saving?'Saving…':'Save picture'} disabled={saving} onPress={()=>void save()}/><Tool wide={wide} icon="📂" title="Load saved picture" onPress={()=>void load()}/>
-  </View>
-  </View>
-  {confirmClear && <View style={styles.row}><Text>Clear this canvas?</Text><Action title="Yes, clear" onPress={()=>{setStrokes([]);setFills([]);setHistory([]);setConfirmClear(false);setTraced(false);setNotice('Ready for a new idea!');}}/><Action title="Keep drawing" onPress={()=>setConfirmClear(false)}/></View>}
-  <Text accessibilityLiveRegion="polite" style={styles.hint}>{notice}</Text>
- </View>;
+  </View>; }}
+  overlay={<>
+   {choosing ? <View style={styles.overlay}><Pressable style={StyleSheet.absoluteFill} accessibilityRole="button" accessibilityLabel="Close" onPress={() => setChoosing(false)} />
+    <View style={styles.overlayCard}><Text style={styles.overlayTitle}>{mode === 'trace' ? 'What shall we trace?' : 'Pick a picture'}</Text>
+     <View style={styles.row}>{choices.map(c => <Action key={c.key} title={c.title} selected={c.on} onPress={() => { c.pick(); setChoosing(false); setNotice(''); }} />)}</View></View></View> : null}
+   {confirmClear ? <View style={styles.overlay}><View style={styles.overlayCard}><Text style={styles.overlayTitle}>Clear this canvas?</Text><Text style={styles.hint}>You can use Undo to bring it back.</Text>
+    <View style={styles.row}><Action title="Keep drawing" onPress={()=>setConfirmClear(false)}/><Action title="Yes, clear" onPress={()=>{remember();setStrokes([]);setFills([]);setConfirmClear(false);setTraced(false);setNotice('Ready for a new idea!');}}/></View></View></View> : null}
+  </>}
+ />;
 }
 function MusicStudio({ mode }: {mode:'piano'|'beats'|'songs'}) {
  const audio=useMusicAudio(); const audioRef=useRef(audio); audioRef.current=audio;
@@ -139,16 +165,21 @@ function MusicStudio({ mode }: {mode:'piano'|'beats'|'songs'}) {
 }
 export default function ArtMusic({childId,onBack,onDots}:{childId:string;onBack:()=>void;onDots:()=>void}) {
  const [activity,setActivity]=useState<Activity|null>(null);
- useBackHandler(3, () => setActivity(null), activity !== null);const [filter,setFilter]=useState('All'); const {width}=useWindowDimensions();
+ useBackHandler(3, () => setActivity(null), activity !== null);const [bookStudio,setBookStudio]=useState(false);const [filter,setFilter]=useState('All'); const {width}=useWindowDimensions();
  const selected=ACTIVITIES.find(a=>a.key===activity);
  if(activity==='alphabet')return <View style={[styles.root,{maxWidth:1180}]}><AlphabetPaint childId={childId} onBack={()=>setActivity(null)}/></View>;
- return <View style={styles.root}>
+ // Drawing activities get the whole screen: no big title card, their own ✕ to go back.
+ const studio=(activity==='book'&&bookStudio)||(['color','numbers','words','draw','trace'] as string[]).includes(activity??'');
+ return <View style={[styles.root,studio?{maxWidth:STUDIO_MAX}:null]}>
+  {studio?null:<>
   <Action title={activity?'← Art & Music':'← Games'} onPress={()=>activity?setActivity(null):onBack()}/>
   <View style={styles.hero}><Text style={styles.heroIcon}>{selected?.emoji??'🎨 🎵'}</Text><Text accessibilityRole="header" style={styles.heading}>{selected?.name??'Art & Music'}</Text><Text style={styles.subtitle}>{selected?.text??'A little imagination. A whole world to make.'}</Text></View>
-  {!activity?<><View style={styles.row}>{['All','Art','Music'].map(f=><Action key={f} title={f} selected={filter===f} onPress={()=>setFilter(f)}/>)}</View><View style={styles.row}>{ACTIVITIES.filter(a=>filter==='All'||a.group===filter).map(a=><Pressable key={a.key} accessibilityRole="button" accessibilityLabel={`Open ${a.name}`} onPress={()=>a.key==='dots'?onDots():setActivity(a.key)} style={[styles.tile,{width:width<460?'100%':'47%',backgroundColor:a.group==='Art'?'#FFF0DA':'#ECE7FF'}]}>{(['book','rainbow','calm'] as string[]).includes(a.key)?<Text style={styles.newBadge}>NEW</Text>:null}<Text style={styles.tileEmoji}>{a.emoji}</Text><Text style={styles.tileTitle}>{a.name}</Text><Text style={styles.hint}>{a.text}</Text></Pressable>)}</View><Text style={styles.hint}>Pictures are saved on this device for the selected child. Music starts only when you press play.</Text></>:activity==='book'?<ColoringBook childId={childId}/>:activity==='rainbow'?<RainbowLetters/>:activity==='calm'?<CalmBubbles/>:activity==='piano'||activity==='beats'||activity==='songs'?<MusicStudio key={activity} mode={activity}/>:activity!=='dots'?<ArtStudio key={activity} mode={activity} childId={childId}/>:null}
+  </>}
+  {!activity?<><View style={styles.row}>{['All','Art','Music'].map(f=><Action key={f} title={f} selected={filter===f} onPress={()=>setFilter(f)}/>)}</View><View style={styles.row}>{ACTIVITIES.filter(a=>filter==='All'||a.group===filter).map(a=><Pressable key={a.key} accessibilityRole="button" accessibilityLabel={`Open ${a.name}`} onPress={()=>a.key==='dots'?onDots():setActivity(a.key)} style={[styles.tile,{width:width<460?'100%':'47%',backgroundColor:a.group==='Art'?'#FFF0DA':'#ECE7FF'}]}>{(['book','rainbow','calm'] as string[]).includes(a.key)?<Text style={styles.newBadge}>NEW</Text>:null}<Text style={styles.tileEmoji}>{a.emoji}</Text><Text style={styles.tileTitle}>{a.name}</Text><Text style={styles.hint}>{a.text}</Text></Pressable>)}</View><Text style={styles.hint}>Pictures are saved on this device for the selected child. Music starts only when you press play.</Text></>:activity==='book'?<ColoringBook childId={childId} onStudio={setBookStudio}/>:activity==='rainbow'?<RainbowLetters/>:activity==='calm'?<CalmBubbles/>:activity==='piano'||activity==='beats'||activity==='songs'?<MusicStudio key={activity} mode={activity}/>:activity!=='dots'?<ArtStudio key={activity} mode={activity} childId={childId} onBack={()=>setActivity(null)}/>:null}
  </View>;
 }
 const styles=StyleSheet.create({
+ overlay:{position:'absolute',top:0,left:0,right:0,bottom:0,alignItems:'center',justifyContent:'center',backgroundColor:'rgba(40,30,60,0.35)',borderRadius:28,padding:16,zIndex:20},overlayCard:{width:'100%',maxWidth:460,backgroundColor:'#FFFFFF',borderRadius:24,padding:16,gap:12,alignItems:'center'},overlayTitle:{fontSize:20,fontWeight:'900',color:'#53347E',textAlign:'center'},
  root:{width:'100%',maxWidth:850,alignSelf:'center',gap:18,paddingBottom:24},hero:{backgroundColor:'#EEE5FA',borderRadius:28,padding:24,alignItems:'center',gap:8},heroIcon:{fontSize:42},heading:{fontSize:30,fontWeight:'900',color:'#53347E',textAlign:'center'},subtitle:{fontSize:16,color:'#624B77',textAlign:'center'},
  row:{flexDirection:'row',flexWrap:'wrap',gap:10,justifyContent:'center'},action:{minHeight:44,borderRadius:18,borderWidth:2,borderColor:'#C9BADF',backgroundColor:'#FFF',paddingHorizontal:14,paddingVertical:10,justifyContent:'center'},actionText:{fontSize:14,fontWeight:'800',color:'#493663'},selected:{backgroundColor:'#C6B2EF',borderColor:'#644498'},
  tile:{borderRadius:26,padding:20,minHeight:180,alignItems:'center',gap:10,borderWidth:3,borderBottomWidth:8,borderColor:'#D3C5E4'},tileEmoji:{fontSize:56},newBadge:{position:'absolute',top:12,right:12,backgroundColor:'#E5533D',color:'#FFFFFF',fontWeight:'900',fontSize:12,letterSpacing:1,paddingHorizontal:10,paddingVertical:4,borderRadius:999,overflow:'hidden'},tileTitle:{fontSize:21,fontWeight:'900',color:'#493663',textAlign:'center'},hint:{fontSize:15,lineHeight:22,color:'#5A4B66',textAlign:'center'},panel:{padding:12,borderRadius:24,backgroundColor:'#FAF7FF',gap:16},

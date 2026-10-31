@@ -69,7 +69,7 @@ export default function RainbowLetters() {
     if (covered(ink) >= 0.85) {
       setDone(true); setStarsWon(s => s + 1);
       playSound('yay');
-      stopSpeaking(); void speak(`${say(item)}! Great tracing!`, { voice: 'device' });
+      stopSpeaking(); void speak(`${say(item)}! Great tracing!`);
       burst.setValue(0);
       Animated.timing(burst, { toValue: 1, duration: 900, useNativeDriver: useNative }).start();
     }
@@ -92,7 +92,7 @@ export default function RainbowLetters() {
       <View style={styles.head}>
         <Owl size={52} mood={done ? 'happy' : 'idle'} still={!done} />
         <Text style={styles.prompt} accessibilityRole="header">{done ? `⭐ You traced ${item}!` : `Trace ${item.length > 1 && !SHAPES[item] ? `“${item}”` : item}`}</Text>
-        <Pressable onPress={() => { stopSpeaking(); void speak(SHAPES[item] ? `Trace the ${item.toLowerCase()}` : `Trace ${say(item)}`, { voice: 'device' }); }}
+        <Pressable onPress={() => { stopSpeaking(); void speak(SHAPES[item] ? `Trace the ${item.toLowerCase()}` : `Trace ${say(item)}`); }}
           accessibilityRole="button" accessibilityLabel={`Hear: trace ${item}`} style={({ pressed }) => [styles.speaker, pressed && styles.pressed]}>
           <Text style={styles.speakerText}>🔊</Text>
         </Pressable>

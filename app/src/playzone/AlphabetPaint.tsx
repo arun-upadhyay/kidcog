@@ -1,11 +1,12 @@
 import React, { useEffect, useId, useRef, useState } from 'react';
-import { Modal, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions, type GestureResponderEvent } from 'react-native';
+import { Modal, Pressable, ScrollView, StyleSheet, Text, View, type GestureResponderEvent } from 'react-native';
 import Svg, { Defs, G, Mask, Path, Polyline, Rect, Text as SvgText } from 'react-native-svg';
 import { CRAYONS } from './coloringPages';
 import { PAINT_PAGES, type PaintPage } from './alphabetPaintPages';
 import { blankArt, loadPaint, paintKey, savePaint, type PaintArt, type PaintStroke } from './alphabetPaintArt';
 import { drawingTouchStyle, useScrollLock } from './common';
 import CorrectAnswerCelebration from '../components/CorrectAnswerCelebration';
+import DrawingStudio from './DrawingStudio';
 
 type Tool = 'brush' | 'pencil' | 'marker' | 'fill' | 'eraser';
 const TOOLS: {key: Tool; name: string; icon: string; hint: string}[] = [
@@ -79,20 +80,21 @@ export default function AlphabetPaint({childId,onBack}: {childId:string;onBack:(
   </>;
 }
 
+/** One picture being painted, in the shared drawing layout (DrawingStudio). */
 function PaintEditor({childId,page,onBack,onPictures}: {childId:string;page:PaintPage;onBack:()=>void;onPictures:()=>void}) {
   const key=paintKey(childId,page.key);
   const [art,setArt]=useState<PaintArt>(blankArt);
   const artRef=useRef(art);
   const [past,setPast]=useState<PaintArt[]>([]);
   const [future,setFuture]=useState<PaintArt[]>([]);
-  const [color,setColor]=useState(CRAYONS[0]!);
+  const [colorIndex,setColorIndex]=useState(0);
+  const color=CRAYONS[colorIndex]!;
   const [tool,setTool]=useState<Tool>('fill');
   const [thickness,setThickness]=useState(2.5);
   const [ready,setReady]=useState(false);
   const [loadError,setLoadError]=useState(false);
   const [loadAttempt,setLoadAttempt]=useState(0);
-  const [notice,setNotice]=useState('Opening your picture…');
-  const [saving,setSaving]=useState(false);
+  const [notice,setNotice]=useState<string|null>('Opening your picture…');
   const [saveError,setSaveError]=useState(false);
   const [confirmClear,setConfirmClear]=useState(false);
   const [celebrate,setCelebrate]=useState(0);
@@ -101,25 +103,23 @@ function PaintEditor({childId,page,onBack,onPictures}: {childId:string;page:Pain
   const live=useRef(true);
   const revision=useRef(0);
   const lock=useScrollLock();
-  const {width:windowWidth,height:windowHeight}=useWindowDimensions();
-  const [available,setAvailable]=useState(Math.min(1140,windowWidth-40));
-  const wide=available>=760;
-  const canvasWidth=Math.max(180,Math.floor(Math.min(available-(wide?226:0),wide?Math.max(330,windowHeight-250)*page.width/page.height:760)));
-  const canvasHeight=canvasWidth*page.height/page.width;
+  const canvasSize=useRef({width:page.width*3,height:page.height*3});
   useEffect(()=>{
     live.current=true;setReady(false);setLoadError(false);
     void loadPaint(key).then(saved=>{if(live.current){artRef.current=saved;setArt(saved);setReady(true);setNotice('Your picture saves automatically.');}}).catch(()=>{if(live.current){setLoadError(true);setNotice('We could not open this picture. Tap Retry to try again.');}});
     return()=>{live.current=false;lock(false);};
   },[key,loadAttempt,lock]);
+  // Friendly messages fade after a moment; problems stay until they are fixed.
+  useEffect(()=>{if(!notice||loadError||saveError)return;const t=setTimeout(()=>{if(live.current)setNotice(null);},3000);return()=>clearTimeout(t);},[notice,loadError,saveError]);
   function save(next:PaintArt) {
-    artRef.current=next;setArt(next);setSaving(true);setSaveError(false);
+    artRef.current=next;setArt(next);setSaveError(false);
     const mine=++revision.current;
-    void savePaint(key,next).then(()=>{if(live.current&&mine===revision.current){setSaving(false);setNotice('Saved on this device ✓');}}).catch(()=>{if(live.current&&mine===revision.current){setSaving(false);setSaveError(true);setNotice('Your picture is here, but could not be saved. Tap Save again.');}});
+    void savePaint(key,next).catch(()=>{if(live.current&&mine===revision.current){setSaveError(true);setNotice('Your picture is here, but could not be saved. Tap Save again.');}});
   }
   function change(next:PaintArt) {const previous=artRef.current;setPast(h=>[...h.slice(-29),previous]);setFuture([]);save(next);}
   const point=(e:GestureResponderEvent):[number,number]=>[
-    Math.max(0,Math.min(page.width,e.nativeEvent.locationX/canvasWidth*page.width)),
-    Math.max(0,Math.min(page.height,e.nativeEvent.locationY/canvasHeight*page.height)),
+    Math.max(0,Math.min(page.width,e.nativeEvent.locationX/canvasSize.current.width*page.width)),
+    Math.max(0,Math.min(page.height,e.nativeEvent.locationY/canvasSize.current.height*page.height)),
   ];
   function startStroke(e:GestureResponderEvent) {
     if(!ready)return;
@@ -140,43 +140,42 @@ function PaintEditor({childId,page,onBack,onPictures}: {childId:string;page:Pain
   function fill(i:number) {if(!ready||tool!=='fill'||artRef.current.fills[i]===color.hex)return;const fills=[...artRef.current.fills];fills[i]=color.hex;change({...artRef.current,fills});}
   function undo() {const last=past[past.length-1];if(last){const current=artRef.current;setFuture(h=>[...h,current]);setPast(h=>h.slice(0,-1));save(last);}}
   function redo() {const last=future[future.length-1];if(last){const current=artRef.current;setPast(h=>[...h,current]);setFuture(h=>h.slice(0,-1));save(last);}}
-  const palette=<View style={[styles.palette,wide&&styles.paletteSide]} accessibilityRole="radiogroup" accessibilityLabel="Paint colors">
-    {CRAYONS.map(c=><Pressable key={c.name} accessibilityRole="radio" accessibilityLabel={`Paint ${c.name}`} accessibilityState={{checked:color.hex===c.hex}} onPress={()=>{setColor(c);if(tool==='eraser')setTool('brush');}} style={({pressed})=>[styles.paint,wide&&styles.paintSide,color.hex===c.hex&&styles.paintSelected,pressed&&styles.pressed]}>
-      <View style={[styles.nib,{backgroundColor:c.hex}]}><View style={styles.shine}/></View>
-      <View style={styles.paintHandle}><View style={[styles.paintStripe,{backgroundColor:c.hex}]}/></View>
-      {color.hex===c.hex?<View style={styles.colorCheck}><Text style={styles.colorCheckText}>✓</Text></View>:null}
-    </Pressable>)}
-  </View>;
-  const tools=<View style={[styles.tools,wide&&styles.toolsSide]}>{TOOLS.map(t=><Control key={t.key} label={t.name} icon={t.icon} onPress={()=>setTool(t.key)} selected={tool===t.key}/>)}</View>;
-  return <View style={styles.root} onLayout={e=>setAvailable(e.nativeEvent.layout.width)}>
+  const SIZES=[1.2,2.5,4.5];
+  const sizeIndex=Math.max(0,SIZES.indexOf(thickness));
+  return <>
     <CorrectAnswerCelebration nonce={celebrate} message="Beautiful artwork!"/>
-    <View style={styles.top}>
-      <Control label="Art & Music" icon="←" onPress={onBack}/>
-      <View style={styles.titleBlock}><Text style={styles.eyebrow}>ALPHABET PAINT</Text><Text accessibilityRole="header" style={styles.title}>{page.name}</Text></View>
-      <Control label="Pictures" icon="🖼️" onPress={onPictures}/>
-    </View>
-    <View style={styles.toolbar}>
-      <Control label="Undo" icon="↶" onPress={undo} disabled={!ready||!past.length}/>
-      <Control label="Redo" icon="↷" onPress={redo} disabled={!ready||!future.length}/>
-      <Control label="Start over" icon="🗑️" onPress={()=>setConfirmClear(true)} disabled={!ready}/>
-      {tool!=='fill'?<View style={styles.sizes} accessibilityRole="radiogroup" accessibilityLabel="Tool size">{[1.2,2.5,4.5].map((s,i)=><Pressable key={s} accessibilityRole="radio" accessibilityLabel={['Small tip','Medium tip','Big tip'][i]} accessibilityState={{checked:thickness===s}} onPress={()=>setThickness(s)} style={[styles.size,thickness===s&&styles.controlSelected]}><View style={{width:7+s*3,height:7+s*3,borderRadius:20,backgroundColor:'#634997'}}/></Pressable>)}</View>:null}
-      <Pressable disabled={!ready} accessibilityRole="button" accessibilityLabel="Finished painting" onPress={()=>{if(saveError)save(artRef.current);setCelebrate(n=>n+1);}} style={[styles.finish,!ready&&styles.disabled]}><Text style={styles.finishText}>✓ Finished!</Text></Pressable>
-    </View>
-    <View style={[styles.workspace,wide&&styles.workspaceWide]}>
-      <View style={[drawingTouchStyle,styles.paper,{width:canvasWidth,height:canvasHeight}]} testID="alphabet-canvas">
-        <Picture page={page} art={art} width={canvasWidth} height={canvasHeight} onFill={fill}><Ink page={page} strokes={[...art.strokes,...(draft?[draft]:[])]}/></Picture>
+    <DrawingStudio
+      testID="alphabet-studio"
+      closeLabel="Back to Art & Music"
+      onClose={onBack}
+      actions={[
+        {key:'pictures',icon:'🖼️',label:'Pictures',onPress:onPictures},
+        {key:'undo',icon:'↶',label:'Undo',onPress:undo,disabled:!ready||!past.length},
+        {key:'redo',icon:'↷',label:'Redo',onPress:redo,disabled:!ready||!future.length},
+        {key:'clear',icon:'🗑️',label:'Start over',onPress:()=>setConfirmClear(true),disabled:!ready},
+        ...(tool!=='fill'?[{key:'size',icon:['•','●','⬤'][sizeIndex]!,label:`Tip size: ${['small','medium','big'][sizeIndex]}`,onPress:()=>setThickness(SIZES[(sizeIndex+1)%3]!)}]:[]),
+        ...(loadError?[{key:'retry',icon:'↻',label:'Retry',onPress:()=>setLoadAttempt(n=>n+1)}]:[]),
+        ...(saveError?[{key:'save',icon:'💾',label:'Save again',onPress:()=>save(artRef.current)}]:[]),
+      ]}
+      done={{label:'Finished painting',onPress:()=>{if(!ready)return;if(saveError)save(artRef.current);setCelebrate(n=>n+1);}}}
+      tools={TOOLS.map(t=>({key:t.key,icon:t.icon,label:t.name,usesColour:t.key!=='eraser'}))}
+      tool={tool}
+      onTool={k=>{setTool(k as Tool);setNotice(TOOLS.find(t=>t.key===k)!.hint);}}
+      colours={CRAYONS.map(c=>({key:c.name,hex:c.hex,label:`Paint ${c.name}`}))}
+      colour={colorIndex}
+      onColour={i=>{setColorIndex(i);if(tool==='eraser')setTool('brush');}}
+      aspect={page.width/page.height}
+      notice={notice}
+      renderCanvas={(width,height)=>{canvasSize.current={width,height};return <View style={[drawingTouchStyle,{width,height}]} testID="alphabet-canvas">
+        <Picture page={page} art={art} width={width} height={height} onFill={fill}><Ink page={page} strokes={[...art.strokes,...(draft?[draft]:[])]}/></Picture>
         {tool!=='fill'?<View testID="paint-drawing-surface" style={[StyleSheet.absoluteFill, drawingTouchStyle]} onStartShouldSetResponder={()=>ready} onMoveShouldSetResponder={()=>ready} onResponderGrant={startStroke} onResponderMove={moveStroke} onResponderRelease={finishStroke} onResponderTerminate={finishStroke} onResponderTerminationRequest={()=>false}/>:null}
-      </View>
-      {palette}{tools}
-    </View>
-    <View style={styles.footer}><Text style={styles.hint}>{TOOLS.find(t=>t.key===tool)!.hint}</Text><Text accessibilityLiveRegion="polite" style={styles.saved}>{saving?'Saving…':notice}</Text></View>
-    {loadError?<Control label="Retry" icon="↻" onPress={()=>setLoadAttempt(n=>n+1)}/>:null}
-    {saveError?<Control label="Save again" icon="💾" onPress={()=>save(artRef.current)}/>:null}
+      </View>;}}
+    />
     <Modal visible={confirmClear} transparent animationType="fade" onRequestClose={()=>setConfirmClear(false)}><View style={styles.scrim} accessibilityViewIsModal><View style={styles.confirm}>
       <Text style={styles.title}>Start a fresh picture?</Text><Text style={styles.hint}>You can use Undo to bring this one back.</Text>
       <View style={styles.toolbar}><Control label="Keep drawing" icon="🎨" onPress={()=>setConfirmClear(false)}/><Control label="Yes, clear" icon="🧽" onPress={()=>{change(blankArt());setConfirmClear(false);}}/></View>
     </View></View></Modal>
-  </View>;
+  </>;
 }
 
 const styles=StyleSheet.create({

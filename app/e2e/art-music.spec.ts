@@ -56,9 +56,14 @@ test('art and music supports creating, saving, tracing and playing', async ({ pa
   await page.getByRole('button', {name:'Open Art & Music',exact:true}).click();
   await expect(page.getByRole('button',{name:/^Open (Coloring Studio|Paint by Number|Paint by Word|Free Draw|Rainbow Tracing|Piano Playground|Beat Builder|Music & Movement|Connect the Dots)$/})).toHaveCount(9);
   await page.screenshot({path:`/private/tmp/kidcog-art/${test.info().project.name}-hub.png`,fullPage:true});
-  const back = () => page.getByRole('button',{name:'← Art & Music',exact:true}).click();
+  // Drawing studios have a ✕ (Back to Art & Music); the music activities keep their ← button.
+  const back = () => page.getByRole('button',{name:/^(Back to Art & Music|← Art & Music)$/}).click();
+  // The paints are tucked away until the colour chip (or a mouse over the tools) brings them out.
+  const paints = async () => { await page.mouse.move(2,2); await expect(page.getByTestId('crayon-drawer')).toHaveCount(0); await page.getByRole('button',{name:'Choose a colour',exact:true}).click(); };
   await page.getByRole('button',{name:'Open Coloring Studio',exact:true}).click();
+  await paints();
   await page.getByRole('button',{name:'Red',exact:true}).click();
+  await page.mouse.move(2,2);
   await page.getByRole('button',{name:'Paint region 1',exact:true}).click();
   await page.getByRole('button',{name:'Save picture',exact:true}).click();
   await expect(page.getByText('Saved on this device for this child.')).toBeVisible();
@@ -72,14 +77,18 @@ test('art and music supports creating, saving, tracing and playing', async ({ pa
     await page.getByRole('button',{name:`Open ${title}`,exact:true}).click();
     await page.getByRole('button',{name:region,exact:true}).click();
     await expect(page.getByText(/^Find .* on the palette/)).toBeVisible();
+    await paints();
     await page.getByRole('button',{name:palette,exact:true}).click();
+    await page.mouse.move(2,2);
+    await expect(page.getByTestId('crayon-drawer')).toHaveCount(0);
     await page.getByRole('button',{name:region,exact:true}).click();
     await expect(page.getByText('Lovely color!')).toBeVisible();
     await back();
   }
   for(const title of ['Free Draw','Rainbow Tracing']) {
     await page.getByRole('button',{name:`Open ${title}`,exact:true}).click();
-    if(title==='Rainbow Tracing') await page.getByRole('button',{name:'LOOK',exact:true}).click();
+    if(title==='Rainbow Tracing') { await page.getByRole('button',{name:'Choose what to trace',exact:true}).click(); await page.getByRole('button',{name:'LOOK',exact:true}).click(); }
+    await page.mouse.move(2,2);await expect(page.getByTestId('crayon-drawer')).toHaveCount(0);
     const canvas=page.getByTestId('art-canvas');await canvas.scrollIntoViewIfNeeded();const box=(await canvas.boundingBox())!;
     await page.mouse.move(box.x+box.width*.2,box.y+box.height*.3);await page.mouse.down();await page.mouse.move(box.x+box.width*.7,box.y+box.height*.7,{steps:8});await page.mouse.up();
     await expect(page.getByRole('button',{name:'Undo',exact:true})).toBeEnabled();

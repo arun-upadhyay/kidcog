@@ -66,7 +66,11 @@ test('Coloring Book: pick a picture, colour it, and it is saved on the shelf', a
   await expect(page.getByRole('button', { name: 'Colour Rocket', exact: true })).toBeVisible();
   await page.getByRole('tab', { name: /ABC/ }).click();
   await page.getByRole('button', { name: 'Colour A is for Apple', exact: true }).click();
+  await page.getByRole('button', { name: 'Choose a colour' }).click();
   await page.getByRole('radio', { name: 'Crayon blue' }).click();
+  // Move the mouse off the tools so the crayons tuck away before using the picture.
+  await page.mouse.move(2, 2);
+  await expect(page.getByTestId('crayon-drawer')).toHaveCount(0);
   const apple = PAGES.find(p => p.key === 'apple')!;
   const canvasEl = page.getByTestId('coloring-canvas');
   await canvasEl.scrollIntoViewIfNeeded();
@@ -125,7 +129,9 @@ test('Music & Movement has the new sing-alongs', async ({ page }) => {
 test('Rainbow Tracing: tools sit beside the canvas, thick ink, and stars fall when a shape is traced', async ({ page }, info) => {
   await artMusic(page);
   await page.getByRole('button', { name: 'Open Rainbow Tracing', exact: true }).click();
+  await page.getByRole('button', { name: 'Choose what to trace', exact: true }).click();
   await page.getByRole('button', { name: 'Star', exact: true }).click();
+  await page.mouse.move(2,2);await expect(page.getByTestId('crayon-drawer')).toHaveCount(0);
   const canvas = page.getByTestId('art-canvas');
   await canvas.scrollIntoViewIfNeeded();
   const box = (await canvas.boundingBox())!;
@@ -160,10 +166,12 @@ test('Alphabet Paint paints, erases, undoes, redoes and reopens saved artwork', 
   const saved = () => page.evaluate(key => JSON.parse(localStorage.getItem(key) ?? '{}'), storageKey);
   await expect.poll(async () => (await saved()).fills?.[16]).toBe('#EF4E43');
   await page.getByRole('button', {name:'Brush',exact:true}).click();
+  await page.mouse.move(2,2);await expect(page.getByTestId('crayon-drawer')).toHaveCount(0);
   await canvas.scrollIntoViewIfNeeded(); box=(await canvas.boundingBox())!;
   await page.mouse.move(...at(6,48));await page.mouse.down();await page.mouse.move(...at(19,48),{steps:12});await page.mouse.up();
   await expect.poll(async () => (await saved()).strokes?.length).toBe(1);
   await page.getByRole('button',{name:'Eraser',exact:true}).click();
+  await page.mouse.move(2,2);await expect(page.getByTestId('crayon-drawer')).toHaveCount(0);
   await canvas.scrollIntoViewIfNeeded();box=(await canvas.boundingBox())!;
   await page.mouse.move(...at(12,45));await page.mouse.down();await page.mouse.move(...at(12,51),{steps:10});await page.mouse.up();
   await expect.poll(async () => (await saved()).strokes?.[1]?.erase).toBe(true);
@@ -187,7 +195,7 @@ test('Alphabet Paint paints, erases, undoes, redoes and reopens saved artwork', 
   await page.getByRole('button',{name:'Keep drawing',exact:true}).click();
   await expect(page.getByText('Start a fresh picture?',{exact:true})).toBeHidden();
   await expect(page.getByTestId('paint-region-16')).toHaveAttribute('fill','#EF4E43');
-  await page.getByRole('button',{name:'Art & Music',exact:true}).scrollIntoViewIfNeeded();
+  await page.getByRole('button',{name:'Back to Art & Music',exact:true}).scrollIntoViewIfNeeded();
   await page.screenshot({path:'/private/tmp/alphabet-studio-'+test.info().project.name+'.png'});
   const overflow = await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth);
   expect(overflow).toBe(false);
@@ -199,8 +207,11 @@ test('Coloring Book: character pages can be scribbled on in Draw mode', async ({
   await page.getByRole('button', { name: 'Open Coloring Book', exact: true }).click();
   // "People" is the default group; it holds the character pages.
   await page.getByRole('button', { name: 'Colour Superhero', exact: true }).click();
+  await page.getByRole('button', { name: 'Brush', exact: true }).click();
   await page.getByRole('radio', { name: 'Crayon red' }).click();
-  await page.getByRole('button', { name: 'Draw', exact: true }).click();
+  // Move the mouse off the tools so the crayons tuck away before using the picture.
+  await page.mouse.move(2, 2);
+  await expect(page.getByTestId('crayon-drawer')).toHaveCount(0);
   const drawCanvas = page.getByTestId('coloring-canvas');
   await drawCanvas.scrollIntoViewIfNeeded();
   const c = (await drawCanvas.boundingBox())!;
@@ -216,12 +227,14 @@ test('Coloring Book: the rainbow picker fills with a custom colour', async ({ pa
   await page.getByRole('button', { name: 'Open Coloring Book', exact: true }).click();
   await page.getByRole('tab', { name: /ABC/ }).click();
   await page.getByRole('button', { name: 'Colour A is for Apple', exact: true }).click();
+  await page.getByRole('button', { name: 'Choose a colour' }).click();
   await page.getByRole('button', { name: 'More colours', exact: true }).click();
   const shade = page.getByRole('button', { name: /^Colour #/ }).nth(20);
   const hex = (await shade.getAttribute('aria-label'))!.replace('Colour ', '').toLowerCase();
   await shade.click();
   // The picker closes; the chosen colour is now the one in hand.
-  await expect(page.getByRole('button', { name: 'More colours', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: /^Colour #/ })).toHaveCount(0);
+  await page.mouse.move(2, 2);
   const canvasEl = page.getByTestId('coloring-canvas');
   await canvasEl.scrollIntoViewIfNeeded();
   const box = (await canvasEl.boundingBox())!;
@@ -237,7 +250,10 @@ test('Touch drawing keeps the coloring canvas stationary and saves the stroke', 
   await artMusic(page);
   await page.getByRole('button', { name: 'Open Coloring Book', exact: true }).click();
   await page.getByRole('button', { name: 'Colour Superhero', exact: true }).click();
-  await page.getByRole('button', { name: 'Draw', exact: true }).click();
+  // With a finger: tapping a tool slides the crayons out; picking one tucks them away again.
+  await page.getByRole('button', { name: 'Pencil', exact: true }).tap();
+  await page.getByRole('radio', { name: 'Crayon green' }).tap();
+  await expect(page.getByTestId('crayon-drawer')).toHaveCount(0);
   const canvas = page.getByTestId('coloring-canvas');
   await canvas.scrollIntoViewIfNeeded();
   await expect(canvas).toHaveCSS('touch-action', 'none');

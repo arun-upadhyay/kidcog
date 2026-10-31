@@ -74,7 +74,7 @@ export default function CalmBubbles() {
     b.rise.stopAnimation();
     void audio.play(c.note);
     setSaid(c); setPopped(n => n + 1);
-    stopSpeaking(); void speak(c.name, { voice: 'device' });
+    stopSpeaking(); void speak(c.name);
     Animated.timing(b.popping, { toValue: 1, duration: 260, useNativeDriver: useNative }).start(() => setBubbles(l => l.filter(x => x.id !== b.id)));
   }
 
